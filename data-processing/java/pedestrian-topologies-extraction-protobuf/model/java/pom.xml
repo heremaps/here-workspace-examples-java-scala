@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.here.platform.schema.data.processing.example.java.pedestrian.protobuf</groupId>
+    <artifactId>model_v2</artifactId>
+    <version>0.0.489</version>
+  </parent>
+
+  <artifactId>model_v2_java</artifactId>
+  <packaging>jar</packaging>
+
+  <name>Java Bindings</name>
+  <description>Java bindings for protocol buffers.</description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>model_v2_proto</artifactId>
+      <version>${project.version}</version>
+      <type>zip</type>
+    </dependency>
+
+    <!-- Add any java dependencies here. -->
+    <dependency>
+      <groupId>com.here.schema.rib</groupId>
+      <artifactId>common_v2_java</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.here.schema</groupId>
+      <artifactId>geometry_v2_java</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- unpack schema files packaged by the _proto module -->
+      <plugin>
+        <groupId>com.here.platform.schema.maven_plugins</groupId>
+        <artifactId>proto-unpack-plugin</artifactId>
+        <version>${here.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <outputDirectory>${project.build.directory}/proto</outputDirectory>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.os72</groupId>
+        <artifactId>protoc-jar-maven-plugin</artifactId>
+        <version>3.3.0.1</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <protocVersion>${protoc.version}</protocVersion>
+
+              <inputDirectories>
+                <include>${project.build.directory}/proto-local</include>
+              </inputDirectories>
+
+              <includeDirectories>
+                <include>${project.build.directory}/proto</include>
+              </includeDirectories>
+
+              <includeStdTypes>true</includeStdTypes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>

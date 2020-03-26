@@ -1,0 +1,212 @@
+# A Compiler to lift road topology and geometry and aggregate it to higher level
+
+This Data Processing Library Scala example shows how to use the Open Location
+Platform SDK to build a compiler pipeline that elevates and aggregates data to a higher level.
+
+The compiler in this example is an DirectMToNCompiler which
+takes HERE Map Content input data, merges the incoming lower level tiles into a single tile,
+and produces output tiles at a higher HEREtile level. The output of this compiler is written
+to `lifted-topology-geometry` layer in the same Protobuf format with HEREtile partitioning
+on a higher level.
+
+## Set up Access to the Data API
+
+To run the example, you need access to a HERE Map Content catalog, and you need to create one catalog of your own
+for the output data. For more information, refer to the
+[Open Location Platform CLI](https://developer.here.com/olp/documentation/open-location-platform-cli/user_guide/index.html) and
+[Data User Guide](https://developer.here.com/olp/documentation/data-user-guide/index.html) documentation.
+
+### Create The Catalog
+
+The catalog you need to create is used to store the lifted geometry that the compiler generates.
+
+Using the OLP Portal, create a new catalog and the following catalog layers:
+
+| Layer ID                 | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding | Schema
+|--------------------------|------------|--------------|------------|--------------------------|------------------|-------------------------
+| lifted-topology-geometry | Versioned  | HEREtile     | 10         | application/x-protobuf   | uncompressed     | RIB 2 Topology Geometry
+| state                    | Versioned  | Generic      | N.A.       | application/octet-stream | uncompressed     | -
+
+Alternatively, you can use the OLP CLI to create a catalog and the corresponding layers.
+In the commands that follow replace the variable placeholders with the following values:
+- `$CATALOG_ID` is your output catalog's ID.
+- `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
+- `$HRN_PARTITION` is the OLP environment you are in. Specify `here` unless you are
+using the OLP China environment, in which case specify `here-cn`.
+- `$GROUP_ID` is the credentials group ID your HERE user belongs to.
+- `$REALM` The ID of your organization, also called a realm. Consult your Platform
+invitation letter to learn your organization ID.
+
+* First, create an output catalog and grant the correct permission to your group:
+
+```bash
+olp catalog create $CATALOG_ID $CATALOG_ID --summary "Geometry lifter example catalog" \
+            --description "Geometry lifter example catalog"
+olp catalog permission grant $CATALOG_HRN --group $GROUP_ID --read --write --manage
+```
+
+* Next, add layers to the catalog you have just created:
+
+```bash
+olp catalog layer add $CATALOG_HRN lifted-topology-geometry lifted-topology-geometry --versioned --summary "lifted topology-geometry" \
+            --description "lifted topology-geometry" --partitioning heretile:10 --content-type application/x-protobuf \
+            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.schema.rib:topology-geometry_v2:2.12.1
+olp catalog layer add $CATALOG_HRN state state --versioned --summary "state" --description "state" \
+            --partitioning Generic --content-type application/octet-stream
+```
+
+For more details on how to create a catalog and its layers refer to the
+[Data User Guide](https://developer.here.com/olp/documentation/data-user-guide/content/index.html), particularly
+[Create a Catalog](https://developer.here.com/olp/documentation/data-user-guide/content/portal/catalog-creating.html) and
+[Create a Layer](https://developer.here.com/olp/documentation/data-user-guide/content/portal/layer-creating.html).
+
+### Set up Local Data Access
+
+To run the compiler locally, you also need to create an app key, download the properties file for
+that app key to your computer, and grant your app access to your catalog. Please refer to
+[Open Location Platform CLI](https://developer.here.com/olp/documentation/open-location-platform-cli/user_guide/index.html) and
+[Data User Guide](https://developer.here.com/olp/documentation/data-user-guide/index.html) for instructions.
+
+For details on how you can obtain the necessary credentials, see
+[Get Credentials](https://developer.here.com/olp/documentation/access-control/user-guide/content/topics/get-credentials.html).
+
+## Configure the Compiler
+
+From the SDK examples directory, open the `data-processing/scala/geometry-lifter` project in your
+Integrated Development Environment (IDE).
+
+The `compiler/config/here/pipeline-config.conf` (for the HERE OLP environment) and
+`compiler/config/here-china/pipeline-config.conf` (for the HERE OLP China environment) files contain
+the permanent configuration of the data sources for the compiler.
+
+Pick the file that corresponds to your OLP environment. For example, the pipeline configuration for
+the HERE OLP environment looks like:
+
+```javascript
+pipeline.config {
+  output-catalog {hrn = "YOUR_OUTPUT_CATALOG_HRN"}
+  input-catalogs {
+    rib {hrn = "hrn:here:data::olp-here:rib-2"}
+  }
+}
+```
+Replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your lifted geometry catalog.
+To find the HRN, in the [OLP Portal](https://platform.here.com/) or the [OLP China
+Portal](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
+left corner of page.
+
+The `config/here/pipeline-job.conf` and `config/here-china/pipeline-job.conf` files
+contain the compiler's run configuration.
+
+In this file, modify `version = 1` to reflect the version of the HERE Map Content catalog you want
+to process.  To find the version of the HERE Map Content catalog, in the [OLP
+Portal](https://platform.here.com/) or the [OLP China Portal](https://platform.hereolp.cn/),
+navigate to the HERE Map Content catalog; the current version number is displayed in the upper left
+corner of page.
+
+The remainder of the configuration is specified in the `application.conf` found in the
+`src/main/resources` directory of the compiler project. But you do not have to modify it unless
+you want to change the behavior of the compiler.
+
+## Build the Compiler
+
+To build the compiler, run `mvn install` in the `geometry-lifter` directory.
+
+## Run the Compiler Locally
+
+To run the compiler locally, you will need to run the entry point to the compiler:
+
+- `com.here.platform.data.processing.example.scala.geometry.lifter.Main`
+
+As _arguments_ you must provide the `--master` _parameter_ with the address of the Spark server
+master to connect to, and any configuration parameters you want to override. Alternatively, you
+can add those parameters to the `application.conf` file.
+
+Additionally, you also need to specify the `-Dpipeline-config.file` and `-Dpipeline-job.file` _parameters_
+to specify the location of a configuration file that contains the catalogs as well as job-specific versions
+of the catalogs, to read and write to.
+
+For local runs, a bounding box filter is provided in the
+`config/here/local-application.conf` and `config/here-china/local-application.conf` to
+limit the number of partitions to be processed. This speeds up the compilation process. In this
+example, we use a bounding box around the city of Berlin and Beijing for the HERE OLP and HERE OLP
+China environments respectively. You can edit the bounding box coordinates to compile a different
+partition of HERE Map Content. Make sure you update the layer coverage to reflect the different
+geographical region. In order to use this configuration file, you need to use the `-Dconfig.file`
+parameter.
+
+### Run the Compiler from the Command Line
+
+Combine all of this together and run the following command line in the `geometry-lifter`
+directory to run the Geometry Lifter Compiler.
+
+For the HERE OLP environment:
+
+```bash
+mvn exec:java \
+-Dexec.mainClass=com.here.platform.data.processing.example.scala.geometry.lifter.Main \
+-Dpipeline-config.file=./config/here/pipeline-config.conf \
+-Dpipeline-job.file=./config/here/pipeline-job.conf \
+-Dconfig.file=./config/here/local-application.conf \
+-Dexec.args="--master local[*]"
+```
+
+For the HERE OLP China environment:
+
+```bash
+mvn exec:java \
+-Dexec.mainClass=com.here.platform.data.processing.example.scala.geometry.lifter.Main \
+-Dpipeline-config.file=./config/here-china/pipeline-config.conf \
+-Dpipeline-job.file=./config/here-china/pipeline-job.conf \
+-Dconfig.file=./config/here-china/local-application.conf \
+-Dexec.args="--master local[*]"
+```
+
+## Run this Compiler as an Open Location Platform Pipeline
+
+### Generate a Fat JAR file:
+
+Run the `mvn -Pplatform package` command in the `geometry-lifter`
+directory to generate a fat JAR file.
+
+```bash
+mvn -Pplatform package
+```
+
+### Deploy The Compiler to a Pipeline:
+
+Once the previous command is finished, your JAR is then available at the `target` directory, and you
+can upload it using the [HERE OLP Pipelines UI](https://platform.here.com/pipelines) (the
+[HERE OLP China Pipelines UI](https://platform.hereolp.cn/pipelines) in China)
+or the [Open Location Platform CLI](https://developer.here.com/olp/documentation/open-location-platform-cli).
+
+You can use the OLP CLI to create pipeline components and activate it, with the following commands:
+* Create pipeline components:
+
+```bash
+olp pipeline create $COMPONENT_NAME_Pipeline $GROUP_ID
+olp pipeline template create $COMPONENT_NAME_Template batch-2.1.0 $PATH_TO_JAR \
+                com.here.platform.data.processing.example.scala.geometry.lifter.Main $GROUP_ID \
+                --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib
+olp pipeline version create $COMPONENT_NAME_version $PIPELINE_ID $PIPELINE_TEMPLATE_ID \
+                "$PATH_TO_CONFIG_FOLDER/pipeline-config.conf"
+```
+
+* Activate the pipeline version:
+
+```bash
+olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job.conf"
+```
+
+You don't have to specify the input catalog's version, unless you want
+to. The latest version will be automatically used.
+
+## Verify the Output
+
+In the [OLP Portal](https://platform.here.com/) / [OLP China Portal](https://platform.hereolp.cn/)
+select the _Data_ tab and find your catalog.
+- Open `lifted-topology-geometry` layer and select the _Inspect_ tab.
+- On the map, navigate to the location of your bounding box and set the zoom to level 10.
+- Finally, select any highlighted partition to view the results displayed on the map.
+
+The results should be visible on the map.

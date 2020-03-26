@@ -1,0 +1,1 @@
+Place your GeoJSON renderers in this folder.

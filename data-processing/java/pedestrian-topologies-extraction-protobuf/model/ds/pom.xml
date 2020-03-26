@@ -1,0 +1,116 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.here.platform.schema.data.processing.example.java.pedestrian.protobuf</groupId>
+    <artifactId>model_v2</artifactId>
+    <version>0.0.489</version>
+  </parent>
+
+  <artifactId>model_v2_ds</artifactId>
+  <packaging>jar</packaging>
+
+  <name>DataStore Protobundle</name>
+  <description>Protocol buffers schema definitions, descriptor file, and proto manifest.</description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>model_v2_proto</artifactId>
+      <version>${project.version}</version>
+      <type>zip</type>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- unpack schema files packaged by the _proto module -->
+      <plugin>
+        <groupId>com.here.platform.schema.maven_plugins</groupId>
+        <artifactId>proto-unpack-plugin</artifactId>
+        <version>${here.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <outputDirectory>${project.build.directory}/proto</outputDirectory>
+        </configuration>
+      </plugin>
+
+      <!-- build the layer manifest file -->
+      <plugin>
+        <groupId>com.here.platform.schema.maven_plugins</groupId>
+        <artifactId>layer-manifest-plugin</artifactId>
+        <version>${here.plugin.version}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>write-manifest</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- Message class used to de/serialize data held in a platform layer.
+               NOTE: If you change the value here, you must change the corresponding message in your protocol buffers definitions. -->
+          <mainMessage>com.here.platform.schema.data.processing.example.java.pedestrian.protobuf.model.v2.Geometry</mainMessage>
+          <inputDir>${project.build.directory}/proto</inputDir>
+          <writeManifest>true</writeManifest>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.here.platform.schema.maven_plugins</groupId>
+        <artifactId>proto-validate-plugin</artifactId>
+        <version>${here.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>validate</id>
+            <phase>package</phase>
+            <goals>
+              <goal>validate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <packageConsistency>true</packageConsistency>
+          <ignorePackages>
+            <ignorePackage>google.protobuf</ignorePackage>
+          </ignorePackages>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+
+          <!-- the assembled ZIP is this module's main artifact, so omit the classifier -->
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>src/assembly/proto.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

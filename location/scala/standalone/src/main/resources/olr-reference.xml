@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<olr:OpenLRLocationReference xmlns:olr="http://www.tisa.org/TPEG/OLR_0_1">
+    <olr:version>1.0</olr:version>
+    <olr:locationReference>
+        <olr:optionPointAlongLineLocationReference>
+            <olr:pointAlongLine>
+                <olr:first>
+                    <olr:coordinate>
+                        <olr:longitude>629570</olr:longitude>
+                        <olr:latitude>2445282</olr:latitude>
+                    </olr:coordinate>
+                    <olr:lineProperties>
+                        <olr:frc olr:table="olr001_FunctionalRoadClass" olr:code="5"/>
+                        <olr:fow olr:table="olr002_FormOfWay" olr:code="3"/>
+                        <olr:bearing>
+                            <olr:value>39</olr:value>
+                        </olr:bearing>
+                    </olr:lineProperties>
+                    <olr:pathProperties>
+                        <olr:lfrcnp olr:table="olr001_FunctionalRoadClass" olr:code="5"/>
+                        <olr:dnp>
+                            <olr:value>118</olr:value>
+                        </olr:dnp>
+                        <olr:againstDrivingDirection>false</olr:againstDrivingDirection>
+                    </olr:pathProperties>
+                </olr:first>
+                <olr:last>
+                    <olr:coordinate>
+                        <olr:longitude>160</olr:longitude>
+                        <olr:latitude>41</olr:latitude>
+                    </olr:coordinate>
+                    <olr:lineProperties>
+                        <olr:frc olr:table="olr001_FunctionalRoadClass" olr:code="5"/>
+                        <olr:fow olr:table="olr002_FormOfWay" olr:code="3"/>
+                        <olr:bearing>
+                            <olr:value>179</olr:value>
+                        </olr:bearing>
+                    </olr:lineProperties>
+                </olr:last>
+                <olr:sideOfRoad olr:table="olr004_SideOfRoad" olr:code="1"/>
+                <olr:orientation olr:table="olr003_Orientation" olr:code="2"/>
+            </olr:pointAlongLine>
+        </olr:optionPointAlongLineLocationReference>
+    </olr:locationReference>
+</olr:OpenLRLocationReference>

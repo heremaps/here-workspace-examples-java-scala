@@ -1,0 +1,1 @@
+Files and folders added to this resources folder are packaged in the project artifact.
