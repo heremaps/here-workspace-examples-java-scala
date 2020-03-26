@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.here.platform</groupId>
+    <artifactId>sdk-batch-bom</artifactId>
+    <version>2.13.12</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>com.here.platform.example.location</groupId>
+  <artifactId>scala-spark-infer-stop-signs-from-sensors_2.11</artifactId>
+  <version>0.0.489</version>
+  <packaging>jar</packaging>
+
+  <name>Location Library Examples - Scala - Spark - Infer Stop Signs From Sensors</name>
+
+  <organization>
+    <name>HERE Europe B.V.</name>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <properties>
+    <exec.classpathScope>compile</exec.classpathScope>
+    <exec.cleanupDaemonThreads>false</exec.cleanupDaemonThreads>
+    <exec.mainClass>com.here.platform.example.location.scala.spark.InferStopSignsFromSensorsExample</exec.mainClass>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <!-- HERE dependencies -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>utils_${scala.compat.version}</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.here.hrn</groupId>
+      <artifactId>hrn_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.data.client</groupId>
+      <artifactId>client-core_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.data.client</groupId>
+      <artifactId>data-client_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.data.client</groupId>
+      <artifactId>data-engine_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.data.client</groupId>
+      <artifactId>spark-support_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.location</groupId>
+      <artifactId>location-core_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.location</groupId>
+      <artifactId>location-data-loader-core_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.location</groupId>
+      <artifactId>location-data-loader-spark_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.location</groupId>
+      <artifactId>location-inmemory_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.location</groupId>
+      <artifactId>location-integration-here-commons_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.location</groupId>
+      <artifactId>location-integration-optimized-map_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.location</groupId>
+      <artifactId>location-spark_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.pipeline</groupId>
+      <artifactId>pipeline-interface_${scala.compat.version}</artifactId>
+    </dependency>
+    <!-- other dependencies -->
+    <dependency>
+      <groupId>au.id.jazzy</groupId>
+      <artifactId>play-geojson_${scala.compat.version}</artifactId>
+      <version>1.6.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-actor_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.typesafe.play</groupId>
+      <artifactId>play-json_${scala.compat.version}</artifactId>
+      <version>2.7.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-sql_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-reflect</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>bintray-jroper-maven</id>
+      <url>https://dl.bintray.com/jroper/maven</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>4.1.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

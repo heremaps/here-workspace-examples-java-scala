@@ -1,0 +1,49 @@
+{
+  "id": "{output_catalog_id}",
+  "name": "Data Validation Library Quick Start Example Assessment Result",
+  "summary": "Output catalog for the Assessment component of the Data Validation Library Quick Start Example",
+  "description": "This is the output catalog of the Assessment component of the Data Validation Library Quick Start Example. It only has a single partition, ASSESSMENT. Therefore we do not configure coverage here.\n\nThe example Assessment component takes as inputs a metrics catalog and the original candidate catalog which was the input to the Testing component. It counts the number of tiles with CRITICAL errors and computes the percentage against the total number of tiles in the candidate catalog. If the error percentage is above a configured threshold, in this case 10%, the assessment result is FAIL.\n\nWe output assessment results to a separate catalog than the testing and metrics results, to demonstrate a pattern whereby multiple consumers could share the same metrics results catalog and then apply their own assessment criteria to it. For example, Routing might have different error thresholds than Rendering.",
+  "tags": ["VALIDATION", "ASSESSMENT RESULT"],
+  "layers": [
+    {
+      "contentType": "application/x-protobuf",
+      "id": "assessment",
+      "name": "assessment",
+      "summary": "Result from the Assessment component of the Data Validation Library Quick Start Example",
+      "description": "Result from the Assessment component of the Data Validation Library Quick Start Example. It has a single partition, ASSESSMENT, with the final PASS/FAIL result along with additional context such as the configured error threshold.\n\nThe example Assessment component takes as inputs a metrics catalog and the original candidate catalog which was the input to the Testing component. It counts the number of tiles with CRITICAL errors and computes the percentage against the total number of tiles in the candidate catalog. If the error percentage is above a configured threshold, in this case 10%, the assessment result is FAIL.",
+      "layerType": "versioned",
+      "partitioning": {
+        "scheme": "generic"
+      },
+      "schema": {
+        "hrn": "hrn:here:schema::olp-here:com.here.platform.schema.data.validation.example.quickstart:assessment_v1:1.0.5"
+      },
+      "tags": ["VALIDATION", "ASSESSMENT RESULT"],
+      "volume": {
+        "properties": {
+          "maxMemoryPolicy": "failOnWrite",
+          "packageType": "small"
+        },
+        "volumeType": "durable"
+      }
+    },
+    {
+      "contentType": "application/octet-stream",
+      "id": "state",
+      "name": "state",
+      "summary": "Internal layer used by the pipeline that creates and regularly updates this catalog. Not intended for use by the consumers of this catalog.",
+      "description": "Internal layer used by the pipeline that creates and regularly updates this catalog. Not intended for use by the consumers of this catalog.",
+      "layerType": "versioned",
+      "partitioning": {
+        "scheme": "generic"
+      },
+      "volume": {
+        "properties": {
+          "maxMemoryPolicy": "failOnWrite",
+          "packageType": "small"
+        },
+        "volumeType": "durable"
+      }
+    }
+  ]
+}

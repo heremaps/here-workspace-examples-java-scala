@@ -1,0 +1,197 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.here.platform.examples</groupId>
+    <artifactId>data-archive-sensoris-protobuf-example</artifactId>
+    <version>0.0.489</version>
+    <packaging>jar</packaging>
+
+    <!-- Meta information section -->
+    <url>https://here.com</url>
+    <inceptionYear>2019</inceptionYear>
+
+    <organization>
+        <name>HERE Europe B.V.</name>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <artifact.wagon.version>1.6.0</artifact.wagon.version>
+
+        <sdk-bom.version>2.13.12</sdk-bom.version>
+        <scala.compat.version>2.11</scala.compat.version>
+
+        <parquet-protobuf.version>1.10.1</parquet-protobuf.version>
+        <commons-logging.version>1.2</commons-logging.version>
+
+        <sensoris-specification_v1_0_0_java.version>1.0.0</sensoris-specification_v1_0_0_java.version>
+
+        <junit.version>4.12</junit.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>HERE_PLATFORM_ARTIFACT</id>
+            <layout>here</layout>
+            <!-- The 'here+' prefix serves to invoke the HERE wagon extention that handles OAUTH
+                 and re-writes Maven URIs for the HERE secure repository.-->
+            <url>here+artifact-service://artifact-service</url>
+        </repository>
+    </repositories>
+    <dependencyManagement>
+        <dependencies>
+            <!-- SDK Stream BOM -->
+            <dependency>
+                <groupId>com.here.platform</groupId>
+                <artifactId>sdk-stream-bom</artifactId>
+                <version>${sdk-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- External Dependencies-->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging.version}</version>
+        </dependency>
+
+        <!-- Here Dependencies from sdk-stream-bom pom -->
+        <dependency>
+            <groupId>com.here.platform.data.archive</groupId>
+            <artifactId>data-archive</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.here.platform.location</groupId>
+            <artifactId>location-integration-here-commons_${scala.compat.version}</artifactId>
+        </dependency>
+
+        <!-- Here Dependencies -->
+        <dependency>
+            <groupId>org.sensoris</groupId>
+            <artifactId>sensoris-specification_v1_0_0_java</artifactId>
+            <version>${sensoris-specification_v1_0_0_java.version}</version>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Java Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- We use the maven-shade plugin to create a fat jar that contains all necessary dependencies. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <!-- Run shade goal on package phase -->
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>platform</shadedClassifierName>
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.apache.flink:force-shading</exclude>
+                                    <exclude>com.google.code.findbugs:jsr305</exclude>
+                                    <exclude>org.slf4j:*</exclude>
+                                    <exclude>log4j:*</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>com.google.protobuf</pattern>
+                                    <shadedPattern>com.shaded.google.protobuf</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <filters>
+                                <filter>
+                                    <!-- Do not copy the signatures in the META-INF folder.
+                                    Otherwise, this might cause SecurityExceptions when using the JAR. -->
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.here.platform.dal.DALMain</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+        <extensions>
+            <extension>
+                <groupId>com.here.platform.artifact</groupId>
+                <artifactId>artifact-wagon</artifactId>
+                <version>${artifact.wagon.version}</version>
+            </extension>
+        </extensions>
+    </build>
+
+    <!-- This profile helps to make things run out of the box in IntelliJ -->
+    <!-- Its adds Flink's core classes to the runtime class path. -->
+    <!-- Otherwise they are missing in IntelliJ, because the dependency is 'provided' -->
+    <profiles>
+        <profile>
+            <id>add-dependencies-for-IDEA</id>
+            <activation>
+                <property>
+                    <name>idea.version</name>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.flink</groupId>
+                    <artifactId>flink-java</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.flink</groupId>
+                    <artifactId>flink-streaming-java_${scala.compat.version}</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
+</project>

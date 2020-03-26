@@ -1,0 +1,49 @@
+{
+  "id": "{output_catalog_id}",
+  "name": "Data Validation Library Quick Start Example Metrics Results",
+  "summary": "Output catalog of the Metrics component of the Data Validation Library Quick Start Example",
+  "description": "This is the output catalog of the Metrics component of the Data Validation Library Quick Start Example. Its partitions are not spatial, but rather test statuses (in this case, PASS and FAIL). Therefore we do not configure coverage here.\n\nWe output metrics results to a separate catalog than the testing results, to demonstrate a pattern whereby multiple consumers could share the same test results catalog and then apply their own metrics calculations to it. For example, Routing could consider certain test failures as more severe than Rendering, or vice versa.",
+  "tags": ["VALIDATION", "METRICS RESULTS"],
+  "layers": [
+    {
+      "contentType": "application/x-protobuf",
+      "id": "metrics-result",
+      "name": "metrics-result",
+      "summary": "Results from the Metrics component of the Data Validation Library Quick Start Example",
+      "description": "Results from the Metrics component of the Data Validation Library Quick Start Example. Its partitions are the test statuses assigned by the Testing component, in this case, PASS and FAIL.\n\nEach partition contains one or more error severities along with the the corresponding tile IDs from the candidate catalog that was the input to the Testing component. In this case, the Metrics component considered all PASS results as severity NONE, and all FAIL results as severity CRITICAL.",
+      "layerType": "versioned",
+      "partitioning": {
+        "scheme": "generic"
+      },
+      "schema": {
+        "hrn": "hrn:here-cn:schema::olp-cn-here:com.here.platform.schema.data.validation.example.quickstart:metrics_v1:1.0.5"
+      },
+      "tags": ["VALIDATION", "METRICS RESULTS"],
+      "volume": {
+        "properties": {
+          "maxMemoryPolicy": "failOnWrite",
+          "packageType": "small"
+        },
+        "volumeType": "durable"
+      }
+    },
+    {
+      "contentType": "application/octet-stream",
+      "id": "state",
+      "name": "state",
+      "summary": "Internal layer used by the pipeline that creates and regularly updates this catalog. Not intended for use by the consumers of this catalog.",
+      "description": "Internal layer used by the pipeline that creates and regularly updates this catalog. Not intended for use by the consumers of this catalog.",
+      "layerType": "versioned",
+      "partitioning": {
+        "scheme": "generic"
+      },
+      "volume": {
+        "properties": {
+          "maxMemoryPolicy": "failOnWrite",
+          "packageType": "small"
+        },
+        "volumeType": "durable"
+      }
+    }
+  ]
+}

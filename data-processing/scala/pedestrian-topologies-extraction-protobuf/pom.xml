@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.here.platform.data.processing.example.scala</groupId>
+  <artifactId>pedestrian-topologies-extraction-protobuf</artifactId>
+  <version>0.0.489</version>
+  <packaging>pom</packaging>
+
+  <name>Pedestrian topologies extraction compiler example to ProtoBuf in Scala</name>
+  <inceptionYear>2019</inceptionYear>
+
+  <organization>
+    <name>HERE Europe B.V.</name>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <modules>
+    <module>compiler</module>
+    <module>model</module>
+  </modules>
+
+  <properties>
+    <sdk-bom.version>2.13.12</sdk-bom.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.here.platform</groupId>
+        <artifactId>sdk-batch-bom</artifactId>
+        <version>${sdk-bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

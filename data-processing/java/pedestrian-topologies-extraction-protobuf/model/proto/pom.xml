@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.here.platform.schema.data.processing.example.java.pedestrian.protobuf</groupId>
+    <artifactId>model_v2</artifactId>
+    <version>0.0.489</version>
+  </parent>
+
+  <artifactId>model_v2_proto</artifactId>
+  <packaging>pom</packaging>
+
+  <name>Protobundle</name>
+  <description>Protocol buffers schema definitions.</description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+    </dependency>
+
+    <!-- Add your proto dependencies here. -->
+    <dependency>
+      <groupId>com.here.schema.rib</groupId>
+      <artifactId>common_v2_proto</artifactId>
+      <version>2.2.0</version>
+      <type>zip</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.here.schema</groupId>
+      <artifactId>geometry_v2_proto</artifactId>
+      <version>2.2.0</version>
+      <type>zip</type>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>com.here.platform.schema.maven_plugins</groupId>
+        <artifactId>proto-unpack-plugin</artifactId>
+        <version>${here.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <outputDirectory>${project.build.directory}/proto</outputDirectory>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.here.platform.schema.maven_plugins</groupId>
+        <artifactId>layer-manifest-plugin</artifactId>
+        <version>${here.plugin.version}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>write-manifest</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <inputDir>${basedir}/src/main/proto</inputDir>
+          <writeFileDescriptorSet>true</writeFileDescriptorSet>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.here.platform.schema.maven_plugins</groupId>
+        <artifactId>proto-validate-plugin</artifactId>
+        <version>${here.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>validate</id>
+            <phase>package</phase>
+            <goals>
+              <goal>validate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <googleStyle>true</googleStyle>
+          <fileExtension>true</fileExtension>
+          <backwardsCompatibility>true</backwardsCompatibility>
+          <majorVersionInPackage>true</majorVersionInPackage>
+          <ignorePackages>
+            <ignorePackage>google.protobuf</ignorePackage>
+          </ignorePackages>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+
+          <!-- the assembled ZIP is this module's main artifact, so omit the classifier  -->
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>src/assembly/proto.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
