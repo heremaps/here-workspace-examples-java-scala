@@ -4,13 +4,13 @@
   <parent>
     <groupId>com.here.platform</groupId>
     <artifactId>sdk-standalone-bom</artifactId>
-    <version>2.13.12</version>
+    <version>2.14.12</version>
     <relativePath/>
   </parent>
 
   <groupId>com.here.platform.example.location</groupId>
   <artifactId>scala-standalone_2.11</artifactId>
-  <version>0.0.489</version>
+  <version>0.0.499</version>
   <packaging>jar</packaging>
 
   <name>Location Library Examples - Scala - Standalone</name>

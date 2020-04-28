@@ -20,7 +20,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.GraphExample
 ```
@@ -38,7 +38,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.HereMapContentToOptimizedMapTranslationExample
 ```
@@ -63,7 +63,7 @@ To run the example, you need access to the following catalogs.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.MostProbablePathExample
 ```
@@ -86,7 +86,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.PathMatcherExample
 ```
@@ -109,7 +109,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.PointMatcherExample
 ```
@@ -125,7 +125,7 @@ associated with those vertices.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.FunctionalClassExample
 ```
@@ -147,7 +147,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.TurnRestrictionsExample
 ```
@@ -165,7 +165,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.OnTheFlyCompiledPropertyMapExample
 ```
@@ -184,7 +184,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.SparsePathMatcherExample
 ```
@@ -200,7 +200,7 @@ The example does not depend on map data.
 
 To run the example locally, use the following command:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.ConvertTpeg2ContainerExample
 ```
@@ -217,7 +217,7 @@ The example does not depend on map data.
 
 To run the example locally, use the following command:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.ExtractSpecificTpeg2MessagesExample
 ```
@@ -238,7 +238,7 @@ To run the example, you need access to the following catalog:
 
 To run the example locally, use the following command:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.TmcCreateAndResolveExample
 ```
@@ -262,7 +262,7 @@ To run the example, you need access to the following catalog:
 
 To run the example locally, use the following command:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.TmcResolveReferencesInRttiMessageExample
 ```
@@ -280,7 +280,7 @@ To run the example, you need access to the following catalog:
 
 To run the example locally, use the following command:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.OlrCreateReferenceFromHmcSegmentsExample
 ```
@@ -298,7 +298,7 @@ To run the example, you need access to the following catalog:
 
 To run the example locally, use the following command:
 
-```sh
+```bash
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.OlrResolveReferenceToHmcSegmentsExample
 ```

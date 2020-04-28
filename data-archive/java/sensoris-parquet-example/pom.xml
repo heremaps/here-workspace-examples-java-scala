@@ -3,7 +3,7 @@
 
     <groupId>com.here.platform.examples</groupId>
     <artifactId>data-archive-sensoris-parquet-example</artifactId>
-    <version>0.0.489</version>
+    <version>0.0.499</version>
     <packaging>jar</packaging>
 
     <!-- Meta information section -->
@@ -24,7 +24,7 @@
         <java.version>1.8</java.version>
         <artifact.wagon.version>1.6.0</artifact.wagon.version>
 
-        <sdk-bom.version>2.13.12</sdk-bom.version>
+        <sdk-bom.version>2.14.12</sdk-bom.version>
         <scala.compat.version>2.11</scala.compat.version>
         <hadoop-client.version>2.7.3</hadoop-client.version>
         <parquet-protobuf.version>1.11.0</parquet-protobuf.version>

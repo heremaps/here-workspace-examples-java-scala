@@ -21,7 +21,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -41,7 +41,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -70,7 +70,7 @@ To run the example, you need access to the following catalogs.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -97,7 +97,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -125,7 +125,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -152,7 +152,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -170,7 +170,7 @@ containing all these vertices colored by functional class.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -197,7 +197,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -217,7 +217,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -241,7 +241,7 @@ To run the example, you need access to the following catalog.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -259,7 +259,7 @@ The example does not depend on map data.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -278,7 +278,7 @@ The example does not depend on map data.
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -301,7 +301,7 @@ To run the example, you need access to the following catalog:
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -327,7 +327,7 @@ To run the example, you need access to the following catalog:
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -346,7 +346,7 @@ To run the example, you need access to the following catalog:
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \
@@ -365,7 +365,7 @@ To run the example, you need access to the following catalog:
 
 To run the example locally, use the following commands:
 
-```sh
+```bash
 mvn --also-make --file=../.. --projects=:utils_2.11 install
 
 mvn --projects=:scala-standalone_2.11 compile exec:java \

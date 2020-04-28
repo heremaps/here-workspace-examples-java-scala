@@ -4,12 +4,12 @@
   <parent>
     <groupId>com.here.platform.data.processing.example.scala</groupId>
     <artifactId>pedestrian-topologies-extraction-protobuf</artifactId>
-    <version>0.0.489</version>
+    <version>0.0.499</version>
   </parent>
 
   <groupId>com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf</groupId>
   <artifactId>model_v2</artifactId>
-  <version>0.0.489</version>
+  <version>0.0.499</version>
   <packaging>pom</packaging>
 
   <name>Pedestrian Topologies Extraction Example Scala</name>
