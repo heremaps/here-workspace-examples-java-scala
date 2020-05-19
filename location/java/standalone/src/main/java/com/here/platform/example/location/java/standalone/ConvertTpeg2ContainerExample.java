@@ -27,9 +27,9 @@ import com.here.platform.location.tpeg2.olr.OpenLRLocationReference;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
-public class ConvertTpeg2ContainerExample {
+public final class ConvertTpeg2ContainerExample {
 
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     // Get an XML (un)marshaller for the `OpenLRLocationReference`.
     // The `XmlMarshallers` class contains factory methods for those
     // TPEG2 types that can be used as top-level elements in an XML document.
@@ -37,12 +37,12 @@ public class ConvertTpeg2ContainerExample {
     final XmlMarshaller<OpenLRLocationReference> xmlMarshaller =
         XmlMarshallers.openLRLocationReference();
 
-    OpenLRLocationReference ref = xmlMarshaller.unmarshall(getResource("/olr-reference.xml"));
+    final OpenLRLocationReference ref = xmlMarshaller.unmarshall(getResource("/olr-reference.xml"));
 
     // There is a reasonable `toString()` implementation.
     System.out.println(ref);
 
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
     // Get a binary marshaller for `OpenLRLocationReference`.
     // The `BinaryMarshallers` class contains factory methods for those
@@ -53,7 +53,7 @@ public class ConvertTpeg2ContainerExample {
     binaryMarshaller.marshall(ref, outputStream);
   }
 
-  private static InputStream getResource(String name) {
+  private static InputStream getResource(final String name) {
     return ConvertTpeg2ContainerExample.class.getResourceAsStream(name);
   }
 }

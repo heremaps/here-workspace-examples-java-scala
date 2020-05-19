@@ -21,7 +21,6 @@ package com.here.platform.example.location.java.standalone;
 
 import static java.util.stream.StreamSupport.stream;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.core.geospatial.ElementProjection;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.core.geospatial.javadsl.ProximitySearch;
@@ -31,6 +30,7 @@ import com.here.platform.location.dataloader.core.Catalog;
 import com.here.platform.location.dataloader.core.caching.CacheManager;
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
+import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.PropertyMaps;
 import com.here.platform.location.integration.optimizedmap.roadattributes.FunctionalClass;
@@ -38,16 +38,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-public class FunctionalClassExample {
+public final class FunctionalClassExample {
   public static void main(final String[] args) {
     final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
     final CacheManager cacheManager = CacheManager.withLruCache();
 
     try {
-      final Catalog optimizedMap =
-          catalogFactory.create(
-              HRN.fromString("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-              705L);
+      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 705L);
 
       final PropertyMaps.RoadAttributes roadAttributes =
           new PropertyMaps.RoadAttributes(optimizedMap, cacheManager);
@@ -74,7 +71,7 @@ public class FunctionalClassExample {
   }
 
   private static void printFunctionalClassRanges(
-      Vertex vertex, Iterable<RangeBasedProperty<FunctionalClass>> ranges) {
+      final Vertex vertex, final Iterable<RangeBasedProperty<FunctionalClass>> ranges) {
     System.out.println(String.format("Vertex %7d", vertex.index()));
     ranges.forEach(
         range ->

@@ -38,8 +38,8 @@ import org.apache.flink.configuration.Configuration;
 
 public class PathMatcherMapFunction extends RichMapFunction<Message, MatchedTrip> {
   private static final long serialVersionUID = -1L;
-  private HRN optimizedMapHRN;
-  private long optimizedMapCatalogVersion;
+  private final HRN optimizedMapHRN;
+  private final long optimizedMapCatalogVersion;
   private FlinkCatalogFactory catalogFactory;
   private PathMatcher<PositionEstimate, Vertex, NoTransition> pathMatcher;
 
@@ -48,7 +48,7 @@ public class PathMatcherMapFunction extends RichMapFunction<Message, MatchedTrip
     this.optimizedMapCatalogVersion = optimizedMapCatalogVersion;
   }
 
-  private GeoCoordinateAdapter<PositionEstimate> positionEstimateAdapter =
+  private final GeoCoordinateAdapter<PositionEstimate> positionEstimateAdapter =
       new PositionEstimateGeoCoordinateAdapter();
 
   @Override
@@ -69,7 +69,7 @@ public class PathMatcherMapFunction extends RichMapFunction<Message, MatchedTrip
   }
 
   @Override
-  public MatchedTrip map(final Message msg) throws Exception {
+  public MatchedTrip map(final Message msg) {
     String status;
     try {
       final List<MatchResult<Vertex>> result = matchTrip(msg);

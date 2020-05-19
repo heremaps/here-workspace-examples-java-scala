@@ -30,22 +30,22 @@ import org.slf4j.LoggerFactory;
 
 public class SdiiMessageMapFunction extends RichMapFunction<Partition, Message> {
   private static final long serialVersionUID = -1L;
-  private Logger log = LoggerFactory.getLogger(SdiiMessageMapFunction.class);
+  private final Logger log = LoggerFactory.getLogger(SdiiMessageMapFunction.class);
   private FlinkDataClient flinkDataClient;
 
-  private HRN hrn;
+  private final HRN hrn;
 
   SdiiMessageMapFunction(final HRN hrn) {
     this.hrn = hrn;
   }
 
   @Override
-  public void open(final Configuration parameters) throws Exception {
+  public void open(final Configuration parameters) {
     flinkDataClient = new FlinkDataClient();
   }
 
   @Override
-  public void close() throws Exception {
+  public void close() {
     flinkDataClient.terminate();
   }
 

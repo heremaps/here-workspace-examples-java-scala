@@ -30,7 +30,7 @@ public class RoundRobinTilePartitioner implements Partitioner<SdiiCommon.Positio
   private static final PositionEstimateGeoCoordinateAdapter adapter =
       new PositionEstimateGeoCoordinateAdapter();
 
-  private HereTileResolver resolver;
+  private final HereTileResolver resolver;
 
   RoundRobinTilePartitioner(final HereTileLevel level) {
     resolver = new HereTileResolver(level);

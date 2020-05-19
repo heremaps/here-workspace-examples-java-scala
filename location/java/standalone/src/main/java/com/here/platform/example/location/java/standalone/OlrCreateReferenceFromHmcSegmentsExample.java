@@ -21,13 +21,13 @@ package com.here.platform.example.location.java.standalone;
 
 import static java.util.Arrays.asList;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.core.graph.javadsl.PropertyMap;
 import com.here.platform.location.dataloader.core.Catalog;
 import com.here.platform.location.dataloader.core.caching.CacheManager;
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.inmemory.graph.javadsl.Direction;
+import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.PropertyMaps;
 import com.here.platform.location.referencing.LinearLocation;
@@ -45,21 +45,19 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * This example shows how to take a path given as Hmc-Segments and create an OLR reference from it.
+ * This example shows how to take a path given as Here Map Content Reference and create an OLR
+ * reference from it.
  */
-public class OlrCreateReferenceFromHmcSegmentsExample {
+public final class OlrCreateReferenceFromHmcSegmentsExample {
 
-  public static void main(String[] args) throws FileNotFoundException {
+  public static void main(final String[] args) throws FileNotFoundException {
     final StandaloneCatalogFactory factory = new StandaloneCatalogFactory();
-    final Catalog optimizedMap =
-        factory.create(
-            HRN.fromString("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-            769L);
+    final Catalog optimizedMap = factory.create(OptimizedMap.v2.HRN, 769L);
 
     final CacheManager cacheManager = CacheManager.withLruCache();
 
     try {
-      List<String> segmentStrings =
+      final List<String> segmentStrings =
           asList(
               "23618402/192867771+",
               "23618402/190690930-",
@@ -121,7 +119,10 @@ public class OlrCreateReferenceFromHmcSegmentsExample {
               "23618359/203288051-");
 
       final List<HereMapContentReference> segments =
-          segmentStrings.stream().map(s -> parseHmcRef(s)).collect(Collectors.toList());
+          segmentStrings
+              .stream()
+              .map(OlrCreateReferenceFromHmcSegmentsExample::parseHmcRef)
+              .collect(Collectors.toList());
 
       final PropertyMap<HereMapContentReference, Vertex> hmcToVertex =
           PropertyMaps.hereMapContentReferenceToVertex(optimizedMap, cacheManager);
@@ -155,7 +156,7 @@ public class OlrCreateReferenceFromHmcSegmentsExample {
     }
   }
 
-  private static HereMapContentReference parseHmcRef(String hmcRef) {
+  private static HereMapContentReference parseHmcRef(final String hmcRef) {
     final String[] components = hmcRef.substring(0, hmcRef.length() - 1).split("/");
 
     return new HereMapContentReference(

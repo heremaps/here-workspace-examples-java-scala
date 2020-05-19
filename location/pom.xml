@@ -3,7 +3,7 @@
 
   <groupId>com.here.platform.example.location</groupId>
   <artifactId>aggregator</artifactId>
-  <version>0.0.499</version>
+  <version>0.0.505</version>
   <packaging>pom</packaging>
 
   <name>Location Library Examples</name>

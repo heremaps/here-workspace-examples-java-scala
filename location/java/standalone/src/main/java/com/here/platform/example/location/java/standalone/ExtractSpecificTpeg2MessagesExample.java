@@ -29,20 +29,20 @@ import com.here.platform.location.tpeg2.tmc.TMCLocationReference;
 import java.io.InputStream;
 import java.util.List;
 
-public class ExtractSpecificTpeg2MessagesExample {
-  public static void main(String[] args) {
-    TPEGDocument document =
+public final class ExtractSpecificTpeg2MessagesExample {
+  public static void main(final String[] args) {
+    final TPEGDocument document =
         XmlMarshallers.tpegDocument().unmarshall(getResource("/tpeg-document.xml"));
 
     System.out.println("TEC Messages:");
-    List<TECMessage> tecMessages =
+    final List<TECMessage> tecMessages =
         Tpeg2Messages.create(document).filterTecMessages().getApplicationMessages();
 
     tecMessages.forEach(tecMessage -> System.out.println("  - " + tecMessage));
 
     System.out.println("TFP messages with TMC references:");
 
-    List<Tpeg2MessageView<TFPMessage, TMCLocationReference>> tfpMessagesWithTmcReferences =
+    final List<Tpeg2MessageView<TFPMessage, TMCLocationReference>> tfpMessagesWithTmcReferences =
         Tpeg2Messages.create(document).filterTfpMessages().filterHavingTmcReferences().asList();
 
     tfpMessagesWithTmcReferences.forEach(
@@ -52,7 +52,7 @@ public class ExtractSpecificTpeg2MessagesExample {
         });
   }
 
-  private static InputStream getResource(String name) {
+  private static InputStream getResource(final String name) {
     return ExtractSpecificTpeg2MessagesExample.class.getResourceAsStream(name);
   }
 }

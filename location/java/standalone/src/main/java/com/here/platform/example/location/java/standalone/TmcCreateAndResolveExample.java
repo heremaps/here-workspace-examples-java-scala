@@ -21,12 +21,12 @@ package com.here.platform.example.location.java.standalone;
 
 import static java.util.Collections.singletonList;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.dataloader.core.Catalog;
 import com.here.platform.location.dataloader.core.caching.CacheManager;
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
+import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.referencing.BidirectionalLinearLocation;
 import com.here.platform.location.referencing.LinearLocation;
@@ -44,41 +44,38 @@ import com.here.platform.location.tpeg2.tmc.TMCLocationReference;
  * <p>The example searches for a well-known vertex that is covered by TMC, and uses that to create a
  * TMC reference. The reference is later resolved and outputted for comparison.
  */
-public class TmcCreateAndResolveExample {
+public final class TmcCreateAndResolveExample {
   private static final GeoCoordinate coordinateInFriedenstrasse =
       new GeoCoordinate(52.527111, 13.427079);
 
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     final CacheManager cacheManager = CacheManager.withLruCache();
     final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
     try {
-      final Catalog optimizedMap =
-          catalogFactory.create(
-              HRN.fromString("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-              705);
+      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 705);
 
       // Define a location that is covered by TMC
-      Vertex vertexInFriedenstrasse =
+      final Vertex vertexInFriedenstrasse =
           ProximitySearches.vertices(optimizedMap, cacheManager)
               .search(coordinateInFriedenstrasse, 10)
               .iterator()
               .next()
               .getElement();
 
-      LinearLocation locationInFriedenstrasse =
+      final LinearLocation locationInFriedenstrasse =
           new LinearLocation(singletonList(vertexInFriedenstrasse), 0, 1);
 
       // Create a reference for that location
-      LocationReferenceCreator<LinearLocation, TMCLocationReference> tmcRefCreator =
+      final LocationReferenceCreator<LinearLocation, TMCLocationReference> tmcRefCreator =
           LocationReferenceCreators.tmc(optimizedMap, cacheManager);
 
-      TMCLocationReference tmcRef = tmcRefCreator.create(locationInFriedenstrasse);
+      final TMCLocationReference tmcRef = tmcRefCreator.create(locationInFriedenstrasse);
 
       // Resolve the newly created reference
-      LocationReferenceResolver<TMCLocationReference, BidirectionalLinearLocation> tmcRefResolver =
-          LocationReferenceResolvers.tmc(optimizedMap, cacheManager);
+      final LocationReferenceResolver<TMCLocationReference, BidirectionalLinearLocation>
+          tmcRefResolver = LocationReferenceResolvers.tmc(optimizedMap, cacheManager);
 
-      BidirectionalLinearLocation resolvedLocation = tmcRefResolver.resolve(tmcRef);
+      final BidirectionalLinearLocation resolvedLocation = tmcRefResolver.resolve(tmcRef);
 
       // Visualize the original location, the reference created, and the resolved location
       visualizeResults(locationInFriedenstrasse, tmcRef, resolvedLocation.getLocation());
@@ -88,7 +85,9 @@ public class TmcCreateAndResolveExample {
   }
 
   private static void visualizeResults(
-      LinearLocation inputLocation, TMCLocationReference tmcRef, LinearLocation resolvedLocation) {
+      final LinearLocation inputLocation,
+      final TMCLocationReference tmcRef,
+      final LinearLocation resolvedLocation) {
     System.out.println("Input location: " + inputLocation);
     System.out.println("Resolved location: " + resolvedLocation);
     System.out.println("Location reference:");

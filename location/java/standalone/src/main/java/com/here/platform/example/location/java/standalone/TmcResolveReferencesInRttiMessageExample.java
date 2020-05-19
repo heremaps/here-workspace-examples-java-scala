@@ -21,10 +21,10 @@ package com.here.platform.example.location.java.standalone;
 
 import static com.here.traffic.realtime.v2.TmcReference.TmcDirection.*;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.dataloader.core.Catalog;
 import com.here.platform.location.dataloader.core.caching.CacheManager;
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
+import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.referencing.BidirectionalLinearLocation;
 import com.here.platform.location.referencing.LinearLocation;
 import com.here.platform.location.referencing.LocationReferenceResolver;
@@ -41,18 +41,15 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class TmcResolveReferencesInRttiMessageExample {
-  public static void main(String[] args) throws Exception {
+public final class TmcResolveReferencesInRttiMessageExample {
+  public static void main(final String[] args) throws Exception {
     final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
     final CacheManager cacheManager = CacheManager.withLruCache();
 
     try {
-      final Catalog optimizedMap =
-          catalogFactory.create(
-              HRN.fromString("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-              705L);
+      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 705L);
 
-      LocationReferenceResolver<ExtendedTMCLocationReference, BidirectionalLinearLocation>
+      final LocationReferenceResolver<ExtendedTMCLocationReference, BidirectionalLinearLocation>
           resolver = LocationReferenceResolvers.extendedTmc(optimizedMap, cacheManager);
 
       final TrafficItems rttiMessage =
@@ -61,7 +58,7 @@ public class TmcResolveReferencesInRttiMessageExample {
                   .getClassLoader()
                   .getResourceAsStream("rtti-message.bin"));
 
-      List<LinearLocation> resolvedLocations =
+      final List<LinearLocation> resolvedLocations =
           rttiMessage
               .getItemsList()
               .stream()
@@ -76,14 +73,14 @@ public class TmcResolveReferencesInRttiMessageExample {
   }
 
   private static Stream<ExtendedTMCLocationReference> convertTmcReferences(
-      Traffic.TrafficItem rttiItem) {
-    SupplementaryLocationReferenceOuterClass.SupplementaryLocationReference
+      final Traffic.TrafficItem rttiItem) {
+    final SupplementaryLocationReferenceOuterClass.SupplementaryLocationReference
         supplementaryLocationRef = rttiItem.getSupplementaryLocationRef();
     if (supplementaryLocationRef == null) {
       return Stream.empty();
     }
 
-    TmcReference.CountryTableCode supplementaryCountryCode =
+    final TmcReference.CountryTableCode supplementaryCountryCode =
         supplementaryLocationRef.getCountryTableCode();
 
     return supplementaryLocationRef
@@ -98,8 +95,8 @@ public class TmcResolveReferencesInRttiMessageExample {
                     || rttiTmc.getCountryTableCode().isInitialized())
         .map(
             rttiTmc -> {
-              TmcReference.CountryTableCode tmcCountryTable = rttiTmc.getCountryTableCode();
-              TmcReference.CountryTableCode countryTable =
+              final TmcReference.CountryTableCode tmcCountryTable = rttiTmc.getCountryTableCode();
+              final TmcReference.CountryTableCode countryTable =
                   tmcCountryTable.isInitialized() ? supplementaryCountryCode : tmcCountryTable;
 
               return convertTmcReference(countryTable, rttiTmc);
@@ -107,15 +104,17 @@ public class TmcResolveReferencesInRttiMessageExample {
   }
 
   private static ExtendedTMCLocationReference convertTmcReference(
-      TmcReference.CountryTableCode countryTable, TmcReference.Tmc tmc) {
-    TmcReference.TmcDirection roadwayDirection = tmc.getRoadwayDirection();
+      final TmcReference.CountryTableCode countryTable, final TmcReference.Tmc tmc) {
+    final TmcReference.TmcDirection roadwayDirection = tmc.getRoadwayDirection();
 
-    boolean direction = roadwayDirection == AT_NEGATIVE || roadwayDirection == APPROACHING_NEGATIVE;
-    int extent =
+    final boolean direction =
+        roadwayDirection == AT_NEGATIVE || roadwayDirection == APPROACHING_NEGATIVE;
+    final int extent =
         roadwayDirection == APPROACHING_NEGATIVE || roadwayDirection == APPROACHING_POSITIVE
             ? 1
             : 0;
-    boolean usePrimaryInternal = roadwayDirection == AT_NEGATIVE || roadwayDirection == AT_POSITIVE;
+    final boolean usePrimaryInternal =
+        roadwayDirection == AT_NEGATIVE || roadwayDirection == AT_POSITIVE;
 
     return new ExtendedTMCLocationReference(
         "1.1",
@@ -135,9 +134,9 @@ public class TmcResolveReferencesInRttiMessageExample {
         Optional.empty());
   }
 
-  private static void outputResolvedLocations(List<LinearLocation> resolvedLocations) {
+  private static void outputResolvedLocations(final List<LinearLocation> resolvedLocations) {
     System.out.println("Resolved locations:");
-    for (LinearLocation location : resolvedLocations) {
+    for (final LinearLocation location : resolvedLocations) {
       System.out.println(location);
     }
   }
