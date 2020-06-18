@@ -36,7 +36,6 @@ import com.here.platform.schema.data.validation.example.quickstart.input.v1.sche
 class FeatureLoader(retriever: Retriever)
     extends MapGroupFeatureLoader[LineSegments]
     with QuickstartTestingInputLayers {
-
   def loadFeatures(in: (InKey, InMeta))(implicit logContext: LogContext): LineSegments = {
     val segs = LineSegments.parseFrom(retriever.getPayload(in.key, in.value).content)
     segs

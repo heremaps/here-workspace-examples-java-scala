@@ -34,13 +34,11 @@ import net.ceedubs.ficus.readers.ArbitraryTypeReader._
   *
   */
 object Main extends PipelineRunner with DriverSetupWithBuilder {
-
   def applicationVersion: String = BuildInfo.version
 
   def configureCompiler(completeConfig: CompleteConfig,
                         context: DriverContext,
                         builder: DriverBuilder): builder.type = {
-
     val testingConfig = completeConfig.compilerConfig.as[TestingConfig]
     val validator = Validator(context, testingConfig)
     val task =

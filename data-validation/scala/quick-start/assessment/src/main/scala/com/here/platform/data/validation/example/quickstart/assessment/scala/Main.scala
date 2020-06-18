@@ -32,7 +32,6 @@ import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 
 // Main runner for assessing metrics output against candidate input.
 object Main extends PipelineRunner with DriverSetupWithBuilder {
-
   override def applicationVersion: String = BuildInfo.version
 
   def configureCompiler(completeConfig: CompleteConfig,

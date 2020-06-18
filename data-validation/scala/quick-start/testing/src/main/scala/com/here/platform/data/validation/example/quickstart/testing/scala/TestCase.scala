@@ -33,7 +33,6 @@ import com.here.schema.geometry.v2.geometry.LineString
   * verifies that the feature geometries are octagons (have eight elements).
   */
 class TestCase(val testingConfig: TestingConfig) extends BaseTestCase[LineSegments, Result] {
-
   val id: String = "quickstarttestcase"
 
   // The output partition is the same as the input, except that it is in the output catalog and layer.

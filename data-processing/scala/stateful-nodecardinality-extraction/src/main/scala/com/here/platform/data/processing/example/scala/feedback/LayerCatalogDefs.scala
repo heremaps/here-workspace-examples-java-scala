@@ -26,7 +26,6 @@ import com.here.platform.data.processing.driver.Default
   * Input and output layers configuration for the stateful compiler
   */
 trait LayerCatalogDefs {
-
   def inLayers: Map[Catalog.Id, Set[Layer.Id]] = Map(
     CatalogDefs.InputCatalog -> Set(LayersDefs.topologyGeometry),
     // return current base version of the output catalog(output produced from the previous run)
@@ -48,7 +47,6 @@ object CatalogDefs {
   * Input and output layer definitions
   */
 object LayersDefs {
-
   val topologyGeometry = Layer.Id("topology-geometry")
   val nodeCardinality = Layer.Id("nodecardinality-count")
 }

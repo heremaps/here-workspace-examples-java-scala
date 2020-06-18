@@ -30,7 +30,6 @@ import com.here.platform.schema.data.validation.example.quickstart.input.v1.sche
 class TestFamily(override val mapReduce: TestCase)
     extends SingleTestCase[LineSegments, Result](mapReduce)
     with QuickstartTestingOutputLayer {
-
   val id: String = "quickstarttestfamily"
 
   def toByteArray(r: Result): Array[Byte] = r.toByteArray

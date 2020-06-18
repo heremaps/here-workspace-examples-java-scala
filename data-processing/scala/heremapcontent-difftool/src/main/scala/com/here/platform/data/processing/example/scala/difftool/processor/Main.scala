@@ -24,7 +24,6 @@ import com.here.platform.data.processing.driver._
 import com.here.platform.data.processing.driver.runner.pipeline.PipelineRunner
 
 object Main extends PipelineRunner with DriverSetupWithBuilder {
-
   override val applicationVersion: String = "0.0.1"
 
   override def configureCompiler(completeConfig: CompleteConfig,

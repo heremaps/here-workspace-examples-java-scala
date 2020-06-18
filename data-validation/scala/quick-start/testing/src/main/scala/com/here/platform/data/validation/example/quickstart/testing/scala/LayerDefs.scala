@@ -25,9 +25,7 @@ import com.here.platform.data.validation.core.testing.testcases.TestingOutLayer
 import com.here.platform.data.validation.example.quickstart.common.{LayerDefs => CommonLayerDefs}
 
 object LayerDefs {
-
   trait QuickstartTestingInputLayers extends InputLayers {
-
     val inLayers: Map[Catalog.Id, Set[Layer.Id]] =
       Map(
         CommonLayerDefs.Testing.In.lineSegmentsCatalogId -> Set(
@@ -35,8 +33,6 @@ object LayerDefs {
   }
 
   trait QuickstartTestingOutputLayer extends TestingOutLayer {
-
     val testResultLayer: Layer.Id = CommonLayerDefs.Testing.Out.testResultLayerName
   }
-
 }

@@ -34,7 +34,6 @@ class FeatureLoader(retriever: Retriever,
                     override val testingLayer: Layer.Id)
     extends MapGroupFeatureLoader[Data]
     with MetricsInputCatalog {
-
   def loadFeatures(in: (InKey, InMeta))(implicit logContext: LogContext): Data = {
     val result = Result.parseFrom(retriever.getPayload(in.key, in.value).content)
     val tileId = in.key.partition.asInstanceOf[HereTile].tileId

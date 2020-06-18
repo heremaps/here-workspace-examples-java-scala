@@ -26,7 +26,6 @@ import play.api.libs.json.{Json, OFormat}
   * of the stored cardinalities for each partition
   **/
 case class NodeCardinalityRunCounter(cardinality: Map[String, Int], updatesCount: Int, hash: Int) {
-
   /**
     * Serializes a [[NodeCardinalityRunCounter]] to a byte array
     *
@@ -39,7 +38,6 @@ case class NodeCardinalityRunCounter(cardinality: Map[String, Int], updatesCount
 }
 
 object NodeCardinalityRunCounter {
-
   implicit val format: OFormat[NodeCardinalityRunCounter] = Json.format[NodeCardinalityRunCounter]
 
   /**
@@ -50,5 +48,4 @@ object NodeCardinalityRunCounter {
     **/
   def fromByteArray(inputData: Array[Byte]): NodeCardinalityRunCounter =
     Json.parse(inputData).as[NodeCardinalityRunCounter]
-
 }

@@ -38,7 +38,6 @@ class Compiler(context: DriverContext, compilerConf: CompilerConfig)
     with CompileOut1To1Fn[(Key, Meta)]
     with ContextLogging
     with LayerDefinitions {
-
   // retriever from input catalog
   private val retriever: Retriever = context.inRetriever(In.RibCatalog)
 
@@ -90,7 +89,6 @@ class Compiler(context: DriverContext, compilerConf: CompilerConfig)
     */
   override def compileOutFn(outKey: OutKey,
                             intermediate: Iterable[(Key, Meta)]): Option[Payload] = {
-
     val inTopologies: IndexedSeq[TopologyGeometryPartition] = intermediate.map {
       case (key, meta) =>
         TopologyGeometryPartition.parseFrom(retriever.getPayload(key, meta).content)
@@ -103,7 +101,6 @@ class Compiler(context: DriverContext, compilerConf: CompilerConfig)
   }
 
   object LevelLifter {
-
     /** Merge a group of lower level tiles into a single tile
       *
       * @param topologies a sequence of lower level topology partitions
@@ -112,7 +109,6 @@ class Compiler(context: DriverContext, compilerConf: CompilerConfig)
     private[lifter] def liftTopology(
         tileId: Long,
         topologies: Seq[TopologyGeometryPartition]): TopologyGeometryPartition = {
-
       def liftReference(reference: Reference): Reference =
         reference.copy(partitionName = getAncestorTile(reference.partitionName.toLong).toString)
 
@@ -146,5 +142,4 @@ class Compiler(context: DriverContext, compilerConf: CompilerConfig)
     */
   private def getAncestorTile(key: Long) =
     HereTile(new HereQuad(key).getAncestor(compilerConf.outputLevel))
-
 }

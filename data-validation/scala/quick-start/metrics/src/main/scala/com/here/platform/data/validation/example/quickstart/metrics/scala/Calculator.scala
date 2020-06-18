@@ -33,7 +33,6 @@ import com.here.platform.schema.data.validation.example.quickstart.metrics.v1.me
 // The actual map-reduce implementation that assigns severities to the test results
 class Calculator(val metricsConfig: MetricsConfig)
     extends com.here.platform.data.validation.core.metrics.calculators.Metric[Data, Metric] {
-
   val id: String = "quickstartmetriccalc"
 
   /** Maps input data into output partitions, restructuring into new feature contexts as needed.

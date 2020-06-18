@@ -26,7 +26,6 @@ import net.ceedubs.ficus.Ficus._ // import .as[]
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._ // import value reader for case classes
 
 object Main extends PipelineRunner {
-
   override val applicationVersion: String = "1.0.0"
 
   val TaskId = "geometryliftercompiler"
@@ -38,7 +37,6 @@ object Main extends PipelineRunner {
                            completeConfig: CompleteConfig,
                            // concrete params
                            context: DriverContext): Driver = {
-
     // single entry point to access Spark concrete driver and Data Processing library core features
     // defining your compiler in terms of providing your concrete Compiler inside Pipeline inside Driver
     val driverBuilder = new DriverBuilder(context)
@@ -59,6 +57,5 @@ object Main extends PipelineRunner {
           .withDirectMToNCompiler(compiler) // everything is parameterized with type of your data
           .build())
       .build() // and creating a driver instance which goes into the framework and Spark cluster
-
   }
 }

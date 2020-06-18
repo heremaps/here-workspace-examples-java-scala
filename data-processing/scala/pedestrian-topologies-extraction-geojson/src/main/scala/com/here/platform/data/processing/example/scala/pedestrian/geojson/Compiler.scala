@@ -49,7 +49,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     with CompileOut1To1Fn[Feature[LngLat]]
     with LayerDefs
     with ContextLogging {
-
   /**
     * retriever to get input data
     */
@@ -73,7 +72,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     * @return All partitions that are referenced by RoadLayer
     */
   override def resolveFn(src: (InKey, InMeta)): Map[RefName, Set[InKey]] = {
-
     // Read subject partition
     val (key, meta) = src
     val roadPartition =
@@ -158,14 +156,12 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     */
   override def compileInFn(roadMeta: (InKey, InMeta),
                            refs: Map[InKey, InMeta]): Iterable[(OutKey, Feature[LngLat])] = {
-
     logger.info(
       "processing references: " + refs.map { case (key, _) => key.toString }.mkString(", "))
 
     if (refs.isEmpty)
       Iterable.empty
     else {
-
       // Get intermediate data map, where segment id points to the segment, for faster lookup
       val polyLines = getSegmentMap(refs)
 
@@ -195,7 +191,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     */
   private def getModelPolyline(reference: anchor.SegmentAnchor.OrientedSegmentReference,
                                polyLines: Map[String, topology_geometry.Segment]) = {
-
     val identifier = reference.getSegmentRef.identifier
     val segment = polyLines.get(identifier)
 
@@ -221,7 +216,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     * @return the output partition key
     */
   private def getOutputKey(intermediateData: Feature[LngLat]) = {
-
     val point = intermediateData.geometry.asInstanceOf[LineString[LngLat]].coordinates.head
     val latitude = point.lat
     val longitude = point.lng
@@ -240,7 +234,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     */
   override def compileOutFn(outKey: OutKey,
                             intermediate: Iterable[Feature[LngLat]]): Option[Payload] = {
-
     require(intermediate.iterator.hasNext, "Intermediate data cannot be empty in this compiler!")
 
     // Stabilize based on id's and filter partition content

@@ -28,9 +28,7 @@ import com.here.platform.schema.data.validation.example.quickstart.assessment.v1
 class CriteriaFamily(override val mapReduce: Criteria)
     extends SingleCriteria[Data, Assessment]
     with LayerDefs.AssessmentOutLayer {
-
   val id: String = "quickstartcriteriafamily"
 
   def toByteArray(r: Assessment): Array[Byte] = r.toByteArray
-
 }

@@ -60,7 +60,7 @@ object PointMatcherExample extends App {
       ps.search(point, radiusInMeters) match {
         case result if result.isEmpty => None
         case result => Some(result.minBy(_.distanceInMeters))
-    })
+      })
 
   val catalogFactory = new StandaloneCatalogFactory()
 

@@ -3,15 +3,13 @@
 
   <groupId>com.here.platform.example.location</groupId>
   <artifactId>aggregator</artifactId>
-  <version>0.0.505</version>
+  <version>0.0.512</version>
   <packaging>pom</packaging>
 
   <name>Location Library Examples</name>
-
   <organization>
     <name>HERE Europe B.V.</name>
   </organization>
-
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>

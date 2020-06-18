@@ -32,13 +32,11 @@ class Validator(override val mapReduceFamily: TestFamily, override val featureLo
     extends MapGroupValidator[LineSegments, Result](mapReduceFamily, featureLoader)
 
 object Validator {
-
   /** Builds the compiler
     *
     * @param context the driver context
     */
   def apply(context: DriverContext, testingConfig: TestingConfig): Validator = {
-
     val testFamily = new TestFamily(new TestCase(testingConfig))
 
     val featureLoader = new FeatureLoader(
@@ -46,5 +44,4 @@ object Validator {
 
     new Validator(testFamily, featureLoader)
   }
-
 }

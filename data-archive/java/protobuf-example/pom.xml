@@ -3,14 +3,13 @@
 
     <groupId>com.here.platform.data.archive</groupId>
     <artifactId>data-archive-protobuf-example</artifactId>
-    <version>0.0.505</version>
+    <version>0.0.512</version>
     <packaging>jar</packaging>
 
     <!-- Meta information section start -->
     <organization>
         <name>HERE Europe B.V.</name>
     </organization>
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -24,7 +23,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <sdk-bom.version>2.15.2</sdk-bom.version>
+        <sdk-bom.version>2.16.8</sdk-bom.version>
         <scala.compat.version>2.11</scala.compat.version>
 
         <commons-logging.version>1.2</commons-logging.version>

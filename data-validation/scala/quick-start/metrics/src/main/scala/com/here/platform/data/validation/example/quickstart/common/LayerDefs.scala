@@ -23,11 +23,9 @@ import com.here.platform.data.processing.catalog.Partition.Generic
 import com.here.platform.data.processing.catalog.{Catalog, Layer}
 
 object LayerDefs {
-
   val applicationName = "quickstart"
 
   object Testing {
-
     object In {
       val lineSegmentsCatalogId = Catalog.Id(s"${applicationName}input")
       val lineSegmentsLayer = Layer.Id("linesegments")
@@ -40,7 +38,6 @@ object LayerDefs {
   }
 
   object Metrics {
-
     object In {
       val testResultCatalogId = Testing.Out.testResultCatalogId
       val testResultLayerName = Testing.Out.testResultLayerName
@@ -53,7 +50,6 @@ object LayerDefs {
   }
 
   object Assessment {
-
     object In {
       val metricsResultCatalogId = Metrics.Out.metricsCatalogId
       val metricsResultLayerName = Metrics.Out.metricsResultLayerName
@@ -67,5 +63,4 @@ object LayerDefs {
       val finalAssessmentResultPartition = Generic("ASSESSMENT")
     }
   }
-
 }

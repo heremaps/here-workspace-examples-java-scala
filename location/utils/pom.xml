@@ -4,21 +4,19 @@
   <parent>
     <groupId>com.here.platform</groupId>
     <artifactId>sdk-standalone-bom</artifactId>
-    <version>2.15.2</version>
+    <version>2.16.8</version>
     <relativePath/>
   </parent>
 
   <groupId>com.here.platform.example.location</groupId>
   <artifactId>utils_2.11</artifactId>
-  <version>0.0.505</version>
+  <version>0.0.512</version>
   <packaging>jar</packaging>
 
   <name>Location Library Examples - Utils</name>
-
   <organization>
     <name>HERE Europe B.V.</name>
   </organization>
-
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>

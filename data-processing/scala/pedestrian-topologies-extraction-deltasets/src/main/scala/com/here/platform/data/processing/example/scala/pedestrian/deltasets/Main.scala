@@ -35,11 +35,9 @@ import net.ceedubs.ficus.readers.ArbitraryTypeReader._ // import value reader fo
 import com.here.platform.data.processing.utils.FicusValueReaders._ // import value read for PartitionKeyFilterConfig
 
 object Main extends PipelineRunner with DeltaSimpleSetup {
-
   override def applicationVersion: String = "1.0.0"
 
   def setupSets(completeConfig: CompleteConfig, context: DeltaContext): Iterable[PublishedSet] = {
-
     val ribRetriever = context.inRetriever(Defs.In.RibCatalog)
     val config = completeConfig.compilerConfig.as[CompilerConfig]
 
@@ -50,8 +48,7 @@ object Main extends PipelineRunner with DeltaSimpleSetup {
     val filter: Partition.Key => Boolean = config.partitionKeyFilter match {
       case Some(filterConfig) => filterConfig.filter
       case None =>
-        _ =>
-          true
+        _ => true
     }
 
     // Using a locality aware partitioner at level 12 will guarantee that all tiles at higher zoom level (13, 14 etc.)
@@ -89,7 +86,7 @@ object Main extends PipelineRunner with DeltaSimpleSetup {
         (_, features) =>
           features.map { f =>
             (compiler.getOutputKey(f), f)
-        },
+          },
         // If we increase the zoom level of the tiles, our LocalityAwarePartitioner will guarantee that no data needs
         // to be shuffled.
         if (config.outputLevel > 12) PreservesPartitioning() else partitioner
@@ -104,7 +101,5 @@ object Main extends PipelineRunner with DeltaSimpleSetup {
     // Return the published data. The calling context will finally commit the data as a new version of the output
     // catalog.
     Iterable(published)
-
   }
-
 }

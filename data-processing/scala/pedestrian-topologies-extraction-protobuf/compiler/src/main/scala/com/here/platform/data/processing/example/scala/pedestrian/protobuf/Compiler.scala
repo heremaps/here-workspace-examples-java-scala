@@ -56,7 +56,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     with CompileOut1To1Fn[Polyline]
     with LayerDefs
     with ContextLogging {
-
   /**
     * retriever to get input data
     */
@@ -80,7 +79,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     * @return All partitions that are referenced by RoadLayer
     */
   override def resolveFn(src: (InKey, InMeta)): Map[RefName, Set[InKey]] = {
-
     // Read subject partition
     val (key, meta) = src
     val roadPartition =
@@ -146,14 +144,12 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     */
   override def compileInFn(roadMeta: (InKey, InMeta),
                            refs: Map[InKey, InMeta]): Iterable[(OutKey, Polyline)] = {
-
     logger.info(
       "processing references: " + refs.map { case (key, _) => key.toString }.mkString(", "))
 
     if (refs.isEmpty)
       Iterable.empty
     else {
-
       // Get intermediate data map
       val polyLines = getSegmentMap(refs)
 
@@ -201,7 +197,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     */
   private def getModelPolyline(reference: anchor.SegmentAnchor.OrientedSegmentReference,
                                polyLines: Map[String, topology_geometry.Segment]) = {
-
     val identifier = reference.getSegmentRef.identifier
     val segment = polyLines.get(identifier)
 
@@ -226,7 +221,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     * @return the output partition key
     */
   private def getOutputKey(intermediateData: Polyline) = {
-
     val latitude = intermediateData.getLineString.point.head.latitude
     val longitude = intermediateData.getLineString.point.head.longitude
 
@@ -243,7 +237,6 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     * @return the optional payload containing the results, if any.
     */
   override def compileOutFn(outKey: OutKey, intermediate: Iterable[Polyline]): Option[Payload] = {
-
     require(intermediate.iterator.hasNext, "Intermediate data cannot be empty in this compiler!")
 
     // Stabilize based on id's and filter partition content

@@ -32,11 +32,9 @@ import com.here.schema.rib.v2.topology_geometry_partition._
 import scala.collection.breakOut
 
 object Compiler {
-
   implicit class RichBoolean(val b: Boolean) extends AnyVal {
     final def option[A](a: => A): Option[A] = if (b) Some(a) else None
   }
-
 }
 
 /**
@@ -50,7 +48,6 @@ class Compiler(context: DriverContext)
     extends DirectMToNCompiler[IntermediateData]
     with CompileOut1To1Fn[IntermediateData]
     with LayerDefinitions {
-
   import Compiler._
 
   private val previousRetriever: Retriever = context.inRetriever(In.PreviousRib)
@@ -123,7 +120,6 @@ class Compiler(context: DriverContext)
     */
   override def compileOutFn(outKey: OutKey,
                             intermediate: Iterable[IntermediateData]): Option[Payload] = {
-
     def getSegments(retriever: Retriever)(keyMeta: IntermediateData): Map[String, Segment] = {
       val partition =
         TopologyGeometryPartition.parseFrom(retriever.getPayload(keyMeta.key, keyMeta.meta).content)
@@ -151,7 +147,6 @@ class Compiler(context: DriverContext)
 
     (addedSegments.nonEmpty || removedSegments.nonEmpty || modifiedSegments.nonEmpty)
       .option {
-
         def toJSONList(identifiers: Set[String]): String =
           s"[${identifiers.toList.sorted
             .map { x =>
@@ -170,7 +165,5 @@ class Compiler(context: DriverContext)
 
         Payload(json.getBytes(StandardCharsets.UTF_8))
       }
-
   }
-
 }

@@ -31,13 +31,11 @@ import com.here.platform.data.validation.core.comparison.builder.{
 import com.here.platform.data.validation.core.comparison.metadiff.grouped.GroupedComparator
 
 object Main extends PipelineRunner with DriverSetupWithBuilder with LayerDefs {
-
   def applicationVersion: String = BuildInfo.version
 
   def configureCompiler(completeConfig: CompleteConfig,
                         driverCtx: DriverContext,
                         builder: DriverBuilder): builder.type = {
-
     val ctx = ContextHelper(driverCtx, inLayers)
 
     val comparator = new GroupedComparator(
@@ -48,5 +46,4 @@ object Main extends PipelineRunner with DriverSetupWithBuilder with LayerDefs {
 
     builder.addTask(driverTask)
   }
-
 }

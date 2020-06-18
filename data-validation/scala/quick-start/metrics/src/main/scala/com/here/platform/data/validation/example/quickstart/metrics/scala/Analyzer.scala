@@ -30,14 +30,12 @@ class Analyzer(override val mapReduceFamily: MetricFamily,
     extends MapGroupAnalyzer[Data, Metric](mapReduceFamily, featureLoader)
 
 object Analyzer {
-
   /** Builds the compiler.
     *
     * @param context the driver context
     *
     */
   def apply(context: DriverContext, metricsConfig: MetricsConfig): Analyzer = {
-
     val metricsFamily = new MetricFamily(new Calculator(metricsConfig))
 
     val retriever = context.inRetriever(LayerDefs.Metrics.In.testResultCatalogId)

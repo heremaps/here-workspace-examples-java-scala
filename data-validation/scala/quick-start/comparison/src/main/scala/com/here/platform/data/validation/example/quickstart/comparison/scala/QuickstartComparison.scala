@@ -35,14 +35,12 @@ import com.here.platform.schema.data.validation.example.quickstart.input.v1.sche
 class QuickStartComparison(referenceRetriever: Retriever, candidateRetriever: Retriever)
     extends DiffByPartitions()
     with Serializable {
-
   implicit val logContext: RootLogContext.type = RootLogContext
 
   override def handleDiff(partition: Partition.Name,
                           pairsPerLayer: Iterable[(Layer.Id, Option[InMeta], Option[InMeta])])
-    : Iterable[(OutKey, Option[Payload])] =
+      : Iterable[(OutKey, Option[Payload])] =
     pairsPerLayer.map(l => {
-
       val layerName = l._1
 
       if (layerName == LayerNames.hereTiledInputLayer) {
@@ -54,7 +52,6 @@ class QuickStartComparison(referenceRetriever: Retriever, candidateRetriever: Re
         (OutKey(Default.OutCatalogId, LayerNames.genericOutLayer, Partition.Generic(genericName)),
          Some(Payload("\"checksum differs\"".getBytes())))
       }
-
     })
 
   private def combineLineSegments(partition: Partition.Name,
@@ -89,7 +86,7 @@ class QuickStartComparison(referenceRetriever: Retriever, candidateRetriever: Re
 class QuickStartComparisonByLayers() extends DiffByLayers() with Serializable {
   override def handleDiff(layer: Layer.Id,
                           partitioned: Iterable[(Partition.Name, Option[InMeta], Option[InMeta])])
-    : Iterable[(OutKey, Option[Payload])] = {
+      : Iterable[(OutKey, Option[Payload])] = {
     val start = """"{"partitions":[{"""
     val end = """}]}"""
     Seq(

@@ -33,7 +33,6 @@ import com.here.platform.data.validation.example.quickstart.common.{LayerDefs =>
 class FeatureLoader(retriever: Retriever)
     extends DirectFeatureLoader[Data]
     with LayerDefs.InputLayers {
-
   /** Extracts feature data from input layers.
     *
     * @param in key, meta pair from Subject layer

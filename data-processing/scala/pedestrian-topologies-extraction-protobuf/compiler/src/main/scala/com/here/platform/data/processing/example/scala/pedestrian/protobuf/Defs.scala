@@ -23,12 +23,10 @@ import com.here.platform.data.processing.catalog.{Catalog, Layer}
 import com.here.platform.data.processing.compiler.reftree.RefTree.RefName
 
 object Defs {
-
   /**
     * Input and output layers configuration for the geometry compiler
     **/
   trait LayerDefs {
-
     val inLayers = Map(
       In.RibCatalog -> Set(
         In.RoadLayer,
@@ -61,5 +59,4 @@ object Defs {
   object Refs {
     val TopologyRef = RefName("topology")
   }
-
 }

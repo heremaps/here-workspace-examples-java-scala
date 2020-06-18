@@ -25,7 +25,6 @@ import com.here.platform.data.processing.compiler.{InputLayers, OutputLayers}
 import com.here.platform.data.validation.core.comparison.ContextHelper
 
 object LayerNames {
-
   final val hereTiledOutputLayer = Layer.Id("heretile-comparison-results")
   final val genericOutLayer = Layer.Id("generic-comparison-results")
   final val hereTiledInputLayer = Layer.Id("linesegments")
@@ -33,7 +32,6 @@ object LayerNames {
 }
 
 trait LayerDefs extends InputLayers with OutputLayers {
-
   override def inLayers: Map[Id, Set[Layer.Id]] =
     Map(
       ContextHelper.CANDIDATECATID -> Set(LayerNames.hereTiledInputLayer,

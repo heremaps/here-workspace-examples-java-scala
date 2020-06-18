@@ -3,16 +3,14 @@
 
   <groupId>com.here.platform.data.processing.example.scala</groupId>
   <artifactId>pedestrian-topologies-extraction-protobuf</artifactId>
-  <version>0.0.505</version>
+  <version>0.0.512</version>
   <packaging>pom</packaging>
 
   <name>Pedestrian topologies extraction compiler example to ProtoBuf in Scala</name>
   <inceptionYear>2019</inceptionYear>
-
   <organization>
     <name>HERE Europe B.V.</name>
   </organization>
-
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
@@ -27,7 +25,7 @@
   </modules>
 
   <properties>
-    <sdk-bom.version>2.15.2</sdk-bom.version>
+    <sdk-bom.version>2.16.8</sdk-bom.version>
   </properties>
 
   <dependencyManagement>

@@ -32,14 +32,12 @@ class Assessor(override val mapReduceFamily: CriteriaFamily,
     extends DirectAssessor[Data, Assessment](mapReduceFamily, featureLoader)
 
 object Assessor {
-
   /** Builds the compiler.
     *
     * @param context the driver context
     *
     */
   def apply(context: DriverContext, assessmentConfig: AssessmentConfig): Assessor = {
-
     val assessmentFamily = new CriteriaFamily(new Criteria(assessmentConfig))
 
     val retriever = context.inRetriever(CommonLayerDefs.Assessment.In.metricsResultCatalogId)

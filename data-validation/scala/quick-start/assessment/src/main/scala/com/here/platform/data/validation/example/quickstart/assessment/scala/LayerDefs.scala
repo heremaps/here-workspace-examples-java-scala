@@ -23,14 +23,11 @@ import com.here.platform.data.processing.catalog.{Catalog, Layer}
 import com.here.platform.data.validation.example.quickstart.common.{LayerDefs => CommonLayerDefs}
 
 object LayerDefs {
-
   trait AssessmentOutLayer
       extends com.here.platform.data.validation.core.assessment.criteria.AssessmentOutLayer {
-
     val assessmentResultLayer = CommonLayerDefs.Assessment.Out.finalAssessmentLayer
 
     val assessmentResultPartition = CommonLayerDefs.Assessment.Out.finalAssessmentResultPartition
-
   }
 
   trait InputLayers extends com.here.platform.data.processing.compiler.InputLayers {

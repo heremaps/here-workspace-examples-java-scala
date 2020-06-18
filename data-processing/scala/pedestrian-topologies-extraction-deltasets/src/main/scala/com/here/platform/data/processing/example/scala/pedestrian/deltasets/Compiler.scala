@@ -42,7 +42,6 @@ import play.api.libs.json.{JsObject, JsString, Json}
 class Compiler(config: CompilerConfig, retriever: Retriever)
     extends Serializable
     with ContextLogging {
-
   def renameTopologyKeyToOutKey: OneToOne[InKey, OutKey] =
     OneToOne(
       _.copy(catalog = Default.OutCatalogId, layer = Defs.Out.PedestrianSegments),
@@ -71,14 +70,12 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
   def extractPedestrianFeatures(resolver: Resolver,
                                 roadKey: Key,
                                 roadMeta: Meta): List[Feature[LngLat]] = {
-
     // Read road partition
     val roadTile =
       RoadAttributesPartition.parseFrom(retriever.getPayload(roadKey, roadMeta).content)
     val segmentAnchors = getPedestrianSegmentAnchors(roadTile)
 
     if (segmentAnchors.nonEmpty) {
-
       val topologyKey = Key(Defs.In.RibCatalog, Defs.In.TopologyGeometryLayer, roadKey.partition)
       val topologyMeta = resolver.resolve(topologyKey).get
       val topologyTile =
@@ -91,13 +88,9 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
       // Get pedestrian intermediate data
       segmentAnchors.flatMap(segmentAnchor =>
         segmentAnchor.orientedSegmentRef.map(getModelPolyline(_, polyLines)))
-
     } else {
-
       Nil
-
     }
-
   }
 
   /** Get the output key of an intermediate data object.
@@ -109,7 +102,6 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
     * @return The output partition key.
     */
   def getOutputKey(intermediateData: Feature[LngLat]): OutKey = {
-
     val point = intermediateData.geometry.asInstanceOf[LineString[LngLat]].coordinates.head
     val latitude = point.lat
     val longitude = point.lng
@@ -128,7 +120,6 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
     */
   def toJSON(outKey: OutKey, intermediate: Iterable[Feature[LngLat]]): Option[Payload] =
     if (intermediate.nonEmpty) {
-
       // Stabilize based on id's and filter partition content
       val data = intermediate.toList.distinct.sortBy(_.id.get.toString)
 
@@ -140,11 +131,8 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
 
       // Return the result
       Some(Payload(payload.getBytes))
-
     } else {
-
       None
-
     }
 
   /** Gets the compiler model Feature.
@@ -155,7 +143,6 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
     */
   private def getModelPolyline(reference: anchor.SegmentAnchor.OrientedSegmentReference,
                                segments: Map[String, topology_geometry.Segment]) = {
-
     val identifier = reference.getSegmentRef.identifier
     val segment = segments.get(identifier)
 
@@ -195,5 +182,4 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
                 && !appliesTo.trucks))
       .flatMap(pedestrian => pedestrian.segmentAnchorIndex)
       .map(roadPartition.segmentAnchor)(collection.breakOut)
-
 }

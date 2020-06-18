@@ -22,7 +22,6 @@ package com.here.platform.data.processing.example.scala.pedestrian.deltasets
 import com.here.platform.data.processing.catalog.{Catalog, Layer}
 
 object Defs {
-
   /**
     * Input catalog definitions
     */
@@ -38,5 +37,4 @@ object Defs {
   object Out {
     val PedestrianSegments = Layer.Id("pedestriansegments")
   }
-
 }

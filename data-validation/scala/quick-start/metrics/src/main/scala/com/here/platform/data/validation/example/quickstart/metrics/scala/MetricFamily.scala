@@ -29,7 +29,6 @@ import com.here.platform.schema.data.validation.example.quickstart.metrics.v1.me
   */
 class MetricFamily(override val mapReduce: Calculator)
     extends SingleCalculator[Data, Metric](mapReduce) {
-
   val id: String = "quickstartmetricfamily"
 
   def toByteArray(r: Metric): Array[Byte] = r.toByteArray

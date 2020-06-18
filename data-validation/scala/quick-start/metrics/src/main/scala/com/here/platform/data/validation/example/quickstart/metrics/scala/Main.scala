@@ -38,7 +38,6 @@ object Main extends PipelineRunner with DriverSetupWithBuilder {
   def configureCompiler(completeConfig: CompleteConfig,
                         context: DriverContext,
                         builder: DriverBuilder): builder.type = {
-
     val metricsConfig = completeConfig.compilerConfig.as[MetricsConfig]
     val analyzer = Analyzer(context, metricsConfig)
     val pipelineBuilder =

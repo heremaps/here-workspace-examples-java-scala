@@ -60,7 +60,6 @@ class Compiler(ctx: DriverContext)
     with CompileOut1To1Fn[(Key, Meta)]
     with ContextLogging
     with LayerCatalogDefs {
-
   // retriever from the input catalog
   private val retriever = ctx.inRetriever(CatalogDefs.InputCatalog)
 
@@ -133,7 +132,6 @@ class Compiler(ctx: DriverContext)
     */
   override def compileOutFn(outKey: OutKey,
                             intermediate: Iterable[(Key, Meta)]): Option[Payload] = {
-
     val inLayerEntries = intermediate.filter {
       _.key.layer == LayersDefs.topologyGeometry
     }

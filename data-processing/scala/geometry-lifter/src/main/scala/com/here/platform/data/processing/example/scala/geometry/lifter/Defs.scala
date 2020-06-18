@@ -22,38 +22,30 @@ package com.here.platform.data.processing.example.scala.geometry.lifter
 import com.here.platform.data.processing.catalog.{Catalog, Layer}
 
 object Defs {
-
   /**
     * Input and output layers configuration for the geometry compiler
     */
   trait LayerDefinitions {
-
     val inLayers = Map(
       In.RibCatalog -> Set(In.TopologyLayer)
     )
 
     val outLayers = Set(Out.LayerId)
-
   }
 
   /**
     * Input catalog definitions
     */
   object In {
-
     val RibCatalog = Catalog.Id("rib")
 
     val TopologyLayer = Layer.Id("topology-geometry")
-
   }
 
   /**
     * Output catalog definitions
     */
   object Out {
-
     val LayerId = Layer.Id("lifted-topology-geometry")
-
   }
-
 }

@@ -24,16 +24,13 @@ import com.here.platform.data.processing.catalog.{Catalog, Layer}
 import com.here.platform.data.processing.driver.Default
 
 object LayersDefinitions {
-
   trait LayerDefinitions {
-
     val inLayers = Map(
       In.Rib -> Set(In.LayerName),
       In.PreviousRib -> Set(In.LayerName)
     )
 
     val outLayers = Set(Out.LayerName)
-
   }
 
   object In {
@@ -45,5 +42,4 @@ object LayersDefinitions {
   object Out {
     val LayerName = Layer.Id("topology-geometry-diff")
   }
-
 }

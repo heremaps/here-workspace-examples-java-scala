@@ -32,7 +32,6 @@ class Criteria(assessmentConfig: AssessmentConfig)
     extends QualityCriteria[Data, Assessment]
     with ContextLogging
     with LayerDefs.AssessmentOutLayer {
-
   def id: String = "quickstartcriteria"
 
   /** Assesses test metrics and tile counts into final assessment
@@ -41,7 +40,6 @@ class Criteria(assessmentConfig: AssessmentConfig)
     * @return Output assessment protobuf payload
     */
   def reduce(data: (OutKey, Iterable[Data])): Option[Assessment] = {
-
     val criticalCount = data.value
       .flatMap(ctx => ctx.metric)
       .flatMap(metric => metric.metrics)

@@ -35,7 +35,6 @@ object Main extends MainPipelineRunner
   * most compilers have very similar code here
   */
 trait MainPipelineRunner extends PipelineRunner {
-
   override def applicationVersion: String = "1.0.0"
 
   override def setupDriver(
@@ -45,7 +44,6 @@ trait MainPipelineRunner extends PipelineRunner {
                            completeConfig: CompleteConfig,
                            // concrete params
                            context: DriverContext): Driver = {
-
     // single entry point to access Spark concrete driver and Data Processing Library features
     // defining your compiler in terms of providing your concrete Compiler inside Pipeline inside Driver
     val builder = new DriverBuilder(context)
@@ -67,6 +65,5 @@ trait MainPipelineRunner extends PipelineRunner {
           .withRefTreeCompiler(compiler) // everything is parameterized with type of your data
           .build())
       .build() // and creating a driver instance which goes into the framework and Spark cluster
-
   }
 }

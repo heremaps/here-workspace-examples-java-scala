@@ -249,7 +249,7 @@ object Steps {
   }
 
   def findStopSignEventClusters(stopSignAndClosestVertex: RDD[StopSignEventProjectionOnPath])
-    : RDD[Cluster[StopSignEventProjectionOnPath]] = {
+      : RDD[Cluster[StopSignEventProjectionOnPath]] = {
     val neighborhoodRadiusInMeters: Double = 50.0
     val partitionBufferZoneInMeters: Double = 100.0
     val minNeighbors: Int = 1
@@ -274,7 +274,7 @@ object Steps {
 
   def groupByOutputTileId(config: Config,
                           geoJsonByPosition: RDD[(GeoCoordinate, Feature[GeoCoordinate])])
-    : RDD[(TileId, Iterable[Feature[GeoCoordinate]])] = {
+      : RDD[(TileId, Iterable[Feature[GeoCoordinate]])] = {
     val outputResolver = new HereTileResolver(config.outputLayerLevel)
 
     geoJsonByPosition
