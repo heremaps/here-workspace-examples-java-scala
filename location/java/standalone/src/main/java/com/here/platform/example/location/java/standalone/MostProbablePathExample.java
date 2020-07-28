@@ -61,7 +61,7 @@ import java.util.function.Predicate;
 
 // Determine the Most Probable Path from a starting vertex.
 //
-// This example builds on concepts of the US6405128 patent and on the HERE ADAS Research Platform.
+// This example builds on concepts of the US6405128 patent and on the HERE ADAS Research platform.
 //
 // A "most probable path" is identified following a greedy rule considering:
 //   1. Change in functional class

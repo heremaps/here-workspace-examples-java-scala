@@ -58,7 +58,7 @@ your app to a group.
 ### Use the Command Line Interface
 
 The creation of platform resources (catalogs, pipelines, etc.) is conveniently
-achievable by means of the HERE Open Location Platform Command Line Interface,
+achievable by means of the OLP Command Line Interface,
 see
 [OLP CLI](https://developer.here.com/olp/documentation/open-location-platform-cli/user_guide/index.html) or 
 [OLP China CLI](https://developer.here.com/olp/cn/documentation/open-location-platform-cli/user_guide/index.html).
@@ -74,7 +74,7 @@ line tool can be found on your user `PATH`.
 ### I get `Non-resolvable parent POM for com.here.platform.example.location:parent:x.x.x: Failure to find com.here.platform:environment:pom:x.x.x`
 
 Make sure that you have properly setup the `${user.home}/.m2/settings.xml`,
-including the HERE Platform repositories.
+including the HERE platform repositories.
 
 ### I get `Caused by: java.lang.IllegalStateException: Credentials not found`
 
@@ -85,8 +85,8 @@ or
 
 ### I get `These credentials do not authorize access`
 
-You probably need to share your catalog, for example, with an Open Location
-Platform group you are part of or app that you have credentials for. For more
+You probably need to share your catalog, for example, with the HERE
+platform group you are part of or app that you have credentials for. For more
 information, see the platform documentation on how to
 [Share a Catalog](https://developer.here.com/olp/documentation/data-user-guide/portal/catalog-sharing.html) or
 [Share a China Catalog](https://developer.here.com/olp/cn/documentation/data-user-guide/portal/catalog-sharing.html).

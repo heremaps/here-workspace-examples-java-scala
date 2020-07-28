@@ -8,19 +8,41 @@ In this example, the testing component reads the input catalog and validates oct
 ## Hint
 {templates_dir}     value is `cn` for China and `olp` for others
 {here_value}        value is `here-cn` for China and `here` for others
-{realm}             The ID of your organization, also called a realm. Consult your Platform invitation
-letter to learn your organization ID
+{realm}             The ID of your organization, also called a realm. Consult your platform invitation
+letter to learn your organization ID.
 
-## Set up Access to the Data API
+## Get Your Credentials
 
-The source code and configuration templates for the example is in the SDK under examples/data-validation/java/quick-start for Java and examples/data-validation/scala/quick-start for Scala.
-For running pipelines, this document assumes that you have already set up your app and credentials using the instructions from Get Your Credentials.
-If not, please refer to:
-[Get Your Credentials](https://developer.here.com/olp/documentation/data-validation-library/content/dev_guide/topics/credentials.html)
+To run this example, you need two sets of credentials:
+
+* **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input. 
+* **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
+
+For more details on how to set up your credentials, see [Get Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/topics/get-credentials.html).
+
+For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html) tutorial.
+
+## Configure a Project
+
+To follow this example, you'll need a [project](https://developer.here.com/documentation/access-control/user_guide/topics/manage-projects.html). A project is a collection of platform resources
+ (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
+ **HERE platform portal**.
+ 
+Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
+
+```bash
+olp project create $PROJECT_ID $PROJECT_NAME
+```
+
+The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
+
+> Note: You don't have to provide a `--scope` parameter if your app has a default scope.
+
+For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
 
 ## Package the Application Into a Fat JAR
 
-To run comparison pipeline in the HERE Open Location Platform, you need to build a fat JAR.
+To run comparison pipeline in the HERE platform, you need to build a fat JAR.
 
 You can refer to the `pom.xml` file for packaging details if you are creating your own application. If you are not creating your own application, run the following command under the example's base directory.
 ```bash
@@ -37,7 +59,7 @@ You can do that using a configuration template file named `output-testing-catalo
 Remove the `.template` extension of that file's name and replace the placeholder `{output_catalog_id}` with $CATALOG_ID,
 where CATALOG_ID is a unique identifier, such as "YOUR_LOGIN-validation-quickstart-testing"
 
-Using the OLP Portal, create a new catalog and the following catalog layers:
+Use the HERE platform Portal to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html)::
 
 | Layer ID    | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding | Schema
 |--------------------------|--------------|------------|--------------------------|------------------|------------------------------------------------
@@ -49,31 +71,47 @@ Alternatively, You can do that using a configuration template file named `output
 Remove the `.template` extension of that file's name and replace the placeholder `{output_catalog_id}` with $CATALOG_ID,
 where CATALOG_ID is a unique identifier, such as "YOUR_LOGIN-validation-quickstart-testing"
 
-* First, create an output catalog:
+> Note:
+> We recommend you to set values to variables so that you can easily copy and execute the following commands.
+
+1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
+Make sure to note down the HRN returned by the following command for later use:
 
 Use the OLP CLI (tools/OLP_CLI relative to the root of your unpacked SDK) to create a catalog with a command like this:
 
 ```bash
-olp catalog create $CATALOG_ID $CATALOG_NAME --summary CATALOG_SUMMARY --description CATALOG_DESCRIPTION
-olp catalog layer add $CATALOG_HRN test-result test-result --versioned --summary "test-result" --description "test-result" \
-            --content-type application/x-protobuf --partitioning heretile:12
-olp catalog layer add $CATALOG_HRN state state --versioned --summary "state" --description "state" \
-            --content-type application/octet-stream
+olp catalog create $CATALOG_ID $CATALOG_NAME --summary CATALOG_SUMMARY \
+            --description CATALOG_DESCRIPTION --scope $PROJECT_HRN
+```
+
+2. Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add) command to add two `versioned` layers to your catalog:
+
+```bash
+olp catalog layer add $CATALOG_HRN test-result test-result --versioned --summary "test-result" \
+            --description "test-result" --content-type application/x-protobuf \
+            --partitioning heretile:12 --scope $PROJECT_HRN
+olp catalog layer add $CATALOG_HRN state state --versioned --summary "state"\
+            --description "state" --content-type application/octet-stream \
+            --scope $PROJECT_HRN
 ```
 
 or, You can execute a single command
 
-`olp catalog create $CATALOG_ID $CATALOG_NAME \
---summary $CATALOG_SUMMARY \
---config $JSON_FILE_PATH`
+```
+olp catalog create $CATALOG_ID $CATALOG_NAME \
+            --summary $CATALOG_SUMMARY \
+            --config $JSON_FILE_PATH \
+            --scope $PROJECT_HRN
+```
 
 where CATALOG_ID is the unique identifier you used above, such as "YOUR_LOGIN-validation-quickstart-testing". This identifier is the resource portion of your catalog's HERE Resource Name (HRN),
 
-`CATALOG_NAME` is a unique identifier (whitespaces are allowed), such as "YOUR_LOGIN Data Validation Library Quick Start Example Testing Results"
+- `CATALOG_NAME` is a unique identifier (whitespaces are allowed), such as "YOUR_LOGIN Data Validation Library Quick Start Example Testing Results"
 (this is the value that appears for your catalog in the Portal's Data tab, when you list all available catalogs or search for a catalog), and
-`CATALOG_SUMMARY` is an informal description like "Output catalog of the Testing component in the Data Validation Library Quick Start Example"
+- `CATALOG_SUMMARY` is an informal description like "Output catalog of the Testing component in the Data Validation Library Quick Start Example"
 (the --summary option is actually required).
-`JSON_FILE_PATH` is the path to your configuration file from the previous step above.
+- `JSON_FILE_PATH` is the path to your configuration file from the previous step above.
+- `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create` command).
 
 It will take approximately a minute for the catalog to be created on the platform, before you get a result like this,
 containing the HRN that you can use for all further CLI and SDK operations to identify this catalog:
@@ -82,16 +120,18 @@ containing the HRN that you can use for all further CLI and SDK operations to id
 	
 The HERE Resource Name (HRN) for this catalog can now be used as the output for your testing pipeline.
 
-* Then grant "read", "write", and "manage" permissions for this catalog to your group with the respective group ID by running the following command:
+3. Use the [`olp project resources link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link) command to link the _Data Validation Library Quick Start Example Input_ catalog to your project:
 
 ```bash
-olp catalog permission grant $CATALOG_HRN --group $GROUP_ID --read --write --manage
+olp project resources link $PROJECT_HRN $CATALOG_QUICK_START_INPUT
 ```
 
-For more details on how to create a catalog and its layers refer to the
-[Data User Gui  de](https://developer.here.com/olp/documentation/data-user-guide/content/index.html), particularly
-[Create a Catalog](https://developer.here.com/olp/documentation/data-user-guide/content/portal/catalog-creating.html) and
-[Create a Layer](https://developer.here.com/olp/documentation/data-user-guide/content/portal/layer-creating.html).
+- `$CATALOG_QUICK_START_INPUT` - The HRN of the public _Data Validation Library Quick Start Example Input_ catalog in your pipeline configuration.
+
+- For more details on catalog commands, see [Catalog Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html).
+- For more details on layer commands, see [Layer Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html).
+- For more details on project commands, see [Project Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html).
+- For instructions on how to link a resource to a project, see [Project Resources Link command](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link).
 
 ## Configure the Testing Pipeline
 
@@ -103,37 +143,37 @@ Replace the candidate catalog HRN in pipeline-testing-config.conf to: hrn:{here_
 
 ## Run application on a platform
 
-To run example on a platform You should prepare appropriate infrastructure
+You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
-* Create a pipeline with a following command
+1. [Create](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline-workflows.html) pipeline components:
 
 ```bash
-olp pipeline create $PIPELINE_NAME $GROUP_ID
+olp pipeline create $PIPELINE_NAME --scope $PROJECT_HRN
+olp pipeline template create $PIPELINE_TEMPLATE_NAME batch-2.1.0 $PATH_TO_JAR \
+            com.here.platform.data.validation.example.quickstart.testing.scala.Main \
+            --input-catalog-ids quickstartinput \
+            --scope $PROJECT_HRN
 ```
 
-* Create a pipeline template
+2. [Create](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-create) the pipeline version, configuring the reference catalog hrn and version as runtime parameters, to get a pipeline version ID:
 
 ```bash
-olp pipeline template create $PIPELINE_TEMPLATE_NAME batch-2.1.0 $PATH_TO_JAR com.here.platform.data.validation.example.quickstart.testing.scala.Main $GROUP_ID --input-catalog-ids quickstartinput
+olp pipeline version create $PIPELINE_VERSION_NAME $PIPELINE_ID $PIPELINE_TEMPLATE_ID \
+            "$PATH_TO_CONFIG_FOLDER/pipeline-testing-config.conf" \
+            --scope $PROJECT_HRN
 ```
 
-* Create the pipeline version, configuring the reference catalog hrn and version as runtime parameters, to get a pipeline version ID
+3. [Activate](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-activate) the pipeline version:
 
 ```bash
-olp pipeline version create $PIPELINE_VERSION_NAME $PIPELINE_ID $PIPELINE_TEMPLATE_ID "$PATH_TO_CONFIG_FOLDER/pipeline-testing-config.conf"
-```
-
-* Activate the pipeline version
-
-```bash
-olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID
+olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
 ```
 
 It may take a few minutes before the pipeline starts running, as your fat jar for the pipeline template may still be uploading to the platform in the background.
 To find out when the pipeline starts running you can either check its state via the Pipelines tab of the Portal or use this OLP CLI command
 (when the running state is reached, the portal lets you navigate to the Splunk logs, and this olp command will output the respective URL):
 
-`olp pipeline version wait $PIPELINE_ID $PIPELINE_VERSION_ID --job-state=running --timeout=300`
+`olp pipeline version wait $PIPELINE_ID $PIPELINE_VERSION_ID --job-state=running --timeout=300 --scope $PROJECT_HRN`
 
 The pipeline takes up to 10 minutes to complete. Manually refresh the Pipelines tab in Portal.
 If the pipeline is complete, its status will refresh from "RUNNING" to "READY".
@@ -143,9 +183,9 @@ If the pipeline is complete, its status will refresh from "RUNNING" to "READY".
 If you want to remove this pipeline, template, and version from the server, you can delete them with the commands below.
 However, the results of the pipeline remain in the output catalog
 
-`olp pipeline version delete $PIPELINE_ID $PIPELINE_VERSION_ID`
-`olp pipeline template delete $TEMPLATE_ID`
-`olp pipeline delete $PIPELINE_ID`
+`olp pipeline version delete $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN`
+`olp pipeline template delete $TEMPLATE_ID --scope $PROJECT_HRN`
+`olp pipeline delete $PIPELINE_ID --scope $PROJECT_HRN`
 
 ### Inspect the Testing Output Catalog
 
@@ -155,7 +195,7 @@ There are at least two ways to decode the contents of output testing catalog, ei
 
 In the Portal's Data tab, click on the "test-results" layer for the output testing catalog that you have created and populated.
 Alternatively you can inspect the output catalog in the Portal's Data tab.
-On the Layer page, click the Inspect tab to open the catalog.
+On the Layer page, click the _Inspect_ tab to open the catalog.
 Between the two input catalog versions, partitions with line segments that differ are highlighted in blue.
 Click on a specific partition to see its decoded data.
 Portal should render the differing geometry and display the decoded data values for the selected partition.
@@ -163,7 +203,7 @@ Portal should render the differing geometry and display the decoded data values 
 * Inspect the Testing Output Catalog locally
 
 Alternatively you can inspect the output catalog in the Portal's Data tab.
-On the Layer page, click on the Partitions tab so that we can see specific partitions.
+On the Layer page, click on the _Inspect_ tab so that we can see specific partitions.
 Click on "23618304" under Partition ID.
 Click on Download raw data to save the raw partition data to disk.
 You can then run protoc on the raw data to decode it, using:

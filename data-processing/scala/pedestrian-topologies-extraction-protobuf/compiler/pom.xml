@@ -4,12 +4,12 @@
   <parent>
     <groupId>com.here.platform.data.processing.example.scala</groupId>
     <artifactId>pedestrian-topologies-extraction-protobuf</artifactId>
-    <version>0.0.512</version>
+    <version>0.0.528</version>
   </parent>
 
   <groupId>com.here.platform.data.processing.example.scala.pedestrian.protobuf</groupId>
   <artifactId>compiler</artifactId>
-  <version>0.0.512</version>
+  <version>0.0.528</version>
   <packaging>jar</packaging>
 
   <name>Pedestrian Topologies Extraction Protobuf Compiler in Scala</name>
@@ -45,7 +45,7 @@
     <dependency>
       <groupId>com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf</groupId>
       <artifactId>model_v2_scala_2.11</artifactId>
-      <version>0.0.512</version>
+      <version>0.0.528</version>
     </dependency>
 
     <!-- HERE dependencies -->
@@ -109,8 +109,8 @@
 
   <profiles>
     <profile>
-      <!-- Profile to build a "fat" jar that can be uploaded and run on the HERE Platform -->
-      <!-- Use the "mvn -Pplatform package" to build the Platform fat jar of the Pipeline -->
+      <!-- Profile to build a "fat" jar that can be uploaded and run on the HERE platform -->
+      <!-- Use the "mvn -Pplatform package" to build the platform fat jar of the pipeline -->
       <id>platform</id>
       <build>
         <pluginManagement>

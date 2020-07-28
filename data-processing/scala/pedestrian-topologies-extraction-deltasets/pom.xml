@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.here.platform.data.processing.example.scala</groupId>
   <artifactId>pedestrian-topologies-extraction-deltasets</artifactId>
-  <version>0.0.512</version>
+  <version>0.0.528</version>
   <packaging>jar</packaging>
 
   <name>Pedestrian topologies extraction compiler example to GeoJson in scala with DeltaSets</name>
@@ -22,7 +22,7 @@
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <sdk-bom.version>2.16.8</sdk-bom.version>
+    <sdk-bom.version>2.17.9</sdk-bom.version>
     <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
     <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
@@ -135,8 +135,8 @@
 
   <profiles>
     <profile>
-      <!-- Profile to build a "fat" jar that can be uploaded and run on the HERE Platform -->
-      <!-- Use the "mvn -Pplatform package" to build the Platform fat jar of the Pipeline -->
+      <!-- Profile to build a "fat" jar that can be uploaded and run on the HERE platform -->
+      <!-- Use the "mvn -Pplatform package" to build the platform fat jar of the pipeline -->
       <id>platform</id>
       <build>
         <pluginManagement>

@@ -1,6 +1,7 @@
 # A Compiler to Compute Catalog Differences
 
-This Data Processing Library Java example shows how to use the Open Location Platform SDK
+This Data Processing Library Java example shows how to use the
+HERE Data SDK
 to build a compiler pipeline that computes the difference between two versions of an input catalog
 and outputs the difference is JSON format.
 
@@ -21,62 +22,88 @@ between version 1 and version 3 of the input catalog. In the first run of the co
 is no previous run, the version specified in the pipeline job configuration file is compared to an
 empty catalog.
 
-## Set up Access to the Data API
+## Get Your Credentials
 
-To run the example, you need access to a HERE Map Content catalog, and you need to create one
-catalog of your own. For more information, refer to the [Open Location Platform
-SDK](https://developer.here.com/olp/documentation/sdk-developer-guide/content/dev_guide/index.html)
-and [Portal](https://developer.here.com/olp/documentation) documentation.
+To run this example, you need two sets of credentials:
 
-### Create the HERE Map Content Differences Catalog
+* **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input. 
+* **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
+
+For more details on how to set up your credentials, see [Get Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/topics/get-credentials.html).
+
+For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html) tutorial.
+
+## Configure a Project
+
+To follow this example, you'll need a [project](https://developer.here.com/documentation/access-control/user_guide/topics/manage-projects.html). A project is a collection of platform resources
+ (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
+ **HERE platform portal**.
+ 
+Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
+
+```bash
+olp project create $PROJECT_ID $PROJECT_NAME
+```
+
+The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
+
+> Note: You don't have to provide a `--scope` parameter if your app has a default scope.
+
+For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
+
+## Create the HERE Map Content Differences Catalog
 
 The catalog you need to create is used to store the differences between two versions of the HERE Map
 Content catalog.
 
-Using the OLP Portal, create a new catalog and the following catalog layers:
+Use the **HERE platform portal** to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html)::
 
 | Layer ID               | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding |
 |------------------------|------------|--------------|------------|--------------------------|------------------|
 | topology-geometry-diff | Versioned  | HEREtile     | 12         | application/json         | uncompressed     |
 | state                  | Versioned  | Generic      | N.A.       | application/octet-stream | uncompressed     |
 
-Alternatively, you can use the OLP CLI to create a catalog and the corresponding layers.
-In the commands that follow replace the variable placeholders with the following values:
+Alternatively, you can use the OLP CLI to create the catalog and the corresponding layers.
+
+In the commands that follow, replace the variable placeholders with the following values:
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
-- `$GROUP_ID` is the credentials group ID your HERE user belongs to.
+- `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create` command).
+- `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE China environment](./config/here-china/pipeline-config.conf)).
 
-* First, create an output catalog and grant the correct permission to your group:
+> Note:
+> We recommend you to set values to variables so that you can easily copy and execute the following commands.
+
+1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
+Make sure to note down the HRN returned by the following command for later use:
 
 ```bash
 olp catalog create $CATALOG_ID $CATALOG_ID --summary "HERE Map Content diftool example catalog" \
-            --description "HERE Map Content diftool example catalog"
-olp catalog permission grant $CATALOG_HRN --group $GROUP_ID --read --write --manage
+            --description "HERE Map Content diftool example catalog" \
+            --scope $PROJECT_HRN
 ```
 
-* Next, add layers to the catalog you have just created:
+2. Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add) command to add two `versioned` layers to your catalog:
 
 ```bash
 olp catalog layer add $CATALOG_HRN topology-geometry-diff topology-geometry-diff --versioned \
-            --summary "diff" --description "diff" --partitioning heretile:12 --content-type application/json
+            --summary "diff" --description "diff" --partitioning heretile:12 \
+            --content-type application/json --scope $PROJECT_HRN
 olp catalog layer add $CATALOG_HRN state state --versioned --summary "state" --description "state" \
-            --partitioning Generic --content-type application/octet-stream
+            --partitioning Generic --content-type application/octet-stream \
+            --scope $PROJECT_HRN
 ```
 
-For more details on how to create a catalog and its layers refer to the [Data User
-Guide](https://developer.here.com/olp/documentation/data-user-guide/content/index.html),
-particularly [Create a
-Catalog](https://developer.here.com/olp/documentation/data-user-guide/content/portal/catalog-creating.html)
-and [Create a
-Layer](https://developer.here.com/olp/documentation/data-user-guide/content/portal/layer-creating.html).
+3. Use the [`olp project resources link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link) command to link the _HERE Map Content_ catalog to your project:
 
-### Set up Local Data Access
+```bash
+olp project resources link $PROJECT_HRN $CATALOG_RIB
+```
 
-To run the compiler locally, you also need to create an app key, download the properties file for
-that app key to your computer, and grant your app access to your catalog.
-
-For details on how you can obtain the necessary credentials, see [Get
-Credentials](https://developer.here.com/olp/documentation/access-control/user-guide/content/topics/get-credentials.html).
+- For more details on catalog commands, see [Catalog Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html).
+- For more details on layer commands, see [Layer Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html).
+- For more details on project commands, see [Project Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html).
+- For instructions on how to link a resource to a project, see [Project Resources Link command](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link).
 
 ## Configure the Compiler
 
@@ -85,12 +112,12 @@ Integrated Development Environment (IDE).
 
 ### Pipeline Configuration
 
-The `config/here/pipeline-config.conf` (for the HERE OLP environment) and
-`config/here-china/pipeline-config.conf` (for the HERE OLP China environment) files contain
+The `config/here/pipeline-config.conf` (for the HERE platform environment) and
+`config/here-china/pipeline-config.conf` (for the HERE platform China environment) files contain
 the permanent configuration of the data sources for the compiler.
 
-Pick the file that corresponds to your OLP environemnt. For example, the pipeline configuration for
-the HERE OLP environment looks like:
+Pick the file that corresponds to your platform environemnt. For example, the pipeline configuration for
+the HERE platform environment looks like:
 
 ```javascript
 pipeline.config {
@@ -102,8 +129,8 @@ pipeline.config {
 ```
 
 Replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your HERE Map Content differences
-catalog. To find the HRN, in the [OLP Portal](https://platform.here.com/) or the [OLP China
-Portal](https://platform.hereolp.cn/), navigate to your catalog; the HRN is displayed in the upper
+catalog. To find the HRN, in the [HERE platform portal](https://platform.here.com/) or the
+[HERE platform China portal](https://platform.hereolp.cn/), navigate to your catalog; the HRN is displayed in the upper
 left corner of the page.
 
 ### Pipeline Job Configuration
@@ -113,15 +140,14 @@ compiler on.
 
 The example project provides two template job configurations, `config/here/pipeline-job-first.conf` and
 `config/here/pipeline-job-second.conf` for the first and second run of the pipeline, respectively.
-If you are using the OLP China environment use the files `config/here-chine/pipeline-job-first.conf`
+If you are using the China platform environment use the files `config/here-chine/pipeline-job-first.conf`
 and `config/here-china/pipeline-job-second.conf` instead.
 
 `pipeline-job-first.conf` specifies in the line `version = 1` that the version 1 of the input
 catalog should be processed in the first run. You can change this version to any number between 0
 and the most recent version of the HERE Map Content catalog. You can find the most recent version by
-opening the [OLP Portal](https://platform.here.com/) or the
-[OLP China Portal](https://platform.hereolp.cn/) and navigating to the HERE Map  Content
-catalog; the current version number is displayed in the upper left corner of the page.
+opening the [HERE platform portal](https://platform.here.com/) or the
+[HERE platform China portal](https://platform.hereolp.cn/) and navigating to the HERE Map Content catalog, and viewing the current catalog's version in the Catalog info section.
 
 `pipeline-job-second.conf` specifies in the line `version = 2` that version 2 of the input
 catalog should be processed in the second run. You can change this version to any number that is
@@ -130,8 +156,8 @@ specified in `pipeline-job-first.conf`.
 
 ### Other Configuration Files
 
-The remainder of the configuration is specified in the `application.conf` found in the
-`src/main/resources` directory of the compiler project. But you do not have to modify it unless you
+The remainder of the configuration is specified in the `application.conf` file that can be found in the
+`src/main/resources` directory of the compiler project. However, you do not have to modify it unless you
 want to change the behavior of the compiler.
 
 ## Build the Compiler
@@ -155,8 +181,8 @@ job-specific versions of the catalogs, to read and write to.
 For local runs, a bounding box filter is provided in the
 `config/here/local-application.conf` and `config/here-china/local-application.conf` to
 limit the number of partitions to be processed. This speeds up the compilation process. In this
-example, we use a bounding box around the city of Berlin and Beijing for the HERE OLP and HERE OLP
-China environments respectively. You can edit the bounding box coordinates to compile a different
+example, we use a bounding box around the cities of Berlin and Beijing for the HERE platform and HERE
+China platfrom environments respectively. You can edit the bounding box coordinates to compile a different
 partition of HERE Map Content. Make sure you update the layer coverage to reflect the different
 geographical region. In order to use this configuration file, you need to use the `-Dconfig.file`
 parameter.
@@ -169,7 +195,7 @@ in `pipeline-job-first.conf` to an empty catalog. That means all segments contai
 input catalog will be considered as newly added segments. Run the following command line in the
 `heremapcontent-difftool` directory to run the compiler.
 
-For the HERE OLP environment:
+For the HERE platform environment:
 
 ```bash
 mvn exec:java \
@@ -177,7 +203,8 @@ mvn exec:java \
 -Dpipeline-config.file=./config/here/pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job-first.conf \
 -Dconfig.file=./config/here/local-application.conf \
--Dexec.args="--master local[*]"
+-Dexec.args="--master local[*]" \
+-Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
 ```
 
 In a second run, we can now compute the differences between the version used in the first run and
@@ -190,10 +217,11 @@ mvn exec:java \
 -Dpipeline-config.file=./config/here/pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job-second.conf \
 -Dconfig.file=./config/here/local-application.conf \
--Dexec.args="--master local[*]"
+-Dexec.args="--master local[*]" \
+-Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
 ```
 
-For the HERE OLP China environment, instead, use the files in the `config/here-chine` directory:
+For the HERE platform China environment, instead, use the files in the `config/here-chine` directory:
 
 ```bash
 mvn exec:java \
@@ -201,7 +229,8 @@ mvn exec:java \
 -Dpipeline-config.file=./config/here-china/pipeline-config.conf \
 -Dpipeline-job.file=./config/here-china/pipeline-job-first.conf \
 -Dconfig.file=./config/here-china/local-application.conf \
--Dexec.args="--master local[*]"
+-Dexec.args="--master local[*]" \
+-Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
 ```
 
 ```bash
@@ -210,10 +239,11 @@ mvn exec:java \
 -Dpipeline-config.file=./config/here-china/pipeline-config.conf \
 -Dpipeline-job.file=./config/here-china/pipeline-job-second.conf \
 -Dconfig.file=./config/here-china/local-application.conf \
--Dexec.args="--master local[*]"
+-Dexec.args="--master local[*]" \
+-Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
 ```
 
-## Run this Compiler as an Open Location Platform Pipeline
+## Run this Compiler as the HERE Platform Pipeline
 
 ### Generate a Fat JAR file:
 
@@ -227,40 +257,50 @@ mvn -Pplatform package
 ### Deploy The Compiler to a Pipeline:
 
 Once the previous command is finished, your JAR is then available at the `target` directory, and you
-can upload it using the [OLP Pipeline UI](https://platform.here.com/pipelines) (the
-[OLP China Pipeline UI](https://platform.hereolp.cn/pipelines) in China)
-or the [Open Location Platform CLI](https://developer.here.com/olp/documentation/open-location-platform-cli).
+can upload it using the [HERE pipeline UI](https://platform.here.com/pipelines) (the
+[HERE China pipeline UI](https://platform.hereolp.cn/pipelines) in China)
+or the [OLP CLI](https://developer.here.com/olp/documentation/open-location-platform-cli).
 
-You can use the OLP CLI to create pipeline components and activate it, with the following commands:
-* Create pipeline components:
+You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
+
+1. [Create](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline-workflows.html) pipeline components:
 
 ```bash
-olp pipeline create $COMPONENT_NAME_Pipeline $GROUP_ID
+olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
 olp pipeline template create $COMPONENT_NAME_Template batch-2.1.0 $PATH_TO_JAR \
-                com.here.platform.data.processing.example.java.difftool.processor.Main $GROUP_ID \
-                --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib
+                com.here.platform.data.processing.example.java.difftool.processor.Main \
+                --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
+                --scope $PROJECT_HRN
 olp pipeline version create $COMPONENT_NAME_version $PIPELINE_ID $PIPELINE_TEMPLATE_ID \
-                "$PATH_TO_CONFIG_FOLDER/pipeline-config.conf"
+                "$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
+                --scope $PROJECT_HRN
 ```
 
-* Activate the pipeline version:
+2. [Activate](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-activate) the pipeline version:
 
 ```bash
-olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job-first.conf" --output-catalog -1
+olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \
+                --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job-first.conf" --output-catalog -1 \
+                --scope $PROJECT_HRN
 ```
 
-* Wait for the first job to finish and start the second run with the different version of input catalog:
+3. Wait for the first job to finish and start the second run with the different version of input catalog:
 
 ```bash
-olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job-second.conf" --output-catalog 0
+olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \
+                --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job-second.conf" --output-catalog 0 \
+                --scope $PROJECT_HRN
 ```
+
+In the [HERE platform portal](https://platform.here.com/pipelines) / [HERE platform China portal](https://platform.hereolp.cn/pipelines)
+navigate to your pipeline to see its status.
 
 ## Verify the Output
 
-In the [OLP Portal](https://platform.here.com/) / [OLP China Portal](https://platform.hereolp.cn/)
+In the [HERE platform portal](https://platform.here.com/) / [HERE platform China portal](https://platform.hereolp.cn/)
 select the _Data_ tab and find your catalog.
 
-- Open `topology-geometry-diff` layer and select the _Inspect_ tab.
-- On the map, navigate to the location of your bounding box and set the zoom to level 10.
-- Finally, select any highlighted partition to view the results. The JSON output of the compiler
+1. Open the `topology-geometry-diff` layer and select the _Inspect_ tab.
+2. On the map, navigate to the location of your bounding box and set the zoom to level 10.
+3. Finally, select any highlighted partition to view the results. The JSON output of the compiler
   should be displayed on the right side.
