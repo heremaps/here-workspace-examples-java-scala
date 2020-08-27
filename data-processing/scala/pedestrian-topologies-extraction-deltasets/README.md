@@ -32,7 +32,10 @@ olp project create $PROJECT_ID $PROJECT_NAME
 
 The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
 
-> Note: You don't have to provide a `--scope` parameter if your app has a default scope.
+> Note:
+> You don't have to provide a `--scope` parameter if your app has a default scope.
+> For details on how to set a default project scope for an app, see the _Specify a
+> default Project_ for Apps chapter of the [Teams and Permissions Guide](https://developer.here.com/documentation/access-control/user_guide/topics/manage-projects.html).
 
 For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
 

@@ -41,7 +41,7 @@ For more information, see a use case illustration of [keeping a client map up to
 ### Archiving Stream Data
 
 The HERE Workspace allows you to retain stream data for longer periods, which allows you to later query and process the retained data for non-real-time use cases.
-For more information, see [Data Archiving Library Developer Guide.](https://developer.here.com/olp/documentation/data-archiving-library/dev_guide/index.html)
+For more information, see [Data Archiving Library Developer Guide](https://developer.here.com/olp/documentation/data-archiving-library/dev_guide/index.html).
 
 | Name | Description | Source | Labels / Topics |
 | ---- | ----------- | ------ | --------------- |
@@ -50,6 +50,17 @@ For more information, see [Data Archiving Library Developer Guide.](https://deve
 | Archiving SDII stream data in Protobuf | The example shows how to use the Data Archiving Library to quickly develop an archiving solution that archives data in Protobuf format. | [Java](data-archive/java/protobuf-example) | Data Archiving Library, Flink, Stream, Protobuf, SDII|
 | Archiving SENSORIS stream data in Parquet| The example shows how to use the Data Archiving Library to quickly develop an archiving solution that archives SENSORIS data in Parquet format. | [Java](data-archive/java/sensoris-parquet-example) | Data Archiving Library, Flink, Stream, SENSORIS, Parquet |
 | Archiving SENSORIS stream data in Protobuf| The example shows how to use the Data Archiving Library to quickly develop an archiving solution that archives SENSORIS data in Protobuf format. | [Java](data-archive/java/sensoris-protobuf-example) | Data Archiving Library, Flink, Stream, SENSORIS, Protobuf |
+
+### Compacting Index Data
+
+The HERE Workspace allows you to compact data files with the same index attribute values into one or more files based on the configuration.
+Compaction reduces the index layer storage cost, improves query performance, and makes subsequent data processing more efficient.
+For more information, see [Index Compaction Library Developer Guide](https://developer.here.com/olp/documentation/index-compaction-library/dev_guide/index.html).
+
+| Name | Description | Source | Labels / Topics |
+| ---- | ----------- | ------ | --------------- |
+| Compacting Parquet format indexed data | The example shows how to use the Index Compaction Library to quickly develop a compaction application that compacts parquet format data. | [Java](index-compaction-batch/java/parquet-example) | Index Compaction Library, Spark, Batch, Parquet, SDII |
+| Compacting Protobuf format indexed data | The example shows how to use the Index Compaction Library to quickly develop a compaction application that compacts protobuf format data. | [Java](index-compaction-batch/java/protobuf-example) | Index Compaction Library, Spark, Batch, Parquet, SDII | 
 
 ### Small Examples Showing Usage of Location Library
 

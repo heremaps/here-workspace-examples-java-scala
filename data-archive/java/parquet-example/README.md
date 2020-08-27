@@ -41,7 +41,10 @@ olp project create $PROJECT_ID $PROJECT_NAME
 
 The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
 
-> Note: You don't have to provide a `--scope` parameter if your app has a default scope.
+> Note:
+> You don't have to provide a `--scope` parameter if your app has a default scope.
+> For details on how to set a default project scope for an app, see the _Specify a
+> default Project_ for Apps chapter of the [Teams and Permissions Guide](https://developer.here.com/documentation/access-control/user_guide/topics/manage-projects.html).
 
 For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
 
@@ -57,10 +60,10 @@ Use the **HERE platform portal** to [create the input catalog](https://developer
 
 - For instructions on how to create a catalog, refer to **Create a Catalog** in [Data User Guide](#data-user-guide).
 - For instructions on how to create a layer, refer to **Create a Layer** in [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, refer to **Project Resources Link** in [Command Line Interface Developer Guide](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link).
+- For instructions on how to link a resource to a project, refer to **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
 - For instructions on how to share your project, refer to **Manage Projects** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide).
 
-Alternatively, you can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html) instead of the platform portal to create a new catalog with a `stream` layer:
+Alternatively, you can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with a `stream` layer:
 
 > Note:
 > We recommend you to set values to variables so that you can easily copy and execute the following commands.
@@ -94,10 +97,10 @@ Use the **HERE platform portal** to [create the output catalog](https://develope
 
 - For instructions on how to create a catalog, refer to **Create a Catalog** in [Data User Guide](#data-user-guide).
 - For instructions on how to create a layer, refer to **Create a Layer** in [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, refer to **Project Resources Link** in [Command Line Interface Developer Guide](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link).
+- For instructions on how to link a resource to a project, refer to **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
 - For instructions on how to share your project, refer to **Manage Projects** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide).
 
-Alternatively, you can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html) instead of the platform portal to create a new catalog with an `index` layer:
+Alternatively, you can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with an `index` layer:
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
 Make sure to note down the HRN returned by the following command for later use:
@@ -151,7 +154,7 @@ For information on using the platform portal to configure and run a pipeline, se
 
 #### Use the Command Line Interface to Run a Pipeline
 
-You can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html) to create pipeline components and activate it.
+You can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) to create pipeline components and activate it.
 
 First, configure data sources using the `config/pipeline-config.conf` file. This file contains the configuration of the data sources which are used as placeholders for Data Archiving Library examples:
 
@@ -164,7 +167,7 @@ pipeline.config {
 }
 ```
 
-You must replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your output catalog and `YOUR_INPUT_CATALOG_HRN` with the HRN of your input catalog. To find the HRN, in the [HERE platform portal](#olp-portal), navigate to your catalog. The HRN is displayed in the upper left corner of the page.
+You must replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your output catalog and `YOUR_INPUT_CATALOG_HRN` with the HRN of your input catalog. To find the HRN, in the [HERE platform portal](#here-platform-portal), navigate to your catalog. The HRN is displayed in the upper left corner of the page.
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
@@ -190,20 +193,20 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
   olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
   ```
 
-For more information on using the **OLP CLI** to configure and run a pipeline, see **Pipeline Commands** in [Command Line Interface Developer Guide](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html).
+For more information on using the **OLP CLI** to configure and run a pipeline, see **Pipeline Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
 
 > #### Note
 > The selection of input and output catalog values using the portal when creating pipeline version or the values added to `pipeline.config` when using command line interface must be valid. These values represent a placeholder which will not be used by the the Data Archiving Library. Instead, values will be taken from the `application.conf` file. If you want to change or update the input/output catlogs, modify the `application.conf` file and rebuild.
 
 ## Verify the Output
 
-In the [HERE platform portal](#olp-portal) select the _Pipelines_ tab and find your pipeline.
+In the [HERE platform portal](#here-platform-portal) select the _Pipelines_ tab and find your pipeline.
 - Verify pipeline is in `Running` state.
 
 After the pipeline is running, you can ingest your data into the `stream` layer created in the `Create Input Catalog and Layer` section using one of the following:
 - **Publish to a Stream Layer** in [Data API Developer Guide](#data-api-developer-guide)
 - **Publish Data** in [Data Client Library Developer Guide](#data-client-library-developer-guide)
-- **Stream** in [Command Line Interface Developer Guide](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html)
+- **Stream** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
 
 > #### Note
 > For ingesting data, make sure your app has `read` and `write` permission to your `stream` layer.
@@ -216,7 +219,7 @@ After the pipeline is running, you can ingest your data into the `stream` layer 
 After your data is archived in `index` layer, you can query/retrieve data using one of the following:
 - **Get Data from an Index Layer** in [Data API Developer Guide](#data-api-developer-guide)
 - **Get Data** in [Data Client Library Developer Guide](#data-client-library-developer-guide)
-- **Partitions** in [Command Line Interface Developer Guide](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html)
+- **Partitions** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
 > #### Note
 > For querying metadata or retrieving data, make sure your app has `read` permission to your `index` layer.
 > For instructions on how to manage app, refer to **Manage Apps** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide).
@@ -240,14 +243,10 @@ If you have any trouble about accessing logs, monitoring, investigating failures
 
 ## Known Issue
 
-**Windows OS related issue:**
-
-For packaging parquet-example in Windows OS, you need to set environment variable HADOOP_HOME. To do this, follow these steps:
-
-1. Download winutils.exe at http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe
-2. Create the folder C:\winutils\bin
-3. Copy winutils.exe inside C:\winutils\bin
-4. Set environment variable HADOOP_HOME to C:\winutils
+If you encounter problems running Hadoop on Windows,
+you can follow this [guide](https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems)
+to get required binary like `WINUTILS.EXE` and
+set the environment variable `HADOOP_HOME` to point to the directory above the `BIN` dir containing `WINUTILS.EXE`.
 
 ## References
 

@@ -1,20 +1,29 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *   http://www.apache.org/licenses/LICENSE-2.0
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+/*
+ * Copyright (C) 2019-2020 HERE Europe B.V.
  * SPDX-License-Identifier: Apache-2.0
- * License-Filename: LICENSE
+ *
+ * This file is based on commit f84938441be49c665595c936ac631c3e5f171bf9
+ * from https://github.com/apache/parquet-mr and parts have been modified by HERE
+ * to support working with empty Group of field descriptors in our SDII message schema.
  */
 
 package com.here.platform.data.archive.example.parquet;
@@ -47,7 +56,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Custom changes of ProtoSchemaConverter class from parquet-mr project to be compatible with
- * SdiiMessage schema Converts a Protocol Buffer Descriptor into a Parquet schema.
+ * SdiiMessage schema. Converts a Protocol Buffer Descriptor into a Parquet schema.
  */
 public class CustomProtoSchemaConverter {
 
@@ -83,7 +92,7 @@ public class CustomProtoSchemaConverter {
   private <T> GroupBuilder<T> convertFields(
       GroupBuilder<T> groupBuilder, List<FieldDescriptor> fieldDescriptors) {
     for (FieldDescriptor fieldDescriptor : fieldDescriptors) {
-      // Added
+      // Added by HERE
       if (isNotEmptyGroup(fieldDescriptor)) {
         groupBuilder =
             addField(fieldDescriptor, groupBuilder)
@@ -235,7 +244,7 @@ public class CustomProtoSchemaConverter {
     }
   }
 
-  // Added
+  // Added by HERE
   private boolean isNotEmptyGroup(FieldDescriptor fieldDescriptor) {
     return !(fieldDescriptor.getJavaType().equals(JavaType.MESSAGE)
         && fieldDescriptor.getMessageType().getFields().isEmpty());

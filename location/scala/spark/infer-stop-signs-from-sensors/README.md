@@ -81,8 +81,10 @@ olp project create $PROJECT_ID $PROJECT_NAME
 
 The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
 
-> #### Note:: 
+> Note:
 > You don't have to provide a `--scope` parameter if your app has a default scope.
+> For details on how to set a default project scope for an app, see the _Specify a
+> default Project_ for Apps chapter of the [Teams and Permissions Guide](https://developer.here.com/documentation/access-control/user_guide/topics/manage-projects.html).
 
 For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
 
@@ -101,15 +103,15 @@ Alternatively, you can use the OLP CLI to create the catalog and the correspondi
 In the commands that follow replace the variable placeholders with the following values:
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
-- `$HRN_PARTITION` is the platform environment you are in. Specify `here` unless you are
-using the platform China environment, in which case specify `here-cn`.
 - `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create`).
 - `$COVERAGE` is a two-letter code for country and region (in this case `DE` or `CN` for China)
+- `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE China environment](./config/here-china/pipeline-config.conf)).
+- `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE China environment](./config/here-china/pipeline-config.conf)).
 
 > Note:
 > We recommend you to set values to variables so that you can easily copy and execute the following commands.
 
-* Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
+1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
   Make sure to note down the HRN returned by the following command for later use:
 
 ```bash
@@ -118,7 +120,7 @@ olp catalog create $CATALOG_ID $CATALOG_ID --summary "Output catalog for Infer S
             --scope $PROJECT_HRN
 ```
 
-* Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add) command to add two versioned layers to your catalog:
+2. Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add) command to add two versioned layers to your catalog:
 
 ```bash
 olp catalog layer add $CATALOG_HRN stop-signs stop-signs --versioned --summary "Layer for output partitions" \
@@ -127,7 +129,7 @@ olp catalog layer add $CATALOG_HRN stop-signs stop-signs --versioned --summary "
             --scope $PROJECT_HRN
 ```
 
-* Update the output catalog HRN in the pipeline-config.conf file
+3. Update the output catalog HRN in the pipeline-config.conf file
 
 The `config/here/pipeline-config.conf` (for the HERE platform environment) and
 `config/here-china/pipeline-config.conf` (for the HERE platform China environment) files contain
@@ -139,11 +141,7 @@ To find the HRN, in the [HERE platform portal](https://platform.here.com/) or th
 portal](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
 left corner of page.
 
-* Use the [`olp project resources link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link) command to link the _HERE Sample SDII Messages - Berlin_ and _HERE Optimized Map for Location Library_ catalog to your project.
-
-In the commands that follow, replace the variable placeholders with the following values:
-- `$INPUT_SDII_CATALOG` is public catalog hrn:here:data::olp-here:olp-sdii-sample-berlin-2 or hrn:here-cn:data::olp-cn-here:sample-data on China.
-- `$INPUT_OPTIMIZED_MAP_CATALOG` is public catalog hrn:here:data::olp-here:here-optimized-map-for-location-library-2 or hrn:here-cn:data::olp-cn-here:here-optimized-map-for-location-library-china-2.
+4. Use the [`olp project resources link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link) command to link the _HERE Sample SDII Messages - Berlin_ and _HERE Optimized Map for Location Library_ catalog to your project.
 
 ```bash
 olp project resources link $PROJECT_HRN $INPUT_SDII_CATALOG
@@ -180,7 +178,7 @@ In the command above:
 - `local[2]` defines the number of threads Spark will run in parallel to
      process the batch.
 
-* Inspect the partitions
+Inspect the partitions
 
 ```bash
 olp catalog layer partition get $CATALOG_HRN stop-signs --all --output="target/stop-signs" --scope $PROJECT_HRN
