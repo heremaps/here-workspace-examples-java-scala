@@ -3,7 +3,7 @@
 
     <groupId>com.here.platform.data.validation.example.quickstart.scala</groupId>
     <artifactId>metrics_2.11</artifactId>
-    <version>0.0.548</version>
+    <version>0.0.565</version>
     <packaging>jar</packaging>
 
     <name>DVL quickstart metrics example</name>
@@ -13,7 +13,7 @@
     </organization>
 
     <properties>
-        <sdk-bom.version>2.18.5</sdk-bom.version>
+        <sdk-bom.version>2.19.10</sdk-bom.version>
         <dvlcoreschema.version>0.0.5</dvlcoreschema.version>
         <quickstartschema.version>1.0.5</quickstartschema.version>
         <artifact.wagon.version>1.6.0</artifact.wagon.version>

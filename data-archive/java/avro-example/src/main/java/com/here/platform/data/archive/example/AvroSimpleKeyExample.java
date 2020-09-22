@@ -34,6 +34,9 @@ import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.TreeSet;
 import java.util.stream.StreamSupport;
+import org.apache.flink.api.common.functions.RuntimeContext;
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.metrics.Counter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,9 +48,18 @@ public class AvroSimpleKeyExample implements SimpleUDF {
   static final String INGESTION_TIME = "ingestionTime";
   static final String EVENT_TYPE = "eventType";
   static final int ZOOM_LEVEL = 8;
+  private Counter getKeysDuration;
+  private Counter aggregateDuration;
+
+  @Override
+  public void open(Configuration parameters, RuntimeContext runtimeContext) {
+    getKeysDuration = runtimeContext.getMetricGroup().counter("getKeysDuration");
+    aggregateDuration = runtimeContext.getMetricGroup().counter("aggregateDuration");
+  }
 
   @Override
   public Map<String, Object> getKeys(Map<MetadataName, String> metadata, byte[] payload) {
+    long startTime = System.currentTimeMillis();
     SdiiMessage.Message sdiiMessage;
     try {
       sdiiMessage = SdiiMessage.Message.parseFrom(payload);
@@ -93,11 +105,13 @@ public class AvroSimpleKeyExample implements SimpleUDF {
       result.put(EVENT_TYPE, event);
     }
 
+    getKeysDuration.inc(System.currentTimeMillis() - startTime);
     return result;
   }
 
   @Override
   public byte[] aggregate(Map<String, Object> keys, Iterator<byte[]> messages) {
+    long startTime = System.currentTimeMillis();
     try {
       Iterator<SdiiMessage.Message> sdiiMessages =
           StreamSupport.stream(
@@ -114,6 +128,8 @@ public class AvroSimpleKeyExample implements SimpleUDF {
       return AvroHelper.aggregateProtobufMessagesAsAvro(sdiiMessages, SdiiMessage.Message.class);
     } catch (Exception e) {
       LOG.error("Aggregation errors....", e);
+    } finally {
+      aggregateDuration.inc(System.currentTimeMillis() - startTime);
     }
     return null;
   }

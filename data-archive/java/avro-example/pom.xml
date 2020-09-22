@@ -3,7 +3,7 @@
 
     <groupId>com.here.platform.data.archive</groupId>
     <artifactId>data-archive-avro-example</artifactId>
-    <version>0.0.548</version>
+    <version>0.0.565</version>
     <packaging>jar</packaging>
 
     <!-- Meta information section start -->
@@ -23,13 +23,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <sdk-bom.version>2.18.5</sdk-bom.version>
+        <sdk-bom.version>2.19.10</sdk-bom.version>
         <scala.compat.version>2.11</scala.compat.version>
 
         <avro.version>1.10.0</avro.version>
         <commons-logging.version>1.2</commons-logging.version>
 
         <junit.version>4.12</junit.version>
+        <mockito-all.version>1.10.19</mockito-all.version>
     </properties>
 
     <dependencyManagement>
@@ -45,6 +46,20 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- Apache Flink dependencies -->
+        <!-- These dependencies are provided, because they should not be packaged into the JAR file. -->
+        <!-- Versions for these dependencies come from environment-stream pom -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-metrics-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- External Dependencies from sdk-dep-common-2.0.0 pom -->
         <dependency>
             <groupId>org.apache.avro</groupId>
@@ -90,6 +105,12 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito-all.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -174,7 +195,17 @@
             <dependencies>
                 <dependency>
                     <groupId>org.apache.flink</groupId>
+                    <artifactId>flink-core</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.flink</groupId>
                     <artifactId>flink-java</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.flink</groupId>
+                    <artifactId>flink-metrics-core</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>

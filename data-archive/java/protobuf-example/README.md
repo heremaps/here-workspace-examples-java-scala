@@ -236,6 +236,10 @@ To parse the data retrieved from `index` layer, refer to "How to parse the outpu
 Besides running this example in a pipeline, you can also **Run an Archiving Application Locally**, refer to [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
 Running locally in your IDE or Flink cluster will use the configuration from file `application.conf` in the src/test/resource/ directory, ensure these values are updated before compiling and uploading your jar.
 Refer to **Manage Apps** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide) to create a new application and get `credentials.properties`. You will share read/write permissions with this app when you create your `stream` and `index` layers.
+> #### Note
+> This example provides the maven profile `add-dependencies-for-IDEA`, which compiles the necessary dependencies in order to run an application locally from your IDE.
+> When running this example from your IDE, ensure you have this profile enabled in the Maven Toolbar. 
+> Alternatively, you can select the checkbox for `Include dependencies with "Provided" scope` in `Edit Configurations` for [ProtobufExampleRunner.java](src/test/java/com/here/platform/data/archive/example/ProtobufExampleRunner.java).
 
 ## Troubleshooting
 

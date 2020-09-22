@@ -20,6 +20,11 @@
 package com.here.platform.data.archive.example;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import com.here.olp.util.quad.factory.HereQuadFactory;
 import com.here.platform.dal.custom.MetadataName;
@@ -37,11 +42,44 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 import org.apache.commons.io.FileUtils;
+import org.apache.flink.api.common.functions.RuntimeContext;
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.metrics.Counter;
+import org.apache.flink.metrics.MetricGroup;
+import org.apache.flink.metrics.SimpleCounter;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AvroSimpleKeyExampleTest {
 
-  private AvroSimpleKeyExample example = new AvroSimpleKeyExample();
+  @Mock Configuration parameters;
+  @Mock RuntimeContext runtimeContext;
+  @Mock MetricGroup metricGroup;
+
+  private AvroSimpleKeyExample example;
+  private Counter getKeysDuration = new SimpleCounter();
+  private Counter aggregateDuration = new SimpleCounter();
+
+  @Before
+  public void init() {
+    when(runtimeContext.getMetricGroup()).thenReturn(metricGroup);
+    when(metricGroup.counter("getKeysDuration")).thenReturn(getKeysDuration);
+    when(metricGroup.counter("aggregateDuration")).thenReturn(aggregateDuration);
+    example = new AvroSimpleKeyExample();
+  }
+
+  @Test
+  public void testRegisterMetrics() {
+    example.open(parameters, runtimeContext);
+
+    verify(runtimeContext, times(2)).getMetricGroup();
+    verify(metricGroup, times(1)).counter(eq("getKeysDuration"));
+    verify(metricGroup, times(1)).counter(eq("aggregateDuration"));
+  }
 
   @Test
   public void testGetKeys() throws IOException {
@@ -51,10 +89,12 @@ public class AvroSimpleKeyExampleTest {
     double latitude = 10d;
     Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
     cal.setTimeInMillis(timestamp);
+    example.open(parameters, runtimeContext);
 
     SdiiMessage.Message sdiiMessage = prepareSDIIMessage(timestamp, true, longitude, latitude);
     Map<MetadataName, String> metadata = new HashMap<>();
     metadata.put(MetadataName.INGESTION_TIME, String.valueOf(timestamp));
+    assertEquals(0, getKeysDuration.getCount());
     Map<String, Object> keys = example.getKeys(metadata, sdiiMessage.toByteArray());
     assertEquals(
         HereQuadFactory.INSTANCE
@@ -65,6 +105,7 @@ public class AvroSimpleKeyExampleTest {
     assertEquals(
         SdiiCommon.SignRecognition.getDescriptor().getName(),
         keys.get(AvroSimpleKeyExample.EVENT_TYPE));
+    assertTrue(getKeysDuration.getCount() > 0);
   }
 
   @Test
@@ -74,7 +115,9 @@ public class AvroSimpleKeyExampleTest {
     SdiiMessage.Message message3 = prepareSDIIMessage(System.currentTimeMillis(), true, 10d, 10d);
     List<byte[]> messagesList =
         Arrays.asList(message1.toByteArray(), message2.toByteArray(), message3.toByteArray());
+    example.open(parameters, runtimeContext);
 
+    assertEquals(0, aggregateDuration.getCount());
     File tmpFile = File.createTempFile("test", ".avro");
     tmpFile.deleteOnExit();
     FileUtils.writeByteArrayToFile(
@@ -85,6 +128,7 @@ public class AvroSimpleKeyExampleTest {
     assertSDIIMessagesAreEqual(message1, list.get(0));
     assertSDIIMessagesAreEqual(message2, list.get(1));
     assertSDIIMessagesAreEqual(message3, list.get(2));
+    assertTrue(aggregateDuration.getCount() > 0);
   }
 
   @Test
@@ -93,6 +137,7 @@ public class AvroSimpleKeyExampleTest {
     SdiiMessage.Message message2 = prepareSDIIMessage(System.currentTimeMillis(), true, 10d, 10d);
     SdiiMessage.Message message3 = prepareSDIIMessage(System.currentTimeMillis(), true, 10d, 10d);
     SdiiMessage.Message message4 = prepareSDIIMessage(System.currentTimeMillis(), true, 10d, 10d);
+    example.open(parameters, runtimeContext);
     byte[] archiveBytesMessage1 =
         example.aggregate(
             null, Arrays.asList(message1.toByteArray(), message2.toByteArray()).iterator());
