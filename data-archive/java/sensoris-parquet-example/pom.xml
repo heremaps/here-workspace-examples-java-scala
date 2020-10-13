@@ -31,7 +31,7 @@
 
         <sensoris-specification_v1_0_0_java.version>1.0.0</sensoris-specification_v1_0_0_java.version>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
     </properties>
 
     <dependencyManagement>
