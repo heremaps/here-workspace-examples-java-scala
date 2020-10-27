@@ -3,7 +3,7 @@
 
     <groupId>com.here.platform.data.validation.example.quickstart.java</groupId>
     <artifactId>quickstartparent</artifactId>
-    <version>0.0.565</version>
+    <version>0.0.582</version>
     <packaging>pom</packaging>
 
     <name>Data Validation Library Java Quick Start Examples Parent</name>

@@ -159,7 +159,7 @@ To run the compiler locally, you will need to run the entry point to the compile
 
 - `com.here.platform.data.processing.example.java.feedback.Main`
 
-As _arguments_, you must provide the `--master` _parameter_ with the address of the master Spark
+As _arguments_, you must provide the `-Dspark.master` _parameter_ with the address of the master Spark
 server to connect to, and any configuration parameters you want to override. Alternatively, you can
 add those parameters to the `application.conf` file.
 
@@ -177,6 +177,9 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region. In order to use this configuration file, you need to use the `-Dconfig.file`
 parameter.
 
+Setup the environment variable `$PATH_TO_CONFIG_FOLDER` to `./config/here`, 
+for the HERE platform China environment use the files in the `./config/here-china` directory.
+
 ### Run the Compiler from the Command Line
 
 Finally run the following command line in the
@@ -187,10 +190,10 @@ For the HERE platform environment:
 ```bash
 mvn exec:java \
 -Dexec.mainClass=com.here.platform.data.processing.example.java.feedback.Main \
--Dpipeline-config.file=./config/here/pipeline-config.conf \
+-Dpipeline-config.file=$PATH_TO_CONFIG_FOLDER/pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job-first.conf \
 -Dconfig.file=./config/here/local-application.conf \
--Dexec.args="--master local[*]" \
+-Dspark.master=local[*] \
 -Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
 ```
 
@@ -200,32 +203,10 @@ To observe the behavior of The Stateful Processing Compiler you have to run comp
 ```bash
 mvn exec:java \
 -Dexec.mainClass=com.here.platform.data.processing.example.java.feedback.Main \
--Dpipeline-config.file=./config/here/pipeline-config.conf \
--Dpipeline-job.file=./config/here/pipeline-second.conf \
+-Dpipeline-config.file=$PATH_TO_CONFIG_FOLDER/pipeline-config.conf \
+-Dpipeline-job.file=./config/here/pipeline-job-second.conf \
 -Dconfig.file=./config/here/local-application.conf \
--Dexec.args="--master local[*]" \
--Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
-```
-
-For the HERE platform China environment, instead, use the files in the `config/here-china` directory:
-
-```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.java.feedback.Main \
--Dpipeline-config.file=./config/here-china/pipeline-config.conf \
--Dpipeline-job.file=./config/here-china/pipeline-job-first.conf \
--Dconfig.file=./config/here-china/local-application.conf \
--Dexec.args="--master local[*]" \
--Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
-```
-
-```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.java.feedback.Main \
--Dpipeline-config.file=./config/here-china/pipeline-config.conf \
--Dpipeline-job.file=./config/here-china/pipeline-second.conf \
--Dconfig.file=./config/here-china/local-application.conf \
--Dexec.args="--master local[*]" \
+-Dspark.master=local[*] \
 -Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
 ```
 

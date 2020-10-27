@@ -19,12 +19,10 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.nio.file.Files
+import java.io.{File, FileOutputStream}
 
-import au.id.jazzy.play.geojson
 import com.here.hrn.HRN
 import com.here.platform.example.location.utils.FileNameHelper
-import com.here.platform.example.location.utils.Visualization._
 import com.here.platform.location.core.graph.PropertyMap
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
@@ -35,9 +33,8 @@ import com.here.platform.location.referencing.{LinearLocation, LocationReference
 import com.here.platform.location.tpeg2.etl.{ExtendedTMCLocationReference, TMCLocationReference}
 import com.here.traffic.realtime.v2.TmcReference._
 import com.here.traffic.realtime.v2.Traffic._
-import play.api.libs.json._
-
-import scala.collection.immutable
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, SimpleStyleProperties}
 
 /** Convert and resolve TMC references present in RTTI messages.
   */
@@ -127,19 +124,25 @@ object TmcResolveReferencesInRttiMessageExample extends App {
         location.path.map(vertex => vertex -> ref)
     }.distinct
 
-    val geoJsonFeatures = allResolvedVertices.map {
-      case (vertex, ref) =>
-        val properties = Stroke(Blue) +
-          ("vertex" -> JsString(s"${vertex.tileId.value}:${vertex.index.value}")) +
-          ("locationCode" -> JsNumber(ref.tmcLocation.get.locationID))
-        geojson.Feature(geometries(vertex), Some(properties))
+    val geoJsonFeatures = allResolvedVertices.foldLeft(FeatureCollection()) {
+      case (fc, (vertex, ref)) =>
+        val Blue = Color("#76bde8")
+        fc.lineString(
+          geometries(vertex),
+          SimpleStyleProperties()
+            .stroke(Blue)
+            .add("vertex", s"${vertex.tileId.value}:${vertex.index.value}")
+            .add("locationCode", ref.tmcLocation.get.locationID)
+        )
     }
 
-    val json = Json.toJson(geojson.FeatureCollection(geoJsonFeatures.to[immutable.Seq]))
-    val path = FileNameHelper.exampleJsonFileFor(TmcResolveReferencesInRttiMessageExample).toPath
-    Files.write(path, Json.prettyPrint(json).getBytes)
+    val geojsonFile: File =
+      FileNameHelper.exampleJsonFileFor(TmcResolveReferencesInRttiMessageExample)
+    val fos = new FileOutputStream(geojsonFile)
+    geoJsonFeatures.writePretty(fos)
+    fos.close()
     println(s"""
-               |A GeoJson representation of the resolved vertices is available in $path
+               |A GeoJson representation of the resolved vertices is available in $geojsonFile
                |""".stripMargin)
   }
 }

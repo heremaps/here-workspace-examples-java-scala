@@ -19,23 +19,21 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.InputStreamReader
-import java.nio.file.Files
+import java.io.{File, FileOutputStream, InputStreamReader}
 
 import com.github.tototoshi.csv.CSVReader
 import com.here.hrn.HRN
 import com.here.platform.example.location.utils.FileNameHelper
-import com.here.platform.location.core.geospatial.{
-  ElementProjection,
-  GeoCoordinate,
-  ProximitySearch
-}
+import com.here.platform.location.core.geospatial.Implicits._
+import com.here.platform.location.core.geospatial.{ElementProjection, LineString, ProximitySearch}
 import com.here.platform.location.dataloader.core.Catalog
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.heremapcontent.geospatial.Implicits.HereCommonPointOps
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, SimpleStyleProperties}
 import com.here.schema.geometry.v2.geometry.Point
 
 /**
@@ -88,6 +86,10 @@ object PointMatcherExample extends App {
   }
 
   object Helpers {
+    val Red = Color("#e87676")
+    val Green = Color("#58db58")
+    val Blue = Color("#76bde8")
+
     def loadTripFromCSVResource(s: String): Seq[Point] =
       CSVReader.open(new InputStreamReader(getClass.getResourceAsStream(s))).all.map {
         case List(lat, lon) => new Point(lat.toDouble, lon.toDouble)
@@ -97,34 +99,23 @@ object PointMatcherExample extends App {
                            matches: Seq[Option[ElementProjection[Vertex]]],
                            optimizedMap: Catalog,
                            cacheManager: CacheManager): Unit = {
-      def toGC(point: Point): GeoCoordinate = HereCommonPointOps.toLocationGeoCoordinate(point)
-
-      import au.id.jazzy.play.geojson
-      import au.id.jazzy.play.geojson._
-      import com.here.platform.example.location.utils.Visualization._
-      import com.here.platform.location.core.geospatial
-      import play.api.libs.json._
-
-      import scala.collection.immutable
-
-      val matchedPointsAsFeatures: immutable.Seq[Feature[GeoCoordinate]] = matches
+      val matchedPointsAsFeatureCollection = matches
         .zip(probePoints)
-        .flatMap {
-          case (Some(ep), pp) =>
-            Seq(
-              Feature(geojson.Point(toGC(pp)), Some(MarkerColor(Red))),
-              Feature(geojson.Point(ep.nearest), Some(MarkerColor(Green))),
-              Feature(geospatial.LineString(Seq(toGC(pp), ep.nearest)), Some(Stroke(Blue)))
-            )
-          case (None, pp) => Seq(Feature(geojson.Point(toGC(pp)), Some(JsObject.empty)))
+        .foldLeft(FeatureCollection()) {
+          case (fc, (Some(ep), pp)) =>
+            fc.point(pp, SimpleStyleProperties().markerColor(Red))
+              .point(ep.nearest, SimpleStyleProperties().markerColor(Green))
+              .lineString(LineString(Seq(pp.toLocationGeoCoordinate, ep.nearest)),
+                          SimpleStyleProperties().stroke(Blue))
+          case (fc, (None, pp)) => fc.point(pp, SimpleStyleProperties())
         }
-        .to[immutable.Seq]
 
-      val json =
-        Json.toJson(FeatureCollection(matchedPointsAsFeatures))
-      val path = FileNameHelper.exampleJsonFileFor(PointMatcherExample).toPath
-      Files.write(path, Json.prettyPrint(json).getBytes)
-      println("\nA GeoJson representation of the result is available in " + path + "\n")
+      val geojsonFile: File = FileNameHelper.exampleJsonFileFor(PointMatcherExample)
+      val fos = new FileOutputStream(geojsonFile)
+      matchedPointsAsFeatureCollection.writePretty(fos)
+      fos.close()
+
+      println(s"\nA GeoJson representation of the result is available in $geojsonFile\n")
     }
   }
 }

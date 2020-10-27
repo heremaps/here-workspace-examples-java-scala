@@ -19,14 +19,11 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.nio.file.Files
+import java.io.FileOutputStream
 
-import au.id.jazzy.play.geojson
 import com.here.hrn.HRN
 import com.here.platform.example.location.utils.FileNameHelper
-import com.here.platform.example.location.utils.Visualization._
 import com.here.platform.location.core.geospatial.GeoCoordinate
-import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.core.graph.{DirectedGraph, PropertyMap}
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
@@ -37,9 +34,8 @@ import com.here.platform.location.integration.optimizedmap.graph.{
   Graphs,
   PropertyMaps
 }
-import play.api.libs.json.Json
-
-import scala.collection.immutable
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, SimpleStyleProperties}
 
 object TurnRestrictionsExample extends App {
   val catalogFactory = new StandaloneCatalogFactory()
@@ -71,25 +67,29 @@ object TurnRestrictionsExample extends App {
       }
     }
 
+    val Red = Color("#e87676")
+    val Gray = Color("#777777")
+    val Blue = Color("#76bde8")
+
     val verticesWithColors = targetVerticesWithRestrictions.map {
       case (vertex, restricted) => (vertex, if (restricted) Red else Gray)
     } ++ vertices.map((_, Blue))
 
     val geometryPropertyMap = PropertyMaps.geometry(optimizedMap, cacheManager)
 
-    val verticesJson = verticesWithColors
-      .map {
-        case (vertex, color) =>
-          geojson.Feature(
-            geometryPropertyMap(vertex),
-            Some(Stroke(color))
-          )
-      }
-      .to[immutable.Seq]
+    val featureCollection = verticesWithColors.foldLeft(FeatureCollection()) {
+      case (fc, (vertex, color)) =>
+        fc.lineString(
+          geometryPropertyMap(vertex),
+          SimpleStyleProperties().stroke(color)
+        )
+    }
 
-    val json = Json.toJson(geojson.FeatureCollection(verticesJson))
-    val path = FileNameHelper.exampleJsonFileFor(TurnRestrictionsExample).toPath
-    Files.write(path, Json.prettyPrint(json).getBytes)
+    val path = FileNameHelper.exampleJsonFileFor(TurnRestrictionsExample)
+
+    val fos = new FileOutputStream(path)
+    featureCollection.writePretty(fos)
+    fos.close()
     println("\nA GeoJson representation of the result is available in:\n" + path + "\n")
   } finally {
     catalogFactory.terminate()

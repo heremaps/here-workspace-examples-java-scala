@@ -263,6 +263,7 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following command:
 
 ```bash
+mvn --also-make --file=../.. --projects=:utils_2.11 install
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.TmcResolveReferencesInRttiMessageExample
 ```

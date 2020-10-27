@@ -19,12 +19,12 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.nio.file.Files
+import java.io.FileOutputStream
 
 import com.here.hrn.HRN
-import com.here.platform.example.location.utils.Visualization._
-import com.here.platform.example.location.utils.{FileNameHelper, Visualization}
-import com.here.platform.location.core.geospatial.{GeoCoordinate, LineStringOperations, LineStrings}
+import com.here.platform.example.location.utils.FileNameHelper
+import com.here.platform.location.core.geospatial.Implicits._
+import com.here.platform.location.core.geospatial._
 import com.here.platform.location.core.graph.{PropertyMap, RangeBasedProperty}
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
@@ -32,6 +32,12 @@ import com.here.platform.location.inmemory.graph.{Forward, Vertex, Vertices}
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.integration.optimizedmap.roadattributes.FunctionalClass
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{
+  Feature,
+  FeatureCollection,
+  SimpleStyleProperties
+}
 
 /** An example that shows how to compile Road attributes from HERE Map Content on the fly
   * and use them as properties of vertices from the `Optimized Map for Location Library`.
@@ -63,6 +69,12 @@ object FunctionalClassExample extends App {
 
     val roadAttributes = PropertyMaps.RoadAttributes(optimizedMap, cacheManager)
 
+    val Red = Color("#e87676")
+    val Green = Color("#58db58")
+    val Blue = Color("#76bde8")
+    val Yellow = Color("#f7f431")
+    val Gray = Color("#777777")
+
     val colorByFunctionalClass = Map(
       FunctionalClass.FC1 -> Red,
       FunctionalClass.FC2 -> Green,
@@ -71,7 +83,7 @@ object FunctionalClassExample extends App {
       FunctionalClass.FC5 -> Gray
     )
 
-    val verticesWithProperties = for {
+    val verticesWithProperties: Iterable[VertexWithProperty[(FunctionalClass, Color)]] = for {
       vertex <- verticesInRange
       rangeBasedProperties = roadAttributes
         .functionalClass(vertex)
@@ -92,29 +104,32 @@ object FunctionalClassExample extends App {
   private def serializeToGeoJson[LS: LineStringOperations](
       crossingSegments: Iterable[VertexWithProperty[(FunctionalClass, Color)]],
       geometry: PropertyMap[Vertex, LS]): Unit = {
-    import au.id.jazzy.play.geojson._
-    import com.here.platform.example.location.utils.Visualization._
-    import com.here.platform.location.core.geospatial.GeoCoordinate._
-    import play.api.libs.json._
-
-    import scala.collection.immutable
-
     val segmentsAsFeatures = crossingSegments
       .flatMap {
         case VertexWithProperty(vertex, properties) =>
           properties.map {
             case RangeBasedProperty(start, end, (fc, color)) =>
               val partialLine = LineStrings.cut(geometry(vertex), Seq((start, end))).head
-              val shift =
-                Visualization.shiftNorthWest(if (Vertices.directionOf(vertex) == Forward) 2 else -2) _
-              Feature(partialLine.copy(points = partialLine.points.map(shift)),
-                      Some(Stroke(color) + ("FC" -> JsString(fc.toString))))
+              val shiftedPartialLine =
+                shiftNorthWest(partialLine, if (Vertices.directionOf(vertex) == Forward) 2 else -2)
+              Feature.lineString(shiftedPartialLine,
+                                 SimpleStyleProperties().stroke(color).add("FC" -> fc.toString))
           }
       }
-      .to[immutable.Seq]
-    val json = Json.toJson(FeatureCollection(segmentsAsFeatures))
-    val path = FileNameHelper.exampleJsonFileFor(this).toPath
-    Files.write(path, Json.prettyPrint(json).getBytes)
+    val path = FileNameHelper.exampleJsonFileFor(this)
+    val fos = new FileOutputStream(path)
+    FeatureCollection(segmentsAsFeatures).writePretty(fos)
+    fos.close()
     println("\nA GeoJson representation of the result is available in " + path + "\n")
+  }
+
+  private def shiftNorthWest[LS: LineStringOperations](
+      ls: LS,
+      distance: Double): LineString[GeoCoordinate] = {
+    val projection = SinusoidalProjection
+    LineString(ls.points.map { pgc =>
+      val projected = projection.to(pgc, pgc)
+      projection.from(pgc, projected.copy(x = projected.x + distance, y = projected.y + distance))
+    })
   }
 }

@@ -53,7 +53,7 @@ class Calculator(val metricsConfig: MetricsConfig)
     * @return The reduction output as optional
     */
   override def reduce(data: (OutKey, Iterable[Data])): Option[Metric] = {
-    val tileIds = data.value.map(_.tileID).toSeq
+    val tileIds = data.value.map(_.tileID).toIndexedSeq.sorted
     val isPass = data.key.partition.asInstanceOf[Generic].name.equals(TestResultType.PASS.name)
     if (tileIds.nonEmpty) {
       if (isPass && !metricsConfig.writeSeverityNoneSamples) {

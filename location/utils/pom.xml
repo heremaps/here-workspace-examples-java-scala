@@ -4,13 +4,13 @@
   <parent>
     <groupId>com.here.platform</groupId>
     <artifactId>sdk-standalone-bom</artifactId>
-    <version>2.19.10</version>
+    <version>2.20.11</version>
     <relativePath/>
   </parent>
 
   <groupId>com.here.platform.example.location</groupId>
   <artifactId>utils_2.11</artifactId>
-  <version>0.0.565</version>
+  <version>0.0.582</version>
   <packaging>jar</packaging>
 
   <name>Location Library Examples - Utils</name>
@@ -30,39 +30,11 @@
   </properties>
 
   <dependencies>
-    <!-- HERE dependencies -->
-    <dependency>
-      <groupId>com.here.platform.location</groupId>
-      <artifactId>location-core_${scala.compat.version}</artifactId>
-    </dependency>
-    <!-- other dependencies -->
-    <dependency>
-      <groupId>au.id.jazzy</groupId>
-      <artifactId>play-geojson_${scala.compat.version}</artifactId>
-      <version>1.6.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.typesafe.play</groupId>
-      <artifactId>play-json_${scala.compat.version}</artifactId>
-      <version>2.7.4</version>
-    </dependency>
-    <dependency>
-      <groupId>org.joda</groupId>
-      <artifactId>joda-convert</artifactId>
-      <version>2.2.1</version>
-    </dependency>
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
     </dependency>
   </dependencies>
-
-  <repositories>
-    <repository>
-      <id>bintray-jroper-maven</id>
-      <url>https://dl.bintray.com/jroper/maven</url>
-    </repository>
-  </repositories>
 
   <build>
     <plugins>
@@ -77,16 +49,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.1.1</version>
-        <configuration>
-          <usedDependencies>
-            <usedDependency>org.joda:joda-convert</usedDependency>
-          </usedDependencies>
-        </configuration>
       </plugin>
     </plugins>
   </build>

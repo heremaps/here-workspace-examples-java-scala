@@ -19,12 +19,10 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.nio.file.Files
+import java.io.FileOutputStream
 
-import au.id.jazzy.play.geojson._
 import com.here.hrn.HRN
 import com.here.platform.example.location.utils.FileNameHelper
-import com.here.platform.example.location.utils.Visualization._
 import com.here.platform.location.core.geospatial.GeoCoordinate
 import com.here.platform.location.core.graph.{DirectedGraph, PropertyMap}
 import com.here.platform.location.dataloader.core.Catalog
@@ -34,7 +32,12 @@ import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.{Edge, Vertex}
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.{Graphs, PropertyMaps}
-import play.api.libs.json._
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{
+  Feature,
+  FeatureCollection,
+  SimpleStyleProperties
+}
 
 import scala.annotation.tailrec
 
@@ -100,20 +103,22 @@ object GraphExample extends App {
     val geometries: PropertyMap[Vertex, PackedLineString] =
       PropertyMaps.geometry(optimizedMap, cacheManager)
 
-    val geoJsonFeatures = visitedVertices.zipWithIndex
+    val features = visitedVertices.zipWithIndex
       .flatMap {
         case (vertices, depth) =>
           vertices.map { v =>
-            Feature(
-              geometries(v),
-              Some(Stroke(redToYellowGradient(depth.toFloat, 0f, maxIterations.toFloat)))
-            )
+            // Creating a red to yellow gradient for a geometry
+            Feature.lineString(geometries(v),
+                               SimpleStyleProperties().stroke(Color.hsb(depth * 3.0, 0.8, 0.8)))
           }
       }
 
-    val json = Json.toJson(FeatureCollection(geoJsonFeatures))
-    val path = FileNameHelper.exampleJsonFileFor(GraphExample).toPath
-    Files.write(path, Json.prettyPrint(json).getBytes)
+    val path = FileNameHelper.exampleJsonFileFor(GraphExample)
+
+    val fos = new FileOutputStream(path)
+    FeatureCollection(features).writePretty(fos)
+    fos.close()
+
     println("\nA GeoJson representation of the result is available in " + path + "\n")
   }
 }

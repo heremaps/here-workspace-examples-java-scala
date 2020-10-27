@@ -19,13 +19,17 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.nio.file.Files
+import java.io.FileOutputStream
 
-import au.id.jazzy.play.geojson
 import com.here.hrn.HRN
 import com.here.platform.example.location.utils.FileNameHelper
-import com.here.platform.example.location.utils.Visualization.{Blue, Stroke, Yellow, _}
-import com.here.platform.location.core.geospatial.GeoCoordinate
+import com.here.platform.location.core.geospatial.Implicits._
+import com.here.platform.location.core.geospatial.{
+  GeoCoordinate,
+  LineString,
+  LineStringOperations,
+  SinusoidalProjection
+}
 import com.here.platform.location.core.graph.PropertyMap
 import com.here.platform.location.dataloader.core.Catalog
 import com.here.platform.location.dataloader.core.caching.CacheManager
@@ -34,13 +38,16 @@ import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{
+  Feature,
+  FeatureCollection,
+  SimpleStyleProperties
+}
 import com.here.platform.location.referencing._
 import com.here.platform.location.tpeg2.XmlMarshallers
 import com.here.platform.location.tpeg2.lrc.LocationReferencingContainer
 import com.here.platform.location.tpeg2.tmc.TMCLocationReference
-import play.api.libs.json.{JsString, Json}
-
-import scala.collection.immutable
 
 /** Create and resolve a TMC reference.
   *
@@ -101,18 +108,23 @@ object TmcCreateAndResolveExample extends App {
     val geometries =
       PropertyMaps.geometry(optimizedMap, cacheManager)
 
+    val Yellow = Color("#f7f431")
+    val Green = Color("#58db58")
+    val Blue = Color("#76bde8")
+
     val searchPointFeatures = Seq(
-      geojson.Feature(geojson.Point(coordinateInFriedenstrasse), Some(Stroke(Yellow))))
+      Feature.point(coordinateInFriedenstrasse, SimpleStyleProperties().markerColor(Yellow)))
     val inputLocationFeatures = locationFeatures(geometries, inputLocation, Green, -5)
     val resolvedLocationFeatures = locationFeatures(geometries, resolvedLocation, Blue, 5)
 
-    val allFeatures =
-      (searchPointFeatures ++ inputLocationFeatures ++ resolvedLocationFeatures)
-        .to[immutable.Seq]
+    val allFeatures = searchPointFeatures ++ inputLocationFeatures ++ resolvedLocationFeatures
 
-    val json = Json.toJson(geojson.FeatureCollection(allFeatures))
-    val path = FileNameHelper.exampleJsonFileFor(TmcCreateAndResolveExample).toPath
-    Files.write(path, Json.prettyPrint(json).getBytes)
+    val path = FileNameHelper.exampleJsonFileFor(TmcCreateAndResolveExample)
+
+    val fos = new FileOutputStream(path)
+    FeatureCollection(allFeatures).writePretty(fos)
+    fos.close()
+
     println(s"""
                |A GeoJson representation of the resolved vertices is available in $path
                |""".stripMargin)
@@ -123,11 +135,19 @@ object TmcCreateAndResolveExample extends App {
                                color: Color,
                                shift: Double) =
     location.path.map { vertex =>
-      val properties = Stroke(color) +
-        ("vertex" -> JsString(s"${vertex.tileId.value}:${vertex.index.value}"))
-      val vertexLineString = geometries(vertex)
-      geojson.Feature(vertexLineString.copy(
-                        coordinates = vertexLineString.coordinates.map(shiftNorthWest(shift))),
-                      Some(properties))
+      val properties = SimpleStyleProperties()
+        .stroke(color)
+        .add("vertex", s"${vertex.tileId.value}:${vertex.index.value}")
+      Feature.lineString(shiftNorthWest(geometries(vertex), shift), properties)
     }
+
+  private def shiftNorthWest[LS: LineStringOperations](
+      ls: LS,
+      distance: Double): LineString[GeoCoordinate] = {
+    val projection = SinusoidalProjection
+    LineString(ls.points.map { pgc =>
+      val projected = projection.to(pgc, pgc)
+      projection.from(pgc, projected.copy(x = projected.x + distance, y = projected.y + distance))
+    })
+  }
 }

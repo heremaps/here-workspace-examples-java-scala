@@ -69,6 +69,7 @@ public class Calculator
     List<Long> tileIds =
         StreamSupport.stream(data.getValue().spliterator(), true)
             .map(Data::getTileID)
+            .sorted()
             .collect(Collectors.toList());
 
     if (!tileIds.isEmpty()) {

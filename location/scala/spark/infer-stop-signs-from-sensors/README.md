@@ -155,12 +155,6 @@ olp project resources link $PROJECT_HRN $INPUT_OPTIMIZED_MAP_CATALOG
 
 ## Local Run
 
-### Build the Provided Util Project
-
-```bash
-mvn --also-make --file=../../.. --projects=:utils_2.11 install
-```
-
 ### Compile and Execute the Example
 
 ```bash
@@ -187,12 +181,6 @@ olp catalog layer partition get $CATALOG_HRN stop-signs --all --output="target/s
 ## Run on the Platform
 
 The following steps will allow you to run the example on the platform via pipelines.
-
-### Build the Provided Util Project
-
-```bash
-mvn --also-make --file=../../.. --projects=:utils_2.11 install
-```
 
 ### Generate a Fat JAR file
 

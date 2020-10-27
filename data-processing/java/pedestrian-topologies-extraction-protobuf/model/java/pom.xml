@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.here.platform.schema.data.processing.example.java.pedestrian.protobuf</groupId>
     <artifactId>model_v2</artifactId>
-    <version>0.0.565</version>
+    <version>0.0.582</version>
   </parent>
 
   <artifactId>model_v2_java</artifactId>

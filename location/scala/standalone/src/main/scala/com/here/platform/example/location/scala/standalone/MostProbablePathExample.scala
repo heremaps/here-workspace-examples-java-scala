@@ -35,12 +35,10 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.nio.file.Files
-
-import au.id.jazzy.play.geojson
 import com.here.hrn.HRN
+import java.io.FileOutputStream
+
 import com.here.platform.example.location.utils.FileNameHelper
-import com.here.platform.example.location.utils.Visualization._
 import com.here.platform.location.core.Utils.normalizeLongitude
 import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.core.geospatial.{
@@ -61,7 +59,8 @@ import com.here.platform.location.inmemory.graph.{Edge, Vertex}
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.{Graphs, PropertyMaps, RoadAccess}
 import com.here.platform.location.integration.optimizedmap.roadattributes.FunctionalClass
-import play.api.libs.json.Json
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, SimpleStyleProperties}
 
 import scala.annotation.tailrec
 import scala.collection.immutable.{IndexedSeq, Seq}
@@ -135,11 +134,10 @@ object MostProbablePathExample extends App {
     }
   }
 
-  def turnAngleProbability[LS](current: Vertex,
-                               next: Vertex,
-                               geometryPropertyMap: PropertyMap[Vertex, LS])(
-      implicit lsOps: LineStringOperations[LS]): Double = {
-    import lsOps.PointGeoCoordinateOperations
+  def turnAngleProbability[LS: LineStringOperations](
+      current: Vertex,
+      next: Vertex,
+      geometryPropertyMap: PropertyMap[Vertex, LS]): Double = {
     val endOfCurrent = geometryPropertyMap(current).points.takeRight(4)
     val headingCurrent = GeoCoordinates.heading(endOfCurrent.head, endOfCurrent.last)
 
@@ -202,20 +200,20 @@ object MostProbablePathExample extends App {
                                                     lengthPropertyMap,
                                                     probabilityFunction)
 
-    implicit val lsOps = PackedLineString.PackedLineStringOps
     // Write the results in GeoJSON format
     val mostProbablePathJson =
       mostProbablePathSegments
-        .map { vertexItem =>
-          geojson.Feature(
-            geometryPropertyMap(vertexItem),
-            Some(Stroke(Yellow))
-          )
+        .foldLeft(FeatureCollection()) { (fc, vertexItem) =>
+          val Yellow = Color("#f7f431")
+          fc.lineString(geometryPropertyMap(vertexItem), SimpleStyleProperties().stroke(Yellow))
         }
 
-    val json = Json.toJson(geojson.FeatureCollection(mostProbablePathJson))
-    val path = FileNameHelper.exampleJsonFileFor(MostProbablePathExample).toPath
-    Files.write(path, Json.prettyPrint(json).getBytes)
+    val path = FileNameHelper.exampleJsonFileFor(MostProbablePathExample)
+
+    val fos = new FileOutputStream(path)
+    mostProbablePathJson.writePretty(fos)
+    fos.close()
+
     println("\nA GeoJson representation of the result is available in:\n" + path + "\n")
   } finally {
     catalogFactory.terminate()

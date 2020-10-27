@@ -19,19 +19,25 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.nio.file.Files
+import java.io.FileOutputStream
 
 import com.here.hrn.HRN
-import com.here.platform.example.location.utils.Visualization.Color
-import com.here.platform.example.location.utils.{FileNameHelper, Visualization}
+import com.here.platform.example.location.utils.FileNameHelper
 import com.here.platform.location.compilation.heremapcontent.{AttributeAccessor, AttributeAccessors}
-import com.here.platform.location.core.geospatial.{GeoCoordinate, LineStringOperations, LineStrings}
+import com.here.platform.location.core.geospatial.Implicits._
+import com.here.platform.location.core.geospatial._
 import com.here.platform.location.core.graph.{PropertyMap, RangeBasedProperty}
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.{Forward, Vertex, Vertices}
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{
+  Feature,
+  FeatureCollection,
+  SimpleStyleProperties
+}
 import com.here.schema.rib.v2.advanced_navigation_attributes_partition.AdvancedNavigationAttributesPartition
 import com.here.schema.rib.v2.common_attributes.SpeedLimitAttribute
 
@@ -69,7 +75,7 @@ object OnTheFlyCompiledPropertyMapExample extends App {
       "speed-category-color",
       hereMapContent,
       cacheManager,
-      speedLimitAccessor.map(s => (s, Visualization.redToYellowGradient(s.toFloat, 0, 60)))
+      speedLimitAccessor.map(s => (s, Color.hsb(Math.min(Math.max(s.toDouble, 0), 60), 1, 1)))
     )
 
     val proximitySearch = ProximitySearches.vertices(optimizedMap, cacheManager)
@@ -93,29 +99,33 @@ object OnTheFlyCompiledPropertyMapExample extends App {
   private def serializeToGeoJson[LS: LineStringOperations](
       crossingSegments: Iterable[VertexWithProperty[(Int, Color)]],
       geometry: PropertyMap[Vertex, LS]): Unit = {
-    import au.id.jazzy.play.geojson._
-    import com.here.platform.example.location.utils.Visualization._
-    import com.here.platform.location.core.geospatial.GeoCoordinate._
-    import play.api.libs.json._
-
-    import scala.collection.immutable
-
     val segmentsAsFeatures = crossingSegments
       .flatMap {
         case VertexWithProperty(vertex, properties) =>
           properties.map {
             case RangeBasedProperty(start, end, (speedLimit, color)) =>
               val partialLine = LineStrings.cut(geometry(vertex), Seq((start, end))).head
-              val shift =
-                Visualization.shiftNorthWest(if (Vertices.directionOf(vertex) == Forward) 2 else -2) _
-              Feature(partialLine.copy(points = partialLine.points.map(shift)),
-                      Some(Stroke(color) + ("speedLimit" -> JsString(speedLimit.toString))))
+              val shiftedPartialLine =
+                shiftNorthWest(partialLine, if (Vertices.directionOf(vertex) == Forward) 2 else -2)
+              Feature.lineString(
+                shiftedPartialLine,
+                SimpleStyleProperties().stroke(color).add("speedLimit", speedLimit.toString))
           }
       }
-      .to[immutable.Seq]
-    val json = Json.toJson(FeatureCollection(segmentsAsFeatures))
-    val path = FileNameHelper.exampleJsonFileFor(this).toPath
-    Files.write(path, Json.prettyPrint(json).getBytes)
+    val path = FileNameHelper.exampleJsonFileFor(this)
+    val fos = new FileOutputStream(path)
+    FeatureCollection(segmentsAsFeatures).writePretty(fos)
+    fos.close()
     println("\nA GeoJson representation of the result is available in " + path + "\n")
+  }
+
+  private def shiftNorthWest[LS: LineStringOperations](
+      ls: LS,
+      distance: Double): LineString[GeoCoordinate] = {
+    val projection = SinusoidalProjection
+    LineString(ls.points.map { pgc =>
+      val projected = projection.to(pgc, pgc)
+      projection.from(pgc, projected.copy(x = projected.x + distance, y = projected.y + distance))
+    })
   }
 }

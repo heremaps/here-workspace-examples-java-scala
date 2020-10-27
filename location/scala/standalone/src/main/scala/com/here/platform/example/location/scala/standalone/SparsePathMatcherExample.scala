@@ -19,13 +19,12 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.InputStreamReader
-import java.nio.file.Files
+import java.io.{FileOutputStream, InputStreamReader}
 
 import com.github.tototoshi.csv.CSVReader
 import com.here.hrn.HRN
 import com.here.platform.example.location.utils.FileNameHelper
-import com.here.platform.location.core.geospatial.{GeoCoordinate, LineStringOperations}
+import com.here.platform.location.core.geospatial.{GeoCoordinate, LineString, LineStringOperations}
 import com.here.platform.location.core.mapmatching.MatchedPath.Transition
 import com.here.platform.location.core.mapmatching.{MatchResult, MatchedPath, OnRoad}
 import com.here.platform.location.dataloader.core.Catalog
@@ -35,6 +34,12 @@ import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.integration.optimizedmap.mapmatching.PathMatchers
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{
+  Feature,
+  FeatureCollection,
+  SimpleStyleProperties
+}
 
 object SparsePathMatcherExample extends App {
   import Helpers._
@@ -63,16 +68,12 @@ object SparsePathMatcherExample extends App {
   }
 
   private object Helpers {
-    import au.id.jazzy.play.geojson._
-    import com.here.platform.example.location.utils.Visualization._
-    import com.here.platform.location.core.geospatial.Implicits._
+    private val Red = Color("#e87676")
+    private val Green = Color("#58db58")
+    private val Blue = Color("#76bde8")
+
     import com.here.platform.location.core.geospatial.LineStrings
     import com.here.platform.location.core.graph.PropertyMap
-    import play.api.libs.json._
-
-    import scala.collection.immutable
-
-    implicit val lsOps = PackedLineString.PackedLineStringOps
 
     def loadTripFromCSVResource(s: String): Seq[GeoCoordinate] =
       CSVReader.open(new InputStreamReader(getClass.getResourceAsStream(s))).all.map {
@@ -92,9 +93,12 @@ object SparsePathMatcherExample extends App {
       val pathsAsFeatures =
         computePathsAsFeatures(matchResults, transitions, geometries)
 
-      val json = Json.toJson(FeatureCollection(matchResultsAsFeatures ++ pathsAsFeatures))
-      val path = FileNameHelper.exampleJsonFileFor(SparsePathMatcherExample).toPath
-      Files.write(path, Json.prettyPrint(json).getBytes)
+      val path = FileNameHelper.exampleJsonFileFor(SparsePathMatcherExample)
+
+      val fos = new FileOutputStream(path)
+      FeatureCollection(matchResultsAsFeatures ++ pathsAsFeatures).writePretty(fos)
+      fos.close()
+
       println(s"\nA GeoJson representation of the result is available in $path\n")
     }
 
@@ -104,19 +108,19 @@ object SparsePathMatcherExample extends App {
       */
     private def computeMatchResultsAsFeatures(
         probePoints: Seq[GeoCoordinate],
-        matchResults: Seq[MatchResult[Vertex]]): immutable.Seq[Feature[GeoCoordinate]] =
+        matchResults: Seq[MatchResult[Vertex]]): Seq[Feature] =
       matchResults
         .zip(probePoints)
         .flatMap {
           case (OnRoad(ep), pp) =>
             Seq(
-              Feature(Point(pp), Some(MarkerColor(Red))),
-              Feature(Point(ep.nearest), Some(MarkerColor(Green))),
-              Feature(LineString(immutable.Seq(pp, ep.nearest)), Some(Stroke(Blue)))
+              Feature.point(pp, SimpleStyleProperties().markerColor(Red)),
+              Feature.point(ep.nearest, SimpleStyleProperties().markerColor(Green)),
+              Feature.lineString(LineString(Seq(pp, ep.nearest)),
+                                 SimpleStyleProperties().stroke(Blue))
             )
-          case (_, pp) => Seq(Feature(Point(pp), Some(JsObject.empty)))
+          case (_, pp) => Seq(Feature.point(pp))
         }
-        .to[immutable.Seq]
 
     /**
       * Computes geojson features for matched paths between matched points
@@ -124,7 +128,7 @@ object SparsePathMatcherExample extends App {
     private def computePathsAsFeatures(
         matchResults: Seq[MatchResult[Vertex]],
         transitions: Seq[Transition[Seq[Vertex]]],
-        geometries: PropertyMap[Vertex, PackedLineString]): immutable.Seq[Feature[GeoCoordinate]] =
+        geometries: PropertyMap[Vertex, PackedLineString]): Seq[Feature] =
       transitions
         .flatMap {
           case MatchedPath.Transition(from, to, vertices) =>
@@ -157,12 +161,12 @@ object SparsePathMatcherExample extends App {
               case _ => Seq.empty
             }
         }
-        .to[immutable.Seq]
 
     private def createLineStringFeature[LS: LineStringOperations](lineString: LS,
                                                                   color: Color,
                                                                   from: Int,
-                                                                  to: Int): Feature[GeoCoordinate] =
-      Feature(lineString, Some(Stroke(color) ++ Json.obj("[from, to]" -> Array(from, to))))
+                                                                  to: Int): Feature =
+      Feature.lineString(lineString,
+                         SimpleStyleProperties().stroke(color).add("[from, to]", Array(from, to)))
   }
 }

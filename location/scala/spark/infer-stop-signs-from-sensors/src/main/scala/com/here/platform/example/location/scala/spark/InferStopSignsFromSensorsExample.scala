@@ -20,15 +20,12 @@
 package com.here.platform.example.location.scala.spark
 
 import akka.actor.ActorSystem
-import au.id.jazzy.play.geojson
-import au.id.jazzy.play.geojson.Feature
 import com.here.hrn.HRN
 import com.here.platform.data.client.engine.scaladsl.DataEngine
 import com.here.platform.data.client.scaladsl.{CommitPartition, DataClient, NewPartition}
 import com.here.platform.data.client.spark.DataClientSparkContextUtils
 import com.here.platform.data.client.spark.LayerDataFrameReader._
 import com.here.platform.data.client.spark.SparkSupport._
-import com.here.platform.example.location.utils.Visualization._
 import com.here.platform.location.core.geospatial._
 import com.here.platform.location.core.mapmatching.OnRoad
 import com.here.platform.location.dataloader.core.Catalog
@@ -42,6 +39,7 @@ import com.here.platform.location.integration.herecommons.geospatial.{
 }
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.integration.optimizedmap.mapmatching.PathMatchers
+import com.here.platform.location.io.scaladsl.geojson.{Feature, FeatureCollection}
 import com.here.platform.location.spark.{Cluster, DistributedClustering}
 import com.here.platform.pipeline.PipelineContext
 import org.apache.spark.rdd.RDD
@@ -49,9 +47,7 @@ import org.apache.spark.sql.expressions.UserDefinedFunction
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 import org.slf4j.LoggerFactory
-import play.api.libs.json.{JsObject, Json}
 
-import scala.collection.immutable
 import scala.concurrent.duration._
 import scala.language.postfixOps
 
@@ -272,9 +268,9 @@ object Steps {
     VertexFraction(mostPopularVertex, fractionAverage)
   }
 
-  def groupByOutputTileId(config: Config,
-                          geoJsonByPosition: RDD[(GeoCoordinate, Feature[GeoCoordinate])])
-      : RDD[(TileId, Iterable[Feature[GeoCoordinate]])] = {
+  def groupByOutputTileId(
+      config: Config,
+      geoJsonByPosition: RDD[(GeoCoordinate, Feature)]): RDD[(TileId, Iterable[Feature])] = {
     val outputResolver = new HereTileResolver(config.outputLayerLevel)
 
     geoJsonByPosition
@@ -283,20 +279,17 @@ object Steps {
   }
 
   def toGeoJsonByPosition(optimizedMap: Catalog, cacheManager: CacheManager)(
-      vf: VertexFraction): (GeoCoordinate, Feature[GeoCoordinate]) = {
+      vf: VertexFraction): (GeoCoordinate, Feature) = {
     val geometries = PropertyMaps.geometry(optimizedMap, cacheManager)
     val geoCoordinate = LineStrings.pointForFraction(geometries(vf.vertex), vf.fraction)
-    geoCoordinate -> geojson.Feature(geojson.Point(geoCoordinate), Some(JsObject.empty))
+    geoCoordinate -> Feature.point(geoCoordinate)
   }
 
-  def toGeoJsonByPosition(
-      p: StopSignEventProjectionOnPath): (GeoCoordinate, Feature[GeoCoordinate]) =
+  def toGeoJsonByPosition(p: StopSignEventProjectionOnPath): (GeoCoordinate, Feature) =
     p.event.eventPosition ->
-      geojson.Feature(LineString(Seq(p.event.eventPosition, p.projectedPoint)),
-                      Some(JsObject.empty))
+      Feature.lineString(LineString(Seq(p.event.eventPosition, p.projectedPoint)))
 
-  def publish(geoJsonByTile: RDD[(TileId, Iterable[Feature[GeoCoordinate]])],
-              config: Config): Unit = {
+  def publish(geoJsonByTile: RDD[(TileId, Iterable[Feature])], config: Config): Unit = {
     val masterActorSystem: ActorSystem = DataClientSparkContextUtils.context.actorSystem
     val masterPublishApi = DataClient(masterActorSystem).publishApi(config.outputCatalog)
     val latestVersion = masterPublishApi.getBaseVersion().awaitResult()
@@ -305,8 +298,7 @@ object Steps {
     val batchToken =
       masterPublishApi.startBatch2(latestVersion, Some(Seq(config.outputLayer))).awaitResult()
     geoJsonByTile
-      .mapValues(points =>
-        Json.toBytes(Json.toJson(geojson.FeatureCollection(points.to[immutable.Seq]))))
+      .mapValues(points => FeatureCollection(points).toJson.getBytes("UTF-8"))
       .mapPartitions({ partitions =>
         val workerActorSystem = DataClientSparkContextUtils.context.actorSystem
         val workerPublishApi = DataClient(workerActorSystem).publishApi(config.outputCatalog)

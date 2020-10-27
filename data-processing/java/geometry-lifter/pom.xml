@@ -3,7 +3,7 @@
 
   <groupId>com.here.platform.data.processing.example.java.geometry.lifter</groupId>
   <artifactId>geometry-lifter</artifactId>
-  <version>0.0.565</version>
+  <version>0.0.582</version>
   <packaging>jar</packaging>
 
   <name>Batch Processor compiler for Geometry Lifter in Java</name>
@@ -22,7 +22,7 @@
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <sdk-bom.version>2.19.10</sdk-bom.version>
+    <sdk-bom.version>2.20.11</sdk-bom.version>
     <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
     <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>

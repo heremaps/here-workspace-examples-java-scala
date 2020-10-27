@@ -19,13 +19,13 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.InputStreamReader
-import java.nio.file.Files
+import java.io.{File, FileOutputStream, InputStreamReader}
 
 import com.github.tototoshi.csv.CSVReader
 import com.here.hrn.HRN
 import com.here.platform.example.location.utils.FileNameHelper
-import com.here.platform.location.core.geospatial.GeoCoordinate
+import com.here.platform.location.core.geospatial.{GeoCoordinate, LineString}
+import com.here.platform.location.core.graph.PropertyMap
 import com.here.platform.location.core.mapmatching.{MatchResult, MatchedPath, OnRoad}
 import com.here.platform.location.dataloader.core.Catalog
 import com.here.platform.location.dataloader.core.caching.CacheManager
@@ -34,6 +34,12 @@ import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.integration.optimizedmap.mapmatching.PathMatchers
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{
+  Feature,
+  FeatureCollection,
+  SimpleStyleProperties
+}
 
 object PathMatcherExample extends App {
   import Helpers._
@@ -63,14 +69,9 @@ object PathMatcherExample extends App {
   }
 
   private object Helpers {
-    import au.id.jazzy.play.geojson._
-    import com.here.platform.example.location.utils.Visualization._
-    import com.here.platform.location.core.geospatial.Implicits._
-    import com.here.platform.location.core.graph.PropertyMap
-    import com.here.platform.location.inmemory.geospatial.PackedLineString.PackedLineStringOps
-    import play.api.libs.json._
-
-    import scala.collection.immutable
+    val Red = Color("#e87676")
+    val Green = Color("#58db58")
+    val Blue = Color("#76bde8")
 
     def loadTripFromCSVResource(s: String): Seq[GeoCoordinate] =
       CSVReader.open(new InputStreamReader(getClass.getResourceAsStream(s))).all.map {
@@ -89,10 +90,12 @@ object PathMatcherExample extends App {
       val pathsAsFeatures =
         computePathsAsFeatures(matchResults, geometries)
 
-      val json = Json.toJson(FeatureCollection(matchResultsAsFeatures ++ pathsAsFeatures))
-      val path = FileNameHelper.exampleJsonFileFor(PathMatcherExample).toPath
-      Files.write(path, Json.prettyPrint(json).getBytes)
-      println(s"\nA GeoJson representation of the result is available in $path\n")
+      val geojsonFile: File = FileNameHelper.exampleJsonFileFor(PathMatcherExample)
+      val fos = new FileOutputStream(geojsonFile)
+      FeatureCollection(matchResultsAsFeatures ++ pathsAsFeatures).writePretty(fos)
+      fos.close()
+
+      println(s"\nA GeoJson representation of the result is available in $geojsonFile\n")
     }
 
     /**
@@ -101,31 +104,27 @@ object PathMatcherExample extends App {
       */
     private def computeMatchResultsAsFeatures(
         probePoints: Seq[GeoCoordinate],
-        matchResults: Seq[MatchResult[Vertex]]): immutable.Seq[Feature[GeoCoordinate]] =
+        matchResults: Seq[MatchResult[Vertex]]): Seq[Feature] =
       matchResults
         .zip(probePoints)
         .flatMap {
           case (OnRoad(ep), pp) =>
             Seq(
-              Feature(Point(pp), Some(MarkerColor(Red))),
-              Feature(Point(ep.nearest), Some(MarkerColor(Green))),
-              Feature(LineString(immutable.Seq(pp, ep.nearest)), Some(Stroke(Blue)))
+              Feature.point(pp, SimpleStyleProperties().markerColor(Red)),
+              Feature.point(ep.nearest, SimpleStyleProperties().markerColor(Green)),
+              Feature.lineString(LineString(Seq(pp, ep.nearest)),
+                                 SimpleStyleProperties().stroke(Blue))
             )
-          case (_, pp) => Seq(Feature(Point(pp), Some(JsObject.empty)))
+          case (_, pp) => Seq(Feature.point(pp))
         }
-        .to[immutable.Seq]
 
     /**
       * Computes geojson features for vertices containing matched points
       */
     private def computePathsAsFeatures(
         matchResults: Seq[MatchResult[Vertex]],
-        geometries: PropertyMap[Vertex, PackedLineString]): immutable.Seq[Feature[GeoCoordinate]] =
+        geometries: PropertyMap[Vertex, PackedLineString]): Seq[Feature] =
       matchResults
-        .collect {
-          case OnRoad(ep) =>
-            Feature(geometries(ep.element), Some(JsObject.empty))
-        }
-        .to[immutable.Seq]
+        .collect { case OnRoad(ep) => Feature.lineString(geometries(ep.element)) }
   }
 }
