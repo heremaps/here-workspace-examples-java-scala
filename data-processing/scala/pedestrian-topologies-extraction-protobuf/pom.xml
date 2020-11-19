@@ -3,7 +3,7 @@
 
   <groupId>com.here.platform.data.processing.example.scala</groupId>
   <artifactId>pedestrian-topologies-extraction-protobuf</artifactId>
-  <version>0.0.582</version>
+  <version>0.0.589</version>
   <packaging>pom</packaging>
 
   <name>Pedestrian topologies extraction compiler example to ProtoBuf in Scala</name>
@@ -25,7 +25,7 @@
   </modules>
 
   <properties>
-    <sdk-bom.version>2.20.11</sdk-bom.version>
+    <sdk-bom.version>2.21.6</sdk-bom.version>
   </properties>
 
   <dependencyManagement>

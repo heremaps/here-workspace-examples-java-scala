@@ -23,13 +23,13 @@ To run this example, you need two sets of credentials:
 * **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input. 
 * **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
-For more details on how to set up your credentials, see [Get Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/topics/get-credentials.html).
+For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
 For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html) tutorial.
 
 ## Configure a Project
 
-To follow this example, you'll need a [project](https://developer.here.com/documentation/access-control/user_guide/topics/manage-projects.html). A project is a collection of platform resources
+To follow this example, you'll need a [project](#identity-&-access-management-developer-guide). A project is a collection of platform resources
  (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
  **HERE platform portal**.
  
@@ -44,7 +44,7 @@ The command returns the [HERE Resource Name (HRN)](https://developer.here.com/do
 > Note:
 > You don't have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
-> default Project_ for Apps chapter of the [Teams and Permissions Guide](https://developer.here.com/documentation/access-control/user_guide/topics/manage-projects.html).
+> default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
 For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
 
@@ -58,10 +58,10 @@ Use the **HERE platform portal** to [create the input catalog](https://developer
 |------------------------|------------|--------------------------|------------------|---------------
 | stream 				 | Stream  	  | application/octet-stream | uncompressed     | -
 
-- For instructions on how to create a catalog, refer to **Create a Catalog** in [Data User Guide](#data-user-guide).
-- For instructions on how to create a layer, refer to **Create a Layer** in [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, refer to **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, refer to **Manage Projects** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide).
+- For instructions on how to create a catalog, see **Create a Catalog** in [Data User Guide](#data-user-guide).
+- For instructions on how to create a layer, see **Create a Layer** in [Data User Guide](#data-user-guide).
+- For instructions on how to link a resource to a project, see **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+- For instructions on how to share your project, see **Manage Projects** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
 Alternatively, you can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with a `stream` layer:
 
@@ -95,10 +95,10 @@ Use the **HERE platform portal** to [create the output catalog](https://develope
 |------------------------|------------|------------|----------------------------|------------|--------------------------|------------------|---------------
 | index                  | Index      |  7 days    | ingestionTime	            |   60       | application/x-parquet	| uncompressed     | -
 
-- For instructions on how to create a catalog, refer to **Create a Catalog** in [Data User Guide](#data-user-guide).
-- For instructions on how to create a layer, refer to **Create a Layer** in [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, refer to **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, refer to **Manage Projects** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide).
+- For instructions on how to create a catalog, see **Create a Catalog** in [Data User Guide](#data-user-guide).
+- For instructions on how to create a layer, see **Create a Layer** in [Data User Guide](#data-user-guide).
+- For instructions on how to link a resource to a project, see **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+- For instructions on how to share your project, see **Manage Projects** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
 Alternatively, you can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with an `index` layer:
 
@@ -196,7 +196,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 For more information on using the **OLP CLI** to configure and run a pipeline, see **Pipeline Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
 
 > #### Note
-> The selection of input and output catalog values using the portal when creating pipeline version or the values added to `pipeline.config` when using command line interface must be valid. These values represent a placeholder which will not be used by the the Data Archiving Library. Instead, values will be taken from the `application.conf` file. If you want to change or update the input/output catlogs, modify the `application.conf` file and rebuild.
+> The selection of input and output catalog values using the portal when creating pipeline version or the values added to `pipeline.config` when using command line interface must be valid. These values represent a placeholder that the Data Archiving Library will not use. Instead, values will be taken from the `application.conf` file. If you want to change or update the input/output catlogs, modify the `application.conf` file and rebuild.
 
 ## Verify the Output
 
@@ -210,7 +210,7 @@ After the pipeline is running, you can ingest your data into the `stream` layer 
 
 > #### Note
 > For ingesting data, make sure your app has `read` and `write` permission to your `stream` layer.
-> For instructions on how to manage app, refer to `Manage Apps` in [Teams and Permissions User Guide](#teams-and-permissions-user-guide).
+> For instructions on how to manage your app, see `Manage Apps` in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
   ```
   olp catalog permission grant $CATALOG_HRN --app $APP_ID --read --write --scope $PROJECT_HRN
   olp catalog layer stream put $CATALOG_HRN stream --input /path/to/directory --scope $PROJECT_HRN # There are sdii example messages in the folder: src/test/resources/sampleData
@@ -222,28 +222,28 @@ After your data is archived in `index` layer, you can query/retrieve data using 
 - **Partitions** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
 > #### Note
 > For querying metadata or retrieving data, make sure your app has `read` permission to your `index` layer.
-> For instructions on how to manage app, refer to **Manage Apps** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide).
+> For instructions on how to manage your app, see **Manage Apps** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
   ```
   olp catalog permission grant $CATALOG_HRN --app $APP_ID --read --write --scope $PROJECT_HRN
   olp catalog layer partition list $CATALOG_HRN index --filter <query> --scope $PROJECT_HRN # E.g: <query>="tileId==92259"
   olp catalog layer partition get $CATALOG_HRN index --filter <query> --scope $PROJECT_HRN
   ```
 
-To parse the data retrieved from `index` layer, refer to "How to parse the output content" in **FAQ** in [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
+To parse the data retrieved from `index` layer, see "How to parse the output content" in **FAQ** in the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
 
 ## Run Example Locally
 
-Besides running this example in a pipeline, you can also **Run an Archiving Application Locally**, refer to [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
+Besides running this example in a pipeline, you can also **Run an Archiving Application Locally**, see the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
 Running locally in your IDE or Flink cluster will use the configuration from file `application.conf` in the src/test/resource/ directory, ensure these values are updated before compiling and uploading your jar.
-Refer to **Manage Apps** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide) to create a new application and get `credentials.properties`. You will share read/write permissions with this app when you create your `stream` and `index` layers.
+To create a new application and get `credentials.properties`, see **Manage Apps** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide). You will share read/write permissions with this app when you create your `stream` and `index` layers.
 > #### Note
-> This example provides the maven profile `add-dependencies-for-IDEA`, which compiles the necessary dependencies in order to run an application locally from your IDE.
+> This example provides the Maven profile `add-dependencies-for-IDEA`, which compiles the necessary dependencies in order to run an application locally from your IDE.
 > When running this example from your IDE, ensure you have this profile enabled in the Maven Toolbar. 
 > Alternatively, you can select the checkbox for `Include dependencies with "Provided" scope` in `Edit Configurations` for [ParquetExampleRunner.java](src/test/java/com/here/platform/data/archive/example/ParquetExampleRunner.java).
 
 ## Troubleshooting
 
-If you have any trouble about accessing logs, monitoring, investigating failures and so on, refer to `FAQ` in [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
+If you have any trouble about accessing logs, monitoring, investigating failures and so on, see `FAQ` in the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
 
 ## Known Issue
 
@@ -259,29 +259,29 @@ set the environment variable `HADOOP_HOME` to point to the directory above the `
     * China: https://platform.hereolp.cn
     
 - ##### Data Archiving Library Developer Guide
-     * RoW: https://developer.here.com/olp/documentation/data-archiving-library/dev_guide/index.html
-     * China: https://developer.here.com/olp/cn/documentation/data-archiving-library/dev_guide/index.html
+     * RoW: https://developer.here.com/documentation/data-archiving-library/dev_guide/index.html
+     * China: https://developer.here.com/cn/documentation/data-archiving-library/dev_guide/index.html
      
 - ##### Command Line Interface Developer Guide
-    * RoW: https://developer.here.com/olp/documentation/open-location-platform-cli/user_guide/index.html
-    * China: https://developer.here.com/olp/cn/documentation/open-location-platform-cli/user_guide/index.html
+    * RoW: https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html
+    * China: https://developer.here.com/cn/documentation/open-location-platform-cli/user_guide/index.html
     
 - ##### Data API Developer Guide
-     * RoW: https://developer.here.com/olp/documentation/data-api/data_dev_guide/index.html
-     * China: https://developer.here.com/olp/cn/documentation/data-api/data_dev_guide/index.html
+     * RoW: https://developer.here.com/documentation/data-api/data_dev_guide/index.html
+     * China: https://developer.here.com/cn/documentation/data-api/data_dev_guide/index.html
      
 - ##### Data Client Library Developer Guide
-     * RoW: https://developer.here.com/olp/documentation/data-client-library/dev_guide/index.html
-     * China: https://developer.here.com/olp/cn/documentation/data-client-library/dev_guide/index.html
+     * RoW: https://developer.here.com/documentation/data-client-library/dev_guide/index.html
+     * China: https://developer.here.com/cn/documentation/data-client-library/dev_guide/index.html
      
 - ##### Data User Guide
-    * RoW: https://developer.here.com/olp/documentation/data-user-guide/index.html
-    * China: https://developer.here.com/olp/cn/documentation/data-user-guide/index.html
+    * RoW: https://developer.here.com/documentation/data-user-guide/index.html
+    * China: https://developer.here.com/cn/documentation/data-user-guide/index.html
     
 - ##### Pipelines Developer Guide
-    * RoW: https://developer.here.com/olp/documentation/pipeline/index.html
-    * China: https://developer.here.com/olp/cn/documentation/pipeline/index.html
+    * RoW: https://developer.here.com/documentation/pipeline/index.html
+    * China: https://developer.here.com/cn/documentation/pipeline/index.html
     
-- ##### Teams and Permissions User Guide
-    * RoW: https://developer.here.com/olp/documentation/access-control/user-guide/index.html
-    * China: https://developer.here.com/olp/cn/documentation/access-control/user-guide/index.html
+- ##### Identity & Access Management Developer Guide
+    * RoW: https://developer.here.com/documentation/identity-access-management/dev_guide/index.html
+    * China: https://developer.here.com/documentation/identity-access-management/dev_guide/index.html

@@ -25,13 +25,13 @@ To run this example, you need two sets of credentials:
 * **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input. 
 * **Repository credentials:** To download HERE Data SDK for Java and Scala libraries and Maven archetypes to your environment.
 
-For more details on how to set up your credentials, see [Get Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/topics/get-credentials.html).
+For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
 For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html) tutorial.
 
 ## Configure a Project
 
-To follow this example, you'll need a [project](https://developer.here.com/documentation/access-control/user_guide/topics/manage-projects.html). A project is a collection of platform resources
+To follow this example, you'll need a [project](#identity-&-access-management-developer-guide). A project is a collection of platform resources
  (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
  **HERE platform portal**.
  
@@ -46,7 +46,7 @@ The command returns the [HERE Resource Name (HRN)](https://developer.here.com/do
 > #### Note
 > You don't have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
-> default Project_ for Apps chapter of the [Teams and Permissions Guide](https://developer.here.com/documentation/access-control/user_guide/topics/manage-projects.html).
+> default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
 For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
 
@@ -72,7 +72,7 @@ Use the **HERE platform portal** to [create the input catalog](https://developer
 - For instructions on how to create a catalog, see **Create a Catalog** in [Data User Guide](#data-user-guide).
 - For instructions on how to create a layer, see **Create a Layer** in [Data User Guide](#data-user-guide).
 - For instructions on how to link a resource to a project, see **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, see **Manage Projects** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide).
+- For instructions on how to share your project, see **Manage Projects** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
 Alternatively, you can use the **Data Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with an `index` layer:
 
@@ -118,7 +118,7 @@ olp catalog layer partition put $CATALOG_HRN index \
 
 - For instructions on how to create a catalog, see **Create a Catalog** in [Data User Guide](#data-user-guide).
 - For instructions on how to link a resource to a project, see **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, see **Manage Projects** in [Teams and Permissions User Guide](#teams-and-permissions-user-guide).
+- For instructions on how to share your project, see **Manage Projects** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
 Alternatively, you can use the **Data Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog:
 
@@ -239,7 +239,7 @@ If you want to use your platform credentials in `~/.here/credentials.properties`
 4. Optionally, to use a custom logger, modify the [src/test/resources/log4j.properties](src/test/resources/log4j.properties) file.
 
 Once you have made your updates, run the Java class [ProtobufCompactionExampleRunner.java](src/test/java/com/here/platform/index/compaction/batch/runner/ProtobufCompactionExampleRunner.java).
-You have to ensure either the maven profile `add-dependencies-for-IDEA` is selected
+You have to ensure either the Maven profile `add-dependencies-for-IDEA` is selected
 or the checkbox for `Include dependencies with "Provided" scope` in `Edit Configurations` for `ProtobufCompactionExampleRunner.java` is selected.
 
 ## Verify the Output
@@ -272,24 +272,24 @@ If you have any trouble accessing logs, monitoring, investigating failures and s
     * China: https://platform.hereolp.cn
     
 - ##### Index Compaction Library Developer Guide
-     * RoW: https://developer.here.com/olp/documentation/index-compaction-library/dev_guide/index.html 
-     * China: https://developer.here.com/olp/cn/documentation/index-compaction-library/dev_guide/index.html
+     * RoW: https://developer.here.com/documentation/index-compaction-library/dev_guide/index.html 
+     * China: https://developer.here.com/cn/documentation/index-compaction-library/dev_guide/index.html
 
 - ##### Command Line Interface Developer Guide
-    * RoW: https://developer.here.com/olp/documentation/open-location-platform-cli/user_guide/index.html
-    * China: https://developer.here.com/olp/cn/documentation/open-location-platform-cli/user_guide/index.html     
+    * RoW: https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html
+    * China: https://developer.here.com/cn/documentation/open-location-platform-cli/user_guide/index.html     
 
 - ##### Data User Guide
-    * RoW: https://developer.here.com/olp/documentation/data-user-guide/index.html
-    * China: https://developer.here.com/olp/cn/documentation/data-user-guide/index.html
+    * RoW: https://developer.here.com/documentation/data-user-guide/index.html
+    * China: https://developer.here.com/cn/documentation/data-user-guide/index.html
     
 - ##### Pipelines Developer Guide
-    * RoW: https://developer.here.com/olp/documentation/pipeline/index.html
-    * China: https://developer.here.com/olp/cn/documentation/pipeline/index.html    
+    * RoW: https://developer.here.com/documentation/pipeline/index.html
+    * China: https://developer.here.com/cn/documentation/pipeline/index.html    
 
-- ##### Teams and Permissions User Guide
-    * RoW: https://developer.here.com/olp/documentation/access-control/user-guide/index.html
-    * China: https://developer.here.com/olp/cn/documentation/access-control/user-guide/index.html   
+- ##### Identity & Access Management Developer Guide
+    * RoW: https://developer.here.com/documentation/identity-access-management/dev_guide/index.html
+    * China: https://developer.here.com/documentation/identity-access-management/dev_guide/index.html   
 
 - ##### Logs, Monitoring and Alert
     * RoW: https://developer.here.com/documentation/metrics-and-logs/user_guide/index.html

@@ -3,7 +3,7 @@
 
     <groupId>com.here.platform.data.archive</groupId>
     <artifactId>data-archive-parquet-example</artifactId>
-    <version>0.0.582</version>
+    <version>0.0.589</version>
     <packaging>jar</packaging>
 
     <!-- Meta information section start -->
@@ -23,11 +23,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <sdk-bom.version>2.20.11</sdk-bom.version>
+        <sdk-bom.version>2.21.6</sdk-bom.version>
         <scala.compat.version>2.11</scala.compat.version>
 
         <hadoop-client.version>2.7.3</hadoop-client.version>
-        <parquet-protobuf.version>1.11.0</parquet-protobuf.version>
+        <parquet-protobuf.version>1.11.1</parquet-protobuf.version>
         <commons-logging.version>1.2</commons-logging.version>
 
         <junit.version>4.12</junit.version>

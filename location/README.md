@@ -29,17 +29,16 @@ This section contains important instructions that will help you to run the
 
 The examples require you to create catalogs and layers in these catalogs. For
 instructions on how to create layers, see the related section in the
-[Data User Guide](https://developer.here.com/olp/documentation/data-user-guide/portal/layer-creating.html) 
-or the [China Data User Guide](https://developer.here.com/olp/cn/documentation/data-user-guide/portal/layer-creating.html).
+[Data User Guide](https://developer.here.com/documentation/data-user-guide/portal/layer-creating.html) 
+or the [China Data User Guide](https://developer.here.com/cn/documentation/data-user-guide/portal/layer-creating.html).
 
 ### Access to Catalogs
 
 The examples require access to catalogs.
 
 If you are running the examples locally, you must first create an app and set up
-a file containing your credentials on your computer. For more information, see
-[Get Credentials](https://developer.here.com/olp/documentation/access-control/user-guide/topics/get-credentials.html) or
-[Get China Credentials](https://developer.here.com/olp/cn/documentation/access-control/user-guide/topics/get-credentials.html).
+a file containing your credentials on your computer. For more information, see the
+[Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
 If you are running the examples in a pipeline on the platform, you also have to
 share the catalogs with your group so that the examples can access the data. You
@@ -60,8 +59,8 @@ your app to a group.
 The creation of platform resources (catalogs, pipelines, etc.) is conveniently
 achievable by means of the OLP Command Line Interface,
 see
-[OLP CLI](https://developer.here.com/olp/documentation/open-location-platform-cli/user_guide/index.html) or 
-[OLP China CLI](https://developer.here.com/olp/cn/documentation/open-location-platform-cli/user_guide/index.html).
+[OLP CLI](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html) or 
+[OLP China CLI](https://developer.here.com/cn/documentation/open-location-platform-cli/user_guide/index.html).
 
 Examples documentation only refers to the `olp` command line tool. If you are on
 Windows, always replace `olp` with `olp.bat`.
@@ -79,17 +78,15 @@ including the HERE platform repositories.
 ### I get `Caused by: java.lang.IllegalStateException: Credentials not found`
 
 Make sure that you have followed the instructions on how to
-[Get Your Credentials](https://developer.here.com/olp/documentation/sdk-developer-guide/dev_guide/topics/get-credentials.html)
-or 
-[Get Your China Credentials](https://developer.here.com/olp/cn/documentation/sdk-developer-guide/dev_guide/topics/get-credentials.html).
+[Get Your Credentials](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
 ### I get `These credentials do not authorize access`
 
 You probably need to share your catalog, for example, with the HERE
 platform group you are part of or app that you have credentials for. For more
 information, see the platform documentation on how to
-[Share a Catalog](https://developer.here.com/olp/documentation/data-user-guide/portal/catalog-sharing.html) or
-[Share a China Catalog](https://developer.here.com/olp/cn/documentation/data-user-guide/portal/catalog-sharing.html).
+[Share a Catalog](https://developer.here.com/documentation/data-user-guide/portal/catalog-sharing.html) or
+[Share a China Catalog](https://developer.here.com/cn/documentation/data-user-guide/portal/catalog-sharing.html).
 
 ### I get `com.typesafe.config.ConfigException$Missing: No configuration setting found for key 'here.token'`
 
