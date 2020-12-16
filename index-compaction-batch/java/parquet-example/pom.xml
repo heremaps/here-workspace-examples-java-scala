@@ -3,7 +3,7 @@
 
     <groupId>com.here.platform.index.compaction.batch</groupId>
     <artifactId>index-compaction-batch-parquet-example</artifactId>
-    <version>0.0.589</version>
+    <version>0.0.597</version>
     <packaging>jar</packaging>
 
     <name>Index Compaction Batch Parquet Example</name>
@@ -23,7 +23,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <sdk-bom.version>2.21.6</sdk-bom.version>
+        <sdk-bom.version>2.22.8</sdk-bom.version>
         <scala.compat.version>2.11</scala.compat.version>
 
         <parquet.version>1.11.1</parquet.version>

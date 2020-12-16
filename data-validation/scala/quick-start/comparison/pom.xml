@@ -3,7 +3,7 @@
 
     <groupId>com.here.platform.data.validation.example.quickstart.scala</groupId>
     <artifactId>comparison_2.11</artifactId>
-    <version>0.0.589</version>
+    <version>0.0.597</version>
     <packaging>jar</packaging>
 
     <name>DVL quickstart comparison example</name>
@@ -13,7 +13,7 @@
     </organization>
 
     <properties>
-        <sdk-bom.version>2.21.6</sdk-bom.version>
+        <sdk-bom.version>2.22.8</sdk-bom.version>
         <quickstartschema.version>1.0.5</quickstartschema.version>
         <artifact.wagon.version>1.6.0</artifact.wagon.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>

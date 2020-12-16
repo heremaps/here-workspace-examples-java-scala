@@ -3,7 +3,7 @@
 
     <groupId>com.here.platform.data.validation.example.quickstart.java</groupId>
     <artifactId>testing</artifactId>
-    <version>0.0.589</version>
+    <version>0.0.597</version>
     <packaging>jar</packaging>
 
     <name>testing</name>
@@ -16,7 +16,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <sdk-bom.version>2.21.6</sdk-bom.version>
+        <sdk-bom.version>2.22.8</sdk-bom.version>
         <dvlcoreschema.version>0.0.5</dvlcoreschema.version>
         <quickstartschema.version>1.0.5</quickstartschema.version>
         <artifact.wagon.version>1.6.0</artifact.wagon.version>
