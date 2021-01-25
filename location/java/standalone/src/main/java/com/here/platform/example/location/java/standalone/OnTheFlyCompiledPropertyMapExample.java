@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ package com.here.platform.example.location.java.standalone;
 import static java.lang.String.format;
 import static java.util.stream.StreamSupport.stream;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.compilation.heremapcontent.javadsl.AttributeAccessor;
 import com.here.platform.location.compilation.heremapcontent.javadsl.AttributeAccessors;
 import com.here.platform.location.core.geospatial.ElementProjection;
@@ -33,6 +32,8 @@ import com.here.platform.location.dataloader.core.Catalog;
 import com.here.platform.location.dataloader.core.caching.CacheManager;
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
+import com.here.platform.location.integration.heremapcontent.HereMapContent;
+import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.PropertyMaps;
 import com.here.schema.rib.v2.common_attributes.SpeedLimitAttribute;
@@ -44,10 +45,7 @@ public final class OnTheFlyCompiledPropertyMapExample {
     final CacheManager cacheManager = CacheManager.withLruCache();
 
     try {
-      final Catalog optimizedMap =
-          catalogFactory.create(
-              HRN.fromString("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-              705L);
+      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
 
       final GeoCoordinate brandenburgerTor = new GeoCoordinate(52.516268, 13.377700);
       final AttributeAccessor<NavigationAttributesPartition, Integer> speedLimitAccessor =
@@ -56,8 +54,7 @@ public final class OnTheFlyCompiledPropertyMapExample {
 
       final Iterable<ElementProjection<Vertex>> elementProjections =
           ProximitySearches.vertices(optimizedMap, cacheManager).search(brandenburgerTor, 1000.0);
-      final Catalog hereMapContent =
-          optimizedMap.resolveDependency(HRN.fromString("hrn:here:data::olp-here:rib-2"));
+      final Catalog hereMapContent = optimizedMap.resolveDependency(HereMapContent.v2.HRN);
 
       final RangeBasedPropertyMap<Vertex, Integer> propertyMap =
           PropertyMaps.navigationAttribute(

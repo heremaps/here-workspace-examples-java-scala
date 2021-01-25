@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * The following rights to redistribution and use the software example in
  * source and binary forms, with or without modification, are granted to
@@ -35,7 +35,6 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import com.here.hrn.HRN
 import java.io.FileOutputStream
 
 import com.here.platform.example.location.utils.FileNameHelper
@@ -56,18 +55,23 @@ import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.{Edge, Vertex}
+import com.here.platform.location.integration.optimizedmap.OptimizedMap
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.{Graphs, PropertyMaps, RoadAccess}
 import com.here.platform.location.integration.optimizedmap.roadattributes.FunctionalClass
 import com.here.platform.location.io.scaladsl.Color
-import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, SimpleStyleProperties}
+import com.here.platform.location.io.scaladsl.geojson.{
+  FeatureCollection,
+  HereProperties,
+  SimpleStyleProperties
+}
 
 import scala.annotation.tailrec
 import scala.collection.immutable.{IndexedSeq, Seq}
 
 // Determine the Most Probable Path from a starting vertex.
 //
-// This example builds on concepts of the US6405128 patent and on the HERE ADAS Research platform.
+// This example builds on concepts of the US6405128 patent and on the HERE ADAS Research Platform.
 //
 // A "most probable path" is identified following a greedy rule considering:
 //   1. Change in functional class
@@ -153,10 +157,7 @@ object MostProbablePathExample extends App {
 
   try {
     val cacheManager = CacheManager.withLruCache()
-    val optimizedMap =
-      catalogFactory.create(
-        HRN("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-        705L)
+    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
 
     // A mapping from Vertices to LineString of the underlying road geometry
     val geometryPropertyMap: PropertyMap[Vertex, PackedLineString] =
@@ -205,7 +206,13 @@ object MostProbablePathExample extends App {
       mostProbablePathSegments
         .foldLeft(FeatureCollection()) { (fc, vertexItem) =>
           val Yellow = Color("#f7f431")
-          fc.lineString(geometryPropertyMap(vertexItem), SimpleStyleProperties().stroke(Yellow))
+          val Red = Color("#e87676")
+          fc.lineString(
+              geometryPropertyMap(vertexItem),
+              SimpleStyleProperties().stroke(Yellow).strokeOpacity(0.8) ++ HereProperties().width(
+                "5m"))
+            .arrow(geometryPropertyMap(vertexItem),
+                   SimpleStyleProperties().stroke(Red) ++ HereProperties().width("1m"))
         }
 
     val path = FileNameHelper.exampleJsonFileFor(MostProbablePathExample)

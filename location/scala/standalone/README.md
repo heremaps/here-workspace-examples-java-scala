@@ -224,6 +224,27 @@ mvn --projects=:scala-standalone_2.11 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.OnTheFlyCompiledPropertyMapExample
 ```
 
+# AdasCurvatureAttributeExample
+
+This example shows how to fetch and use ADAS attributes in the
+`HERE Optimized Map for Location Library` using a `Vertex` or an `Edge`
+reference.
+
+## Setup
+
+To run the example, you need access to the following catalog.
+
+- [`HERE Optimized Map for Location Library`](https://platform.here.com/data/hrn:here:data::olp-here:here-optimized-map-for-location-library-2)
+
+To run the example locally, use the following commands:
+
+```bash
+mvn --also-make --file=../.. --projects=:utils_2.11 install
+
+mvn --projects=:scala-standalone_2.11 compile exec:java \
+    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.AdasCurvatureAttributeExample
+```
+
 # SparsePathMatcherExample
 
 Another example on how to use the path matcher (see also the section

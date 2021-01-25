@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,12 +22,12 @@ package com.here.platform.example.location.scala.standalone
 import java.io.InputStreamReader
 
 import com.github.tototoshi.csv.CSVReader
-import com.here.hrn.HRN
 import com.here.platform.location.core.geospatial._
 import com.here.platform.location.core.mapmatching._
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.Vertex
+import com.here.platform.location.integration.optimizedmap.OptimizedMap
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.{Graphs, PropertyMaps, RoadAccess}
 import com.here.platform.location.integration.optimizedmap.mapmatching.{
@@ -41,10 +41,7 @@ object PathMatcherWithCustomNetworkFilterExample extends App {
   val cacheManager = CacheManager.withLruCache()
 
   try {
-    val optimizedMap =
-      catalogFactory.create(
-        HRN("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-        705L)
+    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
     val trip: Seq[GeoCoordinate] = Helpers.loadTripFromCSVResource("/berlin_no_taxi.csv")
 
     println(s"Loaded trip with ${trip.length} points.")

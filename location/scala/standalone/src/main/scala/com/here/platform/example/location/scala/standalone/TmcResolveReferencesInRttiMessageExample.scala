@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,13 +21,13 @@ package com.here.platform.example.location.scala.standalone
 
 import java.io.{File, FileOutputStream}
 
-import com.here.hrn.HRN
 import com.here.platform.example.location.utils.FileNameHelper
 import com.here.platform.location.core.graph.PropertyMap
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.Vertex
+import com.here.platform.location.integration.optimizedmap.OptimizedMap
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.referencing.{LinearLocation, LocationReferenceResolvers}
 import com.here.platform.location.tpeg2.etl.{ExtendedTMCLocationReference, TMCLocationReference}
@@ -39,12 +39,8 @@ import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, Simple
 /** Convert and resolve TMC references present in RTTI messages.
   */
 object TmcResolveReferencesInRttiMessageExample extends App {
-  private val optimizedMapHrn = HRN(
-    "hrn:here:data::olp-here:here-optimized-map-for-location-library-2")
-  private val optimizedMapVersion = 705L
-
   private val catalogFactory = new StandaloneCatalogFactory()
-  private val optimizedMap = catalogFactory.create(optimizedMapHrn, optimizedMapVersion)
+  private val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
   private val cacheManager = CacheManager.withLruCache()
 
   private val resolver = LocationReferenceResolvers.extendedTmc(optimizedMap, cacheManager)

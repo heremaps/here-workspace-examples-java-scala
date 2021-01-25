@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,8 +82,7 @@ public final class StreamPathMatcherExample {
           .name("read_sdii_message")
           .map(new SdiiMessageMapFunction(inputCatalogHRN))
           .name("parse_sdii_message")
-          .partitionCustom(
-              new RoundRobinTilePartitioner(PARTITION_TILE_LEVEL), Utils::firstPositionEstimate)
+          .partitionCustom(new TilePartitioner(PARTITION_TILE_LEVEL), Utils::firstPositionEstimate)
           .map(new PathMatcherMapFunction(optimizedMapHRN, optimizedMapCatalogVersion))
           .name("mapmatch_sdii_message")
           .map(

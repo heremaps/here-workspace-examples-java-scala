@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ package com.here.platform.example.location.java.standalone;
 
 import static java.util.stream.StreamSupport.stream;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.core.geospatial.ElementProjection;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.core.geospatial.javadsl.ProximitySearch;
@@ -32,6 +31,7 @@ import com.here.platform.location.dataloader.core.caching.CacheManager;
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Edge;
 import com.here.platform.location.inmemory.graph.Vertex;
+import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.integration.optimizedmap.graph.AccessRestriction;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.Graphs;
@@ -46,10 +46,7 @@ public final class TurnRestrictionsExample {
     final CacheManager cacheManager = CacheManager.withLruCache();
 
     try {
-      final Catalog optimizedMap =
-          catalogFactory.create(
-              HRN.fromString("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-              705L);
+      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
 
       final PropertyMap<Edge, Boolean> turnRestrictionsMap =
           PropertyMaps.turnRestrictions(

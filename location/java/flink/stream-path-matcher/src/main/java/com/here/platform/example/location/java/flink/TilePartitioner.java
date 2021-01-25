@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,14 +25,14 @@ import com.here.sdii.v3.SdiiCommon;
 import org.apache.flink.api.common.functions.Partitioner;
 
 @SuppressWarnings("serial")
-public class RoundRobinTilePartitioner implements Partitioner<SdiiCommon.PositionEstimate> {
+public class TilePartitioner implements Partitioner<SdiiCommon.PositionEstimate> {
 
   private static final PositionEstimateGeoCoordinateAdapter adapter =
       new PositionEstimateGeoCoordinateAdapter();
 
   private final HereTileResolver resolver;
 
-  RoundRobinTilePartitioner(final HereTileLevel level) {
+  TilePartitioner(final HereTileLevel level) {
     resolver = new HereTileResolver(level);
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,17 +21,17 @@ package com.here.platform.example.location.scala.standalone
 
 import java.io.ByteArrayInputStream
 
-import com.here.hrn.HRN
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.{Backward, Forward}
+import com.here.platform.location.integration.optimizedmap.OptimizedMap
 import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.referencing.{LinearLocation, LocationReferenceResolvers}
 import com.here.platform.location.tpeg2.XmlMarshallers
 
 /** This example shows how to take an OLR reference given in XML
-  * and to resolve this reference to Hmc-Segments.
+  * and to resolve this reference to Here Map Content Reference.
   */
 object OlrResolveReferenceToHmcSegmentsExample extends App {
   val olrReference =
@@ -82,10 +82,7 @@ object OlrResolveReferenceToHmcSegmentsExample extends App {
 
   try {
     val cacheManager = CacheManager.withLruCache()
-    val optimizedMap =
-      catalogFactory.create(
-        HRN("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-        769L)
+    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 769L)
 
     val reference = XmlMarshallers.openLRLocationReference
       .unmarshall(new ByteArrayInputStream(olrReference.getBytes("utf-8")))

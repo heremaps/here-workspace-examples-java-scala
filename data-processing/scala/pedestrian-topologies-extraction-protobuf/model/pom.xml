@@ -1,21 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>com.here.platform.data.processing.example.scala</groupId>
     <artifactId>pedestrian-topologies-extraction-protobuf</artifactId>
-    <version>0.0.597</version>
+    <version>0.0.610</version>
   </parent>
 
   <groupId>com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf</groupId>
   <artifactId>model_v2</artifactId>
-  <version>0.0.597</version>
+  <version>0.0.610</version>
   <packaging>pom</packaging>
 
   <name>Pedestrian Topologies Extraction Example Scala</name>
   <description>Schema project for Pedestrian Topologies Extraction Protobuf example in Scala</description>
   <inceptionYear>2019</inceptionYear>
-  <organization/>
+  <organization>
+    <name>HERE Europe B.V.</name>
+  </organization>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
   <developers/>
 
@@ -26,7 +36,12 @@
     <module>ds</module>
   </modules>
 
-  <scm/>
+  <scm>
+    <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
+    <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
+    <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
+    <tag>2.23.0</tag>
+  </scm>
   <distributionManagement>
     <repository>
       <id>HERE_PLATFORM_ARTIFACT</id>
@@ -46,7 +61,7 @@
     <scala.compat.version>2.11</scala.compat.version>
     <protobuf.version>3.3.1</protobuf.version>
     <here.plugin.version>1.0.2</here.plugin.version>
-    <artifact.wagon.version>1.6.0</artifact.wagon.version>    
+    <artifact.wagon.version>1.6.0</artifact.wagon.version>
   </properties>
 
   <dependencyManagement>

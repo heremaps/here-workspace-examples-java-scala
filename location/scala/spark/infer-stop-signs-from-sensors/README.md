@@ -38,7 +38,6 @@ The example logic does the following:
    - The example averages fraction values of projected points.
 
 5. Publish the result into the output catalog.
-
    - The example uses the `Data Client Library` API to publish the result in the
      output catalog.
 

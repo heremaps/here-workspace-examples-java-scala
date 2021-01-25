@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,16 +22,15 @@ package com.here.platform.data.processing.example.scala.pedestrian.deltasets
 import au.id.jazzy.play.geojson.{Feature, FeatureCollection, LineString, LngLat}
 import com.here.platform.data.processing.blobstore.{Payload, Retriever}
 import com.here.platform.data.processing.catalog.Partition._
-import com.here.platform.data.processing.compiler.{InKey, OutKey}
+import com.here.platform.data.processing.compiler.OutKey
 import com.here.platform.data.processing.driver.Default
-import com.here.platform.data.processing.driver.deltasets.{OneToOne, Resolver}
-import com.here.platform.data.processing.example.scala.pedestrian.deltasets.Defs.In
+import com.here.platform.data.processing.driver.deltasets.Resolver
 import com.here.platform.pipeline.logging.ContextLogging
 import com.here.schema.rib.v2._
-import com.here.schema.rib.v2.topology_geometry_partition.TopologyGeometryPartition
-import com.here.schema.rib.v2.road_attributes_partition.RoadAttributesPartition
 import com.here.schema.rib.v2.anchor.SegmentAnchor
+import com.here.schema.rib.v2.road_attributes_partition.RoadAttributesPartition
 import com.here.schema.rib.v2.topology_geometry.Segment
+import com.here.schema.rib.v2.topology_geometry_partition.TopologyGeometryPartition
 import play.api.libs.json.{JsObject, JsString, Json}
 
 /** Encapsulates all code and data that may be distributed across the cluster. Everything in this
@@ -42,26 +41,6 @@ import play.api.libs.json.{JsObject, JsString, Json}
 class Compiler(config: CompilerConfig, retriever: Retriever)
     extends Serializable
     with ContextLogging {
-  def renameTopologyKeyToOutKey: OneToOne[InKey, OutKey] =
-    OneToOne(
-      _.copy(catalog = Default.OutCatalogId, layer = Defs.Out.PedestrianSegments),
-      _.copy(catalog = Defs.In.RibCatalog, layer = Defs.In.TopologyGeometryLayer)
-    )
-
-  def renameRoadKeyToOutKey: OneToOne[InKey, OutKey] =
-    OneToOne(
-      _.copy(catalog = Default.OutCatalogId, layer = Defs.Out.PedestrianSegments),
-      _.copy(catalog = Defs.In.RibCatalog, layer = Defs.In.RoadAttributesLayer)
-    )
-
-  /** Get the topology partition key based from a reference.
-    *
-    * @param reference The reference object.
-    * @return The referenced topology partition key.
-    */
-  def getTopologyKey(reference: common.Reference) =
-    InKey(In.RibCatalog, In.TopologyGeometryLayer, HereTile(reference.partitionName.toLong))
-
   /** Given a tile and the metadata for the corresponding topology and road tiles (if any),
     * the list of segment features that are accessible by pedestrians.
     *

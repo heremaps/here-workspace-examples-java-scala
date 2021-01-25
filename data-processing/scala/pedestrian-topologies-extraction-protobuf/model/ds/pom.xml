@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf</groupId>
     <artifactId>model_v2</artifactId>
-    <version>0.0.597</version>
+    <version>0.0.610</version>
   </parent>
 
   <artifactId>model_v2_ds</artifactId>
@@ -12,6 +13,23 @@
 
   <name>DataStore Protobundle</name>
   <description>Protocol buffers schema definitions, descriptor file, and proto manifest.</description>
+  <organization>
+    <name>HERE Europe B.V.</name>
+  </organization>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
+    <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
+    <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
+    <tag>2.23.0</tag>
+  </scm>
 
   <dependencies>
 

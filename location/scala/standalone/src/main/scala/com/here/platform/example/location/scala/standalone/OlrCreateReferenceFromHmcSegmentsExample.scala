@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +21,11 @@ package com.here.platform.example.location.scala.standalone
 
 import java.io.FileOutputStream
 
-import com.here.hrn.HRN
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.{Backward, Forward}
 import com.here.platform.location.integration.heremapcontent.PartitionId
+import com.here.platform.location.integration.optimizedmap.OptimizedMap
 import com.here.platform.location.integration.optimizedmap.geospatial.{
   HereMapContentReference,
   SegmentId
@@ -36,7 +36,7 @@ import com.here.platform.location.referencing.{LinearLocation, LocationReference
 import com.here.platform.location.tpeg2.olr.OpenLRLocationReference
 import com.here.platform.location.tpeg2.{BinaryMarshallers, XmlMarshallers}
 
-/** This example shows how to take a path given as Hmc-Segments
+/** This example shows how to take a path given as Here Map Content Reference
   * and create an OLR reference from it.
   */
 object OlrCreateReferenceFromHmcSegmentsExample extends App {
@@ -105,10 +105,7 @@ object OlrCreateReferenceFromHmcSegmentsExample extends App {
 
   try {
     val cacheManager = CacheManager.withLruCache()
-    val optimizedMap =
-      catalogFactory.create(
-        HRN("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-        769L)
+    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 769L)
 
     val segments = segmentStrings.map(parseHmcRef)
 

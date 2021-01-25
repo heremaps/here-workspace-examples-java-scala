@@ -1,9 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.here.platform.data.validation.example.quickstart.scala</groupId>
     <artifactId>testing_2.11</artifactId>
-    <version>0.0.597</version>
+    <version>0.0.610</version>
     <packaging>jar</packaging>
 
     <name>DVL quickstart testing example</name>
@@ -11,9 +12,23 @@
     <organization>
         <name>HERE Europe B.V.</name>
     </organization>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
+        <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
+        <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
+        <tag>2.23.0</tag>
+    </scm>
 
     <properties>
-        <sdk-bom.version>2.22.8</sdk-bom.version>
+        <sdk-bom.version>2.23.6</sdk-bom.version>
         <dvlcoreschema.version>0.0.5</dvlcoreschema.version>
         <quickstartschema.version>1.0.5</quickstartschema.version>
         <artifact.wagon.version>1.6.0</artifact.wagon.version>

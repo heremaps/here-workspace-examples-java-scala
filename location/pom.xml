@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.here.platform.example.location</groupId>
   <artifactId>aggregator</artifactId>
-  <version>0.0.597</version>
+  <version>0.0.610</version>
   <packaging>pom</packaging>
 
   <name>Location Library Examples</name>
@@ -25,4 +26,11 @@
     <module>scala/standalone</module>
     <module>utils</module>
   </modules>
+
+  <scm>
+    <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
+    <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
+    <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
+    <tag>2.23.0</tag>
+  </scm>
 </project>

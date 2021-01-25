@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * The following rights to redistribution and use the software example in
  * source and binary forms, with or without modification, are granted to
@@ -40,7 +40,6 @@ import static java.lang.Math.*;
 import static java.util.Comparator.comparingDouble;
 import static java.util.stream.StreamSupport.stream;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.core.geospatial.ElementProjection;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.core.geospatial.javadsl.GeoCoordinates;
@@ -51,6 +50,7 @@ import com.here.platform.location.dataloader.core.caching.CacheManager;
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Edge;
 import com.here.platform.location.inmemory.graph.Vertex;
+import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.integration.optimizedmap.graph.RoadAccess;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.Graphs;
@@ -76,10 +76,7 @@ public final class MostProbablePathExample {
     final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
     try {
       final CacheManager cacheManager = CacheManager.withLruCache();
-      final Catalog optimizedMap =
-          catalogFactory.create(
-              HRN.fromString("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-              705L);
+      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
 
       // A mapping from Vertices to LineString of the underlying road geometry
       final PropertyMap<Vertex, LineStringHolder<GeoCoordinate>> geometryPropertyMap =

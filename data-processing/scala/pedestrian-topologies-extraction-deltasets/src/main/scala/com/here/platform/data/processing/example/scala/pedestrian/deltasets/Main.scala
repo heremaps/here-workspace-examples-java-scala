@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@
 
 package com.here.platform.data.processing.example.scala.pedestrian.deltasets
 
-import com.here.platform.data.processing.catalog.Partition
 import com.here.platform.data.processing.driver._
 import com.here.platform.data.processing.driver.config.CompleteConfig
 import com.here.platform.data.processing.driver.deltasets.ResolutionStrategy.BackwardResolution
@@ -44,13 +43,6 @@ object Main extends PipelineRunner with DeltaSimpleSetup {
     // The following import enables transformations on DeltaSets.
     import context.transformations._
 
-    // We may specify a partition key filter in the configuration to avoid processing the whole world.
-    val filter: Partition.Key => Boolean = config.partitionKeyFilter match {
-      case Some(filterConfig) => filterConfig.filter
-      case None =>
-        _ => true
-    }
-
     // Using a locality aware partitioner at level 12 will guarantee that all tiles at higher zoom level (13, 14 etc.)
     // are processed on the same worker node as the corresponding level 12 HERE Map content tiles. This way, we can
     // avoid shuffling.
@@ -64,13 +56,11 @@ object Main extends PipelineRunner with DeltaSimpleSetup {
     val topologyGeometries =
       context
         .queryCatalogLayer(Defs.In.RibCatalog, Defs.In.TopologyGeometryLayer, partitioner)
-        .filterByKey(filter)
 
     // Process all road attributes partitions, while resolving references to topology-geometry partitions.
     val pedestrianFeatures =
       context
         .queryCatalogLayer(Defs.In.RibCatalog, Defs.In.RoadAttributesLayer, partitioner)
-        .filterByKey(filter)
         .mapValuesWithResolver(
           compiler.extractPedestrianFeatures,
           // We pair each topology partition with the road partition of the same tile.
@@ -89,7 +79,7 @@ object Main extends PipelineRunner with DeltaSimpleSetup {
           },
         // If we increase the zoom level of the tiles, our LocalityAwarePartitioner will guarantee that no data needs
         // to be shuffled.
-        if (config.outputLevel > 12) PreservesPartitioning() else partitioner
+        if (config.outputLevel > 12) PreservesPartitioning else partitioner
       )
 
     // Convert the result to JSON and publish it.

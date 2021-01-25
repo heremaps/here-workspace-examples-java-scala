@@ -1,16 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>com.here.platform</groupId>
     <artifactId>sdk-standalone-bom</artifactId>
-    <version>2.22.8</version>
+    <version>2.23.6</version>
     <relativePath/>
   </parent>
 
   <groupId>com.here.platform.example.location</groupId>
   <artifactId>java-standalone</artifactId>
-  <version>0.0.597</version>
+  <version>0.0.610</version>
   <packaging>jar</packaging>
 
   <name>Location Library Examples - Java - Standalone</name>
@@ -25,6 +26,13 @@
     </license>
   </licenses>
 
+  <scm>
+    <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
+    <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
+    <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
+    <tag>2.23.0</tag>
+  </scm>
+
   <properties>
     <exec.cleanupDaemonThreads>false</exec.cleanupDaemonThreads>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,10 +40,6 @@
 
   <dependencies>
     <!-- HERE dependencies -->
-    <dependency>
-      <groupId>com.here.hrn</groupId>
-      <artifactId>hrn_${scala.compat.version}</artifactId>
-    </dependency>
     <dependency>
       <groupId>com.here.platform.location</groupId>
       <artifactId>location-compilation-here-map-content_${scala.compat.version}</artifactId>
@@ -69,6 +73,10 @@
       <artifactId>location-referencing_${scala.compat.version}</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.here.platform.location</groupId>
+      <artifactId>location-io_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.here.schema.rib</groupId>
       <artifactId>common_v2_scala</artifactId>
       <exclusions>
@@ -93,6 +101,10 @@
       <artifactId>traffic_v2_java</artifactId>
     </dependency>
     <!-- other dependencies -->
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-csv</artifactId>

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,8 @@
 
 package com.here.platform.data.processing.example.scala.pedestrian.deltasets
 
-import com.here.platform.data.processing.driver.config.PartitionKeyFilterConfig
-
 /** Compiler specific configuration.
   *
   * @param outputLevel The output layer zoom level.
   */
-case class CompilerConfig(outputLevel: Int,
-                          partitionKeyFilter: Option[PartitionKeyFilterConfig] = None)
+case class CompilerConfig(outputLevel: Int)

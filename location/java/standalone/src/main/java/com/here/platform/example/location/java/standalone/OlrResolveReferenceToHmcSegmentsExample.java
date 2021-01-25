@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,13 +19,13 @@
 
 package com.here.platform.example.location.java.standalone;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.core.graph.javadsl.PropertyMap;
 import com.here.platform.location.dataloader.core.Catalog;
 import com.here.platform.location.dataloader.core.caching.CacheManager;
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.inmemory.graph.javadsl.Direction;
+import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.PropertyMaps;
 import com.here.platform.location.referencing.LinearLocation;
@@ -41,16 +41,13 @@ import java.util.stream.Collectors;
 
 /**
  * This example shows how to take an OLR reference given in XML and to resolve this reference to
- * Hmc-Segments.
+ * Here Map Content Reference.
  */
 public final class OlrResolveReferenceToHmcSegmentsExample {
 
   public static void main(final String[] args) {
     final StandaloneCatalogFactory factory = new StandaloneCatalogFactory();
-    final Catalog optimizedMap =
-        factory.create(
-            HRN.fromString("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-            769L);
+    final Catalog optimizedMap = factory.create(OptimizedMap.v2.HRN, 769L);
 
     final CacheManager cacheManager = CacheManager.withLruCache();
 

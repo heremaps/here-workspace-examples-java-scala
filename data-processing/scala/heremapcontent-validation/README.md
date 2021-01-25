@@ -69,41 +69,36 @@ invitation letter to learn your organization ID.
 
 #### Create the Local Validation Report Catalog
 
-To run this compiler locally it is recommended to use a local output catalog, by following the steps
-below. If you want to know more about local catalogs, see
-[the SDK tutorial about local development and testing](https://developer.here.com/documentation/java-scala-dev/dev_guide/local-development-workflow/index.html)
-and [the OLP CLI documentation](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data-workflows.html).
+To run this compiler locally it is recommended to use an output catalog, by following the steps below.
 
-1. Use the [`olp local catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/catalog-commands.html#catalog-create)
-command to create the local catalog.
+1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
+Make sure to note down the HRN returned by the following command for later use: 
 
 ```bash
-olp local catalog create heremapcontent-validation "HERE Map Content - Topology and Geometry Validation" \
+olp catalog create $CATALOG_ID "HERE Map Content - Topology and Geometry Validation" \
             --summary "Validation of HERE Map Content Topology and Geometry layer" \
             --description "Validation of HERE Map Content Topology and Geometry layer"
 ```
 
-The local catalog will have the HRN `hrn:local:data:::heremapcontent-validation`.
-
-2. Use the [`olp local catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/layer-commands.html#catalog-layer-add)
+2. Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add)
 command to add four `versioned` layers to your catalog:
 
 ```bash
-olp local catalog layer add hrn:local:data:::heremapcontent-validation report report --versioned \
+olp catalog layer add $CATALOG_HRN report report --versioned \
             --summary "Test report" \
             --description "Test report" --partitioning heretile:12 \
             --schema hrn:$HRN_PARTITION:schema:::com.here.platform.data.processing.validation.schema:report_v2:1.0.0 \
             --content-type application/json
-olp local catalog layer add hrn:local:data:::heremapcontent-validation metrics metrics --versioned \
+olp catalog layer add $CATALOG_HRN metrics metrics --versioned \
             --summary "Test metrics" \
             --description "Test metrics" --partitioning heretile:12,10,8,6,4,2,0 \
             --schema hrn:$HRN_PARTITION:schema:::com.here.platform.data.processing.validation.schema:metrics_v2:1.0.0 \
             --content-type application/json
-olp local catalog layer add hrn:local:data:::heremapcontent-validation assessment assessment --versioned \
+olp catalog layer add $CATALOG_HRN assessment assessment --versioned \
             --summary "Test assessment" \
             --description "Test assessment" --partitioning generic \
             --content-type application/json
-olp local catalog layer add hrn:local:data:::heremapcontent-validation state state --versioned \
+olp catalog layer add $CATALOG_HRN state state --versioned \
             --summary "state" \
             --description "state" --partitioning generic \
             --content-type application/octet-stream
@@ -131,6 +126,9 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region. In order to use this configuration file, you need to use the `-Dconfig.file`
 parameter.
 
+Set the environment variable `$PATH_TO_CONFIG_FOLDER` to `./config/here`. 
+For the HERE platform China environment use the files in the `./config/here-china` directory.
+
 Finally, run the following command line in the `heremapcontent-validation` directory to compile and
 run the validation pipeline.
 
@@ -139,37 +137,30 @@ For the HERE platform environment:
 ```bash
 mvn compile exec:java \
 -Dexec.mainClass=com.here.platform.data.processing.example.scala.validation.Main \
--Dpipeline-config.file=./config/here/local-pipeline-config.conf \
+-Dpipeline-config.file=$PATH_TO_CONFIG_FOLDER/pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job.conf \
 -Dconfig.file=./config/here/local-application.conf \
--Dexec.args="--master local[*]"
+-Dspark.master=local[*]
 ```
 
-For the HERE platform China environment:
+After one run in the HERE platform environment, you can inspect the catalog with the OLP CLI:
+
+`olp catalog inspect $CATALOG_HRN`
+
+> Note:
+> In the HERE platform environment, you can inspect the local catalog with the OLP CLI: 
+> `olp local catalog inspect $CATALOG_HRN`
+> 
+> The `local inspect` command is not available in the HERE platform China environment, 
+> but you can download partitions from the local catalog to manually inspect them. 
+
+For example, the command below downloads the aggregated metrics   
+containing all statistics about the validation run. 
+Metrics are aggregated at different zoom levels, and the root partition (HERE Tile ID 1) 
+contains the aggregation of all partitions' metrics:
 
 ```bash
-mvn compile exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.validation.Main \
--Dpipeline-config.file=./config/here-china/local-pipeline-config.conf \
--Dpipeline-job.file=./config/here-china/pipeline-job.conf \
--Dconfig.file=./config/here-china/local-application.conf \
--Dexec.args="--master local[*]"
-```
-
-After one run, in the HERE platform environment you can inspect the local catalog with the OLP CLI:
-
-```bash
-olp local catalog inspect hrn:local:data:::heremapcontent-validation
-```
-
-The `local inspect` command is not available in the HERE platform China environment, but you can
-download partitions from the local catalog to manually inspect them. The command below, for example,
-downloads the aggregated metrics containing all statistics about the validation run. Metrics are
-aggregated at different zoom levels, and the root partition (HERE Tile ID 1) contains the
-aggregation of all metrics partitions:
-
-```bash
-olp local catalog layer partition get hrn:local:data:::heremapcontent-validation metrics --partitions 1
+olp catalog layer partition get $CATALOG_HRN metrics --partitions 1
 ```
 
 The `report` layer will be likely empty, because no test cases have failed. To force some failures

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ package com.here.platform.example.location.scala.standalone
 
 import java.io.FileOutputStream
 
-import com.here.hrn.HRN
 import com.here.platform.example.location.utils.FileNameHelper
 import com.here.platform.location.compilation.heremapcontent.{AttributeAccessor, AttributeAccessors}
 import com.here.platform.location.core.geospatial.Implicits._
@@ -30,6 +29,8 @@ import com.here.platform.location.core.graph.{PropertyMap, RangeBasedProperty}
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.{Forward, Vertex, Vertices}
+import com.here.platform.location.integration.heremapcontent.HereMapContent
+import com.here.platform.location.integration.optimizedmap.OptimizedMap
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.io.scaladsl.Color
@@ -55,11 +56,8 @@ object OnTheFlyCompiledPropertyMapExample extends App {
   val cacheManager = CacheManager.withLruCache()
 
   try {
-    val optimizedMap =
-      catalogFactory.create(
-        HRN("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-        705L)
-    val hereMapContent = optimizedMap.resolveDependency(HRN("hrn:here:data::olp-here:rib-2"))
+    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
+    val hereMapContent = optimizedMap.resolveDependency(HereMapContent.v2.HRN)
 
     val speedLimitAccessor: AttributeAccessor[AdvancedNavigationAttributesPartition, Int] =
       AttributeAccessors

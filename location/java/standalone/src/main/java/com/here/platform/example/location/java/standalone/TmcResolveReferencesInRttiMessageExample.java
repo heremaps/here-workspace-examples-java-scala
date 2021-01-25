@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ public final class TmcResolveReferencesInRttiMessageExample {
     final CacheManager cacheManager = CacheManager.withLruCache();
 
     try {
-      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 705L);
+      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
 
       final LocationReferenceResolver<ExtendedTMCLocationReference, BidirectionalLinearLocation>
           resolver = LocationReferenceResolvers.extendedTmc(optimizedMap, cacheManager);

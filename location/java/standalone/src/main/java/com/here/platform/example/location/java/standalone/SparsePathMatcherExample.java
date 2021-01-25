@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2020 HERE Europe B.V.
+ * Copyright (C) 2017-2021 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ package com.here.platform.example.location.java.standalone;
 import static java.lang.Double.parseDouble;
 import static java.util.stream.StreamSupport.stream;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.core.mapmatching.MatchResult;
 import com.here.platform.location.core.mapmatching.OnRoad;
@@ -33,6 +32,7 @@ import com.here.platform.location.dataloader.core.Catalog;
 import com.here.platform.location.dataloader.core.caching.CacheManager;
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
+import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.mapmatching.javadsl.PathMatchers;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -50,10 +50,7 @@ public final class SparsePathMatcherExample {
     final CacheManager cacheManager = CacheManager.withLruCache();
 
     try {
-      final Catalog optimizedMap =
-          catalogFactory.create(
-              HRN.fromString("hrn:here:data::olp-here:here-optimized-map-for-location-library-2"),
-              705L);
+      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
       final Stream<GeoCoordinate> trip = loadTripFromCSVResource("/example_berlin_path_sparse.csv");
 
       final PathMatcher<GeoCoordinate, Vertex, List<Vertex>> pathMatcher =

@@ -87,6 +87,6 @@ The following examples demonstrate how to use the Location Library. Sources can 
 
 ## License
 
-Copyright (C) 2017-2020 HERE Europe B.V.
+Copyright (C) 2017-2021 HERE Europe B.V.
 
 Unless otherwise noted in `LICENSE` files, source code files for specific files or directories, the [LICENSE](LICENSE) in the root applies to all content in this repository.
