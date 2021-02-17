@@ -31,7 +31,7 @@ import com.here.platform.location.referencing.{LinearLocation, LocationReference
 import com.here.platform.location.tpeg2.XmlMarshallers
 
 /** This example shows how to take an OLR reference given in XML
-  * and to resolve this reference to Here Map Content Reference.
+  * and to resolve this reference to HERE Map Content references.
   */
 object OlrResolveReferenceToHmcSegmentsExample extends App {
   val olrReference =

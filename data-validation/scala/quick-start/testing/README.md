@@ -24,9 +24,9 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Configure a Project
 
-To follow this example, you'll need a [projects](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
+To follow this example, you will need a [projects](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
  (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
- **HERE platform portal**.
+[HERE platform portal](https://platform.here.com/).
  
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
@@ -34,10 +34,10 @@ Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
+The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your new project. Note down this HRN as you will need it later in this tutorial.
 
-> Note:
-> You don't have to provide a `--scope` parameter if your app has a default scope.
+> #### Note
+> You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
@@ -62,7 +62,7 @@ You can do that using a configuration template file named `output-testing-catalo
 Remove the `.template` extension of that file's name and replace the placeholder `{output_catalog_id}` with $CATALOG_ID,
 where CATALOG_ID is a unique identifier, such as "YOUR_LOGIN-validation-quickstart-testing"
 
-Use the HERE platform Portal to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html)::
+Use the [HERE platform portal](https://platform.here.com/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
 | Layer ID    | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding | Schema
 |--------------------------|--------------|------------|--------------------------|------------------|------------------------------------------------
@@ -74,8 +74,8 @@ Alternatively, You can do that using a configuration template file named `output
 Remove the `.template` extension of that file's name and replace the placeholder `{output_catalog_id}` with $CATALOG_ID,
 where CATALOG_ID is a unique identifier, such as "YOUR_LOGIN-validation-quickstart-testing"
 
-> Note:
-> We recommend you to set values to variables so that you can easily copy and execute the following commands.
+> #### Note
+> We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
 Make sure to note down the HRN returned by the following command for later use:
@@ -110,7 +110,7 @@ olp catalog create $CATALOG_ID $CATALOG_NAME \
 where CATALOG_ID is the unique identifier you used above, such as "YOUR_LOGIN-validation-quickstart-testing". This identifier is the resource portion of your catalog's HERE Resource Name (HRN),
 
 - `CATALOG_NAME` is a unique identifier (whitespaces are allowed), such as "YOUR_LOGIN Data Validation Library Quick Start Example Testing Results"
-(this is the value that appears for your catalog in the Portal's Data tab, when you list all available catalogs or search for a catalog), and
+(this is the value that appears for your catalog in the **Data** tab, when you list all available catalogs or search for a catalog), and
 - `CATALOG_SUMMARY` is an informal description like "Output catalog of the Testing component in the Data Validation Library Quick Start Example"
 (the --summary option is actually required).
 - `JSON_FILE_PATH` is the path to your configuration file from the previous step above.
@@ -173,12 +173,12 @@ olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT
 ```
 
 It may take a few minutes before the pipeline starts running, as your fat jar for the pipeline template may still be uploading to the platform in the background.
-To find out when the pipeline starts running you can either check its state via the Pipelines tab of the Portal or use this OLP CLI command
+To find out when the pipeline starts running you can either check its state via the **Pipelines** tab of the platform portal or use this OLP CLI command
 (when the running state is reached, the portal lets you navigate to the Splunk logs, and this olp command will output the respective URL):
 
 `olp pipeline version wait $PIPELINE_ID $PIPELINE_VERSION_ID --job-state=running --timeout=300 --scope $PROJECT_HRN`
 
-The pipeline takes up to 10 minutes to complete. Manually refresh the Pipelines tab in Portal.
+The pipeline takes up to 10 minutes to complete. Manually refresh the **Pipelines** tab in the platform portal.
 If the pipeline is complete, its status will refresh from "RUNNING" to "READY".
 
 * Remove portal infrastructure
@@ -192,23 +192,23 @@ However, the results of the pipeline remain in the output catalog
 
 ### Inspect the Testing Output Catalog
 
-There are at least two ways to decode the contents of output testing catalog, either using the Portal or using protoc on your local machine.
+There are at least two ways to decode the contents of output testing catalog, either using the platform portal or using protoc on your local machine.
 
-* Inspect the Testing Output Catalog in the Portal
+* Inspect the testing output catalog in the platform portal
 
-In the Portal's Data tab, click on the "test-results" layer for the output testing catalog that you have created and populated.
-Alternatively you can inspect the output catalog in the Portal's Data tab.
-On the Layer page, click the _Inspect_ tab to open the catalog.
+In the **Data** tab, click the "test-results" layer for the output testing catalog that you have created and populated.
+Alternatively you can inspect the output catalog in the **Data** tab.
+On the Layer page, click the **Inspect** tab to open the catalog.
 Between the two input catalog versions, partitions with line segments that differ are highlighted in blue.
-Click on a specific partition to see its decoded data.
-Portal should render the differing geometry and display the decoded data values for the selected partition.
+Click a specific partition to see its decoded data.
+The platform portal should render the differing geometry and display the decoded data values for the selected partition.
 
-* Inspect the Testing Output Catalog locally
+* Inspect the testing output catalog locally
 
-Alternatively you can inspect the output catalog in the Portal's Data tab.
-On the Layer page, click on the _Inspect_ tab so that we can see specific partitions.
+Alternatively you can inspect the output catalog in the **Data** tab.
+On the Layer page, click the **Inspect** tab so that we can see specific partitions.
 Click on "23618304" under Partition ID.
-Click on Download raw data to save the raw partition data to disk.
+Click **Download raw data** to save the raw partition data to disk.
 You can then run protoc on the raw data to decode it, using:
 
 `protoc --decode_raw < $PATH_TO_RAW_PARTITION_DATA`
@@ -231,7 +231,7 @@ The output is structured as follows:
 
 The first item is our test ID and status enumeration, with 1 indicating a FAIL. The second item is the list of points in the line segment. Notice that there are only 2 points, which is what we expect from our test case criteria.
 Click on "23618305" under Partition ID.
-Click on Download raw data to save the raw partition data to disk.
+Click **Download raw data** to save the raw partition data to disk.
 This partition contained an octagon in the input catalog, so its decoded output has a status enumeration of 0, indicating PASS. It has 9 points, forming a closed loop for the octagon.
 
 1 {

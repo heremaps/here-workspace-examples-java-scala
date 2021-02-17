@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.index.compaction.batch</groupId>
     <artifactId>index-compaction-batch-protobuf-example</artifactId>
-    <version>0.0.610</version>
+    <version>0.0.632</version>
     <packaging>jar</packaging>
 
     <name>Index Compaction Batch Protobuf Example</name>
@@ -24,14 +24,14 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.23.0</tag>
+        <tag>2.24.0</tag>
     </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <sdk-bom.version>2.23.6</sdk-bom.version>
+        <sdk-bom.version>2.24.8</sdk-bom.version>
         <scala.compat.version>2.11</scala.compat.version>
 
         <junit.version>4.12</junit.version>
@@ -139,6 +139,14 @@
                 </executions>
             </plugin>
         </plugins>
+        <!-- HERE Artifact Service plugin to download schemas -->
+        <extensions>
+            <extension>
+                <groupId>com.here.platform.artifact</groupId>
+                <artifactId>artifact-wagon</artifactId>
+                <version>2.0.5</version>
+            </extension>
+        </extensions>
     </build>
 
     <!-- This profile helps to make things run out of the box in IntelliJ -->
@@ -164,6 +172,19 @@
                     <scope>compile</scope>
                 </dependency>
             </dependencies>
+        </profile>
+        <!-- HERE Artifact Service repository -->
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>here-artifact-service</id>
+            <repositories>
+                <repository>
+                    <id>HERE_PLATFORM_ARTIFACT</id>
+                    <url>here+artifact-service://artifact-service</url>
+                </repository>
+            </repositories>
         </profile>
     </profiles>
 </project>

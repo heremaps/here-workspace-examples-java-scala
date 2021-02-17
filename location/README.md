@@ -23,7 +23,7 @@ group.
 ## [Prerequisites](#)
 
 This section contains important instructions that will help you to run the
-`Location Library` examples.
+_Location Library_ examples.
 
 ### Create Catalog Layers
 
@@ -95,7 +95,7 @@ Your credentials file does not contain all the required entries.
 ### I get `... request dscid=... info=... ${catalog-hrn}, ... response ... status=403 Forbidden`
 
 You have valid credentials but they cannot access `catalog-hrn`. You need to
-grant access to the catalog using the Portal.
+grant access to the catalog using the platform portal.
 
 ### I get `Command 'olp' not found`
 

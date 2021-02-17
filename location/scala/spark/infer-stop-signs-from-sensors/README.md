@@ -68,9 +68,9 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Configure a Project
 
-To follow this example, you'll need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
+To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
  (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
- HERE platform portal.
+[HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/).
  
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
@@ -78,10 +78,10 @@ Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
+The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your new project. Note down this HRN as you will need it later in this tutorial.
 
-> Note:
-> You don't have to provide a `--scope` parameter if your app has a default scope.
+> #### Note
+> You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
@@ -91,7 +91,7 @@ For more information on how to work with projects, see the [Organize your work i
 
 The catalog you need to create is used to store the results of `Infer Stop Signs From Sensors` example.
 
-Use the HERE platform portal to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
+Use the [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
 | Layer ID                 | Layer Type | Content Type             | Partitioning | Zoom Level | Content Encoding | Coverage |
 |--------------------------|------------|--------------------------|--------------|------------|------------------|----------|
@@ -104,11 +104,11 @@ In the commands that follow replace the variable placeholders with the following
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
 - `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create`).
 - `$COVERAGE` is a two-letter code for country and region (in this case `DE` or `CN` for China)
-- `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE China environment](./config/here-china/pipeline-config.conf)).
-- `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE China environment](./config/here-china/pipeline-config.conf)).
+- `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
+- `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
 
-> Note:
-> We recommend you to set values to variables so that you can easily copy and execute the following commands.
+> #### Note
+> We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
   Make sure to note down the HRN returned by the following command for later use:
@@ -131,14 +131,13 @@ olp catalog layer add $CATALOG_HRN stop-signs stop-signs --versioned --summary "
 3. Update the output catalog HRN in the pipeline-config.conf file
 
 The `config/here/pipeline-config.conf` (for the HERE platform environment) and
-`config/here-china/pipeline-config.conf` (for the HERE platform China environment) files contain
+`config/here-china/pipeline-config.conf` (for the HERE platform environment in China) files contain
 the permanent configuration of the data sources for the example.
 
 Pick the file that corresponds to your platform environment and replace `YOUR_OUTPUT_CATALOG_HRN` placeholder
 with the HRN of your Stream Path Matcher catalog.
-To find the HRN, in the [HERE platform portal](https://platform.here.com/) or the [HERE platform China 
-portal](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
-left corner of page.
+To find the HRN, in the [HERE platform portal](https://platform.here.com/) or the [HERE platform portal in China](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
+left corner of the page.
 
 4. Use the [`olp project resources link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link) command to link the _HERE Sample SDII Messages - Berlin_ and _HERE Optimized Map for Location Library_ catalog to your project.
 
@@ -237,7 +236,7 @@ olp pipeline version wait $PIPELINE_ID $PIPELINE_VERSION_ID --job-state=complete
 
 * Inspect the partitions
 
-By zooming in the `Inspect` tab, you may see the position of stop signs inferred from sensor data:
+By zooming in the **Inspect** tab, you may see the position of stop signs inferred from sensor data:
 
 ![Inspecting stop-signs layer](images/stop-signs_output_layer.png)
 

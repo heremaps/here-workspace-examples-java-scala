@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.data.validation.example.quickstart.scala</groupId>
     <artifactId>assessment_2.11</artifactId>
-    <version>0.0.610</version>
+    <version>0.0.632</version>
     <packaging>jar</packaging>
 
     <name>DVL quickstart assessment example</name>
@@ -24,11 +24,11 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.23.0</tag>
+        <tag>2.24.0</tag>
     </scm>
 
     <properties>
-        <sdk-bom.version>2.23.6</sdk-bom.version>
+        <sdk-bom.version>2.24.8</sdk-bom.version>
         <dvlcoreschema.version>0.0.5</dvlcoreschema.version>
         <quickstartschema.version>1.0.5</quickstartschema.version>
         <artifact.wagon.version>1.6.0</artifact.wagon.version>

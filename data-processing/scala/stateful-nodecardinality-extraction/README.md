@@ -40,9 +40,9 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Configure a Project
 
-To follow this example, you'll need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
+To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
  (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
- **HERE platform portal**.
+[HERE platform portal](https://platform.here.com/).
  
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
@@ -50,10 +50,10 @@ Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
+The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your new project. Note down this HRN as you will need it later in this tutorial.
 
-> Note:
-> You don't have to provide a `--scope` parameter if your app has a default scope.
+> #### Note
+> You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
@@ -64,7 +64,7 @@ For more information on how to work with projects, see the [Organize your work i
 The catalog you create is used to store the cardinality of nodes and the number of times the
 compiler has run.
 
-Use the **HERE platform portal** to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html)::
+Use the [HERE platform portal](https://platform.here.com/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
 | Layer ID             | Partitioning | Zoom Level | Layer Type | Content Type             | Schema | Content Encoding |
 |----------------------|--------------|------------|------------|--------------------------|--------|------------------|
@@ -77,10 +77,10 @@ In the commands that follow, replace the variable placeholders with the followin
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
 - `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create` command).
-- `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE China environment](./config/here-china/pipeline-config.conf)).
+- `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
 
-> Note:
-> We recommend you to set values to variables so that you can easily copy and execute the following commands.
+> #### Note
+> We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
 Make sure to note down the HRN returned by the following command for later use:
@@ -133,7 +133,7 @@ your Integrated Development Environment (IDE).
 
 The `config/here/pipeline-config.conf` (for the HERE platform environment) and
 `config/here-china/pipeline-config.conf` (for the HERE platform
-China environment) files contain
+environment in China) files contain
 the permanent configuration of the data sources for the compiler.
 
 Pick the file that corresponds to your platform environemnt. For example, the pipeline configuration for
@@ -150,14 +150,14 @@ pipeline.config {
 
 Replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your nodecardinality catalog.
 To find the HRN, in the [HERE platform portal](https://platform.here.com/) or the
-[HERE platform China portal](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
-left corner of page.
+[HERE platform portal in China](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
+left corner of the page.
 
 The `config/here/pipeline-job-first.conf` and `config/here/pipeline-second.conf` files contain the compiler's run
 configuration and point to two different versions of the HERE Map Content Catalog.
 
 To find the latest version of the HERE Map Content catalog, in the [HERE platform portal](https://platform.here.com/)
-or the [HERE platform China portal](https://platform.hereolp.cn/), navigate to the HERE Map Content catalog, and view the current catalog's version in the Catalog info section.
+or the [HERE platform portal in China](https://platform.hereolp.cn/), navigate to the HERE Map Content catalog, and view the current catalog's version in the Catalog info section.
 
 The remainder of the configuration is specified in the `application.conf` file that can be found in the
 `src/main/resources` directory of the compiler project. However, you do not have to modify it unless
@@ -186,13 +186,13 @@ For local runs, a bounding box filter is provided in the
 `config/here/local-application.conf` and `config/here-china/local-application.conf` to
 limit the number of partitions to be processed. This speeds up the compilation process. In this
 example, we use a bounding box around the cities of Berlin and Beijing for the HERE platform and HERE
-platform China environments respectively. You can edit the bounding box coordinates to compile a different
+platform in China environments respectively. You can edit the bounding box coordinates to compile a different
 partition of HERE Map Content. Make sure you update the layer coverage to reflect the different
 geographical region. In order to use this configuration file, you need to use the `-Dconfig.file`
 parameter.
 
-Setup the environment variable `$PATH_TO_CONFIG_FOLDER` to `./config/here`, 
-for the HERE platform China environment use the files in the `./config/here-china` directory.
+Setup the environment variable `$PATH_TO_CONFIG_FOLDER` to `./config/here`,
+for the HERE platform environment in China, use the files in the `./config/here-china` directory.
 
 ### Run the Compiler from the Command Line
 
@@ -226,7 +226,7 @@ mvn exec:java \
 
 ## Run this Compiler as the HERE Platform Pipeline
 
-### Generate a Fat JAR file:
+### Generate a Fat JAR file
 
 Run the `mvn -Pplatform package` command in the `stateful-nodecardinality-extraction`
 directory to generate a fat JAR file to deploy the compiler to a pipeline.
@@ -235,11 +235,11 @@ directory to generate a fat JAR file to deploy the compiler to a pipeline.
 mvn -Pplatform package
 ```
 
-### Deploy the Compiler to a Pipeline:
+### Deploy the Compiler to a Pipeline
 
 Once the previous command is finished, your JAR is then available at the `target` directory, and you
 can upload it using the [HERE pipeline UI](https://platform.here.com/pipelines) (the
-[HERE China pipeline UI](https://platform.hereolp.cn/pipelines) in China)
+[HERE pipeline UI](https://platform.hereolp.cn/pipelines) in China)
 or the [OLP CLI](https://developer.here.com/documentation/open-location-platform-cli).
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
@@ -265,18 +265,18 @@ olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \
                 --scope $PROJECT_HRN
 ```
 
-You don't have to specify the input catalog's version, unless you want
+You do not have to specify the input catalog's version, unless you want
 to. The latest version will be automatically used.
 
-In the [HERE platform portal](https://platform.here.com/pipelines) / [HERE platform China portal](https://platform.hereolp.cn/pipelines)
+In the [HERE platform portal](https://platform.here.com/pipelines) / [HERE platform portal in China](https://platform.hereolp.cn/pipelines),
 navigate to your pipeline to see its status.
 
 ## Verify the Output
 
-In the [HERE platform portal](https://platform.here.com/) / [HERE platform China portal](https://platform.hereolp.cn/)
-select the _Data_ tab and find your catalog.
+In the [HERE platform portal](https://platform.here.com/),
+select the **Data** tab and find your catalog.
 
-1. Open the `nodecardinality-count` layer and select the _Inspect_ tab. Verify that partitions
+1. Open the `nodecardinality-count` layer and select the **Inspect** tab. Verify that partitions
 with the JSON data are present and you can view this data by selecting a partition.
 2. Select any partition to look at its content. The field `updatesCount` will be `1` for those
 partitions that did not change during the second run. It will be `2` otherwise.

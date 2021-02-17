@@ -41,7 +41,7 @@ import java.util.stream.Collectors;
 
 /**
  * This example shows how to take an OLR reference given in XML and to resolve this reference to
- * Here Map Content Reference.
+ * HERE Map Content references.
  */
 public final class OlrResolveReferenceToHmcSegmentsExample {
 

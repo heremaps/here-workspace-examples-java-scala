@@ -14,9 +14,9 @@ The example consists of one user-defined function implementation example class:
 - `ParquetCompactionExample.java`
 
 This class implements the `CompactionUDF` interface from the Index Compaction Library.
-For details on this interface, see the **API Reference** section of the [Index Compaction Library Developer Guide](#index-compaction-library-developer-guide).
+For details on this interface, see the _API Reference_ section of the [Index Compaction Library Developer Guide](#index-compaction-library-developer-guide).
 
-This readme contains important instructions that will help you to run the **Index Compaction Library** examples.
+This readme contains important instructions that will help you to run the _Index Compaction Library_ examples.
 
 ## Get Your Credentials
 
@@ -31,9 +31,9 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Configure a Project
 
-To follow this example, you'll need a [project](#identity-&-access-management-developer-guide). A project is a collection of platform resources
+To follow this example, you will need a [project](#identity-&-access-management-developer-guide). A project is a collection of platform resources
  (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
- **HERE platform portal**.
+[HERE platform portal](https://platform.here.com/).
  
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
@@ -41,10 +41,10 @@ Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
+The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your new project. Note down this HRN as you will need it later in this tutorial.
 
 > #### Note
-> You don't have to provide a `--scope` parameter if your app has a default scope.
+> You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
@@ -54,7 +54,7 @@ For more information on how to work with projects, see the [Organize your work i
 
 The examples require you to have a catalog with an `index` layer configured for the input data. 
 
-You can create a new catalog with the `index` layer if you don't have one.
+You can create a new catalog with the `index` layer if you do not have one.
 When creating a new catalog and index layer, be sure to populate the index layer with Parquet format data that can be compacted.
 For testing purposes, you can ensure your data has common index attribute values so corresponding records having smaller files can be compacted to bigger files.
 
@@ -63,18 +63,18 @@ For this example, your index layer should have the following configuration:
 - `tileId` should be declared as `heretile` type.
 - `eventType` should be declared as `string`.
 
-Use the **HERE platform portal** to [create the input catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
+Use the [HERE platform portal](https://platform.here.com/) to [create the input catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
 | Layer ID               | Layer Type |  Retention | Timewindow Attribute Name  |	Duration | Content Type             | Content Encoding | Coverage
 |------------------------|------------|------------|----------------------------|------------|--------------------------|------------------|---------------
 | index                  | Index      |  7 days    | ingestionTime	            |   60       | application/x-parquet	| uncompressed     | -
 
-- For instructions on how to create a catalog, see **Create a Catalog** in [Data User Guide](#data-user-guide).
-- For instructions on how to create a layer, see **Create a Layer** in [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, see **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, see **Manage Projects** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
+- For instructions on how to create a catalog, see _Create a Catalog_ in the [Data User Guide](#data-user-guide).
+- For instructions on how to create a layer, see _Create a Layer_ in the [Data User Guide](#data-user-guide).
+- For instructions on how to link a resource to a project, see _Project Resources Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+- For instructions on how to share your project, see _Manage Projects_ in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
-Alternatively, you can use the **Data Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with an `index` layer:
+Alternatively, you can use the _Data Commands_ in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with an `index` layer:
 
 > #### Note
 > We recommend you set your parameters to environment variables so that you can easily copy and execute the following commands.
@@ -116,11 +116,11 @@ olp catalog layer partition put $CATALOG_HRN index \
 > For the `output-catalog` setting, you still need to pass a valid catalog. 
 > You can use a catalog with zero layers.
 
-- For instructions on how to create a catalog, see **Create a Catalog** in [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, see **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, see **Manage Projects** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
+- For instructions on how to create a catalog, see _Create a Catalog_ in the [Data User Guide](#data-user-guide).
+- For instructions on how to link a resource to a project, see _Project Resources Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+- For instructions on how to share your project, see _Manage Projects_ in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
-Alternatively, you can use the **Data Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog:
+Alternatively, you can use the _Data Commands_ in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog:
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
 ```bash
@@ -133,7 +133,7 @@ olp catalog create $CATALOG_ID $CATALOG_NAME --summary CATALOG_SUMMARY \
 You have to modify the settings in the [src/main/resources/application.conf](src/main/resources/application.conf) file to configure the expected behavior of index compaction job.
 
 In addition, you have to specify the input and output catalogs for your application.
-- When using the HERE platform portal, you will get an option while creating the pipeline version.
+- When using the [HERE platform portal](https://platform.here.com/), you will get an option while creating the pipeline version.
 - When using the OLP CLI, you have to modify the [config/pipeline-config.conf](config/pipeline-config.conf) file.
 - When running on your local IDE, you have to modify the [src/test/resources/pipeline-config.conf](src/test/resources/pipeline-config.conf) file.
 
@@ -162,12 +162,12 @@ directory, ensure these values are updated before compiling and uploading your j
 
 #### Use the Platform Portal to Run a Pipeline
 
-For information on using the HERE Workspace to configure and run a pipeline, see **Deploying a Pipeline via Web Portal** in [Pipelines Developer Guide](#pipelines-developer-guide).
+For information on using the HERE Workspace to configure and run a pipeline, see _Deploying a Pipeline via Web Portal_ in [Pipelines Developer Guide](#pipelines-developer-guide).
 Update the logging level of your pipeline from `WARN` to `INFO` if you intend to verify message upload in logs.
 
 #### Use the OLP CLI to Run a Pipeline
 
-You can use the **Pipeline Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) to create pipeline components and activate the version.
+You can use the _Pipeline Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide) to create pipeline components and activate the version.
 
 First, configure the data source using the [config/pipeline-config.conf](config/pipeline-config.conf) file. This file contains the configuration of the data source which will be used for the Index Compaction Library examples:
 
@@ -190,7 +190,7 @@ pipeline.config {
 > For the `output-catalog` setting, you still need to pass a valid catalog. 
 > You can use a catalog with zero layers.
 
-To find the HRN, in the [HERE platform portal](#here-platform-portal), navigate to your catalog. The HRN is displayed in the upper left corner of the page.
+To find the HRN, in the [HERE platform portal](#here-platform-portal) navigate to your catalog. The HRN is displayed in the upper left corner of the page.
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
@@ -216,12 +216,12 @@ olp pipeline version log level set $PIPELINE_ID $PIPELINE_VERSION_ID --root info
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
 ```
 
-For more information on using the **OLP CLI** to configure and run a pipeline, see **Pipeline Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+For more information on using the OLP CLI to configure and run a pipeline, see _Pipeline Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
 
 ### Monitor the Pipeline
 
 In the `Pipelines` page on the [HERE platform portal](#olp-portal), find your pipeline and ensure that it is in the `Running` state. 
-For additional information on monitoring pipelines, see **Pipeline Monitoring** in [Logs, Monitoring and Alert](#logs-monitoring-and-alert).
+For additional information on monitoring pipelines, see _Pipeline Monitoring_ in [Logs, Monitoring and Alert](#logs-monitoring-and-alert).
 You can use pipeline version wait command to check if the pipeline completes successfully:
 ```bash
 olp pipeline version wait $PIPELINE_ID $PIPELINE_VERSION_ID --job-state=completed
@@ -245,9 +245,9 @@ or the checkbox for `Include dependencies with "Provided" scope` in `Edit Config
 ## Verify the Output
 
 Once the compaction pipeline has completed, you can query the compacted data using one of the following methods:
-- **Get Data from an Index Layer** in [Data API Developer Guide](#data-api-developer-guide)
-- **Get Data** in [Data Client Library Developer Guide](#data-client-library-developer-guide)
-- **Partitions** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
+- _Get Data from an Index Layer_ in the [Data API Developer Guide](#data-api-developer-guide)
+- _Get Data_ in the [Data Client Library Developer Guide](#data-client-library-developer-guide)
+- _Partitions_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
 
 For verifying the output of running the compaction example,
 1. Use the [`olp catalog layer partition get`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/partition-commands.html#catalog-layer-partition-get) command to query the `index` layer.

@@ -39,7 +39,7 @@ import org.slf4j.LoggerFactory;
  * Data Client Library provides the IndexDataFrameReader.
  *
  * @see <a
- *     href="https://developer.here.com/olp/documentation/data-client-library/dev_guide/client/index-layer-spark-support.html">IndexDataFrameReader</a>
+ *     href="https://developer.here.com/documentation/data-client-library/dev_guide/client/index-layer-spark-support.html">IndexDataFrameReader</a>
  */
 public class ExampleReader {
   private static final Logger LOG = LoggerFactory.getLogger(ExampleReader.class);

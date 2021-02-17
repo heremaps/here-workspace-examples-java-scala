@@ -3,19 +3,19 @@
 ## Introduction
 
 This repository holds a series of Java and Scala examples, that demonstrate  typical use cases for the HERE Workspace – a part of HERE platform. HERE Workspace is an environment to enrich, transform and deploy location-centric data.
-Go to [HERE platform](https://developer.here.com/products/open-location-platform) to learn more. If you are interested in knowing what the platform offers specifically for Java and Scala developers, visit [this page](https://developer.here.com/olp/documentation/sdk-developer-guide/dev_guide/index.html).
+Go to [HERE platform](https://developer.here.com/products/open-location-platform) to learn more. If you are interested in knowing what the platform offers specifically for Java and Scala developers, visit [this page](https://developer.here.com/documentation/sdk-developer-guide/dev_guide/index.html).
 
 ## Prerequisites
 
 In order to run the examples, you need to have a HERE Workspace account. If you do not have an account, navigate to [Pricing and Plans](https://developer.here.com/pricing/open-location-platform) to apply for a free trial.
 
-You need to get access credentials and prepare your environment. For more information on how to prepare your environment, see our [guide for Java and Scala developers](https://developer.here.com/olp/documentation/sdk-developer-guide/dev_guide/topics/how-to-use-sdk.html).
+You need to get access credentials and prepare your environment. For more information on how to prepare your environment, see our [guide for Java and Scala developers](https://developer.here.com/documentation/sdk-developer-guide/dev_guide/topics/how-to-use-sdk.html).
 
 ## Code Examples
 
 ### Processing Sensor Data
 
-The following documents illustrate two use cases around inferring real-world situations from sensor data. [Batch processing](https://developer.here.com/olp/documentation/java-scala-dev/dev_guide/topics/example-use-cases.html#use-case-map-of-recommended-speed-based-on-sensor-observations-and-other-data) is useful when it is important to aggregate sensor input over a longer time period (i.e. hours and longer). [Stream processing](https://developer.here.com/olp/documentation/java-scala-dev/dev_guide/topics/example-use-cases.html#use-case-turning-sensor-data-into-warnings) is recommended for time-critical use cases, like informing about road hazards.
+The following documents illustrate two use cases around inferring real-world situations from sensor data. [Batch processing](https://developer.here.com/documentation/java-scala-dev/dev_guide/topics/example-use-cases.html#use-case-map-of-recommended-speed-based-on-sensor-observations-and-other-data) is useful when it is important to aggregate sensor input over a longer time period (that is hours and longer). [Stream processing](https://developer.here.com/documentation/java-scala-dev/dev_guide/topics/example-use-cases.html#use-case-turning-sensor-data-into-warnings) is recommended for time-critical use cases, like informing about road hazards.
 
 | Name | Description | Source | Labels / Topics |
 | ---- | ----------- | ------ | --------------- |
@@ -24,7 +24,7 @@ The following documents illustrate two use cases around inferring real-world sit
 
 ### Incremental Map Processing & Validation
 
-For more information, see a use case illustration of [keeping a client map up to date with incremental processing](https://developer.here.com/olp/documentation/java-scala-dev/dev_guide/topics/example-use-cases.html#use-case-incremental-map-processing).
+For more information, see a use case illustration of [keeping a client map up to date with incremental processing](https://developer.here.com/documentation/java-scala-dev/dev_guide/topics/example-use-cases.html#use-case-incremental-map-processing).
 
 | Name | Description | Source | Labels / Topics |
 | ---- | ----------- | ------ | --------------- |
@@ -42,7 +42,7 @@ For more information, see a use case illustration of [keeping a client map up to
 ### Archiving Stream Data
 
 The HERE Workspace allows you to retain stream data for longer periods, which allows you to later query and process the retained data for non-real-time use cases.
-For more information, see [Data Archiving Library Developer Guide](https://developer.here.com/olp/documentation/data-archiving-library/dev_guide/index.html).
+For more information, see [Data Archiving Library Developer Guide](https://developer.here.com/documentation/data-archiving-library/dev_guide/index.html).
 
 | Name | Description | Source | Labels / Topics |
 | ---- | ----------- | ------ | --------------- |
@@ -56,7 +56,7 @@ For more information, see [Data Archiving Library Developer Guide](https://devel
 
 The HERE Workspace allows you to compact data files with the same index attribute values into one or more files based on the configuration.
 Compaction reduces the index layer storage cost, improves query performance, and makes subsequent data processing more efficient.
-For more information, see [Index Compaction Library Developer Guide](https://developer.here.com/olp/documentation/index-compaction-library/dev_guide/index.html).
+For more information, see [Index Compaction Library Developer Guide](https://developer.here.com/documentation/index-compaction-library/dev_guide/index.html).
 
 | Name | Description | Source | Labels / Topics |
 | ---- | ----------- | ------ | --------------- |

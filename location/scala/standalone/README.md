@@ -113,7 +113,7 @@ The example uses the filtered graph to create a custom `CandidateGenerator` and
 `TransitionProbabilityStrategy` for the path matcher.  
 All components of the path matcher that use the routing graph must use the same
 (filtered) view on it.  
-Otherwise, the the path matcher might produce inconsistent results.
+Otherwise, the path matcher might produce inconsistent results.
 
 The example prints its output to the console.
 
@@ -357,7 +357,8 @@ mvn --projects=:scala-standalone_2.11 compile exec:java \
 
 # OlrCreateReferenceFromHmcSegmentsExample
 
-This example shows how to take a path given as segments in HERE Map Content and create an OpenLR reference from it.
+This example shows how to take a path given as HERE Map Content references and
+create an OLR reference from it.
 
 ## Setup
 
@@ -376,7 +377,8 @@ mvn --projects=:scala-standalone_2.11 compile exec:java \
 
 # OlrResolveReferenceToHmcSegmentsExample
 
-This example shows how to take an OpenLR reference given in XML and to resolve this reference to segments in HERE Map Content.
+This example shows how to take an OLR reference given in XML and to resolve this
+reference to HERE Map Content references.
 
 ## Setup
 

@@ -42,7 +42,7 @@ import java.util.stream.StreamSupport;
  *
  * <p>In this example output keys depend only on input keys, so the compiler most suited for this is
  * one of the <a
- * href="https://developer.here.com/olp/documentation/data-processing-library/dev_guide/topics/functional-patterns.html#direct-1n-and-mn-compilers">Direct
+ * href="https://developer.here.com/documentation/data-processing-library/dev_guide/topics/functional-patterns.html#direct-1n-and-mn-compilers">Direct
  * compilers</a>. The Direct1ToNCompiler does not fit in this case, because in compileOutFn, we may
  * have two intermediate data instances for partition - one for input data and one for the previous
  * version data (if available). Consequently, we use the {@link DirectMToNCompiler}
@@ -102,7 +102,7 @@ public class Compiler
   /**
    * Calculates which output partitions the given single input partition impacts. In this example
    * mapping is 1-to-1, partition of outKey is same as of inKey, with configured Output Layer Id and
-   * default Output Catalog Id
+   * default output catalog ID
    *
    * @return the output partitions that the given input partition maps to
    */

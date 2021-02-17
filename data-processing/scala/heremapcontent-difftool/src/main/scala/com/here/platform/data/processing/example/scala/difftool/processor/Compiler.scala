@@ -42,7 +42,7 @@ object Compiler {
   * <p>
   * This batch processor functional pattern is suited for tasks such as processing map tiles.
   * For more information, see the Data Processing Library documentation
-  * at https://developer.here.com/olp/documentation.
+  * at https://developer.here.com/documentation.
   */
 class Compiler(context: DriverContext)
     extends DirectMToNCompiler[IntermediateData]

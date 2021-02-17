@@ -45,7 +45,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * This example shows how to take a path given as Here Map Content Reference and create an OLR
+ * This example shows how to take a path given as HERE Map Content references and create an OLR
  * reference from it.
  */
 public final class OlrCreateReferenceFromHmcSegmentsExample {

@@ -3,25 +3,25 @@
 This example shows how to use the Data Archiving Library to quickly develop an archiving solution that archives data in Avro format.
 There are two options for using this example:
 
-1. Use the example as-is. You can run the example out of the box by creating an input and output catalog, then specifying those catalogs in the `application.conf` file. See the [Update the Configuration File](#update-the-configuration-file) section below for information on configuring this file.
+1. Use the example as-is. You can run the example out of the box by creating an input and output catalog, then specifying those catalogs in the `application.conf` file. For information on configuring this file, see the [Update the Configuration File](#update-the-configuration-file) section.
 2. Create your own archiving application using the example as a template.
 
 You should review this entire readme regardless of whether you are running the example as-is or using the example as a template for your own application.
 
 The example consists of two user defined function implementation example classes:
 
-- AvroSimpleKeyExample.java
-- AvroMultiKeysExample.java
+- `AvroSimpleKeyExample.java`
+- `AvroMultiKeysExample.java`
 
-These classes implement the SimpleUDF or MultiKeysUDF interface from the Data Archiving Library. You can choose which class to use depending on whether you want to use one value per indexing attribute (SimpleUDF) or multiple values per indexing attribute (MultiKeysUDF). See the **API Reference** section of the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide) for details on this and other interfaces.
+These classes implement the `SimpleUDF` or `MultiKeysUDF` interface from the Data Archiving Library. You can choose which class to use depending on whether you want to use one value per indexing attribute (`SimpleUDF`) or multiple values per indexing attribute (`MultiKeysUDF`). For details on this and other interfaces, see the _API Reference_ section of the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
 
-This readme contains important instructions that will help you to run the **Data Archiving Library** examples.
+This readme contains important instructions that will help you to run the _Data Archiving Library_ examples.
 
 ## Get Your Credentials
 
 To run this example, you need two sets of credentials:
 
-* **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input. 
+* **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input.
 * **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
 For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
@@ -30,9 +30,9 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Configure a Project
 
-To follow this example, you'll need a [project](#identity-&-access-management-developer-guide). A project is a collection of platform resources
+To follow this example, you will need a [project](#identity-&-access-management-developer-guide). A project is a collection of platform resources
  (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
- **HERE platform portal**.
+[HERE platform portal](https://platform.here.com/).
 
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
@@ -40,10 +40,10 @@ Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/shared_content/topics/olp/concepts/hrn.html) of your new project. Note down this HRN as you'll need it later in this tutorial.
+The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layers/hrn.html) of your new project. Note down this HRN as you will need it later in this tutorial.
 
-> Note:
-> You don't have to provide a `--scope` parameter if your app has a default scope.
+> #### Note
+> You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
@@ -53,21 +53,21 @@ For more information on how to work with projects, see the [Organize your work i
 
 The examples require you to have a catalog with `stream` layer for the input data. Create a new catalog with `stream` layer or use an existing one.
 
-Use the **HERE platform portal** to [create the input catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
+Use the [HERE platform portal](https://platform.here.com/) to [create the input catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
 | Layer ID               | Layer Type | Content Type             | Content Encoding | Coverage
 |------------------------|------------|--------------------------|------------------|---------------
 | stream 				 | Stream  	  | application/octet-stream | uncompressed     | -
 
-- For instructions on how to create a catalog, see **Create a Catalog** in [Data User Guide](#data-user-guide).
-- For instructions on how to create a layer, see **Create a Layer** in [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, see **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, see **Manage Projects** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
+- For instructions on how to create a catalog, see _Create a Catalog_ in the [Data User Guide](#data-user-guide).
+- For instructions on how to create a layer, see _Create a Layer_ in the [Data User Guide](#data-user-guide).
+- For instructions on how to link a resource to a project, see _Project Resources Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+- For instructions on how to share your project, see _Manage Projects_ in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
-Alternatively, you can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with a `stream` layer:
+Alternatively, you can use the _OLP CLI Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with a `stream` layer:
 
-> Note:
-> We recommend you to set values to variables so that you can easily copy and execute the following commands.
+> #### Note
+> We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
 Make sure to note down the HRN returned by the following command for later use:
@@ -90,18 +90,18 @@ The examples require that you define indexing attributes with the following inde
 - `tileId` should be declared as `heretile` type. There should be at most one `heretile` column. It is optional.
 - `eventType` should be declared as `string`.
 
-Use the **HERE platform portal** to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
+Use the [HERE platform portal](https://platform.here.com/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
 | Layer ID               | Layer Type |  Retention | Timewindow Attribute Name  |	Duration | Content Type             | Content Encoding | Coverage
 |------------------------|------------|------------|----------------------------|------------|--------------------------|------------------|---------------
 | index                  | Index      |  7 days    | ingestionTime	            |   60       | application/x-avro-binary| uncompressed     | -
 
-- For instructions on how to create a catalog, see **Create a Catalog** in [Data User Guide](#data-user-guide).
-- For instructions on how to create a layer, see **Create a Layer** in [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, see **Project Resources Link** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, see **Manage Projects** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
+- For instructions on how to create a catalog, see _Create a Catalog_ in the [Data User Guide](#data-user-guide).
+- For instructions on how to create a layer, see _Create a Layer_ in the [Data User Guide](#data-user-guide).
+- For instructions on how to link a resource to a project, see _Project Resources Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+- For instructions on how to share your project, see _Manage Projects_ in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
 
-Alternatively, you can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with an `index` layer:
+Alternatively, you can use the _OLP CLI Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with an `index` layer:
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
 Make sure to note down the HRN returned by the following command for later use:
@@ -119,7 +119,7 @@ olp catalog layer add $CATALOG_HRN index index --index --summary "index" --descr
 
 ## Update the Configuration File
 
-The configurations are specified in the `application.conf` file that can be found in the example's `/src/main/resources` directory of the example project. You will have to modify it to configure expected behavior of the data archiving project. For information about modifying this file, see the comments in the `application.conf` file.
+The configurations are specified in the `application.conf` file that can be found in the `/src/main/resources` directory of the example project. You will have to modify it to configure expected behavior of the data archiving project. For information about modifying this file, see the comments in the `application.conf` file.
 
 > #### Note
 > You must configure this file in order for the examples to run successfully.
@@ -146,18 +146,18 @@ To run the example, create a pipeline in the HERE platform to execute the applic
 
 ### Configure and Run as a Platform Pipeline
 
-You should use application jar with suffix `platform.jar` as a pipeline template to run the archiving process. The pipeline will use the configuration from file `application.conf` in the src/main/resource/
+You should use application jar with suffix `platform.jar` as a pipeline template to run the archiving process. The pipeline will use the configuration from file `application.conf` in the `src/main/resource/`
 directory, ensure these values are updated before compiling and uploading your jar.
 
 #### Using the Platform Portal to Run a Pipeline
 
-For information on using the platform portal to configure and run a pipeline, see **Deploying a Pipeline via Web Platform Portal** in [Pipelines Developer Guide](#pipelines-developer-guide). Update the logging level of your pipeline from `WARN` to `INFO` if you intend to verify message upload in logs.
+For information on using the platform portal to configure and run a pipeline, see _Deploying a Pipeline via Web Platform Portal_ in the [Pipelines Developer Guide](#pipelines-developer-guide). Update the logging level of your pipeline from `WARN` to `INFO` if you intend to verify message upload in logs.
 
 #### Use the Command Line Interface to Run a Pipeline
 
-You can use the **OLP CLI Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) to create pipeline components and activate it.
+You can use the _OLP CLI Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide) to create pipeline components and activate it.
 
-First, configure data sources using the `config/pipeline-config.conf` file. This file contains the configuration of the data sources which are used as placeholders for Data Archiving Library examples:
+First, configure data sources using the `config/pipeline-config.conf` file. This file contains the configuration of the data sources which are used as placeholders for the Data Archiving Library examples:
 
 ```javascript
 pipeline.config {
@@ -168,7 +168,7 @@ pipeline.config {
 }
 ```
 
-You must replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your output catalog and `YOUR_INPUT_CATALOG_HRN` with the HRN of your input catalog. To find the HRN, in the [HERE platform portal](#here-platform-portal), navigate to your catalog. The HRN is displayed in the upper left corner of the page.
+You must replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your output catalog and `YOUR_INPUT_CATALOG_HRN` with the HRN of your input catalog. To find the HRN, in the [HERE platform portal](#here-platform-portal) navigate to your catalog. The HRN is displayed in the upper left corner of the page.
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
@@ -194,23 +194,23 @@ olp pipeline version log level set $PIPELINE_ID $PIPELINE_VERSION_ID --root info
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
 ```
 
-In the [HERE platform portal](https://platform.here.com/pipelines) / [HERE platform China portal](https://platform.hereolp.cn/pipelines)
+In the [HERE platform portal](https://platform.here.com/pipelines) / [HERE platform portal in China](https://platform.hereolp.cn/pipelines),
 navigate to your pipeline to see its status.
 
-For more information on using the **OLP CLI** to configure and run a pipeline, see **Pipeline Commands** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+For more information on using the OLP CLI to configure and run a pipeline, see _Pipeline Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
 
 > #### Note
-> The selection of input and output catalog values using the portal when creating pipeline version or the values added to `pipeline.config` when using command line interface must be valid. These values represent a placeholder that the Data Archiving Library will not use. Instead, values will be taken from the `application.conf` file. If you want to change or update the input/output catlogs, modify the `application.conf` file and rebuild.
+> The selection of input and output catalog values using the platform portal when creating pipeline version or the values added to `pipeline.config` when using command line interface must be valid. These values represent a placeholder that the Data Archiving Library will not use. Instead, values will be taken from the `application.conf` file. If you want to change or update the input/output catalogs, modify the `application.conf` file and rebuild.
 
 ## Verify the Output
 
-In the [HERE platform portal](#here-platform-portal) select the _Pipelines_ tab and find your pipeline.
+In the [HERE platform portal](#here-platform-portal), select the **Pipelines** tab and find your pipeline.
 - Verify pipeline is in `Running` state.
 
 After the pipeline is running, you can ingest your data into the `stream` layer created in the `Create Input Catalog and Layer` section using one of the following:
-- **Publish to a Stream Layer** in [Data API Developer Guide](#data-api-developer-guide)
-- **Publish Data** in [Data Client Library Developer Guide](#data-client-library-developer-guide)
-- **Stream** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
+- _Publish to a Stream Layer_ in the [Data API Developer Guide](#data-api-developer-guide)
+- _Publish Data_ in the [Data Client Library Developer Guide](#data-client-library-developer-guide)
+- _Stream_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
 
 > #### Note
 > For ingesting data, make sure your app has `read` and `write` permission to your `stream` layer.
@@ -221,28 +221,28 @@ After the pipeline is running, you can ingest your data into the `stream` layer 
   ```
 
 After your data is archived in `index` layer, you can query/retrieve data using one of the following:
-- **Get Data from an Index Layer** in [Data API Developer Guide](#data-api-developer-guide)
-- **Get Data** in [Data Client Library Developer Guide](#data-client-library-developer-guide)
-- **Partitions** in [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
+- _Get Data from an Index Layer_ in the [Data API Developer Guide](#data-api-developer-guide)
+- _Get Data_ in the [Data Client Library Developer Guide](#data-client-library-developer-guide)
+- _Partitions_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
 > #### Note
 > For querying metadata or retrieving data, make sure your app has `read` permission to your `index` layer.
-> For instructions on how to manage your app, see **Manage Apps** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
+> For instructions on how to manage your app, see _Manage Apps_ in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide).
   ```
   olp catalog permission grant $CATALOG_HRN --app $APP_ID --read --write --scope $PROJECT_HRN
   olp catalog layer partition list $CATALOG_HRN index --filter <query> --scope $PROJECT_HRN # E.g: <query>="tileId==92259"
   olp catalog layer partition get $CATALOG_HRN index --filter <query> --scope $PROJECT_HRN
   ```
 
-To parse the data retrieved from `index` layer, see "How to parse the output content" in **FAQ** in the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
+To parse the data retrieved from `index` layer, see "How to parse the output content" in _FAQ_ in the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
 
 ## Run Example Locally
 
-Besides running this example in a pipeline, you can also **Run an Archiving Application Locally**, see [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
-Running locally in your IDE or Flink cluster will use the configuration from file `application.conf` in the src/test/resource/ directory, ensure these values are updated before compiling and uploading your jar.
-To create a new application and get `credentials.properties`, see **Manage Apps** in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide). You will share read/write permissions with this app when you create your `stream` and `index` layers.
+Besides running this example in a pipeline, you can also _Run an Archiving Application Locally_, see [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
+Running locally in your IDE or Flink cluster will use the configuration from file `application.conf` in the `src/test/resource/` directory, ensure these values are updated before compiling and uploading your jar.
+To create a new application and get `credentials.properties`, see _Manage Apps_ in the [Identity & Access Management Developer Guide](#identity-&-access-management-developer-guide). You will share read/write permissions with this app when you create your `stream` and `index` layers.
 > #### Note
 > This example provides the Maven profile `add-dependencies-for-IDEA`, which compiles the necessary dependencies in order to run an application locally from your IDE.
-> When running this example from your IDE, ensure you have this profile enabled in the Maven Toolbar. 
+> When running this example from your IDE, ensure you have this profile enabled in the Maven Toolbar.
 > Alternatively, you can select the checkbox for `Include dependencies with "Provided" scope` in `Edit Configurations` for [AvroExampleRunner.java](src/test/java/com/here/platform/data/archive/example/AvroExampleRunner.java).
 
 ## Troubleshooting

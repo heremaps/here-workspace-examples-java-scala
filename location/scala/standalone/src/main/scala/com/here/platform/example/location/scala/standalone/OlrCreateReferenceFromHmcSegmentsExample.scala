@@ -36,7 +36,7 @@ import com.here.platform.location.referencing.{LinearLocation, LocationReference
 import com.here.platform.location.tpeg2.olr.OpenLRLocationReference
 import com.here.platform.location.tpeg2.{BinaryMarshallers, XmlMarshallers}
 
-/** This example shows how to take a path given as Here Map Content Reference
+/** This example shows how to take a path given as HERE Map Content references
   * and create an OLR reference from it.
   */
 object OlrCreateReferenceFromHmcSegmentsExample extends App {

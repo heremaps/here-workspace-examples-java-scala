@@ -282,15 +282,14 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following command:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.11 install
 mvn --projects=:java-standalone compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.java.standalone.TmcResolveReferencesInRttiMessageExample
 ```
 
 # OlrCreateReferenceFromHmcSegmentsExample
 
-This example shows how to take a path given as Hmc-Segments and create an OLR
-reference from it.
+This example shows how to take a path given as HERE Map Content references and
+create an OLR reference from it.
 
 ## Setup
 
@@ -307,8 +306,8 @@ mvn --projects=:java-standalone compile exec:java \
 
 # OlrResolveReferenceToHmcSegmentsExample
 
-This example shows how to take a path given as Hmc-Segments and create an OLR
-reference from it.
+This example shows how to take an OLR reference given in XML and to resolve this
+reference to HERE Map Content references.
 
 ## Setup
 
