@@ -264,7 +264,7 @@ olp pipeline version create $COMPONENT_NAME_version $PIPELINE_ID $PIPELINE_TEMPL
 
 ```bash
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \
-                --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job-first.conf" --output-catalog -1 \
+                --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job-first.conf" \
                 --scope $PROJECT_HRN
 ```
 
@@ -272,7 +272,7 @@ olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \
 
 ```bash
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \
-                --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job-second.conf" --output-catalog 0 \
+                --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job-second.conf" \
                 --scope $PROJECT_HRN
 ```
 

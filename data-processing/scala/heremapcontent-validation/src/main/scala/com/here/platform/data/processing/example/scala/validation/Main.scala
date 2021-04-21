@@ -156,7 +156,6 @@ object Main extends PipelineRunner with DeltaSimpleSetup with ContextLogging {
         // suite or test-case to reach a final verdict. We also store the final failure rate
         val assessment =
           Assessment(metrics.stats.failed == 0, metrics.stats.failed.toDouble / metrics.stats.total)
-
         logger.info(s"Final assessment: $assessment")
         assessment
       }

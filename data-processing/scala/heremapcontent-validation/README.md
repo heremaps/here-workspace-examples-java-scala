@@ -115,8 +115,9 @@ To run the compiler locally, you will need to run the entry point to the compile
 
 - `com.here.platform.data.processing.example.scala.validation.Main`
 
-As _arguments_, you must provide the `--master` _parameter_ with the address of the Spark server
-master to connect to.
+As _arguments_, you must provide the `-Dspark.master=local[*]` _parameter_ with the address of the Spark server
+master to connect to, and any configuration parameters you want to override. Alternatively, you can
+add those parameters to the `application.conf` file.
 
 Additionally, you also need to specify the `-Dpipeline-config.file` and `-Dpipeline-job.file`
 _parameters_ to specify the location of a configuration file that contains the catalogs as well as
@@ -142,23 +143,23 @@ mvn compile exec:java \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job.conf \
 -Dconfig.file=./config/here/local-application.conf \
--Dexec.args="--master local[*]"
+-Dspark.master=local[*]
 ```
 
 For the HERE platform China environment:
 
-```bash
+```
 mvn compile exec:java \
 -Dexec.mainClass=com.here.platform.data.processing.example.scala.validation.Main \
 -Dpipeline-config.file=./config/here-china/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here-china/pipeline-job.conf \
 -Dconfig.file=./config/here-china/local-application.conf \
--Dexec.args="--master local[*]"
+-Dspark.master=local[*]
 ```
 
 After one run, in the HERE platform environment you can inspect the local catalog with the OLP CLI:
 
-```bash
+```
 olp local catalog inspect hrn:local:data:::heremapcontent-validation
 ```
 
@@ -230,12 +231,12 @@ olp catalog create $CATALOG_ID "HERE Map Content - Topology and Geometry Validat
 olp catalog layer add $CATALOG_HRN report report --versioned \
             --summary "Test report" \
             --description "Test report" --partitioning heretile:12 \
-            --schema hrn:$HRN_PARTITION:schema:::com.here.platform.data.processing.validation.schema:report_v2:1.0.0 \
+            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.platform.data.processing.validation.schema:report_v2:1.0.0 \
             --content-type application/json --scope $PROJECT_HRN
 olp catalog layer add $CATALOG_HRN metrics metrics --versioned \
             --summary "Test metrics" \
             --description "Test metrics" --partitioning heretile:12,10,8,6,4,2,0 \
-            --schema hrn:$HRN_PARTITION:schema:::com.here.platform.data.processing.validation.schema:metrics_v2:1.0.0 \
+            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.platform.data.processing.validation.schema:metrics_v2:1.0.0 \
             --content-type application/json --scope $PROJECT_HRN
 olp catalog layer add $CATALOG_HRN assessment assessment --versioned \
             --summary "Test assessment" \
