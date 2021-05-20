@@ -4,7 +4,7 @@
 
   <groupId>com.here.platform.data.processing.example.scala</groupId>
   <artifactId>pedestrian-topologies-extraction-geojson</artifactId>
-  <version>0.0.651</version>
+  <version>0.0.662</version>
   <packaging>jar</packaging>
 
   <name>Pedestrian topologies extraction compiler example to GeoJson in scala</name>
@@ -23,14 +23,14 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.26.0</tag>
+    <tag>2.27.0</tag>
   </scm>
 
   <properties>
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <sdk-bom.version>2.26.12</sdk-bom.version>
+    <sdk-bom.version>2.27.6</sdk-bom.version>
     <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
     <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
@@ -112,14 +112,6 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
-
-  <repositories>
-    <repository>
-      <id>Geo-Json</id>
-      <name>Geo Json</name>
-      <url>https://dl.bintray.com/jroper/maven</url>
-    </repository>
-  </repositories>
 
   <build>
     <plugins>
