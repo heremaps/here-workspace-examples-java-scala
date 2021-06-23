@@ -5,12 +5,12 @@ The Location Library examples are divided in four groups:
 - [java-flink-stream-path-matcher](java/flink/stream-path-matcher/README.md)
   uses the Java API of the `Location Library` in an Apache Flink powered
   pipeline.
-- [scala-spark-infer-stop-signs-from-sensors_2.11](scala/spark/infer-stop-signs-from-sensors/README.md)
+- [scala-spark-infer-stop-signs-from-sensors_2.12](scala/spark/infer-stop-signs-from-sensors/README.md)
   uses the distributed clustering and path matching Scala API of the
   `Location Library` together with the `HERE Optimized Map for Location Library`
   and the `Data Client Library` to derive the positions of stop signs in an
   Apache Spark powered pipeline.
-- [scala-standalone_2.11](scala/standalone/README.md) uses the Scala high level
+- [scala-standalone_2.12](scala/standalone/README.md) uses the Scala high level
   API of the `Location Library` locally.
 - [java-standalone](java/standalone/README.md) uses the Java high level API of
   the `Location Library` locally.

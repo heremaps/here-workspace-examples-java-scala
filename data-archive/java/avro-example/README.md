@@ -176,7 +176,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 ```bash
 olp pipeline create $PIPELINE_NAME --scope $PROJECT_HRN
-olp pipeline template create $PIPELINE_TEMPLATE_NAME stream-3.0.0 $PATH_TO_JAR com.here.platform.dal.DALMain \
+olp pipeline template create $PIPELINE_TEMPLATE_NAME stream-4.0 $PATH_TO_JAR com.here.platform.dal.DALMain \
     --input-catalog-ids=source --workers=2 --scope $PROJECT_HRN # Note that the value of workers should be greater than or equal to the value of parallelism selected in application.conf
 olp pipeline version create $PIPELINE_VERSION_NAME $PIPELINE_ID $PIPELINE_TEMPLATE_ID \
     "$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" --scope $PROJECT_HRN

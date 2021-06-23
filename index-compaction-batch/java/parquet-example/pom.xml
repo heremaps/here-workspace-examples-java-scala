@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.index.compaction.batch</groupId>
     <artifactId>index-compaction-batch-parquet-example</artifactId>
-    <version>0.0.662</version>
+    <version>0.0.678</version>
     <packaging>jar</packaging>
 
     <name>Index Compaction Batch Parquet Example</name>
@@ -24,29 +24,29 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.27.0</tag>
+        <tag>2.28.0</tag>
     </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <sdk-bom.version>2.27.6</sdk-bom.version>
-        <scala.compat.version>2.11</scala.compat.version>
+        <sdk-bom.version>2.28.13</sdk-bom.version>
+        <scala.compat.version>2.12</scala.compat.version>
 
         <parquet.version>1.11.1</parquet.version>
 
         <junit.version>4.12</junit.version>
 
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <maven-shade-plugin.version>3.1.0</maven-shade-plugin.version>
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.here.platform</groupId>
-                <artifactId>sdk-batch-bom</artifactId>
+                <artifactId>sdk-batch-bom_2.12</artifactId>
                 <version>${sdk-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -101,7 +101,7 @@
         <!-- Here Dependencies from sdk-batch-bom pom -->
         <dependency>
             <groupId>com.here.platform.index.compaction</groupId>
-            <artifactId>index-compaction-batch</artifactId>
+            <artifactId>index-compaction-batch_${scala.compat.version}</artifactId>
         </dependency>
         <dependency>
             <groupId>com.here.sdii</groupId>

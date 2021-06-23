@@ -215,7 +215,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-2.1.0 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-3.0 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.java.pedestrian.geojson.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

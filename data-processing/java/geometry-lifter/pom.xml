@@ -4,7 +4,7 @@
 
   <groupId>com.here.platform.data.processing.example.java.geometry.lifter</groupId>
   <artifactId>geometry-lifter</artifactId>
-  <version>0.0.662</version>
+  <version>0.0.678</version>
   <packaging>jar</packaging>
 
   <name>Batch Processor compiler for Geometry Lifter in Java</name>
@@ -23,16 +23,16 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.27.0</tag>
+    <tag>2.28.0</tag>
   </scm>
 
   <properties>
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <sdk-bom.version>2.27.6</sdk-bom.version>
+    <sdk-bom.version>2.28.13</sdk-bom.version>
     <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-    <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
+    <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
     <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
   </properties>
 
@@ -42,7 +42,7 @@
       <!-- SDK BOM -->
       <dependency>
         <groupId>com.here.platform</groupId>
-        <artifactId>sdk-batch-bom</artifactId>
+        <artifactId>sdk-batch-bom_2.12</artifactId>
         <version>${sdk-bom.version}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -67,11 +67,11 @@
     <!-- HERE dependencies -->
     <dependency>
       <groupId>com.here.platform.data.processing</groupId>
-      <artifactId>pipeline-runner-java_2.11</artifactId>
+      <artifactId>pipeline-runner-java_2.12</artifactId>
     </dependency>
     <dependency>
       <groupId>com.here.platform.data.processing</groupId>
-      <artifactId>batch-catalog-dataservice_2.11</artifactId>
+      <artifactId>batch-catalog-dataservice_2.12</artifactId>
     </dependency>
 
     <!-- External dependencies -->
@@ -82,7 +82,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-core_2.11</artifactId>
+      <artifactId>spark-core_2.12</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>

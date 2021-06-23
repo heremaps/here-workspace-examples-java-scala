@@ -198,7 +198,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 ```bash
 olp pipeline create $PIPELINE_NAME --scope $PROJECT_HRN
-olp pipeline template create $PIPELINE_TEMPLATE_NAME batch-2.1.0 $PATH_TO_JAR com.here.platform.index.compaction.batch.Driver \
+olp pipeline template create $PIPELINE_TEMPLATE_NAME batch-3.0 $PATH_TO_JAR com.here.platform.index.compaction.batch.Driver \
         --input-catalog-ids=source --workers=2 --scope $PROJECT_HRN
 olp pipeline version create $PIPELINE_VERSION_NAME $PIPELINE_ID $PIPELINE_TEMPLATE_ID \
         $PATH_TO_CONFIG_FOLDER/pipeline-config.conf --scope $PROJECT_HRN

@@ -25,7 +25,6 @@ import com.github.tototoshi.csv.CSVReader
 import com.here.platform.example.location.utils.FileNameHelper
 import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.core.geospatial.{ElementProjection, LineString, ProximitySearch}
-import com.here.platform.location.dataloader.core.Catalog
 import com.here.platform.location.dataloader.core.caching.CacheManager
 import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.Vertex
@@ -77,7 +76,7 @@ object PointMatcherExample extends App {
       matchTrip(proximitySearch, trip, RadiusInMeters)
     assert(matchedPoints.flatten.nonEmpty)
 
-    serializeToGeoJson(trip, matchedPoints, optimizedMap, cacheManager)
+    serializeToGeoJson(trip, matchedPoints)
   } finally {
     catalogFactory.terminate()
   }
@@ -93,9 +92,7 @@ object PointMatcherExample extends App {
       }
 
     def serializeToGeoJson(probePoints: Seq[Point],
-                           matches: Seq[Option[ElementProjection[Vertex]]],
-                           optimizedMap: Catalog,
-                           cacheManager: CacheManager): Unit = {
+                           matches: Seq[Option[ElementProjection[Vertex]]]): Unit = {
       val matchedPointsAsFeatureCollection = matches
         .zip(probePoints)
         .foldLeft(FeatureCollection()) {

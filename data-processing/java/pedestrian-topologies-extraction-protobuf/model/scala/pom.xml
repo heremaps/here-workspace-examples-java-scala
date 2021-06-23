@@ -5,10 +5,10 @@
   <parent>
     <groupId>com.here.platform.schema.data.processing.example.java.pedestrian.protobuf</groupId>
     <artifactId>model_v2</artifactId>
-    <version>0.0.662</version>
+    <version>0.0.678</version>
   </parent>
 
-  <artifactId>model_v2_scala_2.11</artifactId>
+  <artifactId>model_v2_scala_2.12</artifactId>
   <packaging>jar</packaging>
 
   <name>Scala Bindings</name>
@@ -28,7 +28,7 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.27.0</tag>
+    <tag>2.28.0</tag>
   </scm>
 
   <dependencies>
@@ -41,7 +41,7 @@
     </dependency>
     <dependency>
       <groupId>com.thesamet.scalapb</groupId>
-      <artifactId>scalapb-runtime_2.11</artifactId>
+      <artifactId>scalapb-runtime_2.12</artifactId>
       <version>0.7.3</version>
     </dependency>
 
@@ -56,12 +56,12 @@
     <!-- Add external Scala dependencies here. -->
     <dependency>
       <groupId>com.here.schema.rib</groupId>
-      <artifactId>common_v2_scala</artifactId>
+      <artifactId>common_v2_scala_2.12</artifactId>
     </dependency>
 
     <dependency>
       <groupId>com.here.schema</groupId>
-      <artifactId>geometry_v2_scala</artifactId>
+      <artifactId>geometry_v2_scala_2.12</artifactId>
     </dependency>
 
   </dependencies>

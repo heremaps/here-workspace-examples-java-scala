@@ -4,14 +4,14 @@
 
   <parent>
     <groupId>com.here.platform</groupId>
-    <artifactId>sdk-standalone-bom</artifactId>
-    <version>2.27.6</version>
+    <artifactId>sdk-standalone-bom_2.12</artifactId>
+    <version>2.28.13</version>
     <relativePath/>
   </parent>
 
   <groupId>com.here.platform.example.location</groupId>
-  <artifactId>scala-standalone_2.11</artifactId>
-  <version>0.0.662</version>
+  <artifactId>scala-standalone_2.12</artifactId>
+  <version>0.0.678</version>
   <packaging>jar</packaging>
 
   <name>Location Library Examples - Scala - Standalone</name>
@@ -30,12 +30,13 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.27.0</tag>
+        <tag>2.28.0</tag>
     </scm>
 
   <properties>
         <exec.cleanupDaemonThreads>false</exec.cleanupDaemonThreads>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
    </properties>
 
   <dependencies>
@@ -83,7 +84,7 @@
     </dependency>
     <dependency>
       <groupId>com.here.schema</groupId>
-      <artifactId>geometry_v2_scala</artifactId>
+      <artifactId>geometry_v2_scala_2.12</artifactId>
       <exclusions>
         <exclusion>
           <groupId>com.here.schema</groupId>
@@ -93,7 +94,7 @@
     </dependency>
     <dependency>
       <groupId>com.here.schema.rib</groupId>
-      <artifactId>advanced-navigation-attributes_v2_scala</artifactId>
+      <artifactId>advanced-navigation-attributes_v2_scala_2.12</artifactId>
       <exclusions>
         <exclusion>
           <groupId>com.here.schema.rib</groupId>
@@ -103,7 +104,7 @@
     </dependency>
     <dependency>
       <groupId>com.here.schema.rib</groupId>
-      <artifactId>common_v2_scala</artifactId>
+      <artifactId>common_v2_scala_2.12</artifactId>
       <exclusions>
         <exclusion>
           <groupId>com.here.schema.rib</groupId>
@@ -113,7 +114,7 @@
     </dependency>
     <dependency>
       <groupId>com.here.traffic.realtime</groupId>
-      <artifactId>traffic_v2_scala_2.11</artifactId>
+      <artifactId>traffic_v2_scala_2.12</artifactId>
     </dependency>
     <!-- other dependencies -->
     <dependency>
