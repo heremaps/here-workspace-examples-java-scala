@@ -68,7 +68,7 @@ invitation letter to learn your organization ID.
 > We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 | Layer ID       | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding | Schema|
-|-----------------------------|--------------|------------|--------------------------|------------------|------------------------------------------------|
+|----------------|------------|--------------|------------|--------------------------|------------------|------------------------------------------------|
 | state          | Versioned  | Generic      | N.A.       | application/octet-stream | uncompressed     | -|
 | assessment     | Versioned  | Generic      | 12         | application/x-protobuf   | uncompressed     | assessment example quickstart|
 

@@ -61,25 +61,27 @@ For more information, see [Index Compaction Library Developer Guide](https://dev
 
 ### Small Examples Showing Usage of Location Library
 
-The following examples demonstrate how to use the Location Library. Sources can be found [here for Java](location/java/standalone) and [here for Scala](location/scala/standalone).
+The following examples demonstrate how to use the Location Library. 
 
-| Name | Description | Labels / Topics |
-| ---- | ----------- | --------------- |
-| Point Matching | Takes probe points and matches each one against the closest geometry without consider the path. | Location Library, GeoJSON, CSV |
-| Traversing the Graph | Shows how to create a traversable graph from the HERE Optimized Map for Location Library catalog. | Location Library, GeoJSON |
-| Most Probable Path | Navigates the graph along the most probable path based on simple assumptions like try to stay on same functional class. | Location Library, GeoJSON |
-| Path Matching | Matches path probe points against the graph. | Location Library, GeoJSON, CSV |
-| Path Matching with restrictions | Matches path probe points against a graph that excludes segments that are not accessible by taxis. | Location Library, GeoJSON, CSV |
-| Turn Restrictions | Shows how to check if turns on a road network are restricted or not. | Location Library, GeoJSON |
-| Generic Range Based Attributes | Shows how to load a generic attribute that is not available in the HERE Optimized Map for Location Library using a Vertex reference as input. | Location Library |
-| Path Matching Sparse Probe Data | Shows how to match sparse path points against the graph by traversing it using the most probable path assumptions. | Location Library, GeoJSON, CSV |
-| Converting references from HERE Optimized Map for Location Library to HERE Map Content | Converts Vertex references to Topology Segments and vice versa. | Location Library, HERE Map Content |
-| Converting references from TPEG2 to its binary representation | Shows how to read an OpenLR location reference that has been written in the TPEG2 XML encoding and convert it to its binary representation.| Location Library, TPEG2, OpenLR|
-| Extracting TPEG2 document | Demonstrates how to load a TPEG2 document and extract its parts.| Location Library, TPEG2 |
-| Creating and resolving TMC reference | Searches for a well-known vertex that is covered by TMC to define the input location.| Location Library, TMC |
-| Resolving TMC references in RTTI message | Demonstrates how TMC references in Real Time Traffic Incident (RTTI) messages can be converted to TPEG2 TMC references, and how the `location-referencing` module can be used to resolve those references. | Location Library, TPEG2 |
-| Creating OpenLR reference from road segments | Transforms a path given as segment references in HERE Map Content to OpenLR reference. | Location Library, HERE Map Content, OpenLR |
-| Resolving OpenLR reference from road segments | Shows how to take an OpenLR reference given in XML and resolve this reference to segments in HERE Map Content | Location Library, HERE Map Content, OpenLR |
+| Name | Description | Source | Labels / Topics |
+| ---- | ----------- | ------ | --------------- |
+| Point Matching Example | Takes probe points and matches each one against the closest geometry without consider the path. | [Java](location/java/standalone#point-matching-example) / [Scala](location/scala/standalone#point-matching-example) | Location Library, GeoJSON, CSV |
+| Traversing the Graph | Shows how to create a traversable graph from the HERE Optimized Map for Location Library catalog. | [Java](location/java/standalone#traversing-the-graph) / [Scala](location/scala/standalone#traversing-the-graph) | Location Library, GeoJSON |
+| Most Probable Path | Navigates the graph along the most probable path based on simple assumptions like try to stay on same functional class. | [Java](location/java/standalone#most-probable-path) / [Scala](location/scala/standalone#most-probable-path) | Location Library, GeoJSON |
+| Path Matching Example | Matches path probe points against the graph. | [Java](location/java/standalone#path-matching-example) / [Scala](location/scala/standalone#path-matching-example) | Location Library, GeoJSON, CSV |
+| Path Matching with Restrictions | Matches path probe points against a graph that excludes segments that are not accessible by taxis. | [Scala](location/scala/standalone#path-matching-with-restrictions) | Location Library, GeoJSON, CSV |
+| Turn Restrictions | Shows how to check if turns on a road network are restricted or not. | [Java](location/java/standalone#turn-restrictions) / [Scala](location/scala/standalone#turn-restrictions) | Location Library, GeoJSON |
+| Generic Range Based Attributes | Shows how to load a generic attribute that is not available in the HERE Optimized Map for Location Library using a Vertex reference as input. | [Java](location/java/standalone#generic-range-based-attributes) / [Scala](location/scala/standalone#generic-range-based-attributes) | Location Library |
+| Path Matching Sparse Probe Data | Shows how to match sparse path points against the graph by traversing it using the most probable path assumptions. | [Java](location/java/standalone#path-matching-sparse-probe-data) / [Scala](location/scala/standalone#path-matching-sparse-probe-data) | Location Library, GeoJSON, CSV |
+| Converting References from HERE Optimized Map for Location Library to HERE Map Content | Converts Vertex references to Topology Segments and vice versa. | [Java](location/java/standalone#converting-references-from-here-optimized-map-for-location-library-to-here-map-content) / [Scala](location/scala/standalone#converting-references-from-here-optimized-map-for-location-library-to-here-map-content) | Location Library, HERE Map Content |
+| Converting References from TPEG2 to its Binary Representation | Shows how to read an OpenLR location reference that has been written in the TPEG2 XML encoding and convert it to its binary representation.| [Java](location/java/standalone#converting-references-from-tpeg2-to-its-binary-representation) / [Scala](location/scala/standalone#converting-references-from-tpeg2-to-its-binary-representation) | Location Library, TPEG2, OpenLR|
+| Extracting TPEG2 Document | Demonstrates how to load a TPEG2 document and extract its parts.| [Java](location/java/standalone#extracting-tpeg2-document) / [Scala](location/scala/standalone#extracting-tpeg2-document) | Location Library, TPEG2 |
+| Creating and Resolving TMC Reference | Searches for a well-known vertex that is covered by TMC to define the input location.| [Java](location/java/standalone#creating-and-resolving-tmc-reference) / [Scala](location/scala/standalone#creating-and-resolving-tmc-reference) | Location Library, TMC |
+| Resolving TMC References in RTTI Message | Demonstrates how TMC references in Real Time Traffic Incident (RTTI) messages can be converted to TPEG2 TMC references, and how the `location-referencing` module can be used to resolve those references. | [Java](location/java/standalone#resolving-tmc-references-in-rtti-message) / [Scala](location/scala/standalone#resolving-tmc-references-in-rtti-message) | Location Library, TPEG2 |
+| Creating OpenLR Reference from Road Segments | Transforms a path given as segment references in HERE Map Content to OpenLR reference. | [Java](location/java/standalone#creating-openlr-reference-from-road-segments) / [Scala](location/scala/standalone#creating-openlr-reference-from-road-segments) | Location Library, HERE Map Content, OpenLR |
+| Resolving OpenLR Reference from Road Segments | Shows how to take an OpenLR reference given in XML and resolve this reference to segments in HERE Map Content | [Java](location/java/standalone#resolving-openlr-reference-from-road-segments) / [Scala](location/scala/standalone#resolving-openlr-reference-from-road-segments) | Location Library, HERE Map Content, OpenLR |
+| Functional Class for a Vertex | Shows how you can get the functional class for a vertex. | [Java](location/java/standalone#functional-class-for-a-vertex) / [Scala](location/scala/standalone#functional-class-for-a-vertex) | Location Library, GeoJSON |
+| ADAS Curvature Attribute | Shows how to fetch and use ADAS attributes in the HERE Optimized Map for Location Library using a Vertex or an Edge reference. | [Java](location/java/standalone#adas-curvature-attribute) / [Scala](location/scala/standalone#adas-curvature-attribute) | Location Library, GeoJSON |
 
 ## License
 

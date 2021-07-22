@@ -4,7 +4,7 @@
 
   <groupId>com.here.platform.schema.data.processing.example.java</groupId>
   <artifactId>pedestrian-topologies-extraction-geojson</artifactId>
-  <version>0.0.678</version>
+  <version>0.0.695</version>
   <packaging>jar</packaging>
 
   <name>Batch Processor compiler for GeoJson in Java</name>
@@ -23,16 +23,16 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.28.0</tag>
+    <tag>2.29.0</tag>
   </scm>
 
   <properties>
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <sdk-bom.version>2.28.13</sdk-bom.version>
+    <sdk-bom.version>2.29.23</sdk-bom.version>
     <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-    <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+    <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
     <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
   </properties>
 
