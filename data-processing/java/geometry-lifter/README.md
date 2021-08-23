@@ -13,8 +13,8 @@ on a higher level.
 
 To run this example, you need two sets of credentials:
 
-* **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input.
-* **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
+- **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input.
+- **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
 For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
@@ -22,9 +22,9 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Configure a Project
 
-To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
- (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
- HERE platform portal.
+To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html). A project is a collection of platform resources
+(catalogs, pipelines, and schemas) with controlled access. You can create a project through the
+HERE platform portal.
 
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
@@ -35,6 +35,7 @@ olp project create $PROJECT_ID $PROJECT_NAME
 The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your new project. Note down this HRN as you will need it later in this tutorial.
 
 > #### Note
+>
 > You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
@@ -47,30 +48,32 @@ The catalog you need to create is used to store the lifted geometry that the com
 
 Use the HERE platform portal to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
-| Layer ID                 | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding | Schema
-|--------------------------|------------|--------------|------------|--------------------------|------------------|-------------------------
-| lifted-topology-geometry | Versioned  | HEREtile     | 10         | application/x-protobuf   | uncompressed     | RIB 2 Topology Geometry
-| state                    | Versioned  | Generic      | N.A.       | application/octet-stream | uncompressed     | -
+| Layer ID                 | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding | Schema                  |
+| ------------------------ | ---------- | ------------ | ---------- | ------------------------ | ---------------- | ----------------------- |
+| lifted-topology-geometry | Versioned  | HEREtile     | 10         | application/x-protobuf   | uncompressed     | RIB 2 Topology Geometry |
+| state                    | Versioned  | Generic      | N.A.       | application/octet-stream | uncompressed     | -                       |
 
 Alternatively, you can use the OLP CLI to create the catalog and the corresponding layers.
 
 In the commands that follow, replace the variable placeholders with the following values:
+
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
 - `$HRN_PARTITION` is the platform environment you are in. Specify `here` unless you are
-using the HERE platform environment in China, in which case specify `here-cn`.
+  using the HERE platform environment in China, in which case specify `here-cn`.
 - `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create` command).
 - `$REALM` The ID of your organization, also called a realm. Consult your platform
-invitation letter to learn your organization ID.
+  invitation letter to learn your organization ID.
 - `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
 
-> #### Note 
+> #### Note
+>
 > We recommend to set values to variables so that you can easily copy and execute the following commands.
 
-| Layer ID       | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding | Schema|
-|----------------|------------|--------------|------------|--------------------------|------------------|------------------------------------------------|
-| state          | Versioned  | Generic      | N.A.       | application/octet-stream | uncompressed     | -|
-| assessment     | Versioned  | Generic      | 12         | application/x-protobuf   | uncompressed     | assessment example quickstart|
+| Layer ID   | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding | Schema                        |
+| ---------- | ---------- | ------------ | ---------- | ------------------------ | ---------------- | ----------------------------- |
+| state      | Versioned  | Generic      | N.A.       | application/octet-stream | uncompressed     | -                             |
+| assessment | Versioned  | Generic      | 12         | application/x-protobuf   | uncompressed     | assessment example quickstart |
 
 ```bash
 olp catalog create $CATALOG_ID $CATALOG_ID --summary "Geometry lifter example catalog" \
@@ -122,6 +125,7 @@ pipeline.config {
   }
 }
 ```
+
 Replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your lifted geometry catalog.
 To find the HRN, in the [HERE platform portal](https://platform.here.com/) or the
 [HERE platform portal in China](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
@@ -131,7 +135,7 @@ The `config/here/pipeline-job.conf` and `config/here-china/pipeline-job.conf` fi
 contain the compiler's run configuration.
 
 In this file, modify `version = 1` to reflect the version of the HERE Map Content catalog you want
-to process.  To find the version of the HERE Map Content catalog, in the
+to process. To find the version of the HERE Map Content catalog, in the
 [HERE platform](https://platform.here.com/) or the
 [HERE platform portal in China](https://platform.hereolp.cn/),
 navigate to the HERE Map Content catalog, and view the current catalog's version in the Catalog info section.
@@ -238,6 +242,7 @@ navigate to your pipeline to see its status.
 
 In the [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/),
 select the **Data** tab and find your catalog.
+
 1. Open the `lifted-topology-geometry` layer and select the **Inspect** tab.
 2. On the map, navigate to the location of your bounding box and set the zoom to level 10.
 3. Finally, select any highlighted partition to view the results displayed on the map.

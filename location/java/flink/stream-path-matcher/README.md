@@ -29,17 +29,17 @@ examples.
 To run the example, you need access to the following catalogs:
 
 - [`HERE Optimized Map for Location Library`](https://platform.here.com/data/hrn:here:data::olp-here:here-optimized-map-for-location-library-2)
-or China specific [`HERE Optimized Map for Location Library`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:here-optimized-map-for-location-library-china-2)
-catalog
+  or China specific [`HERE Optimized Map for Location Library`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:here-optimized-map-for-location-library-china-2)
+  catalog
 - [`HERE Sample SDII Messages - Berlin`](https://platform.here.com/data/hrn:here:data::olp-here:olp-sdii-sample-berlin-2)
-or [`HERE Sample SDII Messages - China`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:sample-data)
+  or [`HERE Sample SDII Messages - China`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:sample-data)
 
 ## Get Your Credentials
 
 To run this example, you need two sets of credentials:
 
-* **Platform credentials:** To get access to platform data and resources, including HERE Map Content data for your pipeline input. 
-* **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
+- **Platform credentials:** To get access to platform data and resources, including HERE Map Content data for your pipeline input.
+- **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
 For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
@@ -47,10 +47,10 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Configure a Project
 
-To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
+To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html). A project is a collection of platform resources
 (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
 platform portal.
- 
+
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
 ```bash
@@ -60,6 +60,7 @@ olp project create $PROJECT_ID $PROJECT_NAME
 The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your new project. Note down this HRN as you will need it later in this tutorial.
 
 > #### Note
+>
 > You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
@@ -72,13 +73,14 @@ The catalog you need to create is used to store the results of the `Stream Path 
 
 Use the [HERE platform portal](https://platform.here.com/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
-| Layer ID                 | Layer Type | Content Type           | Content Encoding | Coverage |
-|--------------------------|------------|------------------------|------------------|----------|
-| out-data                 | Stream     | application/x-protobuf | uncompressed     | DE or CN |
+| Layer ID | Layer Type | Content Type           | Content Encoding | Coverage |
+| -------- | ---------- | ---------------------- | ---------------- | -------- |
+| out-data | Stream     | application/x-protobuf | uncompressed     | DE or CN |
 
 Alternatively, you can use the OLP CLI to create the catalog and the corresponding layers.
 
 In the commands that follow, replace the variable placeholders with the following values:
+
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
 - `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create` command).
@@ -87,10 +89,11 @@ In the commands that follow, replace the variable placeholders with the followin
 - `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
 
 > #### Note
+>
 > We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
-  Make sure to note down the HRN returned by the following command for later use:
+   Make sure to note down the HRN returned by the following command for later use:
 
 ```bash
 olp catalog create $CATALOG_ID $CATALOG_ID --summary "Output catalog for Stream Path Matcher example" \
@@ -158,6 +161,7 @@ olp catalog layer stream get $CATALOG_HRN out-data --delimiter=\\n --limit=42 --
 The following steps allow you to run the `StreamPathMatcherExample` pipeline on the platform.
 
 ### Generate a Fat JAR file
+
 Generate a "fat jar" for `StreamPathMatcherExample` that will be sent to the platform later
 
 ```bash
@@ -181,14 +185,16 @@ olp pipeline version create $COMPONENT_NAME_version $PIPELINE_ID $PIPELINE_TEMPL
                 --scope $PROJECT_HRN
 ```
 
-* Make sure logs are produced with info level
+- Make sure logs are produced with info level
 
 ```bash
 olp pipeline version log level set $PIPELINE_ID $PIPELINE_VERSION_ID \
 --log4j-properties="$PATH_TO_PROJECT/src/main/resources/log4j.properties" \
 --scope $PROJECT_HRN
 ```
+
 If the operation is successful, you should be able to see the log level you just set:
+
 ```sh
 olp pipeline version log level get $PIPELINE_ID $PIPELINE_VERSION_ID \
 --scope $PROJECT_HRN
@@ -223,4 +229,4 @@ After partition inspection, cancel the stream pipeline.
 
 ```bash
 olp pipeline version cancel $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
- ```
+```

@@ -16,9 +16,10 @@ actual HERE Tile ID of the partition.
 
 As these checks are carried out, we keep track of the following metric values, which are
 automatically aggregated together with the test results:
+
 - Number of Nodes per tile.
 - Number of Segments per tile.
-- Number of Segments attached to each Node. 
+- Number of Segments attached to each Node.
 
 To implement these tests we use a scalatest suite, parametrized on the content of one
 `topology-geometry` partition and of all the referenced neighbour partitions, using the Data
@@ -28,23 +29,23 @@ The validation module automatically encodes the test results and publishes them 
 report catalog, which consists of the following layers:
 
 - `report` contains the report of the failed tests (succeeded tests are by default filtered out
-           to simplify debugging and identification of data issues, and to reduce the amount of
-           published data). This layer will be empty if there are no failed tests.
+  to simplify debugging and identification of data issues, and to reduce the amount of
+  published data). This layer will be empty if there are no failed tests.
 - `metrics` contains statistics about all test cases run in the suite, and the accumulated values of
-            the custom accumulators specified in the suite. Partitions are first published at the
-            input zoom level (12) and then incrementally and recursively aggregated at higher zoom
-            levels - by default using all the zoom levels configured in the layer up to level 0 (the
-            root partition). In this example we use levels 12, 10, 8, 6, 4, 2 and 0.
+  the custom accumulators specified in the suite. Partitions are first published at the
+  input zoom level (12) and then incrementally and recursively aggregated at higher zoom
+  levels - by default using all the zoom levels configured in the layer up to level 0 (the
+  root partition). In this example we use levels 12, 10, 8, 6, 4, 2 and 0.
 - `assessment` contains the final assessment partition. This layer will contain one single
-               partition, encoding our custom assessment class. In this example we simply assess
-               that no test cases have failed.
+  partition, encoding our custom assessment class. In this example we simply assess
+  that no test cases have failed.
 
 ## Get Your Credentials
 
 To run this example, you need two sets of credentials:
 
-* **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input. 
-* **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
+- **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input.
+- **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
 For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
@@ -53,13 +54,14 @@ For more details on how to verify that your platform credentials are configured 
 ## Build and Run the Compiler
 
 In the commands that follow, replace the variable placeholders with the following values:
+
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
 - `$HRN_PARTITION` is the platform environment you are in. Specify `here` unless you are
-using the HERE platform China environment, in which case specify `here-cn`.
+  using the HERE platform China environment, in which case specify `here-cn`.
 - `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create` command).
 - `$REALM` The ID of your organization, also called a realm. Consult your platform
-invitation letter to learn your organization ID.
+  invitation letter to learn your organization ID.
 - `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE China environment](./config/here-china/pipeline-config.conf)).
 
 > Note:
@@ -75,7 +77,7 @@ below. If you want to know more about local catalogs, see
 and [the OLP CLI documentation](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data-workflows.html).
 
 1. Use the [`olp local catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/catalog-commands.html#catalog-create)
-command to create the local catalog.
+   command to create the local catalog.
 
 ```bash
 olp local catalog create heremapcontent-validation "HERE Map Content - Topology and Geometry Validation" \
@@ -86,7 +88,7 @@ olp local catalog create heremapcontent-validation "HERE Map Content - Topology 
 The local catalog will have the HRN `hrn:local:data:::heremapcontent-validation`.
 
 2. Use the [`olp local catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/layer-commands.html#catalog-layer-add)
-command to add four `versioned` layers to your catalog:
+   command to add four `versioned` layers to your catalog:
 
 ```bash
 olp local catalog layer add hrn:local:data:::heremapcontent-validation report report --versioned \
@@ -190,10 +192,10 @@ uncomment the line that follows:
 #### Configure a Project
 
 To run the example as a HERE Platform Pipeline, you'll first need a
-[project](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
+[project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html).
 A project is a collection of platform resources (catalogs, pipelines, and schemas) with controlled
 access. You can create a project through the **HERE platform portal**.
- 
+
 Alternatively, use the OLP CLI
 [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
@@ -216,7 +218,7 @@ Create a catalog to store the validation reports and metrics generated by the co
 the non-local variants of the same commands you have run before to create a local catalog:
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
-Make sure to note down the HRN returned by the following command for later use:
+   Make sure to note down the HRN returned by the following command for later use:
 
 ```bash
 olp catalog create $CATALOG_ID "HERE Map Content - Topology and Geometry Validation" \
@@ -338,5 +340,6 @@ navigate to your pipeline to see its status.
 
 In the [HERE platform portal](https://platform.here.com/) / [HERE platform China portal](https://platform.hereolp.cn/)
 select the _Data_ tab and find your catalog.
+
 1. Open the `assessment` layer and select the _Inspect_ tab.
 2. Select the `assessment` partition to view the result of the assessment.

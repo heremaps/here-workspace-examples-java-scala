@@ -24,15 +24,15 @@ which:
 - takes HERE Map Content input data as well as data from a previous compilation as feedback
 - finds the cardinality for each node in a partition
 - if the input data has changed since the last compilation, the compiler
-updates the cardinality and increments the variable that counts the number of times the compiler has
-run
+  updates the cardinality and increments the variable that counts the number of times the compiler has
+  run
 
 ## Get Your Credentials
 
 To run this example, you need two sets of credentials:
 
-* **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input. 
-* **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
+- **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input.
+- **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
 For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
@@ -40,10 +40,10 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Configure a Project
 
-To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
- (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
+To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html). A project is a collection of platform resources
+(catalogs, pipelines, and schemas) with controlled access. You can create a project through the
 [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/).
- 
+
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
 ```bash
@@ -53,6 +53,7 @@ olp project create $PROJECT_ID $PROJECT_NAME
 The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your new project. Note down this HRN as you will need it later in this tutorial.
 
 > #### Note
+>
 > You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
@@ -66,24 +67,26 @@ compiler has run.
 
 Use the [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
-| Layer ID             | Partitioning | Zoom Level | Layer Type | Content Type             | Schema | Content Encoding |
-|----------------------|--------------|------------|------------|--------------------------|--------|------------------|
-| nodecardinality-count| HEREtile     | 12         | Versioned  | application/json         | None   | uncompressed     |
-| state                | Generic      | N.A.       | Versioned  | application/octet-stream | None   | uncompressed     |
+| Layer ID              | Partitioning | Zoom Level | Layer Type | Content Type             | Schema | Content Encoding |
+| --------------------- | ------------ | ---------- | ---------- | ------------------------ | ------ | ---------------- |
+| nodecardinality-count | HEREtile     | 12         | Versioned  | application/json         | None   | uncompressed     |
+| state                 | Generic      | N.A.       | Versioned  | application/octet-stream | None   | uncompressed     |
 
 Alternatively, you can use the OLP CLI to create the catalog and the corresponding layers.
 
 In the commands that follow, replace the variable placeholders with the following values:
+
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
 - `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create` command).
 - `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
 
 > #### Note
+>
 > We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
-Make sure to note down the HRN returned by the following command for later use:
+   Make sure to note down the HRN returned by the following command for later use:
 
 ```bash
 olp catalog create $CATALOG_ID $CATALOG_ID --summary "Stateful compiler example catalog" \
@@ -177,7 +180,7 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region. In order to use this configuration file, you need to use the `-Dconfig.file`
 parameter.
 
-Setup the environment variable `$PATH_TO_CONFIG_FOLDER` to `./config/here`, 
+Setup the environment variable `$PATH_TO_CONFIG_FOLDER` to `./config/here`,
 for the HERE platform environment in China, use the files in the `./config/here-china` directory.
 
 ### Run the Compiler from the Command Line
@@ -263,8 +266,6 @@ In the [HERE platform portal](https://platform.here.com/) / [HERE platform porta
 select the **Data** tab and find your catalog.
 
 1. Open the `nodecardinality-count` layer and select the **Inspect** tab. Verify that partitions
-with the JSON data are present and you can view this data by selecting a partition.
+   with the JSON data are present and you can view this data by selecting a partition.
 2. Select any partition to look at its content. The field `updatesCount` will be `1` for those
-partitions that did not change during the second run. It will be `2` otherwise.
-
-
+   partitions that did not change during the second run. It will be `2` otherwise.

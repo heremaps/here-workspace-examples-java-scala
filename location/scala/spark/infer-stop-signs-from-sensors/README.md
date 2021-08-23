@@ -50,17 +50,17 @@ examples.
 To run the example, you need access to the following catalogs:
 
 - [`HERE Optimized Map for Location Library`](https://platform.here.com/data/hrn:here:data::olp-here:here-optimized-map-for-location-library-2)
-or China specific [`HERE Optimized Map for Location Library`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:here-optimized-map-for-location-library-china-2)
-catalog
+  or China specific [`HERE Optimized Map for Location Library`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:here-optimized-map-for-location-library-china-2)
+  catalog
 - [`HERE Sample SDII Messages - Berlin`](https://platform.here.com/data/hrn:here:data::olp-here:olp-sdii-sample-berlin-2)
-or [`HERE Sample SDII Messages - China`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:sample-data)
+  or [`HERE Sample SDII Messages - China`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:sample-data)
 
 ## Get Your Credentials
 
 To run this example, you need two sets of credentials:
 
-* **Platform credentials:** To get access to platform data and resources, including HERE Map Content data for your pipeline input. 
-* **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
+- **Platform credentials:** To get access to platform data and resources, including HERE Map Content data for your pipeline input.
+- **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
 For more details on how to set up your credentials, see [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
@@ -68,10 +68,10 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Configure a Project
 
-To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). A project is a collection of platform resources
- (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
+To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html). A project is a collection of platform resources
+(catalogs, pipelines, and schemas) with controlled access. You can create a project through the
 [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/).
- 
+
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
 ```bash
@@ -81,6 +81,7 @@ olp project create $PROJECT_ID $PROJECT_NAME
 The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your new project. Note down this HRN as you will need it later in this tutorial.
 
 > #### Note
+>
 > You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
@@ -93,13 +94,14 @@ The catalog you need to create is used to store the results of `Infer Stop Signs
 
 Use the [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
-| Layer ID                 | Layer Type | Content Type             | Partitioning | Zoom Level | Content Encoding | Coverage |
-|--------------------------|------------|--------------------------|--------------|------------|------------------|----------|
-| stop-signs               | versioned  | application/vnd.geo+json | heretile     | 14         | uncompressed     | DE or CN |
+| Layer ID   | Layer Type | Content Type             | Partitioning | Zoom Level | Content Encoding | Coverage |
+| ---------- | ---------- | ------------------------ | ------------ | ---------- | ---------------- | -------- |
+| stop-signs | versioned  | application/vnd.geo+json | heretile     | 14         | uncompressed     | DE or CN |
 
 Alternatively, you can use the OLP CLI to create the catalog and the corresponding layers.
 
 In the commands that follow replace the variable placeholders with the following values:
+
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
 - `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create`).
@@ -108,10 +110,11 @@ In the commands that follow replace the variable placeholders with the following
 - `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
 
 > #### Note
+>
 > We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
-  Make sure to note down the HRN returned by the following command for later use:
+   Make sure to note down the HRN returned by the following command for later use:
 
 ```bash
 olp catalog create $CATALOG_ID $CATALOG_ID --summary "Output catalog for Infer Stop Signs From Sensors example" \
@@ -168,7 +171,7 @@ In the command above:
 - `pipeline-config.conf` defines the `HRN`s of the input and output catalogs,
 - `pipeline-job.conf` defines the versions of the input and output catalogs,
 - `local[2]` defines the number of threads Spark will run in parallel to
-     process the batch.
+  process the batch.
 
 Inspect the partitions
 
@@ -205,7 +208,7 @@ olp pipeline version create $COMPONENT_NAME_version $PIPELINE_ID $PIPELINE_TEMPL
                 --scope $PROJECT_HRN
 ```
 
-* Make sure logs are produced with info level
+- Make sure logs are produced with info level
 
 ```bash
 olp pipeline version log level set $PIPELINE_ID $PIPELINE_VERSION_ID \
@@ -214,6 +217,7 @@ olp pipeline version log level set $PIPELINE_ID $PIPELINE_VERSION_ID \
 ```
 
 If the operation is successful, you should be able to see the log level you just set:
+
 ```sh
 olp pipeline version log level get $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
 ```
@@ -226,7 +230,7 @@ olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --input-catalogs
 
 ### Inspect the Output Catalog
 
-* Wait until the pipeline version terminates
+- Wait until the pipeline version terminates
 
 This allows to wait until the internal job reaches the `completed` state, with a timeout of 30 minutes:
 
@@ -234,7 +238,7 @@ This allows to wait until the internal job reaches the `completed` state, with a
 olp pipeline version wait $PIPELINE_ID $PIPELINE_VERSION_ID --job-state=completed --timeout=1800 --scope $PROJECT_HRN
 ```
 
-* Inspect the partitions
+- Inspect the partitions
 
 By zooming in the **Inspect** tab, you may see the position of stop signs inferred from sensor data:
 

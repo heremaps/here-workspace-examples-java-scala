@@ -29,4 +29,3 @@ Git has the `-s` flag that can sign a commit for you, see example below:
 
 `$ git commit -s -m 'README.md: Fix minor spelling mistake'`
 ```
-
