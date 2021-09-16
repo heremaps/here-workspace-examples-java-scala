@@ -1,5 +1,3 @@
-package com.here.platform.example.location.scala.standalone
-
 /*
  * Copyright (C) 2017-2021 HERE Europe B.V.
  *
@@ -18,6 +16,8 @@ package com.here.platform.example.location.scala.standalone
  * SPDX-License-Identifier: Apache-2.0
  * License-Filename: LICENSE
  */
+
+package com.here.platform.example.location.scala.standalone
 
 import java.io.FileOutputStream
 
