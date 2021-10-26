@@ -5,12 +5,12 @@
   <parent>
     <groupId>com.here.platform.data.processing.example.java</groupId>
     <artifactId>pedestrian-topologies-extraction-protobuf</artifactId>
-    <version>0.0.713</version>
+    <version>0.0.726</version>
   </parent>
 
   <groupId>com.here.platform.data.processing.example.java.pedestrian.protobuf</groupId>
   <artifactId>compiler</artifactId>
-  <version>0.0.713</version>
+  <version>0.0.726</version>
   <packaging>jar</packaging>
 
   <name>Batch Processor compiler for Protobuf in Java</name>
@@ -29,7 +29,7 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.31.0</tag>
+    <tag>2.32.0</tag>
   </scm>
 
   <properties>
@@ -38,7 +38,8 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
-    <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
+    <scala-maven-plugin.version>4.5.4</scala-maven-plugin.version>
+    <scala.compat.version>2.12</scala.compat.version>
   </properties>
 
   <dependencies>
@@ -63,17 +64,17 @@
     <dependency>
       <groupId>com.here.platform.schema.data.processing.example.java.pedestrian.protobuf</groupId>
       <artifactId>model_v2_java</artifactId>
-      <version>0.0.713</version>
+      <version>0.0.726</version>
     </dependency>
 
     <!-- HERE dependencies -->
     <dependency>
       <groupId>com.here.platform.data.processing</groupId>
-      <artifactId>pipeline-runner-java_2.12</artifactId>
+      <artifactId>pipeline-runner-java_${scala.compat.version}</artifactId>
     </dependency>
     <dependency>
       <groupId>com.here.platform.data.processing</groupId>
-      <artifactId>batch-catalog-dataservice_2.12</artifactId>
+      <artifactId>batch-catalog-dataservice_${scala.compat.version}</artifactId>
     </dependency>
     <!-- External dependencies -->
     <dependency>
@@ -83,7 +84,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-core_2.12</artifactId>
+      <artifactId>spark-core_${scala.compat.version}</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>

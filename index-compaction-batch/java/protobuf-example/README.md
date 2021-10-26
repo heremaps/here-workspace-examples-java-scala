@@ -293,7 +293,7 @@ If you have any trouble accessing logs, monitoring, investigating failures and s
 - ##### Index Compaction Library Developer Guide
 
   - RoW: https://developer.here.com/documentation/index-compaction-library/dev_guide/index.html
-  - China: https://developer.here.com/cn/documentation/index-compaction-library/dev_guide/index.html
+  - China: https://developer.here.com/documentation/index-compaction-library/dev_guide/index.html
 
 - ##### Data API Developer Guide
 

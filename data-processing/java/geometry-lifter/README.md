@@ -75,6 +75,9 @@ In the commands that follow, replace the variable placeholders with the followin
 | state      | Versioned  | Generic      | N.A.       | application/octet-stream | uncompressed     | -                             |
 | assessment | Versioned  | Generic      | 12         | application/x-protobuf   | uncompressed     | assessment example quickstart |
 
+1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
+   Make sure to note down the HRN returned by the following command for later use:
+
 ```bash
 olp catalog create $CATALOG_ID $CATALOG_ID --summary "Geometry lifter example catalog" \
             --description "Geometry lifter example catalog" \
