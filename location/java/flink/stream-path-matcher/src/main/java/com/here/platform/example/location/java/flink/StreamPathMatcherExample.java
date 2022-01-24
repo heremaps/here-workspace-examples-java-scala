@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2021 HERE Europe B.V.
+ * Copyright (C) 2017-2022 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ import com.twitter.chill.protobuf.ProtobufSerializer;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.UUID;
-import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +69,6 @@ public final class StreamPathMatcherExample {
       final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
       env.getConfig()
           .registerTypeWithKryoSerializer(SdiiMessage.Message.class, ProtobufSerializer.class);
-      env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
       env.enableCheckpointing(CHECKPOINT_INTERVAL.toMillis());
 
       env.addSource(

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2021 HERE Europe B.V.
+ * Copyright (C) 2017-2022 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,30 +95,6 @@ public class SensorisProtobufSplittedUDFExampleTest {
 
     assertEquals(m1, aggregatedMessageList.get(0));
     assertEquals(m2, aggregatedMessageList.get(1));
-  }
-
-  @Test
-  public void testMerge() throws InvalidProtocolBufferException {
-    List<byte[]> list = Arrays.asList(b1, b2);
-    Iterator<byte[]> it = list.iterator();
-
-    List<byte[]> list2 = Arrays.asList(b3, b4);
-    Iterator<byte[]> it2 = list2.iterator();
-
-    byte[] a1 = example.aggregate(new HashMap<>(), it);
-    byte[] a2 = example.aggregate(new HashMap<>(), it2);
-
-    Iterator<byte[]> mergedIt = Arrays.asList(a1, a2).iterator();
-
-    byte[] mergedByteArray = example.merge(new HashMap<>(), mergedIt);
-
-    List<DataMessage> mergedMessageList =
-        DataMessages.parseFrom(mergedByteArray).getDataMessageList();
-
-    assertEquals(m1, mergedMessageList.get(0));
-    assertEquals(m2, mergedMessageList.get(1));
-    assertEquals(m3, mergedMessageList.get(2));
-    assertEquals(m4, mergedMessageList.get(3));
   }
 
   private byte[] wrapInDataMessages(List<DataMessage> messages) {

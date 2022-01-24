@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2021 HERE Europe B.V.
+ * Copyright (C) 2017-2022 HERE Europe B.V.
  *
  * The following rights to redistribution and use the software example in
  * source and binary forms, with or without modification, are granted to

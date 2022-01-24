@@ -1,18 +1,14 @@
 /*
- * Copyright (C) 2017-2021 HERE Europe B.V.
- *
+ * Copyright (C) 2017-2022 HERE Europe B.V.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  * SPDX-License-Identifier: Apache-2.0
  * License-Filename: LICENSE
  */
@@ -129,34 +125,6 @@ public class AvroSimpleKeyExampleTest {
     assertSDIIMessagesAreEqual(message2, list.get(1));
     assertSDIIMessagesAreEqual(message3, list.get(2));
     assertTrue(aggregateDuration.getCount() > 0);
-  }
-
-  @Test
-  public void testMerge() throws IOException {
-    SdiiMessage.Message message1 = prepareSDIIMessage(System.currentTimeMillis(), true, 10d, 10d);
-    SdiiMessage.Message message2 = prepareSDIIMessage(System.currentTimeMillis(), true, 10d, 10d);
-    SdiiMessage.Message message3 = prepareSDIIMessage(System.currentTimeMillis(), true, 10d, 10d);
-    SdiiMessage.Message message4 = prepareSDIIMessage(System.currentTimeMillis(), true, 10d, 10d);
-    example.open(parameters, runtimeContext);
-    byte[] archiveBytesMessage1 =
-        example.aggregate(
-            null, Arrays.asList(message1.toByteArray(), message2.toByteArray()).iterator());
-    byte[] archiveBytesMessage2 =
-        example.aggregate(
-            null, Arrays.asList(message3.toByteArray(), message4.toByteArray()).iterator());
-    File tmpFile = File.createTempFile("test", ".avro");
-    tmpFile.deleteOnExit();
-
-    FileUtils.writeByteArrayToFile(
-        tmpFile,
-        example.merge(
-            new HashMap<>(), Arrays.asList(archiveBytesMessage1, archiveBytesMessage2).iterator()));
-    List<SdiiMessage.Message> list = AvroHelper.fromFile(tmpFile, SdiiMessage.Message.class);
-    assertEquals(4, list.size());
-    assertSDIIMessagesAreEqual(message1, list.get(0));
-    assertSDIIMessagesAreEqual(message2, list.get(1));
-    assertSDIIMessagesAreEqual(message3, list.get(2));
-    assertSDIIMessagesAreEqual(message4, list.get(3));
   }
 
   private SdiiMessage.Message prepareSDIIMessage(

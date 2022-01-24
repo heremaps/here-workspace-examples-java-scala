@@ -1,18 +1,14 @@
 /*
- * Copyright (C) 2017-2021 HERE Europe B.V.
- *
+ * Copyright (C) 2017-2022 HERE Europe B.V.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  * SPDX-License-Identifier: Apache-2.0
  * License-Filename: LICENSE
  */
@@ -97,30 +93,6 @@ public class ProtobufSimpleKeyExampleTest {
 
     assertEquals(m1, aggregatedMessageList.get(0));
     assertEquals(m2, aggregatedMessageList.get(1));
-  }
-
-  @Test
-  public void testMerge() throws InvalidProtocolBufferException {
-    List<byte[]> list = Arrays.asList(b1, b2);
-    Iterator it = list.iterator();
-
-    List<byte[]> list2 = Arrays.asList(b3, b4);
-    Iterator it2 = list2.iterator();
-
-    byte[] a1 = example.aggregate(new HashMap<>(), it);
-    byte[] a2 = example.aggregate(new HashMap<>(), it2);
-
-    Iterator mergedIt = Arrays.asList(a1, a2).iterator();
-
-    byte[] mergedByteArray = example.merge(new HashMap<>(), mergedIt);
-
-    List<SdiiMessage.Message> mergedMessageList =
-        SdiiMessageList.MessageList.parseFrom(mergedByteArray).getMessageList();
-
-    assertEquals(m1, mergedMessageList.get(0));
-    assertEquals(m2, mergedMessageList.get(1));
-    assertEquals(m3, mergedMessageList.get(2));
-    assertEquals(m4, mergedMessageList.get(3));
   }
 
   private SdiiMessage.Message prepareSDIIMessage(

@@ -1,18 +1,14 @@
 /*
- * Copyright (C) 2017-2021 HERE Europe B.V.
- *
+ * Copyright (C) 2017-2022 HERE Europe B.V.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  * SPDX-License-Identifier: Apache-2.0
  * License-Filename: LICENSE
  */
@@ -36,9 +32,7 @@ import java.util.Map;
 import java.util.TreeSet;
 import java.util.UUID;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.parquet.hadoop.ParquetReader;
 import org.apache.parquet.hadoop.ParquetWriter;
-import org.apache.parquet.proto.ProtoParquetReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -129,47 +123,6 @@ public class ParquetSimpleKeyExample implements SimpleUDF {
       LOG.error("Errors creating parquet temp file....", e);
     } finally {
       deleteTempParquetFile(parquetFilePath);
-    }
-
-    return null;
-  }
-
-  @Override
-  public byte[] merge(Map<String, Object> keys, Iterator<byte[]> files) {
-    Path parquetTmpFilePath = null;
-    Path parquetTargetFilePath = null;
-    try {
-      // Prepare input & output paths
-      parquetTargetFilePath = tmpDir.resolve(UUID.randomUUID().toString());
-
-      // Initialize parquet reader & writer
-      ParquetReader<SdiiMessage.Message.Builder> parquetReader;
-      ParquetWriter<SdiiMessage.Message> parquetWriter = createParquetWriter(parquetTargetFilePath);
-
-      // Prepare input files, read all files and merge data
-      while (files.hasNext()) {
-        parquetTmpFilePath = tmpDir.resolve(UUID.randomUUID().toString());
-        Files.write(parquetTmpFilePath, files.next());
-
-        parquetReader =
-            ProtoParquetReader.<SdiiMessage.Message.Builder>builder(
-                    new org.apache.hadoop.fs.Path(parquetTmpFilePath.toString()))
-                .build();
-        for (SdiiMessage.Message.Builder sdiiMessageBuilder;
-            (sdiiMessageBuilder = parquetReader.read()) != null; ) {
-          parquetWriter.write(sdiiMessageBuilder.build());
-        }
-        parquetReader.close();
-        deleteTempParquetFile(parquetTmpFilePath);
-      }
-      parquetWriter.close();
-
-      return Files.readAllBytes(parquetTargetFilePath);
-    } catch (IOException e) {
-      LOG.error("Errors merging files....", e);
-    } finally {
-      deleteTempParquetFile(parquetTmpFilePath);
-      deleteTempParquetFile(parquetTargetFilePath);
     }
 
     return null;

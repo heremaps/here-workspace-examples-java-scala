@@ -5,12 +5,12 @@
   <parent>
     <groupId>com.here.platform.data.processing.example.java</groupId>
     <artifactId>pedestrian-topologies-extraction-protobuf</artifactId>
-    <version>0.0.739</version>
+    <version>0.0.746</version>
   </parent>
 
   <groupId>com.here.platform.schema.data.processing.example.java.pedestrian.protobuf</groupId>
   <artifactId>model_v2</artifactId>
-  <version>0.0.739</version>
+  <version>0.0.746</version>
   <packaging>pom</packaging>
 
   <name>Pedestrian Topologies Extraction Example Java</name>
@@ -40,7 +40,7 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.34.0</tag>
+    <tag>2.35.0</tag>
   </scm>
   <distributionManagement>
     <repository>

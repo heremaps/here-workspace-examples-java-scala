@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2021 HERE Europe B.V.
+ * Copyright (C) 2017-2022 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -136,19 +136,10 @@ public class SensorisProtobufSplittedUDFExample implements SplittedUDF {
 
   @Override
   public byte[] aggregate(Map<String, Object> keys, Iterator<byte[]> messages) {
-    return combineDataMessages(messages);
-  }
-
-  @Override
-  public byte[] merge(Map<String, Object> keys, Iterator<byte[]> files) {
-    return combineDataMessages(files);
-  }
-
-  private byte[] combineDataMessages(Iterator<byte[]> binaryMessages) {
     DataMessages.Builder combiningBuilder = DataMessages.newBuilder();
 
-    while (binaryMessages.hasNext()) {
-      byte[] data = binaryMessages.next();
+    while (messages.hasNext()) {
+      byte[] data = messages.next();
 
       try {
         DataMessages m = DataMessages.parseFrom(data);

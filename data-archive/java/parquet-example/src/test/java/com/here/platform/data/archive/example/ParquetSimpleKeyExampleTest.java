@@ -1,18 +1,14 @@
 /*
- * Copyright (C) 2017-2021 HERE Europe B.V.
- *
+ * Copyright (C) 2017-2022 HERE Europe B.V.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  * SPDX-License-Identifier: Apache-2.0
  * License-Filename: LICENSE
  */
@@ -108,39 +104,6 @@ public class ParquetSimpleKeyExampleTest {
     assertEquals(m2, reader.read().build());
     assertEquals(null, reader.read());
     reader.close();
-    parquetTmpFilePath.toFile().delete();
-  }
-
-  @Test
-  public void testMerge() throws IOException {
-    List<byte[]> list = Arrays.asList(b1, b2);
-    Iterator it = list.iterator();
-
-    List<byte[]> list2 = Arrays.asList(b3, b4);
-    Iterator it2 = list2.iterator();
-
-    byte[] a1 = example.aggregate(new HashMap<>(), it);
-    byte[] a2 = example.aggregate(new HashMap<>(), it2);
-
-    Iterator mergedIt = Arrays.asList(a1, a2).iterator();
-
-    byte[] mergedByteArray = example.merge(new HashMap<>(), mergedIt);
-    Path tmpDir = Files.createTempDirectory("parquetTmp");
-    tmpDir.toFile().deleteOnExit();
-    Path parquetTmpFilePath = tmpDir.resolve(UUID.randomUUID().toString());
-    Files.write(parquetTmpFilePath, mergedByteArray);
-    ParquetReader<SdiiMessage.Message.Builder> reader =
-        ProtoParquetReader.<SdiiMessage.Message.Builder>builder(
-                new org.apache.hadoop.fs.Path(parquetTmpFilePath.toString()))
-            .build();
-
-    assertEquals(m1, reader.read().build());
-    assertEquals(m2, reader.read().build());
-    assertEquals(m3, reader.read().build());
-    assertEquals(m4, reader.read().build());
-    assertEquals(null, reader.read());
-    reader.close();
-
     parquetTmpFilePath.toFile().delete();
   }
 
