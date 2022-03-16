@@ -29,11 +29,7 @@ import com.typesafe.config.ConfigFactory;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import org.apache.parquet.hadoop.ParquetReader;
 import org.apache.parquet.proto.ProtoParquetReader;
 import org.sensoris.categories.localization.LocalizationCategory;
@@ -97,7 +93,7 @@ public class ExampleReader {
 
       LOG.info("Looking up data from {}/{} with query {}", catalogHrn.toString(), layer, query);
       Iterator<IndexPartition> indexQueryResult =
-          flinkQueryApi.queryIndexAsIterator(layer, query.toString());
+          flinkQueryApi.queryIndexAsIterator(layer, Optional.of(query.toString()));
 
       indexQueryResult.forEachRemaining(
           indexPartition -> {

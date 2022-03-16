@@ -29,6 +29,7 @@ import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.Optional;
 import org.sensoris.categories.localization.LocalizationCategory;
 import org.sensoris.messages.data.DataMessages;
 import org.slf4j.Logger;
@@ -90,7 +91,7 @@ public class ExampleReader {
 
       LOG.info("Looking up data from {}/{} with query {}", catalogHrn.toString(), layer, query);
       Iterator<IndexPartition> indexQueryResult =
-          flinkQueryApi.queryIndexAsIterator(layer, query.toString());
+          flinkQueryApi.queryIndexAsIterator(layer, Optional.of(query.toString()));
       indexQueryResult.forEachRemaining(
           indexPartition -> {
             byte[] partitionData = flinkReadEngine.getDataAsBytes(indexPartition);
