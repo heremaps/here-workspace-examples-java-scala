@@ -121,17 +121,17 @@ with the HRN of your Stream Path Matcher catalog.
 To find the HRN, in the [HERE platform portal](https://platform.here.com/) or the [HERE platform portal in China](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
 left corner of the page.
 
-4. Use the [`olp project resources link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link) command to link the _HERE Sample SDII Messages - Berlin_ and _HERE Optimized Map for Location Library_ catalog to your project.
+4. Use the [`olp project resource link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link) command to link the _HERE Sample SDII Messages - Berlin_ and _HERE Optimized Map for Location Library_ catalog to your project.
 
 ```bash
-olp project resources link $PROJECT_HRN $INPUT_SDII_CATALOG
-olp project resources link $PROJECT_HRN $INPUT_OPTIMIZED_MAP_CATALOG
+olp project resource link $PROJECT_HRN $INPUT_SDII_CATALOG
+olp project resource link $PROJECT_HRN $INPUT_OPTIMIZED_MAP_CATALOG
 ```
 
 - For more details on catalog commands, see [Catalog Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html).
 - For more details on layer commands, see [Layer Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html).
 - For more details on project commands, see [Project Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html).
-- For instructions on how to link a resource to a project, see [Project Resources Link command](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-resources-commands.html#project-resources-link).
+- For instructions on how to link a resource to a project, see [Project Resource Link command](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link).
 
 ## Local Run
 

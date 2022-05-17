@@ -73,7 +73,7 @@ Use the [HERE platform portal](https://platform.here.com/) to [create the input 
 
 - For instructions on how to create a catalog, see _Create a Catalog_ in the [Data User Guide](#data-user-guide).
 - For instructions on how to create a layer, see _Create a Layer_ in the [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, see _Project Resources Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+- For instructions on how to link a resource to a project, see _Project Resource Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
 - For instructions on how to share your project, see _Manage Projects_ in the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
 Alternatively, you can use the _Data Commands_ in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with an `index` layer:
@@ -125,7 +125,7 @@ olp catalog layer partition put $CATALOG_HRN index \
 > You can use a catalog with zero layers.
 
 - For instructions on how to create a catalog, see _Create a Catalog_ in the [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, see _Project Resources Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
+- For instructions on how to link a resource to a project, see _Project Resource Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
 - For instructions on how to share your project, see _Manage Projects_ in the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
 Alternatively, you can use the _Data Commands_ in [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog:
