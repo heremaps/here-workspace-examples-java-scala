@@ -43,7 +43,7 @@ object TmcResolveReferencesInRttiMessageExample extends App {
   private val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
   private val cacheManager = CacheManager.withLruCache()
 
-  private val resolver = LocationReferenceResolvers.extendedTmc(optimizedMap, cacheManager)
+  private val resolver = LocationReferenceResolvers.extendedTmcV2(optimizedMap, cacheManager)
 
   try {
     val rttiMessage =
