@@ -30,6 +30,7 @@ import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.optimizedmap.OptimizedMap
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.{Graphs, PropertyMaps, RoadAccess}
+import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.integration.optimizedmap.mapmatching.{
   EmissionProbabilityStrategies,
   PathMatchers,
@@ -64,9 +65,11 @@ object PathMatcherWithCustomNetworkFilterExample extends App {
       EmissionProbabilityStrategies.usingDistance,
       TransitionProbabilityStrategies.distanceWithTransitions(
         Graphs.from(optimizedMap, cacheManager),
+        PropertyMaps.geometry(optimizedMap, cacheManager),
         PropertyMaps.length(optimizedMap, cacheManager),
         accessibleToTaxi,
-        GreatCircleDistanceCalculator)
+        GreatCircleDistanceCalculator
+      )
     )
 
     val verticesOnPath: Seq[Vertex] = pathMatcher

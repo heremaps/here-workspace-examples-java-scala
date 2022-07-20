@@ -50,7 +50,7 @@ public final class TmcResolveReferencesInRttiMessageExample {
       final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
 
       final LocationReferenceResolver<ExtendedTMCLocationReference, BidirectionalLinearLocation>
-          resolver = LocationReferenceResolvers.extendedTmc(optimizedMap, cacheManager);
+          resolver = LocationReferenceResolvers.extendedTmcV2(optimizedMap, cacheManager);
 
       final TrafficItems rttiMessage =
           TrafficItems.parseFrom(
