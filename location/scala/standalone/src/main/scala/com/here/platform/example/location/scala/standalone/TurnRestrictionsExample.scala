@@ -19,15 +19,13 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.FileOutputStream
-
-import com.here.platform.example.location.utils.FileNameHelper
+import com.here.platform.data.client.base.scaladsl.BaseClient
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 import com.here.platform.location.core.geospatial.GeoCoordinate
 import com.here.platform.location.core.graph.{DirectedGraph, PropertyMap}
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.{Edge, Vertex}
 import com.here.platform.location.integration.optimizedmap.OptimizedMap
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.{
   AccessRestriction,
@@ -37,24 +35,24 @@ import com.here.platform.location.integration.optimizedmap.graph.{
 import com.here.platform.location.io.scaladsl.Color
 import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, SimpleStyleProperties}
 
+import java.io.FileOutputStream
+
 object TurnRestrictionsExample extends App {
-  val catalogFactory = new StandaloneCatalogFactory()
-  val cacheManager = CacheManager.withLruCache()
+  val baseClient = BaseClient()
 
   try {
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
+    val optimizedMap = OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
 
+    val propertyMaps = PropertyMaps(optimizedMap)
     val turnRestrictionsMap: PropertyMap[Edge, Boolean] =
-      PropertyMaps.turnRestrictions(optimizedMap,
-                                    cacheManager,
-                                    AccessRestriction.Automobile union AccessRestriction.Bus)
+      propertyMaps.turnRestrictions(AccessRestriction.Automobile union AccessRestriction.Bus)
 
-    val search = ProximitySearches.vertices(optimizedMap, cacheManager)
+    val search = ProximitySearches(optimizedMap).vertices
     val chausseestrSouth = GeoCoordinate(52.5297909677433, 13.38406758553557)
     val vertices = search.search(chausseestrSouth, 10).map(_.element)
     assert(vertices.size == 2)
 
-    val routingGraph: DirectedGraph[Vertex, Edge] = Graphs.from(optimizedMap, cacheManager)
+    val routingGraph: DirectedGraph[Vertex, Edge] = Graphs(optimizedMap).forward
 
     val targetVerticesWithRestrictions = vertices.flatMap { v =>
       val edges = routingGraph.outEdgeIterator(v)
@@ -72,7 +70,7 @@ object TurnRestrictionsExample extends App {
       case (vertex, restricted) => (vertex, if (restricted) Red else Gray)
     } ++ vertices.map((_, Blue))
 
-    val geometryPropertyMap = PropertyMaps.geometry(optimizedMap, cacheManager)
+    val geometryPropertyMap = propertyMaps.geometry
 
     val featureCollection = verticesWithColors.foldLeft(FeatureCollection()) {
       case (fc, (vertex, color)) =>
@@ -89,6 +87,6 @@ object TurnRestrictionsExample extends App {
     fos.close()
     println("\nA GeoJson representation of the result is available in:\n" + path + "\n")
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 }

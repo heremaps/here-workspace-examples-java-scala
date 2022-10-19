@@ -19,9 +19,10 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.FileOutputStream
+import com.here.platform.data.client.base.scaladsl.BaseClient
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 
-import com.here.platform.example.location.utils.FileNameHelper
+import java.io.FileOutputStream
 import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.core.geospatial.{
   GeoCoordinate,
@@ -30,12 +31,10 @@ import com.here.platform.location.core.geospatial.{
   SinusoidalProjection
 }
 import com.here.platform.location.core.graph.PropertyMap
-import com.here.platform.location.dataloader.core.Catalog
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.Vertex
-import com.here.platform.location.integration.optimizedmap.OptimizedMap
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.io.scaladsl.Color
@@ -58,15 +57,14 @@ import com.here.platform.location.tpeg2.tmc.TMCLocationReference
 object TmcCreateAndResolveExample extends App {
   val coordinateInFriedenstrasse = GeoCoordinate(52.527111, 13.427079)
 
-  val cacheManager = CacheManager.withLruCache()
-  val catalogFactory = new StandaloneCatalogFactory()
+  val baseClient = BaseClient()
   try {
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
+    val optimizedMap: OptimizedMapLayers =
+      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
 
     // Define a location that is covered by TMC
     val locationInFriedenstrasse = {
-      val vertexInFriedenstrasse = ProximitySearches
-        .vertices(optimizedMap, cacheManager)
+      val vertexInFriedenstrasse = ProximitySearches(optimizedMap).vertices
         .search(coordinateInFriedenstrasse, 10)
         .head
         .element
@@ -76,22 +74,22 @@ object TmcCreateAndResolveExample extends App {
 
     // Create a reference for that location
     val tmcRefCreator =
-      LocationReferenceCreators.tmc(optimizedMap, cacheManager)
+      LocationReferenceCreators(optimizedMap).tmc
 
     val tmcRef = tmcRefCreator.create(locationInFriedenstrasse)
 
     // Resolve the newly created reference
     val tmcRefResolver =
-      LocationReferenceResolvers.tmc(optimizedMap, cacheManager)
+      LocationReferenceResolvers(optimizedMap).tmc
 
     val resolvedLocation =
       tmcRefResolver.resolve(tmcRef)
 
     // Visualize the original location, the reference created, and the resolved location
     visualizeResults(optimizedMap, locationInFriedenstrasse, tmcRef, resolvedLocation.location)
-  } finally catalogFactory.terminate()
+  } finally baseClient.shutdown()
 
-  private def visualizeResults(optimizedMap: Catalog,
+  private def visualizeResults(optimizedMap: OptimizedMapLayers,
                                inputLocation: LinearLocation,
                                tmcRef: TMCLocationReference,
                                resolvedLocation: LinearLocation): Unit = {
@@ -103,7 +101,7 @@ object TmcCreateAndResolveExample extends App {
       .marshall(LocationReferencingContainer(Seq(tmcRef)), Console.out)
 
     val geometries =
-      PropertyMaps.geometry(optimizedMap, cacheManager)
+      PropertyMaps(optimizedMap).geometry
 
     val Yellow = Color("#f7f431")
     val Green = Color("#58db58")

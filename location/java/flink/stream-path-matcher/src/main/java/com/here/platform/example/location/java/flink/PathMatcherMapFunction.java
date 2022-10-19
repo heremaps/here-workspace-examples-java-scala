@@ -19,16 +19,13 @@
 
 package com.here.platform.example.location.java.flink;
 
-import com.here.hrn.HRN;
 import com.here.platform.location.core.geospatial.javadsl.GeoCoordinateAdapter;
 import com.here.platform.location.core.mapmatching.MatchResult;
 import com.here.platform.location.core.mapmatching.NoTransition;
 import com.here.platform.location.core.mapmatching.javadsl.MatchResults;
 import com.here.platform.location.core.mapmatching.javadsl.PathMatcher;
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.flink.FlinkCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
 import com.here.platform.location.integration.optimizedmap.mapmatching.javadsl.PathMatchers;
 import com.here.sdii.v3.SdiiCommon.PositionEstimate;
 import com.here.sdii.v3.SdiiMessage.Message;
@@ -38,14 +35,11 @@ import org.apache.flink.configuration.Configuration;
 
 public class PathMatcherMapFunction extends RichMapFunction<Message, MatchedTrip> {
   private static final long serialVersionUID = -1L;
-  private final HRN optimizedMapHRN;
-  private final long optimizedMapCatalogVersion;
-  private FlinkCatalogFactory catalogFactory;
-  private PathMatcher<PositionEstimate, Vertex, NoTransition> pathMatcher;
+  private final OptimisedMapLayersAccess optimisedMapLayersAccess;
+  private transient PathMatcher<PositionEstimate, Vertex, NoTransition> pathMatcher;
 
-  PathMatcherMapFunction(final HRN optimizedMapHRN, final long optimizedMapCatalogVersion) {
-    this.optimizedMapHRN = optimizedMapHRN;
-    this.optimizedMapCatalogVersion = optimizedMapCatalogVersion;
+  PathMatcherMapFunction(OptimisedMapLayersAccess optimisedMapLayersAccess) {
+    this.optimisedMapLayersAccess = optimisedMapLayersAccess;
   }
 
   private final GeoCoordinateAdapter<PositionEstimate> positionEstimateAdapter =
@@ -54,17 +48,13 @@ public class PathMatcherMapFunction extends RichMapFunction<Message, MatchedTrip
   @Override
   public void open(final Configuration parameters) throws Exception {
     super.open(parameters);
-    catalogFactory = new FlinkCatalogFactory();
-    catalogFactory.create(optimizedMapHRN, optimizedMapCatalogVersion);
-    final Catalog optimizedMap = catalogFactory.create(optimizedMapHRN, optimizedMapCatalogVersion);
-    // 600 is approximately the amount of InMemory tiles that fit in one worker unit
-    final CacheManager cacheManager = CacheManager.withLruCache(0L, 600L);
-    pathMatcher = PathMatchers.carPathMatcher(optimizedMap, cacheManager, positionEstimateAdapter);
+    final OptimizedMapLayers optimizedMap = optimisedMapLayersAccess.get();
+    pathMatcher =
+        new PathMatchers(optimizedMap).carPathMatcherWithoutTransitions(positionEstimateAdapter);
   }
 
   @Override
   public void close() throws Exception {
-    catalogFactory.terminate();
     super.close();
   }
 

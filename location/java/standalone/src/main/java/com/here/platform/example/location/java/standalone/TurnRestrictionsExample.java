@@ -21,17 +21,18 @@ package com.here.platform.example.location.java.standalone;
 
 import static java.util.stream.StreamSupport.stream;
 
+import com.here.platform.data.client.base.javadsl.BaseClient;
+import com.here.platform.data.client.base.javadsl.BaseClientJava;
 import com.here.platform.location.core.geospatial.ElementProjection;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.core.geospatial.javadsl.ProximitySearch;
 import com.here.platform.location.core.graph.javadsl.DirectedGraph;
 import com.here.platform.location.core.graph.javadsl.PropertyMap;
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Edge;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
+import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.integration.optimizedmap.graph.AccessRestriction;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.Graphs;
@@ -42,20 +43,18 @@ import java.util.stream.Collectors;
 public final class TurnRestrictionsExample {
 
   public static void main(final String[] args) {
-    final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
-    final CacheManager cacheManager = CacheManager.withLruCache();
+    final BaseClient baseClient = BaseClientJava.instance();
 
     try {
-      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
+      final OptimizedMapLayers optimizedMap =
+          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
 
       final PropertyMap<Edge, Boolean> turnRestrictionsMap =
-          PropertyMaps.turnRestrictions(
-              optimizedMap,
-              cacheManager,
-              AccessRestriction.Automobile.union(AccessRestriction.Bus));
+          new PropertyMaps(optimizedMap)
+              .turnRestrictions(AccessRestriction.Automobile.union(AccessRestriction.Bus));
 
       final ProximitySearch<GeoCoordinate, Vertex> search =
-          ProximitySearches.vertices(optimizedMap, cacheManager);
+          new ProximitySearches(optimizedMap).vertices();
       final GeoCoordinate chausseestrSouth = new GeoCoordinate(52.5297909677433, 13.38406758553557);
       final List<Vertex> vertices =
           stream(search.search(chausseestrSouth, 10).spliterator(), false)
@@ -63,7 +62,7 @@ public final class TurnRestrictionsExample {
               .collect(Collectors.toList());
       assert vertices.size() == 2;
 
-      final DirectedGraph<Vertex, Edge> routingGraph = Graphs.from(optimizedMap, cacheManager);
+      final DirectedGraph<Vertex, Edge> routingGraph = new Graphs(optimizedMap).forward();
 
       for (final Vertex v : vertices) {
         routingGraph
@@ -76,7 +75,7 @@ public final class TurnRestrictionsExample {
                 });
       }
     } finally {
-      catalogFactory.terminate();
+      baseClient.shutdown();
     }
   }
 }

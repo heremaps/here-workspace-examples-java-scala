@@ -19,13 +19,13 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.FileOutputStream
+import com.here.platform.data.client.base.scaladsl.BaseClient
 
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
+import java.io.FileOutputStream
 import com.here.platform.location.inmemory.graph.{Backward, Forward}
 import com.here.platform.location.integration.heremapcontent.PartitionId
-import com.here.platform.location.integration.optimizedmap.OptimizedMap
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.integration.optimizedmap.geospatial.{
   HereMapContentReference,
   SegmentId
@@ -101,21 +101,21 @@ object OlrCreateReferenceFromHmcSegmentsExample extends App {
     "23618359/203288051-"
   )
 
-  val catalogFactory = new StandaloneCatalogFactory()
+  val baseClient = BaseClient()
 
   try {
-    val cacheManager = CacheManager.withLruCache()
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 769L)
+    val optimizedMap: OptimizedMapLayers =
+      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(769L)
 
     val segments = segmentStrings.map(parseHmcRef)
 
-    val hmcToVertex = PropertyMaps.hereMapContentReferenceToVertex(optimizedMap, cacheManager)
+    val hmcToVertex = PropertyMaps(optimizedMap).hereMapContentReferenceToVertex
 
     val vertices = segments.map(hmcToVertex(_))
 
     val location = LinearLocation(vertices)
 
-    val creator = LocationReferenceCreators.olrLinear(optimizedMap, cacheManager)
+    val creator = LocationReferenceCreators(optimizedMap).olrLinear
 
     val reference = creator.create(location)
 
@@ -130,7 +130,7 @@ object OlrCreateReferenceFromHmcSegmentsExample extends App {
     BinaryMarshallers.openLRLocationReference
       .marshall(OpenLRLocationReference("1.1", reference, None), new FileOutputStream("olr.bin"))
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 
   def parseHmcRef(hmcRef: String): HereMapContentReference = {

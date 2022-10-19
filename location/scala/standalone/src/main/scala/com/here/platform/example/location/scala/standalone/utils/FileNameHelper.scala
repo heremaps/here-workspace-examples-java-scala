@@ -17,7 +17,7 @@
  * License-Filename: LICENSE
  */
 
-package com.here.platform.example.location.utils
+package com.here.platform.example.location.scala.standalone.utils
 
 import java.io.File
 

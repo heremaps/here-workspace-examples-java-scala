@@ -19,10 +19,10 @@
 
 package com.here.platform.example.location.scala.standalone
 
+import com.here.platform.data.client.base.scaladsl.BaseClient
 import com.here.platform.location.core.geospatial.GeoCoordinate
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.integration.optimizedmap.OptimizedMap
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
 import com.here.platform.location.integration.optimizedmap.geospatial._
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 
@@ -30,17 +30,15 @@ object HereMapContentToOptimizedMapTranslationExample extends App {
   val berlinDowntown = GeoCoordinate(52.5085, 13.3898)
   val radiusInMeters = 50.0
 
-  val catalogFactory = new StandaloneCatalogFactory()
-
+  val baseClient = BaseClient()
   try {
-    val cacheManager = CacheManager.withLruCache()
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
-    val proximitySearch = ProximitySearches.vertices(optimizedMap, cacheManager)
+    val optimizedMap = OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
+    val proximitySearch = ProximitySearches(optimizedMap).vertices
 
     val hereMapContentToOptimizedMap =
-      PropertyMaps.hereMapContentReferenceToVertex(optimizedMap, cacheManager)
+      PropertyMaps(optimizedMap).hereMapContentReferenceToVertex
     val optimizedMapToHereMapContent =
-      PropertyMaps.vertexToHereMapContentReference(optimizedMap, cacheManager)
+      PropertyMaps(optimizedMap).vertexToHereMapContentReference
 
     proximitySearch
       .search(berlinDowntown, radiusInMeters)
@@ -54,6 +52,6 @@ object HereMapContentToOptimizedMapTranslationExample extends App {
                     | Translated back to Optimized Map vertex: $vertex\n""".stripMargin)
       }
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 }

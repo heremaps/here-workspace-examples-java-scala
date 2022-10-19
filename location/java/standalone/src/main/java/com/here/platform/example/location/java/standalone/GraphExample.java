@@ -22,15 +22,17 @@ package com.here.platform.example.location.java.standalone;
 import static java.util.Comparator.comparingDouble;
 import static java.util.stream.StreamSupport.stream;
 
+import com.here.platform.data.client.base.javadsl.BaseClient;
+import com.here.platform.data.client.base.javadsl.BaseClientJava;
 import com.here.platform.location.core.geospatial.ElementProjection;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
+import com.here.platform.location.core.geospatial.javadsl.ProximitySearch;
 import com.here.platform.location.core.graph.javadsl.DirectedGraph;
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Edge;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
+import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.Graphs;
 import java.util.*;
@@ -40,29 +42,28 @@ public final class GraphExample {
 
     final int nodesToVisit = 20;
 
-    final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
-    final CacheManager cacheManager = CacheManager.withLruCache();
-
+    final BaseClient baseClient = BaseClientJava.instance();
     try {
-      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
+      final OptimizedMapLayers optimizedMap =
+          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
 
       final GeoCoordinate pariserPlatz = new GeoCoordinate(52.516364, 13.378870);
 
-      final DirectedGraph<Vertex, Edge> graph = Graphs.from(optimizedMap, cacheManager);
+      final Graphs graphs = new Graphs(optimizedMap);
+      final DirectedGraph<Vertex, Edge> graph = graphs.forward();
+
+      final ProximitySearches proximitySearches = new ProximitySearches(optimizedMap);
+      final ProximitySearch<GeoCoordinate, Vertex> proximitySearch = proximitySearches.vertices();
 
       final Optional<ElementProjection<Vertex>> startVertex =
-          stream(
-                  ProximitySearches.vertices(optimizedMap, cacheManager)
-                      .search(pariserPlatz, 50)
-                      .spliterator(),
-                  false)
+          stream(proximitySearch.search(pariserPlatz, 50).spliterator(), false)
               .min(comparingDouble(ElementProjection::distanceInMeters));
 
       startVertex.ifPresent(
           v -> breadthFirstVisit(graph, v.element(), nodesToVisit).forEach(System.out::println));
 
     } finally {
-      catalogFactory.terminate();
+      baseClient.shutdown();
     }
   }
 

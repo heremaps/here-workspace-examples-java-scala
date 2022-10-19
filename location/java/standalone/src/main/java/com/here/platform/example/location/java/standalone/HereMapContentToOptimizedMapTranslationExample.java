@@ -21,14 +21,15 @@ package com.here.platform.example.location.java.standalone;
 
 import static java.util.stream.StreamSupport.stream;
 
+import com.here.platform.data.client.base.javadsl.BaseClient;
+import com.here.platform.data.client.base.javadsl.BaseClientJava;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.core.geospatial.javadsl.ProximitySearch;
 import com.here.platform.location.core.graph.javadsl.PropertyMap;
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
+import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.PropertyMaps;
@@ -38,20 +39,20 @@ public final class HereMapContentToOptimizedMapTranslationExample {
     final GeoCoordinate berlinDowntown = new GeoCoordinate(52.5085, 13.3898);
     final double radiusInMeters = 50.0;
 
-    final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
+    final BaseClient baseClient = BaseClientJava.instance();
 
     try {
-      final CacheManager cacheManager = CacheManager.withLruCache();
-      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
+      final OptimizedMapLayers optimizedMap =
+          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
 
       final ProximitySearch<GeoCoordinate, Vertex> proximitySearch =
-          ProximitySearches.vertices(optimizedMap, cacheManager);
+          new ProximitySearches(optimizedMap).vertices();
 
       final PropertyMap<HereMapContentReference, Vertex> hereMapContentToOptimizedMap =
-          PropertyMaps.hereMapContentReferenceToVertex(optimizedMap, cacheManager);
+          new PropertyMaps(optimizedMap).hereMapContentReferenceToVertex();
 
       final PropertyMap<Vertex, HereMapContentReference> optimizedMapToHereMapContent =
-          PropertyMaps.vertexToHereMapContentReference(optimizedMap, cacheManager);
+          new PropertyMaps(optimizedMap).vertexToHereMapContentReference();
 
       stream(proximitySearch.search(berlinDowntown, radiusInMeters).spliterator(), false)
           .limit(5)
@@ -68,7 +69,7 @@ public final class HereMapContentToOptimizedMapTranslationExample {
                 System.out.println();
               });
     } finally {
-      catalogFactory.terminate();
+      baseClient.shutdown();
     }
   }
 }

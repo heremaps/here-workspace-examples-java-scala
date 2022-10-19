@@ -19,15 +19,15 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.{File, FileOutputStream}
+import com.here.platform.data.client.base.scaladsl.BaseClient
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 
-import com.here.platform.example.location.utils.FileNameHelper
+import java.io.{File, FileOutputStream}
 import com.here.platform.location.core.graph.PropertyMap
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.Vertex
-import com.here.platform.location.integration.optimizedmap.OptimizedMap
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.referencing.{LinearLocation, LocationReferenceResolvers}
 import com.here.platform.location.tpeg2.etl.{ExtendedTMCLocationReference, TMCLocationReference}
@@ -39,11 +39,11 @@ import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, Simple
 /** Convert and resolve TMC references present in RTTI messages.
   */
 object TmcResolveReferencesInRttiMessageExample extends App {
-  private val catalogFactory = new StandaloneCatalogFactory()
-  private val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
-  private val cacheManager = CacheManager.withLruCache()
+  private val baseClient = BaseClient()
+  private val optimizedMap: OptimizedMapLayers =
+    OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
 
-  private val resolver = LocationReferenceResolvers.extendedTmcV2(optimizedMap, cacheManager)
+  private val resolver = LocationReferenceResolvers(optimizedMap).extendedTmc
 
   try {
     val rttiMessage =
@@ -55,7 +55,7 @@ object TmcResolveReferencesInRttiMessageExample extends App {
 
     outputResolvedLocations(resolvedLocations)
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 
   private def convertTmcReferences(rttiItem: TrafficItem): Seq[ExtendedTMCLocationReference] =
@@ -113,7 +113,7 @@ object TmcResolveReferencesInRttiMessageExample extends App {
     }
 
     val geometries: PropertyMap[Vertex, PackedLineString] =
-      PropertyMaps.geometry(optimizedMap, cacheManager)
+      PropertyMaps(optimizedMap).geometry
 
     val allResolvedVertices = resolvedLocations.flatMap {
       case (ref, location) =>

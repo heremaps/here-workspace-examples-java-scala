@@ -21,10 +21,11 @@ package com.here.platform.example.location.java.standalone;
 
 import static com.here.traffic.realtime.v2.TmcReference.TmcDirection.*;
 
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
+import com.here.platform.data.client.base.javadsl.BaseClient;
+import com.here.platform.data.client.base.javadsl.BaseClientJava;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
+import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.referencing.BidirectionalLinearLocation;
 import com.here.platform.location.referencing.LinearLocation;
 import com.here.platform.location.referencing.LocationReferenceResolver;
@@ -43,14 +44,14 @@ import java.util.stream.Stream;
 
 public final class TmcResolveReferencesInRttiMessageExample {
   public static void main(final String[] args) throws Exception {
-    final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
-    final CacheManager cacheManager = CacheManager.withLruCache();
+    final BaseClient baseClient = BaseClientJava.instance();
 
     try {
-      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
+      final OptimizedMapLayers optimizedMap =
+          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
 
       final LocationReferenceResolver<ExtendedTMCLocationReference, BidirectionalLinearLocation>
-          resolver = LocationReferenceResolvers.extendedTmcV2(optimizedMap, cacheManager);
+          resolver = new LocationReferenceResolvers(optimizedMap).extendedTmc();
 
       final TrafficItems rttiMessage =
           TrafficItems.parseFrom(
@@ -68,7 +69,7 @@ public final class TmcResolveReferencesInRttiMessageExample {
 
       outputResolvedLocations(resolvedLocations);
     } finally {
-      catalogFactory.terminate();
+      baseClient.shutdown();
     }
   }
 

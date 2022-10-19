@@ -19,21 +19,18 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.{File, FileOutputStream, InputStreamReader}
-
 import com.github.tototoshi.csv.CSVReader
-import com.here.platform.example.location.utils.FileNameHelper
+import com.here.platform.data.client.base.scaladsl.BaseClient
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 import com.here.platform.location.core.geospatial.{GeoCoordinate, LineString}
 import com.here.platform.location.core.graph.PropertyMap
 import com.here.platform.location.core.mapmatching.{MatchResult, MatchedPath, OnRoad}
-import com.here.platform.location.dataloader.core.Catalog
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.Vertex
-import com.here.platform.location.integration.optimizedmap.OptimizedMap
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.integration.optimizedmap.mapmatching.PathMatchers
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.io.scaladsl.Color
 import com.here.platform.location.io.scaladsl.geojson.{
   Feature,
@@ -41,28 +38,29 @@ import com.here.platform.location.io.scaladsl.geojson.{
   SimpleStyleProperties
 }
 
+import java.io.{File, FileOutputStream, InputStreamReader}
+
 object PathMatcherExample extends App {
   import Helpers._
-  val catalogFactory = new StandaloneCatalogFactory()
-  val cacheManager = CacheManager.withLruCache()
+  val baseClient = BaseClient()
 
   try {
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
+    val optimizedMap = OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
 
     val trip: Seq[GeoCoordinate] = loadTripFromCSVResource("/example_berlin_path.csv")
 
     println(s"Loaded trip with ${trip.length} points.")
 
     val pathMatcher =
-      PathMatchers.carPathMatcher[GeoCoordinate](optimizedMap, cacheManager)
+      PathMatchers(optimizedMap).carPathMatcherWithoutTransitions[GeoCoordinate]
 
     val MatchedPath(matchResults, transitions) = pathMatcher.matchPath(trip)
     assert(matchResults.nonEmpty)
     assert(transitions.isEmpty)
 
-    printMatchedPath(trip, matchResults, optimizedMap, cacheManager)
+    printMatchedPath(trip, matchResults, optimizedMap)
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 
   private object Helpers {
@@ -77,9 +75,8 @@ object PathMatcherExample extends App {
 
     def printMatchedPath(probePoints: Seq[GeoCoordinate],
                          matchResults: Seq[MatchResult[Vertex]],
-                         optimizedMap: Catalog,
-                         cacheManager: CacheManager): Unit = {
-      val geometries = PropertyMaps.geometry(optimizedMap, cacheManager)
+                         optimizedMap: OptimizedMapLayers): Unit = {
+      val geometries = PropertyMaps(optimizedMap).geometry
 
       val matchResultsAsFeatures =
         computeMatchResultsAsFeatures(probePoints, matchResults)

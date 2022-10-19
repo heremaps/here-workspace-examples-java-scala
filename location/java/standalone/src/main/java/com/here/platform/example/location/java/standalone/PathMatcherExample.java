@@ -22,6 +22,8 @@ package com.here.platform.example.location.java.standalone;
 import static java.lang.Double.parseDouble;
 import static java.util.stream.StreamSupport.stream;
 
+import com.here.platform.data.client.base.javadsl.BaseClient;
+import com.here.platform.data.client.base.javadsl.BaseClientJava;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.core.mapmatching.MatchResult;
 import com.here.platform.location.core.mapmatching.NoTransition;
@@ -29,11 +31,10 @@ import com.here.platform.location.core.mapmatching.OnRoad;
 import com.here.platform.location.core.mapmatching.javadsl.MatchResults;
 import com.here.platform.location.core.mapmatching.javadsl.MatchedPath;
 import com.here.platform.location.core.mapmatching.javadsl.PathMatcher;
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
+import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.integration.optimizedmap.mapmatching.javadsl.PathMatchers;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -46,21 +47,21 @@ import org.apache.commons.csv.CSVParser;
 public final class PathMatcherExample {
 
   public static void main(final String[] args) throws IOException {
-    final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
-    final CacheManager cacheManager = CacheManager.withLruCache();
+    final BaseClient baseClient = BaseClientJava.instance();
 
     try {
-      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
+      final OptimizedMapLayers optimizedMap =
+          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
       final Stream<GeoCoordinate> trip = loadTripFromCSVResource("/example_berlin_path.csv");
 
       final PathMatcher<GeoCoordinate, Vertex, NoTransition> pathMatcher =
-          PathMatchers.carPathMatcher(optimizedMap, cacheManager);
+          new PathMatchers(optimizedMap).carPathMatcherWithoutTransitions();
 
       final MatchedPath<Vertex, NoTransition> matchedPath =
           pathMatcher.matchPath(trip.collect(Collectors.toList()));
       matchedPath.results().forEach(r -> System.out.println(format(r)));
     } finally {
-      catalogFactory.terminate();
+      baseClient.shutdown();
     }
   }
 

@@ -20,13 +20,12 @@
 package com.here.platform.example.location.scala.standalone
 
 import java.io.FileOutputStream
-
-import com.here.platform.example.location.utils.FileNameHelper
-import com.here.platform.location.core.geospatial.GeoCoordinate
+import com.here.platform.location.core.geospatial.{GeoCoordinate, ProximitySearch}
 import com.here.platform.location.core.graph.{DirectedGraph, PropertyMap}
-import com.here.platform.location.dataloader.core.Catalog
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
+import com.here.platform.data.client.base.scaladsl.BaseClient
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
 import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.{Edge, Vertex}
 import com.here.platform.location.integration.optimizedmap.OptimizedMap
@@ -70,35 +69,32 @@ object GraphExample extends App {
 
   val maxIterations = 20
 
-  val catalogFactory = new StandaloneCatalogFactory()
-  val cacheManager = CacheManager.withLruCache()
-
+  val baseClient = BaseClient()
   try {
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
+    val optimizedMap: OptimizedMapLayers =
+      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
 
     val pariserPlatz = GeoCoordinate(52.516364, 13.378870)
 
-    val graph: DirectedGraph[Vertex, Edge] = Graphs.from(optimizedMap, cacheManager)
+    val graphs: Graphs = Graphs(optimizedMap)
+    val graph: DirectedGraph[Vertex, Edge] = graphs.forward
 
-    val startVertex = ProximitySearches
-      .vertices(optimizedMap, cacheManager)
+    val startVertex = ProximitySearches(optimizedMap).vertices
       .search(pariserPlatz, 50)
       .minBy(_.distanceInMeters)
       .element
 
     val visitedVertices: List[List[Vertex]] = breadthFirstSearch(graph, startVertex, maxIterations)
 
-    printResults(visitedVertices, optimizedMap, cacheManager)
+    printResults(visitedVertices, optimizedMap)
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 
   // Visualize the search tree using a fading color to represent the iterations
-  def printResults(visitedVertices: List[List[Vertex]],
-                   optimizedMap: Catalog,
-                   cacheManager: CacheManager): Unit = {
+  def printResults(visitedVertices: List[List[Vertex]], optimizedMap: OptimizedMapLayers): Unit = {
     val geometries: PropertyMap[Vertex, PackedLineString] =
-      PropertyMaps.geometry(optimizedMap, cacheManager)
+      PropertyMaps(optimizedMap).geometry
 
     val features = visitedVertices.zipWithIndex
       .flatMap {

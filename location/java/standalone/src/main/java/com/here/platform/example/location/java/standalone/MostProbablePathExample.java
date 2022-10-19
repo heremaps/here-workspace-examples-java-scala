@@ -40,17 +40,18 @@ import static java.lang.Math.*;
 import static java.util.Comparator.comparingDouble;
 import static java.util.stream.StreamSupport.stream;
 
+import com.here.platform.data.client.base.javadsl.BaseClient;
+import com.here.platform.data.client.base.javadsl.BaseClientJava;
 import com.here.platform.location.core.geospatial.ElementProjection;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.core.geospatial.javadsl.GeoCoordinates;
 import com.here.platform.location.core.geospatial.javadsl.LineStringHolder;
 import com.here.platform.location.core.graph.javadsl.*;
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Edge;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
+import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.integration.optimizedmap.graph.RoadAccess;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.Graphs;
@@ -73,26 +74,26 @@ import java.util.function.Predicate;
 public final class MostProbablePathExample {
 
   public static void main(final String[] args) {
-    final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
+    final BaseClient baseClient = BaseClientJava.instance();
     try {
-      final CacheManager cacheManager = CacheManager.withLruCache();
-      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
+      final OptimizedMapLayers optimizedMap =
+          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
+      PropertyMaps propertyMaps = new PropertyMaps(optimizedMap);
 
       // A mapping from Vertices to LineString of the underlying road geometry
       final PropertyMap<Vertex, LineStringHolder<GeoCoordinate>> geometryPropertyMap =
-          PropertyMaps.geometry(optimizedMap, cacheManager);
+          propertyMaps.geometry();
 
       // The length of a Vertex (road segment)
-      final PropertyMap<Vertex, Double> lengthPropertyMap =
-          PropertyMaps.length(optimizedMap, cacheManager);
+      final PropertyMap<Vertex, Double> lengthPropertyMap = propertyMaps.length();
 
       final RangeBasedPropertyMap<Vertex, FunctionalClass> functionalClassPropertyMap =
-          new PropertyMaps.RoadAttributes(optimizedMap, cacheManager).functionalClass();
+          propertyMaps.roadAttributes().functionalClass();
 
       final RangeBasedPropertyMap<Vertex, Boolean> accessibleByCarPropertyMap =
-          PropertyMaps.roadAccess(optimizedMap, cacheManager, RoadAccess.Automobile);
+          propertyMaps.roadAccess(RoadAccess.Automobile);
 
-      final DirectedGraph<Vertex, Edge> graph = Graphs.from(optimizedMap, cacheManager);
+      final DirectedGraph<Vertex, Edge> graph = new Graphs(optimizedMap).forward();
 
       // Load the graph and apply a filter to only navigate links that are accessible by cars
       final FilteredGraph<Vertex, Edge> filteredGraph =
@@ -104,7 +105,8 @@ public final class MostProbablePathExample {
       // Select a starting drivable Vertex
       final Vertex start =
           stream(
-                  ProximitySearches.vertices(optimizedMap, cacheManager)
+                  new ProximitySearches(optimizedMap)
+                      .vertices()
                       .search(startPoint, searchRadiusInMeters)
                       .spliterator(),
                   false)
@@ -130,7 +132,7 @@ public final class MostProbablePathExample {
       }
 
     } finally {
-      catalogFactory.terminate();
+      baseClient.shutdown();
     }
   }
 

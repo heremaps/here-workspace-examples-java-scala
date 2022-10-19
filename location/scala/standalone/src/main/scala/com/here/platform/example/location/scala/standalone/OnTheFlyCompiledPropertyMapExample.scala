@@ -19,9 +19,8 @@
 
 package com.here.platform.example.location.scala.standalone
 
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 import java.io.FileOutputStream
-
-import com.here.platform.example.location.utils.FileNameHelper
 import com.here.platform.location.compilation.heremapcontent.{AttributeAccessor, AttributeAccessors}
 import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.core.geospatial._

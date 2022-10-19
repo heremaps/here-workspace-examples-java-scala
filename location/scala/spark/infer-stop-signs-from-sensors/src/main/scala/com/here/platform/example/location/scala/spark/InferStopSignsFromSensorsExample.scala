@@ -21,6 +21,7 @@ package com.here.platform.example.location.scala.spark
 
 import akka.actor.ActorSystem
 import com.here.hrn.HRN
+import com.here.platform.data.client.base.scaladsl.BaseClient
 import com.here.platform.data.client.engine.scaladsl.DataEngine
 import com.here.platform.data.client.scaladsl.{CommitPartition, DataClient, NewPartition}
 import com.here.platform.data.client.spark.DataClientSparkContextUtils
@@ -28,15 +29,14 @@ import com.here.platform.data.client.spark.LayerDataFrameReader._
 import com.here.platform.data.client.spark.SparkSupport._
 import com.here.platform.location.core.geospatial._
 import com.here.platform.location.core.mapmatching.OnRoad
-import com.here.platform.location.dataloader.core.Catalog
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.spark.SparkCatalogFactory
 import com.here.platform.location.inmemory.geospatial.TileId
 import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.herecommons.geospatial.{
   HereTileLevel,
   HereTileResolver
 }
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.integration.optimizedmap.mapmatching.PathMatchers
 import com.here.platform.location.io.scaladsl.geojson.{Feature, FeatureCollection}
@@ -51,11 +51,18 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 import scala.language.postfixOps
 
-object InferStopSignsFromSensorsExample {
-  // For Apache Spark applications, you have to initialize the cacheManager as a member of a singleton object
-  // to ensure that only one cacheManager is used per executor.
-  private val cacheManager = CacheManager.withLruCache()
+// Since it is not convenient to recreate an instance of BaseClient, it's connection pool
+// and OptimizedMapCatalog caches, they are stored in a singleton and called from it.
+object OptimizedMapLayersSingleton {
+  lazy val optimizedMapLayers: OptimizedMapLayers = {
+    val config = Config(new PipelineContext)
+    val optimizedMapCatalogHrn = config.optimizedMapCatalogHrn
+    val optimizedMapCatalogVersion = config.optimizedMapCatalogVersion
+    OptimizedMapCatalog(BaseClient(), optimizedMapCatalogHrn).version(optimizedMapCatalogVersion)
+  }
+}
 
+object InferStopSignsFromSensorsExample {
   private val logger = LoggerFactory.getLogger(getClass)
 
   def main(args: Array[String]): Unit = {
@@ -65,11 +72,6 @@ object InferStopSignsFromSensorsExample {
 
     val sparkSession =
       SparkSession.builder().appName(this.getClass.getSimpleName.takeWhile('$'.!=)).getOrCreate()
-
-    val catalogFactory = new SparkCatalogFactory
-
-    val optimizedMap =
-      catalogFactory.create(config.optimizedMapCatalogHrn, config.optimizedMapCatalogVersion)
 
     // Extracting input data
 
@@ -112,8 +114,8 @@ object InferStopSignsFromSensorsExample {
 
     // Matches each `path around event` to a sequence of vertices in the road network, and then finds the closest
     // vertex in the aforementioned sequence for the event position.
-    val stopSignEventsMatchedOnPath: RDD[StopSignEventProjectionOnPath] =
-      stopSignEvents.rdd.map(findClosestVertexOnPathAroundEvent(optimizedMap, cacheManager))
+    val stopSignEventsMatchedOnPath: RDD[StopSignEventProjectionOnPath] = stopSignEvents.rdd
+      .map(findClosestVertexOnPathAroundEvent)
 
     // Clusters stop sign events based on their event positions.
     val stopSignEventClusters: RDD[Cluster[StopSignEventProjectionOnPath]] =
@@ -140,7 +142,7 @@ object InferStopSignsFromSensorsExample {
       .map(toGeoJsonByPosition)
 
     val mostProbableStopSignPositionsGeoJson = mostProbableStopSignPositions
-      .map(toGeoJsonByPosition(optimizedMap, cacheManager))
+      .map(toGeoJsonByPosition)
 
     // Publishing geoJson output
 
@@ -220,10 +222,11 @@ object Steps {
       }
   }
 
-  def findClosestVertexOnPathAroundEvent(optimizedMap: Catalog, cacheManager: CacheManager)(
-      event: StopSignEvent): StopSignEventProjectionOnPath = {
-    val pathMatcher = PathMatchers.carPathMatcher[GeoCoordinate](optimizedMap, cacheManager)
-    val geometries = PropertyMaps.geometry(optimizedMap, cacheManager)
+  def findClosestVertexOnPathAroundEvent(event: StopSignEvent): StopSignEventProjectionOnPath = {
+    val optimizedMap = OptimizedMapLayersSingleton.optimizedMapLayers
+    val pathMatcher = PathMatchers(optimizedMap).carPathMatcherWithoutTransitions[GeoCoordinate]
+    val geometries = PropertyMaps(optimizedMap).geometry
+
     val verticesOnMatchedPath = pathMatcher
       .matchPath(event.pathAroundEvent)
       .results
@@ -278,9 +281,10 @@ object Steps {
       .mapValues(_.map { case (_, feature) => feature })
   }
 
-  def toGeoJsonByPosition(optimizedMap: Catalog, cacheManager: CacheManager)(
-      vf: VertexFraction): (GeoCoordinate, Feature) = {
-    val geometries = PropertyMaps.geometry(optimizedMap, cacheManager)
+  def toGeoJsonByPosition(vf: VertexFraction): (GeoCoordinate, Feature) = {
+    val optimizedMap = OptimizedMapLayersSingleton.optimizedMapLayers
+    // TODO shouldn't we pass geometries supplier?
+    val geometries = PropertyMaps(optimizedMap).geometry
     val geoCoordinate = LineStrings.pointForFraction(geometries(vf.vertex), vf.fraction)
     geoCoordinate -> Feature.point(geoCoordinate)
   }

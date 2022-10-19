@@ -4,7 +4,7 @@
 
   <groupId>com.here.platform.example.location</groupId>
   <artifactId>aggregator</artifactId>
-  <version>0.0.794</version>
+  <version>0.0.800</version>
   <packaging>pom</packaging>
 
   <name>Location Library Examples</name>
@@ -24,13 +24,12 @@
     <module>java/standalone</module>
     <module>scala/spark/infer-stop-signs-from-sensors</module>
     <module>scala/standalone</module>
-    <module>utils</module>
   </modules>
 
   <scm>
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.43.5</tag>
+    <tag>2.44.4</tag>
   </scm>
 </project>

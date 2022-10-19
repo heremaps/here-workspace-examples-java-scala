@@ -21,12 +21,13 @@ package com.here.platform.example.location.java.standalone;
 
 import static java.util.Collections.singletonList;
 
+import com.here.platform.data.client.base.javadsl.BaseClient;
+import com.here.platform.data.client.base.javadsl.BaseClientJava;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
+import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.integration.optimizedmap.geospatial.javadsl.ProximitySearches;
 import com.here.platform.location.referencing.BidirectionalLinearLocation;
 import com.here.platform.location.referencing.LinearLocation;
@@ -49,14 +50,16 @@ public final class TmcCreateAndResolveExample {
       new GeoCoordinate(52.527111, 13.427079);
 
   public static void main(final String[] args) {
-    final CacheManager cacheManager = CacheManager.withLruCache();
-    final StandaloneCatalogFactory catalogFactory = new StandaloneCatalogFactory();
+    final BaseClient baseClient = BaseClientJava.instance();
+
     try {
-      final Catalog optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L);
+      final OptimizedMapLayers optimizedMap =
+          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
 
       // Define a location that is covered by TMC
       final Vertex vertexInFriedenstrasse =
-          ProximitySearches.vertices(optimizedMap, cacheManager)
+          new ProximitySearches(optimizedMap)
+              .vertices()
               .search(coordinateInFriedenstrasse, 10)
               .iterator()
               .next()
@@ -67,20 +70,20 @@ public final class TmcCreateAndResolveExample {
 
       // Create a reference for that location
       final LocationReferenceCreator<LinearLocation, TMCLocationReference> tmcRefCreator =
-          LocationReferenceCreators.tmc(optimizedMap, cacheManager);
+          new LocationReferenceCreators(optimizedMap).tmc();
 
       final TMCLocationReference tmcRef = tmcRefCreator.create(locationInFriedenstrasse);
 
       // Resolve the newly created reference
       final LocationReferenceResolver<TMCLocationReference, BidirectionalLinearLocation>
-          tmcRefResolver = LocationReferenceResolvers.tmc(optimizedMap, cacheManager);
+          tmcRefResolver = new LocationReferenceResolvers(optimizedMap).tmc();
 
       final BidirectionalLinearLocation resolvedLocation = tmcRefResolver.resolve(tmcRef);
 
       // Visualize the original location, the reference created, and the resolved location
       visualizeResults(locationInFriedenstrasse, tmcRef, resolvedLocation.getLocation());
     } finally {
-      catalogFactory.terminate();
+      baseClient.shutdown();
     }
   }
 

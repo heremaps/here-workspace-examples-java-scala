@@ -19,17 +19,15 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.FileOutputStream
-
-import com.here.platform.example.location.utils.FileNameHelper
+import com.here.platform.data.client.base.scaladsl.BaseClient
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 import com.here.platform.location.core.geospatial.{GeoCoordinate, LineString, LineStrings}
 import com.here.platform.location.core.graph.DirectedGraph
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.{Backward, Edge, Forward, Vertex}
 import com.here.platform.location.integration.heremapcontent.PartitionId
 import com.here.platform.location.integration.optimizedmap.OptimizedMap
 import com.here.platform.location.integration.optimizedmap.adasattributes.CurvatureHeading
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
 import com.here.platform.location.integration.optimizedmap.geospatial.{
   SegmentId,
   HereMapContentReference => HMCRef
@@ -42,6 +40,8 @@ import com.here.platform.location.io.scaladsl.geojson.{
   SimpleStyleProperties
 }
 
+import java.io.FileOutputStream
+
 object AdasCurvatureAttributeExample extends App {
   val segments = Seq(
     HMCRef(PartitionId("23598867"), SegmentId("here:cm:segment:154024123"), Forward),
@@ -52,19 +52,19 @@ object AdasCurvatureAttributeExample extends App {
     HMCRef(PartitionId("23598867"), SegmentId("here:cm:segment:87560942"), Forward)
   )
 
-  val catalogFactory = new StandaloneCatalogFactory()
+  val baseClient = BaseClient()
 
   try {
-    val cacheManager = CacheManager.withLruCache()
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1126)
+    val optimizedMap = OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1126)
 
-    val hmcToVertex = PropertyMaps.hereMapContentReferenceToVertex(optimizedMap, cacheManager)
+    val propertyMaps = PropertyMaps(optimizedMap)
+    val hmcToVertex = propertyMaps.hereMapContentReferenceToVertex
 
     val vertices = segments.map(hmcToVertex(_))
 
-    val adas = PropertyMaps.AdasAttributes(optimizedMap, cacheManager)
+    val adas = propertyMaps.adasAttributes
 
-    val graph: DirectedGraph[Vertex, Edge] = Graphs.from(optimizedMap, cacheManager)
+    val graph: DirectedGraph[Vertex, Edge] = Graphs(optimizedMap).forward
 
     val edges: Iterator[Edge] =
       vertices.sliding(2).flatMap {
@@ -74,13 +74,13 @@ object AdasCurvatureAttributeExample extends App {
 
     def toColor(value: CurvatureHeading): Color = {
       // Converting curvature value to radius in meters, see:
-      // https://developer.here.com/documentation/here-map-content/dev_guide/topics_api/com.here.schema.rib.v2.curvatureheadingattribute.html
+      // https://developer.here.com/documentation/here-map-content/dev_guide/topics-attributes/curvature.html
       val radius = Math.abs(1000000.0 / value.curvature)
       // Gradient from red to green depending on road curvature radius, considering as green all radius above 150 meters.
       Color.hsb(Math.min(radius, 150.0), 0.9, 0.8)
     }
 
-    val geometry = PropertyMaps.geometry(optimizedMap, cacheManager)
+    val geometry = propertyMaps.geometry
 
     val routeAsFeature = vertices.map { vertex =>
       Feature.lineString(geometry(vertex),
@@ -95,7 +95,7 @@ object AdasCurvatureAttributeExample extends App {
             .markerSize("small"))
     }
 
-    val length = PropertyMaps.length(optimizedMap, cacheManager)
+    val length = propertyMaps.length
 
     def lineStringPart(vertex: Vertex, meters: Double): LineString[GeoCoordinate] = {
       val fraction = meters / Math.max(length(vertex), Math.abs(meters))
@@ -129,6 +129,6 @@ object AdasCurvatureAttributeExample extends App {
 
     println(s"\nA GeoJson representation of the result is available in $path\n")
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 }

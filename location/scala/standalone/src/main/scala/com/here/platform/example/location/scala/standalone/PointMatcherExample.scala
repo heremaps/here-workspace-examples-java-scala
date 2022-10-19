@@ -20,16 +20,15 @@
 package com.here.platform.example.location.scala.standalone
 
 import java.io.{File, FileOutputStream, InputStreamReader}
-
 import com.github.tototoshi.csv.CSVReader
-import com.here.platform.example.location.utils.FileNameHelper
+import com.here.platform.data.client.base.scaladsl.BaseClient
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.core.geospatial.{ElementProjection, LineString, ProximitySearch}
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.heremapcontent.geospatial.Implicits.HereCommonPointOps
-import com.here.platform.location.integration.optimizedmap.OptimizedMap
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.io.scaladsl.Color
 import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, SimpleStyleProperties}
@@ -59,18 +58,17 @@ object PointMatcherExample extends App {
         case result => Some(result.minBy(_.distanceInMeters))
       })
 
-  val catalogFactory = new StandaloneCatalogFactory()
+  val baseClient = BaseClient()
 
   try {
-    val cacheManager = CacheManager.withLruCache()
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
+    val optimizedMap = OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
 
     val trip: Seq[Point] = loadTripFromCSVResource("/example_berlin_path.csv")
     println(s"Loaded trip with ${trip.length} points.")
 
     val RadiusInMeters = 10.0
 
-    val proximitySearch = ProximitySearches.vertices(optimizedMap, cacheManager)
+    val proximitySearch = ProximitySearches(optimizedMap).vertices
 
     val matchedPoints: Seq[Option[ElementProjection[Vertex]]] =
       matchTrip(proximitySearch, trip, RadiusInMeters)
@@ -78,7 +76,7 @@ object PointMatcherExample extends App {
 
     serializeToGeoJson(trip, matchedPoints)
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 
   object Helpers {

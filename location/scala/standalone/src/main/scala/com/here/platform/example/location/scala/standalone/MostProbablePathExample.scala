@@ -35,15 +35,17 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.FileOutputStream
+import com.here.platform.data.client.base.scaladsl.BaseClient
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 
-import com.here.platform.example.location.utils.FileNameHelper
+import java.io.FileOutputStream
 import com.here.platform.location.core.Utils.normalizeLongitude
 import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.core.geospatial.{
   GeoCoordinate,
   GeoCoordinates,
-  LineStringOperations
+  LineStringOperations,
+  ProximitySearch
 }
 import com.here.platform.location.core.graph.{
   DirectedGraph,
@@ -51,8 +53,8 @@ import com.here.platform.location.core.graph.{
   PropertyMap,
   RangeBasedPropertyMap
 }
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
 import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.{Edge, Vertex}
 import com.here.platform.location.integration.optimizedmap.OptimizedMap
@@ -153,37 +155,33 @@ object MostProbablePathExample extends App {
     1.0 - math.abs(deltaAngle) / 180.0
   }
 
-  val catalogFactory = new StandaloneCatalogFactory()
-
+  val baseClient = BaseClient()
   try {
-    val cacheManager = CacheManager.withLruCache()
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
+    val optimizedMap: OptimizedMapLayers =
+      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
+    val propertyMaps = PropertyMaps(optimizedMap)
 
     // A mapping from Vertices to LineString of the underlying road geometry
-    val geometryPropertyMap: PropertyMap[Vertex, PackedLineString] =
-      PropertyMaps.geometry(optimizedMap, cacheManager)
+    val geometryPropertyMap: PropertyMap[Vertex, PackedLineString] = propertyMaps.geometry
 
     // The length of a Vertex (road segment)
-    val lengthPropertyMap: PropertyMap[Vertex, Double] =
-      PropertyMaps.length(optimizedMap, cacheManager)
+    val lengthPropertyMap: PropertyMap[Vertex, Double] = propertyMaps.length
 
-    val roadAttributes = PropertyMaps.RoadAttributes(optimizedMap, cacheManager)
+    val roadAttributes = propertyMaps.roadAttributes
 
     val accessibleByCarPropertyMap: RangeBasedPropertyMap[Vertex, Boolean] =
-      PropertyMaps.roadAccess(optimizedMap, cacheManager, RoadAccess.Automobile)
+      propertyMaps.roadAccess(RoadAccess.Automobile)
 
     // Load the graph and apply a filter to only navigate links that are accessible by cars
+    val graph = Graphs(optimizedMap).forward
     val filteredGraph =
-      new FilteredGraph(
-        Graphs.from(optimizedMap, cacheManager),
-        filterBy(Graphs.from(optimizedMap, cacheManager), accessibleByCarPropertyMap))
+      new FilteredGraph(graph, filterBy(graph, accessibleByCarPropertyMap))
 
     val startPoint = GeoCoordinate(52.50201, 13.37548)
     val searchRadiusInMeters = 30.0
 
     // Select a starting drivable Vertex
-    val start = ProximitySearches
-      .vertices(optimizedMap, cacheManager)
+    val start = ProximitySearches(optimizedMap).vertices
       .search(
         startPoint,
         searchRadiusInMeters
@@ -223,6 +221,6 @@ object MostProbablePathExample extends App {
 
     println("\nA GeoJson representation of the result is available in:\n" + path + "\n")
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 }

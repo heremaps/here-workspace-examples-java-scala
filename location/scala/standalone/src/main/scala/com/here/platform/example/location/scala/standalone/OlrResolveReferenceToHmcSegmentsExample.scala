@@ -19,12 +19,12 @@
 
 package com.here.platform.example.location.scala.standalone
 
-import java.io.ByteArrayInputStream
+import com.here.platform.data.client.base.scaladsl.BaseClient
 
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
+import java.io.ByteArrayInputStream
 import com.here.platform.location.inmemory.graph.{Backward, Forward}
-import com.here.platform.location.integration.optimizedmap.OptimizedMap
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.referencing.{LinearLocation, LocationReferenceResolvers}
@@ -78,23 +78,23 @@ object OlrResolveReferenceToHmcSegmentsExample extends App {
       |</olr:OpenLRLocationReference>
       |""".stripMargin
 
-  val catalogFactory = new StandaloneCatalogFactory()
+  val baseClient = BaseClient()
 
   try {
-    val cacheManager = CacheManager.withLruCache()
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 769L)
+    val optimizedMap: OptimizedMapLayers =
+      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(769L)
 
     val reference = XmlMarshallers.openLRLocationReference
       .unmarshall(new ByteArrayInputStream(olrReference.getBytes("utf-8")))
 
-    val resolver = LocationReferenceResolvers.olr(optimizedMap, cacheManager)
+    val resolver = LocationReferenceResolvers(optimizedMap).olr
 
     val location = resolver.resolve(reference)
 
-    val vertexToHmc = PropertyMaps.vertexToHereMapContentReference(optimizedMap, cacheManager)
+    val vertexToHmc = PropertyMaps(optimizedMap).vertexToHereMapContentReference
 
     // OLR supports multiple types of location references.
-    // If we use the universal OLR resolver (olr(…)), we need to
+    // If we use the universal OLR resolver (olr(...)), we need to
     // check which subtype of `ReferencingLocation` we actually get back.
     location match {
       case linearLocation: LinearLocation =>
@@ -104,7 +104,7 @@ object OlrResolveReferenceToHmcSegmentsExample extends App {
       case _ => println("This example only deals with LinearLocations.")
     }
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 
   def toHmcRefString(hmcRef: HereMapContentReference): String =

@@ -20,12 +20,12 @@
 package com.here.platform.example.location.scala.standalone
 
 import java.io.InputStreamReader
-
 import com.github.tototoshi.csv.CSVReader
+import com.here.platform.data.client.base.scaladsl.BaseClient
 import com.here.platform.location.core.geospatial._
 import com.here.platform.location.core.mapmatching._
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
 import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.optimizedmap.OptimizedMap
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
@@ -38,35 +38,35 @@ import com.here.platform.location.integration.optimizedmap.mapmatching.{
 }
 
 object PathMatcherWithCustomNetworkFilterExample extends App {
-  val catalogFactory = new StandaloneCatalogFactory()
-  val cacheManager = CacheManager.withLruCache()
+  val baseClient = BaseClient()
 
   try {
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
+    val optimizedMap: OptimizedMapLayers =
+      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
     val trip: Seq[GeoCoordinate] = Helpers.loadTripFromCSVResource("/berlin_no_taxi.csv")
 
     println(s"Loaded trip with ${trip.length} points.")
 
-    val accessibleToTaxi = PropertyMaps.roadAccess(optimizedMap, cacheManager, RoadAccess.Taxi)
+    val accessibleToTaxi = PropertyMaps(optimizedMap).roadAccess(RoadAccess.Taxi)
     val accessibleToAutomobile =
-      PropertyMaps.roadAccess(optimizedMap, cacheManager, RoadAccess.Automobile)
-    val topologySegment = PropertyMaps.vertexToHereMapContentReference(optimizedMap, cacheManager)
+      PropertyMaps(optimizedMap).roadAccess(RoadAccess.Automobile)
+    val topologySegment = PropertyMaps(optimizedMap).vertexToHereMapContentReference
 
     // Instantiate a path matcher on the filtered road network
     val pathMatcher = PathMatchers.newHMMPathMatcher[GeoCoordinate, Vertex, Seq[Vertex]](
       CandidateGenerators.fromProximitySearchWithUnknown[GeoCoordinate, Vertex](
         // Filter out search results on parts of a road segment that are not accessible to taxis
         new FilteredProximitySearch(
-          ProximitySearches.vertexGeometrySegments(optimizedMap, cacheManager),
-          PropertyMaps.geometry(optimizedMap, cacheManager),
+          ProximitySearches(optimizedMap).vertexGeometrySegments,
+          PropertyMaps(optimizedMap).geometry,
           accessibleToTaxi,
           SinusoidalProjection
         )),
       EmissionProbabilityStrategies.usingDistance,
       TransitionProbabilityStrategies.distanceWithTransitions(
-        Graphs.from(optimizedMap, cacheManager),
-        PropertyMaps.geometry(optimizedMap, cacheManager),
-        PropertyMaps.length(optimizedMap, cacheManager),
+        Graphs(optimizedMap).forward,
+        PropertyMaps(optimizedMap).geometry,
+        PropertyMaps(optimizedMap).length,
         accessibleToTaxi,
         GreatCircleDistanceCalculator
       )
@@ -89,7 +89,7 @@ object PathMatcherWithCustomNetworkFilterExample extends App {
         s"- Vertex: $v corresponds to road segment: ${topologySegment(v)} that $autoOrNot accessible to Autos and $taxiOrNot accessible to Taxis.")
     }
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 
   private object Helpers {

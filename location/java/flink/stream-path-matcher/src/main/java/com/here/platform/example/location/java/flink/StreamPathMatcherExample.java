@@ -27,13 +27,10 @@ import com.here.platform.data.client.javadsl.NewPartition;
 import com.here.platform.data.client.model.PendingPartition;
 import com.here.platform.data.client.settings.ConsumerSettings;
 import com.here.platform.location.integration.herecommons.geospatial.HereTileLevel;
-import com.here.platform.pipeline.InputCatalogDescription;
 import com.here.platform.pipeline.PipelineContext;
-import com.here.platform.pipeline.ProcessingType;
 import com.here.sdii.v3.SdiiMessage;
 import com.twitter.chill.protobuf.ProtobufSerializer;
 import java.time.Duration;
-import java.util.Optional;
 import java.util.UUID;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.slf4j.Logger;
@@ -52,16 +49,8 @@ public final class StreamPathMatcherExample {
     try {
       final PipelineContext context = new PipelineContext();
       final HRN inputCatalogHRN = context.inputCatalogDescription("sdii-catalog").hrn();
-      final InputCatalogDescription optimizedMapCatalog =
-          context.inputCatalogDescription("optimized-map-catalog");
-      final HRN optimizedMapHRN = optimizedMapCatalog.hrn();
+      final OptimisedMapLayersAccess optimisedMapLayersAccess = new OptimisedMapLayersAccess();
       final HRN outputCatalogHRN = context.getConfig().getOutputCatalog();
-
-      final Optional<ProcessingType> optimizedMapCatalogProcessing =
-          optimizedMapCatalog.getProcessing();
-      if (!optimizedMapCatalogProcessing.isPresent())
-        throw new RuntimeException("optimized-map-catalog version was not present");
-      final long optimizedMapCatalogVersion = optimizedMapCatalogProcessing.get().version();
 
       final FlinkQueryApi queryApi = dataClient.queryApi(inputCatalogHRN);
       final FlinkWriteEngine writeEngine = dataClient.writeEngine(outputCatalogHRN);
@@ -81,7 +70,7 @@ public final class StreamPathMatcherExample {
           .map(new SdiiMessageMapFunction(inputCatalogHRN))
           .name("parse_sdii_message")
           .partitionCustom(new TilePartitioner(PARTITION_TILE_LEVEL), Utils::firstPositionEstimate)
-          .map(new PathMatcherMapFunction(optimizedMapHRN, optimizedMapCatalogVersion))
+          .map(new PathMatcherMapFunction(optimisedMapLayersAccess))
           .name("mapmatch_sdii_message")
           .map(
               matched -> {

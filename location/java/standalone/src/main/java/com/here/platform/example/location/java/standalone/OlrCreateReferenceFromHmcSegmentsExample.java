@@ -21,13 +21,14 @@ package com.here.platform.example.location.java.standalone;
 
 import static java.util.Arrays.asList;
 
+import com.here.platform.data.client.base.javadsl.BaseClient;
+import com.here.platform.data.client.base.javadsl.BaseClientJava;
 import com.here.platform.location.core.graph.javadsl.PropertyMap;
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.inmemory.graph.javadsl.Direction;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
+import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.PropertyMaps;
 import com.here.platform.location.referencing.LinearLocation;
@@ -51,10 +52,9 @@ import java.util.stream.Collectors;
 public final class OlrCreateReferenceFromHmcSegmentsExample {
 
   public static void main(final String[] args) throws FileNotFoundException {
-    final StandaloneCatalogFactory factory = new StandaloneCatalogFactory();
-    final Catalog optimizedMap = factory.create(OptimizedMap.v2.HRN, 769L);
-
-    final CacheManager cacheManager = CacheManager.withLruCache();
+    final BaseClient baseClient = BaseClientJava.instance();
+    final OptimizedMapLayers optimizedMap =
+        OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(769L);
 
     try {
       final List<String> segmentStrings =
@@ -125,7 +125,7 @@ public final class OlrCreateReferenceFromHmcSegmentsExample {
               .collect(Collectors.toList());
 
       final PropertyMap<HereMapContentReference, Vertex> hmcToVertex =
-          PropertyMaps.hereMapContentReferenceToVertex(optimizedMap, cacheManager);
+          new PropertyMaps(optimizedMap).hereMapContentReferenceToVertex();
 
       final List<Vertex> vertices =
           segments.stream().map(hmcToVertex::get).collect(Collectors.toList());
@@ -133,7 +133,7 @@ public final class OlrCreateReferenceFromHmcSegmentsExample {
       final LinearLocation location = new LinearLocation(vertices, 0, 1);
 
       final LocationReferenceCreator<LinearLocation, LinearLocationReference> creator =
-          LocationReferenceCreators.olrLinear(optimizedMap, cacheManager);
+          new LocationReferenceCreators(optimizedMap).olrLinear();
 
       final LinearLocationReference reference = creator.create(location);
 
@@ -152,7 +152,7 @@ public final class OlrCreateReferenceFromHmcSegmentsExample {
               new OpenLRLocationReference("1.1", reference, Optional.empty()),
               new FileOutputStream("olr.bin"));
     } finally {
-      factory.terminate();
+      baseClient.shutdown();
     }
   }
 

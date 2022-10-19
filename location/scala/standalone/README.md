@@ -24,8 +24,6 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.GraphExample
 ```
@@ -46,8 +44,6 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.HereMapContentToOptimizedMapTranslationExample
 ```
@@ -77,8 +73,6 @@ To run the example, you need access to the following catalogs.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.MostProbablePathExample
 ```
@@ -106,8 +100,6 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.PathMatcherExample
 ```
@@ -136,8 +128,6 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.PathMatcherWithCustomNetworkFilterExample
 ```
@@ -165,8 +155,6 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.PointMatcherExample
 ```
@@ -185,8 +173,6 @@ containing all these vertices colored by functional class.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.FunctionalClassExample
 ```
@@ -214,8 +200,6 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.TurnRestrictionsExample
 ```
@@ -236,8 +220,6 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.OnTheFlyCompiledPropertyMapExample
 ```
@@ -259,8 +241,6 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.AdasCurvatureAttributeExample
 ```
@@ -285,8 +265,6 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.SparsePathMatcherExample
 ```
@@ -305,8 +283,6 @@ The example does not depend on map data.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.ConvertTpeg2ContainerExample
 ```
@@ -326,8 +302,6 @@ The example does not depend on map data.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.ExtractSpecificTpeg2MessagesExample
 ```
@@ -351,8 +325,6 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.TmcCreateAndResolveExample
 ```
@@ -379,8 +351,6 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.TmcResolveReferencesInRttiMessageExample
 ```
@@ -401,8 +371,6 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.OlrCreateReferenceFromHmcSegmentsExample
 ```
@@ -423,8 +391,6 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following commands:
 
 ```bash
-mvn --also-make --file=../.. --projects=:utils_2.12 install
-
 mvn --projects=:scala-standalone_2.12 compile exec:java \
     -Dexec.mainClass=com.here.platform.example.location.scala.standalone.OlrResolveReferenceToHmcSegmentsExample
 ```

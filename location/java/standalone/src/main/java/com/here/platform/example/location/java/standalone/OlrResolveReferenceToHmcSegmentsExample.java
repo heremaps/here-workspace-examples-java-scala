@@ -19,13 +19,14 @@
 
 package com.here.platform.example.location.java.standalone;
 
+import com.here.platform.data.client.base.javadsl.BaseClient;
+import com.here.platform.data.client.base.javadsl.BaseClientJava;
 import com.here.platform.location.core.graph.javadsl.PropertyMap;
-import com.here.platform.location.dataloader.core.Catalog;
-import com.here.platform.location.dataloader.core.caching.CacheManager;
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.inmemory.graph.javadsl.Direction;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
+import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
+import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.PropertyMaps;
 import com.here.platform.location.referencing.LinearLocation;
@@ -46,10 +47,9 @@ import java.util.stream.Collectors;
 public final class OlrResolveReferenceToHmcSegmentsExample {
 
   public static void main(final String[] args) {
-    final StandaloneCatalogFactory factory = new StandaloneCatalogFactory();
-    final Catalog optimizedMap = factory.create(OptimizedMap.v2.HRN, 769L);
-
-    final CacheManager cacheManager = CacheManager.withLruCache();
+    final BaseClient baseClient = BaseClientJava.instance();
+    final OptimizedMapLayers optimizedMap =
+        OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(769L);
 
     try {
       final String referenceXml =
@@ -96,14 +96,14 @@ public final class OlrResolveReferenceToHmcSegmentsExample {
               + "</olr:OpenLRLocationReference>\n";
 
       final PropertyMap<Vertex, HereMapContentReference> vertexToHmc =
-          PropertyMaps.vertexToHereMapContentReference(optimizedMap, cacheManager);
+          new PropertyMaps(optimizedMap).vertexToHereMapContentReference();
 
       final OpenLRLocationReference reference =
           XmlMarshallers.openLRLocationReference()
               .unmarshall(new ByteArrayInputStream(referenceXml.getBytes(StandardCharsets.UTF_8)));
 
       final LocationReferenceResolver<OpenLRLocationReference, ReferencingLocation> resolver =
-          LocationReferenceResolvers.olr(optimizedMap, cacheManager);
+          new LocationReferenceResolvers(optimizedMap).olr();
       final ReferencingLocation location = resolver.resolve(reference);
 
       // OLR supports multiple types of location references.
@@ -118,7 +118,7 @@ public final class OlrResolveReferenceToHmcSegmentsExample {
         System.out.println("This example only supports linear location references.");
       }
     } finally {
-      factory.terminate();
+      baseClient.shutdown();
     }
   }
 

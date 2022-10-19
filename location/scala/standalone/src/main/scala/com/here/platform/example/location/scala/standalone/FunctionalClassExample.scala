@@ -21,14 +21,14 @@ package com.here.platform.example.location.scala.standalone
 
 import java.io.FileOutputStream
 
-import com.here.platform.example.location.utils.FileNameHelper
+import com.here.platform.data.client.base.scaladsl.BaseClient
+import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.core.geospatial._
 import com.here.platform.location.core.graph.{PropertyMap, RangeBasedProperty}
-import com.here.platform.location.dataloader.core.caching.CacheManager
-import com.here.platform.location.dataloader.standalone.StandaloneCatalogFactory
 import com.here.platform.location.inmemory.graph.{Forward, Vertex, Vertices}
-import com.here.platform.location.integration.optimizedmap.OptimizedMap
+import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.integration.optimizedmap.geospatial.ProximitySearches
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.integration.optimizedmap.roadattributes.FunctionalClass
@@ -51,20 +51,19 @@ object FunctionalClassExample extends App {
   )
   val RadiusInMeters = 1000.0
 
-  val catalogFactory = new StandaloneCatalogFactory()
-
-  val cacheManager = CacheManager.withLruCache()
+  val baseClient = BaseClient()
 
   try {
-    val optimizedMap = catalogFactory.create(OptimizedMap.v2.HRN, 1293L)
+    val optimizedMap: OptimizedMapLayers =
+      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
 
-    val proximitySearch = ProximitySearches.vertices(optimizedMap, cacheManager)
+    val proximitySearch = ProximitySearches(optimizedMap).vertices
 
     val verticesInRange = proximitySearch.search(MesseNord, RadiusInMeters).map(_.element)
 
     println(s"Number of vertices in range: ${verticesInRange.size}")
 
-    val roadAttributes = PropertyMaps.RoadAttributes(optimizedMap, cacheManager)
+    val roadAttributes = PropertyMaps(optimizedMap).roadAttributes
 
     val Red = Color("#e87676")
     val Green = Color("#58db58")
@@ -91,11 +90,11 @@ object FunctionalClassExample extends App {
                                (property.value, colorByFunctionalClass(property.value))))
     } yield VertexWithProperty(vertex, rangeBasedProperties)
 
-    val geometryPropertyMap = PropertyMaps.geometry(optimizedMap, cacheManager)
+    val geometryPropertyMap = PropertyMaps(optimizedMap).geometry
 
     serializeToGeoJson(verticesWithProperties, geometryPropertyMap)
   } finally {
-    catalogFactory.terminate()
+    baseClient.shutdown()
   }
 
   private def serializeToGeoJson[LS: LineStringOperations](
