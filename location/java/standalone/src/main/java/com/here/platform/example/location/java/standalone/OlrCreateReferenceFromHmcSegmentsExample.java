@@ -54,7 +54,10 @@ public final class OlrCreateReferenceFromHmcSegmentsExample {
   public static void main(final String[] args) throws FileNotFoundException {
     final BaseClient baseClient = BaseClientJava.instance();
     final OptimizedMapLayers optimizedMap =
-        OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(769L);
+        OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
+            .usingBaseClient(baseClient)
+            .newInstance()
+            .version(769L);
 
     try {
       final List<String> segmentStrings =

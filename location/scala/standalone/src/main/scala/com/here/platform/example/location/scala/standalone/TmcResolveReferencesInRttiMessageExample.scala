@@ -41,7 +41,11 @@ import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, Simple
 object TmcResolveReferencesInRttiMessageExample extends App {
   private val baseClient = BaseClient()
   private val optimizedMap: OptimizedMapLayers =
-    OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
+    OptimizedMapCatalog
+      .from(OptimizedMap.v2.HRN)
+      .usingBaseClient(baseClient)
+      .newInstance
+      .version(1293L)
 
   private val resolver = LocationReferenceResolvers(optimizedMap).extendedTmc
 

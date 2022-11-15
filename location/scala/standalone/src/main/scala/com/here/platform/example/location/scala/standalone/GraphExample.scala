@@ -72,7 +72,11 @@ object GraphExample extends App {
   val baseClient = BaseClient()
   try {
     val optimizedMap: OptimizedMapLayers =
-      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
+      OptimizedMapCatalog
+        .from(OptimizedMap.v2.HRN)
+        .usingBaseClient(baseClient)
+        .newInstance
+        .version(1293L)
 
     val pariserPlatz = GeoCoordinate(52.516364, 13.378870)
 

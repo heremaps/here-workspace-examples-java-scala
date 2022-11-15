@@ -60,7 +60,11 @@ object TmcCreateAndResolveExample extends App {
   val baseClient = BaseClient()
   try {
     val optimizedMap: OptimizedMapLayers =
-      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
+      OptimizedMapCatalog
+        .from(OptimizedMap.v2.HRN)
+        .usingBaseClient(baseClient)
+        .newInstance
+        .version(1293L)
 
     // Define a location that is covered by TMC
     val locationInFriedenstrasse = {

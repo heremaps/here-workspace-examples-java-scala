@@ -48,7 +48,10 @@ public final class TmcResolveReferencesInRttiMessageExample {
 
     try {
       final OptimizedMapLayers optimizedMap =
-          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
+          OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
+              .usingBaseClient(baseClient)
+              .newInstance()
+              .version(1293L);
 
       final LocationReferenceResolver<ExtendedTMCLocationReference, BidirectionalLinearLocation>
           resolver = new LocationReferenceResolvers(optimizedMap).extendedTmc();

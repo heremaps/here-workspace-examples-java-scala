@@ -82,7 +82,11 @@ object OlrResolveReferenceToHmcSegmentsExample extends App {
 
   try {
     val optimizedMap: OptimizedMapLayers =
-      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(769L)
+      OptimizedMapCatalog
+        .from(OptimizedMap.v2.HRN)
+        .usingBaseClient(baseClient)
+        .newInstance
+        .version(769L)
 
     val reference = XmlMarshallers.openLRLocationReference
       .unmarshall(new ByteArrayInputStream(olrReference.getBytes("utf-8")))

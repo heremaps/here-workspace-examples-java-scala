@@ -55,7 +55,11 @@ object FunctionalClassExample extends App {
 
   try {
     val optimizedMap: OptimizedMapLayers =
-      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
+      OptimizedMapCatalog
+        .from(OptimizedMap.v2.HRN)
+        .usingBaseClient(baseClient)
+        .newInstance
+        .version(1293L)
 
     val proximitySearch = ProximitySearches(optimizedMap).vertices
 

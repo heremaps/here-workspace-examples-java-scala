@@ -158,7 +158,11 @@ object MostProbablePathExample extends App {
   val baseClient = BaseClient()
   try {
     val optimizedMap: OptimizedMapLayers =
-      OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
+      OptimizedMapCatalog
+        .from(OptimizedMap.v2.HRN)
+        .usingBaseClient(baseClient)
+        .newInstance
+        .version(1293L)
     val propertyMaps = PropertyMaps(optimizedMap)
 
     // A mapping from Vertices to LineString of the underlying road geometry

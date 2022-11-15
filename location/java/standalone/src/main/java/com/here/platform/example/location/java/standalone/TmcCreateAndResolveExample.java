@@ -54,7 +54,10 @@ public final class TmcCreateAndResolveExample {
 
     try {
       final OptimizedMapLayers optimizedMap =
-          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
+          OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
+              .usingBaseClient(baseClient)
+              .newInstance()
+              .version(1293L);
 
       // Define a location that is covered by TMC
       final Vertex vertexInFriedenstrasse =

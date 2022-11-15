@@ -69,7 +69,10 @@ public final class AdasCurvatureAttributeExample {
 
     try {
       final OptimizedMapLayers optimizedMap =
-          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
+          OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
+              .usingBaseClient(baseClient)
+              .newInstance()
+              .version(1293L);
 
       PropertyMaps propertyMaps = new PropertyMaps(optimizedMap);
       PropertyMap<HereMapContentReference, Vertex> hmcToVertex =

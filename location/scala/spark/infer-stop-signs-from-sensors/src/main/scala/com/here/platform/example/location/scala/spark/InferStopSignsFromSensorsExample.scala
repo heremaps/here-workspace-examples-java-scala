@@ -58,7 +58,11 @@ object OptimizedMapLayersSingleton {
     val config = Config(new PipelineContext)
     val optimizedMapCatalogHrn = config.optimizedMapCatalogHrn
     val optimizedMapCatalogVersion = config.optimizedMapCatalogVersion
-    OptimizedMapCatalog(BaseClient(), optimizedMapCatalogHrn).version(optimizedMapCatalogVersion)
+    OptimizedMapCatalog
+      .from(optimizedMapCatalogHrn)
+      .usingBaseClient(BaseClient())
+      .newInstance
+      .version(optimizedMapCatalogVersion)
   }
 }
 

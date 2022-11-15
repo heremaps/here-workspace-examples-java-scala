@@ -61,7 +61,11 @@ object PointMatcherExample extends App {
   val baseClient = BaseClient()
 
   try {
-    val optimizedMap = OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
+    val optimizedMap = OptimizedMapCatalog
+      .from(OptimizedMap.v2.HRN)
+      .usingBaseClient(baseClient)
+      .newInstance
+      .version(1293L)
 
     val trip: Seq[Point] = loadTripFromCSVResource("/example_berlin_path.csv")
     println(s"Loaded trip with ${trip.length} points.")

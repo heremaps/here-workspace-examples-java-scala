@@ -55,7 +55,11 @@ object AdasCurvatureAttributeExample extends App {
   val baseClient = BaseClient()
 
   try {
-    val optimizedMap = OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1126)
+    val optimizedMap = OptimizedMapCatalog
+      .from(OptimizedMap.v2.HRN)
+      .usingBaseClient(baseClient)
+      .newInstance
+      .version(1126)
 
     val propertyMaps = PropertyMaps(optimizedMap)
     val hmcToVertex = propertyMaps.hereMapContentReferenceToVertex

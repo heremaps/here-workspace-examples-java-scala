@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf</groupId>
     <artifactId>model_v2</artifactId>
-    <version>0.0.800</version>
+    <version>0.0.808</version>
   </parent>
 
   <artifactId>model_v2_scala_2.12</artifactId>
@@ -28,7 +28,7 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.44.4</tag>
+    <tag>2.45.7</tag>
   </scm>
 
   <dependencies>

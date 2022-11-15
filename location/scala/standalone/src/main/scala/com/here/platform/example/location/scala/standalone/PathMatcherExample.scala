@@ -45,7 +45,11 @@ object PathMatcherExample extends App {
   val baseClient = BaseClient()
 
   try {
-    val optimizedMap = OptimizedMapCatalog(baseClient, OptimizedMap.v2.HRN).version(1293L)
+    val optimizedMap = OptimizedMapCatalog
+      .from(OptimizedMap.v2.HRN)
+      .usingBaseClient(baseClient)
+      .newInstance
+      .version(1293L)
 
     val trip: Seq[GeoCoordinate] = loadTripFromCSVResource("/example_berlin_path.csv")
 

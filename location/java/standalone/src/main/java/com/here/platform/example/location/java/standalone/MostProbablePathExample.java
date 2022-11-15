@@ -77,7 +77,10 @@ public final class MostProbablePathExample {
     final BaseClient baseClient = BaseClientJava.instance();
     try {
       final OptimizedMapLayers optimizedMap =
-          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
+          OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
+              .usingBaseClient(baseClient)
+              .newInstance()
+              .version(1293L);
       PropertyMaps propertyMaps = new PropertyMaps(optimizedMap);
 
       // A mapping from Vertices to LineString of the underlying road geometry

@@ -48,10 +48,11 @@ public enum OptimizedMapLayersSingleton {
 
     BaseClient baseClient = BaseClientJava.instance();
     optimizedMapLayers =
-        OptimizedMapCatalog.newBuilder(optimizedMapHRN)
+        OptimizedMapCatalog.from(optimizedMapHRN)
+            .usingBaseClient(baseClient)
             // Reserving up to 4GiB of RAM in the Optimized Map tiles cache
             .withMaxBlobCacheSizeBytes(4L << 30)
-            .build(baseClient)
+            .newInstance()
             .version(optimizedMapCatalogVersion);
   }
 

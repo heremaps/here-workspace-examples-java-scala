@@ -45,7 +45,10 @@ public final class GraphExample {
     final BaseClient baseClient = BaseClientJava.instance();
     try {
       final OptimizedMapLayers optimizedMap =
-          OptimizedMapCatalog.newBuilder(OptimizedMap.v2.HRN).build(baseClient).version(1293L);
+          OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
+              .usingBaseClient(baseClient)
+              .newInstance()
+              .version(1293L);
 
       final GeoCoordinate pariserPlatz = new GeoCoordinate(52.516364, 13.378870);
 
