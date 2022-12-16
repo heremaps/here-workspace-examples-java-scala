@@ -98,6 +98,10 @@ olp catalog layer add $CATALOG_HRN state state --versioned --summary "state" --d
             --scope $PROJECT_HRN
 ```
 
+> #### Note::
+>
+> If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
+
 3. Use the [`olp project resource link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link) command to link the _HERE Map Content_ catalog to your project:
 
 ```bash

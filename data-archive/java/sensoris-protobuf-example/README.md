@@ -88,6 +88,10 @@ olp catalog layer add $CATALOG_HRN stream stream --stream --summary "stream" \
         --scope $PROJECT_HRN
 ```
 
+> #### Note::
+>
+> If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
+
 ## Create Output Catalog and Layer
 
 The examples require that you define indexing attributes with the following index definitions for the `index` layer:
@@ -124,6 +128,10 @@ olp catalog layer add $CATALOG_HRN index index --index --summary "index" \
         --index-definitions tileId:heretile:8 eventTime:timewindow:600000 \
         --scope $PROJECT_HRN
 ```
+
+> #### Note::
+>
+> If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
 
 ## Update the Configuration File
 

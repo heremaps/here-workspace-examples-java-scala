@@ -99,6 +99,10 @@ olp catalog layer add $CATALOG_HRN index index --index --summary "index" \
         --scope $PROJECT_HRN
 ```
 
+> #### Note::
+>
+> If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
+
 ## Populate Index Layer with Sample Data
 
 After creating input catalog and layer, for running the compaction example,

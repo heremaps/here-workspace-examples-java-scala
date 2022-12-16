@@ -111,6 +111,10 @@ olp local catalog layer add hrn:local:data:::heremapcontent-validation state sta
             --content-type application/octet-stream
 ```
 
+> #### Note::
+>
+> If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
+
 #### Run the Compiler from the Command Line
 
 To run the compiler locally, you will need to run the entry point to the compiler:
@@ -249,6 +253,10 @@ olp catalog layer add $CATALOG_HRN state state --versioned \
             --description "state" --partitioning generic \
             --content-type application/octet-stream --scope $PROJECT_HRN
 ```
+
+> #### Note::
+>
+> If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
 
 3. Use the [`olp project resource link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link) command to link the _HERE Map Content_ catalog to your project:
 

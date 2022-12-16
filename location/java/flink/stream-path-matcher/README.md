@@ -109,6 +109,10 @@ olp catalog layer add $CATALOG_HRN out-data out-data --stream --summary "Layer f
             --scope $PROJECT_HRN
 ```
 
+> #### Note::
+>
+> If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
+
 3. Update the output catalog HRN in the `pipeline-config.conf` file
 
 The `config/here/pipeline-config.conf` (for the HERE platform environment) and
