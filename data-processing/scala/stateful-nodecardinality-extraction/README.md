@@ -253,6 +253,13 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 1. [Create](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline-workflows.html) pipeline components:
 
+For this example, a bounding box filter is provided by `--runtime-config` parameter to
+limit the number of partitions to be processed. This speeds up the compilation process. In this
+example, we use a bounding box around the cities of Berlin and Beijing for the HERE platform and HERE
+platform in China environments respectively. You can edit the bounding box coordinates to compile a different
+partition of HERE Map Content. Make sure you update the layer coverage to reflect the different
+geographical region.
+
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
 olp pipeline template create $COMPONENT_NAME_Template batch-3.0 $PATH_TO_JAR \
@@ -261,6 +268,11 @@ olp pipeline template create $COMPONENT_NAME_Template batch-3.0 $PATH_TO_JAR \
                 --scope $PROJECT_HRN
 olp pipeline version create $COMPONENT_NAME_version $PIPELINE_ID $PIPELINE_TEMPLATE_ID \
                 "$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
+                --runtime-config  here.platform.data-processing.executors.partitionKeyFilters.0.className=BoundingBoxFilter \
+                                  here.platform.data-processing.executors.partitionKeyFilters.0.param.boundingBox.north=52.67551 \
+                                  here.platform.data-processing.executors.partitionKeyFilters.0.param.boundingBox.south=52.338261 \
+                                  here.platform.data-processing.executors.partitionKeyFilters.0.param.boundingBox.east=13.76116 \
+                                  here.platform.data-processing.executors.partitionKeyFilters.0.param.boundingBox.west=13.08835 \
                 --scope $PROJECT_HRN
 ```
 
