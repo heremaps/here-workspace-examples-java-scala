@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.index.compaction.batch</groupId>
     <artifactId>index-compaction-batch-protobuf-example</artifactId>
-    <version>0.0.818</version>
+    <version>0.0.824</version>
     <packaging>jar</packaging>
 
     <name>Index Compaction Batch Protobuf Example</name>
@@ -24,21 +24,22 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.47.2</tag>
+        <tag>2.48.3</tag>
     </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <sdk-bom.version>2.47.2</sdk-bom.version>
+        <sdk-bom.version>2.48.3</sdk-bom.version>
         <scala.compat.version>2.12</scala.compat.version>
-        <artifact.wagon.version>2.0.13</artifact.wagon.version>
+        <artifact.wagon.version>2.0.14</artifact.wagon.version>
 
         <junit.version>4.12</junit.version>
 
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
+        <exec.cleanupDaemonThreads>false</exec.cleanupDaemonThreads>
     </properties>
 
     <dependencyManagement>
@@ -82,6 +83,16 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>HERE_PLATFORM_ARTIFACT</id>
+            <layout>here</layout>
+            <!-- The 'here+' prefix serves to invoke the HERE wagon extention that handles OAUTH
+                 and re-writes Maven URIs for the HERE secure repository.-->
+            <url>here+artifact-service://artifact-service</url>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <!-- Java Compiler -->
@@ -122,10 +133,12 @@
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <shadedClassifierName>platform</shadedClassifierName>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>reference.conf</resource>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.here.platform.index.compaction.batch.Driver</mainClass>
                                 </transformer>
                             </transformers>
@@ -150,18 +163,36 @@
         </extensions>
     </build>
 
-    <!-- This profile helps to make things run out of the box in IntelliJ -->
-    <!-- Its adds Spark's core classes to the runtime class path. -->
-    <!-- Otherwise they are missing in IntelliJ, because the dependency is 'provided' -->
     <profiles>
         <profile>
-            <id>add-dependencies-for-IDEA</id>
-            <activation>
-                <property>
-                    <name>idea.version</name>
-                </property>
-            </activation>
+            <id>add-dependencies-for-local-run</id>
             <dependencies>
+                <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-common</artifactId>
+                    <scope>compile</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>javax.servlet</groupId>
+                            <artifactId>servlet-api</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-mapreduce-client-core</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-client</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-auth</artifactId>
+                    <scope>compile</scope>
+                </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
                     <artifactId>spark-core_${scala.compat.version}</artifactId>
@@ -169,45 +200,179 @@
                 </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-network-common_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-network-shuffle_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-launcher_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-kvstore_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.spark</groupId>
                     <artifactId>spark-sql_${scala.compat.version}</artifactId>
                     <scope>compile</scope>
                 </dependency>
+                <dependency>
+                    <groupId>com.here.platform.data.client</groupId>
+                    <artifactId>spark-support_${scala.compat.version}</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-catalyst_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-unsafe_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.here.platform.data.client</groupId>
+                    <artifactId>local-support_${scala.compat.version}</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+
                 <!-- The following dependencies are added to this profile to address the following-->
                 <!-- There is a known issue where index-compaction-batch pom's transitive dependencies are not resolved when running in an IDE-->
                 <dependency>
                     <groupId>com.here.platform.index.compaction</groupId>
                     <artifactId>index-compaction-core_${scala.compat.version}</artifactId>
+                    <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-log4j12</artifactId>
+                    <scope>runtime</scope>
                 </dependency>
                 <dependency>
                     <groupId>log4j</groupId>
                     <artifactId>log4j</artifactId>
+                    <scope>runtime</scope>
                 </dependency>
                 <dependency>
                     <groupId>com.typesafe</groupId>
                     <artifactId>config</artifactId>
+                    <scope>compile</scope>
                 </dependency>
                 <dependency>
-                    <groupId>com.here.platform.data.client</groupId>
-                    <artifactId>spark-support_${scala.compat.version}</artifactId>
+                    <groupId>com.twitter</groupId>
+                    <artifactId>chill_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.esotericsoftware.kryo</groupId>
+                    <artifactId>kryo</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>javax.servlet-api</artifactId>
+                    <version>3.1.0</version>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jersey.containers</groupId>
+                    <artifactId>jersey-container-servlet</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jersey.containers</groupId>
+                    <artifactId>jersey-container-servlet-core</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jersey.core</groupId>
+                    <artifactId>jersey-server</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jersey.core</groupId>
+                    <artifactId>jersey-client</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jersey.core</groupId>
+                    <artifactId>jersey-common</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>commons-configuration</groupId>
+                    <artifactId>commons-configuration</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>commons-lang</groupId>
+                    <artifactId>commons-lang</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>commons-collections</groupId>
+                    <artifactId>commons-collections</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.antlr</groupId>
+                    <artifactId>antlr4-runtime</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.json4s</groupId>
+                    <artifactId>json4s-scalap_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.module</groupId>
+                    <artifactId>jackson-module-scala_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.module</groupId>
+                    <artifactId>jackson-module-paranamer</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-tags_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.xbean</groupId>
+                    <artifactId>xbean-asm6-shaded</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.clearspring.analytics</groupId>
+                    <artifactId>stream</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.codehaus.janino</groupId>
+                    <artifactId>janino</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.codehaus.janino</groupId>
+                    <artifactId>commons-compiler</artifactId>
+                    <scope>compile</scope>
                 </dependency>
             </dependencies>
-        </profile>
-        <!-- HERE Artifact Service repository -->
-        <profile>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <id>here-artifact-service</id>
-            <repositories>
-                <repository>
-                    <id>HERE_PLATFORM_ARTIFACT</id>
-                    <url>here+artifact-service://artifact-service</url>
-                </repository>
-            </repositories>
         </profile>
     </profiles>
 </project>

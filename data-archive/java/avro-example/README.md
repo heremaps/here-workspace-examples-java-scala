@@ -1,89 +1,372 @@
-# Archiving SDII Stream Data in Avro
+# Archiving SDII Stream Data in Avro Format
 
-This example shows how to use the Data Archiving Library to quickly develop an archiving solution that archives data in Avro format.
-There are two options for using this example:
+This Data Archiving Library Java example shows how to use the HERE Data SDK for Java & Scala to quickly develop an application that archives
+[`SDII`](https://developer.here.com/documentation/sdii-data-spec/dev_guide/topics/introduction.html) messages in the `Avro` format.
 
-1. Use the example as-is. You can run the example out of the box by creating an input and output catalog, then specifying those catalogs in the `application.conf` file. For information on configuring this file, see the [Update the Configuration File](#update-the-configuration-file) section.
-2. Create your own archiving application using the example as a template.
+The archiving application used in this example consists of the user-defined `AvroMultiKeysExample.java` class that implements the Data Archiving Library `MultiKeysUDF` interface.
+Like any other Data Archiving Library interface implementation, this one reads input data from a `stream` layer, aggregates it using certain indexing attributes, and stores it to the `index` layer.
+This specific example allows adding multiple values for different indexing attributes, such as `tileId` and `eventType`, and use them later while aggregating messages in the `Avro` format.
 
-You should review this entire readme regardless of whether you are running the example as-is or using the example as a template for your own application.
-
-The example consists of two user defined function implementation example classes:
-
-- `AvroSimpleKeyExample.java`
-- `AvroMultiKeysExample.java`
-
-These classes implement the `SimpleUDF` or `MultiKeysUDF` interface from the Data Archiving Library. You can choose which class to use depending on whether you want to use one value per indexing attribute (`SimpleUDF`) or multiple values per indexing attribute (`MultiKeysUDF`). For details on this and other interfaces, see the _API Reference_ section of the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
-
-This readme contains important instructions that will help you to run the _Data Archiving Library_ examples.
+For details on this and other interfaces, see the [API Reference](https://developer.here.com/documentation/data-archiving-library/api_reference/index.html) section of the Data Archiving Library Developer Guide.
 
 ## Get Your Credentials
 
 To run this example, you need two sets of credentials:
 
-- **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input.
+- **Platform credentials:** To get access to the platform data and resources.
 - **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
 For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
 For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html) tutorial.
 
-## Configure a Project
+## Run the Archiver Locally
 
-To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html). A project is a collection of platform resources
-(catalogs, pipelines, and schemas) with controlled access. You can create a project through the
-[HERE platform portal](https://platform.here.com/).
+The archiver is a Flink application that reads data you want to archive from the `stream` layer and writes the archived data to the `index` layer.
+To run the application locally, both layers should be created in local catalogs as described below.
 
-Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
+For more information about local catalogs, see [the SDK tutorial about local development and testing](https://developer.here.com/documentation/java-scala-dev/dev_guide/local-development-workflow/index.html)
+and [the OLP CLI documentation](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data-workflows.html).
+
+> Note
+>
+> We recommend that you set values to variables, so that you can easily copy and execute the following commands.
+
+### Create a Local Input Catalog and Layer
+
+As the Data Archiving Library reads data that is to be archived from a `stream` layer, let's create one.
+
+First, use the [`olp local catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/catalog-commands.html#catalog-create)
+command to create a local input catalog:
+
+```bash
+olp local catalog create avro-input-catalog avro-input-catalog \
+        --summary "Input catalog for Avro-archiving application" \
+        --description "Input catalog for Avro-archiving application"
+```
+
+The local input catalog will have the `hrn:local:data:::avro-input-catalog` HRN.
+Note down this HRN as you'll need it later in this example.
+
+Next, add a `stream` layer to your catalog:
+
+| Layer ID | Layer Type | Content Type             | TTL    |
+| -------- | ---------- | ------------------------ | ------ |
+| stream   | stream     | application/octet-stream | 600000 |
+
+The content type of this layer should be defined as `application/octet-stream` as we are going to archive binary-encoded protobuf serialized `SDII` messages.
+
+In our case, the `ttl` value for the `stream` layer is defined as `600000` milliseconds (`10` minutes), which is the minimal value for this layer type.
+To prevent data loss, the [recommendation](https://developer.here.com/documentation/data-archiving-library/dev_guide/topics/best-practices.html) is to always set the `ttl`
+at least three times higher than `aggregation.window-seconds` defined in the [configuration file](./src/main/resources/application.conf).
+Our value not only totally satisfies this recommendation, but also reduces the run-costs of the application.
+
+Use the [`olp local catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/layer-commands.html#catalog-layer-add)
+command to add a `stream` layer to your catalog:
+
+```bash
+olp local catalog layer add hrn:local:data:::avro-input-catalog \
+        stream stream \
+        --stream \
+        --summary "Avro archiver input stream layer" \
+        --description "Avro archiver input stream layer" \
+        --content-type application/octet-stream \
+        --ttl 600000
+```
+
+Note down the layer ID as you'll need it later in this example.
+
+### Create a Local Output Catalog and Layer
+
+The Data Archiving Library stores archived data in the `index` layer, so let's create it.
+
+First, use the [`olp local catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/catalog-commands.html#catalog-create)
+command to create a local output catalog:
+
+```bash
+olp local catalog create avro-output-catalog avro-output-catalog \
+        --summary "Output catalog for Avro-archiving application" \
+        --description "Output catalog for Avro-archiving application"
+```
+
+The local output catalog will have the `hrn:local:data:::avro-output-catalog` HRN.
+Note down the HRN as you'll need it later in this example.
+
+Now, add an `index` layer to the catalog:
+
+| Layer ID | Layer Type | Igestion Time | Duration | Event Type | Tile ID  | Zoom Level | Content Type              | TTL    |
+| -------- | ---------- | ------------- | -------- | ---------- | -------- | ---------- | ------------------------- | ------ |
+| index    | index      | timewindow    | 600000   | string     | heretile | 8          | application/x-avro-binary | 7 days |
+
+As the application stores data in the form of binary-encoded `Avro` messages, use the `application/x-avro-binary` content type for the `index` layer.
+The `ttl` property is set to the minimal value for this layer type, which is `7 days`.
+
+The most important thing while creating the `index` layer is selecting the indexing attributes.
+One way to think about indexing attributes is to consider the characteristics by which you want to query your indexed data.
+In this example, we plan to index vehicle sensor data, and we are interested in understanding different events occurring in different geographic locations at different times.
+For this use case, we would query the indexed data on multiple characteristics, such as event type, geolocation, and timestamp.
+That leads us to the following indexing attributes - `eventType`, `tileId`, and `ingestionTime`.
+The `eventType` attribute should be declared as `string`, because we want archived messages to be indexed based on names of certain events (`signRecognition`, `fogHazard`, and similar.)
+`tileId` should have type `heretile` and zoom level `8` for saving data on the `8` level of the HERE Tiles.
+The `ingestionTime` attribute should be specified as `timewindow` with the duration of `600000` milliseconds. This means that all the messages with an event time in the given time window will have the same index value.
+
+Use the [`olp local catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/layer-commands.html#catalog-layer-add)
+command to add an `index` layer to your catalog:
+
+```bash
+olp local catalog layer add hrn:local:data:::avro-output-catalog \
+        index index \
+        --index \
+        --summary "Avro archiver output index layer" --description "Avro archiver output index layer" \
+        --index-definitions eventType:string tileId:heretile:8 ingestionTime:timewindow:600000 \
+        --content-type application/x-avro-binary \
+        --ttl 7.days
+```
+
+Note down the layer ID as you'll need it later in this example.
+
+### Update the Configuration File
+
+After all the required resources have been created, let's configure the archiving application.
+The application configuration is defined in the [`application.conf`](./src/main/resources/application.conf) file.
+
+Mostly, the application uses default values for config parameters and only a few customized ones, for example, info about the main class of your application, catalogs and layers used for uploading unarchived data and storing archived data, and similar.
+
+The configuration file itself is not ready to use as-is, you have to complete it first.
+Before running the application, you have to define HRNs of the local [input](#create-a-local-input-catalog-and-layer) and [output](#create-a-local-output-catalog-and-layer) catalogs,
+as well as the `local` discovery service environment that allows the Data Client Library to work **only** with local catalogs.
+
+For information about all available configuration options, see the [Configure Your Application](https://developer.here.com/documentation/data-archiving-library/dev_guide/topics/configuration.html) section of the Data Archiving Library Developer Guide.
+
+### Run the Archiver Locally
+
+After the application has been configured, you can run it locally by running the entry point to the application:
+
+- `com.here.platform.data.archive.example.Main`
+
+As the `argument`, you must provide the `-Padd-dependencies-for-local-run` parameter that adds all the dependencies
+needed for a local run of the archiving application.
+
+Execute the following command in the [`avro-example`](../avro-example) directory to run the Avro Archiving Application:
+
+```bash
+mvn compile exec:java \
+-Dexec.mainClass=com.here.platform.data.archive.example.Main \
+-Padd-dependencies-for-local-run
+```
+
+At a certain point after start, the application pauses and waits for you to ingest data you want to archive.
+
+### Ingest Data for Archiving
+
+Now we can ingest several partitions to the `stream` layer and archive them.
+Partitions contain `SDII` messages serialized as `protobuf` with binary encoding.
+Let's take a look at [partition](src/test/resources/sampleData/sdiiMessage_1.pb) content after deserialization:
+
+```
+envelope {
+  version: "testVersion"
+  submitter: "testSubmitter"
+  transientVehicleID: 0
+  ...
+}
+path {
+  positionEstimate {
+    timeStampUTC_ms: 1597850904882
+    positionType: FILTERED
+    interpolatedPoint: false
+    longitude_deg: -89.296875
+    latitude_deg: 41.484375
+    ...
+  }
+}
+pathEvents {
+  signRecognition {
+    timeStampUTC_ms: 1597850904882
+    roadSignType: NO_OVERTAKING_TRUCKS_END
+    roadSignPermanency: STATIC
+    ...
+  }
+}
+```
+
+Partition content looks like a standard [`SDII`](https://developer.here.com/documentation/sdii-data-spec/dev_guide/topics/message-components.html) message.
+
+Our application takes the `timeStampUTC_ms` field to index messages by the `timewindow` property, while the `longitude_deg` and `latitude_deg` fields are used to index messages by the `tileId` property,
+and the `signRecognition` event is used to index messages by the `eventType` property.
+
+To serialize the `protobuf` data, you can use the [`_java` bindings](https://platform.here.com/data/schemas/hrn:here:schema::olp-here:com.here.sdii:sdii_message_v3:4.2.6/overview) as follows:
+
+```
+byte[] proto = Files.readAllBytes(Paths.get("path/to/sdiiMessage.pb"));
+SdiiMessage.Message sdiiMessage = SdiiMessage.Message.parseFrom(proto);
+System.out.println(sdiiMessage.toString());
+```
+
+While the application is running, start a new terminal session and ingest [data](src/test/resources/sampleData) you want to archive into the `stream` layer that was created in the [previous](#create-a-local-input-catalog-and-layer) section.
+For that purpose, use the [`olp local catalog layer stream put`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/local-stream-commands.html#catalog-layer-stream-put) command:
+
+```bash
+olp local catalog layer stream put hrn:local:data:::avro-input-catalog stream \
+        --input $PATH_TO_DIRECTORY_WITH_PARTITIONS
+```
+
+After the data has been uploaded successfully, you can verify the archived messages.
+
+### Verify Output
+
+After partitions have been uploaded to the `stream` layer, your data will be archived in the `index` layer that was created [previously](#create-a-local-output-catalog-and-layer).
+Note that the archiving process may take a couple of minutes.
+
+You can query archived messages using the [`olp local catalog layer partition list`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/local-partition-commands.html#catalog-layer-partition-list)
+command.
+Using the `--filter` parameter with this command allows filtering partitions by their name, size, and other criteria.
+However, a more practical case is filtering partitions by the values of fields that were used to index messages, such as `tileId`, `ingestionTime`, and `eventType`.
+
+Let's query all archived messages with the `signRecognition` event type (in our case, these are **all** archived messages).
+For that purpose, use the `olp local catalog layer partition list` command with the `--filter "eventType==signRecognition"` parameter:
+
+```bash
+olp local catalog layer partition list hrn:local:data:::avro-output-catalog index --filter "eventType==signRecognition"
+```
+
+The command above displays the following list of partitions:
+
+```
+dataHandle                              size                checksum                                          CRC
+fc00877f-2932-489d-950f-a335889999d7    54733
+e50b01de-b51a-4ab8-beb4-d51e3d675b31    54733
+1ce009b5-a433-4001-acb4-c4d7a366a97f    54733
+e25fe9b6-ed7a-4f4b-8657-f8095b4c1452    54733
+7563fba9-6a46-438d-b368-660dede3573b    54733
+bd21c4b1-2cd9-4ac2-a21c-da050ee67b5b    54733
+
+Total size: 320.7 KB
+```
+
+As you can see, our application successfully archived all messages, and now they are available in the `index` layer.
+
+Now let's query partitions located in the HERE Tile with ID `78498`.
+To do it, use the `olp local catalog layer partition list` command with the `--filter "tileId==78498"` parameter:
+
+```bash
+olp local catalog layer partition list hrn:local:data:::avro-output-catalog index --filter "tileId==78498"
+```
+
+The command above displays the following list of partitions:
+
+```
+dataHandle                              size                checksum                                          CRC
+e50b01de-b51a-4ab8-beb4-d51e3d675b31    54733
+
+Total size: 53.5 KB
+```
+
+As you can see, there is only one partition stored in this specific HERE Tile.
+
+Now, let's get this partition and examine it.
+To get archived data from the `index` layer, you can use the [`olp local catalog layer partition get`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/local-partition-commands.html#catalog-layer-partition-get)
+command with the `--filter "tileId==78498"` parameter to get the partition mentioned above:
+
+```bash
+olp local catalog layer partition get hrn:local:data:::avro-output-catalog index --filter "tileId==78498"
+```
+
+After the partition has been successfully downloaded to the `avro-output-catalog-index` directory, let's inspect it.
+The downloaded partition contains data in the `Avro` format. After deserialization, the following `SDII` message is displayed:
+
+```
+envelope {
+  version: "testVersion"
+  submitter: "testSubmitter"
+  transientVehicleID: 0
+  ...
+}
+path {
+  positionEstimate {
+    timeStampUTC_ms: 1597850904882
+    positionType: FILTERED
+    interpolatedPoint: false
+    longitude_deg: -89.296875
+    latitude_deg: 41.484375
+    ...
+  }
+}
+pathEvents {
+  signRecognition {
+    timeStampUTC_ms: 1597850904882
+    roadSignType: NO_OVERTAKING_TRUCKS_END
+    roadSignPermanency: STATIC
+    ...
+  }
+}
+```
+
+As you can see, the downloaded partition contains the same `SDII` message that has been uploaded in the section [above](#ingest-data-for-archiving).
+It is worth mentioning that the `path.positionEstimate` component has the following longitude and latitude values: `-89.296875` and `41.484375`, respectively.
+If we use these values to calculate the ID of the HERE Tile on the `8` level, we get `78498`, which is exactly the ID of the HERE Tile that contains the message we queried from the `index` layer.
+
+You can deserialize `Avro` data as follows:
+
+```
+List<SdiiMessage.Message> messages = AvroMultiKeysExample.fromFile(new File("path/to/downloaded/partition/file"), SdiiMessage.Message.class);
+messages.forEach(message -> System.out.println(message.toString()));
+```
+
+## Build and Run the Archiver as a HERE Platform Pipeline
+
+To run the archiving application in a HERE platform pipeline, you need to have a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html).
+
+### Configure a Project
+
+A project is a collection of platform resources (catalogs, pipelines, schemas, and so on) with controlled access.
+You can create a project using the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command:
 
 ```bash
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layers/hrn.html) of your new project. Note down this HRN as you will need it later in this tutorial.
+The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layers/hrn.html) of your new project.
+Save the project HRN to the `PROJECT_HRN` variable as you will need it later in this tutorial.
 
 > #### Note
 >
 > You do not have to provide a `--scope` parameter if your app has a default scope.
-> For details on how to set a default project scope for an app, see the _Specify a
-> default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
+> For details on how to set a default project scope for an app, see the _Set a default
+> project for an app_ chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html#set-a-default-project-for-an-app).
 
 For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
 
-## Create Input Catalog and Layer
+### Create an Input Catalog and Layer
 
-The examples require you to have a catalog with `stream` layer for the input data. Create a new catalog with `stream` layer or use an existing one.
+As the Data Archiving Library reads data to be archived from a `stream` layer, let's create one.
 
-Use the [HERE platform portal](https://platform.here.com/) to [create the input catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
-
-| Layer ID | Layer Type | Content Type             | Content Encoding | Coverage |
-| -------- | ---------- | ------------------------ | ---------------- | -------- |
-| stream   | Stream     | application/octet-stream | uncompressed     | -        |
-
-- For instructions on how to create a catalog, see _Create a Catalog_ in the [Data User Guide](#data-user-guide).
-- For instructions on how to create a layer, see _Create a Layer_ in the [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, see _Project Resource Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, see _Manage Projects_ in the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
-
-Alternatively, you can use the _OLP CLI Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with a `stream` layer:
-
-> #### Note
->
-> We recommend to set values to variables so that you can easily copy and execute the following commands.
-
-1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
-   Make sure to note down the HRN returned by the following command for later use:
+First, use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create)
+command to create an input catalog.
 
 ```bash
-olp catalog create $CATALOG_ID $CATALOG_NAME --summary CATALOG_SUMMARY \
-        --description CATALOG_DESCRIPTION --scope $PROJECT_HRN
+olp catalog create $CATALOG_ID $CATALOG_NAME \
+        --summary "Input catalog for Avro-archiving application" \
+        --description "Input catalog for Avro-archiving application" \
+        --scope $PROJECT_HRN
 ```
 
-2. Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add) command to add a `stream` layer to your catalog:
+Save the catalog HRN to the `INPUT_CATALOG_HRN` variable as you will need it later in this tutorial.
+
+Next, add a `stream` layer to your catalog.
+For the required parameters, see the section on the [local `stream` layer](#create-a-local-input-catalog-and-layer) creation.
+
+Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add)
+command to add a `stream` layer to your catalog:
 
 ```bash
-olp catalog layer add $CATALOG_HRN stream stream --stream --summary "stream" \
-        --description "stream" --content-type application/octet-stream \
+olp catalog layer add $INPUT_CATALOG_HRN \
+        stream stream \
+        --stream \
+        --summary "Avro archiver input stream layer" \
+        --description "Avro archiver input stream layer" \
+        --content-type application/octet-stream \
+        --ttl 600000 \
         --scope $PROJECT_HRN
 ```
 
@@ -91,41 +374,36 @@ olp catalog layer add $CATALOG_HRN stream stream --stream --summary "stream" \
 >
 > If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
 
-## Create Output Catalog and Layer
+### Create an Output Catalog and Layer
 
-The examples require that you define indexing attributes with the following index definitions for the `index` layer:
+The Data Archiving Library stores archived data in the `index` layer, so let's create it.
 
-- `ingestionTime` should be declared as `timewindow` type. There should be one, and ONLY one `timewindow` column and it is mandatory for any `index` layer.
-- `tileId` should be declared as `heretile` type. There should be at most one `heretile` column. It is optional.
-- `eventType` should be declared as `string`.
-
-Use the [HERE platform portal](https://platform.here.com/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
-
-| Layer ID | Layer Type | Retention | Timewindow Attribute Name | Duration | Content Type              | Content Encoding | Coverage |
-| -------- | ---------- | --------- | ------------------------- | -------- | ------------------------- | ---------------- | -------- |
-| index    | Index      | 7 days    | ingestionTime             | 60       | application/x-avro-binary | uncompressed     | -        |
-
-- For instructions on how to create a catalog, see _Create a Catalog_ in the [Data User Guide](#data-user-guide).
-- For instructions on how to create a layer, see _Create a Layer_ in the [Data User Guide](#data-user-guide).
-- For instructions on how to link a resource to a project, see _Project Resource Link_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-- For instructions on how to share your project, see _Manage Projects_ in the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
-
-Alternatively, you can use the _OLP CLI Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide) instead of the platform portal to create a new catalog with an `index` layer:
-
-1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
-   Make sure to note down the HRN returned by the following command for later use:
+First, use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create)
+command to create an output catalog.
 
 ```bash
-olp catalog create $CATALOG_ID $CATALOG_NAME --summary CATALOG_SUMMARY \
-        --description CATALOG_DESCRIPTION --scope $PROJECT_HRN
+olp catalog create $CATALOG_ID $CATALOG_NAME \
+        --summary "Output catalog for Avro-archiving application" \
+        --description "Output catalog for Avro-archiving application" \
+        --scope $PROJECT_HRN
 ```
 
-2. Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add) command to add an `index` layer to your catalog:
+Save the catalog HRN to the `OUTPUT_CATALOG_HRN` variable as you will need it later in this tutorial.
+
+Now, add an `index` layer to the catalog.
+For the required parameters, see the section on the [local `index` layer](#create-a-local-output-catalog-and-layer) creation.
+
+Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add)
+command to add an `index` layer to your catalog:
 
 ```bash
-olp catalog layer add $CATALOG_HRN index index --index --summary "index" --description "index" \
-        --content-type application/x-avro-binary --ttl 7.days \
-        --index-definitions tileId:heretile:8 ingestionTime:timewindow:3600000 eventType:string \
+olp catalog layer add $OUTPUT_CATALOG_HRN \
+        index index \
+        --index \
+        --summary "Avro archiver output index layer" --description "Avro archiver output index layer" \
+        --index-definitions eventType:string tileId:heretile:8 ingestionTime:timewindow:600000 \
+        --content-type application/x-avro-binary \
+        --ttl 7.days \
         --scope $PROJECT_HRN
 ```
 
@@ -133,25 +411,22 @@ olp catalog layer add $CATALOG_HRN index index --index --summary "index" --descr
 >
 > If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
 
-## Update the Configuration File
+### Update the Configuration File {#update-config-for-run-on-platform}
 
-The configurations are specified in the `application.conf` file that can be found in the `/src/main/resources` directory of the example project. You will have to modify it to configure expected behavior of the data archiving project. For information about modifying this file, see the comments in the `application.conf` file.
+After all the required resources have been created, let's configure the archiving application.
+The application configuration is defined in the [`application.conf`](./src/main/resources/application.conf) file.
 
-> #### Note
->
-> You must configure this file in order for the examples to run successfully.
+Let's use the same configurations as for the [local run](#update-the-configuration-file) but
+apply the HRNs of the platform [input](#create-an-input-catalog-and-layer) and [output](#create-an-output-catalog-and-layer) catalogs,
+and the `here` discovery service environment.
 
-> #### Note
->
-> The property `aggregation.window-seconds` is different from the index attribute of type `timewindow`.
-> The property `aggregation.window-seconds` determines how frequently data will be aggregated and processed by the data archiving pipeline.
-> The index attribute of type `timewindow` contains the finest time granularity at which the data will be indexed and later queried, as specified in the attribute's `duration` field.
+For information about all available configuration options, see the [Configure Your Application](https://developer.here.com/documentation/data-archiving-library/dev_guide/topics/configuration.html) section of the Data Archiving Library Developer Guide.
 
-## Package the Application Into a Fat JAR
+### Generate a Fat JAR file
 
-To run archiving pipeline in the HERE platform, you need to build a fat JAR.
-
-You can refer to the `pom.xml` file for packaging details if you are creating your own application. If you are not creating your own application, run the following command under the example's base directory.
+Now we can move forward and create a fat JAR from the application.
+To create it, run the `mvn clean package` command in the [`avro-example`](../avro-example)
+directory:
 
 ```bash
 mvn clean package
@@ -159,24 +434,44 @@ mvn clean package
 
 Once the above command is successful, a fat JAR named `data-archive-avro-example-<VERSION>-platform.jar` will be built in the `target` folder.
 
-## Create a Pipeline in the Platform
+### Configure a Pipeline Template
 
-To run the example, create a pipeline in the HERE platform to execute the application.
+After we received the fat JAR, we can start creating a pipeline template.
 
-### Configure and Run as a Platform Pipeline
+HERE platform provides pipeline templates as a way to get started with common data processing tasks.
+Pipeline templates are scalable, configurable processing blocks that you can deploy as part of your own workflow, without needing to write any code.
+Each pipeline template is designed to perform a specific task and can be customized to accommodate your particular use case.
 
-You should use application jar with suffix `platform.jar` as a pipeline template to run the archiving process. The pipeline will use the configuration from file `application.conf` in the `src/main/resource/`
-directory, ensure these values are updated before compiling and uploading your jar.
+Use the [`olp pipeline template create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/template-commands.html#pipeline-template-create) command to create a pipeline template:
 
-#### Using the Platform Portal to Run a Pipeline
+```bash
+olp pipeline template create avro-pipeline-template \
+    stream-5.0 \
+    $PATH_TO_JAR \
+    com.here.platform.dal.DALMain \
+    --input-catalog-ids=source \
+    --scope $PROJECT_HRN
+```
 
-For information on using the platform portal to configure and run a pipeline, see _Deploying a Pipeline via Web Platform Portal_ in the [Pipelines Developer Guide](#pipelines-developer-guide). Update the logging level of your pipeline from `WARN` to `INFO` if you intend to verify message upload in logs.
+Save the pipeline template ID to the `PIPELINE_TEMPLATE_ID` variable as you will need it later in this tutorial.
 
-#### Use the Command Line Interface to Run a Pipeline
+### Configure a Pipeline
 
-You can use the _OLP CLI Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide) to create pipeline components and activate it.
+Let's move forward and create a data processing pipeline.
+HERE platform uses pipelines to process data from HERE geospatial resources and custom client resources to produce new useful data products.
 
-First, configure data sources using the `config/pipeline-config.conf` file. This file contains the configuration of the data sources which are used as placeholders for the Data Archiving Library examples:
+Use the [`olp pipeline create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/pipeline-commands.html#pipeline-create) command to create a pipeline:
+
+```bash
+olp pipeline create avro-pipeline --scope $PROJECT_HRN
+```
+
+Save the pipeline ID to the `PIPELINE_ID` variable as you will need it later in this tutorial.
+
+### Update the Pipeline Configuration File
+
+To run your archiving application as a HERE platform pipeline, you need to configure data sources in the [`pipeline-config.conf`](./config/pipeline-config.conf) file.
+This file contains the configuration of the data sources that are used for the Data Archiving Library application:
 
 ```javascript
 pipeline.config {
@@ -187,119 +482,130 @@ pipeline.config {
 }
 ```
 
-You must replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your output catalog and `YOUR_INPUT_CATALOG_HRN` with the HRN of your input catalog. To find the HRN, in the [HERE platform portal](#here-platform-portal) navigate to your catalog. The HRN is displayed in the upper left corner of the page.
+You must replace the `YOUR_INPUT_CATALOG_HRN` placeholder with the HRN of the [input](#create-an-input-catalog-and-layer) catalog
+and the `YOUR_OUTPUT_CATALOG_HRN` placeholder with the HRN of the [output](#create-an-output-catalog-and-layer) catalog.
 
-You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
+### Configure a Pipeline Version
 
-1. [Create](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline-workflows.html) pipeline components:
+Once you have created both the pipeline and pipeline template and updated the pipeline configuration file, you can proceed to creating a pipeline version.
+A pipeline version is an immutable entity representing an executable form of a pipeline within the HERE platform.
 
-```bash
-olp pipeline create $PIPELINE_NAME --scope $PROJECT_HRN
-olp pipeline template create $PIPELINE_TEMPLATE_NAME stream-5.0 $PATH_TO_JAR com.here.platform.dal.DALMain \
-    --input-catalog-ids=source --workers=2 --scope $PROJECT_HRN # Note that the value of workers should be greater than or equal to the value of parallelism selected in application.conf
-olp pipeline version create $PIPELINE_VERSION_NAME $PIPELINE_ID $PIPELINE_TEMPLATE_ID \
-    "$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" --scope $PROJECT_HRN
-```
-
-2. [Set](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-log-set-level) log level:
+Use the [`olp pipeline version create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-create) command to create a pipeline version:
 
 ```bash
-olp pipeline version log level set $PIPELINE_ID $PIPELINE_VERSION_ID --root info --scope $PROJECT_HRN
+olp pipeline version create avro-pipeline-version \
+    $PIPELINE_ID $PIPELINE_TEMPLATE_ID \
+    "$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
+    --scope $PROJECT_HRN
 ```
 
-3. [Activate](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-activate) the pipeline version:
+Save the pipeline version ID to the `PIPELINE_VERSION_ID` variable as you will need it later in this tutorial.
+
+### Run the Archiver on HERE Platform
+
+Now you can run the application as a HERE platform pipeline.
+For that purpose, use the [`olp pipeline version activate`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-activate) command:
 
 ```bash
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
 ```
 
-In the [HERE platform portal](https://platform.here.com/pipelines) / [HERE platform portal in China](https://platform.hereolp.cn/pipelines),
-navigate to your pipeline to see its status.
-
-For more information on using the OLP CLI to configure and run a pipeline, see _Pipeline Commands_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide).
-
-> #### Note
->
-> The selection of input and output catalog values using the platform portal when creating pipeline version or the values added to `pipeline.config` when using command line interface must be valid. These values represent a placeholder that the Data Archiving Library will not use. Instead, values will be taken from the `application.conf` file. If you want to change or update the input/output catalogs, modify the `application.conf` file and rebuild.
-
-## Verify the Output
-
-In the [HERE platform portal](#here-platform-portal), select the **Pipelines** tab and find your pipeline.
-
-- Verify pipeline is in `Running` state.
-
-After the pipeline is running, you can ingest your data into the `stream` layer created in the `Create Input Catalog and Layer` section using one of the following:
-
-- _Publish to a Stream Layer_ in the [Data API Developer Guide](#data-api-developer-guide)
-- _Publish Data_ in the [Data Client Library Developer Guide](#data-client-library-developer-guide)
-- _Stream_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
-
-> #### Note
->
-> For ingesting data, make sure your app has `read` and `write` permission to your `stream` layer.
-> For instructions on how to manage your app, see `Manage Apps` in the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
+Use the [`olp pipeline version show`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-show) command
+to inspect the state of the pipeline version:
 
 ```
-olp catalog permission grant $CATALOG_HRN --app $APP_ID --read --write --scope $PROJECT_HRN
-olp catalog layer stream put $CATALOG_HRN stream --input /path/to/directory --scope $PROJECT_HRN # There are sdii example messages in the folder: src/test/resources/sampleData
+olp pipeline version show $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
 ```
 
-After your data is archived in `index` layer, you can query/retrieve data using one of the following:
+Since this is a Flink application, this means that it runs until you stop it.
+In order to stop the application after you have finished working with it, execute the [`olp pipeline version cancel`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-cancel) command:
 
-- _Get Data from an Index Layer_ in the [Data API Developer Guide](#data-api-developer-guide)
-- _Get Data_ in the [Data Client Library Developer Guide](#data-client-library-developer-guide)
-- _Partitions_ in the [Command Line Interface Developer Guide](#command-line-interface-developer-guide)
-  > #### Note
-  >
-  > For querying metadata or retrieving data, make sure your app has `read` permission to your `index` layer.
-  > For instructions on how to manage your app, see _Manage Apps_ in the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
-  ```
-  olp catalog permission grant $CATALOG_HRN --app $APP_ID --read --write --scope $PROJECT_HRN
-  olp catalog layer partition list $CATALOG_HRN index --filter <query> --scope $PROJECT_HRN # E.g: <query>="tileId==92259"
-  olp catalog layer partition get $CATALOG_HRN index --filter <query> --scope $PROJECT_HRN
-  ```
+```
+olp pipeline version cancel $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
+```
 
-To parse the data retrieved from `index` layer, see "How to parse the output content" in _FAQ_ in the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
+Once the pipeline version gets in the `running` state, you can start using your archiving application as described in the next section.
 
-## Run Example Locally
+### Ingest Data for Archiving {#ingest-data-for-platform-run}
 
-Besides running this example in a pipeline, you can also _Run an Archiving Application Locally_, see [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
-Running locally in your IDE or Flink cluster will use the configuration from file `application.conf` in the `src/test/resource/` directory, ensure these values are updated before compiling and uploading your jar.
-To create a new application and get `credentials.properties`, see _Manage Apps_ in the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html). You will share read/write permissions with this app when you create your `stream` and `index` layers.
+Now we can ingest several partitions to the `stream` layer to archive their data.
+In this section, we will use the same partitions as for the [local run](#ingest-data-for-archiving) of the application.
 
-> #### Note
->
-> This example provides the Maven profile `add-dependencies-for-IDEA`, which compiles the necessary dependencies in order to run an application locally from your IDE.
-> When running this example from your IDE, ensure you have this profile enabled in the Maven Toolbar.
-> Alternatively, you can select the checkbox for `Include dependencies with "Provided" scope` in `Edit Configurations` for [AvroExampleRunner.java](src/test/java/com/here/platform/data/archive/example/AvroExampleRunner.java).
+While the application is running, start a new terminal session and ingest [data](src/test/resources/sampleData) you want to archive into the `stream` layer that was created in the [previous](#create-an-input-catalog-and-layer) section.
+To do it, use the [`olp catalog layer stream put`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/stream-commands.html#catalog-layer-stream-put) command:
 
-## Troubleshooting
+```
+olp catalog layer stream put $INPUT_CATALOG_HRN stream \
+        --input $PATH_TO_DIRECTORY_WITH_PARTITIONS \
+        --scope $PROJECT_HRN
+```
 
-If you have any trouble about accessing logs, monitoring, investigating failures and so on, see `FAQ` in the [Data Archiving Library Developer Guide](#data-archiving-library-developer-guide).
+After the data has been uploaded successfully, you can verify the archived messages.
 
-## References
+### Verify Output {#verify-output-for-platform-run}
 
-- ##### HERE Platform Portal
-  - RoW: https://platform.here.com
-  - China: https://platform.hereolp.cn
-- ##### Data Archiving Library Developer Guide
-  - RoW: https://developer.here.com/documentation/data-archiving-library/dev_guide/index.html
-  - China: https://developer.here.com/cn/documentation/data-archiving-library/dev_guide/index.html
-- ##### Command Line Interface Developer Guide
-  - RoW: https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html
-  - China: https://developer.here.com/cn/documentation/open-location-platform-cli/user_guide/index.html
-- ##### Data API Developer Guide
-  - RoW: https://developer.here.com/documentation/data-api/data_dev_guide/index.html
-  - China: https://developer.here.com/cn/documentation/data-api/data_dev_guide/index.html
-- ##### Data Client Library Developer Guide
-  - RoW: https://developer.here.com/documentation/data-client-library/dev_guide/index.html
-  - China: https://developer.here.com/cn/documentation/data-client-library/dev_guide/index.html
-- ##### Data User Guide
-  - RoW: https://developer.here.com/documentation/data-user-guide/index.html
-  - China: https://developer.here.com/documentation/data-user-guide/index.html
-- ##### Pipelines Developer Guide
-  - RoW: https://developer.here.com/documentation/pipeline/index.html
-  - China: https://developer.here.com/cn/documentation/pipeline/index.html
-- ##### Identity & Access Management Developer Guide
-  - RoW: https://developer.here.com/documentation/identity-access-management/dev_guide/index.html
-  - China: https://developer.here.com/documentation/identity-access-management/dev_guide/index.html
+After partitions have been uploaded to the `stream` layer, your data will be archived in the `index` layer that was created [previously](#create-an-output-catalog-and-layer).
+Note that the archiving process may take a couple of minutes.
+
+You can query archived messages using the [`olp catalog layer partition list`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/partition-commands.html#catalog-layer-partition-list)
+command.
+Using the `--filter` parameter with this command allows filtering partitions by their name, size, and other criteria.
+However, a more practical case is filtering partitions by the values of fields that were used to index messages, such as `tileId`, `ingestionTime`, and `eventType`.
+
+Let's query all archived messages with the `signRecognition` event type (in our case, these are **all** archived messages).
+For that purpose, use the `olp catalog layer partition list` command with `--filter "eventType==signRecognition"` parameter:
+
+```
+olp catalog layer partition list $OUTPUT_CATALOG_HRN index \
+    --filter "eventType==signRecognition" \
+    --scope $PROJECT_HRN
+```
+
+The command above displays the following list of partitions:
+
+```
+dataHandle                              size                checksum                                          CRC
+fc00877f-2932-489d-950f-a335889999d7    54733
+e50b01de-b51a-4ab8-beb4-d51e3d675b31    54733
+1ce009b5-a433-4001-acb4-c4d7a366a97f    54733
+e25fe9b6-ed7a-4f4b-8657-f8095b4c1452    54733
+7563fba9-6a46-438d-b368-660dede3573b    54733
+bd21c4b1-2cd9-4ac2-a21c-da050ee67b5b    54733
+
+Total size: 320.7 KB
+```
+
+As you can see, our application successfully archived all messages, and now they are available in the `index` layer.
+
+Now let's query partitions located in the HERE Tile with ID `78498`.
+To do it, use the `olp catalog layer partition list` command with `--filter "tileId==78498"` parameter:
+
+```
+olp catalog layer partition list $OUTPUT_CATALOG_HRN index \
+    --filter "tileId==78498" \
+    --scope $PROJECT_HRN
+```
+
+The command above displays the following list of partitions:
+
+```
+dataHandle                              size                checksum                                          CRC
+e50b01de-b51a-4ab8-beb4-d51e3d675b31    54733
+
+Total size: 53.5 KB
+```
+
+As you can see, there is only one partition stored in this specific HERE Tile.
+
+Now, let's get this partition and examine it.
+To get archived data from the `index` layer, you can use the [`olp catalog layer partition get`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/partition-commands.html#catalog-layer-partition-get)
+command with the `--filter "tileId==78498"` parameter to get the partition mentioned above:
+
+```
+olp catalog layer partition get $OUTPUT_CATALOG_HRN index \
+    --filter "tileId==78498" \
+    --scope $PROJECT_HRN
+```
+
+After the partition has been successfully downloaded to the `avro-output-catalog-index` directory,
+you can inspect it using the same approach as described in the [local run](#verify-output) section.

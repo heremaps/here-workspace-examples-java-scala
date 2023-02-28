@@ -19,6 +19,8 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.here.olp.util.quad.factory.HereQuadFactory;
 import com.here.platform.dal.custom.MetadataName;
 import com.here.platform.dal.custom.SimpleUDF;
+import com.here.platform.data.archive.example.util.CustomProtoWriteSupport;
+import com.here.platform.data.archive.example.util.SdiiMessageParquetWriterBuilder;
 import com.here.sdii.v3.SdiiCommon;
 import com.here.sdii.v3.SdiiMessage;
 import java.io.IOException;

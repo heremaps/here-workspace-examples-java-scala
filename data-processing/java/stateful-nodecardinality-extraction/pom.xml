@@ -4,7 +4,7 @@
 
   <groupId>com.here.platform.data.processing.example.java</groupId>
   <artifactId>stateful-nodecardinality-extraction</artifactId>
-  <version>0.0.818</version>
+  <version>0.0.824</version>
   <packaging>jar</packaging>
 
   <name>
@@ -25,14 +25,14 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.47.2</tag>
+    <tag>2.48.3</tag>
   </scm>
 
   <properties>
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <sdk-bom.version>2.47.2</sdk-bom.version>
+    <sdk-bom.version>2.48.3</sdk-bom.version>
     <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
     <scala-maven-plugin.version>4.5.4</scala-maven-plugin.version>
@@ -74,6 +74,10 @@
     <dependency>
       <groupId>com.here.platform.data.processing</groupId>
       <artifactId>batch-catalog-dataservice_${scala.compat.version}</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.here.platform.data.client</groupId>
+      <artifactId>local-support_${scala.compat.version}</artifactId>
     </dependency>
     <!-- External dependencies -->
     <dependency>

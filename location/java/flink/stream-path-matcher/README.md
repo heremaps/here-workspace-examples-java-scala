@@ -5,8 +5,8 @@ This example shows how to exercise the path matching functionality of the
 
 The example map-matches data coming from the `sample-streaming-layer` that
 contains SDII messages. The catalog that contains this layer is defined in the
-`sdii-catalog` entry in `config/here/pipeline-config.conf` or
-`config/here-china/pipeline-config.conf` for China. The example writes the
+`sdii-catalog` entry in [`config/here/pipeline-config.conf`](./config/here/pipeline-config.conf) or
+[`config/here-china/pipeline-config.conf`](./config/here-china/pipeline-config.conf) for China. The example writes the
 result of the computation to the `out-data` streaming layer in the catalog you
 will create.
 
@@ -38,14 +38,106 @@ To run the example, you need access to the following catalogs:
 
 To run this example, you need two sets of credentials:
 
-- **Platform credentials:** To get access to platform data and resources, including HERE Map Content data for your pipeline input.
+- **Platform credentials:** To get access to platform data and resources.
 - **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
 For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
 For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html) tutorial.
 
-## Configure a Project
+## Build and Run the Compiler
+
+In the commands that follow, replace the variable placeholders with the following values:
+
+- `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
+- `$COVERAGE` is a two-letter code for country and region (in this case, `DE` for Germany or `CN` for China)
+- `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/local-pipeline-config.conf) or [HERE environment in China](./config/here-china/local-pipeline-config.conf).
+- `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/local-pipeline-config.conf) or [HERE environment in China](./config/here-china/local-pipeline-config.conf).
+
+> Note:
+> We recommend that you set values to variables, so that you can easily copy and execute the following commands.
+
+### Run the Application Locally
+
+#### Create a Local Output Catalog
+
+As mentioned above we will use two public input catalogs, however we need to create our own output catalog to store the results of the `Stream Path Matcher` example.
+
+To run this compiler locally, use a local output catalog as described
+below. For more information about local catalogs, see
+[the SDK tutorial about local development and testing](https://developer.here.com/documentation/java-scala-dev/dev_guide/local-development-workflow/index.html)
+and [the OLP CLI documentation](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data-workflows.html).
+
+1. Use the [`olp local catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/catalog-commands.html#catalog-create)
+   command to create a local catalog.
+
+```bash
+olp local catalog create path-matcher-java path-matcher-java --summary "Output catalog for Stream Path Matcher example" \
+            --description "Output catalog for Stream Path Matcher example"
+```
+
+The local catalog will have the HRN `hrn:local:data:::path-matcher-java`.
+
+2. Use the [`olp local catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/layer-commands.html#catalog-layer-add)
+   command to add one `stream` layer to your catalog:
+
+```bash
+olp local catalog layer add hrn:local:data:::path-matcher-java out-data out-data --stream --summary "Layer for output partitions" \
+            --description "Layer for output partitions" --coverage $COVERAGE
+```
+
+#### Run the Application from the Command Line
+
+First, we're going to run the example using a
+[Flink local environment](https://ci.apache.org/projects/flink/flink-docs-master/dev/local_execution.html),
+suitable for local development and debugging.
+
+1. Compile and execute the example.
+
+For the HERE platform environment:
+
+```bash
+mvn compile exec:java -Dexec.mainClass=com.here.platform.example.location.java.flink.StreamPathMatcherExample \
+    -Dpipeline-config.file=config/here/local-pipeline-config.conf \
+    -Dpipeline-job.file=config/here/pipeline-job.conf
+```
+
+For the HERE platform environment for China:
+
+```
+mvn compile exec:java -Dexec.mainClass=com.here.platform.example.location.java.flink.StreamPathMatcherExample \
+    -Dpipeline-config.file=config/here-china/local-pipeline-config.conf \
+    -Dpipeline-job.file=config/here-china/pipeline-job.conf
+```
+
+2. Open a different terminal and let a few partitions stream out of the layer. They consist of small, one-line messages.
+   The following command prints `10` messages specified by the `--limit` parameter or messages coming within `900` seconds separated by `--delimeter=\\n` parameter.
+
+```bash
+olp local catalog layer stream get hrn:local:data:::path-matcher-java out-data --delimiter=\\n --limit=10 --timeout=900
+```
+
+The command should return the following results:
+
+```
+Result for id 818bad2e-6d18-43ae-9396-86d9a8c9ab84: matched 4 points out of 4
+Result for id f319318f-a161-4e65-8017-db0588c5470b: matched 69 points out of 70
+Result for id 5a095919-49c1-48ef-8be0-d867d176170b: matched 6 points out of 6
+Result for id f99bca1a-18a8-4f3d-81df-7ae7742b68b1: matched 92 points out of 92
+Result for id 05aa970f-4222-4708-a2a4-3b20b5943d9c: matched 103 points out of 103
+Result for id 5f19487e-0390-458d-8e71-1b0d3c2c6050: matched 96 points out of 98
+Result for id e315d58c-f64a-42fe-928d-96851ad8c975: matched 7 points out of 7
+Result for id 4cddbdbc-152d-4c14-8c19-0deb077026a5: matched 199 points out of 199
+Result for id 6417cb50-267b-4ec3-8256-47d6ea661d1f: matched 69 points out of 70
+Result for id f1185134-9af1-4514-b3e3-dae7708f810f: matched 6 points out of 6
+Result for id bd69c6c6-4d0b-419d-9ae2-51fb0d7365c7: matched 72 points out of 72
+```
+
+3. End stream example process after partitions were retrieved.
+
+### Run this Application as a HERE Platform Pipeline
+
+#### Configure a Project
 
 To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html). A project is a collection of platform resources
 (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
@@ -67,7 +159,7 @@ The command returns the [HERE Resource Name (HRN)](https://developer.here.com/do
 
 For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
 
-## Create Output Catalog
+#### Create an Output Catalog
 
 The catalog you need to create is used to store the results of the `Stream Path Matcher` example.
 
@@ -78,19 +170,6 @@ Use the [HERE platform portal](https://platform.here.com/) to [create the output
 | out-data | Stream     | application/x-protobuf | uncompressed     | DE or CN |
 
 Alternatively, you can use the OLP CLI to create the catalog and the corresponding layers.
-
-In the commands that follow, replace the variable placeholders with the following values:
-
-- `$CATALOG_ID` is your output catalog's ID.
-- `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
-- `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create` command).
-- `$COVERAGE` is a two-letter code for country and region (in this case `DE` or `CN` for China)
-- `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
-- `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
-
-> #### Note
->
-> We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
    Make sure to note down the HRN returned by the following command for later use:
@@ -137,34 +216,7 @@ olp project resource link $PROJECT_HRN $INPUT_OPTIMIZED_MAP_CATALOG
 - For more details on project commands, see [Project Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html).
 - For instructions on how to link a resource to a project, see [Project Resource Link command](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link).
 
-## Local Run
-
-We're first going to run the example using a
-[Flink local environment](https://ci.apache.org/projects/flink/flink-docs-master/dev/local_execution.html),
-suitable for local development and debugging.
-
-1. Compile and execute the example
-
-```bash
-mvn --projects=:java-flink-stream-path-matcher compile exec:java \
-    -Dpipeline-config.file=$PATH_TO_CONFIG_FOLDER/pipeline-config.conf \
-    -Dpipeline-job.file=$PATH_TO_CONFIG_FOLDER/pipeline-job.conf \
-    -Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
-```
-
-2. Open different terminal and let a few partitions stream out of the layer, they consist of small, one-line messages
-
-```bash
-olp catalog layer stream get $CATALOG_HRN out-data --delimiter=\\n --limit=42 --timeout=900 --scope $PROJECT_HRN
-```
-
-3. End stream example process after partitions were retrieved
-
-## Run on the Platform
-
-The following steps allow you to run the `StreamPathMatcherExample` pipeline on the platform.
-
-### Generate a Fat JAR file
+#### Generate a Fat JAR file
 
 Generate a "fat jar" for `StreamPathMatcherExample` that will be sent to the platform later
 
@@ -172,7 +224,7 @@ Generate a "fat jar" for `StreamPathMatcherExample` that will be sent to the pla
 mvn -Pplatform package
 ```
 
-### Deploy Fat JAR to a Pipeline
+#### Deploy Fat JAR to a Pipeline
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
@@ -210,27 +262,35 @@ olp pipeline version log level get $PIPELINE_ID $PIPELINE_VERSION_ID \
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job.conf" --scope $PROJECT_HRN
 ```
 
-### Let a few partitions stream out of the layer
+Since this is a Flink application, this means that it runs until you stop it.
+In order to stop the application after you have checked its operation, execute the following command:
+
+```
+olp pipeline version cancel $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
+```
+
+#### Let a few partitions stream out of the layer
 
 Partitions consist of small, one-line messages.
 
-```bash
-olp catalog layer stream get $CATALOG_HRN out-data --delimiter=\\n --limit=42 --timeout=900 --scope $PROJECT_HRN
-```
-
-You can now monitor the performance of your pipeline job by creating a custom graph on Grafana.
-To do this you can use the following query in a Grafana panel specifying your pipeline ID:
-
-```
-flink_taskmanager_job_task_operator_numRecordsOutPerSecond{operator_name="mapmatch_sdii_message",pipelineId="$pipeline_id"}
-```
-
-The resulting graph represents the number of SDII messages that are map matched per second.
-
-### Cancel the pipeline version
-
-After partition inspection, cancel the stream pipeline.
+The following command prints `10` messages specified by the `--limit` parameter or messages coming within `900` seconds separated by `--delimeter=\\n` parameter.
 
 ```bash
-olp pipeline version cancel $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
+olp catalog layer stream get $CATALOG_HRN out-data --delimiter=\\n --limit=10 --timeout=900 --scope $PROJECT_HRN
+```
+
+The command should return the following results:
+
+```
+Result for id 818bad2e-6d18-43ae-9396-86d9a8c9ab84: matched 4 points out of 4
+Result for id f319318f-a161-4e65-8017-db0588c5470b: matched 69 points out of 70
+Result for id 5a095919-49c1-48ef-8be0-d867d176170b: matched 6 points out of 6
+Result for id f99bca1a-18a8-4f3d-81df-7ae7742b68b1: matched 92 points out of 92
+Result for id 05aa970f-4222-4708-a2a4-3b20b5943d9c: matched 103 points out of 103
+Result for id 5f19487e-0390-458d-8e71-1b0d3c2c6050: matched 96 points out of 98
+Result for id e315d58c-f64a-42fe-928d-96851ad8c975: matched 7 points out of 7
+Result for id 4cddbdbc-152d-4c14-8c19-0deb077026a5: matched 199 points out of 199
+Result for id 6417cb50-267b-4ec3-8256-47d6ea661d1f: matched 69 points out of 70
+Result for id f1185134-9af1-4514-b3e3-dae7708f810f: matched 6 points out of 6
+Result for id bd69c6c6-4d0b-419d-9ae2-51fb0d7365c7: matched 72 points out of 72
 ```

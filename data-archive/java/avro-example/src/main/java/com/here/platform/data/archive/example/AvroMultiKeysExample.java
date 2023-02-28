@@ -22,17 +22,18 @@ import com.here.platform.dal.custom.MetadataName;
 import com.here.platform.dal.custom.MultiKeysUDF;
 import com.here.sdii.v3.SdiiCommon;
 import com.here.sdii.v3.SdiiMessage;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.Spliterators;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.*;
 import java.util.stream.StreamSupport;
+import org.apache.avro.Schema;
+import org.apache.avro.file.DataFileReader;
+import org.apache.avro.file.DataFileWriter;
+import org.apache.avro.protobuf.ProtobufData;
+import org.apache.avro.protobuf.ProtobufDatumReader;
+import org.apache.avro.protobuf.ProtobufDatumWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -118,10 +119,41 @@ public class AvroMultiKeysExample implements MultiKeysUDF {
                     }
                   })
               .iterator();
-      return AvroHelper.aggregateProtobufMessagesAsAvro(sdiiMessages, SdiiMessage.Message.class);
+      return aggregateProtobufMessagesAsAvro(sdiiMessages, SdiiMessage.Message.class);
     } catch (Exception e) {
       LOG.error("Aggregation errors....", e);
     }
     return null;
+  }
+
+  public static <V> byte[] aggregateProtobufMessagesAsAvro(Iterator<V> iterator, Class<V> cls)
+      throws Exception {
+    ByteArrayOutputStream os = new ByteArrayOutputStream();
+    asAvro(iterator, cls, os);
+    os.close();
+    return os.toByteArray();
+  }
+
+  public static <V> void asAvro(Iterator<V> iterator, Class<V> cls, OutputStream os)
+      throws Exception {
+    ProtobufDatumWriter<V> writer = new ProtobufDatumWriter<>(cls);
+    try (DataFileWriter<V> dataFileWriter = new DataFileWriter<>(writer)) {
+      Schema schema = ProtobufData.get().getSchema(cls);
+      dataFileWriter.create(schema, os);
+      while (iterator.hasNext()) {
+        dataFileWriter.append(iterator.next());
+      }
+    }
+  }
+
+  public static <V> List<V> fromFile(File file, Class<V> cls) throws IOException {
+    ProtobufDatumReader<V> reader = new ProtobufDatumReader<>(cls);
+    DataFileReader<V> dataFileReader = new DataFileReader<>(file, reader);
+    List<V> list = new LinkedList<>();
+    while (dataFileReader.hasNext()) {
+      list.add(dataFileReader.next());
+    }
+    dataFileReader.close();
+    return list;
   }
 }

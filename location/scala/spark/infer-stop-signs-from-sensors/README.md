@@ -66,7 +66,97 @@ For more details on how to set up your credentials, see [Identity & Access Manag
 
 For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html) tutorial.
 
-## Configure a Project
+## Build and Run the Compiler
+
+In the commands that follow, replace the variable placeholders with the following values:
+
+- `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
+- `$COVERAGE` is a two-letter code for country and region (in this case, `DE` for Germany or `CN` for China)
+- `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/local-pipeline-config.conf) or [HERE environment in China](./config/here-china/local-pipeline-config.conf).
+- `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/local-pipeline-config.conf) or [HERE environment in China](./config/here-china/local-pipeline-config.conf).
+
+> Note:
+> We recommend that you set values to variables, so that you can easily copy and execute the following commands.
+
+### Run the Application Locally
+
+#### Create a Local Output Catalog
+
+The catalog you need to create is used to store the results of the `Infer Stop Signs From Sensors` example.
+
+To run this compiler locally, use a local output catalog as described
+below. For more information about local catalogs, see
+[the SDK tutorial about local development and testing](https://developer.here.com/documentation/java-scala-dev/dev_guide/local-development-workflow/index.html)
+and [the OLP CLI documentation](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data-workflows.html).
+
+1. Use the [`olp local catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/catalog-commands.html#catalog-create)
+   command to create a local catalog.
+
+```bash
+olp local catalog create infer-stop-signs infer-stop-signs --summary "Output catalog for Infer Stop Signs From Sensors example" \
+            --description "Output catalog for Infer Stop Signs From Sensors example"
+```
+
+The local catalog will have the HRN `hrn:local:data:::infer-stop-signs`.
+
+2. Use the [`olp local catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/layer-commands.html#catalog-layer-add)
+   command to add one `versioned` layer to your catalog:
+
+```bash
+olp local catalog layer add hrn:local:data:::infer-stop-signs stop-signs stop-signs --versioned --summary "Layer for output partitions" \
+            --description "Layer for output partitions" --content-type=application/vnd.geo+json \
+            --partitioning=heretile:14 --coverage $COVERAGE
+```
+
+#### Run the Application from the Command Line
+
+First, we're going to run the example using a
+[Spark local environment](https://spark.apache.org/docs/latest/),
+suitable for local development and debugging.
+
+1. Compile and execute the example.
+
+For the HERE platform environment:
+
+```bash
+mvn compile exec:java \
+     -Dpipeline-config.file=config/here/local-pipeline-config.conf \
+     -Dpipeline-job.file=config/here/pipeline-job.conf \
+     -Dspark.master=local[2]
+```
+
+For the HERE platform environment for China:
+
+```
+mvn compile exec:java \
+     -Dpipeline-config.file=config/here-china/local-pipeline-config.conf \
+     -Dpipeline-job.file=config/here-china/pipeline-job.conf \
+     -Dspark.master=local[2]
+```
+
+In the command above:
+
+- `local-pipeline-config.conf` defines the `HRN`s of the input and output catalogs.
+- `pipeline-job.conf` defines the versions of the input and output catalogs.
+- `local[2]` defines the number of threads Spark will run in parallel to
+  process the batch.
+
+After one run, in the HERE platform environment you can inspect the local catalog with the OLP CLI:
+
+```
+olp local catalog inspect hrn:local:data:::infer-stop-signs
+```
+
+You should see the following result with stop signs visualized:
+
+![Local Data Inspector](images/stop-signs_output_layer.png)
+
+The `local inspect` command is not available in the HERE platform environment for China, but you can
+download partitions from the local catalog to manually inspect them.
+
+### Run this Application as a HERE Platform Pipeline
+
+#### Configure a Project
 
 To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html). A project is a collection of platform resources
 (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
@@ -88,9 +178,9 @@ The command returns the [HERE Resource Name (HRN)](https://developer.here.com/do
 
 For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
 
-## Create Output Catalog
+#### Create an Output Catalog
 
-The catalog you need to create is used to store the results of `Infer Stop Signs From Sensors` example.
+The catalog you need to create is used to store the results of the `Infer Stop Signs From Sensors` example.
 
 Use the [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
@@ -99,19 +189,6 @@ Use the [HERE platform portal](https://platform.here.com/) / [HERE platform port
 | stop-signs | versioned  | application/vnd.geo+json | heretile     | 14         | uncompressed     | DE or CN |
 
 Alternatively, you can use the OLP CLI to create the catalog and the corresponding layers.
-
-In the commands that follow replace the variable placeholders with the following values:
-
-- `$CATALOG_ID` is your output catalog's ID.
-- `$CATALOG_HRN` is your output catalog's `HRN` (returned by `olp catalog create`).
-- `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create`).
-- `$COVERAGE` is a two-letter code for country and region (in this case `DE` or `CN` for China)
-- `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
-- `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
-
-> #### Note
->
-> We recommend to set values to variables so that you can easily copy and execute the following commands.
 
 1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
    Make sure to note down the HRN returned by the following command for later use:
@@ -158,36 +235,7 @@ olp project resource link $PROJECT_HRN $INPUT_OPTIMIZED_MAP_CATALOG
 - For more details on project commands, see [Project Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html).
 - For instructions on how to link a resource to a project, see [Project Resource Link command](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link).
 
-## Local Run
-
-### Compile and Execute the Example
-
-```bash
-mvn compile exec:java \
-     -Dpipeline-config.file=$PATH_TO_CONFIG_FOLDER/pipeline-config.conf \
-     -Dpipeline-job.file=$PATH_TO_CONFIG_FOLDER/pipeline-job.conf \
-     -Dspark.master=local[2] \
-     -Dhere.platform.data-client.request-signer.credentials.here-account.here-token-scope=$PROJECT_HRN
-```
-
-In the command above:
-
-- `pipeline-config.conf` defines the `HRN`s of the input and output catalogs,
-- `pipeline-job.conf` defines the versions of the input and output catalogs,
-- `local[2]` defines the number of threads Spark will run in parallel to
-  process the batch.
-
-Inspect the partitions
-
-```bash
-olp catalog layer partition get $CATALOG_HRN stop-signs --all --output="target/stop-signs" --scope $PROJECT_HRN
-```
-
-## Run on the Platform
-
-The following steps will allow you to run the example on the platform via pipelines.
-
-### Generate a Fat JAR file
+#### Generate a Fat JAR file
 
 Generate a "fat jar" that contains all the dependencies along with the example
 
@@ -195,7 +243,7 @@ Generate a "fat jar" that contains all the dependencies along with the example
 mvn -Pplatform package
 ```
 
-### Deploy Fat JAR to a Pipeline
+#### Deploy Fat JAR to a Pipeline
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
@@ -232,7 +280,7 @@ olp pipeline version log level get $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PR
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job.conf" --scope $PROJECT_HRN
 ```
 
-### Inspect the Output Catalog
+#### Inspect the Output Catalog
 
 - Wait until the pipeline version terminates
 
