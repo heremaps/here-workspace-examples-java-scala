@@ -376,7 +376,7 @@ olp catalog layer add $INPUT_CATALOG_HRN \
         --stream \
         --summary "Parquet archiver input stream layer" \
         --description "Parquet archiver input stream layer" \
-        --content-type application/x-parquet \
+        --content-type application/octet-stream \
         --ttl 600000 \
         --scope $PROJECT_HRN
 ```

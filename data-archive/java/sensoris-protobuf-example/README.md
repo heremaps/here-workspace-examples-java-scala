@@ -117,7 +117,7 @@ command to add an `index` layer to your catalog:
 olp local catalog layer add hrn:local:data:::sensoris-protobuf-output-catalog \
         index index \
         --index \
-        --summary "Sensoris-protobuf archiver output stream layer" --description "Sensoris-protobuf archiver output stream layer" \
+        --summary "Sensoris-protobuf archiver output index layer" --description "Sensoris-protobuf archiver output index layer" \
         --index-definitions tileId:heretile:8 eventTime:timewindow:600000 \
         --content-type application/octet-stream \
         --ttl 7.days
@@ -426,7 +426,7 @@ command to add an `index` layer to your catalog:
 olp catalog layer add $OUTPUT_CATALOG_HRN \
         index index \
         --index \
-        --summary "Sensoris-protobuf archiver output stream layer" --description "Sensoris-protobuf archiver output stream layer" \
+        --summary "Sensoris-protobuf archiver output index layer" --description "Sensoris-protobuf archiver output index layer" \
         --index-definitions tileId:heretile:8 eventTime:timewindow:600000 \
         --content-type application/octet-stream \
         --ttl 7.days \
