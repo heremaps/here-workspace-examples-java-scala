@@ -24,8 +24,7 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.GraphExample
+sbt "runMain com.here.platform.example.location.scala.standalone.GraphExample"
 ```
 
 # Converting References from HERE Optimized Map for Location Library to HERE Map Content
@@ -44,8 +43,7 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.HereMapContentToOptimizedMapTranslationExample
+sbt "runMain com.here.platform.example.location.scala.standalone.HereMapContentToOptimizedMapTranslationExample"
 ```
 
 # Most Probable Path
@@ -73,8 +71,7 @@ To run the example, you need access to the following catalogs.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.MostProbablePathExample
+sbt "runMain com.here.platform.example.location.scala.standalone.MostProbablePathExample"
 ```
 
 # Path Matching Example
@@ -100,8 +97,7 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.PathMatcherExample
+sbt "runMain com.here.platform.example.location.scala.standalone.PathMatcherExample"
 ```
 
 # Path Matching with Restrictions
@@ -128,8 +124,7 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.PathMatcherWithCustomNetworkFilterExample
+sbt "runMain com.here.platform.example.location.scala.standalone.PathMatcherWithCustomNetworkFilterExample"
 ```
 
 # Point Matching Example
@@ -155,8 +150,7 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.PointMatcherExample
+sbt "runMain com.here.platform.example.location.scala.standalone.PointMatcherExample"
 ```
 
 # Functional Class for a Vertex
@@ -173,8 +167,7 @@ containing all these vertices colored by functional class.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.FunctionalClassExample
+sbt "runMain com.here.platform.example.location.scala.standalone.FunctionalClassExample"
 ```
 
 # Turn Restrictions
@@ -200,8 +193,7 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.TurnRestrictionsExample
+sbt "runMain com.here.platform.example.location.scala.standalone.TurnRestrictionsExample"
 ```
 
 # Generic Range Based Attributes
@@ -220,8 +212,7 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.OnTheFlyCompiledPropertyMapExample
+sbt "runMain com.here.platform.example.location.scala.standalone.OnTheFlyCompiledPropertyMapExample"
 ```
 
 # ADAS Curvature Attribute
@@ -241,8 +232,7 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.AdasCurvatureAttributeExample
+sbt "runMain com.here.platform.example.location.scala.standalone.AdasCurvatureAttributeExample"
 ```
 
 # Path Matching Sparse Probe Data
@@ -265,8 +255,7 @@ To run the example, you need access to the following catalog.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.SparsePathMatcherExample
+sbt "runMain com.here.platform.example.location.scala.standalone.SparsePathMatcherExample"
 ```
 
 # Converting References from TPEG2 to its Binary Representation
@@ -283,8 +272,7 @@ The example does not depend on map data.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.ConvertTpeg2ContainerExample
+sbt "runMain com.here.platform.example.location.scala.standalone.ConvertTpeg2ContainerExample"
 ```
 
 # Extracting TPEG2 Document
@@ -302,8 +290,7 @@ The example does not depend on map data.
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.ExtractSpecificTpeg2MessagesExample
+sbt "runMain com.here.platform.example.location.scala.standalone.ExtractSpecificTpeg2MessagesExample"
 ```
 
 # Creating and Resolving TMC Reference
@@ -325,8 +312,7 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.TmcCreateAndResolveExample
+sbt "runMain com.here.platform.example.location.scala.standalone.TmcCreateAndResolveExample"
 ```
 
 # Resolving TMC References in RTTI Message
@@ -351,8 +337,7 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.TmcResolveReferencesInRttiMessageExample
+sbt "runMain com.here.platform.example.location.scala.standalone.TmcResolveReferencesInRttiMessageExample"
 ```
 
 # Creating OpenLR Reference from Road Segments
@@ -371,8 +356,7 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.OlrCreateReferenceFromHmcSegmentsExample
+sbt "runMain com.here.platform.example.location.scala.standalone.OlrCreateReferenceFromHmcSegmentsExample"
 ```
 
 # Resolving OpenLR Reference from Road Segments
@@ -391,6 +375,5 @@ To run the example, you need access to the following catalog:
 To run the example locally, use the following commands:
 
 ```bash
-mvn --projects=:scala-standalone_2.12 compile exec:java \
-    -Dexec.mainClass=com.here.platform.example.location.scala.standalone.OlrResolveReferenceToHmcSegmentsExample
+sbt "runMain com.here.platform.example.location.scala.standalone.OlrResolveReferenceToHmcSegmentsExample"
 ```

@@ -119,7 +119,7 @@ suitable for local development and debugging.
 For the HERE platform environment:
 
 ```bash
-mvn compile exec:java \
+sbt run \
      -Dpipeline-config.file=config/here/local-pipeline-config.conf \
      -Dpipeline-job.file=config/here/pipeline-job.conf \
      -Dspark.master=local[2]
@@ -128,7 +128,7 @@ mvn compile exec:java \
 For the HERE platform environment for China:
 
 ```
-mvn compile exec:java \
+sbt run \
      -Dpipeline-config.file=config/here-china/local-pipeline-config.conf \
      -Dpipeline-job.file=config/here-china/pipeline-job.conf \
      -Dspark.master=local[2]
@@ -240,7 +240,7 @@ olp project resource link $PROJECT_HRN $INPUT_OPTIMIZED_MAP_CATALOG
 Generate a "fat jar" that contains all the dependencies along with the example
 
 ```bash
-mvn -Pplatform package
+sbt assembly
 ```
 
 #### Deploy Fat JAR to a Pipeline

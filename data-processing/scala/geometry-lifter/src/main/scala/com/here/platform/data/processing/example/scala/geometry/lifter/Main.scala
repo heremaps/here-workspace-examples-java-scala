@@ -20,9 +20,13 @@
 package com.here.platform.data.processing.example.scala.geometry.lifter
 
 import com.here.platform.data.processing.driver.config.CompleteConfig
-import com.here.platform.data.processing.driver.runner.pipeline.PipelineRunner
+import com.here.platform.data.processing.driver.runner.pipeline.{
+  PipelineRunner,
+  PipelineRunnerConfig
+}
 import com.here.platform.data.processing.driver.{Driver, DriverBuilder, DriverContext}
-import net.ceedubs.ficus.Ficus._ // import .as[]
+import com.here.platform.pipeline.CommandLineConfig
+import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._ // import value reader for case classes
 
 object Main extends PipelineRunner {

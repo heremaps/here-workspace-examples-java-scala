@@ -92,7 +92,7 @@ olp local catalog layer add hrn:local:data:::difftool-scala state state --versio
 To build the compiler, run the following command in the `heremapcontent-difftool` directory:
 
 ```bash
-mvn install
+sbt package install
 ```
 
 #### Run the Compiler from the Command Line
@@ -146,8 +146,7 @@ input catalog will be considered as newly added segments. Run the following comm
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.difftool.processor.Main \
+sbt run \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job-first.conf \
 -Dconfig.file=./config/here/local-application.conf \
@@ -157,8 +156,7 @@ mvn exec:java \
 For the HERE platform environment for China:
 
 ```
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.difftool.processor.Main \
+sbt run \
 -Dpipeline-config.file=./config/here-china/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here-china/pipeline-job-first.conf \
 -Dconfig.file=./config/here-china/local-application.conf \
@@ -172,8 +170,7 @@ the version specified in [`pipeline-job-second.conf`](config/here/pipeline-job-s
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.difftool.processor.Main \
+sbt run \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job-second.conf \
 -Dconfig.file=./config/here/local-application.conf \
@@ -183,8 +180,7 @@ mvn exec:java \
 For the HERE platform environment for China:
 
 ```
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.difftool.processor.Main \
+sbt run \
 -Dpipeline-config.file=./config/here-china/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here-china/pipeline-job-second.conf \
 -Dconfig.file=./config/here-china/local-application.conf \
@@ -320,11 +316,11 @@ want to change the behavior of the compiler.
 
 #### Generate a Fat JAR file
 
-Run the `mvn -Pplatform package` command in the `heremapcontent-difftool` directory to generate a
+Run the `sbt assembly` command in the `heremapcontent-difftool` directory to generate a
 fat JAR file to deploy the compiler to a pipeline.
 
 ```bash
-mvn -Pplatform package
+sbt assembly
 ```
 
 #### Deploy the Compiler to a Pipeline

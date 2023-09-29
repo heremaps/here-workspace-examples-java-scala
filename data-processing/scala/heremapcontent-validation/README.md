@@ -147,8 +147,7 @@ run the validation pipeline.
 For the HERE platform environment:
 
 ```bash
-mvn compile exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.validation.Main \
+sbt run \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job.conf \
 -Dconfig.file=./config/here/local-application.conf \
@@ -158,8 +157,7 @@ mvn compile exec:java \
 For the HERE platform China environment:
 
 ```
-mvn compile exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.validation.Main \
+sbt run \
 -Dpipeline-config.file=./config/here-china/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here-china/pipeline-job.conf \
 -Dconfig.file=./config/here-china/local-application.conf \
@@ -304,11 +302,11 @@ you want to change the behavior of the compiler.
 
 #### Generate a Fat JAR file:
 
-Run the `mvn -Pplatform package` command in the `heremapcontent-validation` directory
+Run the `sbt assembly` command in the `heremapcontent-validation` directory
 to generate a fat JAR file to deploy the compiler to a pipeline.
 
 ```bash
-mvn -Pplatform package
+sbt assembly
 ```
 
 #### Deploy the Compiler to a Pipeline:

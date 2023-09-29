@@ -111,8 +111,7 @@ directory to run the Geometry Lifter Compiler.
 For the HERE platform environment:
 
 ```bash
-mvn compile exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.geometry.lifter.Main \
+sbt run \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job.conf \
 -Dconfig.file=./config/here/local-application.conf \
@@ -122,8 +121,7 @@ mvn compile exec:java \
 For the HERE platform environment for China:
 
 ```
-mvn compile exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.geometry.lifter.Main \
+sbt run \
 -Dpipeline-config.file=./config/here-china/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here-china/pipeline-job.conf \
 -Dconfig.file=./config/here-china/local-application.conf \
@@ -249,11 +247,11 @@ you want to change the behavior of the compiler.
 
 #### Generate a Fat JAR file
 
-Run the `mvn -Pplatform package` command in the `geometry-lifter`
+Run the `sbt assembly` command in the `geometry-lifter`
 directory to generate a fat JAR file.
 
 ```bash
-mvn -Pplatform package
+sbt assembly
 ```
 
 #### Deploy the Compiler to a Pipeline

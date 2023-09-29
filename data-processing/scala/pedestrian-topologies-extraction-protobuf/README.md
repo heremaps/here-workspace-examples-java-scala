@@ -92,12 +92,20 @@ partitions in the layer. You can create and publish your own schemas using the
 For this example, we have pre-deployed a schema artifact for the
 [`pedestrian-topologies-extraction-protobuf/model`](../pedestrian-topologies-extraction-protobuf/model) project, so you do not have to.
 
-#### Build the Compiler
+#### Build the Output Data Schema
 
-To build the compiler, run the following command in the [`pedestrian-topologies-extraction-protobuf`](../pedestrian-topologies-extraction-protobuf) directory.
+To build the schema, run the following command in the [`pedestrian-topologies-extraction-protobuf/model`](../pedestrian-topologies-extraction-protobuf/model) directory.
 
 ```bash
 mvn install
+```
+
+#### Build the Compiler
+
+To build the compiler, run the following command in the [`pedestrian-topologies-extraction-protobuf/compiler`](../pedestrian-topologies-extraction-protobuf/compiler) directory.
+
+```bash
+sbt package
 ```
 
 #### Run the Compiler from the Command Line
@@ -132,8 +140,7 @@ to run the Pedestrian Topologies Compiler.
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.pedestrian.protobuf.Main \
+sbt run \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job.conf \
 -Dconfig.file=./config/here/local-application.conf \
@@ -143,8 +150,7 @@ mvn exec:java \
 For the HERE platform environment for China:
 
 ```
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.pedestrian.protobuf.Main \
+sbt run \
 -Dpipeline-config.file=./config/china-here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/china-here/pipeline-job.conf \
 -Dconfig.file=./config/china-here/local-application.conf \
@@ -268,11 +274,11 @@ you want to change the behavior of the compiler.
 
 #### Generate a Fat JAR file
 
-Run the `mvn -Pplatform package` command in the `pedestrian-topologies-extraction-protobuf/compiler`
+Run the `sbt assembly` command in the `pedestrian-topologies-extraction-protobuf/compiler`
 directory to generate a fat JAR file to deploy the compiler to a pipeline.
 
 ```bash
-mvn -Pplatform package
+sbt assembly
 ```
 
 #### Deploy the Compiler to a Pipeline

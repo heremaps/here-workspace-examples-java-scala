@@ -81,7 +81,7 @@ olp local catalog layer add hrn:local:data:::pedestrian-topologies-scala state s
 To build the compiler, run the following command in the [`pedestrian-topologies-extraction-geojson`](../pedestrian-topologies-extraction-geojson) directory:
 
 ```bash
-mvn install
+sbt package
 ```
 
 #### Run the Compiler from the Command Line
@@ -116,8 +116,7 @@ to run the Pedestrian Topologies Compiler.
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.pedestrian.geojson.Main \
+sbt run \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job.conf \
 -Dconfig.file=./config/here/local-application.conf \
@@ -127,8 +126,7 @@ mvn exec:java \
 For the HERE platform environment for China:
 
 ```
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.pedestrian.geojson.Main \
+sbt run \
 -Dpipeline-config.file=./config/china-here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/china-here/pipeline-job.conf \
 -Dconfig.file=./config/china-here/local-application.conf \
@@ -256,11 +254,11 @@ you want to change the behavior of the compiler.
 
 #### Generate a Fat JAR file
 
-Run the `mvn -Pplatform package` command in the `pedestrian-topologies-extraction-geojson` directory
+Run the `sbt assembly` command in the `pedestrian-topologies-extraction-geojson` directory
 to generate a fat JAR file to deploy the compiler to a pipeline.
 
 ```bash
-mvn -Pplatform package
+sbt assembly
 ```
 
 #### Deploy the Compiler to a Pipeline

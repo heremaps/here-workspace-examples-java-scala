@@ -93,10 +93,10 @@ olp local catalog layer add hrn:local:data:::stateful-compiler-scala state state
 
 #### Build the Compiler
 
-To build the compiler, run `mvn install` in the `stateful-nodecardinality-extraction` directory.
+To build the compiler, run `sbt package` in the `stateful-nodecardinality-extraction` directory.
 
 ```bash
-mvn install
+sbt package
 ```
 
 #### Run the Compiler from the Command Line
@@ -147,8 +147,7 @@ Finally, execute the following command in the
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.feedback.Main \
+sbt run \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job-first.conf \
 -Dconfig.file=./config/here/local-application.conf \
@@ -158,8 +157,7 @@ mvn exec:java \
 For the HERE platform environment for China:
 
 ```
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.feedback.Main \
+sbt run \
 -Dpipeline-config.file=./config/china-here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/china-here/pipeline-job-first.conf \
 -Dconfig.file=./config/china-here/local-application.conf \
@@ -172,8 +170,7 @@ To observe the behavior of the Stateful Processing Compiler, you have to run the
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.feedback.Main \
+sbt run \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job-second.conf \
 -Dconfig.file=./config/here/local-application.conf \
@@ -183,8 +180,7 @@ mvn exec:java \
 For the HERE platform environment for China:
 
 ```
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.scala.feedback.Main \
+sbt run \
 -Dpipeline-config.file=./config/china-here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/china-here/pipeline-job-second.conf \
 -Dconfig.file=./config/china-here/local-application.conf \
@@ -307,11 +303,11 @@ you want to change the behavior of the compiler.
 
 #### Generate a Fat JAR file
 
-Run the `mvn -Pplatform package` command in the `stateful-nodecardinality-extraction`
+Run the `sbt assembly` command in the `stateful-nodecardinality-extraction`
 directory to generate a fat JAR file to deploy the compiler to a pipeline.
 
 ```bash
-mvn -Pplatform package
+sbt assembly
 ```
 
 #### Deploy the Compiler to a Pipeline
