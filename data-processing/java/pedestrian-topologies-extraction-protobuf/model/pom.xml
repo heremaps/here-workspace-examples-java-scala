@@ -59,7 +59,7 @@
     <protoc.version>3.11.4</protoc.version>
     <scala.version>2.12.12</scala.version>
     <scala.compat.version>2.12</scala.compat.version>
-    <protobuf.version>3.11.4</protobuf.version>
+    <protobuf.version>3.16.3</protobuf.version>
     <here.plugin.version>2.1.18</here.plugin.version>
     <artifact.wagon.version>2.0.21</artifact.wagon.version>
   </properties>
