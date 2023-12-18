@@ -1,8 +1,9 @@
 import com.here.bom.Bom
 
 ThisBuild / organization := "com.here.platform.data.processing.example.scala.geometry.lifter"
-ThisBuild / version := "0.0.859"
+ThisBuild / version := "0.0.861"
 ThisBuild / scalaVersion := "2.12.18"
+ThisBuild / evictionErrorLevel := sbt.util.Level.Warn
 
 val organizationSettings: Seq[Setting[_]] = Seq(
   projectInfo := ModuleInfo(
@@ -24,7 +25,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.57.3"
+val sdkBomVersion = "2.58.2"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {

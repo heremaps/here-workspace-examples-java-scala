@@ -40,8 +40,7 @@ case class Dependencies(platformBom: Bom) {
     "com.here.platform.pipeline" %% "pipeline-interface" % platformBom,
     "com.typesafe.akka" %% "akka-actor" % platformBom,
     "org.apache.spark" %% "spark-core" % platformBom,
-    "org.apache.spark" %% "spark-sql" % platformBom,
-    "org.slf4j" % "slf4j-api" % platformBom
+    "org.apache.spark" %% "spark-sql" % platformBom
   )
 }
 

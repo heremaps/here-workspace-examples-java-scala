@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.index.compaction.batch</groupId>
     <artifactId>index-compaction-batch-protobuf-example</artifactId>
-    <version>0.0.859</version>
+    <version>0.0.861</version>
     <packaging>jar</packaging>
 
     <name>Index Compaction Batch Protobuf Example</name>
@@ -24,16 +24,16 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.57.3</tag>
+        <tag>2.58.2</tag>
     </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <sdk-bom.version>2.57.3</sdk-bom.version>
+        <sdk-bom.version>2.58.2</sdk-bom.version>
         <scala.compat.version>2.12</scala.compat.version>
-        <artifact.wagon.version>2.0.19</artifact.wagon.version>
+        <artifact.wagon.version>2.0.21</artifact.wagon.version>
 
         <junit.version>4.12</junit.version>
 
@@ -54,7 +54,7 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <!-- External Dependencies environment-batch-2.1.0 pom -->
+        <!-- External Dependencies environment-batch-3.0.0 pom -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
@@ -194,6 +194,11 @@
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-client-runtime</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
                     <groupId>org.apache.spark</groupId>
                     <artifactId>spark-core_${scala.compat.version}</artifactId>
                     <scope>compile</scope>
@@ -239,6 +244,11 @@
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
+                    <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-tags_2.12</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
                     <groupId>com.here.platform.data.client</groupId>
                     <artifactId>local-support_${scala.compat.version}</artifactId>
                     <scope>compile</scope>
@@ -252,18 +262,68 @@
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-api</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-core</artifactId>
                     <scope>runtime</scope>
                 </dependency>
                 <dependency>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                    <scope>runtime</scope>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-stdlib-jdk8</artifactId>
+                    <scope>compile</scope>
                 </dependency>
                 <dependency>
-                    <groupId>com.typesafe</groupId>
-                    <artifactId>config</artifactId>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>failureaccess</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.dropwizard.metrics</groupId>
+                    <artifactId>metrics-core</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.dropwizard.metrics</groupId>
+                    <artifactId>metrics-json</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.woodstox</groupId>
+                    <artifactId>woodstox-core</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.codehaus.woodstox</groupId>
+                    <artifactId>stax2-api</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-buffer</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-codec</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-common</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-handler</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-transport</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
@@ -272,19 +332,28 @@
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
-                    <groupId>com.esotericsoftware.kryo</groupId>
-                    <artifactId>kryo</artifactId>
+                    <groupId>com.esotericsoftware</groupId>
+                    <artifactId>kryo-shaded</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>javax.servlet-api</artifactId>
-                    <version>3.1.0</version>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-collections4</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.glassfish.jersey.containers</groupId>
-                    <artifactId>jersey-container-servlet</artifactId>
+                    <groupId>org.json4s</groupId>
+                    <artifactId>json4s-jackson_${scala.compat.version}</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.roaringbitmap</groupId>
+                    <artifactId>RoaringBitmap</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.arrow</groupId>
+                    <artifactId>arrow-vector</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
@@ -298,28 +367,13 @@
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.glassfish.jersey.core</groupId>
-                    <artifactId>jersey-client</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.glassfish.jersey.core</groupId>
-                    <artifactId>jersey-common</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>commons-configuration</groupId>
-                    <artifactId>commons-configuration</artifactId>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-configuration2</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>com.google.guava</groupId>
                     <artifactId>guava</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>commons-lang</groupId>
-                    <artifactId>commons-lang</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
@@ -343,18 +397,8 @@
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
-                    <groupId>com.fasterxml.jackson.module</groupId>
-                    <artifactId>jackson-module-paranamer</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-tags_2.12</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
                     <groupId>org.apache.xbean</groupId>
-                    <artifactId>xbean-asm6-shaded</artifactId>
+                    <artifactId>xbean-asm9-shaded</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>

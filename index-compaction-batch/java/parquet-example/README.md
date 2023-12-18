@@ -151,7 +151,7 @@ with such index fields as `ingestionTime:1594236600000`, `tileId:79963` and `eve
 
 ```bash
 olp local catalog layer partition put hrn:local:data:::compaction-parquet index \
-        --input src/main/resources/sampleData \
+        --input src/test/resources/sampleData \
         --index-fields timewindow:ingestionTime:1594236600000 heretile:tileId:79963 string:eventType:SignRecognition
 ```
 
@@ -425,7 +425,7 @@ Use the [`olp pipeline template create`](https://developer.here.com/documentatio
 
 ```bash
 olp pipeline template create $PIPELINE_TEMPLATE_NAME \
-    batch-3.0  \
+    batch-4.0  \
     $PATH_TO_JAR \
     com.here.platform.index.compaction.batch.Driver \
     --input-catalog-ids=source \
