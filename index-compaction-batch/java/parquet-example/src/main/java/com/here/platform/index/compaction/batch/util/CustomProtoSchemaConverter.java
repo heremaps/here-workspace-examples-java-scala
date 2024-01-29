@@ -18,7 +18,7 @@
  */
 
 /*
- * Copyright (C) 2019-2023 HERE Europe B.V.
+ * Copyright (C) 2019-2024 HERE Europe B.V.
  * SPDX-License-Identifier: Apache-2.0
  *
  * This file is based on commit f84938441be49c665595c936ac631c3e5f171bf9

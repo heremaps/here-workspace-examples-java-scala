@@ -30,12 +30,11 @@ In the commands that follow, replace the variable placeholders with the followin
 
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by the `olp catalog create` command).
-- `$HRN_PARTITION` is the platform environment you are in. Specify `here` unless you are
-  using the HERE platform environment in China, in which case specify `here-cn`.
+- `$HRN_PARTITION` is the platform environment you are in. The value should be `here`.
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
 - `$REALM` is the ID of your organization, also called a realm. Consult your platform
   invitation letter to learn your organization ID.
-- `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./compiler/config/here/pipeline-config.conf) or [HERE environment in China](./compiler/config/here-china/pipeline-config.conf)).
+- `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./compiler/config/here/pipeline-config.conf).
 
 ### Run the Compiler Locally
 
@@ -123,16 +122,14 @@ to define the location of a configuration file that contains the catalogs as wel
 of the catalogs, to read and write to.
 
 For local runs, a bounding box filter is provided in the
-[`config/here/local-application.conf`](compiler/config/here/local-application.conf) and [`config/here-china/local-application.conf`](compiler/config/here-china/local-application.conf) to
+[`config/here/local-application.conf`](compiler/config/here/local-application.conf) to
 limit the number of partitions to be processed. This speeds up the compilation process. In this
-example, we use a bounding box around the cities of Berlin and Beijing for the HERE platform and HERE
-platform in China environments, respectively. You can edit the bounding box coordinates to compile a different
+example, we use a bounding box around the cities of Berlin. You can edit the bounding box coordinates to compile a different
 partition of HERE Map Content. Make sure you update the layer coverage to reflect the different
 geographical region. In order to use this configuration file, you need to use the `-Dconfig.file`
 parameter.
 
-Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](compiler/config/here),
-for the HERE platform environment in China, use the files in the [`./config/here-china`](compiler/config/here-china) directory.
+Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](compiler/config/here).
 
 Finally, run the following command line in the [`pedestrian-topologies-extraction-protobuf/compiler`](../pedestrian-topologies-extraction-protobuf/compiler) directory
 to run the Pedestrian Topologies Compiler.
@@ -147,16 +144,6 @@ sbt run \
 -Dspark.master=local[*]
 ```
 
-For the HERE platform environment for China:
-
-```
-sbt run \
--Dpipeline-config.file=./config/china-here/local-pipeline-config.conf \
--Dpipeline-job.file=./config/china-here/pipeline-job.conf \
--Dconfig.file=./config/china-here/local-application.conf \
--Dspark.master=local[*]
-```
-
 After one run, in the HERE platform environment, you can inspect the local catalog with the OLP CLI:
 
 ```
@@ -166,9 +153,6 @@ olp local catalog inspect hrn:local:data:::pedestrian-topologies-scala
 You should see the list of partitions with pedestrian topologies:
 
 ![Local Data Inspector](img/result.png)
-
-The `local inspect` command is not available in the HERE platform environment for China, but you can
-download partitions from the local catalog to inspect them manually.
 
 ### Run this Compiler as a HERE Platform Pipeline
 
@@ -239,8 +223,7 @@ olp project resource link $PROJECT_HRN $CATALOG_RIB
 From the SDK examples directory, open the `data-processing/scala/pedestrian-topologies-extraction-protobuf` project in your
 Integrated Development Environment (IDE).
 
-The `compiler/config/here/pipeline-config.conf` (for the HERE platform environment) and
-`compiler/config/here-china/pipeline-config.conf` (for the HERE platform environment in China) files contain
+The `compiler/config/here/pipeline-config.conf` (for the HERE platform environment) file contains
 the permanent configuration of the data sources for the compiler.
 
 Pick the file that corresponds to your platform environment. For example, the pipeline configuration for
@@ -256,16 +239,15 @@ pipeline.config {
 ```
 
 Replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your pedestrian topologies catalog.
-To find the HRN, in the [HERE platform portal](https://platform.here.com/) or the
-[HERE platform portal in China](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
+To find the HRN, in the [HERE platform portal](https://platform.here.com/), navigate to your catalog. The HRN is displayed in the upper
 left corner of the page.
 
-The `compiler/config/here/pipeline-job.conf` and `compiler/config/here-china/pipeline-job.conf` files
-contain the compiler's run configuration.
+The `compiler/config/here/pipeline-job.conf` file
+contains the compiler's run configuration.
 
 In this file, modify `version = 1` to reflect the version of the HERE Map Content catalog you want
 to process. To find the version of the HERE Map Content catalog, in the
-[HERE platform portal](https://platform.here.com/) or the [HERE platform portal in China](https://platform.hereolp.cn/),
+[HERE platform portal](https://platform.here.com/),
 navigate to the HERE Map Content catalog, and view the current catalog's version in the Catalog info section.
 
 The remainder of the configuration is specified in the `application.conf` file that can be found in the
@@ -284,8 +266,7 @@ sbt assembly
 #### Deploy the Compiler to a Pipeline
 
 Once the previous command is finished, your JAR is then available at the `target` directory, and you
-can upload it using the [HERE pipeline UI](https://platform.here.com/pipelines) (the
-[HERE pipeline UI](https://platform.hereolp.cn/pipelines) in China)
+can upload it using the [HERE pipeline UI](https://platform.here.com/pipelines)
 or the [OLP CLI](https://developer.here.com/documentation/open-location-platform-cli).
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
@@ -294,8 +275,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 For this example, a bounding box filter is provided by `--runtime-config` parameter to
 limit the number of partitions to be processed. This speeds up the compilation process. In this
-example, we use a bounding box around the cities of Berlin and Beijing for the HERE platform and HERE
-platform in China environments respectively. You can edit the bounding box coordinates to compile a different
+example, we use a bounding box around the cities of Berlin. You can edit the bounding box coordinates to compile a different
 partition of HERE Map Content. Make sure you update the layer coverage to reflect the different
 geographical region.
 
@@ -326,12 +306,12 @@ olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \
 You do not have to specify the input catalog's version, unless you want
 to. The latest version will be automatically used.
 
-In the [HERE platform portal](https://platform.here.com/pipelines) / [HERE platform portal in China](https://platform.hereolp.cn/pipelines),
+In the [HERE platform portal](https://platform.here.com/pipelines),
 navigate to your pipeline to see its status.
 
 ## Verify the Output
 
-In the [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/),
+In the [HERE platform portal](https://platform.here.com/),
 select the **Data** tab and find your catalog.
 
 - Open the `pedestriansegments` layer and select the **Inspect** tab.

@@ -48,7 +48,7 @@ In the commands that follow, replace the variable placeholders with the followin
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by the `olp catalog create` command).
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
-- `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf) or [HERE environment in China](./config/here-china/pipeline-config.conf)).
+- `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf).
 
 > Note:
 > We recommend that you set values to variables, so that you can easily copy and execute the following commands.
@@ -115,14 +115,11 @@ job-specific versions of the catalogs, to read and write to.
 
 The example project provides two template job configurations, [`config/here/pipeline-job-first.conf`](config/here/pipeline-job-first.conf) and
 [`config/here/pipeline-job-second.conf`](config/here/pipeline-job-second.conf) for the first and second run of the pipeline, respectively.
-If you are using the HERE platform environment in China, use the files [`config/here-china/pipeline-job-first.conf`](config/here-china/pipeline-job-first.conf)
-and [`config/here-china/pipeline-job-second.conf`](config/here-china/pipeline-job-second.conf) instead.
 
 [`pipeline-job-first.conf`](config/here/pipeline-job-first.conf) specifies in the line `version = 1` that the version 1 of the input
 catalog should be processed in the first run. You can change this version to any number between 0
 and the most recent version of the HERE Map Content catalog. You can find the most recent version by
-opening the [HERE platform portal](https://platform.here.com/) or the
-[HERE platform portal in China](https://platform.hereolp.cn/) and navigating to the `HERE Map Content` catalog, and viewing the current catalog's version in the `Catalog info` section.
+opening the [HERE platform portal](https://platform.here.com/) and navigating to the `HERE Map Content` catalog, and viewing the current catalog's version in the `Catalog info` section.
 
 [`pipeline-job-second.conf`](config/here/pipeline-job-second.conf) specifies in the line `version = 2` that version 2 of the input
 catalog should be processed in the second run. You can change this version to any number that is
@@ -130,16 +127,14 @@ less than or equal to the most recent version of the HERE Map Content catalog an
 specified in [`config/here/pipeline-job-first.conf`](config/here/pipeline-job-first.conf).
 
 For local runs, a bounding box filter is provided in the
-[`config/here/local-application.conf`](config/here/local-application.conf) and [`config/here-china/local-application.conf`](config/here-china/local-application.conf) to
+[`config/here/local-application.conf`](config/here/local-application.conf) to
 limit the number of partitions to be processed. This speeds up the compilation process. In this
-example, we use a bounding box around the cities of Berlin and Beijing for the HERE platform and HERE
-platform in China environments, respectively. You can edit the bounding box coordinates to compile a different
+example, we use a bounding box around the cities of Berlin. You can edit the bounding box coordinates to compile a different
 partition of HERE Map Content. Make sure you update the layer coverage to reflect the different
 geographical region. In order to use this configuration file, you need to use the `-Dconfig.file`
 parameter.
 
-Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here),
-for the HERE platform environment in China, use the files in the [`./config/here-china`](config/here-china) directory.
+Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here).
 
 Finally, execute the following command in the
 [`stateful-nodecardinality-extraction`](../stateful-nodecardinality-extraction) directory to run The Stateful Processing Compiler.
@@ -151,16 +146,6 @@ sbt run \
 -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
 -Dpipeline-job.file=./config/here/pipeline-job-first.conf \
 -Dconfig.file=./config/here/local-application.conf \
--Dspark.master=local[*]
-```
-
-For the HERE platform environment for China:
-
-```
-sbt run \
--Dpipeline-config.file=./config/china-here/local-pipeline-config.conf \
--Dpipeline-job.file=./config/china-here/pipeline-job-first.conf \
--Dconfig.file=./config/china-here/local-application.conf \
 -Dspark.master=local[*]
 ```
 
@@ -177,16 +162,6 @@ sbt run \
 -Dspark.master=local[*]
 ```
 
-For the HERE platform environment for China:
-
-```
-sbt run \
--Dpipeline-config.file=./config/china-here/local-pipeline-config.conf \
--Dpipeline-job.file=./config/china-here/pipeline-job-second.conf \
--Dconfig.file=./config/china-here/local-application.conf \
--Dspark.master=local[*]
-```
-
 After the second run, in the HERE platform environment, you can inspect the local catalog with the OLP CLI:
 
 ```
@@ -198,16 +173,13 @@ The field `updatesCount` will be `1` for those partitions that did not change du
 
 ![Local Data Inspector](img/result.png)
 
-The `local inspect` command is not available in the HERE platform environment for China, but you can
-download partitions from the local catalog to inspect them manually.
-
 ### Run this Compiler as a HERE Platform Pipeline
 
 #### Configure a Project
 
 To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html). A project is a collection of platform resources
 (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
-[HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/).
+[HERE platform portal](https://platform.here.com/).
 
 Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
 
@@ -270,8 +242,7 @@ olp project resource link $PROJECT_HRN $CATALOG_RIB
 From the SDK examples directory, open the `data-processing/scala/stateful-nodecardinality-extraction` project in
 your Integrated Development Environment (IDE).
 
-The `config/here/pipeline-config.conf` (for the HERE platform environment) and
-`config/here-china/pipeline-config.conf` (for the HERE platform environment in China) files contain
+The `config/here/pipeline-config.conf` (for the HERE platform environment) file contains
 the permanent configuration of the data sources for the compiler.
 
 Pick the file that corresponds to your platform environemnt. For example, the pipeline configuration for
@@ -287,15 +258,14 @@ pipeline.config {
 ```
 
 Replace `YOUR_OUTPUT_CATALOG_HRN` with the HRN of your nodecardinality catalog.
-To find the HRN, in the [HERE platform portal](https://platform.here.com/) or the
-[HERE platform portal in China](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
+To find the HRN, in the [HERE platform portal](https://platform.here.com/), navigate to your catalog. The HRN is displayed in the upper
 left corner of the page.
 
 The `config/here/pipeline-job-first.conf` and `config/here/pipeline-second.conf` files contain the compiler's run
 configuration and point to two different versions of the HERE Map Content Catalog.
 
-To find the latest version of the HERE Map Content catalog, in the [HERE platform portal](https://platform.here.com/)
-or the [HERE platform portal in China](https://platform.hereolp.cn/), navigate to the HERE Map Content catalog, and view the current catalog's version in the Catalog info section.
+To find the latest version of the HERE Map Content catalog, in the [HERE platform portal](https://platform.here.com/),
+navigate to the HERE Map Content catalog, and view the current catalog's version in the Catalog info section.
 
 The remainder of the configuration is specified in the `application.conf` file that can be found in the
 `src/main/resources` directory of the compiler project. However, you do not have to modify it unless
@@ -313,8 +283,7 @@ sbt assembly
 #### Deploy the Compiler to a Pipeline
 
 Once the previous command is finished, your JAR is then available at the `target` directory, and you
-can upload it using the [HERE pipeline UI](https://platform.here.com/pipelines) (the
-[HERE pipeline UI](https://platform.hereolp.cn/pipelines) in China)
+can upload it using the [HERE pipeline UI](https://platform.here.com/pipelines)
 or the [OLP CLI](https://developer.here.com/documentation/open-location-platform-cli).
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
@@ -323,8 +292,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 For this example, a bounding box filter is provided by `--runtime-config` parameter to
 limit the number of partitions to be processed. This speeds up the compilation process. In this
-example, we use a bounding box around the cities of Berlin and Beijing for the HERE platform and HERE
-platform in China environments respectively. You can edit the bounding box coordinates to compile a different
+example, we use a bounding box around the cities of Berlin. You can edit the bounding box coordinates to compile a different
 partition of HERE Map Content. Make sure you update the layer coverage to reflect the different
 geographical region.
 
@@ -355,12 +323,12 @@ olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \
 You do not have to specify the input catalog's version, unless you want
 to. The latest version will be automatically used.
 
-In the [HERE platform portal](https://platform.here.com/pipelines) / [HERE platform portal in China](https://platform.hereolp.cn/pipelines),
+In the [HERE platform portal](https://platform.here.com/pipelines),
 navigate to your pipeline to see its status.
 
 ## Verify the Output
 
-In the [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/),
+In the [HERE platform portal](https://platform.here.com/),
 select the **Data** tab and find your catalog.
 
 1. Open the `nodecardinality-count` layer and select the **Inspect** tab. Verify that partitions

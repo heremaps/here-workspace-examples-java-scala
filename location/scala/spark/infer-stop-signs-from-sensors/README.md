@@ -50,30 +50,34 @@ examples.
 To run the example, you need access to the following catalogs:
 
 - [`HERE Optimized Map for Location Library`](https://platform.here.com/data/hrn:here:data::olp-here:here-optimized-map-for-location-library-2)
-  or China specific [`HERE Optimized Map for Location Library`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:here-optimized-map-for-location-library-china-2)
-  catalog
 - [`HERE Sample SDII Messages - Berlin`](https://platform.here.com/data/hrn:here:data::olp-here:olp-sdii-sample-berlin-2)
-  or [`HERE Sample SDII Messages - China`](https://platform.hereolp.cn/data/hrn:here-cn:data::olp-cn-here:sample-data)
 
 ## Get Your Credentials
 
 To run this example, you need two sets of credentials:
 
-- **Platform credentials:** To get access to platform data and resources, including HERE Map Content data for your pipeline input.
-- **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
+- **Platform credentials:** To get access to platform data and resources, including HERE Map Content data for your
+  pipeline input.
+- **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your
+  environment.
 
-For more details on how to set up your credentials, see [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
+For more details on how to set up your credentials,
+see [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
-For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html) tutorial.
+For more details on how to verify that your platform credentials are configured correctly, see
+the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html)
+tutorial.
 
 ## Build and Run the Compiler
 
 In the commands that follow, replace the variable placeholders with the following values:
 
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
-- `$COVERAGE` is a two-letter code for country and region (in this case, `DE` for Germany or `CN` for China)
-- `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/local-pipeline-config.conf) or [HERE environment in China](./config/here-china/local-pipeline-config.conf).
-- `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline configuration ([HERE environment](./config/here/local-pipeline-config.conf) or [HERE environment in China](./config/here-china/local-pipeline-config.conf).
+- `$COVERAGE` is a two-letter code for country and region (in this case, `DE` for Germany)
+- `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline
+  configuration ([HERE environment](./config/here/local-pipeline-config.conf).
+- `$INPUT_OPTIMIZED_MAP_CATALOG` is the HRN of the public _optimized-map-catalog_ catalog in your pipeline
+  configuration ([HERE environment](./config/here/local-pipeline-config.conf).
 
 > Note:
 > We recommend that you set values to variables, so that you can easily copy and execute the following commands.
@@ -89,7 +93,8 @@ below. For more information about local catalogs, see
 [the SDK tutorial about local development and testing](https://developer.here.com/documentation/java-scala-dev/dev_guide/local-development-workflow/index.html)
 and [the OLP CLI documentation](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data-workflows.html).
 
-1. Use the [`olp local catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/catalog-commands.html#catalog-create)
+1. Use
+   the [`olp local catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/catalog-commands.html#catalog-create)
    command to create a local catalog.
 
 ```bash
@@ -99,7 +104,8 @@ olp local catalog create infer-stop-signs infer-stop-signs --summary "Output cat
 
 The local catalog will have the HRN `hrn:local:data:::infer-stop-signs`.
 
-2. Use the [`olp local catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/layer-commands.html#catalog-layer-add)
+2. Use
+   the [`olp local catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/layer-commands.html#catalog-layer-add)
    command to add one `versioned` layer to your catalog:
 
 ```bash
@@ -125,15 +131,6 @@ sbt run \
      -Dspark.master=local[2]
 ```
 
-For the HERE platform environment for China:
-
-```
-sbt run \
-     -Dpipeline-config.file=config/here-china/local-pipeline-config.conf \
-     -Dpipeline-job.file=config/here-china/pipeline-job.conf \
-     -Dspark.master=local[2]
-```
-
 In the command above:
 
 - `local-pipeline-config.conf` defines the `HRN`s of the input and output catalogs.
@@ -151,46 +148,57 @@ You should see the following result with stop signs visualized:
 
 ![Local Data Inspector](images/stop-signs_output_layer.png)
 
-The `local inspect` command is not available in the HERE platform environment for China, but you can
-download partitions from the local catalog to manually inspect them.
-
 ### Run this Application as a HERE Platform Pipeline
 
 #### Configure a Project
 
-To follow this example, you will need a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html). A project is a collection of platform resources
+To follow this example, you will need
+a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html).
+A project is a collection of platform resources
 (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
-[HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/).
+[HERE platform portal](https://platform.here.com/).
 
-Alternatively, use the OLP CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project) command to create the project:
+Alternatively, use the OLP
+CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project)
+command to create the project:
 
 ```bash
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your new project. Note down this HRN as you will need it later in this tutorial.
+The command returns
+the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your
+new project. Note down this HRN as you will need it later in this tutorial.
 
 > #### Note
 >
 > You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
-> default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
+> default Project_ for Apps chapter of
+> the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
 
-For more information on how to work with projects, see the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html) tutorial.
+For more information on how to work with projects, see
+the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html)
+tutorial.
 
 #### Create an Output Catalog
 
 The catalog you need to create is used to store the results of the `Infer Stop Signs From Sensors` example.
 
-Use the [HERE platform portal](https://platform.here.com/) / [HERE platform portal in China](https://platform.hereolp.cn/) to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html) in your project and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
+Use the [HERE platform portal](https://platform.here.com/)
+to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html)
+in your project
+and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
 
 | Layer ID   | Layer Type | Content Type             | Partitioning | Zoom Level | Content Encoding | Coverage |
 | ---------- | ---------- | ------------------------ | ------------ | ---------- | ---------------- | -------- |
-| stop-signs | versioned  | application/vnd.geo+json | heretile     | 14         | uncompressed     | DE or CN |
+| stop-signs | versioned  | application/vnd.geo+json | heretile     | 14         | uncompressed     | DE       |
 
 Alternatively, you can use the OLP CLI to create the catalog and the corresponding layers.
 
-1. Use the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
+1. Use
+   the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create)
+   command to create the catalog.
    Make sure to note down the HRN returned by the following command for later use:
 
 ```bash
@@ -199,7 +207,9 @@ olp catalog create $CATALOG_ID $CATALOG_ID --summary "Output catalog for Infer S
             --scope $PROJECT_HRN
 ```
 
-2. Use the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add) command to add two versioned layers to your catalog:
+2. Use
+   the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add)
+   command to add two versioned layers to your catalog:
 
 ```bash
 olp catalog layer add $CATALOG_HRN stop-signs stop-signs --versioned --summary "Layer for output partitions" \
@@ -214,26 +224,33 @@ olp catalog layer add $CATALOG_HRN stop-signs stop-signs --versioned --summary "
 
 3. Update the output catalog HRN in the pipeline-config.conf file
 
-The `config/here/pipeline-config.conf` (for the HERE platform environment) and
-`config/here-china/pipeline-config.conf` (for the HERE platform environment in China) files contain
+The `config/here/pipeline-config.conf` (for the HERE platform environment) file contains
 the permanent configuration of the data sources for the example.
 
 Pick the file that corresponds to your platform environment and replace `YOUR_OUTPUT_CATALOG_HRN` placeholder
 with the HRN of your Stream Path Matcher catalog.
-To find the HRN, in the [HERE platform portal](https://platform.here.com/) or the [HERE platform portal in China](https://platform.hereolp.cn/), navigate to your catalog. The HRN is displayed in the upper
+To find the HRN, in the [HERE platform portal](https://platform.here.com/), navigate to your catalog. The HRN is
+displayed in the upper
 left corner of the page.
 
-4. Use the [`olp project resource link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link) command to link the _HERE Sample SDII Messages - Berlin_ and _HERE Optimized Map for Location Library_ catalog to your project.
+4. Use
+   the [`olp project resource link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link)
+   command to link the _HERE Sample SDII Messages - Berlin_ and _HERE Optimized Map for Location Library_ catalog to
+   your project.
 
 ```bash
 olp project resource link $PROJECT_HRN $INPUT_SDII_CATALOG
 olp project resource link $PROJECT_HRN $INPUT_OPTIMIZED_MAP_CATALOG
 ```
 
-- For more details on catalog commands, see [Catalog Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html).
-- For more details on layer commands, see [Layer Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html).
-- For more details on project commands, see [Project Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html).
-- For instructions on how to link a resource to a project, see [Project Resource Link command](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link).
+- For more details on catalog commands,
+  see [Catalog Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html).
+- For more details on layer commands,
+  see [Layer Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html).
+- For more details on project commands,
+  see [Project Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html).
+- For instructions on how to link a resource to a project,
+  see [Project Resource Link command](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link).
 
 #### Generate a Fat JAR file
 
@@ -247,7 +264,8 @@ sbt assembly
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
-1. [Create](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline-workflows.html) pipeline components:
+1. [Create](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline-workflows.html)
+   pipeline components:
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
@@ -274,7 +292,8 @@ If the operation is successful, you should be able to see the log level you just
 olp pipeline version log level get $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
 ```
 
-2. [Activate](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-activate) the pipeline version:
+2. [Activate](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-activate)
+   the pipeline version:
 
 ```bash
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --input-catalogs "$PATH_TO_CONFIG_FOLDER/pipeline-job.conf" --scope $PROJECT_HRN

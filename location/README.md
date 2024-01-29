@@ -29,8 +29,7 @@ _Location Library_ examples.
 
 The examples require you to create catalogs and layers in these catalogs. For
 instructions on how to create layers, see the related section in the
-[Data User Guide](https://developer.here.com/documentation/data-user-guide/portal/layer-creating.html)
-or the [China Data User Guide](https://developer.here.com/cn/documentation/data-user-guide/portal/layer-creating.html).
+[Data User Guide](https://developer.here.com/documentation/data-user-guide/portal/layer-creating.html).
 
 ### Access to Catalogs
 
@@ -42,13 +41,12 @@ a file containing your credentials on your computer. For more information, see t
 
 If you are running the examples in a pipeline on the platform, you also have to
 share the catalogs with your group so that the examples can access the data. You
-can get this group ID on your [Profile](https://platform.here.com/profile/)
-or your [China Profile](https://platform.hereolp.cn/profile/) page.
+can get this group ID on your [Profile](https://platform.here.com/profile/).
 
 ### Run Pipelines on the Platform
 
 To create a pipeline, you need to provide a group ID. You can get this group ID
-on your [Profile](https://platform.here.com/profile/) or your [China Profile](https://platform.hereolp.cn/profile/) page.
+on your [Profile](https://platform.here.com/profile/).
 
 Note that your app must be part of that group. If you or your app do not belong
 to a group, ask the administrator for your team or organization to assign you or
@@ -59,8 +57,7 @@ your app to a group.
 The creation of platform resources (catalogs, pipelines, etc.) is conveniently
 achievable by means of the OLP Command Line Interface,
 see
-[OLP CLI](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html) or
-[OLP China CLI](https://developer.here.com/cn/documentation/open-location-platform-cli/user_guide/index.html).
+[OLP CLI](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html).
 
 Examples documentation only refers to the `olp` command line tool. If you are on
 Windows, always replace `olp` with `olp.bat`.
@@ -85,8 +82,7 @@ Make sure that you have followed the instructions on how to
 You probably need to share your catalog, for example, with the HERE
 platform group you are part of or app that you have credentials for. For more
 information, see the platform documentation on how to
-[Share a Catalog](https://developer.here.com/documentation/data-user-guide/portal/catalog-sharing.html) or
-[Share a China Catalog](https://developer.here.com/cn/documentation/data-user-guide/portal/catalog-sharing.html).
+[Share a Catalog](https://developer.here.com/documentation/data-user-guide/portal/catalog-sharing.html).
 
 ### I get `com.typesafe.config.ConfigException$Missing: No configuration setting found for key 'here.token'`
 
