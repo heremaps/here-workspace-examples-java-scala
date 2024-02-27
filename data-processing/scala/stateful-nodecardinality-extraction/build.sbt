@@ -1,7 +1,7 @@
 import com.here.bom.Bom
 
 ThisBuild / organization := "com.here.platform.data.processing.example.scala"
-ThisBuild / version := "0.0.865"
+ThisBuild / version := "0.0.869"
 ThisBuild / scalaVersion := "2.12.18"
 ThisBuild / evictionErrorLevel := sbt.util.Level.Warn
 
@@ -25,7 +25,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.59.2"
+val sdkBomVersion = "2.60.3"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {
