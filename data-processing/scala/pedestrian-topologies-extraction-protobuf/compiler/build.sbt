@@ -1,7 +1,7 @@
 import com.here.bom.Bom
 
 ThisBuild / organization := "com.here.platform.data.processing.example.scala.pedestrian.protobuf"
-ThisBuild / version := "0.0.869"
+ThisBuild / version := "0.0.874"
 ThisBuild / scalaVersion := "2.12.18"
 ThisBuild / evictionErrorLevel := sbt.util.Level.Warn
 val organizationSettings: Seq[Setting[_]] = Seq(
@@ -24,7 +24,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.60.3"
+val sdkBomVersion = "2.61.5"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {
