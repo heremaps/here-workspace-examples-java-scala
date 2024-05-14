@@ -1,8 +1,0 @@
-#
-# Marker file to indicate this is a schema project
-#
-name: ${project.name}
-summary: ${project.description}
-
-# Set this to false if the schema is meant only for use as a component of other schemas
-layerSchema: true

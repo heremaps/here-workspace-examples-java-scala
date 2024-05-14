@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+        <head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          <title>HERE Data SDK - Scala API references  - com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi</title>
+          <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi">
+          <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi">
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+          
+      
+      <link href="../../../../../../../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css">
+      <script type="text/javascript" src="../../../../../../../../../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../../../../../../../../../lib/jquery.panzoom.min.js"></script>
+      <script type="text/javascript" src="../../../../../../../../../../../lib/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript" src="../../../../../../../../../../../lib/index.js"></script>
+      <script type="text/javascript" src="../../../../../../../../../../../index.js"></script>
+      <script type="text/javascript" src="../../../../../../../../../../../lib/scheduler.js"></script>
+      <script type="text/javascript" src="../../../../../../../../../../../lib/template.js"></script>
+      
+      <script type="text/javascript">
+        /* this variable can be used by the JS to determine the path to the root document */
+        var toRoot = '../../../../../../../../../../../';
+      </script>
+    
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.775 API Reference Scala"><meta name="DC.Document.Id" content="61e0e69a-295b-47ee-9d52-7eae9aa76a8c"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.775"><meta name="DC.Creation.Date" content="2024-04-17T11:22:09+00:00"></head>
+        <body>
+      <div id="search">
+        <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
+        <span class="close-results"><span class="left">&lt;</span> Back</span>
+        <div id="textfilter">
+          <span class="input">
+            <input autocapitalize="none" placeholder="Search" id="index-input" type="text" accesskey="/">
+            <i class="clear material-icons"></i>
+            <i id="search-icon" class="material-icons"></i>
+          </span>
+        </div>
+    </div>
+      <div id="search-results">
+        <div id="search-progress">
+          <div id="progress-fill"></div>
+        </div>
+        <div id="results-content">
+          <div id="entity-results"></div>
+          <div id="member-results"></div>
+        </div>
+      </div>
+      <div id="content-scroll-container" style="-webkit-overflow-scrolling: touch;">
+        <div id="content-container" style="-webkit-overflow-scrolling: touch;">
+          <div id="subpackage-spacer">
+            <div id="packages">
+              <h1>Packages</h1>
+              <ul>
+                <li name="_root_.root" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="_root_"></a><a id="root:_root_"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../../../../../../index.html"><span class="name">root</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="_root_.com" visbl="pub" class="indented1 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="com"></a><a id="com:com"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../../../../../index.html"><span class="name">com</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="com.here" visbl="pub" class="indented2 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="here"></a><a id="here:here"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../../../../index.html"><span class="name">here</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../../../../../index.html" class="extype" name="com">com</a></dd></dl></div>
+    </li><li name="com.here.platform" visbl="pub" class="indented3 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="platform"></a><a id="platform:platform"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../../../index.html"><span class="name">platform</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../../../../index.html" class="extype" name="com.here">here</a></dd></dl></div>
+    </li><li name="com.here.platform.data" visbl="pub" class="indented4 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="data"></a><a id="data:data"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../../index.html"><span class="name">data</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../../../index.html" class="extype" name="com.here.platform">platform</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client" visbl="pub" class="indented5 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="client"></a><a id="client:client"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../index.html"><span class="name">client</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../../index.html" class="extype" name="com.here.platform.data">data</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base" visbl="pub" class="indented6 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="base"></a><a id="base:base"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../index.html"><span class="name">base</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../index.html" class="extype" name="com.here.platform.data.client">client</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols" visbl="pub" class="indented7 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="ols"></a><a id="ols:ols"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../index.html"><span class="name">ols</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../index.html" class="extype" name="com.here.platform.data.client.base">base</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated" visbl="pub" class="indented8 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="generated"></a><a id="generated:generated"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../index.html"><span class="name">generated</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../index.html" class="extype" name="com.here.platform.data.client.base.ols">ols</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl" visbl="pub" class="indented9 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="scaladsl"></a><a id="scaladsl:scaladsl"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../index.html"><span class="name">scaladsl</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="com.here.platform.data.client.base.ols.generated">generated</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api" visbl="pub" class="indented10 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="api"></a><a id="api:api"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../index.html"><span class="name">api</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl">scaladsl</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search" visbl="pub" class="indented11 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="search"></a><a id="search:search"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="index.html"><span class="name">search</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.api">api</a></dd></dl></div>
+    </li><li class="current-entities indented11">
+                        <a class="object" href="APIInformationApi%24.html" title=""></a>
+                        <a class="class" href="APIInformationApi.html" title=""></a>
+                        <a href="APIInformationApi.html" title="">APIInformationApi</a>
+                      </li><li class="current-entities indented11">
+                        <a class="object" href="CustomizationManagementApi%24.html" title=""></a>
+                        <a class="class" href="" title=""></a>
+                        <a href="" title="">CustomizationManagementApi</a>
+                      </li><li class="current-entities indented11">
+                        <a class="object" href="CustomizationTypeMetadataApi%24.html" title=""></a>
+                        <a class="class" href="CustomizationTypeMetadataApi.html" title=""></a>
+                        <a href="CustomizationTypeMetadataApi.html" title="">CustomizationTypeMetadataApi</a>
+                      </li><li class="current-entities indented11">
+                        <a class="object" href="DataIngestionApi%24.html" title=""></a>
+                        <a class="class" href="DataIngestionApi.html" title=""></a>
+                        <a href="DataIngestionApi.html" title="">DataIngestionApi</a>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div id="content">
+            
+      <div id="definition">
+        <a href="CustomizationManagementApi%24.html" title="See companion object"><div class="big-circle class-companion-object">c</div></a>
+        <p id="owner"><a href="../../../../../../../../../../index.html" class="extype" name="com">com</a>.<a href="../../../../../../../../../index.html" class="extype" name="com.here">here</a>.<a href="../../../../../../../../index.html" class="extype" name="com.here.platform">platform</a>.<a href="../../../../../../../index.html" class="extype" name="com.here.platform.data">data</a>.<a href="../../../../../../index.html" class="extype" name="com.here.platform.data.client">client</a>.<a href="../../../../../index.html" class="extype" name="com.here.platform.data.client.base">base</a>.<a href="../../../../index.html" class="extype" name="com.here.platform.data.client.base.ols">ols</a>.<a href="../../../index.html" class="extype" name="com.here.platform.data.client.base.ols.generated">generated</a>.<a href="../../index.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl">scaladsl</a>.<a href="../index.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.api">api</a>.<a href="index.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search">search</a></p>
+        <h1><a href="CustomizationManagementApi%24.html" title="See companion object">CustomizationManagementApi</a><span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span></h1>
+        <h3><span class="morelinks"><div>
+            Companion <a href="CustomizationManagementApi%24.html" title="See companion object">object CustomizationManagementApi</a>
+          </div></span></h3>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">CustomizationManagementApi</span><span class="result"> extends <span class="extype" name="com.here.platform.data.client.base.LookupScalaApi">LookupScalaApi</span></span>
+      </span>
+      </h4>
+
+      
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <span class="toggle">
+            Linear Supertypes
+          </span>
+          <div class="superTypes hiddenContent"><span class="extype" name="com.here.platform.data.client.base.LookupScalaApi">LookupScalaApi</span>, <a href="../../../../../ScalaApi.html" class="extype" name="com.here.platform.data.client.base.ScalaApi">ScalaApi</a>, <a href="../../../../../Api.html" class="extype" name="com.here.platform.data.client.base.Api">Api</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div class="toggle"></div>
+        <div id="memberfilter">
+          <i class="material-icons arrow"></i>
+          <span class="input">
+            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/">
+          </span>
+          <i class="clear material-icons"></i>
+        </div>
+        <div id="filterby">
+          <div id="order">
+            <span class="filtertype">Ordering</span>
+            <ol>
+              
+              <li class="alpha in"><span>Alphabetic</span></li>
+              <li class="inherit out"><span>By Inheritance</span></li>
+            </ol>
+          </div>
+          <div class="ancestors">
+                  <span class="filtertype">Inherited<br>
+                  </span>
+                  <ol id="linearization">
+                    <li class="in" name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi"><span>CustomizationManagementApi</span></li><li class="in" name="com.here.platform.data.client.base.LookupScalaApi"><span>LookupScalaApi</span></li><li class="in" name="com.here.platform.data.client.base.ScalaApi"><span>ScalaApi</span></li><li class="in" name="com.here.platform.data.client.base.Api"><span>Api</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  </ol>
+                </div><div class="ancestors">
+              <span class="filtertype"></span>
+              <ol>
+                <li class="hideall out"><span>Hide All</span></li>
+                <li class="showall in"><span>Show All</span></li>
+              </ol>
+            </div>
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(executor:com.here.platform.data.client.base.ApiRequestExecutor,apiConfiguration:com.here.platform.data.client.base.http.settings.ApiConfiguration,commonSettings:com.here.platform.data.client.base.common.CommonSettings):com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi"></a><a id="&lt;init&gt;:CustomizationManagementApi"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#&lt;init&gt;(executor:com.here.platform.data.client.base.ApiRequestExecutor,apiConfiguration:com.here.platform.data.client.base.http.settings.ApiConfiguration,commonSettings:com.here.platform.data.client.base.common.CommonSettings):com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">CustomizationManagementApi</span><span class="params">(<span name="executor">executor: <a href="../../../../../ApiRequestExecutor.html" class="extype" name="com.here.platform.data.client.base.ApiRequestExecutor">ApiRequestExecutor</a></span>, <span name="apiConfiguration">apiConfiguration: <a href="../../../../../http/settings/ApiConfiguration.html" class="extype" name="com.here.platform.data.client.base.http.settings.ApiConfiguration">ApiConfiguration</a></span>, <span name="commonSettings">commonSettings: <span class="extype" name="com.here.platform.data.client.base.common.CommonSettings">CommonSettings</span></span>)</span>
+      </span>
+      
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        <div class="values members">
+              <h3>Value Members</h3>
+              <ol>
+                <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#!=(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html###():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#==(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#asInstanceOf%5BT0%5D:T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="clone():Object"></a><a id="clone():AnyRef"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#clone():Object" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi#createSearchCustomization" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="createSearchCustomization(inlineObject:com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject,xRequestID:Option[String])(implicitinlineObjectBodySerializer:com.here.platform.data.client.base.BodySerializer[com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject]):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.ols.generated.scaladsl.model.search.CustomizationCreateOrUpdateResponse]"></a><a id="createSearchCustomization(InlineObject,Option[String])(BodySerializer[InlineObject]):ApiRequest[CustomizationCreateOrUpdateResponse]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#createSearchCustomization(inlineObject:com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject,xRequestID:Option%5BString%5D)(implicitinlineObjectBodySerializer:com.here.platform.data.client.base.BodySerializer%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject%5D):com.here.platform.data.client.base.ApiRequest%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.search.CustomizationCreateOrUpdateResponse%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createSearchCustomization</span><span class="params">(<span name="inlineObject">inlineObject: <a href="../../model/search/InlineObject.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject">InlineObject</a></span>, <span name="xRequestID">xRequestID: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="inlineObjectBodySerializer">inlineObjectBodySerializer: <a href="../../../../../BodySerializer.html" class="extype" name="com.here.platform.data.client.base.BodySerializer">BodySerializer</a>[<a href="../../model/search/InlineObject.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject">InlineObject</a>]</span>)</span><span class="result">: <a href="../../../../../ApiRequest.html" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<a href="../../model/search/CustomizationCreateOrUpdateResponse.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.search.CustomizationCreateOrUpdateResponse">CustomizationCreateOrUpdateResponse</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Create a Places search customization that enables HERE Search use cases including user-owned Places (POI) content.<br>A customization consists of one or more <code>dataset</code>s and zero or more <code>view</code>s.<br><br>A Places customization <code>dataset</code> is a resource you can insert, update, delete Places content to, and query that data using HERE Search APIs.<br><br>A Places customization <code>view</code> is a resource that defines a low-level query template referring to pre-existing <code>dataset</code> resources along with filtering and combination rules over those resources.</p><div class="fullcomment"><div class="comment cmt"><p>Create a Places search customization that enables HERE Search use cases including user-owned Places (POI) content.<br>A customization consists of one or more <code>dataset</code>s and zero or more <code>view</code>s.<br><br>A Places customization <code>dataset</code> is a resource you can insert, update, delete Places content to, and query that data using HERE Search APIs.<br><br>A Places customization <code>view</code> is a resource that defines a low-level query template referring to pre-existing <code>dataset</code> resources along with filtering and combination rules over those resources. A view may not be written to. A view's HERE Resource Name (HRN) may be used in the <code>datasets</code> query parameter on HERE Search APIs.</p><p>Path: /customizations</p><p>Method: POST</p><p>Expected answers:</p><p>  code 201 : CustomizationCreateOrUpdateResponse (New resource has been created.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 207 : CustomizationCreateOrUpdateResponse (New resource has been partially created)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 400 : Error (The server cannot or will not process the request due to an apparent client error.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 401 : UnauthorizedError (The HAPI Gateway has returned an unauthorized authentication error.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 403 : UnauthorizedError (Insufficient rights to perform the request.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 409 : Error (The request could not be completed due to a conflict.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 504 : Error (The server has timed out.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p></div><dl class="paramcmts block"><dt class="param">xRequestID</dt><dd class="cmt"><p>The uuid string user can provide for tracing purpose.</p></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi#deleteSearchCustomization" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="deleteSearchCustomization(customizationHrn:String,xRequestID:Option[String]):com.here.platform.data.client.base.ApiRequest[String]"></a><a id="deleteSearchCustomization(String,Option[String]):ApiRequest[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#deleteSearchCustomization(customizationHrn:String,xRequestID:Option%5BString%5D):com.here.platform.data.client.base.ApiRequest%5BString%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">deleteSearchCustomization</span><span class="params">(<span name="customizationHrn">customizationHrn: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="xRequestID">xRequestID: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="../../../../../ApiRequest.html" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Deletes an existing search customization by its CustomizationHrn.</p><div class="fullcomment"><div class="comment cmt"><p>Deletes an existing search customization by its CustomizationHrn.</p><p>Path: /customizations/{customizationHrn}</p><p>Method: DELETE</p><p>Expected answers:</p><p>  code 204 : String (An empty response as a result of a user-request with an accepted MIME type application/x-empty.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 401 : UnauthorizedError (The HAPI Gateway has returned an unauthorized authentication error.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 403 : UnauthorizedError (Insufficient rights to perform the request.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 404 : Error (The requested resource was not found.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 504 : Error (The server has timed out.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p></div><dl class="paramcmts block"><dt class="param">customizationHrn</dt><dd class="cmt"><p>The unique HRN identifier of a search customization.</p></dd><dt class="param">xRequestID</dt><dd class="cmt"><p>The uuid string user can provide for tracing purpose.</p></dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#eq(x%241:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#equals(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#getClass():Class%5B_%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi#getSearchCustomization" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="getSearchCustomization(customizationHrn:String,xRequestID:Option[String]):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineResponse2001]"></a><a id="getSearchCustomization(String,Option[String]):ApiRequest[InlineResponse2001]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#getSearchCustomization(customizationHrn:String,xRequestID:Option%5BString%5D):com.here.platform.data.client.base.ApiRequest%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineResponse2001%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSearchCustomization</span><span class="params">(<span name="customizationHrn">customizationHrn: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="xRequestID">xRequestID: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="../../../../../ApiRequest.html" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<a href="../../model/search/InlineResponse2001.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineResponse2001">InlineResponse2001</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Returns a search customization definition by its CustomizationHrn.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a search customization definition by its CustomizationHrn.</p><p>Path: /customizations/{customizationHrn}</p><p>Method: GET</p><p>Expected answers:</p><p>  code 200 : InlineResponse2001 (The HTTP request was successful.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 400 : Error (The server cannot or will not process the request due to an apparent client error.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 401 : UnauthorizedError (The HAPI Gateway has returned an unauthorized authentication error.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 403 : UnauthorizedError (Insufficient rights to perform the request.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 404 : Error (The requested resource was not found.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 504 : Error (The server has timed out.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p></div><dl class="paramcmts block"><dt class="param">customizationHrn</dt><dd class="cmt"><p>The unique HRN identifier of a search customization.</p></dd><dt class="param">xRequestID</dt><dd class="cmt"><p>The uuid string user can provide for tracing purpose.</p></dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#hashCode():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#isInstanceOf%5BT0%5D:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi#listSearchCustomizations" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="listSearchCustomizations(xRequestID:Option[String],linkable:Option[Boolean],pageToken:Option[String],limit:Option[Int]):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineResponse200]"></a><a id="listSearchCustomizations(Option[String],Option[Boolean],Option[String],Option[Int]):ApiRequest[InlineResponse200]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#listSearchCustomizations(xRequestID:Option%5BString%5D,linkable:Option%5BBoolean%5D,pageToken:Option%5BString%5D,limit:Option%5BInt%5D):com.here.platform.data.client.base.ApiRequest%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineResponse200%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">listSearchCustomizations</span><span class="params">(<span name="xRequestID">xRequestID: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="linkable">linkable: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">None</span></span>, <span name="pageToken">pageToken: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="limit">limit: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="../../../../../ApiRequest.html" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<a href="../../model/search/InlineResponse200.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineResponse200">InlineResponse200</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Returns all search customization definitions by available to the requesting principal.</p><div class="fullcomment"><div class="comment cmt"><p>Returns all search customization definitions by available to the requesting principal.</p><p>Path: /customizations</p><p>Method: GET</p><p>Expected answers:</p><p>  code 200 : InlineResponse200 (The HTTP request was successful.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 400 : Error (The server cannot or will not process the request due to an apparent client error.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 401 : UnauthorizedError (The HAPI Gateway has returned an unauthorized authentication error.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 403 : UnauthorizedError (Insufficient rights to perform the request.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 404 : Error (The requested resource was not found.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 504 : Error (The server has timed out.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p></div><dl class="paramcmts block"><dt class="param">xRequestID</dt><dd class="cmt"><p>The uuid string user can provide for tracing purpose.</p></dd><dt class="param">linkable</dt><dd class="cmt"><p>Indicates if the response should return the list of linkable customization resources.
+ If set to 'false' (default), then the response will contain the customizations that are homed in the project in the token's project scope If set to 'true', then the response will contain the customizations that are available to the caller to link to the project in the token's project scope</p></dd><dt class="param">pageToken</dt><dd class="cmt"><p>If specified, the implementation should return the specific page based on the token.
+ Not recommended to be used directly; it is usually provided as part of the response when pagination is necessary (see <code>pageToken</code> in <code>GetAllCustomization200</code>).</p></dd><dt class="param">limit</dt><dd class="cmt"><p>Number of results to return per page.</p></dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#ne(x%241:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#notify():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#notifyAll():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#synchronized%5BT0%5D(x%241:=&gt;T0):T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#toString():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi#updateSearchCustomization" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="updateSearchCustomization(customizationHrn:String,inlineObject1:com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject1,xRequestID:Option[String])(implicitinlineObject1BodySerializer:com.here.platform.data.client.base.BodySerializer[com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject1]):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.ols.generated.scaladsl.model.search.CustomizationCreateOrUpdateResponse]"></a><a id="updateSearchCustomization(String,InlineObject1,Option[String])(BodySerializer[InlineObject1]):ApiRequest[CustomizationCreateOrUpdateResponse]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#updateSearchCustomization(customizationHrn:String,inlineObject1:com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject1,xRequestID:Option%5BString%5D)(implicitinlineObject1BodySerializer:com.here.platform.data.client.base.BodySerializer%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject1%5D):com.here.platform.data.client.base.ApiRequest%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.search.CustomizationCreateOrUpdateResponse%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateSearchCustomization</span><span class="params">(<span name="customizationHrn">customizationHrn: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="inlineObject1">inlineObject1: <a href="../../model/search/InlineObject1.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject1">InlineObject1</a></span>, <span name="xRequestID">xRequestID: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="inlineObject1BodySerializer">inlineObject1BodySerializer: <a href="../../../../../BodySerializer.html" class="extype" name="com.here.platform.data.client.base.BodySerializer">BodySerializer</a>[<a href="../../model/search/InlineObject1.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.search.InlineObject1">InlineObject1</a>]</span>)</span><span class="result">: <a href="../../../../../ApiRequest.html" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<a href="../../model/search/CustomizationCreateOrUpdateResponse.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.search.CustomizationCreateOrUpdateResponse">CustomizationCreateOrUpdateResponse</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Updates a search customization by its CustomizationHrn.</p><div class="fullcomment"><div class="comment cmt"><p>Updates a search customization by its CustomizationHrn.</p><p>Path: /customizations/{customizationHrn}</p><p>Method: PUT</p><p>Expected answers:</p><p>  code 200 : CustomizationCreateOrUpdateResponse (Customization was successfully updated)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 207 : CustomizationCreateOrUpdateResponse (Customization update was partially successful)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 400 : Error (The server cannot or will not process the request due to an apparent client error.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 401 : UnauthorizedError (The HAPI Gateway has returned an unauthorized authentication error.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 403 : UnauthorizedError (Insufficient rights to perform the request.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 409 : Error (The request could not be completed due to a conflict.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p><p>  code 504 : Error (The server has timed out.)
+             Headers :
+               X-Correlation-ID -
+               X-Request-ID -</p></div><dl class="paramcmts block"><dt class="param">customizationHrn</dt><dd class="cmt"><p>The unique HRN identifier of a search customization.</p></dd><dt class="param">xRequestID</dt><dd class="cmt"><p>The uuid string user can provide for tracing purpose.</p></dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#wait(x%241:Long,x%242:Int):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#wait(x%241:Long):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi#withConfig" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withConfig(apiConfig:com.here.platform.data.client.base.http.settings.ApiConfiguration):com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi"></a><a id="withConfig(ApiConfiguration):CustomizationManagementApi"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/search/CustomizationManagementApi.html#withConfig(apiConfig:com.here.platform.data.client.base.http.settings.ApiConfiguration):com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withConfig</span><span class="params">(<span name="apiConfig">apiConfig: <a href="../../../../../http/settings/ApiConfiguration.html" class="extype" name="com.here.platform.data.client.base.http.settings.ApiConfiguration">ApiConfiguration</a></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.api.search.CustomizationManagementApi">CustomizationManagementApi</a></span>
+      </span>
+      
+      
+    </li>
+              </ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="com.here.platform.data.client.base.LookupScalaApi">
+              <h3>Inherited from <span class="extype" name="com.here.platform.data.client.base.LookupScalaApi">LookupScalaApi</span></h3>
+            </div><div class="parent" name="com.here.platform.data.client.base.ScalaApi">
+              <h3>Inherited from <a href="../../../../../ScalaApi.html" class="extype" name="com.here.platform.data.client.base.ScalaApi">ScalaApi</a></h3>
+            </div><div class="parent" name="com.here.platform.data.client.base.Api">
+              <h3>Inherited from <a href="../../../../../Api.html" class="extype" name="com.here.platform.data.client.base.Api">Api</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+    
+          </div>
+        </div>
+      </div>
+    </body>
+      </html>
