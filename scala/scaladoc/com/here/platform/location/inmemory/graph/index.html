@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html>
+        <head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.785 API Reference Scala</title>
+          <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.location.inmemory.graph">
+          <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.location.inmemory.graph">
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+          
+      
+      <link href="../../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css">
+      <script type="text/javascript" src="../../../../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery.panzoom.min.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/index.js"></script>
+      <script type="text/javascript" src="../../../../../../index.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/scheduler.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      
+      <script type="text/javascript">
+        /* this variable can be used by the JS to determine the path to the root document */
+        var toRoot = '../../../../../../';
+      </script>
+    
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.785 API Reference Scala"><meta name="DC.Document.Id" content="628bb28c-e055-4fa6-9d5a-70948681f9e0"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.785"><meta name="DC.Creation.Date" content="2024-05-24T07:56:55+00:00"></head>
+        <body>
+      <div id="search">
+        <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
+        <span class="close-results"><span class="left">&lt;</span> Back</span>
+        <div id="textfilter">
+          <span class="input">
+            <input autocapitalize="none" placeholder="Search" id="index-input" type="text" accesskey="/">
+            <i class="clear material-icons"></i>
+            <i id="search-icon" class="material-icons"></i>
+          </span>
+        </div>
+    </div>
+      <div id="search-results">
+        <div id="search-progress">
+          <div id="progress-fill"></div>
+        </div>
+        <div id="results-content">
+          <div id="entity-results"></div>
+          <div id="member-results"></div>
+        </div>
+      </div>
+      <div id="content-scroll-container" style="-webkit-overflow-scrolling: touch;">
+        <div id="content-container" style="-webkit-overflow-scrolling: touch;">
+          <div id="subpackage-spacer">
+            <div id="packages">
+              <h1>Packages</h1>
+              <ul>
+                <li name="_root_.root" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="_root_"></a><a id="root:_root_"></a>
+      <span class="permalink">
+      <a href="../../../../../../index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../index.html"><span class="name">root</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="_root_.com" visbl="pub" class="indented1 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="com"></a><a id="com:com"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../index.html"><span class="name">com</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="com.here" visbl="pub" class="indented2 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="here"></a><a id="here:here"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../index.html"><span class="name">here</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../index.html" class="extype" name="com">com</a></dd></dl></div>
+    </li><li name="com.here.platform" visbl="pub" class="indented3 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="platform"></a><a id="platform:platform"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../index.html"><span class="name">platform</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../index.html" class="extype" name="com.here">here</a></dd></dl></div>
+    </li><li name="com.here.platform.location" visbl="pub" class="indented4 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="location"></a><a id="location:location"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../index.html"><span class="name">location</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="com.here.platform">platform</a></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory" visbl="pub" class="indented5 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="inmemory"></a><a id="inmemory:inmemory"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../index.html"><span class="name">inmemory</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="com.here.platform.location">location</a></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.geospatial" visbl="pub" class="indented6 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="geospatial"></a><a id="geospatial:geospatial"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/geospatial/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="A collection of geospatial components and interfaces that implement different flavors of proximity search." href="../geospatial/index.html"><span class="name">geospatial</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">A collection of geospatial components and interfaces that implement different flavors of
+proximity search.</p><div class="fullcomment"><div class="comment cmt"><p>A collection of geospatial components and interfaces that implement different flavors of
+proximity search.</p><p>Note: com.here.platform.location packages use a set of terms to describe different geospatial
+aspects:</p><p>Coordinates: Cartesian coordinates (x, y[, z])
+Geo coordinates: WGS 84 coordinates (latitude, longitude[, elevation])
+Point:	Geometry element holding coordinates + system specific information (ID, precision, etc.)
+Geo point:	Geospatial element holding geocoordinates + system specific information
+Node: Topological element of the road network representing a location where multiple manoeuvres
+      are possible, such as before an intersection or where a lane starts/finishes forming/merging.
+Segment: Topological element of the road network that connects exactly two nodes
+         Any change in attributes along the segment define a new link (sub-segment)
+Link: Nonbreakable element of a topological segment with a particular set of attributes
+Attribute: Property of a link, such as its speed limit
+Vertex: Node in the routing graph, referring to a topological segment
+Edge: Arc in the routing graph that connects exactly two vertices
+Incidence graph: Routing graph providing vertices connected to a given edge:</p><ul><li>its source vertex, which is the tail of the arrow when directed</li><li>its target vertex, which is the head of the arrow when directed
+Directed graph: Incidence graph providing edges going out of a given vertex</li></ul><p>Note: WGS84-related functionality works with a reasonable accuracy when latitude is between -85
+      and +85 degrees.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.here.platform.location.inmemory">inmemory</a></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph" visbl="pub" class="indented6 current" data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="graph"></a><a id="graph:graph"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">graph</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.here.platform.location.inmemory">inmemory</a></dd></dl></div>
+    </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="Backward%24.html" title="The vertex and the segment have opposite directions."></a>
+                        <a href="Backward%24.html" title="The vertex and the segment have opposite directions.">Backward</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="Direction.html" title="Represents the direction of a com.here.platform.location.inmemory.graph.Vertex relative to the direction of its associated HERE Map Content segment."></a>
+                        <a href="Direction.html" title="Represents the direction of a com.here.platform.location.inmemory.graph.Vertex relative to the direction of its associated HERE Map Content segment.">Direction</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="Edge.html" title="Defines an edge in the routing graph, which corresponds to a transition from one vertex to another."></a>
+                        <a href="Edge.html" title="Defines an edge in the routing graph, which corresponds to a transition from one vertex to another.">Edge</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="EdgeIndex.html" title="Represents the index of an edge inside a graph partition."></a>
+                        <a href="EdgeIndex.html" title="Represents the index of an edge inside a graph partition.">EdgeIndex</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="EdgePropertyTile.html" title="Contains the edge property data for a single tile."></a>
+                        <a href="EdgePropertyTile.html" title="Contains the edge property data for a single tile.">EdgePropertyTile</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="Forward%24.html" title="The vertex and the segment have the same direction."></a>
+                        <a href="Forward%24.html" title="The vertex and the segment have the same direction.">Forward</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="GraphTile%24.html" title=""></a>
+                        <a class="class" href="GraphTile.html" title="Contains the routing graph data for a single tile."></a>
+                        <a href="GraphTile.html" title="Contains the routing graph data for a single tile.">GraphTile</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="OverlappingRangeBasedPropertyTile.html" title="Contains the range-based property data for a single tile."></a>
+                        <a href="OverlappingRangeBasedPropertyTile.html" title="Contains the range-based property data for a single tile.">OverlappingRangeBasedPropertyTile</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="RangeBasedPropertyTile.html" title="Contains the range-based property data for a single tile."></a>
+                        <a href="RangeBasedPropertyTile.html" title="Contains the range-based property data for a single tile.">RangeBasedPropertyTile</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ReverseGraphTile.html" title="Contains the routing graph data for a single tile, needed to perform an efficient reverse expansion of a graph."></a>
+                        <a href="ReverseGraphTile.html" title="Contains the routing graph data for a single tile, needed to perform an efficient reverse expansion of a graph.">ReverseGraphTile</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="SegmentIndex%24.html" title=""></a>
+                        <a class="class" href="SegmentIndex.html" title="The Index of an undirected road segment in a GraphTile."></a>
+                        <a href="SegmentIndex.html" title="The Index of an undirected road segment in a GraphTile.">SegmentIndex</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="TiledEdgePropertyMap%24.html" title=""></a>
+                        <a class="class" href="TiledEdgePropertyMap.html" title="A PropertyMap[Edge, T]  that retrieves edge attribute values from multiple EdgePropertyTiles."></a>
+                        <a href="TiledEdgePropertyMap.html" title="A PropertyMap[Edge, T]  that retrieves edge attribute values from multiple EdgePropertyTiles.">TiledEdgePropertyMap</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="TiledGeometryPropertyMap.html" title="Implements a PropertyMap for retrieving vertex geometries."></a>
+                        <a href="TiledGeometryPropertyMap.html" title="Implements a PropertyMap for retrieving vertex geometries.">TiledGeometryPropertyMap</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="TiledGraph%24.html" title=""></a>
+                        <a class="class" href="TiledGraph.html" title="A Graph consisting of multiple GraphTiles."></a>
+                        <a href="TiledGraph.html" title="A Graph consisting of multiple GraphTiles.">TiledGraph</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="TiledOverlappingRangeBasedPropertyMap.html" title="Unifies multiple OverlappingRangeBasedPropertyTiles, to enable using them transparently to look up property values by com.here.platform.location.inmemory.graph.Vertex."></a>
+                        <a href="TiledOverlappingRangeBasedPropertyMap.html" title="Unifies multiple OverlappingRangeBasedPropertyTiles, to enable using them transparently to look up property values by com.here.platform.location.inmemory.graph.Vertex.">TiledOverlappingRangeBasedPropertyMap</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="TiledRangeBasedPropertyMap%24.html" title=""></a>
+                        <a class="class" href="TiledRangeBasedPropertyMap.html" title="Unifies multiple RangeBasedPropertyTiles, to enable using them transparently to look up property values by com.here.platform.location.inmemory.graph.Vertex."></a>
+                        <a href="TiledRangeBasedPropertyMap.html" title="Unifies multiple RangeBasedPropertyTiles, to enable using them transparently to look up property values by com.here.platform.location.inmemory.graph.Vertex.">TiledRangeBasedPropertyMap</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="TiledReverseGraph.html" title="A reverse Graph consisting of multiple GraphTiles."></a>
+                        <a href="TiledReverseGraph.html" title="A reverse Graph consisting of multiple GraphTiles.">TiledReverseGraph</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="TiledReversedGraph.html" title="A reverse Graph consisting of multiple tiles."></a>
+                        <a href="TiledReversedGraph.html" title="A reverse Graph consisting of multiple tiles.">TiledReversedGraph</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="TiledUndirectedPropertyMap.html" title="A property map for properties that do not depend on the direction of a vertex (segment properties)."></a>
+                        <a href="TiledUndirectedPropertyMap.html" title="A property map for properties that do not depend on the direction of a vertex (segment properties).">TiledUndirectedPropertyMap</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="UndirectedPropertyTile.html" title="Contains the undirected property data for a single tile."></a>
+                        <a href="UndirectedPropertyTile.html" title="Contains the undirected property data for a single tile.">UndirectedPropertyTile</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="Vertex.html" title="Defines a vertex"></a>
+                        <a href="Vertex.html" title="Defines a vertex">Vertex</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="VertexIndex.html" title="Represents the index of a vertex inside a graph partition."></a>
+                        <a href="VertexIndex.html" title="Represents the index of a vertex inside a graph partition.">VertexIndex</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="VertexRange.html" title="Represents a continuous part of a vertex."></a>
+                        <a href="VertexRange.html" title="Represents a continuous part of a vertex.">VertexRange</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="Vertices%24.html" title="Methods for manipulating vertex directions."></a>
+                        <a href="Vertices%24.html" title="Methods for manipulating vertex directions.">Vertices</a>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div id="content">
+            
+      <div id="definition">
+        <div class="big-circle package">p</div>
+        <p id="owner"><a href="../../../../../index.html" class="extype" name="com">com</a>.<a href="../../../../index.html" class="extype" name="com.here">here</a>.<a href="../../../index.html" class="extype" name="com.here.platform">platform</a>.<a href="../../index.html" class="extype" name="com.here.platform.location">location</a>.<a href="../index.html" class="extype" name="com.here.platform.location.inmemory">inmemory</a></p>
+        <h1>graph<span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span></h1>
+        
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">graph</span>
+      </span>
+      </h4>
+
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div class="toggle"></div>
+        <div id="memberfilter">
+          <i class="material-icons arrow"></i>
+          <span class="input">
+            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/">
+          </span>
+          <i class="clear material-icons"></i>
+        </div>
+        <div id="filterby">
+          <div id="order">
+            <span class="filtertype">Ordering</span>
+            <ol>
+              
+              <li class="alpha in"><span>Alphabetic</span></li>
+              
+            </ol>
+          </div>
+          
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.here.platform.location.inmemory.graph.Direction" visbl="pub" class="indented0 " data-isabs="true" fullcomment="no" group="Ungrouped">
+      <a id="DirectionextendsAnyRef"></a><a id="Direction:Direction"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/Direction.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Represents the direction of a com.here.platform.location.inmemory.graph.Vertex relative to the direction of its associated HERE Map Content segment." href="Direction.html"><span class="name">Direction</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents the direction of a <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">com.here.platform.location.inmemory.graph.Vertex</a> relative to
+the direction of its associated HERE Map Content segment.</p>
+    </li><li name="com.here.platform.location.inmemory.graph.Edge" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="EdgeextendsProductwithSerializable"></a><a id="Edge:Edge"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/Edge.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Defines an edge in the routing graph, which corresponds to a transition from one vertex to another." href="Edge.html"><span class="name">Edge</span></a><span class="params">(<span name="source">source: <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a></span>, <span name="index">index: <a href="EdgeIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgeIndex">EdgeIndex</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Defines an edge in the routing graph, which corresponds to a transition from one vertex to another.</p><div class="fullcomment"><div class="comment cmt"><p>Defines an edge in the routing graph, which corresponds to a transition from one vertex to another.
+</p></div><dl class="paramcmts block"><dt class="param">source</dt><dd class="cmt"><p>A source <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a></p></dd><dt class="param">index</dt><dd class="cmt"><p>The index of this <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a> in the tile</p></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.EdgeIndex" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="EdgeIndexextendsAnyValwithProductwithSerializable"></a><a id="EdgeIndex:EdgeIndex"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/EdgeIndex.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Represents the index of an edge inside a graph partition." href="EdgeIndex.html"><span class="name">EdgeIndex</span></a><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents the index of an edge inside a graph partition.</p>
+    </li><li name="com.here.platform.location.inmemory.graph.EdgePropertyTile" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="EdgePropertyTile[T]extendsAnyRef"></a><a id="EdgePropertyTile[T]:EdgePropertyTile[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/EdgePropertyTile.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains the edge property data for a single tile." href="EdgePropertyTile.html"><span class="name">EdgePropertyTile</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains the edge property data for a single tile.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the edge property data for a single tile.</p><p><a href="EdgePropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgePropertyTile">EdgePropertyTile</a> relies on the set of <a href="EdgeIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgeIndex">EdgeIndex</a> values associated with the <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a>s in a tile.
+In a tile, each <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a> has a different <a href="EdgeIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgeIndex">EdgeIndex</a> value, and, if <code>#Edges</code> represents
+the number of <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a>s, the value of an <a href="EdgeIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgeIndex">EdgeIndex</a> is between <code>0</code> and <code>#Edges - 1</code>.</p><p>To save memory, <a href="EdgePropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgePropertyTile">EdgePropertyTile</a> stores the edge properties in an array of size <code>#Edges</code>,
+whose name is <code>values</code>. For each <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a> <code>e</code>, <code>values(e.index.value)</code> contains
+the property that applies to <code>e</code>.</p><p><i>See also</i></p><ul><li><a href="GraphTile.html" class="extype" name="com.here.platform.location.inmemory.graph.GraphTile">GraphTile</a> for more information about the representation of <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a>s in a tile</li><li><a href="TiledEdgePropertyMap.html" class="extype" name="com.here.platform.location.inmemory.graph.TiledEdgePropertyMap">TiledEdgePropertyMap</a>, which is a <a href="../../core/graph/PropertyMap.html" class="extype" name="com.here.platform.location.core.graph.PropertyMap">PropertyMap[Edge, T] </a>
+that retrieves edge attribute values from multiple <a href="EdgePropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgePropertyTile">EdgePropertyTile</a>s.</li></ul></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Although this object contains an Array, you should treat it as <b>immutable</b>.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.GraphTile" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="GraphTileextendsAnyRef"></a><a id="GraphTile:GraphTile"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/GraphTile.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains the routing graph data for a single tile." href="GraphTile.html"><span class="name">GraphTile</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains the routing graph data for a single tile.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the routing graph data for a single tile.</p><p>The graph topology is stored in compressed sparse row graph format.
+It also contains information on how the graph partitions are interconnected, i.e. graph edges
+from this tile to another.</p><p>Vertex indices 0 through <code>firstEdgeIndices.length - 2</code> refer to internal vertices (vertices in this partition).</p><p>The last entry of <code>firstEdgeIndices</code> is always <code>edges.length</code>.</p><p>Thus, each entry in <code>firstEdgeIndices</code> is the index of the edge after the last edge of the previous vertex.</p><p>That means, the edges starting at a given internal vertex with index <code>idx</code>, are determined by the index range from
+ <code>firstEdgeIndices(idx)</code> (inclusive) to <code>firstEdgeIndices(idx + 1)</code> (exclusive).</p><p>Vertex indices <code>firstEdgeIndices.length - 1</code> through <code>firstEdgeIndices.length + externalVertexIndices.length - 2</code>
+refer to external vertices (vertices outside this partition that are referred to from inside this partition).</p><p>Therefore, the number of external vertices is <code>externalVertexIndices.length</code>.</p><p>When looking up a vertex <code>v</code> with index <code>idx</code>:</p><ul><li>If <code>idx &lt; firstEdgeIndices.length - 1</code>, <code>v</code> is in the current graph partition.</li><li>Otherwise, <code>v</code> belongs to the tile with ID <code>externalVertexTileIds(idx - firstEdgeIndices.length + 1)</code>
+and its index in that partition is <code>externalVertexIndices(idx - firstEdgeIndices.length + 1)</code>.</li></ul><p><i>See also</i></p><ul><li><a href="TiledGraph.html" class="extype" name="com.here.platform.location.inmemory.graph.TiledGraph">TiledGraph</a></li><li>The section on "The Compressed Sparse Row Format" in the <i>Location Library</i> developer guide</li></ul></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Although this object contains Arrays, you should treat it as <b>immutable</b>.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.OverlappingRangeBasedPropertyTile" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="OverlappingRangeBasedPropertyTile[T]extendsAnyRef"></a><a id="OverlappingRangeBasedPropertyTile[T]:OverlappingRangeBasedPropertyTile[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/OverlappingRangeBasedPropertyTile.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains the range-based property data for a single tile." href="OverlappingRangeBasedPropertyTile.html"><span class="name">OverlappingRangeBasedPropertyTile</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains the range-based property data for a single tile.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the range-based property data for a single tile.</p><p>This tile accepts overlapping ranges, as long as they are ordered by their startOffset.</p><p>A range-based vertex property is a property that potentially applies to only a part of a vertex.
+The <i>Location Library</i> uses a start and end point to define the part of the vertex
+to which the range-based property applies. These start and end points are represented
+by their relative offsets on the Vertex (values between 0 and 1).</p><p>The storage format for these ranges contains two levels of information: <code>startIndices</code>, and
+the triplets <code>(startOffsets(j), endOffsets(j), values(j))</code>.</p><p>The triplets <code>(startOffsets(j), endOffsets(j), values(j))</code> define the
+<a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperties</a> for
+every <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a> that is contained in a partition.</p><p><code>startIndices</code> indicates which
+<a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperty</a> apply
+to a given <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>.
+An index <code>i</code> in <code>0..startIndices.size-2</code> corresponds to a
+<a href="VertexIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.VertexIndex">VertexIndex</a> and
+represents the index of a <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>
+inside a partition. The <a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperties</a>
+whose corresponding indices <code>j</code> are between <code>startIndices(i)</code> and <code>startIndices(i+1) - 1</code>
+apply to the <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a> <code>i</code>.</p><p>If <code>startIndices(i) == startIndices(i+1)</code>,
+<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a> <code>i</code> has no
+<a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperties</a>.</p><p>Note that the last value of <code>startIndices</code> does not correspond to any
+<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>. This value must be equal to
+<code>startOffsets.length</code>. This value allows calculating the
+<a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperties</a>
+that apply to the last <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a> the same
+way as for all the other <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertices</a>.
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Although this object contains Arrays, you should treat it as <b>immutable</b>.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.RangeBasedPropertyTile" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="RangeBasedPropertyTile[T]extendsAnyRef"></a><a id="RangeBasedPropertyTile[T]:RangeBasedPropertyTile[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/RangeBasedPropertyTile.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains the range-based property data for a single tile." href="RangeBasedPropertyTile.html"><span class="name">RangeBasedPropertyTile</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains the range-based property data for a single tile.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the range-based property data for a single tile.</p><p>This tile doesn't accept overlapping ranges.</p><p>A range-based vertex property is a property that potentially applies to only a part of a vertex.
+The <i>Location Library</i> uses a start and end point to define the part of the vertex
+to which the range-based property applies. These start and end points are represented
+by their relative offsets on the Vertex (values between 0 and 1).</p><p>The storage format for these ranges contains two levels of information: <code>startIndices</code>, and
+the triplets <code>(startOffsets(j), endOffsets(j), values(j))</code>.</p><p>The triplets <code>(startOffsets(j), endOffsets(j), values(j))</code> define the
+<a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperties</a> for
+every <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a> that is contained in a partition.</p><p><code>startIndices</code> indicates which
+<a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperty</a> apply
+to a given <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>.
+An index <code>i</code> in <code>0..startIndices.size-2</code> corresponds to a
+<a href="VertexIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.VertexIndex">VertexIndex</a> and
+represents the index of a <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>
+inside a partition. The <a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperties</a>
+whose corresponding indices <code>j</code> are between <code>startIndices(i)</code> and <code>startIndices(i+1) - 1</code>
+apply to the <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a> <code>i</code>.</p><p>If <code>startIndices(i) == startIndices(i+1)</code>,
+<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a> <code>i</code> has no
+<a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperties</a>.</p><p>Note that the last value of <code>startIndices</code> does not correspond to any
+<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>. This value must be equal to
+<code>startOffsets.length</code>. This value allows calculating the
+<a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperties</a>
+that apply to the last <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a> the same
+way as for all the other <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertices</a>.
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Although this object contains Arrays, you should treat it as <b>immutable</b>.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.ReverseGraphTile" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="ReverseGraphTileextendsAnyRef"></a><a id="ReverseGraphTile:ReverseGraphTile"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/ReverseGraphTile.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains the routing graph data for a single tile, needed to perform an efficient reverse expansion of a graph." href="ReverseGraphTile.html"><span class="name">ReverseGraphTile</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains the routing graph data for a single tile, needed
+to perform an efficient reverse expansion of a graph.</p>
+    </li><li name="com.here.platform.location.inmemory.graph.SegmentIndex" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="SegmentIndexextendsProductwithSerializable"></a><a id="SegmentIndex:SegmentIndex"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/SegmentIndex.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="The Index of an undirected road segment in a GraphTile." href="SegmentIndex.html"><span class="name">SegmentIndex</span></a><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">The Index of an undirected road segment in a <a href="GraphTile.html" class="extype" name="com.here.platform.location.inmemory.graph.GraphTile">GraphTile</a>.</p><div class="fullcomment"><div class="comment cmt"><p>The Index of an undirected road segment in a <a href="GraphTile.html" class="extype" name="com.here.platform.location.inmemory.graph.GraphTile">GraphTile</a>.</p><p>Each road segment corresponds to two <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertices</a>, one for each <a href="Direction.html" class="extype" name="com.here.platform.location.inmemory.graph.Direction">Direction</a>.
+A <a href="SegmentIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.SegmentIndex">SegmentIndex</a>, therefore, refers to a road segment without specifying a <a href="Direction.html" class="extype" name="com.here.platform.location.inmemory.graph.Direction">Direction</a>,
+whereas a <a href="VertexIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.VertexIndex">VertexIndex</a> refers to a road segment but also specifies a <a href="Direction.html" class="extype" name="com.here.platform.location.inmemory.graph.Direction">Direction</a> along that
+road segment.
+</p></div></div>
+    </li><li name="com.here.platform.location.inmemory.graph.TiledEdgePropertyMap" visbl="pub" class="indented0 " data-isabs="true" fullcomment="yes" group="Ungrouped">
+      <a id="TiledEdgePropertyMap[T,U]extendsPropertyMap[com.here.platform.location.inmemory.graph.Edge,U]"></a><a id="TiledEdgePropertyMap[T,U]:TiledEdgePropertyMap[T,U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledEdgePropertyMap.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A PropertyMap[Edge, T]  that retrieves edge attribute values from multiple EdgePropertyTiles." href="TiledEdgePropertyMap.html"><span class="name">TiledEdgePropertyMap</span></a><span class="tparams">[<span name="T">T</span>, <span name="U">U</span>]</span><span class="result"> extends <a href="../../core/graph/PropertyMap.html" class="extype" name="com.here.platform.location.core.graph.PropertyMap">PropertyMap</a>[<a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a>, <span class="extype" name="com.here.platform.location.inmemory.graph.TiledEdgePropertyMap.U">U</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">A <a href="../../core/graph/PropertyMap.html" class="extype" name="com.here.platform.location.core.graph.PropertyMap">PropertyMap[Edge, T] </a> that
+retrieves edge attribute values from multiple <a href="EdgePropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgePropertyTile">EdgePropertyTile</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>A <a href="../../core/graph/PropertyMap.html" class="extype" name="com.here.platform.location.core.graph.PropertyMap">PropertyMap[Edge, T] </a> that
+retrieves edge attribute values from multiple <a href="EdgePropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgePropertyTile">EdgePropertyTile</a>s.</p><p>For a given <code>edge</code>, <a href="TiledEdgePropertyMap.html" class="extype" name="com.here.platform.location.inmemory.graph.TiledEdgePropertyMap">TiledEdgePropertyMap</a> first uses <code>tileById</code> to
+retrieve the <code>propertyTile</code> that has the same tile ID as the <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a> source <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>.
+Then, <a href="TiledEdgePropertyMap.html" class="extype" name="com.here.platform.location.inmemory.graph.TiledEdgePropertyMap">TiledEdgePropertyMap</a> retrieves the attribute value from this <a href="EdgePropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgePropertyTile">EdgePropertyTile</a>
+by calling <code>propertyTile.values(edge.index.value)</code>.</p><p>If, for a given tile ID, the mapping function returns an <a href="EdgePropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.EdgePropertyTile">EdgePropertyTile</a> that has a
+different tile ID, <a href="TiledEdgePropertyMap.html#apply(edge:com.here.platform.location.inmemory.graph.Edge):U" class="extmbr" name="com.here.platform.location.inmemory.graph.TiledEdgePropertyMap#apply">apply</a> throws a <span class="extype" name="java.lang.RuntimeException">RuntimeException</span>.
+</p></div></div>
+    </li><li name="com.here.platform.location.inmemory.graph.TiledGeometryPropertyMap" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="TiledGeometryPropertyMapextendsPropertyMap[com.here.platform.location.inmemory.graph.Vertex,com.here.platform.location.inmemory.geospatial.PackedLineString]"></a><a id="TiledGeometryPropertyMap:TiledGeometryPropertyMap"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledGeometryPropertyMap.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Implements a PropertyMap for retrieving vertex geometries." href="TiledGeometryPropertyMap.html"><span class="name">TiledGeometryPropertyMap</span></a><span class="result"> extends <a href="../../core/graph/PropertyMap.html" class="extype" name="com.here.platform.location.core.graph.PropertyMap">PropertyMap</a>[<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>, <a href="../geospatial/PackedLineString.html" class="extype" name="com.here.platform.location.inmemory.geospatial.PackedLineString">PackedLineString</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Implements a <a href="../../core/graph/PropertyMap.html" class="extype" name="com.here.platform.location.core.graph.PropertyMap">PropertyMap</a> for retrieving vertex
+geometries.</p>
+    </li><li name="com.here.platform.location.inmemory.graph.TiledGraph" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="TiledGraphextendsDirectedGraph[com.here.platform.location.inmemory.graph.Vertex,com.here.platform.location.inmemory.graph.Edge]"></a><a id="TiledGraph:TiledGraph"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledGraph.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A Graph consisting of multiple GraphTiles." href="TiledGraph.html"><span class="name">TiledGraph</span></a><span class="result"> extends <a href="../../core/graph/DirectedGraph.html" class="extype" name="com.here.platform.location.core.graph.DirectedGraph">DirectedGraph</a>[<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>, <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">A Graph consisting of multiple <a href="GraphTile.html" class="extype" name="com.here.platform.location.inmemory.graph.GraphTile">GraphTile</a>s.</p>
+    </li><li name="com.here.platform.location.inmemory.graph.TiledOverlappingRangeBasedPropertyMap" visbl="pub" class="indented0 " data-isabs="true" fullcomment="yes" group="Ungrouped">
+      <a id="TiledOverlappingRangeBasedPropertyMap[T,U]extendsPropertyMap[com.here.platform.location.inmemory.graph.Vertex,Seq[com.here.platform.location.core.graph.RangeBasedProperty[U]]]"></a><a id="TiledOverlappingRangeBasedPropertyMap[T,U]:TiledOverlappingRangeBasedPropertyMap[T,U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledOverlappingRangeBasedPropertyMap.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Unifies multiple OverlappingRangeBasedPropertyTiles, to enable using them transparently to look up property values by com.here.platform.location.inmemory.graph.Vertex." href="TiledOverlappingRangeBasedPropertyMap.html"><span class="name">TiledOverlappingRangeBasedPropertyMap</span></a><span class="tparams">[<span name="T">T</span>, <span name="U">U</span>]</span><span class="result"> extends <a href="../../core/graph/PropertyMap.html" class="extype" name="com.here.platform.location.core.graph.PropertyMap">PropertyMap</a>[<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>, <span class="extype" name="scala.Seq">Seq</span>[<a href="../../core/graph/RangeBasedProperty.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedProperty">RangeBasedProperty</a>[<span class="extype" name="com.here.platform.location.inmemory.graph.TiledOverlappingRangeBasedPropertyMap.U">U</span>]]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Unifies multiple <a href="OverlappingRangeBasedPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.OverlappingRangeBasedPropertyTile">OverlappingRangeBasedPropertyTile</a>s, to enable using them transparently to look up
+property values by <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">com.here.platform.location.inmemory.graph.Vertex</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Unifies multiple <a href="OverlappingRangeBasedPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.OverlappingRangeBasedPropertyTile">OverlappingRangeBasedPropertyTile</a>s, to enable using them transparently to look up
+property values by <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">com.here.platform.location.inmemory.graph.Vertex</a>.</p><p><a href="TiledOverlappingRangeBasedPropertyMap.html" class="extype" name="com.here.platform.location.inmemory.graph.TiledOverlappingRangeBasedPropertyMap">TiledOverlappingRangeBasedPropertyMap</a> supports properties of type <code>U</code> that are represented by
+a different type <code>T</code> inside the underlying <a href="OverlappingRangeBasedPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.OverlappingRangeBasedPropertyTile">OverlappingRangeBasedPropertyTile</a>s.
+In this case, property values are converted from one type to the other whenever they are retrieved.</p><p><i>See also</i> OverlappingTiledRangeBasedPropertyMap.transform
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of the property values inside the <a href="OverlappingRangeBasedPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.OverlappingRangeBasedPropertyTile">OverlappingRangeBasedPropertyTile</a>s</p></dd><dt class="tparam">U</dt><dd class="cmt"><p>Type of the property values returned by this <a href="../../core/graph/PropertyMap.html" class="extype" name="com.here.platform.location.core.graph.PropertyMap">PropertyMap</a></p></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.TiledRangeBasedPropertyMap" visbl="pub" class="indented0 " data-isabs="true" fullcomment="yes" group="Ungrouped">
+      <a id="TiledRangeBasedPropertyMap[T,U]extendsRangeBasedPropertyMap[com.here.platform.location.inmemory.graph.Vertex,U]"></a><a id="TiledRangeBasedPropertyMap[T,U]:TiledRangeBasedPropertyMap[T,U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledRangeBasedPropertyMap.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Unifies multiple RangeBasedPropertyTiles, to enable using them transparently to look up property values by com.here.platform.location.inmemory.graph.Vertex." href="TiledRangeBasedPropertyMap.html"><span class="name">TiledRangeBasedPropertyMap</span></a><span class="tparams">[<span name="T">T</span>, <span name="U">U</span>]</span><span class="result"> extends <a href="../../core/graph/RangeBasedPropertyMap.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedPropertyMap">RangeBasedPropertyMap</a>[<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>, <span class="extype" name="com.here.platform.location.inmemory.graph.TiledRangeBasedPropertyMap.U">U</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Unifies multiple <a href="RangeBasedPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.RangeBasedPropertyTile">RangeBasedPropertyTile</a>s, to enable using them transparently to look up
+property values by <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">com.here.platform.location.inmemory.graph.Vertex</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Unifies multiple <a href="RangeBasedPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.RangeBasedPropertyTile">RangeBasedPropertyTile</a>s, to enable using them transparently to look up
+property values by <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">com.here.platform.location.inmemory.graph.Vertex</a>.</p><p><a href="TiledRangeBasedPropertyMap.html" class="extype" name="com.here.platform.location.inmemory.graph.TiledRangeBasedPropertyMap">TiledRangeBasedPropertyMap</a> supports properties of type <code>U</code> that are represented by
+a different type <code>T</code> inside the underlying <a href="RangeBasedPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.RangeBasedPropertyTile">RangeBasedPropertyTile</a>s.
+In this case, property values are converted from one type to the other whenever they are retrieved.</p><p><i>See also</i> TiledRangeBasedPropertyMap.transform
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of the property values inside the <a href="RangeBasedPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.RangeBasedPropertyTile">RangeBasedPropertyTile</a>s</p></dd><dt class="tparam">U</dt><dd class="cmt"><p>Type of the property values returned by this <a href="../../core/graph/RangeBasedPropertyMap.html" class="extype" name="com.here.platform.location.core.graph.RangeBasedPropertyMap">RangeBasedPropertyMap</a></p></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.TiledReverseGraph" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="TiledReverseGraphextendsDirectedGraph[com.here.platform.location.inmemory.graph.Vertex,com.here.platform.location.inmemory.graph.Edge]"></a><a id="TiledReverseGraph:TiledReverseGraph"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledReverseGraph.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A reverse Graph consisting of multiple GraphTiles." href="TiledReverseGraph.html"><span class="name">TiledReverseGraph</span></a><span class="result"> extends <a href="../../core/graph/DirectedGraph.html" class="extype" name="com.here.platform.location.core.graph.DirectedGraph">DirectedGraph</a>[<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>, <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">A reverse Graph consisting of multiple <a href="GraphTile.html" class="extype" name="com.here.platform.location.inmemory.graph.GraphTile">GraphTile</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>A reverse Graph consisting of multiple <a href="GraphTile.html" class="extype" name="com.here.platform.location.inmemory.graph.GraphTile">GraphTile</a>s.</p><p>The graph vertices and edges are compatible with the ones returned from the forward graph, so the two graphs can be
+used together in the same algorithm (e.g. bidirectional search).
+</p></div></div>
+    </li><li name="com.here.platform.location.inmemory.graph.TiledReversedGraph" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="TiledReversedGraphextendsDirectedGraph[com.here.platform.location.inmemory.graph.Vertex,com.here.platform.location.inmemory.graph.Edge]"></a><a id="TiledReversedGraph:TiledReversedGraph"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledReversedGraph.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A reverse Graph consisting of multiple tiles." href="TiledReversedGraph.html"><span class="name">TiledReversedGraph</span></a><span class="result"> extends <a href="../../core/graph/DirectedGraph.html" class="extype" name="com.here.platform.location.core.graph.DirectedGraph">DirectedGraph</a>[<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>, <a href="Edge.html" class="extype" name="com.here.platform.location.inmemory.graph.Edge">Edge</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">A reverse Graph consisting of multiple tiles.</p><div class="fullcomment"><div class="comment cmt"><p>A reverse Graph consisting of multiple tiles.</p><p>The graph vertices and edges are compatible with the ones returned from the forward graph, so the two graphs can be
+used together in the same algorithm (e.g. bidirectional search).
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>This implementation works by exploiting a property of a specific set of directed "edge based" graphs
+often used in road networks, whose vertices always have an inverse (<code>Vertices.invertDirection</code>). For a more generic
+implementation of a reverse tiled graph see <a href="TiledReverseGraph.html" class="extype" name="com.here.platform.location.inmemory.graph.TiledReverseGraph">TiledReverseGraph</a>.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.TiledUndirectedPropertyMap" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="TiledUndirectedPropertyMap[T]extendsPropertyMap[com.here.platform.location.inmemory.graph.Vertex,T]"></a><a id="TiledUndirectedPropertyMap[T]:TiledUndirectedPropertyMap[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledUndirectedPropertyMap.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A property map for properties that do not depend on the direction of a vertex (segment properties)." href="TiledUndirectedPropertyMap.html"><span class="name">TiledUndirectedPropertyMap</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="../../core/graph/PropertyMap.html" class="extype" name="com.here.platform.location.core.graph.PropertyMap">PropertyMap</a>[<a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a>, <span class="extype" name="com.here.platform.location.inmemory.graph.TiledUndirectedPropertyMap.T">T</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">A property map for properties that do not depend on the direction of a vertex (segment properties).</p><div class="fullcomment"><div class="comment cmt"><p>A property map for properties that do not depend on the direction of a vertex (segment properties).</p><p><i>See also</i> <a href="UndirectedPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.UndirectedPropertyTile">UndirectedPropertyTile</a> for details on the data format used by this class.
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Undirected (i.e. Segment) properties have the same value for both vertices
+      corresponding to a segment. Therefore, we can store a single value for both to reduce
+      memory usage.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.UndirectedPropertyTile" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="UndirectedPropertyTile[T]extendsAnyRef"></a><a id="UndirectedPropertyTile[T]:UndirectedPropertyTile[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/UndirectedPropertyTile.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains the undirected property data for a single tile." href="UndirectedPropertyTile.html"><span class="name">UndirectedPropertyTile</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Contains the undirected property data for a single tile.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the undirected property data for a single tile.</p><p>An undirected property applies to a whole road segment independently of direction.
+The length of a road segment is such an undirected property.
+This allows storing only one value per vertex pair instead of one value per vertex.</p><p><i>See also</i> <a href="TiledUndirectedPropertyMap.html" class="extype" name="com.here.platform.location.inmemory.graph.TiledUndirectedPropertyMap">TiledUndirectedPropertyMap</a>
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Although this object contains Arrays, you should treat it as <b>immutable</b>.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.Vertex" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="VertexextendsProductwithSerializable"></a><a id="Vertex:Vertex"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/Vertex.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Defines a vertex" href="Vertex.html"><span class="name">Vertex</span></a><span class="params">(<span name="tileId">tileId: <a href="../geospatial/TileId.html" class="extype" name="com.here.platform.location.inmemory.geospatial.TileId">TileId</a></span>, <span name="index">index: <a href="VertexIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.VertexIndex">VertexIndex</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Defines a vertex
+</p><div class="fullcomment"><div class="comment cmt"><p>Defines a vertex
+</p></div><dl class="paramcmts block"><dt class="param">tileId</dt><dd class="cmt"><p>The tile containing this <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a></p></dd><dt class="param">index</dt><dd class="cmt"><p>The index of this <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a> in the tile</p></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.graph.VertexIndex" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="VertexIndexextendsAnyValwithProductwithSerializable"></a><a id="VertexIndex:VertexIndex"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/VertexIndex.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Represents the index of a vertex inside a graph partition." href="VertexIndex.html"><span class="name">VertexIndex</span></a><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents the index of a vertex inside a graph partition.</p>
+    </li><li name="com.here.platform.location.inmemory.graph.VertexRange" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="VertexRangeextendsProductwithSerializable"></a><a id="VertexRange:VertexRange"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/VertexRange.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Represents a continuous part of a vertex." href="VertexRange.html"><span class="name">VertexRange</span></a><span class="params">(<span name="vertex">vertex: <a href="Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertex</a></span>, <span name="start">start: <span class="extype" name="scala.Double">Double</span></span>, <span name="end">end: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents a continuous part of a vertex.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a continuous part of a vertex.
+</p></div><dl class="paramcmts block"><dt class="param">vertex</dt><dd class="cmt"><p>the vertex itself</p></dd><dt class="param">start</dt><dd class="cmt"><p>The start offset along the vertex. Must be in the range [0.0; 1.0]</p></dd><dt class="param">end</dt><dd class="cmt"><p>The end offset along the vertex. Must be in the range [start; 1.0]</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members">
+              <h3>Value Members</h3>
+              <ol>
+                <li name="com.here.platform.location.inmemory.graph.Backward" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="Backward"></a><a id="Backward:Backward"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/Backward%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="The vertex and the segment have opposite directions." href="Backward%24.html"><span class="name">Backward</span></a><span class="result"> extends <a href="Direction.html" class="extype" name="com.here.platform.location.inmemory.graph.Direction">Direction</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">The vertex and the segment have opposite directions.</p>
+    </li><li name="com.here.platform.location.inmemory.graph.Forward" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="Forward"></a><a id="Forward:Forward"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/Forward%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="The vertex and the segment have the same direction." href="Forward%24.html"><span class="name">Forward</span></a><span class="result"> extends <a href="Direction.html" class="extype" name="com.here.platform.location.inmemory.graph.Direction">Direction</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">The vertex and the segment have the same direction.</p>
+    </li><li name="com.here.platform.location.inmemory.graph.GraphTile" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="GraphTile"></a><a id="GraphTile:GraphTile"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/GraphTile%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="GraphTile%24.html"><span class="name">GraphTile</span></a>
+      </span>
+      
+      
+    </li><li name="com.here.platform.location.inmemory.graph.SegmentIndex" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="SegmentIndex"></a><a id="SegmentIndex:SegmentIndex"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/SegmentIndex%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="SegmentIndex%24.html"><span class="name">SegmentIndex</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.location.inmemory.graph.TiledEdgePropertyMap" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="TiledEdgePropertyMap"></a><a id="TiledEdgePropertyMap:TiledEdgePropertyMap"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledEdgePropertyMap%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="TiledEdgePropertyMap%24.html"><span class="name">TiledEdgePropertyMap</span></a>
+      </span>
+      
+      
+    </li><li name="com.here.platform.location.inmemory.graph.TiledGraph" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="TiledGraph"></a><a id="TiledGraph:TiledGraph"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledGraph%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="TiledGraph%24.html"><span class="name">TiledGraph</span></a>
+      </span>
+      
+      
+    </li><li name="com.here.platform.location.inmemory.graph.TiledRangeBasedPropertyMap" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="TiledRangeBasedPropertyMap"></a><a id="TiledRangeBasedPropertyMap:TiledRangeBasedPropertyMap"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/TiledRangeBasedPropertyMap%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="TiledRangeBasedPropertyMap%24.html"><span class="name">TiledRangeBasedPropertyMap</span></a>
+      </span>
+      
+      
+    </li><li name="com.here.platform.location.inmemory.graph.Vertices" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="Vertices"></a><a id="Vertices:Vertices"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/graph/Vertices%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Methods for manipulating vertex directions." href="Vertices%24.html"><span class="name">Vertices</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">Methods for manipulating vertex directions.</p>
+    </li>
+              </ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+    
+          </div>
+        </div>
+      </div>
+    </body>
+      </html>

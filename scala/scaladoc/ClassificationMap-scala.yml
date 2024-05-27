@@ -1,0 +1,6 @@
+classification:
+  name: HERE Workspace for Java and Scala Developers - API Reference Scala
+  description: Learn how to access data from the platform, process sensor data or efficiently transform map data using the SDK for Java and Scala or other tools like the CLI.
+  product: HERE Workspace
+  content_type: API reference
+  technology: Scala

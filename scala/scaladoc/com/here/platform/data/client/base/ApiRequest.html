@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html>
+        <head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          <title>HERE Data SDK - Scala API references  - com.here.platform.data.client.base.ApiRequest</title>
+          <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.data.client.base.ApiRequest">
+          <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.data.client.base.ApiRequest">
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+          
+      
+      <link href="../../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css">
+      <script type="text/javascript" src="../../../../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery.panzoom.min.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/index.js"></script>
+      <script type="text/javascript" src="../../../../../../index.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/scheduler.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      
+      <script type="text/javascript">
+        /* this variable can be used by the JS to determine the path to the root document */
+        var toRoot = '../../../../../../';
+      </script>
+    
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.785 API Reference Scala"><meta name="DC.Document.Id" content="628bb28c-e055-4fa6-9d5a-70948681f9e0"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.785"><meta name="DC.Creation.Date" content="2024-05-24T07:56:55+00:00"></head>
+        <body>
+      <div id="search">
+        <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
+        <span class="close-results"><span class="left">&lt;</span> Back</span>
+        <div id="textfilter">
+          <span class="input">
+            <input autocapitalize="none" placeholder="Search" id="index-input" type="text" accesskey="/">
+            <i class="clear material-icons"></i>
+            <i id="search-icon" class="material-icons"></i>
+          </span>
+        </div>
+    </div>
+      <div id="search-results">
+        <div id="search-progress">
+          <div id="progress-fill"></div>
+        </div>
+        <div id="results-content">
+          <div id="entity-results"></div>
+          <div id="member-results"></div>
+        </div>
+      </div>
+      <div id="content-scroll-container" style="-webkit-overflow-scrolling: touch;">
+        <div id="content-container" style="-webkit-overflow-scrolling: touch;">
+          <div id="subpackage-spacer">
+            <div id="packages">
+              <h1>Packages</h1>
+              <ul>
+                <li name="_root_.root" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="_root_"></a><a id="root:_root_"></a>
+      <span class="permalink">
+      <a href="../../../../../../index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../index.html"><span class="name">root</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="_root_.com" visbl="pub" class="indented1 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="com"></a><a id="com:com"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../index.html"><span class="name">com</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="com.here" visbl="pub" class="indented2 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="here"></a><a id="here:here"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../index.html"><span class="name">here</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../index.html" class="extype" name="com">com</a></dd></dl></div>
+    </li><li name="com.here.platform" visbl="pub" class="indented3 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="platform"></a><a id="platform:platform"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../index.html"><span class="name">platform</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../index.html" class="extype" name="com.here">here</a></dd></dl></div>
+    </li><li name="com.here.platform.data" visbl="pub" class="indented4 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="data"></a><a id="data:data"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../index.html"><span class="name">data</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="com.here.platform">platform</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client" visbl="pub" class="indented5 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="client"></a><a id="client:client"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../index.html"><span class="name">client</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="com.here.platform.data">data</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base" visbl="pub" class="indented6 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="base"></a><a id="base:base"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="index.html"><span class="name">base</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.here.platform.data.client">client</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.common" visbl="pub" class="indented7 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="common"></a><a id="common:common"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/common/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="common/index.html"><span class="name">common</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.here.platform.data.client.base">base</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.generated" visbl="pub" class="indented7 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="generated"></a><a id="generated:generated"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/generated/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="generated/index.html"><span class="name">generated</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.here.platform.data.client.base">base</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.http" visbl="pub" class="indented7 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="http"></a><a id="http:http"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/http/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="http/index.html"><span class="name">http</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.here.platform.data.client.base">base</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols" visbl="pub" class="indented7 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="ols"></a><a id="ols:ols"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ols/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ols/index.html"><span class="name">ols</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.here.platform.data.client.base">base</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.scaladsl" visbl="pub" class="indented7 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="scaladsl"></a><a id="scaladsl:scaladsl"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/scaladsl/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="scaladsl/index.html"><span class="name">scaladsl</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.here.platform.data.client.base">base</a></dd></dl></div>
+    </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="Api.html" title=""></a>
+                        <a href="Api.html" title="">Api</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="ApiEnum.html" title=""></a>
+                        <a href="ApiEnum.html" title="">ApiEnum</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="ApiEnumParser.html" title=""></a>
+                        <a href="ApiEnumParser.html" title="">ApiEnumParser</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="ApiModel.html" title="This trait needs to be added to any model defined by the api."></a>
+                        <a href="ApiModel.html" title="This trait needs to be added to any model defined by the api.">ApiModel</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="" title=""></a>
+                        <a href="" title="">ApiRequest</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ApiRequestException.html" title=""></a>
+                        <a href="ApiRequestException.html" title="">ApiRequestException</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="ApiRequestExecutor.html" title=""></a>
+                        <a href="ApiRequestExecutor.html" title="">ApiRequestExecutor</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="BodyDeserializer%24.html" title=""></a>
+                        <a class="trait" href="BodyDeserializer.html" title=""></a>
+                        <a href="BodyDeserializer.html" title="">BodyDeserializer</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="BodySerializer%24.html" title=""></a>
+                        <a class="trait" href="BodySerializer.html" title=""></a>
+                        <a href="BodySerializer.html" title="">BodySerializer</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="CanBuildScalaApi%24.html" title=""></a>
+                        <a class="trait" href="CanBuildScalaApi.html" title=""></a>
+                        <a href="CanBuildScalaApi.html" title="">CanBuildScalaApi</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="J2SMapping%24.html" title=""></a>
+                        <a class="trait" href="J2SMapping.html" title=""></a>
+                        <a href="J2SMapping.html" title="">J2SMapping</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="JavaMapping.html" title=""></a>
+                        <a href="JavaMapping.html" title="">JavaMapping</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="LookupScalaApi%24.html" title=""></a>
+                        <a href="LookupScalaApi%24.html" title="">LookupScalaApi</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="Mappings%24.html" title=""></a>
+                        <a href="Mappings%24.html" title="">Mappings</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="ResponseStatusHandler%24.html" title=""></a>
+                        <a class="trait" href="ResponseStatusHandler.html" title=""></a>
+                        <a href="ResponseStatusHandler.html" title="">ResponseStatusHandler</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="S2JMapping%24.html" title=""></a>
+                        <a class="trait" href="S2JMapping.html" title=""></a>
+                        <a href="S2JMapping.html" title="">S2JMapping</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="ScalaApi.html" title=""></a>
+                        <a href="ScalaApi.html" title="">ScalaApi</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="StatusCodeException.html" title=""></a>
+                        <a href="StatusCodeException.html" title="">StatusCodeException</a>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div id="content">
+            
+      <div id="definition">
+        <div class="big-circle class">c</div>
+        <p id="owner"><a href="../../../../../index.html" class="extype" name="com">com</a>.<a href="../../../../index.html" class="extype" name="com.here">here</a>.<a href="../../../index.html" class="extype" name="com.here.platform">platform</a>.<a href="../../index.html" class="extype" name="com.here.platform.data">data</a>.<a href="../index.html" class="extype" name="com.here.platform.data.client">client</a>.<a href="index.html" class="extype" name="com.here.platform.data.client.base">base</a></p>
+        <h1>ApiRequest<span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span></h1>
+        <h3><span class="morelinks"></span></h3>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ApiRequest</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="executor">executor: <a href="ApiRequestExecutor.html" class="extype" name="com.here.platform.data.client.base.ApiRequestExecutor">ApiRequestExecutor</a></span>, <span name="operationId">operationId: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="method">method: <a href="http/HttpMethod.html" class="extype" name="com.here.platform.data.client.base.http.HttpMethod">HttpMethod</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="contentType">contentType: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="accept">accept: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="apiConfig">apiConfig: <a href="http/settings/ApiConfiguration.html" class="extype" name="com.here.platform.data.client.base.http.settings.ApiConfiguration">ApiConfiguration</a></span>, <span name="metricName">metricName: <span class="extype" name="nl.grons.metrics4.scala.MetricName">MetricName</span> = <span class="defval" name='&lt;span class="name"&gt;&lt;a href="../../../../../index.html"&gt;MetricName(BaseClientMetricsScala.prefix)&lt;/a&gt;&lt;/span&gt;'>...</span></span>, <span name="fullURL">fullURL: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="baseURL">baseURL: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="accessType">accessType: <a href="http/AccessType.html" class="extype" name="com.here.platform.data.client.base.http.AccessType">AccessType</a> = <span class="symbol"><span class="name"><a href="../../../../../index.html">AccessType.Unauthenticated</a></span></span></span>, <span name="successResponseCodes">successResponseCodes: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[_]] = <span class="symbol">Map.empty</span></span>, <span name="errorResponseCodes">errorResponseCodes: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[_]] = <span class="symbol">Map.empty</span></span>, <span name="errorDefaultResponse">errorDefaultResponse: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[_] = <span class="symbol">ClassTag.Null</span></span>, <span name="bodyParam">bodyParam: <span class="extype" name="scala.Option">Option</span>[<a href="http/DataPublisher.html" class="extype" name="com.here.platform.data.client.base.http.DataPublisher">DataPublisher</a>] = <span class="symbol">None</span></span>, <span name="formParams">formParams: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map.empty</span></span>, <span name="pathParams">pathParams: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map.empty</span></span>, <span name="queryParams">queryParams: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map.empty</span></span>, <span name="headerParams">headerParams: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map.empty</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+
+      
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</dd></dl><div class="toggleContainer block">
+          <span class="toggle">
+            Linear Supertypes
+          </span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div class="toggle"></div>
+        <div id="memberfilter">
+          <i class="material-icons arrow"></i>
+          <span class="input">
+            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/">
+          </span>
+          <i class="clear material-icons"></i>
+        </div>
+        <div id="filterby">
+          <div id="order">
+            <span class="filtertype">Ordering</span>
+            <ol>
+              
+              <li class="alpha in"><span>Alphabetic</span></li>
+              <li class="inherit out"><span>By Inheritance</span></li>
+            </ol>
+          </div>
+          <div class="ancestors">
+                  <span class="filtertype">Inherited<br>
+                  </span>
+                  <ol id="linearization">
+                    <li class="in" name="com.here.platform.data.client.base.ApiRequest"><span>ApiRequest</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  </ol>
+                </div><div class="ancestors">
+              <span class="filtertype"></span>
+              <ol>
+                <li class="hideall out"><span>Hide All</span></li>
+                <li class="showall in"><span>Show All</span></li>
+              </ol>
+            </div>
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.here.platform.data.client.base.ApiRequest#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(executor:com.here.platform.data.client.base.ApiRequestExecutor,operationId:String,method:com.here.platform.data.client.base.http.HttpMethod,path:String,contentType:String,accept:String,apiConfig:com.here.platform.data.client.base.http.settings.ApiConfiguration,metricName:nl.grons.metrics4.scala.MetricName,fullURL:Option[String],baseURL:Option[String],accessType:com.here.platform.data.client.base.http.AccessType,successResponseCodes:Map[Int,scala.reflect.ClassTag[_]],errorResponseCodes:Map[Int,scala.reflect.ClassTag[_]],errorDefaultResponse:scala.reflect.ClassTag[_],bodyParam:Option[com.here.platform.data.client.base.http.DataPublisher],formParams:Map[String,Any],pathParams:Map[String,Any],queryParams:Map[String,Any],headerParams:Map[String,Any]):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="&lt;init&gt;:ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#&lt;init&gt;(executor:com.here.platform.data.client.base.ApiRequestExecutor,operationId:String,method:com.here.platform.data.client.base.http.HttpMethod,path:String,contentType:String,accept:String,apiConfig:com.here.platform.data.client.base.http.settings.ApiConfiguration,metricName:nl.grons.metrics4.scala.MetricName,fullURL:Option%5BString%5D,baseURL:Option%5BString%5D,accessType:com.here.platform.data.client.base.http.AccessType,successResponseCodes:Map%5BInt,scala.reflect.ClassTag%5B_%5D%5D,errorResponseCodes:Map%5BInt,scala.reflect.ClassTag%5B_%5D%5D,errorDefaultResponse:scala.reflect.ClassTag%5B_%5D,bodyParam:Option%5Bcom.here.platform.data.client.base.http.DataPublisher%5D,formParams:Map%5BString,Any%5D,pathParams:Map%5BString,Any%5D,queryParams:Map%5BString,Any%5D,headerParams:Map%5BString,Any%5D):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ApiRequest</span><span class="params">(<span name="executor">executor: <a href="ApiRequestExecutor.html" class="extype" name="com.here.platform.data.client.base.ApiRequestExecutor">ApiRequestExecutor</a></span>, <span name="operationId">operationId: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="method">method: <a href="http/HttpMethod.html" class="extype" name="com.here.platform.data.client.base.http.HttpMethod">HttpMethod</a></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="contentType">contentType: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="accept">accept: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="apiConfig">apiConfig: <a href="http/settings/ApiConfiguration.html" class="extype" name="com.here.platform.data.client.base.http.settings.ApiConfiguration">ApiConfiguration</a></span>, <span name="metricName">metricName: <span class="extype" name="nl.grons.metrics4.scala.MetricName">MetricName</span> = <span class="defval" name='&lt;span class="name"&gt;&lt;a href="../../../../../index.html"&gt;MetricName(BaseClientMetricsScala.prefix)&lt;/a&gt;&lt;/span&gt;'>...</span></span>, <span name="fullURL">fullURL: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="baseURL">baseURL: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="accessType">accessType: <a href="http/AccessType.html" class="extype" name="com.here.platform.data.client.base.http.AccessType">AccessType</a> = <span class="symbol"><span class="name"><a href="../../../../../index.html">AccessType.Unauthenticated</a></span></span></span>, <span name="successResponseCodes">successResponseCodes: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[_]] = <span class="symbol">Map.empty</span></span>, <span name="errorResponseCodes">errorResponseCodes: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[_]] = <span class="symbol">Map.empty</span></span>, <span name="errorDefaultResponse">errorDefaultResponse: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[_] = <span class="symbol">ClassTag.Null</span></span>, <span name="bodyParam">bodyParam: <span class="extype" name="scala.Option">Option</span>[<a href="http/DataPublisher.html" class="extype" name="com.here.platform.data.client.base.http.DataPublisher">DataPublisher</a>] = <span class="symbol">None</span></span>, <span name="formParams">formParams: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map.empty</span></span>, <span name="pathParams">pathParams: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map.empty</span></span>, <span name="queryParams">queryParams: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map.empty</span></span>, <span name="headerParams">headerParams: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map.empty</span></span>)</span>
+      </span>
+      
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        <div class="values members">
+              <h3>Value Members</h3>
+              <ol>
+                <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#!=(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html###():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#==(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#accept" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="accept:String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#accept:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">accept</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#accessType" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="accessType:com.here.platform.data.client.base.http.AccessType"></a><a id="accessType:AccessType"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#accessType:com.here.platform.data.client.base.http.AccessType" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">accessType</span><span class="result">: <a href="http/AccessType.html" class="extype" name="com.here.platform.data.client.base.http.AccessType">AccessType</a></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#apiConfig" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="apiConfig:com.here.platform.data.client.base.http.settings.ApiConfiguration"></a><a id="apiConfig:ApiConfiguration"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#apiConfig:com.here.platform.data.client.base.http.settings.ApiConfiguration" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apiConfig</span><span class="result">: <a href="http/settings/ApiConfiguration.html" class="extype" name="com.here.platform.data.client.base.http.settings.ApiConfiguration">ApiConfiguration</a></span>
+      </span>
+      
+      
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#asInstanceOf%5BT0%5D:T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#baseURL" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="baseURL:Option[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#baseURL:Option%5BString%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">baseURL</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#bodyParam" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="bodyParam:Option[com.here.platform.data.client.base.http.DataPublisher]"></a><a id="bodyParam:Option[DataPublisher]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#bodyParam:Option%5Bcom.here.platform.data.client.base.http.DataPublisher%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bodyParam</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="http/DataPublisher.html" class="extype" name="com.here.platform.data.client.base.http.DataPublisher">DataPublisher</a>]</span>
+      </span>
+      
+      
+    </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="clone():Object"></a><a id="clone():AnyRef"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#clone():Object" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#contentType" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="contentType:String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#contentType:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">contentType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      
+    </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#eq(x%241:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#errorDefaultResponse" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="errorDefaultResponse:scala.reflect.ClassTag[_]"></a><a id="errorDefaultResponse:ClassTag[_]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#errorDefaultResponse:scala.reflect.ClassTag%5B_%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">errorDefaultResponse</span><span class="result">: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[_]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#errorResponseCodes" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="errorResponseCodes:Map[Int,scala.reflect.ClassTag[_]]"></a><a id="errorResponseCodes:Map[Int,ClassTag[_]]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#errorResponseCodes:Map%5BInt,scala.reflect.ClassTag%5B_%5D%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">errorResponseCodes</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[_]]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#execute" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="execute():scala.concurrent.Future[com.here.platform.data.client.base.http.HttpResponse]"></a><a id="execute():Future[HttpResponse]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#execute():scala.concurrent.Future%5Bcom.here.platform.data.client.base.http.HttpResponse%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">execute</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="http/HttpResponse.html" class="extype" name="com.here.platform.data.client.base.http.HttpResponse">HttpResponse</a>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#executeAndHandle" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="executeAndHandle[T](handler:PartialFunction[com.here.platform.data.client.base.ResponseStatusHandler,scala.concurrent.Future[T]]):scala.concurrent.Future[T]"></a><a id="executeAndHandle[T](PartialFunction[ResponseStatusHandler,Future[T]]):Future[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#executeAndHandle%5BT%5D(handler:PartialFunction%5Bcom.here.platform.data.client.base.ResponseStatusHandler,scala.concurrent.Future%5BT%5D%5D):scala.concurrent.Future%5BT%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executeAndHandle</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="handler">handler: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="ResponseStatusHandler.html" class="extype" name="com.here.platform.data.client.base.ResponseStatusHandler">ResponseStatusHandler</a>, <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.executeAndHandle.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.executeAndHandle.T">T</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#executeTo" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="executeTo[T]()(implicitdeserializer:com.here.platform.data.client.base.BodyDeserializer[T]):scala.concurrent.Future[T]"></a><a id="executeTo[T]()(BodyDeserializer[T]):Future[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#executeTo%5BT%5D()(implicitdeserializer:com.here.platform.data.client.base.BodyDeserializer%5BT%5D):scala.concurrent.Future%5BT%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executeTo</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="deserializer">deserializer: <a href="BodyDeserializer.html" class="extype" name="com.here.platform.data.client.base.BodyDeserializer">BodyDeserializer</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.executeTo.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.executeTo.T">T</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Execute request and deserialize response to the specified type</p><div class="fullcomment"><div class="comment cmt"><p>Execute request and deserialize response to the specified type</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The custom type which the response will be deserialized to</p></dd><dt class="param">deserializer</dt><dd class="cmt"><p>Deserializer for predefined response type.
+                    For custom types implement your own deserializer.
+                    To deserialize to the predefined types please use <code>executeToEntity</code></p></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#executeToBytes" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="executeToBytes():scala.concurrent.Future[Array[Byte]]"></a><a id="executeToBytes():Future[Array[Byte]]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#executeToBytes():scala.concurrent.Future%5BArray%5BByte%5D%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executeToBytes</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#executeToEntity" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="executeToEntity()(implicitdeserializer:com.here.platform.data.client.base.BodyDeserializer[U]):scala.concurrent.Future[U]"></a><a id="executeToEntity()(BodyDeserializer[U]):Future[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#executeToEntity()(implicitdeserializer:com.here.platform.data.client.base.BodyDeserializer%5BU%5D):scala.concurrent.Future%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executeToEntity</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="deserializer">deserializer: <a href="BodyDeserializer.html" class="extype" name="com.here.platform.data.client.base.BodyDeserializer">BodyDeserializer</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Execute request and deserialize response to the predefined response type</p><div class="fullcomment"><div class="comment cmt"><p>Execute request and deserialize response to the predefined response type</p></div><dl class="paramcmts block"><dt class="param">deserializer</dt><dd class="cmt"><p>Deserializer for predefined response type.
+                    To provide this implicit, add next import to your file:
+                    <code>import com.here.platform.data.client.base.generated.codecs.JsonSupport._</code></p></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#executeToInputStream" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="executeToInputStream():scala.concurrent.Future[java.io.InputStream]"></a><a id="executeToInputStream():Future[InputStream]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#executeToInputStream():scala.concurrent.Future%5Bjava.io.InputStream%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executeToInputStream</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="java.io.InputStream">InputStream</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#executeToStatusCode" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="executeToStatusCode():scala.concurrent.Future[Int]"></a><a id="executeToStatusCode():Future[Int]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#executeToStatusCode():scala.concurrent.Future%5BInt%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executeToStatusCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#executor" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="executor:com.here.platform.data.client.base.ApiRequestExecutor"></a><a id="executor:ApiRequestExecutor"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#executor:com.here.platform.data.client.base.ApiRequestExecutor" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executor</span><span class="result">: <a href="ApiRequestExecutor.html" class="extype" name="com.here.platform.data.client.base.ApiRequestExecutor">ApiRequestExecutor</a></span>
+      </span>
+      
+      
+    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#formParams" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="formParams:Map[String,Any]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#formParams:Map%5BString,Any%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">formParams</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#fullURL" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="fullURL:Option[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#fullURL:Option%5BString%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fullURL</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      
+    </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#getClass():Class%5B_%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#handle" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="handle[T](handler:PartialFunction[com.here.platform.data.client.base.ResponseStatusHandler,scala.concurrent.Future[T]]):T"></a><a id="handle[T](PartialFunction[ResponseStatusHandler,Future[T]]):T"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#handle%5BT%5D(handler:PartialFunction%5Bcom.here.platform.data.client.base.ResponseStatusHandler,scala.concurrent.Future%5BT%5D%5D):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handle</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="handler">handler: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="ResponseStatusHandler.html" class="extype" name="com.here.platform.data.client.base.ResponseStatusHandler">ResponseStatusHandler</a>, <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.handle.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="com.here.platform.data.client.base.ApiRequest.handle.T">T</span></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#headerParams" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="headerParams:Map[String,Any]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#headerParams:Map%5BString,Any%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">headerParams</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>
+      </span>
+      
+      
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#isInstanceOf%5BT0%5D:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#method" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="method:com.here.platform.data.client.base.http.HttpMethod"></a><a id="method:HttpMethod"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#method:com.here.platform.data.client.base.http.HttpMethod" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">method</span><span class="result">: <a href="http/HttpMethod.html" class="extype" name="com.here.platform.data.client.base.http.HttpMethod">HttpMethod</a></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#metricName" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="metricName:nl.grons.metrics4.scala.MetricName"></a><a id="metricName:MetricName"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#metricName:nl.grons.metrics4.scala.MetricName" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">metricName</span><span class="result">: <span class="extype" name="nl.grons.metrics4.scala.MetricName">MetricName</span></span>
+      </span>
+      
+      
+    </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#ne(x%241:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#notify():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#notifyAll():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#operationId" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="operationId:String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#operationId:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">operationId</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#path" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="path:String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#path:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">path</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#pathParams" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="pathParams:Map[String,Any]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#pathParams:Map%5BString,Any%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pathParams</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#queryParams" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="queryParams:Map[String,Any]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#queryParams:Map%5BString,Any%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">queryParams</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#successResponseCodes" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="successResponseCodes:Map[Int,scala.reflect.ClassTag[_]]"></a><a id="successResponseCodes:Map[Int,ClassTag[_]]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#successResponseCodes:Map%5BInt,scala.reflect.ClassTag%5B_%5D%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">successResponseCodes</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[_]]</span>
+      </span>
+      
+      
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#synchronized%5BT0%5D(x%241:=&gt;T0):T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#to" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="to[T]()(implicitdeserializer:com.here.platform.data.client.base.BodyDeserializer[T]):T"></a><a id="to[T]()(BodyDeserializer[T]):T"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#to%5BT%5D()(implicitdeserializer:com.here.platform.data.client.base.BodyDeserializer%5BT%5D):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">to</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="deserializer">deserializer: <a href="BodyDeserializer.html" class="extype" name="com.here.platform.data.client.base.BodyDeserializer">BodyDeserializer</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.to.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.here.platform.data.client.base.ApiRequest.to.T">T</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Execute request and deserialize response to the specified type</p><div class="fullcomment"><div class="comment cmt"><p>Execute request and deserialize response to the specified type</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The custom type which the response will be deserialized to</p></dd><dt class="param">deserializer</dt><dd class="cmt"><p>Deserializer for predefined response type.
+                    For custom types implement your own deserializer.
+                    To deserialize to the predefined types please use <code>toEntity</code></p></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#toBytes" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="toBytes:Array[Byte]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#toBytes:Array%5BByte%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toBytes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#toEntity" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="toEntity()(implicitdeserializer:com.here.platform.data.client.base.BodyDeserializer[U]):U"></a><a id="toEntity()(BodyDeserializer[U]):U"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#toEntity()(implicitdeserializer:com.here.platform.data.client.base.BodyDeserializer%5BU%5D):U" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toEntity</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="deserializer">deserializer: <a href="BodyDeserializer.html" class="extype" name="com.here.platform.data.client.base.BodyDeserializer">BodyDeserializer</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>)</span><span class="result">: <span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Execute request and deserialize response to the predefined response type</p><div class="fullcomment"><div class="comment cmt"><p>Execute request and deserialize response to the predefined response type</p></div><dl class="paramcmts block"><dt class="param">deserializer</dt><dd class="cmt"><p>Deserializer for predefined response type.
+                    To provide this implicit, add next import to your file:
+                    <code>import com.here.platform.data.client.base.generated.codecs.JsonSupport._</code></p></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#toHttpRequest" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="toHttpRequest:com.here.platform.data.client.base.http.HttpRequest"></a><a id="toHttpRequest:HttpRequest"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#toHttpRequest:com.here.platform.data.client.base.http.HttpRequest" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toHttpRequest</span><span class="result">: <a href="http/HttpRequest.html" class="extype" name="com.here.platform.data.client.base.http.HttpRequest">HttpRequest</a></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#toInputStream" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="toInputStream:java.io.InputStream"></a><a id="toInputStream:InputStream"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#toInputStream:java.io.InputStream" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toInputStream</span><span class="result">: <span class="extype" name="java.io.InputStream">InputStream</span></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#toResponse" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="toResponse:com.here.platform.data.client.base.http.HttpResponse"></a><a id="toResponse:HttpResponse"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#toResponse:com.here.platform.data.client.base.http.HttpResponse" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toResponse</span><span class="result">: <a href="http/HttpResponse.html" class="extype" name="com.here.platform.data.client.base.http.HttpResponse">HttpResponse</a></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#toStatusCode" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="toStatusCode:Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#toStatusCode:Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toStatusCode</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#wait(x%241:Long,x%242:Int):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#wait(x%241:Long):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withAccessType" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withAccessType(accessType:com.here.platform.data.client.base.http.AccessType):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withAccessType(AccessType):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withAccessType(accessType:com.here.platform.data.client.base.http.AccessType):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withAccessType</span><span class="params">(<span name="accessType">accessType: <a href="http/AccessType.html" class="extype" name="com.here.platform.data.client.base.http.AccessType">AccessType</a></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withBody" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="withBody[B](body:B)(implicitserializer:com.here.platform.data.client.base.BodySerializer[B]):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withBody[B](B)(BodySerializer[B]):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withBody%5BB%5D(body:B)(implicitserializer:com.here.platform.data.client.base.BodySerializer%5BB%5D):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withBody</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="body">body: <span class="extype" name="com.here.platform.data.client.base.ApiRequest.withBody.B">B</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="serializer">serializer: <a href="BodySerializer.html" class="extype" name="com.here.platform.data.client.base.BodySerializer">BodySerializer</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.withBody.B">B</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Add body to the request</p><div class="fullcomment"><div class="comment cmt"><p>Add body to the request</p></div><dl class="paramcmts block"><dt class="param">body</dt><dd class="cmt"><p>Entity, which should be used as request body</p></dd><dt class="param">serializer</dt><dd class="cmt"><p>Serializer for request type.
+                  To provide this implicit, add next import to your file:
+                  <code>import com.here.platform.data.client.base.generated.codecs.JsonSupport._</code></p></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withBodyData" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withBodyData(dataPublisher:com.here.platform.data.client.base.http.DataPublisher):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withBodyData(DataPublisher):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withBodyData(dataPublisher:com.here.platform.data.client.base.http.DataPublisher):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withBodyData</span><span class="params">(<span name="dataPublisher">dataPublisher: <a href="http/DataPublisher.html" class="extype" name="com.here.platform.data.client.base.http.DataPublisher">DataPublisher</a></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withConfig" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withConfig(apiConfiguration:com.here.platform.data.client.base.http.settings.ApiConfiguration):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withConfig(ApiConfiguration):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withConfig(apiConfiguration:com.here.platform.data.client.base.http.settings.ApiConfiguration):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withConfig</span><span class="params">(<span name="apiConfiguration">apiConfiguration: <a href="http/settings/ApiConfiguration.html" class="extype" name="com.here.platform.data.client.base.http.settings.ApiConfiguration">ApiConfiguration</a></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withDefaultErrorResponse" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withDefaultErrorResponse[T]()(implicitm:scala.reflect.ClassTag[T]):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withDefaultErrorResponse[T]()(ClassTag[T]):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withDefaultErrorResponse%5BT%5D()(implicitm:scala.reflect.ClassTag%5BT%5D):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withDefaultErrorResponse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="m">m: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.withDefaultErrorResponse.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withErrorResponse" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withErrorResponse[T](code:Int)(implicitm:scala.reflect.ClassTag[T]):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withErrorResponse[T](Int)(ClassTag[T]):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withErrorResponse%5BT%5D(code:Int)(implicitm:scala.reflect.ClassTag%5BT%5D):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withErrorResponse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="code">code: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="m">m: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.withErrorResponse.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withFormParam" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withFormParam(name:String,value:Any):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withFormParam(String,Any):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withFormParam(name:String,value:Any):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withFormParam</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withHeaderParam" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withHeaderParam(name:String,value:Any):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withHeaderParam(String,Any):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withHeaderParam(name:String,value:Any):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withHeaderParam</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withMethodName" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withMethodName(methodName:String):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withMethodName(String):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withMethodName(methodName:String):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withMethodName</span><span class="params">(<span name="methodName">methodName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withPathParam" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withPathParam(name:String,value:Any):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withPathParam(String,Any):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withPathParam(name:String,value:Any):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withPathParam</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withQueryParam" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withQueryParam(obj:Any):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withQueryParam(Any):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withQueryParam(obj:Any):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withQueryParam</span><span class="params">(<span name="obj">obj: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withQueryParam" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withQueryParam(params:Map[String,String]):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withQueryParam(Map[String,String]):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withQueryParam(params:Map%5BString,String%5D):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withQueryParam</span><span class="params">(<span name="params">params: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withQueryParam" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withQueryParam(name:String,value:Any):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withQueryParam(String,Any):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withQueryParam(name:String,value:Any):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withQueryParam</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withSuccessResponse" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withSuccessResponse[T](code:Int)(implicitm:scala.reflect.ClassTag[T]):com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withSuccessResponse[T](Int)(ClassTag[T]):ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withSuccessResponse%5BT%5D(code:Int)(implicitm:scala.reflect.ClassTag%5BT%5D):com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withSuccessResponse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="code">code: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="m">m: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.withSuccessResponse.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ApiRequest#withoutBody" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="withoutBody():com.here.platform.data.client.base.ApiRequest[U]"></a><a id="withoutBody():ApiRequest[U]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/base/ApiRequest.html#withoutBody():com.here.platform.data.client.base.ApiRequest%5BU%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withoutBody</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<span class="extype" name="com.here.platform.data.client.base.ApiRequest.U">U</span>]</span>
+      </span>
+      
+      
+    </li>
+              </ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+    
+          </div>
+        </div>
+      </div>
+    </body>
+      </html>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+        <head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          <title>HERE Data SDK - Scala API references  - com.here.platform.location.core.mapmatching.ExponentialProbabilityDistribution</title>
+          <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.location.core.mapmatching.ExponentialProbabilityDistribution">
+          <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.location.core.mapmatching.ExponentialProbabilityDistribution">
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+          
+      
+      <link href="../../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css">
+      <script type="text/javascript" src="../../../../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery.panzoom.min.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/index.js"></script>
+      <script type="text/javascript" src="../../../../../../index.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/scheduler.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      
+      <script type="text/javascript">
+        /* this variable can be used by the JS to determine the path to the root document */
+        var toRoot = '../../../../../../';
+      </script>
+    
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.785 API Reference Scala"><meta name="DC.Document.Id" content="628bb28c-e055-4fa6-9d5a-70948681f9e0"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.785"><meta name="DC.Creation.Date" content="2024-05-24T07:56:55+00:00"></head>
+        <body>
+      <div id="search">
+        <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
+        <span class="close-results"><span class="left">&lt;</span> Back</span>
+        <div id="textfilter">
+          <span class="input">
+            <input autocapitalize="none" placeholder="Search" id="index-input" type="text" accesskey="/">
+            <i class="clear material-icons"></i>
+            <i id="search-icon" class="material-icons"></i>
+          </span>
+        </div>
+    </div>
+      <div id="search-results">
+        <div id="search-progress">
+          <div id="progress-fill"></div>
+        </div>
+        <div id="results-content">
+          <div id="entity-results"></div>
+          <div id="member-results"></div>
+        </div>
+      </div>
+      <div id="content-scroll-container" style="-webkit-overflow-scrolling: touch;">
+        <div id="content-container" style="-webkit-overflow-scrolling: touch;">
+          <div id="subpackage-spacer">
+            <div id="packages">
+              <h1>Packages</h1>
+              <ul>
+                <li name="_root_.root" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="_root_"></a><a id="root:_root_"></a>
+      <span class="permalink">
+      <a href="../../../../../../index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../index.html"><span class="name">root</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="_root_.com" visbl="pub" class="indented1 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="com"></a><a id="com:com"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../index.html"><span class="name">com</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="com.here" visbl="pub" class="indented2 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="here"></a><a id="here:here"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../index.html"><span class="name">here</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../index.html" class="extype" name="com">com</a></dd></dl></div>
+    </li><li name="com.here.platform" visbl="pub" class="indented3 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="platform"></a><a id="platform:platform"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../index.html"><span class="name">platform</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../index.html" class="extype" name="com.here">here</a></dd></dl></div>
+    </li><li name="com.here.platform.location" visbl="pub" class="indented4 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="location"></a><a id="location:location"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../index.html"><span class="name">location</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="com.here.platform">platform</a></dd></dl></div>
+    </li><li name="com.here.platform.location.core" visbl="pub" class="indented5 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="core"></a><a id="core:core"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../index.html"><span class="name">core</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="com.here.platform.location">location</a></dd></dl></div>
+    </li><li name="com.here.platform.location.core.mapmatching" visbl="pub" class="indented6 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="mapmatching"></a><a id="mapmatching:mapmatching"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="Provides building blocks for implementing customizable map matchers." href="index.html"><span class="name">mapmatching</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">Provides building blocks for implementing customizable map matchers.</p><div class="fullcomment"><div class="comment cmt"><p>Provides building blocks for implementing customizable map matchers.</p><p><i>See also</i> <a href="HMMPathMatcher.html" class="extype" name="com.here.platform.location.core.mapmatching.HMMPathMatcher">com.here.platform.location.core.mapmatching.HMMPathMatcher</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.here.platform.location.core">core</a></dd></dl></div>
+    </li><li name="com.here.platform.location.core.mapmatching.scaladsl" visbl="pub" class="indented7 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="scaladsl"></a><a id="scaladsl:scaladsl"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/scaladsl/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="scaladsl/index.html"><span class="name">scaladsl</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.here.platform.location.core.mapmatching">mapmatching</a></dd></dl></div>
+    </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="CandidateGenerator.html" title="Generates candidate MatchResults for a particular observation."></a>
+                        <a href="CandidateGenerator.html" title="Generates candidate MatchResults for a particular observation.">CandidateGenerator</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="CandidateGenerators%24.html" title=""></a>
+                        <a href="CandidateGenerators%24.html" title="">CandidateGenerators</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="DirectDistanceCalculator.html" title="Calculates the distance between positions by following the road network, but only up to a directly connected vertex."></a>
+                        <a href="DirectDistanceCalculator.html" title="Calculates the distance between positions by following the road network, but only up to a directly connected vertex.">DirectDistanceCalculator</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="DistanceAndTransitionsCalculator.html" title="Calculates distances and (optionally) transitions from a current position associated to a current observation, and to several next positions associated to the next observation."></a>
+                        <a href="DistanceAndTransitionsCalculator.html" title="Calculates distances and (optionally) transitions from a current position associated to a current observation, and to several next positions associated to the next observation.">DistanceAndTransitionsCalculator</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="DistanceEmissionProbabilityStrategy%24.html" title=""></a>
+                        <a class="class" href="DistanceEmissionProbabilityStrategy.html" title="Computes emission probabilities for candidates based on distance."></a>
+                        <a href="DistanceEmissionProbabilityStrategy.html" title="Computes emission probabilities for candidates based on distance.">DistanceEmissionProbabilityStrategy</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="DistanceFilter.html" title="Filters out observations from a trip that are closer than minDistance to the most recent retained point."></a>
+                        <a href="DistanceFilter.html" title="Filters out observations from a trip that are closer than minDistance to the most recent retained point.">DistanceFilter</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="DistanceTransitionProbabilityStrategy%24.html" title=""></a>
+                        <a class="class" href="DistanceTransitionProbabilityStrategy.html" title="Calculates transition probability values based on the length of the route between projected points."></a>
+                        <a href="DistanceTransitionProbabilityStrategy.html" title="Calculates transition probability values based on the length of the route between projected points.">DistanceTransitionProbabilityStrategy</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="EmissionProbabilityStrategy.html" title="Computes emission probabilities for candidates associated with an observation."></a>
+                        <a href="EmissionProbabilityStrategy.html" title="Computes emission probabilities for candidates associated with an observation.">EmissionProbabilityStrategy</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="" title=""></a>
+                        <a class="class" href="ExponentialProbabilityDistribution.html" title="Exponential distribution."></a>
+                        <a href="ExponentialProbabilityDistribution.html" title="Exponential distribution.">ExponentialProbabilityDistribution</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="Filter.html" title="Marks each observation in a trip either as to be Omited, or to be Retained."></a>
+                        <a href="Filter.html" title="Marks each observation in a trip either as to be Omited, or to be Retained.">Filter</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="FilteredObservation.html" title="The result of applying a Filter to an observation."></a>
+                        <a href="FilteredObservation.html" title="The result of applying a Filter to an observation.">FilteredObservation</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="GaussianProbabilityDistribution.html" title="Gaussian, or normal, probability distribution."></a>
+                        <a href="GaussianProbabilityDistribution.html" title="Gaussian, or normal, probability distribution.">GaussianProbabilityDistribution</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="HMMPathMatcher.html" title="An implementation of PathMatcher that creates a Hidden Markov Model (HMM) and calculates the most likely path using the Viterbi algorithm."></a>
+                        <a href="HMMPathMatcher.html" title="An implementation of PathMatcher that creates a Hidden Markov Model (HMM) and calculates the most likely path using the Viterbi algorithm.">HMMPathMatcher</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="Interpolator.html" title="An Interpolator inserts MatchResults into the provided MatchedPath.results, one for each observation that was marked as Omitted."></a>
+                        <a href="Interpolator.html" title="An Interpolator inserts MatchResults into the provided MatchedPath.results, one for each observation that was marked as Omitted.">Interpolator</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="LogProbability.html" title="Logarithmic probability used in HMM computations."></a>
+                        <a href="LogProbability.html" title="Logarithmic probability used in HMM computations.">LogProbability</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="LogProbabilityMatrix%24.html" title=""></a>
+                        <a class="class" href="LogProbabilityMatrix.html" title="A Matrix of LogProbability values."></a>
+                        <a href="LogProbabilityMatrix.html" title="A Matrix of LogProbability values.">LogProbabilityMatrix</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="LogProbabilitySeq%24.html" title=""></a>
+                        <a class="trait" href="LogProbabilitySeq.html" title="A Sequence of LogProbability values."></a>
+                        <a href="LogProbabilitySeq.html" title="A Sequence of LogProbability values.">LogProbabilitySeq</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="MatchResult.html" title="The result of matching an observation to a road network."></a>
+                        <a href="MatchResult.html" title="The result of matching an observation to a road network.">MatchResult</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="MatchedPath%24.html" title=""></a>
+                        <a class="class" href="MatchedPath.html" title="The result of applying a PathMatcher to observations."></a>
+                        <a href="MatchedPath.html" title="The result of applying a PathMatcher to observations.">MatchedPath</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="NoTransition.html" title="A type that indicates that no transitions are returned from the corresponding path matcher."></a>
+                        <a href="NoTransition.html" title="A type that indicates that no transitions are returned from the corresponding path matcher.">NoTransition</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="OffRoad%24.html" title='Represents an "off-road" where a path matcher decides that the corresponding observation occurred outside of the road network.'></a>
+                        <a href="OffRoad%24.html" title='Represents an "off-road" where a path matcher decides that the corresponding observation occurred outside of the road network.'>OffRoad</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="Omit.html" title="The value was filtered out."></a>
+                        <a href="Omit.html" title="The value was filtered out.">Omit</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="OnRoad.html" title="Represents a successful match to an element of type V."></a>
+                        <a href="OnRoad.html" title="Represents a successful match to an element of type V.">OnRoad</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="PathMatcher.html" title="A path-based map matcher."></a>
+                        <a href="PathMatcher.html" title="A path-based map matcher.">PathMatcher</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="PathMatcherWithFilter.html" title="A PathMatcher that filters observations, map matches the remaining observations using the inner PathMatcher, and interpolates a MatchResult for each observation previously filtered out."></a>
+                        <a href="PathMatcherWithFilter.html" title="A PathMatcher that filters observations, map matches the remaining observations using the inner PathMatcher, and interpolates a MatchResult for each observation previously filtered out.">PathMatcherWithFilter</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="ProbabilityDistribution.html" title="Defines the probability distribution for a continuous random variable."></a>
+                        <a href="ProbabilityDistribution.html" title="Defines the probability distribution for a continuous random variable.">ProbabilityDistribution</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ProjectingInterpolator.html" title="An Interpolator that tries to insert an OnRoad result for each Omitted observation by projecting the observation onto the matchedPath."></a>
+                        <a href="ProjectingInterpolator.html" title="An Interpolator that tries to insert an OnRoad result for each Omitted observation by projecting the observation onto the matchedPath.">ProjectingInterpolator</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="ProximitySearchCandidateGenerator%24.html" title=""></a>
+                        <a class="class" href="ProximitySearchCandidateGenerator.html" title="Generates candidate States for an observation by proximity search."></a>
+                        <a href="ProximitySearchCandidateGenerator.html" title="Generates candidate States for an observation by proximity search.">ProximitySearchCandidateGenerator</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="Retain.html" title="The value successfully passed the filter."></a>
+                        <a href="Retain.html" title="The value successfully passed the filter.">Retain</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="SimpleConnectivityTransitionProbabilityStrategy%24.html" title=""></a>
+                        <a class="class" href="SimpleConnectivityTransitionProbabilityStrategy.html" title="A simplistic implementation to compute transition probabilities for dense probe points."></a>
+                        <a href="SimpleConnectivityTransitionProbabilityStrategy.html" title="A simplistic implementation to compute transition probabilities for dense probe points.">SimpleConnectivityTransitionProbabilityStrategy</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="Solver%24.html" title="Finds the most likely path through a Map-Matching specific Hidden Markov Model."></a>
+                        <a href="Solver%24.html" title="Finds the most likely path through a Map-Matching specific Hidden Markov Model.">Solver</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="SupportForUnknown.html" title="Adds an Unknown to the list of generated candidates."></a>
+                        <a href="SupportForUnknown.html" title="Adds an Unknown to the list of generated candidates.">SupportForUnknown</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ToUnknownInterpolator.html" title="An Interpolator that inserts an Unknown for each observation that was marked to be Omitted."></a>
+                        <a href="ToUnknownInterpolator.html" title="An Interpolator that inserts an Unknown for each observation that was marked to be Omitted.">ToUnknownInterpolator</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="trait" href="TransitionProbabilityStrategy.html" title="Computes the transition probabilities and (optionally) additional transition data."></a>
+                        <a href="TransitionProbabilityStrategy.html" title="Computes the transition probabilities and (optionally) additional transition data.">TransitionProbabilityStrategy</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="Unknown%24.html" title="Represents a result when the path matcher fails to match an observation."></a>
+                        <a href="Unknown%24.html" title="Represents a result when the path matcher fails to match an observation.">Unknown</a>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div id="content">
+            
+      <div id="definition">
+        <a href="ExponentialProbabilityDistribution.html" title="See companion class"><div class="big-circle object-companion-class">o</div></a>
+        <p id="owner"><a href="../../../../../index.html" class="extype" name="com">com</a>.<a href="../../../../index.html" class="extype" name="com.here">here</a>.<a href="../../../index.html" class="extype" name="com.here.platform">platform</a>.<a href="../../index.html" class="extype" name="com.here.platform.location">location</a>.<a href="../index.html" class="extype" name="com.here.platform.location.core">core</a>.<a href="index.html" class="extype" name="com.here.platform.location.core.mapmatching">mapmatching</a></p>
+        <h1><a href="ExponentialProbabilityDistribution.html" title="See companion class">ExponentialProbabilityDistribution</a><span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span></h1>
+        <h3><span class="morelinks"><div>
+            Companion <a href="ExponentialProbabilityDistribution.html" title="See companion class">class ExponentialProbabilityDistribution</a>
+          </div></span></h3>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ExponentialProbabilityDistribution</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+
+      
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <span class="toggle">
+            Linear Supertypes
+          </span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div class="toggle"></div>
+        <div id="memberfilter">
+          <i class="material-icons arrow"></i>
+          <span class="input">
+            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/">
+          </span>
+          <i class="clear material-icons"></i>
+        </div>
+        <div id="filterby">
+          <div id="order">
+            <span class="filtertype">Ordering</span>
+            <ol>
+              
+              <li class="alpha in"><span>Alphabetic</span></li>
+              <li class="inherit out"><span>By Inheritance</span></li>
+            </ol>
+          </div>
+          <div class="ancestors">
+                  <span class="filtertype">Inherited<br>
+                  </span>
+                  <ol id="linearization">
+                    <li class="in" name="com.here.platform.location.core.mapmatching.ExponentialProbabilityDistribution"><span>ExponentialProbabilityDistribution</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  </ol>
+                </div><div class="ancestors">
+              <span class="filtertype"></span>
+              <ol>
+                <li class="hideall out"><span>Hide All</span></li>
+                <li class="showall in"><span>Show All</span></li>
+              </ol>
+            </div>
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        
+
+        
+
+        <div class="values members">
+              <h3>Value Members</h3>
+              <ol>
+                <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#!=(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html###():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#==(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#asInstanceOf%5BT0%5D:T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="clone():Object"></a><a id="clone():AnyRef"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#clone():Object" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#eq(x%241:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#equals(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#getClass():Class%5B_%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#hashCode():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#isInstanceOf%5BT0%5D:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#ne(x%241:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#notify():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#notifyAll():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#synchronized%5BT0%5D(x%241:=&gt;T0):T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#toString():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#wait(x%241:Long,x%242:Int):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/mapmatching/ExponentialProbabilityDistribution%24.html#wait(x%241:Long):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li>
+              </ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+    
+          </div>
+        </div>
+      </div>
+    </body>
+      </html>

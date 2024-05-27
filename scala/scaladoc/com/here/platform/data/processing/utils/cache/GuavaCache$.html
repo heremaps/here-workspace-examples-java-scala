@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+        <head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          <title>HERE Data SDK - Scala API references  - com.here.platform.data.processing.utils.cache.GuavaCache</title>
+          <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.data.processing.utils.cache.GuavaCache">
+          <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.data.processing.utils.cache.GuavaCache">
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+          
+      
+      <link href="../../../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet">
+      <link href="../../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css">
+      <script type="text/javascript" src="../../../../../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../../../../../lib/jquery.panzoom.min.js"></script>
+      <script type="text/javascript" src="../../../../../../../lib/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript" src="../../../../../../../lib/index.js"></script>
+      <script type="text/javascript" src="../../../../../../../index.js"></script>
+      <script type="text/javascript" src="../../../../../../../lib/scheduler.js"></script>
+      <script type="text/javascript" src="../../../../../../../lib/template.js"></script>
+      
+      <script type="text/javascript">
+        /* this variable can be used by the JS to determine the path to the root document */
+        var toRoot = '../../../../../../../';
+      </script>
+    
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.785 API Reference Scala"><meta name="DC.Document.Id" content="628bb28c-e055-4fa6-9d5a-70948681f9e0"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.785"><meta name="DC.Creation.Date" content="2024-05-24T07:56:55+00:00"></head>
+        <body>
+      <div id="search">
+        <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
+        <span class="close-results"><span class="left">&lt;</span> Back</span>
+        <div id="textfilter">
+          <span class="input">
+            <input autocapitalize="none" placeholder="Search" id="index-input" type="text" accesskey="/">
+            <i class="clear material-icons"></i>
+            <i id="search-icon" class="material-icons"></i>
+          </span>
+        </div>
+    </div>
+      <div id="search-results">
+        <div id="search-progress">
+          <div id="progress-fill"></div>
+        </div>
+        <div id="results-content">
+          <div id="entity-results"></div>
+          <div id="member-results"></div>
+        </div>
+      </div>
+      <div id="content-scroll-container" style="-webkit-overflow-scrolling: touch;">
+        <div id="content-container" style="-webkit-overflow-scrolling: touch;">
+          <div id="subpackage-spacer">
+            <div id="packages">
+              <h1>Packages</h1>
+              <ul>
+                <li name="_root_.root" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="_root_"></a><a id="root:_root_"></a>
+      <span class="permalink">
+      <a href="../../../../../../../index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../../index.html"><span class="name">root</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="_root_.com" visbl="pub" class="indented1 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="com"></a><a id="com:com"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../../index.html"><span class="name">com</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="com.here" visbl="pub" class="indented2 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="here"></a><a id="here:here"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../index.html"><span class="name">here</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../../index.html" class="extype" name="com">com</a></dd></dl></div>
+    </li><li name="com.here.platform" visbl="pub" class="indented3 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="platform"></a><a id="platform:platform"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../index.html"><span class="name">platform</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../index.html" class="extype" name="com.here">here</a></dd></dl></div>
+    </li><li name="com.here.platform.data" visbl="pub" class="indented4 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="data"></a><a id="data:data"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../index.html"><span class="name">data</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../index.html" class="extype" name="com.here.platform">platform</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing" visbl="pub" class="indented5 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="processing"></a><a id="processing:processing"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="This package provides the Data Processing Library for building distributed data processing applications." href="../../index.html"><span class="name">processing</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">This package provides the Data Processing Library for building distributed data processing applications.</p><div class="fullcomment"><div class="comment cmt"><p>This package provides the Data Processing Library for building distributed data processing applications.</p><p>A Runner both implements the interface with the environment for an application to run, and
+starts the application. The application, in turn, is driven by a Driver, that controls and
+performs the distributed processing.</p><p>Choose a Runner best suited for the environment where the application runs.</p><p>The Driver performs one of more
+<a href="../../driver/DriverTask.html" class="extype" name="com.here.platform.data.processing.driver.DriverTask">tasks</a> which read layers from input
+catalogs and write to one or more layers of an output catalog.</p><p>The main entry point in the processing library is the <a href="../../driver/DriverBuilder.html" class="extype" name="com.here.platform.data.processing.driver.DriverBuilder">com.here.platform.data.processing.driver.DriverBuilder</a>
+class where you can add different kinds of tasks to the driver. The driver runs the tasks,
+and commits the final results to the output catalog.</p><p>Tasks are implemented using one or more compilers.</p><p>The simplest compiler is the direct compiler which maps each input tile to N output tiles.
+The application needs to define <a href="../../compiler/Direct1ToNCompiler.html" class="extype" name="com.here.platform.data.processing.compiler.Direct1ToNCompiler">com.here.platform.data.processing.compiler.Direct1ToNCompiler</a>.</p><p>Other more complex compilation patterns are based on some kind of dependency tracking
+between input partitions and output partitions.</p><p>The processing Library supports the following patterns:</p><p>- <a href="../../compiler/NonIncrementalCompiler.html" class="extype" name="com.here.platform.data.processing.compiler.NonIncrementalCompiler">com.here.platform.data.processing.compiler.NonIncrementalCompiler</a>: non-incremental compilation only
+- <a href="../../compiler/DepCompiler.html" class="extype" name="com.here.platform.data.processing.compiler.DepCompiler">com.here.platform.data.processing.compiler.DepCompiler</a>: non-incremental dependency calculation and incremental compilation
+- <a href="../../compiler/IncrementalDepCompiler.html" class="extype" name="com.here.platform.data.processing.compiler.IncrementalDepCompiler">com.here.platform.data.processing.compiler.IncrementalDepCompiler</a>: incremental dependency calculation and compilation
+- <a href="../../compiler/Direct1ToNCompiler.html" class="extype" name="com.here.platform.data.processing.compiler.Direct1ToNCompiler">com.here.platform.data.processing.compiler.Direct1ToNCompiler</a>: incremental compilation where every output tile depends only on one input tile,
+  and this mapping is independent from tile content
+- <a href="../../compiler/DirectMToNCompiler.html" class="extype" name="com.here.platform.data.processing.compiler.DirectMToNCompiler">com.here.platform.data.processing.compiler.DirectMToNCompiler</a>: incremental compilation where every output tile depends on multiple input tiles,
+  and this mapping is independent from tile content
+- <a href="../../compiler/MapGroupCompiler.html" class="extype" name="com.here.platform.data.processing.compiler.MapGroupCompiler">com.here.platform.data.processing.compiler.MapGroupCompiler</a>: incremental compilation
+  where every output tile can depend on multiple input tiles, and this mapping depend on the
+  tile content
+- <a href="../../compiler/RefTreeCompiler.html" class="extype" name="com.here.platform.data.processing.compiler.RefTreeCompiler">com.here.platform.data.processing.compiler.RefTreeCompiler</a>: fully-managed two phases incremental compilation
+  that can resolve references between input partitions.
+  Input/Output dependency management is implemented and the developer doesn't need to provide this logic</p><p>The application's main object normally mixes in the a runner trait (like PipelineRunner)
+to setup the Driver, and interfaces with the environment where the application is run.
+See the Main classes in the example compilers for more details.</p><p><a href="../../catalog/index.html" class="extype" name="com.here.platform.data.processing.catalog">com.here.platform.data.processing.catalog</a>, <a href="../../blobstore/index.html" class="extype" name="com.here.platform.data.processing.blobstore">com.here.platform.data.processing.blobstore</a>,
+and <a href="../../publisher/index.html" class="extype" name="com.here.platform.data.processing.publisher">com.here.platform.data.processing.publisher</a> contain utilities for accessing catalogs and
+payloads in a Spark-friendly way, providing an <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>-based
+abstraction over data and metadata. These classes are used by the processing library, but can
+also be used independently.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="com.here.platform.data">data</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.utils" visbl="pub" class="indented6 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="utils"></a><a id="utils:utils"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../index.html"><span class="name">utils</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="com.here.platform.data.processing">processing</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.utils.cache" visbl="pub" class="indented7 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="cache"></a><a id="cache:cache"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="index.html"><span class="name">cache</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.here.platform.data.processing.utils">utils</a></dd></dl></div>
+    </li><li class="current-entities indented7">
+                        <span class="separator"></span>
+                        <a class="trait" href="Cache.html" title="Interface to abstract object caching."></a>
+                        <a href="Cache.html" title="Interface to abstract object caching.">Cache</a>
+                      </li><li class="current-entities indented7">
+                        <a class="object" href="" title=""></a>
+                        <a class="class" href="GuavaCache.html" title="A thread-safe Scala wrapper for a Google Guava cache."></a>
+                        <a href="GuavaCache.html" title="A thread-safe Scala wrapper for a Google Guava cache.">GuavaCache</a>
+                      </li><li class="current-entities indented7">
+                        <span class="separator"></span>
+                        <a class="class" href="SparkCache.html" title="Serializable cache that uses as backend a single cache per Spark node."></a>
+                        <a href="SparkCache.html" title="Serializable cache that uses as backend a single cache per Spark node.">SparkCache</a>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div id="content">
+            
+      <div id="definition">
+        <a href="GuavaCache.html" title="See companion class"><div class="big-circle object-companion-class">o</div></a>
+        <p id="owner"><a href="../../../../../../index.html" class="extype" name="com">com</a>.<a href="../../../../../index.html" class="extype" name="com.here">here</a>.<a href="../../../../index.html" class="extype" name="com.here.platform">platform</a>.<a href="../../../index.html" class="extype" name="com.here.platform.data">data</a>.<a href="../../index.html" class="extype" name="com.here.platform.data.processing">processing</a>.<a href="../index.html" class="extype" name="com.here.platform.data.processing.utils">utils</a>.<a href="index.html" class="extype" name="com.here.platform.data.processing.utils.cache">cache</a></p>
+        <h1><a href="GuavaCache.html" title="See companion class">GuavaCache</a><span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span></h1>
+        <h3><span class="morelinks"><div>
+            Companion <a href="GuavaCache.html" title="See companion class">class GuavaCache</a>
+          </div></span></h3>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <span class="name">GuavaCache</span>
+      </span>
+      </h4>
+
+      
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <span class="toggle">
+            Linear Supertypes
+          </span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div class="toggle"></div>
+        <div id="memberfilter">
+          <i class="material-icons arrow"></i>
+          <span class="input">
+            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/">
+          </span>
+          <i class="clear material-icons"></i>
+        </div>
+        <div id="filterby">
+          <div id="order">
+            <span class="filtertype">Ordering</span>
+            <ol>
+              
+              <li class="alpha in"><span>Alphabetic</span></li>
+              <li class="inherit out"><span>By Inheritance</span></li>
+            </ol>
+          </div>
+          <div class="ancestors">
+                  <span class="filtertype">Inherited<br>
+                  </span>
+                  <ol id="linearization">
+                    <li class="in" name="com.here.platform.data.processing.utils.cache.GuavaCache"><span>GuavaCache</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  </ol>
+                </div><div class="ancestors">
+              <span class="filtertype"></span>
+              <ol>
+                <li class="hideall out"><span>Hide All</span></li>
+                <li class="showall in"><span>Show All</span></li>
+              </ol>
+            </div>
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.here.platform.data.processing.utils.cache.GuavaCache.Weigher" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="Weigher[K,V]=(K,V)=&gt;Int"></a><a id="Weigher[K,V]:Weigher[K,V]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#Weigher%5BK,V%5D=(K,V)=&gt;Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Weigher</span><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result alias"> = (<span class="extype" name="com.here.platform.data.processing.utils.cache.GuavaCache.Weigher.K">K</span>, <span class="extype" name="com.here.platform.data.processing.utils.cache.GuavaCache.Weigher.V">V</span>) ⇒ <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members">
+              <h3>Value Members</h3>
+              <ol>
+                <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#!=(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html###():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#==(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.here.platform.data.processing.utils.cache.GuavaCache#DefaultConcurrencyLevel" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="DefaultConcurrencyLevel:Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#DefaultConcurrencyLevel:Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">DefaultConcurrencyLevel</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.processing.utils.cache.GuavaCache#DefaultMaximumSize" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="DefaultMaximumSize:Long"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#DefaultMaximumSize:Long" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">DefaultMaximumSize</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      
+      
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#asInstanceOf%5BT0%5D:T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.here.platform.data.processing.utils.cache.GuavaCache#cacheFactory" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="cacheFactory[K&lt;:AnyRef,V&lt;:AnyRef](maximumWeight:Long,weigher:com.here.platform.data.processing.utils.cache.GuavaCache.Weigher[K,V],concurrency:Int,softValues:Boolean):()=&gt;com.here.platform.data.processing.utils.cache.Cache[K,V]"></a><a id="cacheFactory[K&lt;:AnyRef,V&lt;:AnyRef](Long,Weigher[K,V],Int,Boolean):()⇒Cache[K,V]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#cacheFactory%5BK&lt;:AnyRef,V&lt;:AnyRef%5D(maximumWeight:Long,weigher:com.here.platform.data.processing.utils.cache.GuavaCache.Weigher%5BK,V%5D,concurrency:Int,softValues:Boolean):()=&gt;com.here.platform.data.processing.utils.cache.Cache%5BK,V%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cacheFactory</span><span class="tparams">[<span name="K">K &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="V">V &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>]</span><span class="params">(<span name="maximumWeight">maximumWeight: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="#DefaultMaximumSize:Long">DefaultMaximumSize</a></span></span></span>, <span name="weigher">weigher: <a href="#Weigher%5BK,V%5D=(K,V)=&gt;Int" class="extmbr" name="com.here.platform.data.processing.utils.cache.GuavaCache.Weigher">Weigher</a>[<span class="extype" name="com.here.platform.data.processing.utils.cache.GuavaCache.cacheFactory.K">K</span>, <span class="extype" name="com.here.platform.data.processing.utils.cache.GuavaCache.cacheFactory.V">V</span>] = <span class="symbol"><span class="name"><a href="#uniformWeigher%5BK,V%5D(key:K,value:V):Int">uniformWeigher</a></span></span></span>, <span name="concurrency">concurrency: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="#DefaultConcurrencyLevel:Int">DefaultConcurrencyLevel</a></span></span></span>, <span name="softValues">softValues: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: () ⇒ <a href="Cache.html" class="extype" name="com.here.platform.data.processing.utils.cache.Cache">Cache</a>[<span class="extype" name="com.here.platform.data.processing.utils.cache.GuavaCache.cacheFactory.K">K</span>, <span class="extype" name="com.here.platform.data.processing.utils.cache.GuavaCache.cacheFactory.V">V</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">maximumWeight</dt><dd class="cmt"><p>The maximum size of the cache as defined by the total sum of the values
+                     weigher returned for the inserted items. If no custom weighing function
+                     is given, then this defines the maximum number of items to keep in the
+                     cache.</p></dd><dt class="param">weigher</dt><dd class="cmt"><p>A function to calculate the weight of a given k,v pair, used to maintain the
+               weight of the cache.</p></dd><dt class="param">concurrency</dt><dd class="cmt"><p>The maximum number of threads that can use the cache without blocking on a
+                   lock.</p></dd><dt class="param">softValues</dt><dd class="cmt"><p>Specifies whether the cached objects shall be stored as soft references.</p></dd><dt>returns</dt><dd class="cmt"><p>a factory function that constructs, when called, a <a href="GuavaCache.html" class="extype" name="com.here.platform.data.processing.utils.cache.GuavaCache">GuavaCache</a> instance.</p></dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="clone():Object"></a><a id="clone():AnyRef"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#clone():Object" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#eq(x%241:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#equals(x%241:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#getClass():Class%5B_%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#hashCode():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#isInstanceOf%5BT0%5D:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#ne(x%241:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#notify():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#notifyAll():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#synchronized%5BT0%5D(x%241:=&gt;T0):T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#toString():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.here.platform.data.processing.utils.cache.GuavaCache#uniformWeigher" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="uniformWeigher[K,V](key:K,value:V):Int"></a><a id="uniformWeigher[K,V](K,V):Int"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#uniformWeigher%5BK,V%5D(key:K,value:V):Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uniformWeigher</span><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="com.here.platform.data.processing.utils.cache.GuavaCache.uniformWeigher.K">K</span></span>, <span name="value">value: <span class="extype" name="com.here.platform.data.processing.utils.cache.GuavaCache.uniformWeigher.V">V</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#wait(x%241:Long,x%242:Int):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/utils/cache/GuavaCache%24.html#wait(x%241:Long):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li>
+              </ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+    
+          </div>
+        </div>
+      </div>
+    </body>
+      </html>
