@@ -4,7 +4,7 @@
 
   <groupId>com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf</groupId>
   <artifactId>model_v2</artifactId>
-  <version>0.0.879</version>
+  <version>0.0.886</version>
   <packaging>pom</packaging>
 
   <name>Pedestrian Topologies Extraction Example Scala</name>
@@ -34,7 +34,7 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.62.5</tag>
+    <tag>2.63.7</tag>
   </scm>
   <distributionManagement>
     <repository>
@@ -50,14 +50,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <protoc.version>3.11.4</protoc.version>
-    <scala.version>2.12.12</scala.version>
+    <protoc.version>3.19.6</protoc.version>
+    <scala.version>2.12.18</scala.version>
     <scala.compat.version>2.12</scala.compat.version>
-    <protobuf.version>3.11.4</protobuf.version>
-    <here.plugin.version>2.1.18</here.plugin.version>
+    <protobuf.version>3.19.6</protobuf.version>
+    <here.plugin.version>2.1.24</here.plugin.version>
     <artifact.wagon.version>2.0.24</artifact.wagon.version>
-    <sdk-bom.version>2.62.5</sdk-bom.version>
-    <scala.compat.version>2.12</scala.compat.version>
+    <sdk-bom.version>2.63.7</sdk-bom.version>
   </properties>
 
   <dependencyManagement>
