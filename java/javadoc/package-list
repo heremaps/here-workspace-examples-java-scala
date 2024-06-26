@@ -12,6 +12,7 @@ com.here.platform.data.client.v2.api.model.versioned
 com.here.platform.data.client.v2.caching
 com.here.platform.data.client.v2.caching.caffeine.javadsl
 com.here.platform.data.client.v2.caching.caffeine.model
+com.here.platform.data.client.v2.caching.javadsl
 com.here.platform.data.client.v2.caching.javadsl.versioned
 com.here.platform.data.client.v2.caching.model.versioned
 com.here.platform.data.client.v2.main

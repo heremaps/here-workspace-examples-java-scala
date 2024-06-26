@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.785 API Reference Scala"><meta name="DC.Document.Id" content="628bb28c-e055-4fa6-9d5a-70948681f9e0"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.785"><meta name="DC.Creation.Date" content="2024-05-24T07:56:55+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.793 API Reference Scala"><meta name="DC.Document.Id" content="5c9884d8-fc7c-4672-8bdc-691d88756e3b"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.793"><meta name="DC.Creation.Date" content="2024-06-17T11:59:30+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -293,9 +293,9 @@
         <div class="values members">
               <h3>Abstract Value Members</h3>
               <ol><li name="com.here.platform.data.client.v2.adapter.scaladsl.DataApiVersionedAdapter#getBlob" visbl="pub" class="indented0 " data-isabs="true" fullcomment="yes" group="Ungrouped">
-      <a id="getBlob(layer:String,dataHandle:String):java.io.InputStream"></a><a id="getBlob(String,String):InputStream"></a>
+      <a id="getBlob(layer:String,dataHandle:String,additionalFields:Array[com.here.platform.data.client.v2.adapter.model.AdditionalField]):java.io.InputStream"></a><a id="getBlob(String,String,Array[AdditionalField]):InputStream"></a>
       <span class="permalink">
-      <a href="../../../../../../../../com/here/platform/data/client/v2/adapter/scaladsl/DataApiVersionedAdapter.html#getBlob(layer:String,dataHandle:String):java.io.InputStream" title="Permalink">
+      <a href="../../../../../../../../com/here/platform/data/client/v2/adapter/scaladsl/DataApiVersionedAdapter.html#getBlob(layer:String,dataHandle:String,additionalFields:Array%5Bcom.here.platform.data.client.v2.adapter.model.AdditionalField%5D):java.io.InputStream" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -304,11 +304,12 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getBlob</span><span class="params">(<span name="layer">layer: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="dataHandle">dataHandle: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="java.io.InputStream">InputStream</span></span>
+        <span class="name">getBlob</span><span class="params">(<span name="layer">layer: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="dataHandle">dataHandle: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="additionalFields">additionalFields: <span class="extype" name="scala.Array">Array</span>[<a href="../model/AdditionalField.html" class="extype" name="com.here.platform.data.client.v2.adapter.model.AdditionalField">AdditionalField</a>]</span>)</span><span class="result">: <span class="extype" name="java.io.InputStream">InputStream</span></span>
       </span>
       
       <p class="shortcomment cmt">Retrieve the blob data as an input stream.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the blob data as an input stream.
-</p></div><dl class="paramcmts block"><dt class="param">layer</dt><dd class="cmt"><p>Layer id to which the blob belongs to.</p></dd><dt class="param">dataHandle</dt><dd class="cmt"><p>Data handle identifies a specific blob so that you can get that blob's contents.</p></dd><dt>returns</dt><dd class="cmt"><p>Returns an InputStream of the blob data.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">layer</dt><dd class="cmt"><p>Layer id to which the blob belongs to.</p></dd><dt class="param">dataHandle</dt><dd class="cmt"><p>Data handle identifies a specific blob so that you can get that blob's contents.</p></dd><dt class="param">additionalFields</dt><dd class="cmt"><p>Collection of retrieved additional fields which can optionally be used for example to
+                        perform extra validation (e.g. <code>checksum</code>).</p></dd><dt>returns</dt><dd class="cmt"><p>Returns an InputStream of the blob data.</p></dd></dl></div>
     </li><li name="com.here.platform.data.client.v2.adapter.scaladsl.DataApiVersionedAdapter#getLayers" visbl="pub" class="indented0 " data-isabs="true" fullcomment="yes" group="Ungrouped">
       <a id="getLayers:Iterator[com.here.platform.data.client.v2.adapter.model.VersionedLayer]"></a><a id="getLayers:Iterator[VersionedLayer]"></a>
       <span class="permalink">

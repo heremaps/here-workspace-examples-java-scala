@@ -3,7 +3,7 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge">
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.785 API Reference Scala</title>
+          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.793 API Reference Scala</title>
           <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.data.client.spark">
           <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.data.client.spark">
           <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.785 API Reference Scala"><meta name="DC.Document.Id" content="628bb28c-e055-4fa6-9d5a-70948681f9e0"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.785"><meta name="DC.Creation.Date" content="2024-05-24T07:56:55+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.793 API Reference Scala"><meta name="DC.Document.Id" content="5c9884d8-fc7c-4672-8bdc-691d88756e3b"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.793"><meta name="DC.Creation.Date" content="2024-06-17T11:59:30+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -803,13 +803,13 @@ class.
         <a title="Custom Spark DataFrameReader for querying data from a given layer." href="LayerDataFrameReader.html"><span class="name">LayerDataFrameReader</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Custom Spark <a href="https://spark.apache.org/docs/3.4.2/api/scala/org/apache/spark/sql/DataFrameReader.html" target="_blank">DataFrameReader</a>
-for querying data from a given layer.</p><div class="fullcomment"><div class="comment cmt"><p>Custom Spark <a href="https://spark.apache.org/docs/3.4.2/api/scala/org/apache/spark/sql/DataFrameReader.html" target="_blank">DataFrameReader</a>
+      <p class="shortcomment cmt">Custom Spark <a href="https://spark.apache.org/docs/3.4.3/api/scala/org/apache/spark/sql/DataFrameReader.html" target="_blank">DataFrameReader</a>
+for querying data from a given layer.</p><div class="fullcomment"><div class="comment cmt"><p>Custom Spark <a href="https://spark.apache.org/docs/3.4.3/api/scala/org/apache/spark/sql/DataFrameReader.html" target="_blank">DataFrameReader</a>
 for querying data from a given layer.</p><p>The layer type will be inferred from the layer configuration. Therefore the api to read from index layer or versioned layer is the same.
 To read from an index or versioned layer, your application must perform the following operations:</p><ul><li>Create an instance of a
-<a href="https://spark.apache.org/docs/3.4.2/api/scala/#org.apache.spark.sql.SparkSession" target="_blank">SparkSession</a>.</li><li>Use <a href="LayerDataFrameReader%24%24SparkSessionExt.html#readLayer(catalogHrn:com.here.hrn.HRN,layerId:String):com.here.platform.data.client.spark.LayerDataFrameReader" class="extmbr" name="com.here.platform.data.client.spark.LayerDataFrameReader.SparkSessionExt#readLayer">LayerDataFrameReader.SparkSessionExt.readLayer</a>
+<a href="https://spark.apache.org/docs/3.4.3/api/scala/#org.apache.spark.sql.SparkSession" target="_blank">SparkSession</a>.</li><li>Use <a href="LayerDataFrameReader%24%24SparkSessionExt.html#readLayer(catalogHrn:com.here.hrn.HRN,layerId:String):com.here.platform.data.client.spark.LayerDataFrameReader" class="extmbr" name="com.here.platform.data.client.spark.LayerDataFrameReader.SparkSessionExt#readLayer">LayerDataFrameReader.SparkSessionExt.readLayer</a>
 to create a <a href="LayerDataFrameReader.html" class="extype" name="com.here.platform.data.client.spark.LayerDataFrameReader">LayerDataFrameReader</a>.</li><li>Call <a href="LayerDataFrameReader.html#query(query:String):com.here.platform.data.client.spark.LayerDataFrameReader" class="extmbr" name="com.here.platform.data.client.spark.LayerDataFrameReader#query">query</a> to specify the query.</li><li>Call <a href="LayerDataFrameReader.html#load():org.apache.spark.sql.DataFrame" class="extmbr" name="com.here.platform.data.client.spark.LayerDataFrameReader#load">load</a> to create a
-<a href="https://spark.apache.org/docs/3.4.2/api/scala/#org.apache.spark.sql.package@DataFrame=org.apache.spark.sql.Dataset%5Borg.apache.spark.sql.Row%5D" target="_blank">DataFrame</a>
+<a href="https://spark.apache.org/docs/3.4.3/api/scala/#org.apache.spark.sql.package@DataFrame=org.apache.spark.sql.Dataset%5Borg.apache.spark.sql.Row%5D" target="_blank">DataFrame</a>
 that contains the data. The method will infer the data format from the layer content type.</li></ul><p>Below is an example written in Scala that demonstrates how to query data from an index layer:</p><pre><span class="kw">import</span> com.here.platform.data.client.spark.LayerDataFrameReader.SparkSessionExt
 
 <span class="kw">val</span> spark =
@@ -862,11 +862,11 @@ instead of <a href="LayerDataFrameReader%24%24SparkSessionExt.html#readLayer(cat
         <a title="Custom Spark DataFrameWriter for writing data to a given layer." href="LayerDataFrameWriter.html"><span class="name">LayerDataFrameWriter</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Custom Spark <a href="https://spark.apache.org/docs/3.4.2/api/scala/org/apache/spark/sql/DataFrameWriter.html">DataFrameWriter</a>
-for writing data to a given layer.</p><div class="fullcomment"><div class="comment cmt"><p>Custom Spark <a href="https://spark.apache.org/docs/3.4.2/api/scala/org/apache/spark/sql/DataFrameWriter.html">DataFrameWriter</a>
+      <p class="shortcomment cmt">Custom Spark <a href="https://spark.apache.org/docs/3.4.3/api/scala/org/apache/spark/sql/DataFrameWriter.html">DataFrameWriter</a>
+for writing data to a given layer.</p><div class="fullcomment"><div class="comment cmt"><p>Custom Spark <a href="https://spark.apache.org/docs/3.4.3/api/scala/org/apache/spark/sql/DataFrameWriter.html">DataFrameWriter</a>
 for writing data to a given layer.</p><p>The layer type will be inferred from the layer configuration. Therefore the api to write to index layer or versioned layer is the same.
 To write to an index or versioned layer, your application must perform the following operations:</p><ul><li>Have some data as a
-<a href="https://spark.apache.org/docs/3.4.2/api/scala/index.html#org.apache.spark.sql.package@DataFrame=org.apache.spark.sql.Dataset%5Borg.apache.spark.sql.Row%5D">DataFrame</a>.</li><li>Use <a href="LayerDataFrameWriter%24%24DataFrameExt.html#writeLayer(catalogHrn:com.here.hrn.HRN,layerId:String):com.here.platform.data.client.spark.LayerDataFrameWriter" class="extmbr" name="com.here.platform.data.client.spark.LayerDataFrameWriter.DataFrameExt#writeLayer">LayerDataFrameWriter.DataFrameExt.writeLayer</a>
+<a href="https://spark.apache.org/docs/3.4.3/api/scala/index.html#org.apache.spark.sql.package@DataFrame=org.apache.spark.sql.Dataset%5Borg.apache.spark.sql.Row%5D">DataFrame</a>.</li><li>Use <a href="LayerDataFrameWriter%24%24DataFrameExt.html#writeLayer(catalogHrn:com.here.hrn.HRN,layerId:String):com.here.platform.data.client.spark.LayerDataFrameWriter" class="extmbr" name="com.here.platform.data.client.spark.LayerDataFrameWriter.DataFrameExt#writeLayer">LayerDataFrameWriter.DataFrameExt.writeLayer</a>
 to create a <a href="LayerDataFrameWriter.html" class="extype" name="com.here.platform.data.client.spark.LayerDataFrameWriter">LayerDataFrameWriter</a>.</li><li>Call <a href="LayerDataFrameWriter.html#withDataConverter(dataConverter:com.here.platform.data.client.spark.scaladsl.DataConverter):com.here.platform.data.client.spark.LayerDataFrameWriter" class="extmbr" name="com.here.platform.data.client.spark.LayerDataFrameWriter#withDataConverter">withDataConverter</a>
 to specify how the data groupings should be merged to a single data file. This is not necessary if the data is stored
 in avro, parquet, or protobuf as the appropriate <a href="scaladsl/DataConverter.html" class="extype" name="com.here.platform.data.client.spark.scaladsl.DataConverter">DataConverter</a>
