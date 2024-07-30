@@ -34,6 +34,7 @@ case class Dependencies(platformBom: Bom) {
     "commons-io" % "commons-io" % platformBom,
     "org.apache.spark" %% "spark-core" % platformBom
   )
+  val allDependencies: Seq[ModuleID] = platformBom.bomDependencies
 }
 
 trait DependenciesTrait {

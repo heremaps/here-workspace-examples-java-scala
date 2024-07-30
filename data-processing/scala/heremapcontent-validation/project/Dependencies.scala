@@ -30,6 +30,7 @@ case class Dependencies(platformBom: Bom) {
       organization = "com.fasterxml.jackson.core")),
     "org.apache.spark" %% "spark-core" % platformBom
   )
+  val allDependencies: Seq[ModuleID] = platformBom.bomDependencies
 }
 
 trait DependenciesTrait {

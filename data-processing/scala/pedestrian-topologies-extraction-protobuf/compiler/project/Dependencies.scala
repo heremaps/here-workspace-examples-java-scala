@@ -31,8 +31,10 @@ case class Dependencies(platformBom: Bom) {
     "commons-io" % "commons-io" % platformBom,
     "org.apache.spark" %% "spark-core" % platformBom,
 //    output data schema
-    "com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf" %% "model_v2_scala" % "0.0.892"
+    "com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf" %% "model_v2_scala" % "0.0.899"
   )
+
+  val allDependencies: Seq[ModuleID] = platformBom.bomDependencies
 }
 
 trait DependenciesTrait {

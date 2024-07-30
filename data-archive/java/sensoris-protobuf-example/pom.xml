@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.examples</groupId>
     <artifactId>data-archive-sensoris-protobuf-example</artifactId>
-    <version>0.0.892</version>
+    <version>0.0.899</version>
     <packaging>jar</packaging>
 
     <!-- Meta information section -->
@@ -25,7 +25,7 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.64.5</tag>
+        <tag>2.65.6</tag>
     </scm>
 
     <properties>
@@ -33,7 +33,7 @@
         <java.version>1.8</java.version>
         <artifact.wagon.version>2.0.24</artifact.wagon.version>
 
-        <sdk-bom.version>2.64.5</sdk-bom.version>
+        <sdk-bom.version>2.65.6</sdk-bom.version>
         <scala.compat.version>2.12</scala.compat.version>
 
         <avro.version>1.10.0</avro.version>

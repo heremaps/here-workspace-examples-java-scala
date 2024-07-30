@@ -39,6 +39,7 @@ case class Dependencies(platformBom: Bom) {
     "com.github.tototoshi" %% "scala-csv" % platformBom,
     "stax" % "stax" % "1.2.0"
   )
+  val allDependencies: Seq[ModuleID] = platformBom.bomDependencies
 }
 
 trait DependenciesTrait {

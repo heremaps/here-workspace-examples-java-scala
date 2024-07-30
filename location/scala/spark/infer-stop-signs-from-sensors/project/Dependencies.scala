@@ -27,7 +27,6 @@ case class Dependencies(platformBom: Bom) {
       ExclusionRule(organization = "com.here.platform.data.client", name = "client-core_2.12")
     ),
     "com.here.hrn" %% "hrn" % platformBom,
-    "com.here.platform.data.client" %% "client-core" % platformBom,
     "com.here.platform.data.client" %% "data-client" % platformBom,
     "com.here.platform.data.client" %% "data-engine" % platformBom,
     "com.here.platform.data.client" %% "spark-support" % platformBom,
@@ -38,10 +37,11 @@ case class Dependencies(platformBom: Bom) {
     "com.here.platform.location" %% "location-io" % platformBom,
     "com.here.platform.location" %% "location-spark" % platformBom,
     "com.here.platform.pipeline" %% "pipeline-interface" % platformBom,
-    "com.typesafe.akka" %% "akka-actor" % platformBom,
     "org.apache.spark" %% "spark-core" % platformBom,
     "org.apache.spark" %% "spark-sql" % platformBom
   )
+
+  val allDependencies: Seq[ModuleID] = platformBom.bomDependencies
 }
 
 trait DependenciesTrait {

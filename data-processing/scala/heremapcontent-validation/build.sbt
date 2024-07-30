@@ -1,9 +1,8 @@
 import com.here.bom.Bom
 
 ThisBuild / organization := "com.here.platform.data.processing.example.scala"
-ThisBuild / version := "0.0.892"
+ThisBuild / version := "0.0.899"
 ThisBuild / scalaVersion := "2.12.18"
-ThisBuild / evictionErrorLevel := sbt.util.Level.Warn
 
 val organizationSettings: Seq[Setting[_]] = Seq(
   projectInfo := ModuleInfo(
@@ -25,7 +24,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.64.5"
+val sdkBomVersion = "2.65.6"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {
@@ -56,6 +55,9 @@ lazy val root = (project in file("."))
   .settings(organizationSettings)
   .settings(
     libraryDependencies ++= deps.key.value.dependencies
+  )
+  .settings(
+    dependencyOverrides ++= deps.key.value.allDependencies
   )
 
 resolvers += "HERE_PLATFORM_ARTIFACT" at "here+artifact-service://artifact-service"
