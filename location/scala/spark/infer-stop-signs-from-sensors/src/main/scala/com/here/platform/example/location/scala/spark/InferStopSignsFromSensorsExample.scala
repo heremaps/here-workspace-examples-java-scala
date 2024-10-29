@@ -19,7 +19,7 @@
 
 package com.here.platform.example.location.scala.spark
 
-import akka.actor.ActorSystem
+import org.apache.pekko.actor.ActorSystem
 import com.here.hrn.HRN
 import com.here.platform.data.client.base.scaladsl.BaseClient
 import com.here.platform.data.client.engine.scaladsl.DataEngine

@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.examples</groupId>
     <artifactId>data-archive-sensoris-protobuf-example</artifactId>
-    <version>0.0.917</version>
+    <version>0.0.920</version>
     <packaging>jar</packaging>
 
     <!-- Meta information section -->
@@ -25,7 +25,7 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.67.7</tag>
+        <tag>2.68.3</tag>
     </scm>
 
     <properties>
@@ -33,7 +33,7 @@
         <java.version>1.8</java.version>
         <artifact.wagon.version>2.0.24</artifact.wagon.version>
 
-        <sdk-bom.version>2.67.7</sdk-bom.version>
+        <sdk-bom.version>2.68.3</sdk-bom.version>
         <scala.compat.version>2.12</scala.compat.version>
 
         <avro.version>1.10.0</avro.version>
@@ -114,7 +114,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.6.0</version>
                 <executions>
                     <!-- Run shade goal on package phase -->
                     <execution>
@@ -155,6 +155,10 @@
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.here.platform.dal.DALMain</mainClass>
                                 </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>reference.conf</resource>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                         </configuration>
                     </execution>

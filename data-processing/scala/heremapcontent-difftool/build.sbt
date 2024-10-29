@@ -1,7 +1,7 @@
 import com.here.bom.Bom
 
 ThisBuild / organization := "com.here.platform.data.processing.example.scala"
-ThisBuild / version := "0.0.917"
+ThisBuild / version := "0.0.920"
 ThisBuild / scalaVersion := "2.12.18"
 val organizationSettings: Seq[Setting[_]] = Seq(
   projectInfo := ModuleInfo(
@@ -23,7 +23,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.67.7"
+val sdkBomVersion = "2.68.3"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {
