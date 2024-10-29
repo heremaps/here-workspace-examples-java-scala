@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.823 API Reference Scala"><meta name="DC.Document.Id" content="595507d7-ed84-4a7b-9f6f-7dbe932ba097"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.823"><meta name="DC.Creation.Date" content="2024-09-23T12:43:31+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -427,6 +427,10 @@
                         <a href="ASinglePrice.html" title="">ASinglePrice</a>
                       </li><li class="current-entities indented11">
                         <span class="separator"></span>
+                        <a class="trait" href="ASourceFeedMapping.html" title=""></a>
+                        <a href="ASourceFeedMapping.html" title="">ASourceFeedMapping</a>
+                      </li><li class="current-entities indented11">
+                        <span class="separator"></span>
                         <a class="trait" href="AStationBoard.html" title=""></a>
                         <a href="AStationBoard.html" title="">AStationBoard</a>
                       </li><li class="current-entities indented11">
@@ -453,6 +457,10 @@
                         <span class="separator"></span>
                         <a class="trait" href="ATimeRestrictedPrice.html" title=""></a>
                         <a href="ATimeRestrictedPrice.html" title="">ATimeRestrictedPrice</a>
+                      </li><li class="current-entities indented11">
+                        <span class="separator"></span>
+                        <a class="trait" href="ATransitAgency.html" title=""></a>
+                        <a href="ATransitAgency.html" title="">ATransitAgency</a>
                       </li><li class="current-entities indented11">
                         <span class="separator"></span>
                         <a class="trait" href="ATransitDeparture.html" title=""></a>
@@ -843,6 +851,10 @@
                         <a href="JSinglePrice%24.html" title="">JSinglePrice</a>
                       </li><li class="current-entities indented11">
                         <span class="separator"></span>
+                        <a class="object" href="JSourceFeedMapping%24.html" title=""></a>
+                        <a href="JSourceFeedMapping%24.html" title="">JSourceFeedMapping</a>
+                      </li><li class="current-entities indented11">
+                        <span class="separator"></span>
                         <a class="object" href="JStationBoard%24.html" title=""></a>
                         <a href="JStationBoard%24.html" title="">JStationBoard</a>
                       </li><li class="current-entities indented11">
@@ -869,6 +881,10 @@
                         <span class="separator"></span>
                         <a class="object" href="JTimeRestrictedPrice%24.html" title=""></a>
                         <a href="JTimeRestrictedPrice%24.html" title="">JTimeRestrictedPrice</a>
+                      </li><li class="current-entities indented11">
+                        <span class="separator"></span>
+                        <a class="object" href="JTransitAgency%24.html" title=""></a>
+                        <a href="JTransitAgency%24.html" title="">JTransitAgency</a>
                       </li><li class="current-entities indented11">
                         <span class="separator"></span>
                         <a class="object" href="JTransitDeparture%24.html" title=""></a>
@@ -1022,6 +1038,10 @@
                         <a class="class" href="SinglePrice.html" title=""></a>
                         <a href="SinglePrice.html" title="">SinglePrice</a>
                       </li><li class="current-entities indented11">
+                        <a class="object" href="SourceFeedMapping%24.html" title=""></a>
+                        <a class="class" href="SourceFeedMapping.html" title="Mapping of the internal data returned in the respone to the data from the source feed."></a>
+                        <a href="SourceFeedMapping.html" title="Mapping of the internal data returned in the respone to the data from the source feed.">SourceFeedMapping</a>
+                      </li><li class="current-entities indented11">
                         <a class="object" href="StationBoard%24.html" title=""></a>
                         <a class="class" href="StationBoard.html" title="It contains a list of departures from this station."></a>
                         <a href="StationBoard.html" title="It contains a list of departures from this station.">StationBoard</a>
@@ -1053,6 +1073,10 @@
                         <span class="separator"></span>
                         <a class="object" href="TimeRestrictedWeekdays%24.html" title=""></a>
                         <a href="TimeRestrictedWeekdays%24.html" title="">TimeRestrictedWeekdays</a>
+                      </li><li class="current-entities indented11">
+                        <a class="object" href="TransitAgency%24.html" title=""></a>
+                        <a class="class" href="TransitAgency.html" title="Contains information about a particular agency."></a>
+                        <a href="TransitAgency.html" title="Contains information about a particular agency.">TransitAgency</a>
                       </li><li class="current-entities indented11">
                         <a class="object" href="TransitDeparture%24.html" title=""></a>
                         <a class="class" href="TransitDeparture.html" title="Transit departure"></a>
@@ -1162,7 +1186,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">TransitTransport</span><span class="params">(<span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="headsign">headsign: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="category">category: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="color">color: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="textColor">textColor: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="shortName">shortName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="longName">longName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="wheelchairAccessible">wheelchairAccessible: <span class="extype" name="scala.Option">Option</span>[<a href="WheelchairAccessibility%24%24Accessibility.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.WheelchairAccessibility.Accessibility">Accessibility</a>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="ATransitTransport.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.ATransitTransport">ATransitTransport</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">TransitTransport</span><span class="params">(<span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="headsign">headsign: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="category">category: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="color">color: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="textColor">textColor: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="shortName">shortName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="longName">longName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="wheelchairAccessible">wheelchairAccessible: <span class="extype" name="scala.Option">Option</span>[<a href="WheelchairAccessibility%24%24Accessibility.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.WheelchairAccessibility.Accessibility">Accessibility</a>] = <span class="symbol">None</span></span>, <span name="sourceFeedMapping">sourceFeedMapping: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<a href="SourceFeedMapping.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping">SourceFeedMapping</a>]] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="ATransitTransport.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.ATransitTransport">ATransitTransport</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
@@ -1219,9 +1243,9 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(mode:String,name:Option[String],headsign:Option[String],category:Option[String],color:Option[String],textColor:Option[String],shortName:Option[String],longName:Option[String],wheelchairAccessible:Option[com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.WheelchairAccessibility.Accessibility]):com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport"></a><a id="&lt;init&gt;:TransitTransport"></a>
+      <a id="&lt;init&gt;(mode:String,name:Option[String],headsign:Option[String],category:Option[String],color:Option[String],textColor:Option[String],shortName:Option[String],longName:Option[String],wheelchairAccessible:Option[com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.WheelchairAccessibility.Accessibility],sourceFeedMapping:Option[Seq[com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping]]):com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport"></a><a id="&lt;init&gt;:TransitTransport"></a>
       <span class="permalink">
-      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/model/transit/TransitTransport.html#&lt;init&gt;(mode:String,name:Option%5BString%5D,headsign:Option%5BString%5D,category:Option%5BString%5D,color:Option%5BString%5D,textColor:Option%5BString%5D,shortName:Option%5BString%5D,longName:Option%5BString%5D,wheelchairAccessible:Option%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.transit.WheelchairAccessibility.Accessibility%5D):com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport" title="Permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/model/transit/TransitTransport.html#&lt;init&gt;(mode:String,name:Option%5BString%5D,headsign:Option%5BString%5D,category:Option%5BString%5D,color:Option%5BString%5D,textColor:Option%5BString%5D,shortName:Option%5BString%5D,longName:Option%5BString%5D,wheelchairAccessible:Option%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.transit.WheelchairAccessibility.Accessibility%5D,sourceFeedMapping:Option%5BSeq%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping%5D%5D):com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1230,7 +1254,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">TransitTransport</span><span class="params">(<span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="headsign">headsign: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="category">category: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="color">color: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="textColor">textColor: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="shortName">shortName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="longName">longName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="wheelchairAccessible">wheelchairAccessible: <span class="extype" name="scala.Option">Option</span>[<a href="WheelchairAccessibility%24%24Accessibility.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.WheelchairAccessibility.Accessibility">Accessibility</a>] = <span class="symbol">None</span></span>)</span>
+        <span class="name">TransitTransport</span><span class="params">(<span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="headsign">headsign: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="category">category: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="color">color: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="textColor">textColor: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="shortName">shortName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="longName">longName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="wheelchairAccessible">wheelchairAccessible: <span class="extype" name="scala.Option">Option</span>[<a href="WheelchairAccessibility%24%24Accessibility.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.WheelchairAccessibility.Accessibility">Accessibility</a>] = <span class="symbol">None</span></span>, <span name="sourceFeedMapping">sourceFeedMapping: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<a href="SourceFeedMapping.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping">SourceFeedMapping</a>]] = <span class="symbol">None</span></span>)</span>
       </span>
       
       <p class="shortcomment cmt"></p>
@@ -1533,6 +1557,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport">TransitTransport</a> → <a href="ATransitTransport.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.ATransitTransport">ATransitTransport</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport#getSourceFeedMapping" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="getSourceFeedMapping:java.util.Optional[java.util.List[com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping]]"></a><a id="getSourceFeedMapping:Optional[List[SourceFeedMapping]]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/model/transit/TransitTransport.html#getSourceFeedMapping:java.util.Optional%5Bjava.util.List%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping%5D%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSourceFeedMapping</span><span class="result">: <span class="extype" name="java.util.Optional">Optional</span>[<span class="extype" name="java.util.List">List</span>[<a href="SourceFeedMapping.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping">SourceFeedMapping</a>]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport">TransitTransport</a> → <a href="ATransitTransport.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.ATransitTransport">ATransitTransport</a></dd></dl></div>
     </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport#getTextColor" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="getTextColor:java.util.Optional[String]"></a><a id="getTextColor:Optional[String]"></a>
       <span class="permalink">
@@ -1712,6 +1752,22 @@
       </span>
       <span class="symbol">
         <span class="name">shortName</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.TransitTransport#sourceFeedMapping" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="sourceFeedMapping:Option[Seq[com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping]]"></a><a id="sourceFeedMapping:Option[Seq[SourceFeedMapping]]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/model/transit/TransitTransport.html#sourceFeedMapping:Option%5BSeq%5Bcom.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping%5D%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sourceFeedMapping</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<a href="SourceFeedMapping.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.transit.SourceFeedMapping">SourceFeedMapping</a>]]</span>
       </span>
       
       

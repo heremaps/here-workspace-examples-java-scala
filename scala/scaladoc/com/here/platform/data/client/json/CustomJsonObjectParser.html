@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.823 API Reference Scala"><meta name="DC.Document.Id" content="595507d7-ed84-4a7b-9f6f-7dbe932ba097"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.823"><meta name="DC.Creation.Date" content="2024-09-23T12:43:31+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -167,12 +167,12 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.here.platform.data.client">client</a></dd></dl></div>
     </li><li class="current-entities indented6">
                         <span class="separator"></span>
-                        <a class="object" href="CustomJsonFraming%24.html" title="Provides JSON framing Akka operator that can separate valid JSON objects from incoming akka.util.ByteString objects."></a>
-                        <a href="CustomJsonFraming%24.html" title="Provides JSON framing Akka operator that can separate valid JSON objects from incoming akka.util.ByteString objects.">CustomJsonFraming</a>
+                        <a class="object" href="CustomJsonFraming%24.html" title="Provides JSON framing Pekko operator that can separate valid JSON objects from incoming org.apache.pekko.util.ByteString objects."></a>
+                        <a href="CustomJsonFraming%24.html" title="Provides JSON framing Pekko operator that can separate valid JSON objects from incoming org.apache.pekko.util.ByteString objects.">CustomJsonFraming</a>
                       </li><li class="current-entities indented6">
                         <a class="object" href="CustomJsonObjectParser%24.html" title="Customized JSON object parser"></a>
-                        <a class="class" href="" title='Framing parser that given any number of akka.util.ByteString chunks return one akka.util.ByteStrings for each complete JSON object in the first array property named "propertyName".'></a>
-                        <a href="" title='Framing parser that given any number of akka.util.ByteString chunks return one akka.util.ByteStrings for each complete JSON object in the first array property named "propertyName".'>CustomJsonObjectParser</a>
+                        <a class="class" href="" title='Framing parser that given any number of org.apache.pekko.util.ByteString chunks return one org.apache.pekko.util.ByteStrings for each complete JSON object in the first array property named "propertyName".'></a>
+                        <a href="" title='Framing parser that given any number of org.apache.pekko.util.ByteString chunks return one org.apache.pekko.util.ByteStrings for each complete JSON object in the first array property named "propertyName".'>CustomJsonObjectParser</a>
                       </li>
               </ul>
             </div>
@@ -203,8 +203,8 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Framing parser that given any number of <span class="extype" name="akka.util.ByteString">akka.util.ByteString</span> chunks return one
-<span class="extype" name="akka.util.ByteString">akka.util.ByteString</span>s for each complete JSON object in the first array property
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Framing parser that given any number of <span class="extype" name="org.apache.pekko.util.ByteString">org.apache.pekko.util.ByteString</span> chunks return one
+<span class="extype" name="org.apache.pekko.util.ByteString">org.apache.pekko.util.ByteString</span>s for each complete JSON object in the first array property
 named "propertyName".
 The initial property scan discards everything until the "propertyName" is found, and
 once the "propertyName is found, it starts returning the JSON objects in the array.
@@ -552,9 +552,9 @@ Whitespace leading, between, and trailing the elements will be trimmed.
               
         </dd></dl></div>
     </li><li name="com.here.platform.data.client.json.CustomJsonObjectParser#offer" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="offer(input:akka.util.ByteString):Unit"></a><a id="offer(ByteString):Unit"></a>
+      <a id="offer(input:org.apache.pekko.util.ByteString):Unit"></a><a id="offer(ByteString):Unit"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/client/json/CustomJsonObjectParser.html#offer(input:akka.util.ByteString):Unit" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/client/json/CustomJsonObjectParser.html#offer(input:org.apache.pekko.util.ByteString):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -563,16 +563,16 @@ Whitespace leading, between, and trailing the elements will be trimmed.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">offer</span><span class="params">(<span name="input">input: <span class="extype" name="akka.util.ByteString">ByteString</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">offer</span><span class="params">(<span name="input">input: <span class="extype" name="org.apache.pekko.util.ByteString">ByteString</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <p class="shortcomment cmt">Appends input ByteString to internal byte string buffer.</p><div class="fullcomment"><div class="comment cmt"><p>Appends input ByteString to internal byte string buffer.
-Use <a href="#poll():Option%5Bakka.util.ByteString%5D" class="extmbr" name="com.here.platform.data.client.json.CustomJsonObjectParser#poll">poll</a> to extract contained JSON objects.
+Use <a href="#poll():Option%5Borg.apache.pekko.util.ByteString%5D" class="extmbr" name="com.here.platform.data.client.json.CustomJsonObjectParser#poll">poll</a> to extract contained JSON objects.
 </p></div></div>
     </li><li name="com.here.platform.data.client.json.CustomJsonObjectParser#poll" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="poll():Option[akka.util.ByteString]"></a><a id="poll():Option[ByteString]"></a>
+      <a id="poll():Option[org.apache.pekko.util.ByteString]"></a><a id="poll():Option[ByteString]"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/client/json/CustomJsonObjectParser.html#poll():Option%5Bakka.util.ByteString%5D" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/client/json/CustomJsonObjectParser.html#poll():Option%5Borg.apache.pekko.util.ByteString%5D" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -581,11 +581,11 @@ Use <a href="#poll():Option%5Bakka.util.ByteString%5D" class="extmbr" name="com.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">poll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>]</span>
+        <span class="name">poll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.pekko.util.ByteString">ByteString</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Attempt to locate next complete JSON object in buffered ByteString and returns <code>Some(it)</code> if found.</p><div class="fullcomment"><div class="comment cmt"><p>Attempt to locate next complete JSON object in buffered ByteString and returns <code>Some(it)</code> if found.
-May throw a <span class="extype" name="akka.stream.scaladsl.Framing.FramingException">akka.stream.scaladsl.Framing.FramingException</span> if the contained JSON is invalid or max object size is exceeded.
+May throw a <span class="extype" name="org.apache.pekko.stream.scaladsl.Framing.FramingException">org.apache.pekko.stream.scaladsl.Framing.FramingException</span> if the contained JSON is invalid or max object size is exceeded.
 </p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>

@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.823 API Reference Scala"><meta name="DC.Document.Id" content="595507d7-ed84-4a7b-9f6f-7dbe932ba097"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.823"><meta name="DC.Creation.Date" content="2024-09-23T12:43:31+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -1114,7 +1114,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">AutomaticVersionDeletion</span><span class="params">(<span name="numberOfVersionsToKeep">numberOfVersionsToKeep: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result"> extends <a href="AAutomaticVersionDeletion.html" class="extype" name="com.here.platform.data.client.base.generated.scaladsl.model.config.AAutomaticVersionDeletion">AAutomaticVersionDeletion</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">AutomaticVersionDeletion</span><span class="params">(<span name="numberOfVersionsToKeep">numberOfVersionsToKeep: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">None</span></span>, <span name="ttlDays">ttlDays: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="AAutomaticVersionDeletion.html" class="extype" name="com.here.platform.data.client.base.generated.scaladsl.model.config.AAutomaticVersionDeletion">AAutomaticVersionDeletion</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
@@ -1170,9 +1170,9 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(numberOfVersionsToKeep:Long):com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion"></a><a id="&lt;init&gt;:AutomaticVersionDeletion"></a>
+      <a id="&lt;init&gt;(numberOfVersionsToKeep:Option[Long],ttlDays:Option[Long]):com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion"></a><a id="&lt;init&gt;:AutomaticVersionDeletion"></a>
       <span class="permalink">
-      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/model/config/AutomaticVersionDeletion.html#&lt;init&gt;(numberOfVersionsToKeep:Long):com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion" title="Permalink">
+      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/model/config/AutomaticVersionDeletion.html#&lt;init&gt;(numberOfVersionsToKeep:Option%5BLong%5D,ttlDays:Option%5BLong%5D):com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1181,7 +1181,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">AutomaticVersionDeletion</span><span class="params">(<span name="numberOfVersionsToKeep">numberOfVersionsToKeep: <span class="extype" name="scala.Long">Long</span></span>)</span>
+        <span class="name">AutomaticVersionDeletion</span><span class="params">(<span name="numberOfVersionsToKeep">numberOfVersionsToKeep: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">None</span></span>, <span name="ttlDays">ttlDays: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">None</span></span>)</span>
       </span>
       
       <p class="shortcomment cmt"></p>
@@ -1341,9 +1341,9 @@
               
         </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion#getNumberOfVersionsToKeep" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="getNumberOfVersionsToKeep:Long"></a>
+      <a id="getNumberOfVersionsToKeep:java.util.Optional[Long]"></a><a id="getNumberOfVersionsToKeep:Optional[Long]"></a>
       <span class="permalink">
-      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/model/config/AutomaticVersionDeletion.html#getNumberOfVersionsToKeep:Long" title="Permalink">
+      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/model/config/AutomaticVersionDeletion.html#getNumberOfVersionsToKeep:java.util.Optional%5BLong%5D" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1352,7 +1352,23 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getNumberOfVersionsToKeep</span><span class="result">: <span class="extype" name="java.lang.Long">Long</span></span>
+        <span class="name">getNumberOfVersionsToKeep</span><span class="result">: <span class="extype" name="java.util.Optional">Optional</span>[<span class="extype" name="java.lang.Long">Long</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion">AutomaticVersionDeletion</a> → <a href="AAutomaticVersionDeletion.html" class="extype" name="com.here.platform.data.client.base.generated.scaladsl.model.config.AAutomaticVersionDeletion">AAutomaticVersionDeletion</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion#getTtlDays" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="getTtlDays:java.util.Optional[Long]"></a><a id="getTtlDays:Optional[Long]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/model/config/AutomaticVersionDeletion.html#getTtlDays:java.util.Optional%5BLong%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getTtlDays</span><span class="result">: <span class="extype" name="java.util.Optional">Optional</span>[<span class="extype" name="java.lang.Long">Long</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion">AutomaticVersionDeletion</a> → <a href="AAutomaticVersionDeletion.html" class="extype" name="com.here.platform.data.client.base.generated.scaladsl.model.config.AAutomaticVersionDeletion">AAutomaticVersionDeletion</a></dd></dl></div>
@@ -1427,9 +1443,9 @@
               
         </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion#numberOfVersionsToKeep" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
-      <a id="numberOfVersionsToKeep:Long"></a>
+      <a id="numberOfVersionsToKeep:Option[Long]"></a>
       <span class="permalink">
-      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/model/config/AutomaticVersionDeletion.html#numberOfVersionsToKeep:Long" title="Permalink">
+      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/model/config/AutomaticVersionDeletion.html#numberOfVersionsToKeep:Option%5BLong%5D" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1438,7 +1454,7 @@
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">numberOfVersionsToKeep</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+        <span class="name">numberOfVersionsToKeep</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>
       </span>
       
       
@@ -1458,6 +1474,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.here.platform.data.client.base.generated.scaladsl.model.config.AutomaticVersionDeletion#ttlDays" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="ttlDays:Option[Long]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/model/config/AutomaticVersionDeletion.html#ttlDays:Option%5BLong%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ttlDays</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">

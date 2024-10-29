@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.823 API Reference Scala"><meta name="DC.Document.Id" content="595507d7-ed84-4a7b-9f6f-7dbe932ba097"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.823"><meta name="DC.Creation.Date" content="2024-09-23T12:43:31+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -224,18 +224,18 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">DataEngineExt</span><span class="result"> extends <a href="DataEngineApi.html" class="extype" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi">DataEngineApi</a> with <span class="extype" name="akka.actor.Extension">Extension</span></span>
+        <span class="name">DataEngineExt</span><span class="result"> extends <a href="DataEngineApi.html" class="extype" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi">DataEngineApi</a> with <span class="extype" name="org.apache.pekko.actor.Extension">Extension</span></span>
       </span>
       </h4>
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Entry point of the Scala <code>data-engine</code> module.</p><p>Use provided API objects to access or produce partition data.</p><p>Data can either be published directly, or a data reference can be used with
-<a href="../../scaladsl/DataClientExt.html" class="extype" name="com.here.platform.data.client.scaladsl.DataClientExt">DataClientExt</a> API objects.</p><p>Use <a href="DataEngine%24.html#apply()(implicitsystem:akka.actor.ActorSystem):com.here.platform.data.client.engine.scaladsl.DataEngineExt" class="extmbr" name="com.here.platform.data.client.engine.scaladsl.DataEngine#apply">DataEngine</a> to access the global instance.</p><p>Consider passing this global instance as a <a href="DataEngineApi.html" class="extype" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi">DataEngineApi</a> for unit testing purposes.
+<a href="../../scaladsl/DataClientExt.html" class="extype" name="com.here.platform.data.client.scaladsl.DataClientExt">DataClientExt</a> API objects.</p><p>Use <a href="DataEngine%24.html#apply()(implicitsystem:org.apache.pekko.actor.ActorSystem):com.here.platform.data.client.engine.scaladsl.DataEngineExt" class="extmbr" name="com.here.platform.data.client.engine.scaladsl.DataEngine#apply">DataEngine</a> to access the global instance.</p><p>Consider passing this global instance as a <a href="DataEngineApi.html" class="extype" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi">DataEngineApi</a> for unit testing purposes.
 </p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="akka.actor.Extension">Extension</span>, <a href="DataEngineApi.html" class="extype" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi">DataEngineApi</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="org.apache.pekko.actor.Extension">Extension</span>, <a href="DataEngineApi.html" class="extype" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi">DataEngineApi</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -261,7 +261,7 @@
                   <span class="filtertype">Inherited<br>
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="com.here.platform.data.client.engine.scaladsl.DataEngineExt"><span>DataEngineExt</span></li><li class="in" name="akka.actor.Extension"><span>Extension</span></li><li class="in" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi"><span>DataEngineApi</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="com.here.platform.data.client.engine.scaladsl.DataEngineExt"><span>DataEngineExt</span></li><li class="in" name="org.apache.pekko.actor.Extension"><span>Extension</span></li><li class="in" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi"><span>DataEngineApi</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -700,8 +700,8 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="akka.actor.Extension">
-              <h3>Inherited from <span class="extype" name="akka.actor.Extension">Extension</span></h3>
+        <div class="parent" name="org.apache.pekko.actor.Extension">
+              <h3>Inherited from <span class="extype" name="org.apache.pekko.actor.Extension">Extension</span></h3>
             </div><div class="parent" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi">
               <h3>Inherited from <a href="DataEngineApi.html" class="extype" name="com.here.platform.data.client.engine.scaladsl.DataEngineApi">DataEngineApi</a></h3>
             </div><div class="parent" name="scala.AnyRef">

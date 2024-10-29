@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.823 API Reference Scala"><meta name="DC.Document.Id" content="595507d7-ed84-4a7b-9f6f-7dbe932ba097"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.823"><meta name="DC.Creation.Date" content="2024-09-23T12:43:31+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -167,12 +167,12 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.here.platform.data.client">client</a></dd></dl></div>
     </li><li class="current-entities indented6">
                         <span class="separator"></span>
-                        <a class="object" href="" title="Provides JSON framing Akka operator that can separate valid JSON objects from incoming akka.util.ByteString objects."></a>
-                        <a href="" title="Provides JSON framing Akka operator that can separate valid JSON objects from incoming akka.util.ByteString objects.">CustomJsonFraming</a>
+                        <a class="object" href="" title="Provides JSON framing Pekko operator that can separate valid JSON objects from incoming org.apache.pekko.util.ByteString objects."></a>
+                        <a href="" title="Provides JSON framing Pekko operator that can separate valid JSON objects from incoming org.apache.pekko.util.ByteString objects.">CustomJsonFraming</a>
                       </li><li class="current-entities indented6">
                         <a class="object" href="CustomJsonObjectParser%24.html" title="Customized JSON object parser"></a>
-                        <a class="class" href="CustomJsonObjectParser.html" title='Framing parser that given any number of akka.util.ByteString chunks return one akka.util.ByteStrings for each complete JSON object in the first array property named "propertyName".'></a>
-                        <a href="CustomJsonObjectParser.html" title='Framing parser that given any number of akka.util.ByteString chunks return one akka.util.ByteStrings for each complete JSON object in the first array property named "propertyName".'>CustomJsonObjectParser</a>
+                        <a class="class" href="CustomJsonObjectParser.html" title='Framing parser that given any number of org.apache.pekko.util.ByteString chunks return one org.apache.pekko.util.ByteStrings for each complete JSON object in the first array property named "propertyName".'></a>
+                        <a href="CustomJsonObjectParser.html" title='Framing parser that given any number of org.apache.pekko.util.ByteString chunks return one org.apache.pekko.util.ByteStrings for each complete JSON object in the first array property named "propertyName".'>CustomJsonObjectParser</a>
                       </li>
               </ul>
             </div>
@@ -201,8 +201,8 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Provides JSON framing Akka operator that can separate valid JSON objects from
-incoming <span class="extype" name="akka.util.ByteString">akka.util.ByteString</span> objects.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Provides JSON framing Pekko operator that can separate valid JSON objects from
+incoming <span class="extype" name="org.apache.pekko.util.ByteString">org.apache.pekko.util.ByteString</span> objects.
 </p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
@@ -511,9 +511,9 @@ incoming <span class="extype" name="akka.util.ByteString">akka.util.ByteString</
               
         </dd></dl></div>
     </li><li name="com.here.platform.data.client.json.CustomJsonFraming#objectScanner" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="objectScanner(propertyName:String,maximumObjectLength:Int):akka.stream.scaladsl.Flow[akka.util.ByteString,akka.util.ByteString,akka.NotUsed]"></a><a id="objectScanner(String,Int):Flow[ByteString,ByteString,NotUsed]"></a>
+      <a id="objectScanner(propertyName:String,maximumObjectLength:Int):org.apache.pekko.stream.scaladsl.Flow[org.apache.pekko.util.ByteString,org.apache.pekko.util.ByteString,org.apache.pekko.NotUsed]"></a><a id="objectScanner(String,Int):Flow[ByteString,ByteString,NotUsed]"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/client/json/CustomJsonFraming%24.html#objectScanner(propertyName:String,maximumObjectLength:Int):akka.stream.scaladsl.Flow%5Bakka.util.ByteString,akka.util.ByteString,akka.NotUsed%5D" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/client/json/CustomJsonFraming%24.html#objectScanner(propertyName:String,maximumObjectLength:Int):org.apache.pekko.stream.scaladsl.Flow%5Borg.apache.pekko.util.ByteString,org.apache.pekko.util.ByteString,org.apache.pekko.NotUsed%5D" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -522,13 +522,13 @@ incoming <span class="extype" name="akka.util.ByteString">akka.util.ByteString</
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">objectScanner</span><span class="params">(<span name="propertyName">propertyName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maximumObjectLength">maximumObjectLength: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="akka.stream.scaladsl.Flow">Flow</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]</span>
+        <span class="name">objectScanner</span><span class="params">(<span name="propertyName">propertyName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maximumObjectLength">maximumObjectLength: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="org.apache.pekko.stream.scaladsl.Flow">Flow</span>[<span class="extype" name="org.apache.pekko.util.ByteString">ByteString</span>, <span class="extype" name="org.apache.pekko.util.ByteString">ByteString</span>, <span class="extype" name="org.apache.pekko.NotUsed">NotUsed</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Framing scanner that given any number of <span class="extype" name="akka.util.ByteString">akka.util.ByteString</span> chunks return one
-<span class="extype" name="akka.util.ByteString">akka.util.ByteString</span>s for each complete JSON object in the first array property
-named "propertyName".</p><div class="fullcomment"><div class="comment cmt"><p>Framing scanner that given any number of <span class="extype" name="akka.util.ByteString">akka.util.ByteString</span> chunks return one
-<span class="extype" name="akka.util.ByteString">akka.util.ByteString</span>s for each complete JSON object in the first array property
+      <p class="shortcomment cmt">Framing scanner that given any number of <span class="extype" name="org.apache.pekko.util.ByteString">org.apache.pekko.util.ByteString</span> chunks return one
+<span class="extype" name="org.apache.pekko.util.ByteString">org.apache.pekko.util.ByteString</span>s for each complete JSON object in the first array property
+named "propertyName".</p><div class="fullcomment"><div class="comment cmt"><p>Framing scanner that given any number of <span class="extype" name="org.apache.pekko.util.ByteString">org.apache.pekko.util.ByteString</span> chunks return one
+<span class="extype" name="org.apache.pekko.util.ByteString">org.apache.pekko.util.ByteString</span>s for each complete JSON object in the first array property
 named "propertyName".
 Whitespace leading, between, and trailing the elements will be trimmed.
 </p></div><dl class="paramcmts block"><dt class="param">propertyName</dt><dd class="cmt"><p>The name of the top-level array property to search for</p></dd><dt class="param">maximumObjectLength</dt><dd class="cmt"><p>The maximum length of allowed frames while decoding. If the maximum length is exceeded

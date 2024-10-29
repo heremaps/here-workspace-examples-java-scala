@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.823 API Reference Scala"><meta name="DC.Document.Id" content="595507d7-ed84-4a7b-9f6f-7dbe932ba097"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.823"><meta name="DC.Creation.Date" content="2024-09-23T12:43:31+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -341,9 +341,9 @@
       <p class="shortcomment cmt">Only with manual offsets.</p><div class="fullcomment"><div class="comment cmt"><p>Only with manual offsets.</p><p>Notify the subscription that user already process the partition and can be include in next [checkpoint] call.
 </p></div></div>
     </li><li name="com.here.platform.data.client.scaladsl.SubscriptionControl#checkpoint" visbl="pub" class="indented0 " data-isabs="true" fullcomment="yes" group="Ungrouped">
-      <a id="checkpoint():scala.concurrent.Future[akka.Done]"></a><a id="checkpoint():Future[Done]"></a>
+      <a id="checkpoint():scala.concurrent.Future[org.apache.pekko.Done]"></a><a id="checkpoint():Future[Done]"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/client/scaladsl/SubscriptionControl.html#checkpoint():scala.concurrent.Future%5Bakka.Done%5D" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/client/scaladsl/SubscriptionControl.html#checkpoint():scala.concurrent.Future%5Borg.apache.pekko.Done%5D" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -352,7 +352,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkpoint</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="akka.Done">Done</span>]</span>
+        <span class="name">checkpoint</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.Done">Done</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Only with manual offsets.</p><div class="fullcomment"><div class="comment cmt"><p>Only with manual offsets.</p><p>Persist in server the offset for all [acknowledge] partitions for current groupName
@@ -381,9 +381,9 @@ value (if it is not set, then by default a random UUID will be assigned as
 <code>client-id</code>).
 </p></div></div>
     </li><li name="com.here.platform.data.client.scaladsl.SubscriptionControl#shutdown" visbl="pub" class="indented0 " data-isabs="true" fullcomment="yes" group="Ungrouped">
-      <a id="shutdown():scala.concurrent.Future[akka.Done]"></a><a id="shutdown():Future[Done]"></a>
+      <a id="shutdown():scala.concurrent.Future[org.apache.pekko.Done]"></a><a id="shutdown():Future[Done]"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/client/scaladsl/SubscriptionControl.html#shutdown():scala.concurrent.Future%5Bakka.Done%5D" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/client/scaladsl/SubscriptionControl.html#shutdown():scala.concurrent.Future%5Borg.apache.pekko.Done%5D" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -392,7 +392,7 @@ value (if it is not set, then by default a random UUID will be assigned as
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">shutdown</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="akka.Done">Done</span>]</span>
+        <span class="name">shutdown</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.Done">Done</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Shutdown the stream.</p><div class="fullcomment"><div class="comment cmt"><p>Shutdown the stream. It will wait for outstanding processes to finish before shutting down.
