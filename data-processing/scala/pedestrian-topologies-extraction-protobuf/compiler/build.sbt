@@ -1,7 +1,7 @@
 import com.here.bom.Bom
 
 ThisBuild / organization := "com.here.platform.data.processing.example.scala.pedestrian.protobuf"
-ThisBuild / version := "0.0.920"
+ThisBuild / version := "0.0.925"
 ThisBuild / scalaVersion := "2.12.18"
 val organizationSettings: Seq[Setting[_]] = Seq(
   projectInfo := ModuleInfo(
@@ -23,7 +23,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.68.3"
+val sdkBomVersion = "2.69.5"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {

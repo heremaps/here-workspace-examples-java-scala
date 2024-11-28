@@ -221,7 +221,7 @@ olp local catalog layer partition get hrn:local:data:::compaction-protobuf index
 ```
 
 After the partition has been successfully downloaded, let's inspect it.
-The downloaded partition contains data in the Protobuf format. After deserialization with the Java code snippet mentioned in the [Ingest Data For Local Compaction](ingest-data-for-local-compaction) section,
+The downloaded partition contains data in the Protobuf format. After deserialization with the Java code snippet mentioned in the [Ingest Data For Local Compaction](#ingest-data-for-local-compaction) section,
 you should see the content of the 6 files uploaded in the previous section compacted in one big partition:
 
 ```

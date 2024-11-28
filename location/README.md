@@ -20,7 +20,7 @@ commonalities between examples projects. To import any of the examples above
 into your IDE, use the `pom.xml` file in the root folder of the relevant example
 group.
 
-## [Prerequisites](#)
+## Prerequisites
 
 This section contains important instructions that will help you to run the
 _Location Library_ examples.

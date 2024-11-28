@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The team behind the [HERE Workspace Examples for Java and Scala Developers](here-workspace-examples-java-scala) gratefully accepts contributions via
+The team behind the [HERE Workspace Examples for Java and Scala Developers](https://github.com/heremaps/here-workspace-examples-java-scala) gratefully accepts contributions via
 [pull requests](https://help.github.com/articles/about-pull-requests/) filed against the
 [GitHub project](https://github.com/heremaps/here-workspace-examples-java-scala/pulls).
 

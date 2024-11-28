@@ -94,7 +94,7 @@ olp local catalog layer add hrn:local:data:::path-matcher-java out-data out-data
 #### Run the Application from the Command Line
 
 First, we're going to run the example using a
-[Flink local environment](https://ci.apache.org/projects/flink/flink-docs-master/dev/local_execution.html),
+[Flink local environment](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/datastream/overview/#local-execution-environment),
 suitable for local development and debugging.
 
 1. Compile and execute the example.
