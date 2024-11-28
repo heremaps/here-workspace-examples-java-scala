@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -251,6 +251,10 @@ also be used independently.
                         <a href="CatalogLightFactory.html" title="A CatalogLight factory class.">CatalogLightFactory</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes."></a>
+                        <a href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes.">CatalogLightProxy</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="trait" href="CatalogMetrics.html" title="The mixin to add statistical calculation with Spark Accumulators."></a>
                         <a href="CatalogMetrics.html" title="The mixin to add statistical calculation with Spark Accumulators.">CatalogMetrics</a>
                       </li><li class="current-entities indented6">
@@ -364,7 +368,7 @@ also be used independently.
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">CatalogProxy</span><span class="result"> extends <a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a></span>
+        <span class="name">CatalogProxy</span><span class="result"> extends <a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> with <a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a></span>
       </span>
       </h4>
 
@@ -374,7 +378,7 @@ also be used independently.
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a>, <a href="../../../pipeline/logging/ContextLogging.html" class="extype" name="com.here.platform.pipeline.logging.ContextLogging">ContextLogging</a>, <a href="CatalogNullMetrics.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogNullMetrics">CatalogNullMetrics</a>, <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a>, <a href="../../../pipeline/logging/ContextLogging.html" class="extype" name="com.here.platform.pipeline.logging.ContextLogging">ContextLogging</a>, <a href="CatalogNullMetrics.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogNullMetrics">CatalogNullMetrics</a>, <a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a>, <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -400,7 +404,7 @@ also be used independently.
                   <span class="filtertype">Inherited<br>
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="com.here.platform.data.processing.catalog.CatalogProxy"><span>CatalogProxy</span></li><li class="in" name="com.here.platform.data.processing.catalog.Catalog"><span>Catalog</span></li><li class="in" name="com.here.platform.pipeline.logging.ContextLogging"><span>ContextLogging</span></li><li class="in" name="com.here.platform.data.processing.catalog.CatalogNullMetrics"><span>CatalogNullMetrics</span></li><li class="in" name="com.here.platform.data.processing.catalog.CatalogLight"><span>CatalogLight</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="com.here.platform.data.processing.catalog.CatalogProxy"><span>CatalogProxy</span></li><li class="in" name="com.here.platform.data.processing.catalog.Catalog"><span>Catalog</span></li><li class="in" name="com.here.platform.pipeline.logging.ContextLogging"><span>ContextLogging</span></li><li class="in" name="com.here.platform.data.processing.catalog.CatalogNullMetrics"><span>CatalogNullMetrics</span></li><li class="in" name="com.here.platform.data.processing.catalog.CatalogLightProxy"><span>CatalogLightProxy</span></li><li class="in" name="com.here.platform.data.processing.catalog.CatalogLight"><span>CatalogLight</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -441,10 +445,10 @@ also be used independently.
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.here.platform.data.processing.catalog.CatalogProxy.CommitPart" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="CommitPart=CatalogProxy.this.impl.CommitPart"></a><a id="CommitPart:CommitPart"></a>
+              <ol><li name="com.here.platform.data.processing.catalog.CatalogLightProxy.CommitPart" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="CommitPart=CatalogLightProxy.this.impl.CommitPart"></a><a id="CommitPart:CommitPart"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#CommitPart=CatalogProxy.this.impl.CommitPart" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#CommitPart=CatalogLightProxy.this.impl.CommitPart" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -456,11 +460,11 @@ also be used independently.
         <span class="name">CommitPart</span><span class="result alias"> = <a href="Catalog.html#CommitPart" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog.CommitPart">Catalog.CommitPart</a></span>
       </span>
       
-      <p class="shortcomment cmt">The type of each part identifier of a multipart commit.</p><div class="fullcomment"><div class="comment cmt"><p>The type of each part identifier of a multipart commit.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="CommitToken=CatalogProxy.this.impl.CommitToken"></a><a id="CommitToken:CommitToken"></a>
+      <p class="shortcomment cmt">The type of each part identifier of a multipart commit.</p><div class="fullcomment"><div class="comment cmt"><p>The type of each part identifier of a multipart commit.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy.CommitToken" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="CommitToken=CatalogLightProxy.this.impl.CommitToken"></a><a id="CommitToken:CommitToken"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#CommitToken=CatalogProxy.this.impl.CommitToken" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#CommitToken=CatalogLightProxy.this.impl.CommitToken" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -472,7 +476,7 @@ also be used independently.
         <span class="name">CommitToken</span><span class="result alias"> = <a href="Catalog.html#CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog.CommitToken">Catalog.CommitToken</a></span>
       </span>
       
-      <p class="shortcomment cmt">The type of a commit token.</p><div class="fullcomment"><div class="comment cmt"><p>The type of a commit token.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+      <p class="shortcomment cmt">The type of a commit token.</p><div class="fullcomment"><div class="comment cmt"><p>The type of a commit token.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
     </li></ol>
             </div>
 
@@ -529,10 +533,10 @@ also be used independently.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#abortCommit" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="abortCommit(token:CatalogProxy.this.CommitToken):Unit"></a><a id="abortCommit(CommitToken):Unit"></a>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#abortCommit" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="abortCommit(token:CatalogLightProxy.this.CommitToken):Unit"></a><a id="abortCommit(CommitToken):Unit"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#abortCommit(token:CatalogProxy.this.CommitToken):Unit" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#abortCommit(token:CatalogLightProxy.this.CommitToken):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -541,12 +545,12 @@ also be used independently.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">abortCommit</span><span class="params">(<span name="token">token: <a href="#CommitToken=CatalogProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">abortCommit</span><span class="params">(<span name="token">token: <a href="#CommitToken=CatalogLightProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <p class="shortcomment cmt">Aborts a commit being prepared.</p><div class="fullcomment"><div class="comment cmt"><p>Aborts a commit being prepared.
-</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The token identifying the commit to abort</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#additionalFields" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The token identifying the commit to abort</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#additionalFields" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="additionalFields:Set[com.here.platform.data.processing.catalog.Catalog.AdditionalField]"></a><a id="additionalFields:Set[AdditionalField]"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#additionalFields:Set%5Bcom.here.platform.data.processing.catalog.Catalog.AdditionalField%5D" title="Permalink">
@@ -564,7 +568,7 @@ also be used independently.
       <p class="shortcomment cmt">The set of <a href="Catalog%24.html#AdditionalField=com.here.platform.data.processing.catalog.Catalog.AdditionalField.Value" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog.AdditionalField">Catalog.AdditionalField</a>s requested to the service when retrieving catalog
 metadata.</p><div class="fullcomment"><div class="comment cmt"><p>The set of <a href="Catalog%24.html#AdditionalField=com.here.platform.data.processing.catalog.Catalog.AdditionalField.Value" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog.AdditionalField">Catalog.AdditionalField</a>s requested to the service when retrieving catalog
 metadata.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -633,7 +637,7 @@ metadata.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">commit</span><span class="params">(<span name="metadata">metadata: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[(<a href="Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">Key</a>, <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Commit</a>)]</span>, <span name="baseVersion">baseVersion: <a href="utils/BaseVersion.html" class="extype" name="com.here.platform.data.processing.catalog.utils.BaseVersion">BaseVersion</a></span>, <span name="maxNumParts">maxNumParts: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">85</span></span>, <span name="token">token: <span class="extype" name="scala.Option">Option</span>[<a href="#CommitToken=CatalogProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a>] = <span class="symbol">None</span></span>, <span name="dependencies">dependencies: <span class="extype" name="scala.Seq">Seq</span>[<a href="Dependency.html" class="extype" name="com.here.platform.data.processing.catalog.Dependency">Dependency</a>] = <span class="symbol">Seq()</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">commit</span><span class="params">(<span name="metadata">metadata: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[(<a href="Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">Key</a>, <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Commit</a>)]</span>, <span name="baseVersion">baseVersion: <a href="utils/BaseVersion.html" class="extype" name="com.here.platform.data.processing.catalog.utils.BaseVersion">BaseVersion</a></span>, <span name="maxNumParts">maxNumParts: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">85</span></span>, <span name="token">token: <span class="extype" name="scala.Option">Option</span>[<a href="#CommitToken=CatalogLightProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a>] = <span class="symbol">None</span></span>, <span name="dependencies">dependencies: <span class="extype" name="scala.Seq">Seq</span>[<a href="Dependency.html" class="extype" name="com.here.platform.data.processing.catalog.Dependency">Dependency</a>] = <span class="symbol">Seq()</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <p class="shortcomment cmt">Commits an RDD of <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Partition.Commit</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Commits an RDD of <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Partition.Commit</a>.
@@ -748,10 +752,10 @@ if you do not explicitly specify a partitioner.</p></div><dl class="attributes b
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#finishCommit" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="finishCommit(token:CatalogProxy.this.CommitToken,parts:Seq[CatalogProxy.this.CommitPart]):Unit"></a><a id="finishCommit(CommitToken,Seq[CommitPart]):Unit"></a>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#finishCommit" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="finishCommit(token:CatalogLightProxy.this.CommitToken,parts:Seq[CatalogLightProxy.this.CommitPart]):Unit"></a><a id="finishCommit(CommitToken,Seq[CommitPart]):Unit"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#finishCommit(token:CatalogProxy.this.CommitToken,parts:Seq%5BCatalogProxy.this.CommitPart%5D):Unit" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#finishCommit(token:CatalogLightProxy.this.CommitToken,parts:Seq%5BCatalogLightProxy.this.CommitPart%5D):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -760,11 +764,11 @@ if you do not explicitly specify a partitioner.</p></div><dl class="attributes b
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">finishCommit</span><span class="params">(<span name="token">token: <a href="#CommitToken=CatalogProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>, <span name="parts">parts: <span class="extype" name="scala.Seq">Seq</span>[<a href="#CommitPart=CatalogProxy.this.impl.CommitPart" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitPart">CommitPart</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">finishCommit</span><span class="params">(<span name="token">token: <a href="#CommitToken=CatalogLightProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>, <span name="parts">parts: <span class="extype" name="scala.Seq">Seq</span>[<a href="#CommitPart=CatalogLightProxy.this.impl.CommitPart" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitPart">CommitPart</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <p class="shortcomment cmt">Completes a multipart commit.</p><div class="fullcomment"><div class="comment cmt"><p>Completes a multipart commit.
-</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The token obtained when <a href="#startCommit(baseVersion:com.here.platform.data.processing.catalog.utils.BaseVersion,dependencies:Seq%5Bcom.here.platform.data.processing.catalog.Dependency%5D):CatalogProxy.this.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy#startCommit">startCommit</a> was called to start this commit.</p></dd><dt class="param">parts</dt><dd class="cmt"><p>All the commit parts obtained from calls made to <a href="Catalog.html#partialCommit(token:Catalog.this.CommitToken,metadata:org.apache.spark.rdd.RDD%5B(com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Commit)%5D,maxNumParts:Int):Seq%5BCatalog.this.CommitPart%5D" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog#partialCommit">Catalog.partialCommit</a> as part of this commit.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The token obtained when <a href="CatalogLightProxy.html#startCommit(baseVersion:com.here.platform.data.processing.catalog.utils.BaseVersion,dependencies:Seq%5Bcom.here.platform.data.processing.catalog.Dependency%5D):CatalogLightProxy.this.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogLightProxy#startCommit">startCommit</a> was called to start this commit.</p></dd><dt class="param">parts</dt><dd class="cmt"><p>All the commit parts obtained from calls made to <a href="Catalog.html#partialCommit(token:Catalog.this.CommitToken,metadata:org.apache.spark.rdd.RDD%5B(com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Commit)%5D,maxNumParts:Int):Seq%5BCatalog.this.CommitPart%5D" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog#partialCommit">Catalog.partialCommit</a> as part of this commit.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -851,7 +855,7 @@ if you do not explicitly specify a partitioner.</p></div><dl class="attributes b
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#hrn" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#hrn" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="hrn:com.here.hrn.HRN"></a><a id="hrn:HRN"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#hrn:com.here.hrn.HRN" title="Permalink">
@@ -868,8 +872,8 @@ if you do not explicitly specify a partitioner.</p></div><dl class="attributes b
       
       <p class="shortcomment cmt">The HRN (HERE Resource Name) of the catalog.</p><div class="fullcomment"><div class="comment cmt"><p>The HRN (HERE Resource Name) of the catalog. It is a resource descriptor that provides
 a globally unique handle for a catalog in the sense of an instance.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#id" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#id" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="id:com.here.platform.data.processing.catalog.Catalog.Id"></a><a id="id:Id"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#id:com.here.platform.data.processing.catalog.Catalog.Id" title="Permalink">
@@ -887,8 +891,8 @@ a globally unique handle for a catalog in the sense of an instance.
       <p class="shortcomment cmt">The unique identifier for the catalog, that is added to every <a href="Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">Partition.Key</a> returned
 by the query APIs and is used by the commit API for logging and statistics generation.</p><div class="fullcomment"><div class="comment cmt"><p>The unique identifier for the catalog, that is added to every <a href="Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">Partition.Key</a> returned
 by the query APIs and is used by the commit API for logging and statistics generation.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="Catalog%24.html#Id=Symbol" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog.Id">Catalog.Id</a> for more details.</p></span></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#impl" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="Catalog%24.html#Id=Symbol" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog.Id">Catalog.Id</a> for more details.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#impl" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="impl:com.here.platform.data.processing.catalog.Catalog"></a><a id="impl:Catalog"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#impl:com.here.platform.data.processing.catalog.Catalog" title="Permalink">
@@ -903,7 +907,7 @@ by the query APIs and is used by the commit API for logging and statistics gener
         <span class="name">impl</span><span class="result">: <a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a></span>
       </span>
       
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
@@ -1002,14 +1006,14 @@ by the query APIs and is used by the commit API for logging and statistics gener
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">partialCommit</span><span class="params">(<span name="token">token: <a href="#CommitToken=CatalogProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>, <span name="metadata">metadata: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[(<a href="Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">Key</a>, <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Commit</a>)]</span>, <span name="numParts">numParts: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="#CommitPart=CatalogProxy.this.impl.CommitPart" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitPart">CommitPart</a>]</span>
+        <span class="name">partialCommit</span><span class="params">(<span name="token">token: <a href="#CommitToken=CatalogLightProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>, <span name="metadata">metadata: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[(<a href="Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">Key</a>, <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Commit</a>)]</span>, <span name="numParts">numParts: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="#CommitPart=CatalogLightProxy.this.impl.CommitPart" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitPart">CommitPart</a>]</span>
       </span>
       
       <p class="shortcomment cmt">Prepares the commit of an RDD of <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Partition.Commit</a>, but does not complete the commit.</p><div class="fullcomment"><div class="comment cmt"><p>Prepares the commit of an RDD of <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Partition.Commit</a>, but does not complete the commit.</p><p>This function appends the metadata to the commit that is being constructed, and can be
 called multiple times. You must specify the maximum number of parts that should be produced.
 However, the Data API imposes a limit of 100 parts in total, so if this function is called
 multiple times, the total number of parts must be less than 100.
-</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The token identifying the commit being prepared.</p></dd><dt class="param">metadata</dt><dd class="cmt"><p>The metadata to be prepared for committing.</p></dd><dt>returns</dt><dd class="cmt"><p>The <a href="#CommitPart=CatalogProxy.this.impl.CommitPart" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitPart">CommitPart</a> objects that should be passed to <a href="#finishCommit(token:CatalogProxy.this.CommitToken,parts:Seq%5BCatalogProxy.this.CommitPart%5D):Unit" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy#finishCommit">finishCommit</a></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The token identifying the commit being prepared.</p></dd><dt class="param">metadata</dt><dd class="cmt"><p>The metadata to be prepared for committing.</p></dd><dt>returns</dt><dd class="cmt"><p>The <a href="#CommitPart=CatalogLightProxy.this.impl.CommitPart" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitPart">CommitPart</a> objects that should be passed to <a href="#finishCommit(token:CatalogLightProxy.this.CommitToken,parts:Seq%5BCatalogLightProxy.this.CommitPart%5D):Unit" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy#finishCommit">finishCommit</a></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a></dd></dl></div>
     </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#queryAll" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="queryAll(version:com.here.platform.data.processing.catalog.utils.Version,layers:Set[com.here.platform.data.processing.catalog.Layer.Id],partitioner:com.here.platform.data.processing.spark.partitioner.Partitioner[com.here.platform.data.processing.catalog.Partition.Key]):org.apache.spark.rdd.RDD[(com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Meta)]"></a><a id="queryAll(Version,Set[Id],Partitioner[Key]):RDD[(Key,Meta)]"></a>
       <span class="permalink">
@@ -1044,7 +1048,7 @@ multiple times, the total number of parts must be less than 100.
       
       <p class="shortcomment cmt">Queries metadata of all the partitions in a given set of layers changed between given versions.</p><div class="fullcomment"><div class="comment cmt"><p>Queries metadata of all the partitions in a given set of layers changed between given versions.</p><p>Creates an RDD containing the queries metadata.
 </p></div><dl class="paramcmts block"><dt class="param">versionStart</dt><dd class="cmt"><p>Query the partitions changed after this version.</p></dd><dt class="param">versionEnd</dt><dd class="cmt"><p>Query the changed partitions up to this version.</p></dd><dt class="param">layers</dt><dd class="cmt"><p>The set of layers for which the partitions should be queried.</p></dd><dt class="param">partitioner</dt><dd class="cmt"><p>The <a href="../spark/partitioner/Partitioner.html" class="extype" name="com.here.platform.data.processing.spark.partitioner.Partitioner">com.here.platform.data.processing.spark.partitioner.Partitioner</a> applied when constructing the RDD returned.</p></dd><dt>returns</dt><dd class="cmt"><p>The queried metadata in an RDD object partitioned according to the partitioner parameter.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#queryConfiguration" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#queryConfiguration" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="queryConfiguration():com.here.platform.data.processing.catalog.Configuration"></a><a id="queryConfiguration():Configuration"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#queryConfiguration():com.here.platform.data.processing.catalog.Configuration" title="Permalink">
@@ -1060,8 +1064,8 @@ multiple times, the total number of parts must be less than 100.
       </span>
       
       <p class="shortcomment cmt">Queries the current configuration of the catalog.</p><div class="fullcomment"><div class="comment cmt"><p>Queries the current configuration of the catalog.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The current configuration of the catalog.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#queryDependencies" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The current configuration of the catalog.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#queryDependencies" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="queryDependencies(version:com.here.platform.data.processing.catalog.utils.Version):Seq[com.here.platform.data.processing.catalog.Dependency]"></a><a id="queryDependencies(Version):Seq[Dependency]"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#queryDependencies(version:com.here.platform.data.processing.catalog.utils.Version):Seq%5Bcom.here.platform.data.processing.catalog.Dependency%5D" title="Permalink">
@@ -1077,8 +1081,8 @@ multiple times, the total number of parts must be less than 100.
       </span>
       
       <p class="shortcomment cmt">Queries the dependencies for a particular catalog version.</p><div class="fullcomment"><div class="comment cmt"><p>Queries the dependencies for a particular catalog version.
-</p></div><dl class="paramcmts block"><dt class="param">version</dt><dd class="cmt"><p>The version of the catalog for which dependencies will be queried.</p></dd><dt>returns</dt><dd class="cmt"><p>The dependencies of the catalog version.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#queryLatestVersion" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+</p></div><dl class="paramcmts block"><dt class="param">version</dt><dd class="cmt"><p>The version of the catalog for which dependencies will be queried.</p></dd><dt>returns</dt><dd class="cmt"><p>The dependencies of the catalog version.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#queryLatestVersion" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="queryLatestVersion():com.here.platform.data.processing.catalog.utils.BaseVersion"></a><a id="queryLatestVersion():BaseVersion"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#queryLatestVersion():com.here.platform.data.processing.catalog.utils.BaseVersion" title="Permalink">
@@ -1094,8 +1098,8 @@ multiple times, the total number of parts must be less than 100.
       </span>
       
       <p class="shortcomment cmt">Queries the latest version of the catalog.</p><div class="fullcomment"><div class="comment cmt"><p>Queries the latest version of the catalog.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The latest catalog version available in the Data API, or <a href="utils/EmptyCatalog%24.html" class="extype" name="com.here.platform.data.processing.catalog.utils.EmptyCatalog">com.here.platform.data.processing.catalog.utils.EmptyCatalog</a> otherwise.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#queryLayerVersions" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The latest catalog version available in the Data API, or <a href="utils/EmptyCatalog%24.html" class="extype" name="com.here.platform.data.processing.catalog.utils.EmptyCatalog">com.here.platform.data.processing.catalog.utils.EmptyCatalog</a> otherwise.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#queryLayerVersions" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="queryLayerVersions(version:com.here.platform.data.processing.catalog.utils.Version):Map[com.here.platform.data.processing.catalog.Layer.Id,com.here.platform.data.processing.catalog.utils.Version]"></a><a id="queryLayerVersions(Version):Map[Id,Version]"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#queryLayerVersions(version:com.here.platform.data.processing.catalog.utils.Version):Map%5Bcom.here.platform.data.processing.catalog.Layer.Id,com.here.platform.data.processing.catalog.utils.Version%5D" title="Permalink">
@@ -1114,8 +1118,8 @@ multiple times, the total number of parts must be less than 100.
 recent event affecting that layer, either because a partition was changed and/or
 deleted in that version.</p><p>For some layers, this version may be older than the catalog's
 overall version, particularly if those layers did not change, but other layers have changed.
-</p></div><dl class="paramcmts block"><dt class="param">version</dt><dd class="cmt"><p>The version for which the catalog's layers are queried.</p></dd><dt>returns</dt><dd class="cmt"><p>The latest version for each of the catalog's layers.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd><dt>Note</dt><dd><span class="cmt"><p>Layers that have never changed since catalog creation are not returned.</p></span></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#queryMinimumVersion" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+</p></div><dl class="paramcmts block"><dt class="param">version</dt><dd class="cmt"><p>The version for which the catalog's layers are queried.</p></dd><dt>returns</dt><dd class="cmt"><p>The latest version for each of the catalog's layers.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd><dt>Note</dt><dd><span class="cmt"><p>Layers that have never changed since catalog creation are not returned.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#queryMinimumVersion" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="queryMinimumVersion():com.here.platform.data.processing.catalog.utils.BaseVersion"></a><a id="queryMinimumVersion():BaseVersion"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#queryMinimumVersion():com.here.platform.data.processing.catalog.utils.BaseVersion" title="Permalink">
@@ -1131,8 +1135,8 @@ overall version, particularly if those layers did not change, but other layers h
       </span>
       
       <p class="shortcomment cmt"> Queries the minimum version of the catalog.</p><div class="fullcomment"><div class="comment cmt"><p> Queries the minimum version of the catalog.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The minimum catalog version available in the Data API, or <a href="utils/EmptyCatalog%24.html" class="extype" name="com.here.platform.data.processing.catalog.utils.EmptyCatalog">com.here.platform.data.processing.catalog.utils.EmptyCatalog</a> otherwise.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#queryPartitionChangeHistory" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The minimum catalog version available in the Data API, or <a href="utils/EmptyCatalog%24.html" class="extype" name="com.here.platform.data.processing.catalog.utils.EmptyCatalog">com.here.platform.data.processing.catalog.utils.EmptyCatalog</a> otherwise.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#queryPartitionChangeHistory" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="queryPartitionChangeHistory(version:com.here.platform.data.processing.catalog.utils.Version,layer:com.here.platform.data.processing.catalog.Layer.Id,partition:com.here.platform.data.processing.catalog.Partition.Name,direction:com.here.platform.data.processing.catalog.Catalog.ChangeHistoryDirection.Value):Seq[com.here.platform.data.processing.catalog.Partition.Change]"></a><a id="queryPartitionChangeHistory(Version,Id,Name,Catalog.ChangeHistoryDirection.Value):Seq[Change]"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#queryPartitionChangeHistory(version:com.here.platform.data.processing.catalog.utils.Version,layer:com.here.platform.data.processing.catalog.Layer.Id,partition:com.here.platform.data.processing.catalog.Partition.Name,direction:com.here.platform.data.processing.catalog.Catalog.ChangeHistoryDirection.Value):Seq%5Bcom.here.platform.data.processing.catalog.Partition.Change%5D" title="Permalink">
@@ -1149,9 +1153,30 @@ overall version, particularly if those layers did not change, but other layers h
       
       <p class="shortcomment cmt">Queries metadata history for the selected partition.</p><div class="fullcomment"><div class="comment cmt"><p>Queries metadata history for the selected partition.</p><p>This query is done directly in the Driver, and the metadata is returned.
 You can query up to 100 changes with one call.
-</p></div><dl class="paramcmts block"><dt class="param">version</dt><dd class="cmt"><p>The version from which to begin the change history search.</p></dd><dt class="param">layer</dt><dd class="cmt"><p>The layer that contains the partition.</p></dd><dt class="param">partition</dt><dd class="cmt"><p>The partition to query the change history for.</p></dd><dt class="param">direction</dt><dd class="cmt"><p>Specifies the direction in which to lookup the history: forward or backward.</p></dd><dt>returns</dt><dd class="cmt"><p>A <a href="Partition%24%24Change.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Change">Partition.Change</a> object containing the partition size and checksum.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd><dt>Note</dt><dd><span class="cmt"><p>This method is scheduled to be deprecated in a future release. Only supported by the
+</p></div><dl class="paramcmts block"><dt class="param">version</dt><dd class="cmt"><p>The version from which to begin the change history search.</p></dd><dt class="param">layer</dt><dd class="cmt"><p>The layer that contains the partition.</p></dd><dt class="param">partition</dt><dd class="cmt"><p>The partition to query the change history for.</p></dd><dt class="param">direction</dt><dd class="cmt"><p>Specifies the direction in which to lookup the history: forward or backward.</p></dd><dt>returns</dt><dd class="cmt"><p>A <a href="Partition%24%24Change.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Change">Partition.Change</a> object containing the partition size and checksum.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd><dt>Note</dt><dd><span class="cmt"><p>This method is scheduled to be deprecated in a future release. Only supported by the
       Datastore1 implementation.</p></span></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#querySinglePartitions" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#querySingleChanges" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="querySingleChanges(versionStart:com.here.platform.data.processing.catalog.utils.Version,versionEnd:com.here.platform.data.processing.catalog.utils.Version,layer:com.here.platform.data.processing.catalog.Layer.Id,partitions:Set[com.here.platform.data.processing.catalog.Partition.Name]):Map[com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Change]"></a><a id="querySingleChanges(Version,Version,Id,Set[Name]):Map[Key,Change]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#querySingleChanges(versionStart:com.here.platform.data.processing.catalog.utils.Version,versionEnd:com.here.platform.data.processing.catalog.utils.Version,layer:com.here.platform.data.processing.catalog.Layer.Id,partitions:Set%5Bcom.here.platform.data.processing.catalog.Partition.Name%5D):Map%5Bcom.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Change%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">querySingleChanges</span><span class="params">(<span name="versionStart">versionStart: <a href="utils/index.html#Version=Long" class="extmbr" name="com.here.platform.data.processing.catalog.utils.Version">Version</a></span>, <span name="versionEnd">versionEnd: <a href="utils/index.html#Version=Long" class="extmbr" name="com.here.platform.data.processing.catalog.utils.Version">Version</a></span>, <span name="layer">layer: <a href="Layer%24.html#Id=Symbol" class="extmbr" name="com.here.platform.data.processing.catalog.Layer.Id">Id</a></span>, <span name="partitions">partitions: <span class="extype" name="scala.Predef.Set">Set</span>[<a href="Partition%24%24Name.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Name">Name</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<a href="Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">Key</a>, <a href="Partition%24%24Change.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Change">Change</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Queries metadata for the selected partitions changed between given versions.</p><div class="fullcomment"><div class="comment cmt"><p>Queries metadata for the selected partitions changed between given versions.</p><p>This query is done directly in the Driver, and the metadata is returned.
+You can query up to 100 partitions with one call.
+</p></div><dl class="paramcmts block"><dt class="param">versionStart</dt><dd class="cmt"><p>Query the partitions changed after this version.</p></dd><dt class="param">versionEnd</dt><dd class="cmt"><p>Query the changed partitions up to this version.</p></dd><dt class="param">layer</dt><dd class="cmt"><p>The layer that contains the partitions being queried.</p></dd><dt class="param">partitions</dt><dd class="cmt"><p>The partition names that should be queried.</p></dd><dt>returns</dt><dd class="cmt"><p>The queried metadata, for partitions that have content in the catalog at the specified version.
+        Partitions not present in the catalog at the specified version are not returned.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd><dt>Note</dt><dd><span class="cmt"><p>This method is only intended to be used internally, by the library. When implementing your compiler, you are
+      encouraged to use <a href="Catalog.html#queryAll(version:com.here.platform.data.processing.catalog.utils.Version,layers:Set%5Bcom.here.platform.data.processing.catalog.Layer.Id%5D,partitioner:com.here.platform.data.processing.spark.partitioner.Partitioner%5Bcom.here.platform.data.processing.catalog.Partition.Key%5D):org.apache.spark.rdd.RDD%5B(com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Meta)%5D" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog#queryAll">Catalog.queryAll</a>/<a href="Catalog.html#queryChanges(versionStart:com.here.platform.data.processing.catalog.utils.Version,versionEnd:com.here.platform.data.processing.catalog.utils.Version,layers:Set%5Bcom.here.platform.data.processing.catalog.Layer.Id%5D,partitioner:com.here.platform.data.processing.spark.partitioner.Partitioner%5Bcom.here.platform.data.processing.catalog.Partition.Key%5D):org.apache.spark.rdd.RDD%5B(com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Change)%5D" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog#queryChanges">Catalog.queryChanges</a> instead, as these methods are implemented in
+      a distributed way.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#querySinglePartitions" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="querySinglePartitions(version:com.here.platform.data.processing.catalog.utils.Version,layer:com.here.platform.data.processing.catalog.Layer.Id,partitions:Set[com.here.platform.data.processing.catalog.Partition.Name]):Map[com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Meta]"></a><a id="querySinglePartitions(Version,Id,Set[Name]):Map[Key,Meta]"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#querySinglePartitions(version:com.here.platform.data.processing.catalog.utils.Version,layer:com.here.platform.data.processing.catalog.Layer.Id,partitions:Set%5Bcom.here.platform.data.processing.catalog.Partition.Name%5D):Map%5Bcom.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Meta%5D" title="Permalink">
@@ -1169,10 +1194,10 @@ You can query up to 100 changes with one call.
       <p class="shortcomment cmt">Queries metadata for the selected partitions.</p><div class="fullcomment"><div class="comment cmt"><p>Queries metadata for the selected partitions.</p><p>This query is done directly in the Driver, and the metadata is returned.
 You can query up to 100 partitions with one call.
 </p></div><dl class="paramcmts block"><dt class="param">version</dt><dd class="cmt"><p>The version at which the catalog is queried for partitions.</p></dd><dt class="param">layer</dt><dd class="cmt"><p>The layer that contains the partitions being queried.</p></dd><dt class="param">partitions</dt><dd class="cmt"><p>The partition names that should be queried.</p></dd><dt>returns</dt><dd class="cmt"><p>The queried metadata, for partitions that have content in the catalog at the specified version.
-        Partitions not present in the catalog at the specified version are not returned.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd><dt>Note</dt><dd><span class="cmt"><p>This method is only intended to be used internally, by the library. When implementing your compiler, you are
+        Partitions not present in the catalog at the specified version are not returned.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd><dt>Note</dt><dd><span class="cmt"><p>This method is only intended to be used internally, by the library. When implementing your compiler, you are
       encouraged to use <a href="Catalog.html#queryAll(version:com.here.platform.data.processing.catalog.utils.Version,layers:Set%5Bcom.here.platform.data.processing.catalog.Layer.Id%5D,partitioner:com.here.platform.data.processing.spark.partitioner.Partitioner%5Bcom.here.platform.data.processing.catalog.Partition.Key%5D):org.apache.spark.rdd.RDD%5B(com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Meta)%5D" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog#queryAll">Catalog.queryAll</a>/<a href="Catalog.html#queryChanges(versionStart:com.here.platform.data.processing.catalog.utils.Version,versionEnd:com.here.platform.data.processing.catalog.utils.Version,layers:Set%5Bcom.here.platform.data.processing.catalog.Layer.Id%5D,partitioner:com.here.platform.data.processing.spark.partitioner.Partitioner%5Bcom.here.platform.data.processing.catalog.Partition.Key%5D):org.apache.spark.rdd.RDD%5B(com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Change)%5D" class="extmbr" name="com.here.platform.data.processing.catalog.Catalog#queryChanges">Catalog.queryChanges</a> instead, as these methods are implemented in
       a distributed way.</p></span></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#retriever" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#retriever" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="retriever:com.here.platform.data.processing.blobstore.Retriever"></a><a id="retriever:Retriever"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#retriever:com.here.platform.data.processing.blobstore.Retriever" title="Permalink">
@@ -1189,11 +1214,11 @@ You can query up to 100 partitions with one call.
       
       <p class="shortcomment cmt">Exposes the Retriever for this catalog.</p><div class="fullcomment"><div class="comment cmt"><p>Exposes the Retriever for this catalog. The returned object can be captured
 in Spark functions and transmitted to worker nodes.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#startCommit" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="startCommit(baseVersion:com.here.platform.data.processing.catalog.utils.BaseVersion,dependencies:Seq[com.here.platform.data.processing.catalog.Dependency]):CatalogProxy.this.CommitToken"></a><a id="startCommit(BaseVersion,Seq[Dependency]):CommitToken"></a>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#startCommit" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="startCommit(baseVersion:com.here.platform.data.processing.catalog.utils.BaseVersion,dependencies:Seq[com.here.platform.data.processing.catalog.Dependency]):CatalogLightProxy.this.CommitToken"></a><a id="startCommit(BaseVersion,Seq[Dependency]):CommitToken"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#startCommit(baseVersion:com.here.platform.data.processing.catalog.utils.BaseVersion,dependencies:Seq%5Bcom.here.platform.data.processing.catalog.Dependency%5D):CatalogProxy.this.CommitToken" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#startCommit(baseVersion:com.here.platform.data.processing.catalog.utils.BaseVersion,dependencies:Seq%5Bcom.here.platform.data.processing.catalog.Dependency%5D):CatalogLightProxy.this.CommitToken" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1202,13 +1227,13 @@ in Spark functions and transmitted to worker nodes.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">startCommit</span><span class="params">(<span name="baseVersion">baseVersion: <a href="utils/BaseVersion.html" class="extype" name="com.here.platform.data.processing.catalog.utils.BaseVersion">BaseVersion</a></span>, <span name="dependencies">dependencies: <span class="extype" name="scala.Seq">Seq</span>[<a href="Dependency.html" class="extype" name="com.here.platform.data.processing.catalog.Dependency">Dependency</a>]</span>)</span><span class="result">: <a href="#CommitToken=CatalogProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>
+        <span class="name">startCommit</span><span class="params">(<span name="baseVersion">baseVersion: <a href="utils/BaseVersion.html" class="extype" name="com.here.platform.data.processing.catalog.utils.BaseVersion">BaseVersion</a></span>, <span name="dependencies">dependencies: <span class="extype" name="scala.Seq">Seq</span>[<a href="Dependency.html" class="extype" name="com.here.platform.data.processing.catalog.Dependency">Dependency</a>]</span>)</span><span class="result">: <a href="#CommitToken=CatalogLightProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>
       </span>
       
       <p class="shortcomment cmt">Starts a new multipart commit on top of an existing version or an empty catalog.</p><div class="fullcomment"><div class="comment cmt"><p>Starts a new multipart commit on top of an existing version or an empty catalog.
 </p></div><dl class="paramcmts block"><dt class="param">baseVersion</dt><dd class="cmt"><p>The current version of the catalog in the Data API. This information is required to prevent race
                    conditions if the version is changed elsewhere, in another process, while we are preparing data
-                   for the commit. If the catalog is empty, use <a href="utils/EmptyCatalog%24.html" class="extype" name="com.here.platform.data.processing.catalog.utils.EmptyCatalog">utils.EmptyCatalog</a>.</p></dd><dt class="param">dependencies</dt><dd class="cmt"><p>The upstream dependencies for this commit.</p></dd><dt>returns</dt><dd class="cmt"><p>A new multipart commit token representing the commit in progress.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+                   for the commit. If the catalog is empty, use <a href="utils/EmptyCatalog%24.html" class="extype" name="com.here.platform.data.processing.catalog.utils.EmptyCatalog">utils.EmptyCatalog</a>.</p></dd><dt class="param">dependencies</dt><dd class="cmt"><p>The upstream dependencies for this commit.</p></dd><dt>returns</dt><dd class="cmt"><p>A new multipart commit token representing the commit in progress.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -1225,7 +1250,7 @@ in Spark functions and transmitted to worker nodes.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#toSerializable" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#toSerializable" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="toSerializable:com.here.platform.data.processing.catalog.CatalogLightwithSerializable"></a><a id="toSerializable:CatalogLightwithSerializable"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#toSerializable:com.here.platform.data.processing.catalog.CatalogLightwithSerializable" title="Permalink">
@@ -1240,7 +1265,7 @@ in Spark functions and transmitted to worker nodes.
         <span class="name">toSerializable</span><span class="result">: <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
-      <p class="shortcomment cmt">Returns a <code>CatalogLight</code> for this catalog that is guaranteed to be serializable.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a <code>CatalogLight</code> for this catalog that is guaranteed to be serializable.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../index.html" class="extype" name="com.here.platform.data.processing">processing</a>] </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+      <p class="shortcomment cmt">Returns a <code>CatalogLight</code> for this catalog that is guaranteed to be serializable.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a <code>CatalogLight</code> for this catalog that is guaranteed to be serializable.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../index.html" class="extype" name="com.here.platform.data.processing">processing</a>] </dd><dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
@@ -1257,10 +1282,10 @@ in Spark functions and transmitted to worker nodes.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#tokenFromString" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="tokenFromString(s:String):CatalogProxy.this.CommitToken"></a><a id="tokenFromString(String):CommitToken"></a>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#tokenFromString" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="tokenFromString(s:String):CatalogLightProxy.this.CommitToken"></a><a id="tokenFromString(String):CommitToken"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#tokenFromString(s:String):CatalogProxy.this.CommitToken" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#tokenFromString(s:String):CatalogLightProxy.this.CommitToken" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1269,14 +1294,14 @@ in Spark functions and transmitted to worker nodes.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">tokenFromString</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="#CommitToken=CatalogProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>
+        <span class="name">tokenFromString</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="#CommitToken=CatalogLightProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>
       </span>
       
-      <p class="shortcomment cmt">Create a commit token for the catalog given its string representation.</p><div class="fullcomment"><div class="comment cmt"><p>Create a commit token for the catalog given its string representation.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
-    </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#tokenToString" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="tokenToString(t:CatalogProxy.this.CommitToken):String"></a><a id="tokenToString(CommitToken):String"></a>
+      <p class="shortcomment cmt">Create a commit token for the catalog given its string representation.</p><div class="fullcomment"><div class="comment cmt"><p>Create a commit token for the catalog given its string representation.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy#tokenToString" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="tokenToString(t:CatalogLightProxy.this.CommitToken):String"></a><a id="tokenToString(CommitToken):String"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#tokenToString(t:CatalogProxy.this.CommitToken):String" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html#tokenToString(t:CatalogLightProxy.this.CommitToken):String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1285,10 +1310,10 @@ in Spark functions and transmitted to worker nodes.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">tokenToString</span><span class="params">(<span name="t">t: <a href="#CommitToken=CatalogProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">tokenToString</span><span class="params">(<span name="t">t: <a href="#CommitToken=CatalogLightProxy.this.impl.CommitToken" class="extmbr" name="com.here.platform.data.processing.catalog.CatalogProxy.CommitToken">CommitToken</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Return the string representation of a commit token.</p><div class="fullcomment"><div class="comment cmt"><p>Return the string representation of a commit token.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.catalog.CatalogProxy">CatalogProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
+      <p class="shortcomment cmt">Return the string representation of a commit token.</p><div class="fullcomment"><div class="comment cmt"><p>Return the string representation of a commit token.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> → <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></dd></dl></div>
     </li><li name="com.here.platform.data.processing.catalog.CatalogProxy#uploader" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="uploader(baseVersion:com.here.platform.data.processing.catalog.utils.BaseVersion):com.here.platform.data.processing.blobstore.Uploader"></a><a id="uploader(BaseVersion):Uploader"></a>
       <span class="permalink">
@@ -1411,6 +1436,8 @@ in Spark functions and transmitted to worker nodes.
               <h3>Inherited from <a href="../../../pipeline/logging/ContextLogging.html" class="extype" name="com.here.platform.pipeline.logging.ContextLogging">ContextLogging</a></h3>
             </div><div class="parent" name="com.here.platform.data.processing.catalog.CatalogNullMetrics">
               <h3>Inherited from <a href="CatalogNullMetrics.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogNullMetrics">CatalogNullMetrics</a></h3>
+            </div><div class="parent" name="com.here.platform.data.processing.catalog.CatalogLightProxy">
+              <h3>Inherited from <a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a></h3>
             </div><div class="parent" name="com.here.platform.data.processing.catalog.CatalogLight">
               <h3>Inherited from <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></h3>
             </div><div class="parent" name="scala.AnyRef">

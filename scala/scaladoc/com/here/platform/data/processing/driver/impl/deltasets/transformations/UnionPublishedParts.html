@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -555,22 +555,6 @@ also be used independently.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.here.platform.data.processing.driver.impl.deltasets.transformations.UnionPublishedParts#changedKeyValues" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="changedKeyValues:com.here.platform.data.processing.driver.deltasets.Changes[com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Put]"></a><a id="changedKeyValues:Changes[Key,Put]"></a>
-      <span class="permalink">
-      <a href="../../../../../../../../../com/here/platform/data/processing/driver/impl/deltasets/transformations/UnionPublishedParts.html#changedKeyValues:com.here.platform.data.processing.driver.deltasets.Changes%5Bcom.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Put%5D" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">changedKeyValues</span><span class="result">: <a href="../../../deltasets/Changes.html" class="extype" name="com.here.platform.data.processing.driver.deltasets.Changes">Changes</a>[<a href="../../../../catalog/Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">Key</a>, <a href="../../../../catalog/Partition%24%24Put.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Put">Put</a>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Returns the changed key-value pairs in the <span class="extype" name="DeltaSet">DeltaSet</span>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the changed key-value pairs in the <span class="extype" name="DeltaSet">DeltaSet</span>.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.driver.impl.deltasets.transformations.UnionPublishedParts">UnionPublishedParts</a> → <a href="../../../deltasets/PublishedSetLike.html" class="extype" name="com.here.platform.data.processing.driver.deltasets.PublishedSetLike">PublishedSetLike</a></dd></dl></div>
     </li><li name="com.here.platform.pipeline.logging.ContextLogging#classForLogger" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="classForLogger:Class[_]"></a>
       <span class="permalink">
@@ -611,6 +595,27 @@ also be used independently.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.here.platform.data.processing.driver.impl.deltasets.transformations.UnionPublishedParts#commits" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="commits:com.here.platform.data.processing.driver.deltasets.Commits"></a><a id="commits:Commits"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../com/here/platform/data/processing/driver/impl/deltasets/transformations/UnionPublishedParts.html#commits:com.here.platform.data.processing.driver.deltasets.Commits" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">commits</span><span class="result">: <a href="../../../deltasets/Commits.html" class="extype" name="com.here.platform.data.processing.driver.deltasets.Commits">Commits</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Returns the <a href="../../../../catalog/Partition%24%24Put.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Put">com.here.platform.data.processing.catalog.Partition.Put</a> for every newly
+published <a href="../../../../blobstore/Payload.html" class="extype" name="com.here.platform.data.processing.blobstore.Payload">com.here.platform.data.processing.blobstore.Payload</a> in the published set and
+the <a href="../../../../catalog/Partition%24%24Delete%24.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Delete">com.here.platform.data.processing.catalog.Partition.Delete</a> for every deleted partition.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the <a href="../../../../catalog/Partition%24%24Put.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Put">com.here.platform.data.processing.catalog.Partition.Put</a> for every newly
+published <a href="../../../../blobstore/Payload.html" class="extype" name="com.here.platform.data.processing.blobstore.Payload">com.here.platform.data.processing.blobstore.Payload</a> in the published set and
+the <a href="../../../../catalog/Partition%24%24Delete%24.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Delete">com.here.platform.data.processing.catalog.Partition.Delete</a> for every deleted partition.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.driver.impl.deltasets.transformations.UnionPublishedParts">UnionPublishedParts</a> → <a href="../../../deltasets/PublishedSetLike.html" class="extype" name="com.here.platform.data.processing.driver.deltasets.PublishedSetLike">PublishedSetLike</a></dd></dl></div>
     </li><li name="com.here.platform.data.processing.driver.impl.deltasets.BaseSetImpl#config" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="config:com.here.platform.data.processing.driver.deltasets.DeltaSetConfig"></a><a id="config:DeltaSetConfig"></a>
       <span class="permalink">

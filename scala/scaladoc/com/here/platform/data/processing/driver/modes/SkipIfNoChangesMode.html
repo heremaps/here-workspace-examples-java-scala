@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -294,7 +294,9 @@ also be used independently.
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This <a href="TaskMode.html" class="extype" name="com.here.platform.data.processing.driver.modes.TaskMode">TaskMode</a> is used to avoid running a compiler in case it is known that
 all the input layers of all the input catalogs needed by the compiler haven't changed
-since the last run. The driver task will simply return nothing to commit.
+since the last run. The driver task will simply return nothing to commit, unless the output catalog
+has composite layers and it is being rebased, in which case it might return some commits to
+"undo" any undesired base change.
 </p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
@@ -346,9 +348,9 @@ since the last run. The driver task will simply return nothing to commit.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.here.platform.data.processing.driver.modes.SkipIfNoChangesMode#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(context:com.here.platform.data.processing.driver.DriverContext,id:String,in:com.here.platform.data.processing.compiler.InputLayers):com.here.platform.data.processing.driver.modes.SkipIfNoChangesMode"></a><a id="&lt;init&gt;:SkipIfNoChangesMode"></a>
+      <a id="&lt;init&gt;(context:com.here.platform.data.processing.driver.DriverContext,id:String,inOut:com.here.platform.data.processing.compiler.InputLayerswithcom.here.platform.data.processing.compiler.OutputLayers):com.here.platform.data.processing.driver.modes.SkipIfNoChangesMode"></a><a id="&lt;init&gt;:SkipIfNoChangesMode"></a>
       <span class="permalink">
-      <a href="../../../../../../../com/here/platform/data/processing/driver/modes/SkipIfNoChangesMode.html#&lt;init&gt;(context:com.here.platform.data.processing.driver.DriverContext,id:String,in:com.here.platform.data.processing.compiler.InputLayers):com.here.platform.data.processing.driver.modes.SkipIfNoChangesMode" title="Permalink">
+      <a href="../../../../../../../com/here/platform/data/processing/driver/modes/SkipIfNoChangesMode.html#&lt;init&gt;(context:com.here.platform.data.processing.driver.DriverContext,id:String,inOut:com.here.platform.data.processing.compiler.InputLayerswithcom.here.platform.data.processing.compiler.OutputLayers):com.here.platform.data.processing.driver.modes.SkipIfNoChangesMode" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -357,10 +359,10 @@ since the last run. The driver task will simply return nothing to commit.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">SkipIfNoChangesMode</span><span class="params">(<span name="context">context: <a href="../DriverContext.html" class="extype" name="com.here.platform.data.processing.driver.DriverContext">DriverContext</a></span>, <span name="id">id: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="in">in: <a href="../../compiler/InputLayers.html" class="extype" name="com.here.platform.data.processing.compiler.InputLayers">InputLayers</a></span>)</span>
+        <span class="name">SkipIfNoChangesMode</span><span class="params">(<span name="context">context: <a href="../DriverContext.html" class="extype" name="com.here.platform.data.processing.driver.DriverContext">DriverContext</a></span>, <span name="id">id: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="inOut">inOut: <a href="../../compiler/InputLayers.html" class="extype" name="com.here.platform.data.processing.compiler.InputLayers">InputLayers</a> with <a href="../../compiler/OutputLayers.html" class="extype" name="com.here.platform.data.processing.compiler.OutputLayers">OutputLayers</a></span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">context</dt><dd class="cmt"><p>the <a href="../DriverContext.html" class="extype" name="com.here.platform.data.processing.driver.DriverContext">com.here.platform.data.processing.driver.DriverContext</a> relative to this mode</p></dd><dt class="param">id</dt><dd class="cmt"><p>the identifier of the <a href="../DriverTask.html" class="extype" name="com.here.platform.data.processing.driver.DriverTask">com.here.platform.data.processing.driver.DriverTask</a> the mode belongs to, for logging reasons</p></dd><dt class="param">in</dt><dd class="cmt"><p>the definition of the input catalogs</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">context</dt><dd class="cmt"><p>the <a href="../DriverContext.html" class="extype" name="com.here.platform.data.processing.driver.DriverContext">com.here.platform.data.processing.driver.DriverContext</a> relative to this mode</p></dd><dt class="param">id</dt><dd class="cmt"><p>the identifier of the <a href="../DriverTask.html" class="extype" name="com.here.platform.data.processing.driver.DriverTask">com.here.platform.data.processing.driver.DriverTask</a> the mode belongs to, for logging reasons</p></dd><dt class="param">inOut</dt><dd class="cmt"><p>the definition of the input/output layers</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -719,7 +721,7 @@ and no actual changes as present in the input layers needed by the compiler.</p>
       </span>
       
       <p class="shortcomment cmt">In case the mode is applicable, simply returns nothing to commit.</p><div class="fullcomment"><div class="comment cmt"><p>In case the mode is applicable, simply returns nothing to commit.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>always nothing to commit</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.driver.modes.SkipIfNoChangesMode">SkipIfNoChangesMode</a> → <a href="TaskMode.html" class="extype" name="com.here.platform.data.processing.driver.modes.TaskMode">TaskMode</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>nothing to commit, unless the output catalog has composite layers and is being rebased.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.processing.driver.modes.SkipIfNoChangesMode">SkipIfNoChangesMode</a> → <a href="TaskMode.html" class="extype" name="com.here.platform.data.processing.driver.modes.TaskMode">TaskMode</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

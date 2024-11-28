@@ -3,7 +3,7 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge">
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala</title>
+          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala</title>
           <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.data.processing.publisher">
           <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.data.processing.publisher">
           <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -415,10 +415,18 @@ classes are used by the processing library, but can also be used independently.
                         <a href="IncrementalPublishingMode%24.html" title="Publishes the candidates interpreting them as what should be changed in the catalog.">IncrementalPublishingMode</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="NonEmptyPublishingAction.html" title="A non empty publishing action, meaning any action other than PublishingAction.Skip."></a>
+                        <a href="NonEmptyPublishingAction.html" title="A non empty publishing action, meaning any action other than PublishingAction.Skip.">NonEmptyPublishingAction</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="Publisher.html" title="Publishes payloads, in the form of an RDD of com.here.platform.data.processing.catalog.Partition.Key and com.here.platform.data.processing.blobstore.Payload, to the Blob API and returns RDD of com.here.platform.data.processing.catalog.Partition.Commit to be committed to the Metadata API."></a>
                         <a href="Publisher.html" title="Publishes payloads, in the form of an RDD of com.here.platform.data.processing.catalog.Partition.Key and com.here.platform.data.processing.blobstore.Payload, to the Blob API and returns RDD of com.here.platform.data.processing.catalog.Partition.Commit to be committed to the Metadata API.">Publisher</a>
                       </li><li class="current-entities indented6">
-                        <span class="separator"></span>
+                        <a class="object" href="PublishingAction%24.html" title=""></a>
+                        <a class="class" href="PublishingAction.html" title="A publishing action, result of the correlation of a candidate payload, the existing metadata and the change in the base catalog (in case of composite layers)."></a>
+                        <a href="PublishingAction.html" title="A publishing action, result of the correlation of a candidate payload, the existing metadata and the change in the base catalog (in case of composite layers).">PublishingAction</a>
+                      </li><li class="current-entities indented6">
+                        <a class="object" href="PublishingMode%24.html" title=""></a>
                         <a class="trait" href="PublishingMode.html" title="Represent a policy to publish payloads to a catalog."></a>
                         <a href="PublishingMode.html" title="Represent a policy to publish payloads to a catalog.">PublishingMode</a>
                       </li><li name="com.here.platform.data.processing.spark" visbl="pub" class="indented6 " data-isabs="false" fullcomment="yes" group="Ungrouped">
@@ -548,7 +556,23 @@ classes are used by the processing library, but can also be used independently.
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.here.platform.data.processing.publisher.Publisher" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+              <ol><li name="com.here.platform.data.processing.publisher.NonEmptyPublishingAction" visbl="pub" class="indented0 " data-isabs="true" fullcomment="no" group="Ungrouped">
+      <a id="NonEmptyPublishingActionextendsPublishingAction"></a><a id="NonEmptyPublishingAction:NonEmptyPublishingAction"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/publisher/NonEmptyPublishingAction.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A non empty publishing action, meaning any action other than PublishingAction.Skip." href="NonEmptyPublishingAction.html"><span class="name">NonEmptyPublishingAction</span></a><span class="result"> extends <a href="PublishingAction.html" class="extype" name="com.here.platform.data.processing.publisher.PublishingAction">PublishingAction</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">A non empty publishing action, meaning any action other than <a href="PublishingAction%24%24Skip%24.html" class="extype" name="com.here.platform.data.processing.publisher.PublishingAction.Skip">PublishingAction.Skip</a>.</p>
+    </li><li name="com.here.platform.data.processing.publisher.Publisher" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="PublisherextendsAnyRef"></a><a id="Publisher:Publisher"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/publisher/Publisher.html" title="Permalink">
@@ -570,8 +594,25 @@ to be committed to the Metadata API.</p><div class="fullcomment"><div class="com
 <a href="../catalog/Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">com.here.platform.data.processing.catalog.Partition.Key</a> and <a href="../blobstore/Payload.html" class="extype" name="com.here.platform.data.processing.blobstore.Payload">com.here.platform.data.processing.blobstore.Payload</a>,
 to the Blob API and returns <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span> of <a href="../catalog/Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">com.here.platform.data.processing.catalog.Partition.Commit</a>
 to be committed to the Metadata API.
-</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>both the full snapshot and the incremental one are implemented here the difference is mainly in the filtering
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>both the full snapshot and the incremental one are implemented here the difference is mainly in the joining
       strategy adopted</p></span>, <span class="cmt"><p>metadata related to the published payloads need to be committed in a subsequent operation</p></span></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.publisher.PublishingAction" visbl="pub" class="indented0 " data-isabs="true" fullcomment="no" group="Ungrouped">
+      <a id="PublishingActionextendsProductwithSerializable"></a><a id="PublishingAction:PublishingAction"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/publisher/PublishingAction.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A publishing action, result of the correlation of a candidate payload, the existing metadata and the change in the base catalog (in case of composite layers)." href="PublishingAction.html"><span class="name">PublishingAction</span></a><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">A publishing action, result of the correlation of a candidate payload, the existing metadata and the change in
+the base catalog (in case of composite layers).</p>
     </li><li name="com.here.platform.data.processing.publisher.PublishingMode" visbl="pub" class="indented0 " data-isabs="true" fullcomment="no" group="Ungrouped">
       <a id="PublishingModeextendsAnyRef"></a><a id="PublishingMode:PublishingMode"></a>
       <span class="permalink">
@@ -650,6 +691,38 @@ This removes all the data in the catalog that is not included in the candidates.
 What is added or modified is uploaded, what is marked for deletion is deleted.
 Other keys present in the catalog are left unchanged.
 </p></div></div>
+    </li><li name="com.here.platform.data.processing.publisher.PublishingAction" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="PublishingAction"></a><a id="PublishingAction:PublishingAction"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/publisher/PublishingAction%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="PublishingAction%24.html"><span class="name">PublishingAction</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.processing.publisher.PublishingMode" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="PublishingMode"></a><a id="PublishingMode:PublishingMode"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/publisher/PublishingMode%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="PublishingMode%24.html"><span class="name">PublishingMode</span></a>
+      </span>
+      
+      
     </li>
               </ol>
             </div>

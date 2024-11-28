@@ -3,7 +3,7 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge">
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala</title>
+          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala</title>
           <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.data.processing.java.catalog.partition">
           <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.data.processing.java.catalog.partition">
           <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -281,6 +281,10 @@ classes are used by the processing library, but can also be used independently.
                         <a href="Delete.html" title="">Delete</a>
                       </li><li class="current-entities indented8">
                         <span class="separator"></span>
+                        <a class="class" href="DeleteFromBase.html" title=""></a>
+                        <a href="DeleteFromBase.html" title="">DeleteFromBase</a>
+                      </li><li class="current-entities indented8">
+                        <span class="separator"></span>
                         <a class="class" href="Deleted.html" title="Represents a partition that was deleted in a given version."></a>
                         <a href="Deleted.html" title="Represents a partition that was deleted in a given version.">Deleted</a>
                       </li><li class="current-entities indented8">
@@ -305,8 +309,20 @@ classes are used by the processing library, but can also be used independently.
                         <a href="Name.html" title="Name of the partition unique inside a layer.">Name</a>
                       </li><li class="current-entities indented8">
                         <span class="separator"></span>
+                        <a class="class" href="PullFromBase.html" title=""></a>
+                        <a href="PullFromBase.html" title="">PullFromBase</a>
+                      </li><li class="current-entities indented8">
+                        <span class="separator"></span>
                         <a class="class" href="Put.html" title=""></a>
                         <a href="Put.html" title="">Put</a>
+                      </li><li class="current-entities indented8">
+                        <span class="separator"></span>
+                        <a class="class" href="RebaseDelete.html" title=""></a>
+                        <a href="RebaseDelete.html" title="">RebaseDelete</a>
+                      </li><li class="current-entities indented8">
+                        <span class="separator"></span>
+                        <a class="class" href="RebasePut.html" title=""></a>
+                        <a href="RebasePut.html" title="">RebasePut</a>
                       </li><li name="com.here.platform.data.processing.java.catalog.partitioning" visbl="pub" class="indented8 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="partitioning"></a><a id="partitioning:partitioning"></a>
       <span class="permalink">
@@ -445,6 +461,22 @@ or metadata that was changed between to versions.
       </span>
       
       
+    </li><li name="com.here.platform.data.processing.java.catalog.partition.DeleteFromBase" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="DeleteFromBaseextendsCommit"></a><a id="DeleteFromBase:DeleteFromBase"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../com/here/platform/data/processing/java/catalog/partition/DeleteFromBase.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="DeleteFromBase.html"><span class="name">DeleteFromBase</span></a><span class="result"> extends <a href="Commit.html" class="extype" name="com.here.platform.data.processing.java.catalog.partition.Commit">Commit</a></span>
+      </span>
+      
+      
     </li><li name="com.here.platform.data.processing.java.catalog.partition.Deleted" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="DeletedextendsWrapper[com.here.platform.data.processing.catalog.Partition.Deleted]withChange"></a><a id="Deleted:Deleted"></a>
       <span class="permalink">
@@ -556,6 +588,22 @@ indicates at which intermediate version between the two the partition was added 
       
       <p class="shortcomment cmt">Name of the partition unique inside a layer.</p><div class="fullcomment"><div class="comment cmt"><p>Name of the partition unique inside a layer.
 </p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>This is a Java friendly wrapper of <a href="../../../catalog/Partition%24%24Name.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Name">com.here.platform.data.processing.catalog.Partition.Name</a>.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.java.catalog.partition.PullFromBase" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="PullFromBaseextendsCommit"></a><a id="PullFromBase:PullFromBase"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../com/here/platform/data/processing/java/catalog/partition/PullFromBase.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="PullFromBase.html"><span class="name">PullFromBase</span></a><span class="result"> extends <a href="Commit.html" class="extype" name="com.here.platform.data.processing.java.catalog.partition.Commit">Commit</a></span>
+      </span>
+      
+      
     </li><li name="com.here.platform.data.processing.java.catalog.partition.Put" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
       <a id="PutextendsCommit"></a><a id="Put:Put"></a>
       <span class="permalink">
@@ -569,6 +617,38 @@ indicates at which intermediate version between the two the partition was added 
       </span>
       <span class="symbol">
         <a title="" href="Put.html"><span class="name">Put</span></a><span class="result"> extends <a href="Commit.html" class="extype" name="com.here.platform.data.processing.java.catalog.partition.Commit">Commit</a></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.processing.java.catalog.partition.RebaseDelete" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="RebaseDeleteextendsCommit"></a><a id="RebaseDelete:RebaseDelete"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../com/here/platform/data/processing/java/catalog/partition/RebaseDelete.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="RebaseDelete.html"><span class="name">RebaseDelete</span></a><span class="result"> extends <a href="Commit.html" class="extype" name="com.here.platform.data.processing.java.catalog.partition.Commit">Commit</a></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.processing.java.catalog.partition.RebasePut" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="RebasePutextendsCommit"></a><a id="RebasePut:RebasePut"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../com/here/platform/data/processing/java/catalog/partition/RebasePut.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="RebasePut.html"><span class="name">RebasePut</span></a><span class="result"> extends <a href="Commit.html" class="extype" name="com.here.platform.data.processing.java.catalog.partition.Commit">Commit</a></span>
       </span>
       
       

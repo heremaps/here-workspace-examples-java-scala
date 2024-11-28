@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -229,8 +229,8 @@ versions, and metadata provided when committing a new version of a catalog.
                         <a href="Partition%24%24Checksum.html" title="Part of Partition metadata, the checksum of the actual payload.">Checksum</a>
                       </li><li class="current-entities indented7">
                         <span class="separator"></span>
-                        <a class="trait" href="Partition%24%24Commit.html" title="Represents metadata being published to DataStore as part of a new commit."></a>
-                        <a href="Partition%24%24Commit.html" title="Represents metadata being published to DataStore as part of a new commit.">Commit</a>
+                        <a class="trait" href="Partition%24%24Commit.html" title="Represents metadata being published to the Data API as part of a new commit."></a>
+                        <a href="Partition%24%24Commit.html" title="Represents metadata being published to the Data API as part of a new commit.">Commit</a>
                       </li><li class="current-entities indented7">
                         <span class="separator"></span>
                         <a class="class" href="Partition%24%24CommitWrapper.html" title="Provides a key/commit semantic to a pair of Key and Commit."></a>
@@ -239,6 +239,10 @@ versions, and metadata provided when committing a new version of a catalog.
                         <span class="separator"></span>
                         <a class="object" href="Partition%24%24Delete%24.html" title="Represents the deletion of a partition."></a>
                         <a href="Partition%24%24Delete%24.html" title="Represents the deletion of a partition.">Delete</a>
+                      </li><li class="current-entities indented7">
+                        <span class="separator"></span>
+                        <a class="object" href="Partition%24%24DeleteFromBase%24.html" title='Represents a partition that is being deleted in the base catalog and it is inherited as a "virtual" commit.'></a>
+                        <a href="Partition%24%24DeleteFromBase%24.html" title='Represents a partition that is being deleted in the base catalog and it is inherited as a "virtual" commit.'>DeleteFromBase</a>
                       </li><li class="current-entities indented7">
                         <span class="separator"></span>
                         <a class="class" href="Partition%24%24Deleted.html" title="Represents a partition that was deleted in a given version."></a>
@@ -272,9 +276,21 @@ versions, and metadata provided when committing a new version of a catalog.
                         <a class="trait" href="Partition%24%24Name.html" title="Name of the partition unique inside a layer."></a>
                         <a href="Partition%24%24Name.html" title="Name of the partition unique inside a layer.">Name</a>
                       </li><li class="current-entities indented7">
+                        <span class="separator"></span>
+                        <a class="class" href="Partition%24%24PullFromBase.html" title='Represents a partition that is being published in the base catalog and it is inherited as a "virtual" commit.'></a>
+                        <a href="Partition%24%24PullFromBase.html" title='Represents a partition that is being published in the base catalog and it is inherited as a "virtual" commit.'>PullFromBase</a>
+                      </li><li class="current-entities indented7">
                         <a class="object" href="Partition%24%24Put%24.html" title="Provides the construction/extractor interface with nominal parameters."></a>
                         <a class="class" href="" title="Represents the addition of a new partition or the change of an existing partition."></a>
                         <a href="" title="Represents the addition of a new partition or the change of an existing partition.">Put</a>
+                      </li><li class="current-entities indented7">
+                        <span class="separator"></span>
+                        <a class="object" href="Partition%24%24RebaseDelete%24.html" title="Represents a partition that is being re-deleted when the same partition is being added or changed in the base catalog during a rebase."></a>
+                        <a href="Partition%24%24RebaseDelete%24.html" title="Represents a partition that is being re-deleted when the same partition is being added or changed in the base catalog during a rebase.">RebaseDelete</a>
+                      </li><li class="current-entities indented7">
+                        <span class="separator"></span>
+                        <a class="class" href="Partition%24%24RebasePut.html" title="Represents a partition that is being re-published to override a base change during a rebase."></a>
+                        <a href="Partition%24%24RebasePut.html" title="Represents a partition that is being re-published to override a base change during a rebase.">RebasePut</a>
                       </li><li class="current-entities indented7">
                         <span class="separator"></span>
                         <a class="class" href="Partition%24%24ValueWrapper.html" title="Provides a key semantic to a pair of Key and something else."></a>

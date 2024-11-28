@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -251,6 +251,10 @@ also be used independently.
                         <a href="CatalogLightFactory.html" title="A CatalogLight factory class.">CatalogLightFactory</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes."></a>
+                        <a href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes.">CatalogLightProxy</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="trait" href="CatalogMetrics.html" title="The mixin to add statistical calculation with Spark Accumulators."></a>
                         <a href="CatalogMetrics.html" title="The mixin to add statistical calculation with Spark Accumulators.">CatalogMetrics</a>
                       </li><li class="current-entities indented6">
@@ -364,14 +368,15 @@ also be used independently.
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">LayerConfiguration</span><span class="params">(<span name="partitioning">partitioning: <a href="Partitioning%24%24Scheme.html" class="extype" name="com.here.platform.data.processing.catalog.Partitioning.Scheme">Scheme</a></span>, <span name="dataUrl">dataUrl: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.net.URL">URL</span>]</span>, <span name="properties">properties: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>, <span name="digest">digest: <a href="../blobstore/Digest.html" class="extype" name="com.here.platform.data.processing.blobstore.Digest">Digest</a> = <span class="symbol"><span class="name"><a href="../../../../../index.html">DefaultDigest</a></span></span></span>, <span name="compressed">compressed: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">LayerConfiguration</span><span class="params">(<span name="partitioning">partitioning: <a href="Partitioning%24%24Scheme.html" class="extype" name="com.here.platform.data.processing.catalog.Partitioning.Scheme">Scheme</a></span>, <span name="dataUrl">dataUrl: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.net.URL">URL</span>]</span>, <span name="properties">properties: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>, <span name="digest">digest: <a href="../blobstore/Digest.html" class="extype" name="com.here.platform.data.processing.blobstore.Digest">Digest</a> = <span class="symbol"><span class="name"><a href="../../../../../index.html">DefaultDigest</a></span></span></span>, <span name="compressed">compressed: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="extendsFrom">extendsFrom: <span class="extype" name="scala.Option">Option</span>[(<a href="../../../../hrn/HRN.html" class="extype" name="com.here.hrn.HRN">HRN</a>, <a href="Layer%24.html#Id=Symbol" class="extmbr" name="com.here.platform.data.processing.catalog.Layer.Id">Id</a>)] = <span class="symbol">None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Layer-specific configuration.</p><p>Contains layer-specific parameters and partition data common to every partition in the layer.
 A layer is a partitioned dataset, for example, geo-spatially, that contains homogeneous feature data to be compiled.
-</p></div><dl class="paramcmts block"><dt class="param">partitioning</dt><dd class="cmt"><p>The partitioning scheme for the layer, either generic or heretile.</p></dd><dt class="param">dataUrl</dt><dd class="cmt"><p>The prefix to use in front of the dataHandle for every partition. Not used with the Data API.</p></dd><dt class="param">properties</dt><dd class="cmt"><p>Generic layer properties, such as the content type and schema bundle name. Not used with the Data API.</p></dd><dt class="param">digest</dt><dd class="cmt"><p>The digest object used to compute the checksums for this layer.</p></dd><dt class="param">compressed</dt><dd class="cmt"><p>Whether the layer is compressed (its contentEncoding is gzip).</p></dd></dl><div class="toggleContainer block">
+</p></div><dl class="paramcmts block"><dt class="param">partitioning</dt><dd class="cmt"><p>The partitioning scheme for the layer, either generic or heretile.</p></dd><dt class="param">dataUrl</dt><dd class="cmt"><p>The prefix to use in front of the dataHandle for every partition. Not used with the Data API.</p></dd><dt class="param">properties</dt><dd class="cmt"><p>Generic layer properties, such as the content type and schema bundle name. Not used with the Data API.</p></dd><dt class="param">digest</dt><dd class="cmt"><p>The digest object used to compute the checksums for this layer.</p></dd><dt class="param">compressed</dt><dd class="cmt"><p>Whether the layer is compressed (its contentEncoding is gzip).</p></dd><dt class="param">extendsFrom</dt><dd class="cmt"><p>When defined, it means the layer is composite and it extends the base layer identified by the
+                   HRN and layer ID tuple.</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -422,9 +427,9 @@ A layer is a partitioned dataset, for example, geo-spatially, that contains homo
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.here.platform.data.processing.catalog.LayerConfiguration#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(partitioning:com.here.platform.data.processing.catalog.Partitioning.Scheme,dataUrl:Option[java.net.URL],properties:Map[String,String],digest:com.here.platform.data.processing.blobstore.Digest,compressed:Boolean):com.here.platform.data.processing.catalog.LayerConfiguration"></a><a id="&lt;init&gt;:LayerConfiguration"></a>
+      <a id="&lt;init&gt;(partitioning:com.here.platform.data.processing.catalog.Partitioning.Scheme,dataUrl:Option[java.net.URL],properties:Map[String,String],digest:com.here.platform.data.processing.blobstore.Digest,compressed:Boolean,extendsFrom:Option[(com.here.hrn.HRN,com.here.platform.data.processing.catalog.Layer.Id)]):com.here.platform.data.processing.catalog.LayerConfiguration"></a><a id="&lt;init&gt;:LayerConfiguration"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/processing/catalog/LayerConfiguration.html#&lt;init&gt;(partitioning:com.here.platform.data.processing.catalog.Partitioning.Scheme,dataUrl:Option%5Bjava.net.URL%5D,properties:Map%5BString,String%5D,digest:com.here.platform.data.processing.blobstore.Digest,compressed:Boolean):com.here.platform.data.processing.catalog.LayerConfiguration" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/LayerConfiguration.html#&lt;init&gt;(partitioning:com.here.platform.data.processing.catalog.Partitioning.Scheme,dataUrl:Option%5Bjava.net.URL%5D,properties:Map%5BString,String%5D,digest:com.here.platform.data.processing.blobstore.Digest,compressed:Boolean,extendsFrom:Option%5B(com.here.hrn.HRN,com.here.platform.data.processing.catalog.Layer.Id)%5D):com.here.platform.data.processing.catalog.LayerConfiguration" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -433,10 +438,11 @@ A layer is a partitioned dataset, for example, geo-spatially, that contains homo
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">LayerConfiguration</span><span class="params">(<span name="partitioning">partitioning: <a href="Partitioning%24%24Scheme.html" class="extype" name="com.here.platform.data.processing.catalog.Partitioning.Scheme">Scheme</a></span>, <span name="dataUrl">dataUrl: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.net.URL">URL</span>]</span>, <span name="properties">properties: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>, <span name="digest">digest: <a href="../blobstore/Digest.html" class="extype" name="com.here.platform.data.processing.blobstore.Digest">Digest</a> = <span class="symbol"><span class="name"><a href="../../../../../index.html">DefaultDigest</a></span></span></span>, <span name="compressed">compressed: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span>
+        <span class="name">LayerConfiguration</span><span class="params">(<span name="partitioning">partitioning: <a href="Partitioning%24%24Scheme.html" class="extype" name="com.here.platform.data.processing.catalog.Partitioning.Scheme">Scheme</a></span>, <span name="dataUrl">dataUrl: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.net.URL">URL</span>]</span>, <span name="properties">properties: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>, <span name="digest">digest: <a href="../blobstore/Digest.html" class="extype" name="com.here.platform.data.processing.blobstore.Digest">Digest</a> = <span class="symbol"><span class="name"><a href="../../../../../index.html">DefaultDigest</a></span></span></span>, <span name="compressed">compressed: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="extendsFrom">extendsFrom: <span class="extype" name="scala.Option">Option</span>[(<a href="../../../../hrn/HRN.html" class="extype" name="com.here.hrn.HRN">HRN</a>, <a href="Layer%24.html#Id=Symbol" class="extmbr" name="com.here.platform.data.processing.catalog.Layer.Id">Id</a>)] = <span class="symbol">None</span></span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">partitioning</dt><dd class="cmt"><p>The partitioning scheme for the layer, either generic or heretile.</p></dd><dt class="param">dataUrl</dt><dd class="cmt"><p>The prefix to use in front of the dataHandle for every partition. Not used with the Data API.</p></dd><dt class="param">properties</dt><dd class="cmt"><p>Generic layer properties, such as the content type and schema bundle name. Not used with the Data API.</p></dd><dt class="param">digest</dt><dd class="cmt"><p>The digest object used to compute the checksums for this layer.</p></dd><dt class="param">compressed</dt><dd class="cmt"><p>Whether the layer is compressed (its contentEncoding is gzip).</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">partitioning</dt><dd class="cmt"><p>The partitioning scheme for the layer, either generic or heretile.</p></dd><dt class="param">dataUrl</dt><dd class="cmt"><p>The prefix to use in front of the dataHandle for every partition. Not used with the Data API.</p></dd><dt class="param">properties</dt><dd class="cmt"><p>Generic layer properties, such as the content type and schema bundle name. Not used with the Data API.</p></dd><dt class="param">digest</dt><dd class="cmt"><p>The digest object used to compute the checksums for this layer.</p></dd><dt class="param">compressed</dt><dd class="cmt"><p>Whether the layer is compressed (its contentEncoding is gzip).</p></dd><dt class="param">extendsFrom</dt><dd class="cmt"><p>When defined, it means the layer is composite and it extends the base layer identified by the
+                   HRN and layer ID tuple.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -599,6 +605,22 @@ A layer is a partitioned dataset, for example, geo-spatially, that contains homo
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.LayerConfiguration#extendsFrom" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="extendsFrom:Option[(com.here.hrn.HRN,com.here.platform.data.processing.catalog.Layer.Id)]"></a><a id="extendsFrom:Option[(HRN,Id)]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/LayerConfiguration.html#extendsFrom:Option%5B(com.here.hrn.HRN,com.here.platform.data.processing.catalog.Layer.Id)%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">extendsFrom</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[(<a href="../../../../hrn/HRN.html" class="extype" name="com.here.hrn.HRN">HRN</a>, <a href="Layer%24.html#Id=Symbol" class="extmbr" name="com.here.platform.data.processing.catalog.Layer.Id">Id</a>)]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">

@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -249,6 +249,10 @@ also be used independently.
                         <span class="separator"></span>
                         <a class="trait" href="CatalogLightFactory.html" title="A CatalogLight factory class."></a>
                         <a href="CatalogLightFactory.html" title="A CatalogLight factory class.">CatalogLightFactory</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes."></a>
+                        <a href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes.">CatalogLightProxy</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="trait" href="CatalogMetrics.html" title="The mixin to add statistical calculation with Spark Accumulators."></a>
@@ -828,6 +832,25 @@ by the query APIs and is used by the commit API for logging and statistics gener
       
       <p class="shortcomment cmt">Queries the dependencies for the catalog.</p><div class="fullcomment"><div class="comment cmt"><p>Queries the dependencies for the catalog.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The dependencies of the catalog version.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NonEmptyCatalogView.html" class="extype" name="com.here.platform.data.processing.catalog.NonEmptyCatalogView">NonEmptyCatalogView</a></dd></dl></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogViewSinceVersion#querySingleChanges" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="querySingleChanges(layer:com.here.platform.data.processing.catalog.Layer.Id,partitions:Set[com.here.platform.data.processing.catalog.Partition.Name]):Map[com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Change]"></a><a id="querySingleChanges(Id,Set[Name]):Map[Key,Change]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogViewSinceVersion.html#querySingleChanges(layer:com.here.platform.data.processing.catalog.Layer.Id,partitions:Set%5Bcom.here.platform.data.processing.catalog.Partition.Name%5D):Map%5Bcom.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Change%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">querySingleChanges</span><span class="params">(<span name="layer">layer: <a href="Layer%24.html#Id=Symbol" class="extmbr" name="com.here.platform.data.processing.catalog.Layer.Id">Id</a></span>, <span name="partitions">partitions: <span class="extype" name="scala.Predef.Set">Set</span>[<a href="Partition%24%24Name.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Name">Name</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<a href="Partition%24%24Key.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Key">Key</a>, <a href="Partition%24%24Change.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Change">Change</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Queries changed metadata for the selected partitions.</p><div class="fullcomment"><div class="comment cmt"><p>Queries changed metadata for the selected partitions.</p><p>You can query up to 100 partitions with one call.
+</p></div><dl class="paramcmts block"><dt class="param">layer</dt><dd class="cmt"><p>The layer that contains the partitions being queried.</p></dd><dt class="param">partitions</dt><dd class="cmt"><p>The partition names that should be queried.</p></dd><dt>returns</dt><dd class="cmt"><p>The queried metadata, for partitions that have changed in
+        this catalog view. Partitions that did not change or do not exist are not present.</p></dd></dl><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>Querying large amounts of metadata using this function is expensive and should be
+      avoided. Instead, <code>CatalogView.queryAll(...)</code> should be used whenever possible.</p></span></dd></dl></div>
     </li><li name="com.here.platform.data.processing.catalog.NonEmptyCatalogView#querySinglePartitions" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="querySinglePartitions(layer:com.here.platform.data.processing.catalog.Layer.Id,partitions:Set[com.here.platform.data.processing.catalog.Partition.Name]):Map[com.here.platform.data.processing.catalog.Partition.Key,com.here.platform.data.processing.catalog.Partition.Meta]"></a><a id="querySinglePartitions(Id,Set[Name]):Map[Key,Meta]"></a>
       <span class="permalink">

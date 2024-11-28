@@ -3,7 +3,7 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge">
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala</title>
+          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala</title>
           <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.data.processing.catalog">
           <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.data.processing.catalog">
           <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -290,6 +290,10 @@ to work correctly.</p><p>The package also enables developers to query the catalo
                         <span class="separator"></span>
                         <a class="trait" href="CatalogLightFactory.html" title="A CatalogLight factory class."></a>
                         <a href="CatalogLightFactory.html" title="A CatalogLight factory class.">CatalogLightFactory</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes."></a>
+                        <a href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes.">CatalogLightProxy</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="trait" href="CatalogMetrics.html" title="The mixin to add statistical calculation with Spark Accumulators."></a>
@@ -804,6 +808,22 @@ the catalog operations that do not involve metadata or Spark.</p>
       <p class="shortcomment cmt">A <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a> factory class.</p><div class="fullcomment"><div class="comment cmt"><p>A <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a> factory class. Different implementations of the catalog interface must provide an
 implementation of the <code>create</code> method and specify which service(s) they support.
 </p></div></div>
+    </li><li name="com.here.platform.data.processing.catalog.CatalogLightProxy" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="CatalogLightProxyextendsCatalogLight"></a><a id="CatalogLightProxy:CatalogLightProxy"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogLightProxy.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Proxy class to allow mixins for runtime loaded CatalogLight classes." href="CatalogLightProxy.html"><span class="name">CatalogLightProxy</span></a><span class="result"> extends <a href="CatalogLight.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLight">CatalogLight</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Proxy class to allow mixins for runtime loaded CatalogLight classes.</p>
     </li><li name="com.here.platform.data.processing.catalog.CatalogMetrics" visbl="pub" class="indented0 " data-isabs="true" fullcomment="no" group="Ungrouped">
       <a id="CatalogMetricsextendsCatalogNullMetrics"></a><a id="CatalogMetrics:CatalogMetrics"></a>
       <span class="permalink">
@@ -837,7 +857,7 @@ implementation of the <code>create</code> method and specify which service(s) th
       
       <p class="shortcomment cmt">The default mixin which does not collect any statistics.</p>
     </li><li name="com.here.platform.data.processing.catalog.CatalogProxy" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
-      <a id="CatalogProxyextendsCatalog"></a><a id="CatalogProxy:CatalogProxy"></a>
+      <a id="CatalogProxyextendsCatalogLightProxywithCatalog"></a><a id="CatalogProxy:CatalogProxy"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/data/processing/catalog/CatalogProxy.html" title="Permalink">
         <i class="material-icons"></i>
@@ -848,7 +868,7 @@ implementation of the <code>create</code> method and specify which service(s) th
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Proxy class to allow mixins for runtime loaded Catalog classes." href="CatalogProxy.html"><span class="name">CatalogProxy</span></a><span class="result"> extends <a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a></span>
+        <a title="Proxy class to allow mixins for runtime loaded Catalog classes." href="CatalogProxy.html"><span class="name">CatalogProxy</span></a><span class="result"> extends <a href="CatalogLightProxy.html" class="extype" name="com.here.platform.data.processing.catalog.CatalogLightProxy">CatalogLightProxy</a> with <a href="Catalog.html" class="extype" name="com.here.platform.data.processing.catalog.Catalog">Catalog</a></span>
       </span>
       
       <p class="shortcomment cmt">Proxy class to allow mixins for runtime loaded Catalog classes.</p>
@@ -1026,12 +1046,13 @@ does not exist.
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="Layer-specific configuration." href="LayerConfiguration.html"><span class="name">LayerConfiguration</span></a><span class="params">(<span name="partitioning">partitioning: <a href="Partitioning%24%24Scheme.html" class="extype" name="com.here.platform.data.processing.catalog.Partitioning.Scheme">Scheme</a></span>, <span name="dataUrl">dataUrl: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.net.URL">URL</span>]</span>, <span name="properties">properties: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>, <span name="digest">digest: <a href="../blobstore/Digest.html" class="extype" name="com.here.platform.data.processing.blobstore.Digest">Digest</a> = <span class="symbol"><span class="name"><a href="../../../../../index.html">DefaultDigest</a></span></span></span>, <span name="compressed">compressed: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="Layer-specific configuration." href="LayerConfiguration.html"><span class="name">LayerConfiguration</span></a><span class="params">(<span name="partitioning">partitioning: <a href="Partitioning%24%24Scheme.html" class="extype" name="com.here.platform.data.processing.catalog.Partitioning.Scheme">Scheme</a></span>, <span name="dataUrl">dataUrl: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.net.URL">URL</span>]</span>, <span name="properties">properties: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>, <span name="digest">digest: <a href="../blobstore/Digest.html" class="extype" name="com.here.platform.data.processing.blobstore.Digest">Digest</a> = <span class="symbol"><span class="name"><a href="../../../../../index.html">DefaultDigest</a></span></span></span>, <span name="compressed">compressed: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="extendsFrom">extendsFrom: <span class="extype" name="scala.Option">Option</span>[(<a href="../../../../hrn/HRN.html" class="extype" name="com.here.hrn.HRN">HRN</a>, <a href="Layer%24.html#Id=Symbol" class="extmbr" name="com.here.platform.data.processing.catalog.Layer.Id">Id</a>)] = <span class="symbol">None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       <p class="shortcomment cmt">Layer-specific configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Layer-specific configuration.</p><p>Contains layer-specific parameters and partition data common to every partition in the layer.
 A layer is a partitioned dataset, for example, geo-spatially, that contains homogeneous feature data to be compiled.
-</p></div><dl class="paramcmts block"><dt class="param">partitioning</dt><dd class="cmt"><p>The partitioning scheme for the layer, either generic or heretile.</p></dd><dt class="param">dataUrl</dt><dd class="cmt"><p>The prefix to use in front of the dataHandle for every partition. Not used with the Data API.</p></dd><dt class="param">properties</dt><dd class="cmt"><p>Generic layer properties, such as the content type and schema bundle name. Not used with the Data API.</p></dd><dt class="param">digest</dt><dd class="cmt"><p>The digest object used to compute the checksums for this layer.</p></dd><dt class="param">compressed</dt><dd class="cmt"><p>Whether the layer is compressed (its contentEncoding is gzip).</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">partitioning</dt><dd class="cmt"><p>The partitioning scheme for the layer, either generic or heretile.</p></dd><dt class="param">dataUrl</dt><dd class="cmt"><p>The prefix to use in front of the dataHandle for every partition. Not used with the Data API.</p></dd><dt class="param">properties</dt><dd class="cmt"><p>Generic layer properties, such as the content type and schema bundle name. Not used with the Data API.</p></dd><dt class="param">digest</dt><dd class="cmt"><p>The digest object used to compute the checksums for this layer.</p></dd><dt class="param">compressed</dt><dd class="cmt"><p>Whether the layer is compressed (its contentEncoding is gzip).</p></dd><dt class="param">extendsFrom</dt><dd class="cmt"><p>When defined, it means the layer is composite and it extends the base layer identified by the
+                   HRN and layer ID tuple.</p></dd></dl></div>
     </li><li name="com.here.platform.data.processing.catalog.NonEmptyCatalogView" visbl="pub" class="indented0 " data-isabs="true" fullcomment="no" group="Ungrouped">
       <a id="NonEmptyCatalogViewextendsCatalogView"></a><a id="NonEmptyCatalogView:NonEmptyCatalogView"></a>
       <span class="permalink">

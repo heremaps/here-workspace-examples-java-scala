@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.828 API Reference Scala"><meta name="DC.Document.Id" content="2c77ba9a-5f30-42d9-93f9-5647ad34baee"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.828"><meta name="DC.Creation.Date" content="2024-10-25T08:50:33+00:00"></head>
+        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.834 API Reference Scala"><meta name="DC.Document.Id" content="e6e02eac-8e11-42ff-a290-d055a2c017f6"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.834"><meta name="DC.Creation.Date" content="2024-11-28T09:59:52+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -249,6 +249,10 @@ also be used independently.
                         <span class="separator"></span>
                         <a class="trait" href="CatalogLightFactory.html" title="A CatalogLight factory class."></a>
                         <a href="CatalogLightFactory.html" title="A CatalogLight factory class.">CatalogLightFactory</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes."></a>
+                        <a href="CatalogLightProxy.html" title="Proxy class to allow mixins for runtime loaded CatalogLight classes.">CatalogLightProxy</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="trait" href="CatalogMetrics.html" title="The mixin to add statistical calculation with Spark Accumulators."></a>
@@ -488,10 +492,10 @@ or metadata that was changed between two versions.
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Represents metadata being published to DataStore as part of a new commit." href="Partition%24%24Commit.html"><span class="name">Commit</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="Represents metadata being published to the Data API as part of a new commit." href="Partition%24%24Commit.html"><span class="name">Commit</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
-      <p class="shortcomment cmt">Represents metadata being published to DataStore as part of a new commit.</p><div class="fullcomment"><div class="comment cmt"><p>Represents metadata being published to DataStore as part of a new commit.</p><p>A commit is always incremental: partitions can be added, changed or deleted.
+      <p class="shortcomment cmt">Represents metadata being published to the Data API as part of a new commit.</p><div class="fullcomment"><div class="comment cmt"><p>Represents metadata being published to the Data API as part of a new commit.</p><p>A commit is always incremental: partitions can be added, changed or deleted.
 To publish a snapshot, all the added and changed partitions must be published as such while all the partitions
 not mentioned in the snapshot but present in the last version of the catalog must be deleted.
 </p></div></div>
@@ -668,6 +672,29 @@ indicates at which intermediate version between the two the partition was added 
 may have a parent name, that may also recursively
 have a parent name, until a name with no parent is reached.
 </p></div></div>
+    </li><li name="com.here.platform.data.processing.catalog.Partition.PullFromBase" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="PullFromBaseextendsPartition.CommitwithProductwithSerializable"></a><a id="PullFromBase:PullFromBase"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/Partition%24%24PullFromBase.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title='Represents a partition that is being published in the base catalog and it is inherited as a "virtual" commit.' href="Partition%24%24PullFromBase.html"><span class="name">PullFromBase</span></a><span class="params">(<span name="meta">meta: <a href="Partition%24%24Meta.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Meta">Meta</a></span>)</span><span class="result"> extends <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Commit</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents a partition that is being published in the base catalog and it is inherited as a "virtual"
+commit.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a partition that is being published in the base catalog and it is inherited as a "virtual"
+commit.
+Only applicable in case of composite layers and when the base catalog version is updated.</p><p>From a publishing perspective this is a "virtual" commit, meaning it is not actually published. It is
+logically relevant when "read back" within the same commit, as it does represent a change with respect to
+the previous version of the catalog. But the change is inherited from the base catalog rather than being
+a direct change of the extension layer.
+</p></div></div>
     </li><li name="com.here.platform.data.processing.catalog.Partition.Put" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
       <a id="PutextendsPartition.Commit"></a><a id="Put:Put"></a>
       <span class="permalink">
@@ -684,6 +711,26 @@ have a parent name, until a name with no parent is reached.
       </span>
       
       <p class="shortcomment cmt">Represents the addition of a new partition or the change of an existing partition.</p>
+    </li><li name="com.here.platform.data.processing.catalog.Partition.RebasePut" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="RebasePutextendsPartition.RebaseCommitwithProductwithSerializable"></a><a id="RebasePut:RebasePut"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/Partition%24%24RebasePut.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Represents a partition that is being re-published to override a base change during a rebase." href="Partition%24%24RebasePut.html"><span class="name">RebasePut</span></a><span class="params">(<span name="put">put: <a href="Partition%24%24Put.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Put">Put</a></span>)</span><span class="result"> extends <span class="extype" name="com.here.platform.data.processing.catalog.Partition.RebaseCommit">RebaseCommit</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents a partition that is being re-published to override a base change during a rebase.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a partition that is being re-published to override a base change during a rebase.
+Only applicable in case of composite layers and when the base catalog version is updated.</p><p>While technically identical to a simple <a href="Partition%24%24Put.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Put">Put</a> commit, it is logically different when "read back"
+within the same commit, as it does not represent a change with respect to the previous version of
+the catalog.</p></div><dl class="paramcmts block"><dt class="param">put</dt><dd class="cmt"><p>The commit used to restore a partition in the composite layer that would be otherwise
+           overridden by a base change.</p></dd></dl></div>
     </li><li name="com.here.platform.data.processing.catalog.Partition.ValueWrapper" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
       <a id="ValueWrapper[T]extendsAnyVal"></a><a id="ValueWrapper[T]:ValueWrapper[T]"></a>
       <span class="permalink">
@@ -1090,6 +1137,29 @@ have a parent name, until a name with no parent is reached.
       </span>
       
       <p class="shortcomment cmt">Represents the deletion of a partition.</p>
+    </li><li name="com.here.platform.data.processing.catalog.Partition.DeleteFromBase" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="DeleteFromBase"></a><a id="DeleteFromBase:DeleteFromBase"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/Partition%24%24DeleteFromBase%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title='Represents a partition that is being deleted in the base catalog and it is inherited as a "virtual" commit.' href="Partition%24%24DeleteFromBase%24.html"><span class="name">DeleteFromBase</span></a><span class="result"> extends <a href="Partition%24%24Commit.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Commit">Commit</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents a partition that is being deleted in the base catalog and it is inherited as a "virtual"
+commit.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a partition that is being deleted in the base catalog and it is inherited as a "virtual"
+commit.
+Only applicable in case of composite layers and when the base catalog version is updated.</p><p>From a publishing perspective this is a "virtual" commit, meaning it is not actually published. It is
+logically relevant when "read back" within the same commit, as it does represent a change with respect to
+the previous version of the catalog. But the change is inherited from the base catalog rather than being
+a direct change of the extension layer.
+</p></div></div>
     </li><li name="com.here.platform.data.processing.catalog.Partition.Generic" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
       <a id="Generic"></a><a id="Generic:Generic"></a>
       <span class="permalink">
@@ -1186,6 +1256,28 @@ have a parent name, until a name with no parent is reached.
       </span>
       
       <p class="shortcomment cmt">Provides the construction/extractor interface with nominal parameters.</p>
+    </li><li name="com.here.platform.data.processing.catalog.Partition.RebaseDelete" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
+      <a id="RebaseDelete"></a><a id="RebaseDelete:RebaseDelete"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/processing/catalog/Partition%24%24RebaseDelete%24.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Represents a partition that is being re-deleted when the same partition is being added or changed in the base catalog during a rebase." href="Partition%24%24RebaseDelete%24.html"><span class="name">RebaseDelete</span></a><span class="result"> extends <span class="extype" name="com.here.platform.data.processing.catalog.Partition.RebaseCommit">RebaseCommit</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents a partition that is being re-deleted when the same partition is being added or changed
+in the base catalog during a rebase.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a partition that is being re-deleted when the same partition is being added or changed
+in the base catalog during a rebase.
+Only applicable in case of composite layers and when the base catalog version is updated.</p><p>While technically identical to a simple <a href="Partition%24%24Delete%24.html" class="extype" name="com.here.platform.data.processing.catalog.Partition.Delete">Delete</a> commit, it is logically different when "read back"
+within the same commit, as it does not represent a change with respect to the previous version of
+the catalog.
+</p></div></div>
     </li>
               </ol>
             </div>
