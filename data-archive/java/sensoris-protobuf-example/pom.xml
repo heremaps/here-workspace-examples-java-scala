@@ -36,7 +36,7 @@
         <sdk-bom.version>2.69.5</sdk-bom.version>
         <scala.compat.version>2.12</scala.compat.version>
 
-        <avro.version>1.10.0</avro.version>
+        <avro.version>1.11.3</avro.version>
         <commons-logging.version>1.2</commons-logging.version>
 
         <junit.version>4.12</junit.version>
