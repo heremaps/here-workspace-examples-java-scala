@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2024 HERE Europe B.V.
+ * Copyright (C) 2017-2025 HERE Europe B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ case class Dependencies(platformBom: Bom) {
     "commons-io" % "commons-io" % platformBom,
     "org.apache.spark" %% "spark-core" % platformBom,
 //    output data schema
-    "com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf" %% "model_v2_scala" % "0.0.928"
+    "com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf" %% "model_v2_scala" % "0.0.934"
   )
 
   val allDependencies: Seq[ModuleID] = platformBom.bomDependencies
