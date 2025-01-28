@@ -3,7 +3,7 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge">
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.838 API Reference Scala</title>
+          <title>HERE Data SDK for Java &amp; Scala OLP v0.2.845 API Reference Scala</title>
           <meta name="description" content="HERE Data SDK - Scala API references - com.here.platform.data.client.model">
           <meta name="keywords" content="HERE Data SDK Scala API references com.here.platform.data.client.model">
           <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.838 API Reference Scala"><meta name="DC.Document.Id" content="23342bdd-95c3-40d2-9f99-f095b1205002"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.838"><meta name="DC.Creation.Date" content="2024-12-18T07:07:05+00:00"></head>
+        <meta name="copyright" content="© 2025 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.845 API Reference Scala"><meta name="DC.Document.Id" content="f94c2cf4-e444-41a1-ae46-6c3d1549b815"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.845"><meta name="DC.Creation.Date" content="2025-01-28T10:09:50+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -638,6 +638,10 @@
                         <span class="separator"></span>
                         <a class="class" href="ObjectStoreKeyType.html" title=""></a>
                         <a href="ObjectStoreKeyType.html" title="">ObjectStoreKeyType</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ObjectStoreLayerTtl.html" title="TTL enums for objectstore layer."></a>
+                        <a href="ObjectStoreLayerTtl.html" title="TTL enums for objectstore layer.">ObjectStoreLayerTtl</a>
                       </li><li class="current-entities indented6">
                         <a class="object" href="ObjectStoreLayerType%24.html" title=""></a>
                         <a class="class" href="ObjectStoreLayerType.html" title=""></a>
@@ -1946,6 +1950,22 @@ The partition indexed by key can be found with query method of QueryAPI by using
       </span>
       
       
+    </li><li name="com.here.platform.data.client.model.ObjectStoreLayerTtl" visbl="pub" class="indented0 " data-isabs="true" fullcomment="no" group="Ungrouped">
+      <a id="ObjectStoreLayerTtlextendsEnum[com.here.platform.data.client.model.ObjectStoreLayerTtl]"></a><a id="ObjectStoreLayerTtl:ObjectStoreLayerTtl"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/model/ObjectStoreLayerTtl.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="TTL enums for objectstore layer." href="ObjectStoreLayerTtl.html"><span class="name">ObjectStoreLayerTtl</span></a><span class="result"> extends <span class="extype" name="java.lang.Enum">Enum</span>[<a href="ObjectStoreLayerTtl.html" class="extype" name="com.here.platform.data.client.model.ObjectStoreLayerTtl">ObjectStoreLayerTtl</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">TTL enums for objectstore layer.</p>
     </li><li name="com.here.platform.data.client.model.ObjectStoreLayerType" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
       <a id="ObjectStoreLayerTypeextendsLayerTypewithProductwithSerializable"></a><a id="ObjectStoreLayerType:ObjectStoreLayerType"></a>
       <span class="permalink">
@@ -1958,7 +1978,7 @@ The partition indexed by key can be found with query method of QueryAPI by using
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="" href="ObjectStoreLayerType.html"><span class="name">ObjectStoreLayerType</span></a><span class="params">()</span><span class="result"> extends <a href="LayerType.html" class="extype" name="com.here.platform.data.client.model.LayerType">LayerType</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="" href="ObjectStoreLayerType.html"><span class="name">ObjectStoreLayerType</span></a><span class="params">(<span name="ttl">ttl: <a href="ObjectStoreLayerTtl.html" class="extype" name="com.here.platform.data.client.model.ObjectStoreLayerTtl">ObjectStoreLayerTtl</a> = <span class="symbol">ObjectStoreLayerTtl.Unlimited</span></span>)</span><span class="result"> extends <a href="LayerType.html" class="extype" name="com.here.platform.data.client.model.LayerType">LayerType</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       
@@ -2452,7 +2472,7 @@ days.
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="" href="UpdatableObjectStoreLayer.html"><span class="name">UpdatableObjectStoreLayer</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="summary">summary: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="description">description: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="tags">tags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="billingTags">billingTags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="coverage">coverage: <span class="extype" name="scala.Option">Option</span>[<a href="Coverage.html" class="extype" name="com.here.platform.data.client.model.Coverage">Coverage</a>] = <span class="symbol">None</span></span>, <span name="schema">schema: <span class="extype" name="scala.Option">Option</span>[<a href="LayerSchema.html" class="extype" name="com.here.platform.data.client.model.LayerSchema">LayerSchema</a>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="UpdatableLayer.html" class="extype" name="com.here.platform.data.client.model.UpdatableLayer">UpdatableLayer</a> with <a href="SchemaOption.html" class="extype" name="com.here.platform.data.client.model.SchemaOption">SchemaOption</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="" href="UpdatableObjectStoreLayer.html"><span class="name">UpdatableObjectStoreLayer</span></a><span class="params">(<span name="ttl">ttl: <span class="extype" name="scala.Option">Option</span>[<a href="ObjectStoreLayerTtl.html" class="extype" name="com.here.platform.data.client.model.ObjectStoreLayerTtl">ObjectStoreLayerTtl</a>] = <span class="symbol">None</span></span>, <span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="summary">summary: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="description">description: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="tags">tags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="billingTags">billingTags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="coverage">coverage: <span class="extype" name="scala.Option">Option</span>[<a href="Coverage.html" class="extype" name="com.here.platform.data.client.model.Coverage">Coverage</a>] = <span class="symbol">None</span></span>, <span name="schema">schema: <span class="extype" name="scala.Option">Option</span>[<a href="LayerSchema.html" class="extype" name="com.here.platform.data.client.model.LayerSchema">LayerSchema</a>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="UpdatableLayer.html" class="extype" name="com.here.platform.data.client.model.UpdatableLayer">UpdatableLayer</a> with <a href="SchemaOption.html" class="extype" name="com.here.platform.data.client.model.SchemaOption">SchemaOption</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       

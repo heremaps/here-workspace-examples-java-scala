@@ -25,7 +25,7 @@
         var toRoot = '../../../../../../';
       </script>
     
-        <meta name="copyright" content="© 2024 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.838 API Reference Scala"><meta name="DC.Document.Id" content="23342bdd-95c3-40d2-9f99-f095b1205002"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.838"><meta name="DC.Creation.Date" content="2024-12-18T07:07:05+00:00"></head>
+        <meta name="copyright" content="© 2025 HERE Europe B.V."><meta name="html_title" content="HERE Data SDK for Java &amp; Scala OLP v0.2.845 API Reference Scala"><meta name="DC.Document.Id" content="f94c2cf4-e444-41a1-ae46-6c3d1549b815"><meta name="DC.Document.Name" content="HERE Data SDK for Java &amp; Scala - API Reference Scala"><meta name="DC.Product.Name" content="HERE Data SDK for Java &amp; Scala"><meta name="DC.Product.Version" content="0.2.845"><meta name="DC.Creation.Date" content="2025-01-28T10:09:50+00:00"></head>
         <body>
       <div id="search">
         <span id="doc-title">HERE Data SDK - Scala API references<span id="doc-version"></span></span>
@@ -415,6 +415,10 @@
                         <a class="class" href="ObjectStoreKeyType.html" title=""></a>
                         <a href="ObjectStoreKeyType.html" title="">ObjectStoreKeyType</a>
                       </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="ObjectStoreLayerTtl.html" title="TTL enums for objectstore layer."></a>
+                        <a href="ObjectStoreLayerTtl.html" title="TTL enums for objectstore layer.">ObjectStoreLayerTtl</a>
+                      </li><li class="current-entities indented6">
                         <a class="object" href="ObjectStoreLayerType%24.html" title=""></a>
                         <a class="class" href="ObjectStoreLayerType.html" title=""></a>
                         <a href="ObjectStoreLayerType.html" title="">ObjectStoreLayerType</a>
@@ -649,7 +653,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">UpdatableObjectStoreLayer</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="summary">summary: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="description">description: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="tags">tags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="billingTags">billingTags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="coverage">coverage: <span class="extype" name="scala.Option">Option</span>[<a href="Coverage.html" class="extype" name="com.here.platform.data.client.model.Coverage">Coverage</a>] = <span class="symbol">None</span></span>, <span name="schema">schema: <span class="extype" name="scala.Option">Option</span>[<a href="LayerSchema.html" class="extype" name="com.here.platform.data.client.model.LayerSchema">LayerSchema</a>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="UpdatableLayer.html" class="extype" name="com.here.platform.data.client.model.UpdatableLayer">UpdatableLayer</a> with <a href="SchemaOption.html" class="extype" name="com.here.platform.data.client.model.SchemaOption">SchemaOption</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">UpdatableObjectStoreLayer</span><span class="params">(<span name="ttl">ttl: <span class="extype" name="scala.Option">Option</span>[<a href="ObjectStoreLayerTtl.html" class="extype" name="com.here.platform.data.client.model.ObjectStoreLayerTtl">ObjectStoreLayerTtl</a>] = <span class="symbol">None</span></span>, <span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="summary">summary: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="description">description: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="tags">tags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="billingTags">billingTags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="coverage">coverage: <span class="extype" name="scala.Option">Option</span>[<a href="Coverage.html" class="extype" name="com.here.platform.data.client.model.Coverage">Coverage</a>] = <span class="symbol">None</span></span>, <span name="schema">schema: <span class="extype" name="scala.Option">Option</span>[<a href="LayerSchema.html" class="extype" name="com.here.platform.data.client.model.LayerSchema">LayerSchema</a>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="UpdatableLayer.html" class="extype" name="com.here.platform.data.client.model.UpdatableLayer">UpdatableLayer</a> with <a href="SchemaOption.html" class="extype" name="com.here.platform.data.client.model.SchemaOption">SchemaOption</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
@@ -705,9 +709,9 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.here.platform.data.client.model.UpdatableObjectStoreLayer#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(name:Option[String],summary:Option[String],description:Option[String],tags:Option[Set[String]],billingTags:Option[Set[String]],coverage:Option[com.here.platform.data.client.model.Coverage],schema:Option[com.here.platform.data.client.model.LayerSchema]):com.here.platform.data.client.model.UpdatableObjectStoreLayer"></a><a id="&lt;init&gt;:UpdatableObjectStoreLayer"></a>
+      <a id="&lt;init&gt;(ttl:Option[com.here.platform.data.client.model.ObjectStoreLayerTtl],name:Option[String],summary:Option[String],description:Option[String],tags:Option[Set[String]],billingTags:Option[Set[String]],coverage:Option[com.here.platform.data.client.model.Coverage],schema:Option[com.here.platform.data.client.model.LayerSchema]):com.here.platform.data.client.model.UpdatableObjectStoreLayer"></a><a id="&lt;init&gt;:UpdatableObjectStoreLayer"></a>
       <span class="permalink">
-      <a href="../../../../../../com/here/platform/data/client/model/UpdatableObjectStoreLayer.html#&lt;init&gt;(name:Option%5BString%5D,summary:Option%5BString%5D,description:Option%5BString%5D,tags:Option%5BSet%5BString%5D%5D,billingTags:Option%5BSet%5BString%5D%5D,coverage:Option%5Bcom.here.platform.data.client.model.Coverage%5D,schema:Option%5Bcom.here.platform.data.client.model.LayerSchema%5D):com.here.platform.data.client.model.UpdatableObjectStoreLayer" title="Permalink">
+      <a href="../../../../../../com/here/platform/data/client/model/UpdatableObjectStoreLayer.html#&lt;init&gt;(ttl:Option%5Bcom.here.platform.data.client.model.ObjectStoreLayerTtl%5D,name:Option%5BString%5D,summary:Option%5BString%5D,description:Option%5BString%5D,tags:Option%5BSet%5BString%5D%5D,billingTags:Option%5BSet%5BString%5D%5D,coverage:Option%5Bcom.here.platform.data.client.model.Coverage%5D,schema:Option%5Bcom.here.platform.data.client.model.LayerSchema%5D):com.here.platform.data.client.model.UpdatableObjectStoreLayer" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -716,7 +720,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">UpdatableObjectStoreLayer</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="summary">summary: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="description">description: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="tags">tags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="billingTags">billingTags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="coverage">coverage: <span class="extype" name="scala.Option">Option</span>[<a href="Coverage.html" class="extype" name="com.here.platform.data.client.model.Coverage">Coverage</a>] = <span class="symbol">None</span></span>, <span name="schema">schema: <span class="extype" name="scala.Option">Option</span>[<a href="LayerSchema.html" class="extype" name="com.here.platform.data.client.model.LayerSchema">LayerSchema</a>] = <span class="symbol">None</span></span>)</span>
+        <span class="name">UpdatableObjectStoreLayer</span><span class="params">(<span name="ttl">ttl: <span class="extype" name="scala.Option">Option</span>[<a href="ObjectStoreLayerTtl.html" class="extype" name="com.here.platform.data.client.model.ObjectStoreLayerTtl">ObjectStoreLayerTtl</a>] = <span class="symbol">None</span></span>, <span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="summary">summary: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="description">description: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="tags">tags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="billingTags">billingTags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="coverage">coverage: <span class="extype" name="scala.Option">Option</span>[<a href="Coverage.html" class="extype" name="com.here.platform.data.client.model.Coverage">Coverage</a>] = <span class="symbol">None</span></span>, <span name="schema">schema: <span class="extype" name="scala.Option">Option</span>[<a href="LayerSchema.html" class="extype" name="com.here.platform.data.client.model.LayerSchema">LayerSchema</a>] = <span class="symbol">None</span></span>)</span>
       </span>
       
       
@@ -1131,6 +1135,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="UpdatableLayer.html" class="extype" name="com.here.platform.data.client.model.UpdatableLayer">UpdatableLayer</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.model.UpdatableObjectStoreLayer#getTtl" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="getTtl:java.util.Optional[com.here.platform.data.client.model.ObjectStoreLayerTtl]"></a><a id="getTtl:Optional[ObjectStoreLayerTtl]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/model/UpdatableObjectStoreLayer.html#getTtl:java.util.Optional%5Bcom.here.platform.data.client.model.ObjectStoreLayerTtl%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getTtl</span><span class="result">: <span class="extype" name="java.util.Optional">Optional</span>[<a href="ObjectStoreLayerTtl.html" class="extype" name="com.here.platform.data.client.model.ObjectStoreLayerTtl">ObjectStoreLayerTtl</a>]</span>
+      </span>
+      
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullcomment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
@@ -1281,6 +1301,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.here.platform.data.client.model.UpdatableObjectStoreLayer">UpdatableObjectStoreLayer</a> → <a href="UpdatableLayer.html" class="extype" name="com.here.platform.data.client.model.UpdatableLayer">UpdatableLayer</a></dd></dl></div>
+    </li><li name="com.here.platform.data.client.model.UpdatableObjectStoreLayer#ttl" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="ttl:Option[com.here.platform.data.client.model.ObjectStoreLayerTtl]"></a><a id="ttl:Option[ObjectStoreLayerTtl]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/model/UpdatableObjectStoreLayer.html#ttl:Option%5Bcom.here.platform.data.client.model.ObjectStoreLayerTtl%5D" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ttl</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="ObjectStoreLayerTtl.html" class="extype" name="com.here.platform.data.client.model.ObjectStoreLayerTtl">ObjectStoreLayerTtl</a>]</span>
+      </span>
+      
+      
     </li><li name="com.here.platform.data.client.model.UpdatableObjectStoreLayer#updateBillingTags" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
       <a id="updateBillingTags(billingTags:java.util.Set[String]):com.here.platform.data.client.model.UpdatableObjectStoreLayer"></a><a id="updateBillingTags(Set[String]):UpdatableObjectStoreLayer"></a>
       <span class="permalink">
@@ -1390,6 +1426,22 @@
       </span>
       <span class="symbol">
         <span class="name">updateTags</span><span class="params">(<span name="tags">tags: <span class="extype" name="java.util.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.model.UpdatableObjectStoreLayer">UpdatableObjectStoreLayer</a></span>
+      </span>
+      
+      
+    </li><li name="com.here.platform.data.client.model.UpdatableObjectStoreLayer#updateTtl" visbl="pub" class="indented0 " data-isabs="false" fullcomment="no" group="Ungrouped">
+      <a id="updateTtl(ttl:com.here.platform.data.client.model.ObjectStoreLayerTtl):com.here.platform.data.client.model.UpdatableObjectStoreLayer"></a><a id="updateTtl(ObjectStoreLayerTtl):UpdatableObjectStoreLayer"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/model/UpdatableObjectStoreLayer.html#updateTtl(ttl:com.here.platform.data.client.model.ObjectStoreLayerTtl):com.here.platform.data.client.model.UpdatableObjectStoreLayer" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateTtl</span><span class="params">(<span name="ttl">ttl: <a href="ObjectStoreLayerTtl.html" class="extype" name="com.here.platform.data.client.model.ObjectStoreLayerTtl">ObjectStoreLayerTtl</a></span>)</span><span class="result">: <a href="" class="extype" name="com.here.platform.data.client.model.UpdatableObjectStoreLayer">UpdatableObjectStoreLayer</a></span>
       </span>
       
       
