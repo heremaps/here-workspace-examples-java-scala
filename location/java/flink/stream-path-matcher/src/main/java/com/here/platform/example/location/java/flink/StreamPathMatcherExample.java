@@ -23,6 +23,7 @@ import com.here.hrn.HRN;
 import com.here.platform.data.client.flink.javadsl.FlinkDataClient;
 import com.here.platform.data.client.flink.javadsl.FlinkQueryApi;
 import com.here.platform.data.client.flink.javadsl.FlinkWriteEngine;
+import com.here.platform.data.client.flink.serializers.ScalaNoneSerializer;
 import com.here.platform.data.client.javadsl.NewPartition;
 import com.here.platform.data.client.model.PendingPartition;
 import com.here.platform.data.client.settings.ConsumerSettings;
@@ -35,6 +36,7 @@ import java.util.UUID;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scala.None$;
 
 public final class StreamPathMatcherExample {
   private static final Duration CHECKPOINT_INTERVAL = Duration.ofSeconds(30);
@@ -56,8 +58,13 @@ public final class StreamPathMatcherExample {
       final FlinkWriteEngine writeEngine = dataClient.writeEngine(outputCatalogHRN);
 
       final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
       env.getConfig()
+          .getSerializerConfig()
           .registerTypeWithKryoSerializer(SdiiMessage.Message.class, ProtobufSerializer.class);
+      env.getConfig()
+          .getSerializerConfig()
+          .registerTypeWithKryoSerializer(None$.class, ScalaNoneSerializer.class);
       env.enableCheckpointing(CHECKPOINT_INTERVAL.toMillis());
 
       env.addSource(

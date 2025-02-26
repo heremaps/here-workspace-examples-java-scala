@@ -102,9 +102,8 @@ suitable for local development and debugging.
 For the HERE platform environment:
 
 ```bash
-mvn compile exec:java -Dexec.mainClass=com.here.platform.example.location.java.flink.StreamPathMatcherExample \
-    -Dpipeline-config.file=config/here/local-pipeline-config.conf \
-    -Dpipeline-job.file=config/here/pipeline-job.conf
+mvn compile exec:exec \
+-Dexec.args="-cp %classpath -Dpipeline-config.file=config/here/local-pipeline-config.conf -Dpipeline-job.file=config/here/pipeline-job.conf com.here.platform.example.location.java.flink.StreamPathMatcherExample"
 ```
 
 2. Open a different terminal and let a few partitions stream out of the layer. They consist of small, one-line messages.
@@ -254,7 +253,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template stream-5.0 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template stream-6.0 $PATH_TO_JAR \
                 com.here.platform.example.location.java.flink.StreamPathMatcherExample \
                 --input-catalog-ids="$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
                 --scope $PROJECT_HRN
@@ -266,9 +265,7 @@ olp pipeline version create $COMPONENT_NAME_version $PIPELINE_ID $PIPELINE_TEMPL
 - Make sure logs are produced with info level
 
 ```bash
-olp pipeline version log level set $PIPELINE_ID $PIPELINE_VERSION_ID \
---log4j-properties="$PATH_TO_PROJECT/src/main/resources/log4j.properties" \
---scope $PROJECT_HRN
+olp pipeline version log level set $PIPELINE_ID $PIPELINE_VERSION_ID --root info --scope $PROJECT_HRN
 ```
 
 If the operation is successful, you should be able to see the log level you just set:

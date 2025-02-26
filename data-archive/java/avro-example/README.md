@@ -150,9 +150,8 @@ needed for a local run of the archiving application.
 Execute the following command in the [`avro-example`](../avro-example) directory to run the Avro Archiving Application:
 
 ```bash
-mvn compile exec:java \
--Dexec.mainClass=com.here.platform.data.archive.example.Main \
--Padd-dependencies-for-local-run
+mvn compile exec:exec \
+-Dexec.args="-cp %classpath com.here.platform.data.archive.example.Main" -Padd-dependencies-for-local-run
 ```
 
 At a certain point after start, the application pauses and waits for you to ingest data you want to archive.
@@ -446,7 +445,7 @@ Use the [`olp pipeline template create`](https://developer.here.com/documentatio
 
 ```bash
 olp pipeline template create avro-pipeline-template \
-    stream-5.0 \
+    stream-6.0 \
     $PATH_TO_JAR \
     com.here.platform.dal.DALMain \
     --input-catalog-ids=source \
