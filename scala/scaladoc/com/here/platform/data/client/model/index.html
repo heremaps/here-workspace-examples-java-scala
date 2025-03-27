@@ -556,6 +556,10 @@
                         <a href="IntIndexValue.html" title="The 64 bits integer value of index key supported by Index layer">IntIndexValue</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="InteractiveLayerExtension.html" title=""></a>
+                        <a href="InteractiveLayerExtension.html" title="">InteractiveLayerExtension</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="InteractiveMapContext.html" title=""></a>
                         <a href="InteractiveMapContext.html" title="">InteractiveMapContext</a>
                       </li><li class="current-entities indented6">
@@ -1617,6 +1621,22 @@ The partition indexed by key can be found with query method of QueryAPI by using
       <p class="shortcomment cmt">The 64 bits integer value of index key supported by Index layer
 </p><div class="fullcomment"><div class="comment cmt"><p>The 64 bits integer value of index key supported by Index layer
 </p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>underlying 64 bits integer value</p></dd></dl></div>
+    </li><li name="com.here.platform.data.client.model.InteractiveLayerExtension" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InteractiveLayerExtensionextendsProductwithSerializable"></a><a id="InteractiveLayerExtension:InteractiveLayerExtension"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/data/client/model/InteractiveLayerExtension.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="InteractiveLayerExtension.html"><span class="name">InteractiveLayerExtension</span></a><span class="params">(<span name="catalogHrn">catalogHrn: <a href="../../../../hrn/HRN.html" class="extype" name="com.here.hrn.HRN">HRN</a></span>, <span name="layerId">layerId: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
     </li><li name="com.here.platform.data.client.model.InteractiveMapContext" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="InteractiveMapContextextendsEnum[com.here.platform.data.client.model.InteractiveMapContext]"></a><a id="InteractiveMapContext:InteractiveMapContext"></a>
       <span class="permalink">
@@ -1677,7 +1697,7 @@ The partition indexed by key can be found with query method of QueryAPI by using
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="" href="InteractiveMapProperties.html"><span class="name">InteractiveMapProperties</span></a><span class="params">(<span name="searchableProperties">searchableProperties: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="versionsToKeep">versionsToKeep: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="" href="InteractiveMapProperties.html"><span class="name">InteractiveMapProperties</span></a><span class="params">(<span name="searchableProperties">searchableProperties: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="versionsToKeep">versionsToKeep: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>, <span name="extends">extends: <span class="extype" name="scala.Option">Option</span>[<a href="InteractiveLayerExtension.html" class="extype" name="com.here.platform.data.client.model.InteractiveLayerExtension">InteractiveLayerExtension</a>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       
@@ -2460,7 +2480,7 @@ days.
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="" href="UpdatableInteractiveMapLayer.html"><span class="name">UpdatableInteractiveMapLayer</span></a><span class="params">(<span name="searchableProperties">searchableProperties: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="versionsToKeep">versionsToKeep: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">None</span></span>, <span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="summary">summary: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="description">description: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="tags">tags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="billingTags">billingTags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="coverage">coverage: <span class="extype" name="scala.Option">Option</span>[<a href="Coverage.html" class="extype" name="com.here.platform.data.client.model.Coverage">Coverage</a>] = <span class="symbol">None</span></span>, <span name="schema">schema: <span class="extype" name="scala.Option">Option</span>[<a href="LayerSchema.html" class="extype" name="com.here.platform.data.client.model.LayerSchema">LayerSchema</a>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="UpdatableLayer.html" class="extype" name="com.here.platform.data.client.model.UpdatableLayer">UpdatableLayer</a> with <a href="SchemaOption.html" class="extype" name="com.here.platform.data.client.model.SchemaOption">SchemaOption</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="" href="UpdatableInteractiveMapLayer.html"><span class="name">UpdatableInteractiveMapLayer</span></a><span class="params">(<span name="searchableProperties">searchableProperties: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="versionsToKeep">versionsToKeep: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">None</span></span>, <span name="extends">extends: <span class="extype" name="scala.Option">Option</span>[<a href="InteractiveLayerExtension.html" class="extype" name="com.here.platform.data.client.model.InteractiveLayerExtension">InteractiveLayerExtension</a>] = <span class="symbol">None</span></span>, <span name="name">name: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="summary">summary: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="description">description: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="tags">tags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="billingTags">billingTags: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>, <span name="coverage">coverage: <span class="extype" name="scala.Option">Option</span>[<a href="Coverage.html" class="extype" name="com.here.platform.data.client.model.Coverage">Coverage</a>] = <span class="symbol">None</span></span>, <span name="schema">schema: <span class="extype" name="scala.Option">Option</span>[<a href="LayerSchema.html" class="extype" name="com.here.platform.data.client.model.LayerSchema">LayerSchema</a>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="UpdatableLayer.html" class="extype" name="com.here.platform.data.client.model.UpdatableLayer">UpdatableLayer</a> with <a href="SchemaOption.html" class="extype" name="com.here.platform.data.client.model.SchemaOption">SchemaOption</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       
