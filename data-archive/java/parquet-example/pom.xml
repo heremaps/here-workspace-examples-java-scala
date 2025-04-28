@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.data.archive</groupId>
     <artifactId>data-archive-parquet-example</artifactId>
-    <version>0.0.945</version>
+    <version>0.0.950</version>
     <packaging>jar</packaging>
 
     <!-- Meta information section start -->
@@ -23,7 +23,7 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.73.5</tag>
+        <tag>2.74.4</tag>
     </scm>
 
     <!-- Meta information section end -->
@@ -33,7 +33,7 @@
         <exec.classpathScope>compile</exec.classpathScope>
         <exec.executable>java</exec.executable>
 
-        <sdk-bom.version>2.73.5</sdk-bom.version>
+        <sdk-bom.version>2.74.4</sdk-bom.version>
         <scala.compat.version>2.12</scala.compat.version>
         <artifact.wagon.version>2.0.24</artifact.wagon.version>
 
