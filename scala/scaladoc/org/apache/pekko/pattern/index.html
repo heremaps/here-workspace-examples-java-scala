@@ -502,6 +502,22 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>PipeToSupport</dd></dl></div>
     </li><li name="org.apache.pekko.pattern.RetrySupport#retry" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="retry[T](attempt:()=&gt;scala.concurrent.Future[T],shouldRetry:(T,Throwable)=&gt;Boolean,attempts:Int,delayFunction:Int=&gt;Option[scala.concurrent.duration.FiniteDuration])(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]"></a><a id="retry[T](()⇒Future[T],(T,Throwable)⇒Boolean,Int,(Int)⇒Option[FiniteDuration])(ExecutionContext,Scheduler):Future[T]"></a>
+      <span class="permalink">
+      <a href="../../../../org/apache/pekko/pattern/index.html#retry[T](attempt:()=&gt;scala.concurrent.Future[T],shouldRetry:(T,Throwable)=&gt;Boolean,attempts:Int,delayFunction:Int=&gt;Option[scala.concurrent.duration.FiniteDuration])(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">retry</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="attempt">attempt: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>, <span name="shouldRetry">shouldRetry: (<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>, <span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="attempts">attempts: <span class="extype" name="scala.Int">Int</span></span>, <span name="delayFunction">delayFunction: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="scheduler">scheduler: <span class="extype" name="org.apache.pekko.actor.Scheduler">Scheduler</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>RetrySupport</dd></dl></div>
+    </li><li name="org.apache.pekko.pattern.RetrySupport#retry" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="retry[T](attempt:()=&gt;scala.concurrent.Future[T],attempts:Int,delayFunction:Int=&gt;Option[scala.concurrent.duration.FiniteDuration])(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]"></a><a id="retry[T](()⇒Future[T],Int,(Int)⇒Option[FiniteDuration])(ExecutionContext,Scheduler):Future[T]"></a>
       <span class="permalink">
       <a href="../../../../org/apache/pekko/pattern/index.html#retry[T](attempt:()=&gt;scala.concurrent.Future[T],attempts:Int,delayFunction:Int=&gt;Option[scala.concurrent.duration.FiniteDuration])(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]" title="Permalink">
@@ -514,6 +530,22 @@
       </span>
       <span class="symbol">
         <span class="name">retry</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="attempt">attempt: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>, <span name="attempts">attempts: <span class="extype" name="scala.Int">Int</span></span>, <span name="delayFunction">delayFunction: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="scheduler">scheduler: <span class="extype" name="org.apache.pekko.actor.Scheduler">Scheduler</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>RetrySupport</dd></dl></div>
+    </li><li name="org.apache.pekko.pattern.RetrySupport#retry" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="retry[T](attempt:()=&gt;scala.concurrent.Future[T],shouldRetry:(T,Throwable)=&gt;Boolean,attempts:Int,delay:scala.concurrent.duration.FiniteDuration)(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]"></a><a id="retry[T](()⇒Future[T],(T,Throwable)⇒Boolean,Int,FiniteDuration)(ExecutionContext,Scheduler):Future[T]"></a>
+      <span class="permalink">
+      <a href="../../../../org/apache/pekko/pattern/index.html#retry[T](attempt:()=&gt;scala.concurrent.Future[T],shouldRetry:(T,Throwable)=&gt;Boolean,attempts:Int,delay:scala.concurrent.duration.FiniteDuration)(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">retry</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="attempt">attempt: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>, <span name="shouldRetry">shouldRetry: (<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>, <span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="attempts">attempts: <span class="extype" name="scala.Int">Int</span></span>, <span name="delay">delay: <span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="scheduler">scheduler: <span class="extype" name="org.apache.pekko.actor.Scheduler">Scheduler</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>RetrySupport</dd></dl></div>
@@ -534,6 +566,22 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>RetrySupport</dd></dl></div>
     </li><li name="org.apache.pekko.pattern.RetrySupport#retry" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="retry[T](attempt:()=&gt;scala.concurrent.Future[T],shouldRetry:(T,Throwable)=&gt;Boolean,attempts:Int,minBackoff:scala.concurrent.duration.FiniteDuration,maxBackoff:scala.concurrent.duration.FiniteDuration,randomFactor:Double)(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]"></a><a id="retry[T](()⇒Future[T],(T,Throwable)⇒Boolean,Int,FiniteDuration,FiniteDuration,Double)(ExecutionContext,Scheduler):Future[T]"></a>
+      <span class="permalink">
+      <a href="../../../../org/apache/pekko/pattern/index.html#retry[T](attempt:()=&gt;scala.concurrent.Future[T],shouldRetry:(T,Throwable)=&gt;Boolean,attempts:Int,minBackoff:scala.concurrent.duration.FiniteDuration,maxBackoff:scala.concurrent.duration.FiniteDuration,randomFactor:Double)(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">retry</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="attempt">attempt: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>, <span name="shouldRetry">shouldRetry: (<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>, <span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="attempts">attempts: <span class="extype" name="scala.Int">Int</span></span>, <span name="minBackoff">minBackoff: <span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span></span>, <span name="maxBackoff">maxBackoff: <span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span></span>, <span name="randomFactor">randomFactor: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="scheduler">scheduler: <span class="extype" name="org.apache.pekko.actor.Scheduler">Scheduler</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>RetrySupport</dd></dl></div>
+    </li><li name="org.apache.pekko.pattern.RetrySupport#retry" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="retry[T](attempt:()=&gt;scala.concurrent.Future[T],attempts:Int,minBackoff:scala.concurrent.duration.FiniteDuration,maxBackoff:scala.concurrent.duration.FiniteDuration,randomFactor:Double)(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]"></a><a id="retry[T](()⇒Future[T],Int,FiniteDuration,FiniteDuration,Double)(ExecutionContext,Scheduler):Future[T]"></a>
       <span class="permalink">
       <a href="../../../../org/apache/pekko/pattern/index.html#retry[T](attempt:()=&gt;scala.concurrent.Future[T],attempts:Int,minBackoff:scala.concurrent.duration.FiniteDuration,maxBackoff:scala.concurrent.duration.FiniteDuration,randomFactor:Double)(implicitec:scala.concurrent.ExecutionContext,implicitscheduler:org.apache.pekko.actor.Scheduler):scala.concurrent.Future[T]" title="Permalink">
@@ -546,6 +594,22 @@
       </span>
       <span class="symbol">
         <span class="name">retry</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="attempt">attempt: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>, <span name="attempts">attempts: <span class="extype" name="scala.Int">Int</span></span>, <span name="minBackoff">minBackoff: <span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span></span>, <span name="maxBackoff">maxBackoff: <span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span></span>, <span name="randomFactor">randomFactor: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="scheduler">scheduler: <span class="extype" name="org.apache.pekko.actor.Scheduler">Scheduler</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>RetrySupport</dd></dl></div>
+    </li><li name="org.apache.pekko.pattern.RetrySupport#retry" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="retry[T](attempt:()=&gt;scala.concurrent.Future[T],shouldRetry:(T,Throwable)=&gt;Boolean,attempts:Int)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]"></a><a id="retry[T](()⇒Future[T],(T,Throwable)⇒Boolean,Int)(ExecutionContext):Future[T]"></a>
+      <span class="permalink">
+      <a href="../../../../org/apache/pekko/pattern/index.html#retry[T](attempt:()=&gt;scala.concurrent.Future[T],shouldRetry:(T,Throwable)=&gt;Boolean,attempts:Int)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">retry</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="attempt">attempt: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>, <span name="shouldRetry">shouldRetry: (<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>, <span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="attempts">attempts: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="org.apache.pekko.pattern.RetrySupport.retry.T">T</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>RetrySupport</dd></dl></div>
