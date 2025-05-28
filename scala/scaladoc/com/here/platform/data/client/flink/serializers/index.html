@@ -245,6 +245,10 @@
                         <span class="separator"></span>
                         <a class="class" href="ScalaNoneSerializer.html" title="A dedicated serializer for the Scala None singleton."></a>
                         <a href="ScalaNoneSerializer.html" title="A dedicated serializer for the Scala None singleton.">ScalaNoneSerializer</a>
+                      </li><li class="current-entities indented7">
+                        <span class="separator"></span>
+                        <a class="class" href="ScalaSomeSerializer.html" title="A dedicated serializer for the Scala Some singleton."></a>
+                        <a href="ScalaSomeSerializer.html" title="A dedicated serializer for the Scala Some singleton.">ScalaSomeSerializer</a>
                       </li>
               </ul>
             </div>
@@ -355,6 +359,26 @@ can be effectively solved.</p></div></div>
 involving the Scala <code>Option</code> type and its singleton instance <code>None</code>, serialization
 issues may arise from Kryo's deserialization of Scala objects. By introducing
 a custom serializer specifically for the <code>None</code> object, such deserialization issues
+can be effectively solved.</p></div></div>
+    </li><li name="com.here.platform.data.client.flink.serializers.ScalaSomeSerializer" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ScalaSomeSerializerextendsSerializer[Some[_]]"></a><a id="ScalaSomeSerializer:ScalaSomeSerializer"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/data/client/flink/serializers/ScalaSomeSerializer.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A dedicated serializer for the Scala Some singleton." href="ScalaSomeSerializer.html"><span class="name">ScalaSomeSerializer</span></a><span class="result"> extends <span class="extype" name="com.esotericsoftware.kryo.Serializer">Serializer</span>[<span class="extype" name="scala.Some">Some</span>[_]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">A dedicated serializer for the Scala <code>Some</code> singleton.</p><div class="fullcomment"><div class="comment cmt"><p>A dedicated serializer for the Scala <code>Some</code> singleton.</p><p>In Apache Flink applications that utilize Scala libraries, particularly those
+involving the Scala <code>Option</code> type and its singleton instance <code>Some</code>, serialization
+issues may arise from Kryo's deserialization of Scala objects. By introducing
+a custom serializer specifically for the <code>Some</code> object, such deserialization issues
 can be effectively solved.</p></div></div>
     </li></ol>
             </div>

@@ -442,6 +442,8 @@
               
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
+              
         </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
@@ -475,32 +477,10 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
-      <span class="permalink">
-      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/geocode/GeocodeApi.html#finalize():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.geocode.GeocodeApi#geocodeGet" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="geocodeGet(q:String,at:Option[String],lang:Option[String],limit:Option[Int]):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.ols.generated.scaladsl.model.geocode.OpenSearchGeocodeResponse]"></a><a id="geocodeGet(String,Option[String],Option[String],Option[Int]):ApiRequest[OpenSearchGeocodeResponse]"></a>
+      <a id="geocodeGet(addressNamesMode:Option[String],at:Option[String],in:Option[String],postalCodeMode:Option[String],q:Option[String],qq:Option[String],types:Seq[String],with:Seq[String],lang:Seq[String],limit:Option[Int],politicalView:Option[String],show:Seq[String],showMapReferences:Seq[String],showNavAttributes:Seq[String],showRelated:Seq[String],showTranslations:Seq[String],xRequestID:Option[String]):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.ols.generated.scaladsl.model.geocode.OpenSearchGeocodeResponse]"></a><a id="geocodeGet(Option[String],Option[String],Option[String],Option[String],Option[String],Option[String],Seq[String],Seq[String],Seq[String],Option[Int],Option[String],Seq[String],Seq[String],Seq[String],Seq[String],Seq[String],Option[String]):ApiRequest[OpenSearchGeocodeResponse]"></a>
       <span class="permalink">
-      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/geocode/GeocodeApi.html#geocodeGet(q:String,at:Option[String],lang:Option[String],limit:Option[Int]):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.ols.generated.scaladsl.model.geocode.OpenSearchGeocodeResponse]" title="Permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/geocode/GeocodeApi.html#geocodeGet(addressNamesMode:Option[String],at:Option[String],in:Option[String],postalCodeMode:Option[String],q:Option[String],qq:Option[String],types:Seq[String],with:Seq[String],lang:Seq[String],limit:Option[Int],politicalView:Option[String],show:Seq[String],showMapReferences:Seq[String],showNavAttributes:Seq[String],showRelated:Seq[String],showTranslations:Seq[String],xRequestID:Option[String]):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.ols.generated.scaladsl.model.geocode.OpenSearchGeocodeResponse]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -509,10 +489,10 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">geocodeGet</span><span class="params">(<span name="q">q: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="at">at: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="lang">lang: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="limit">limit: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="../../../../../ApiRequest.html" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<a href="../../model/geocode/OpenSearchGeocodeResponse.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.geocode.OpenSearchGeocodeResponse">OpenSearchGeocodeResponse</a>]</span>
+        <span class="name">geocodeGet</span><span class="params">(<span name="addressNamesMode">addressNamesMode: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="at">at: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="in">in: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="postalCodeMode">postalCodeMode: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="q">q: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="qq">qq: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="types">types: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Nil</span></span>, <span name="with">with: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Nil</span></span>, <span name="lang">lang: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Nil</span></span>, <span name="limit">limit: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>, <span name="politicalView">politicalView: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="show">show: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Nil</span></span>, <span name="showMapReferences">showMapReferences: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Nil</span></span>, <span name="showNavAttributes">showNavAttributes: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Nil</span></span>, <span name="showRelated">showRelated: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Nil</span></span>, <span name="showTranslations">showTranslations: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Nil</span></span>, <span name="xRequestID">xRequestID: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="../../../../../ApiRequest.html" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<a href="../../model/geocode/OpenSearchGeocodeResponse.html" class="extype" name="com.here.platform.data.client.base.ols.generated.scaladsl.model.geocode.OpenSearchGeocodeResponse">OpenSearchGeocodeResponse</a>]</span>
       </span>
       
-      <p class="shortcomment cmt">This endpoint processes text address input, matching it to a map data index and returning a set of addresses with their geographic coordinates.</p><div class="fullcomment"><div class="comment cmt"><p>This endpoint processes text address input, matching it to a map data index and returning a set of addresses with their geographic coordinates. Address input can be partial or full, un-structured or structured.</p><p>Path: /geocode</p><p>Method: GET</p><p>Expected answers:</p><p>  code 200 : OpenSearchGeocodeResponse (The search results.)</p><p>  code 400 : ErrorResponse (Client error: request failed validation.)</p><p>  code 503 : ErrorResponse (Temporary server error.)</p></div><dl class="paramcmts block"><dt class="param">q</dt><dd class="cmt"><p>Enter a free-text query. Examples: \&quot;125, Berliner, berlin\&quot;, \&quot;Beacon, Boston, Hospital\&quot;, \&quot;Schnurrbart German Pub and Restaurant, Hong Kong\&quot;</p></dd><dt class="param">at</dt><dd class="cmt"><p>Specify the center of the search context expressed as coordinates (format \&quot;at=&lt;latitude&gt;,&lt;longitude&gt;\&quot;). Example: \&quot;at=13.1,-43.1\&quot;</p></dd><dt class="param">lang</dt><dd class="cmt"><p>Select the language to be used for result rendering from a list of BCP47 compliant Language Codes. (Default: English)</p></dd><dt class="param">limit</dt><dd class="cmt"><p>Maximum number of results to be returned.</p></dd></dl></div>
+      <p class="shortcomment cmt">This endpoint allows to find the geo-coordinates of a known address, place, locality or administrative area, even if the query is incomplete or partly incorrect.</p><div class="fullcomment"><div class="comment cmt"><p>This endpoint allows to find the geo-coordinates of a known address, place, locality or administrative area, even if the query is incomplete or partly incorrect. It also returns a complete postal address string and address details. It supports structured, unstructured and hybrid queries - combinations of structured and unstructured query elements.</p><p>Path: /geocode</p><p>Method: GET</p><p>Expected answers:</p><p>  code 200 : OpenSearchGeocodeResponse (The search results.)</p><p>  code 400 : ErrorResponse (Client error: request failed validation.)</p><p>  code 405 : ErrorResponse (Client error: http method not supported.)</p><p>  code 429 : ErrorResponse (Client error: Rate limit exceeded.)</p><p>  code 503 : ErrorResponse (Temporary server error.)</p></div><dl class="paramcmts block"><dt class="param">addressNamesMode</dt><dd class="cmt"><p>This option allows users to choose between displaying normalized or matched address fields in the response, affecting the names in the address block, the address label, and the result title. This option is relevant when there is a difference between administrative naming and postal or common naming conventions, or when addressing with alternative street names. By default, geocoding results provide matched names for administrative places and normalized (official) names for street names.  Description of supported values:  - <code>matched</code>: The service returns matched names for address fields. - <code>normalized</code>: The service returns normalized (primary) names for address fields.</p></dd><dt class="param">at</dt><dd class="cmt"><p>Specify the center of the search context expressed as coordinates.  Format: <code>{latitude},{longitude}</code>  Type: <code>{decimal},{decimal}</code>  Example: <code>-13.163068,-72.545128</code> (Machu Picchu Mountain, Peru)</p></dd><dt class="param">in</dt><dd class="cmt"><p>Search within a geographic area. This is a hard filter. Results will be returned if they are located within the specified area.  A geographic area can be   * a country (or multiple countries), provided as comma-separated [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country codes     The country codes are to be provided in all uppercase.     Format: <code>countryCode:{countryCode}[,{countryCode}]*</code>     Examples:     * <code>countryCode:USA</code>     * <code>countryCode:CAN,MEX,USA</code></p></dd><dt class="param">postalCodeMode</dt><dd class="cmt"><p>Options to return multiple results in areas where a postal code is associated with more than one district or city area. Without these options, the system only provides one result and may leave the district or city name blank or use a default name, potentially omitting relevant districts of cities.  Description of supported values:  - <code>cityLookup</code>: When a postal code spans multiple cities, this option gives you all possible combinations of the postal code with the corresponding city names. - <code>districtLookup</code>: When a postal code spans multiple districts (within one city or across multiple cities), this option gives you all possible combinations of the postal code with the corresponding district and city names.</p></dd><dt class="param">q</dt><dd class="cmt"><p>Enter a free-text query  Examples:  * <code>125, Berliner, berlin</code>  * <code>Beacon, Boston, Hospital</code>  * <code>Schnurrbart German Pub and Restaurant, Hong Kong</code>  _Note: Either <code>q</code> or <code>qq</code>-parameter is required on this endpoint. Both parameters can be provided in the same request._</p></dd><dt class="param">qq</dt><dd class="cmt"><p>Enter a qualified query. A qualified query is similar to a free-text query, but in a structured manner.  It can take multiple _sub-parameters_, separated by semicolon, allowing to specify different aspects of a query.  Currently supported _sub-parameters_ are <code>country</code>, <code>state</code>, <code>county</code>, <code>city</code>, <code>district</code>, <code>street</code>,  <code>houseNumber</code>, and <code>postalCode</code>.  Format: <code>{sub-parameter}={string}[;{sub-parameter}={string}]*</code>  Examples:  * <code>city=Berlin;country=Germany;street=Friedrichstr;houseNumber=20</code>  * <code>city=Berlin;country=Germany</code>  * <code>postalCode=10969</code>  _Note: Either <code>q</code> or <code>qq</code>-parameter is required on this endpoint. Both parameters can be provided in the same request._</p></dd><dt class="param">types</dt><dd class="cmt"><p>A comma-separated list of the types that should be included in the response.  If this parameter is not set, all types are considered for the response.  Description of supported values:  - <code>address</code>: restricting results to result types <code>houseNumber</code>, <code>street</code>, <code>postalCodePoint</code>, <code>intersection</code>, or <code>addressBlock</code> - <code>area</code>: restricting results to result types <code>locality</code> or <code>administrativeArea</code> including all the sub-types - <code>city</code>: restricting results to result type <code>locality</code> and locality type <code>city</code> - <code>houseNumber</code>: restricting results to result type: <code>houseNumber</code>, including house number types <code>PA</code> (Point Address), <code>MPA</code> (Micro Point Address) and   <code>interpolated</code>, including exact house number matches and house number fallbacks - <code>place</code>: restricting results to result type <code>place</code> - <code>postalCode</code>: restricting results to postal codes: either result type <code>postalCodePoint</code> or result type <code>locality</code> with locality type <code>postalCode</code>.      Note that in Ireland and Singapore, where each address has unique postal code,     <code>postalCodePoint</code> results are replaced by <code>houseNumber</code> results. - <code>street</code>: restricting results to result type <code>street</code></p></dd><dt class="param">lang</dt><dd class="cmt"><p>Select the language to be used for result rendering from a list of [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) compliant language codes.</p></dd><dt class="param">limit</dt><dd class="cmt"><p>Maximum number of results to be returned.</p></dd><dt class="param">politicalView</dt><dd class="cmt"><p>Toggle the political view.  This parameter accepts a single ISO 3166-1 alpha-3 country code in all uppercase.  If a valid 3-letter country code is provided for which GS7 does not have a dedicated political view, it will fallback to the default view.  The following political views are currently supported:  - <code>ARG</code>: Argentina's view on the Southern Patagonian Ice Field and Tierra Del Fuego, including the Falkland Islands, South Georgia, and South Sandwich Islands - <code>EGY</code>: Egypt's view on Bir Tawil - <code>IND</code>: India's view on Gilgit-Baltistan - <code>KEN</code>: Kenya's view on the Ilemi Triangle - <code>MAR</code>: Morocco's view on Western Sahara - <code>PAK</code>: Pakistan's view on Jammu and Kashmir and the Junagadh Area - <code>RUS</code>: Russia's view on Crimea - <code>SDN</code>: Sudan's view on the Halaib Triangle - <code>SRB</code>: Serbia's view on Kosovo, Vukovar, and Sarengrad Islands - <code>SUR</code>: Suriname's view on the Courantyne Headwaters and Lawa Headwaters - <code>SYR</code>: Syria's view on the Golan Heights - <code>TUR</code>: Turkey's view on Cyprus and Northern Cyprus - <code>TZA</code>: Tanzania's view on Lake Malawi - <code>URY</code>: Uruguay's view on Rincon de Artigas - <code>VNM</code>: Vietnam's view on the Paracel Islands and Spratly Islands</p></dd><dt class="param">show</dt><dd class="cmt"><p>Select additional fields to be rendered in the response. Please note that some of the fields involve additional webservice calls and can increase the overall response time.  The value is a comma-separated list of the sections to be enabled. For some sections there is a long and a short ID.  Description of supported values:  - <code>countryInfo</code>: For each result item renders additional block with the country info, such as   [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) and   [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code. - <code>parsing</code> - <code>postalCodeDetails</code>: For each result item of types <code>postalCodePoint</code> renders block with additional information about this postal code,   such as postal code type: ZIP or ZIP+4; ZIP classification code: PO BOX, Unique or military; record type code for ZIP+4 codes.   This feature is currently available only in the countries which are using ZIP codes - USA, PRI, VIR, GUM, MNP and ASM. - <code>secondaryUnitInfo</code>: For each matched unit designator, the geocode endpoint returns an additional block   containing the normalized unit type and unit value. GS7 geocode currently supports   normalized secondary unit info in the following countries:   AUS, AUT, BRA, CAN, ESP, FRA, GBR, IDN, IND, NZL, TUR, TWN, USA. - <code>streetInfo</code>: For each result item renders additional block with the street name decomposed into its parts like the base name, the street type, etc. - <code>tz</code>: Renders result items with additional time zone information.</p></dd><dt class="param">showMapReferences</dt><dd class="cmt"><p>Return the map references of the location objects  Description of supported values:  - <code>adminIds</code>: Return the ids for the admin hierarchy of the response, to enable cross referencing into other services or data applications based on HERE Map Content - <code>cmVersion</code>: Return the core map version number of the region where the result is located - <code>links</code>: Return the link references from the result's access position,   to enable cross referencing into other services or data applications - <code>pointAddress</code>: Return the reference of the point address,   to enable cross referencing into other services or data applications   based on HERE Map Content - <code>segments</code>: Return the street segment references from the result's access position,   to enable cross referencing into other services or data applications   based on HERE Map Content      **NOTE** The previous parameter <code>show=hmcReference</code> is deprecated and replaced     by <code>showMapReferences=segments</code> which serves the same purpose.</p></dd><dt class="param">showNavAttributes</dt><dd class="cmt"><p>Return requested additional attributes for segments in a road network if <code>showNavAttributes</code> parameter is specified with valid value and relevant data is available.  The value is a comma-separated list of the sections to be enabled.  Description of supported values:  - <code>access</code>: Return the vehicle types allowed on a road or lane. - <code>functionalClass</code>: Return the functional class which is used to classify roads depending on the speed, importance and connectivity of the road. - <code>physical</code>: Return the values to describe special physical characteristics of a road. - <code>speedLimits</code>: Include speed limit and travel direction of the road in the results where available in content and when requested by the client application.    Note on <code>speedLimits</code>:   - The feature is not supported in Japan.   - This feature is subject to premium pricing. For details, contact your HERE customer representative.</p></dd><dt class="param">showRelated</dt><dd class="cmt"><p>allows enriching some types of response items with related items  Description of supported values:  - **RESTRICTED** <code>MPA</code>: For <code>type=houseNumber</code> and <code>houseNumberType=PA</code> result items, include a block containing a list of micro point addresses associated to this address, such as buildings, floors (levels) or suites (units). GS7 supports micro point addresses in the following countries: AUS, CAN, NZL, USA, PRI. - <code>intersections</code>: For street and house number results, include a block containing a list of intersections nearest to the address. - **RESTRICTED** <code>parentPA</code>: For <code>type=houseNumber</code> and <code>houseNumberType=MPA</code> result items, include a block containing the \&quot;parent\&quot; point addresses associated with this micro point address. GS7 supports micro point addresses in the following countries: AUS, CAN, NZL, USA, PRI.</p></dd><dt class="param">showTranslations</dt><dd class="cmt"><p>Shows translations and alternative names of the provided fields in all available languages.  This parameter accepts comma separated list of allowed fields for which translations are required.  Description of supported values:  - <code>city</code>: shows alternative names and translations available for address field <code>city</code> - <code>county</code>: shows alternative names and translations available for address field <code>county</code> - <code>district</code>: shows alternative names and translations available for address field <code>district</code> - <code>state</code>: shows alternative names and translations available for address field <code>state</code></p></dd><dt class="param">xRequestID</dt><dd class="cmt"><p>Used to correlate requests with their responses within a customer's application, for logging and error reporting.  Format: Free string, but a valid UUIDv4 is recommended.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -530,6 +510,8 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -549,6 +531,8 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -601,6 +585,8 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
+              
         </dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -619,6 +605,8 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -653,28 +641,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait():Unit"></a>
-      <span class="permalink">
-      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/geocode/GeocodeApi.html#wait():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
@@ -721,6 +687,28 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/geocode/GeocodeApi.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.geocode.GeocodeApi#withConfig" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="withConfig(apiConfig:com.here.platform.data.client.base.http.settings.ApiConfiguration):com.here.platform.data.client.base.ols.generated.scaladsl.api.geocode.GeocodeApi"></a><a id="withConfig(ApiConfiguration):GeocodeApi"></a>
       <span class="permalink">
@@ -743,7 +731,34 @@
 
         
 
-        
+        <div class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/geocode/GeocodeApi.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+                <span class="name">@Deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

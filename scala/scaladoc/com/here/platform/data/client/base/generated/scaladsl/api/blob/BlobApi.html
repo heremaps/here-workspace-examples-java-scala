@@ -462,6 +462,8 @@
               
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
+              
         </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.generated.scaladsl.api.blob.BlobApi#completeMultipartUpload" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="completeMultipartUpload(hrn:String,fullUrl:Option[String],layerId:String,dataHandle:String,multiPartToken:String,billingTag:Option[String],parts:Option[com.here.platform.data.client.base.generated.scaladsl.model.blob.MultipartCompleteRequest])(implicitpartsBodySerializer:com.here.platform.data.client.base.BodySerializer[Option[com.here.platform.data.client.base.generated.scaladsl.model.blob.MultipartCompleteRequest]]):com.here.platform.data.client.base.ApiRequest[Unit]"></a><a id="completeMultipartUpload(String,Option[String],String,String,String,Option[String],Option[MultipartCompleteRequest])(BodySerializer[Option[MultipartCompleteRequest]]):ApiRequest[Unit]"></a>
@@ -527,28 +529,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
-      <span class="permalink">
-      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/api/blob/BlobApi.html#finalize():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.generated.scaladsl.api.blob.BlobApi#getBlob" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getBlob(hrn:String,layerId:String,dataHandle:String,accessType:Seq[String],billingTag:Option[String],range:Option[String],ifNoneMatch:Option[String]):com.here.platform.data.client.base.ApiRequest[Array[Byte]]"></a><a id="getBlob(String,String,String,Seq[String],Option[String],Option[String],Option[String]):ApiRequest[Array[Byte]]"></a>
       <span class="permalink">
@@ -582,6 +562,8 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.generated.scaladsl.api.blob.BlobApi#getMultipartUploadStatus" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -617,6 +599,8 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -669,6 +653,8 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
+              
         </dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -687,6 +673,8 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.generated.scaladsl.api.blob.BlobApi#putBlob" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -772,28 +760,6 @@
              Headers :
                ETag - The etag assigned by the system which should be used when finalizing the multipart upload. Do not use <code>partNumber</code> or etag values generated in an error situation (see the description in the <code>partNumber</code> parameter).</p><p>  code 401 :  (Unauthorized)</p><p>  code 403 :  (Forbidden)</p><p>  code 404 :  (Not Found - the provided multipart upload doesn't exist.)</p></div><dl class="paramcmts block"><dt class="param">hrn</dt><dd class="cmt"><p>The HERE Resource Name (HRN) of the catalog.</p></dd><dt class="param">fullUrl</dt><dd class="cmt"><p>Already constructed url with path parameters but without query.</p></dd><dt class="param">layerId</dt><dd class="cmt"><p>The ID of the layer that the data blob part belongs to.</p></dd><dt class="param">dataHandle</dt><dd class="cmt"><p>The data handle (ID) represents an identifier for the data blob which the part belongs to. The data handle can only contain alphanumeric, '-' and '.' characters, [0-9, a-z, A-Z, -, .]. The maximum length of this field is 600 characters.</p></dd><dt class="param">multiPartToken</dt><dd class="cmt"><p>The identifier of the multi part upload (token). Content of this parameter must refer to a valid and started multipart upload.</p></dd><dt class="param">partNumber</dt><dd class="cmt"><p>The number of the part for the multi part upload. The numbers of the upload parts must start from 1, be no greater than 10,000 and be consecutive. Parts uploaded with the same <code>partNumber</code> are overridden. Do not reuse the same <code>partnumber</code> when retrying an upload in an error situation (network problems, 4xx or 5xx responses). Reusing the same <code>partnumber</code> in a retry may cause the publication to fail.</p></dd><dt class="param">contentType</dt><dd class="cmt"><p>A standard MIME type describing the format of the blob data. For more information, see [RFC 2616, section 14.17: Content-Type](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17). The value of this header must match the content type specified in the 'contentType' field when the multipart upload was initialized, and this content type must also match the content type specified in the layer's configuration.</p></dd><dt class="param">contentLength</dt><dd class="cmt"><p>Size of the entity-body, in bytes. For more information, see [RFC 7230, section 3.3.2: Content-Length](https://tools.ietf.org/html/rfc7230#section-3.3.2).</p></dd><dt class="param">body</dt><dd class="cmt"><p>The data to upload as part of the blob.</p></dd><dt class="param">billingTag</dt><dd class="cmt"><p>Billing Tag is an optional free-form tag which is used for grouping billing records together. If supplied, it must be between 4 - 16 characters, contain only alpha/numeric ASCII characters [A-Za-z0-9]. Grouping billing records by billing tag will be available in future releases.</p></dd><dt class="param">xHEREDigest</dt><dd class="cmt"><p>This header can be used as a data integrity check to verify that the data received by the server is the same data that was originally sent by the client.  This header specifies the lowercase Hex encoded 32-bit CRC32C checksum of the object or 128-bit MD5 digest or 160-bit SHA1 digest or 256-bit SHA256 digest. You can choose one of the following Secure Hash Algorithms (SHA) or Cyclic Redundancy Check (CRC) checksum algorithms to calculate the digest value:   - CRC-32C   - MD5   - SHA1   - SHA256  Value of the header is a combination algorithm name and digest in following format: \&quot;Algorithm:Digest\&quot;. If the digest values calculated on the client side doesn't match to the digest on the server side, server generates Bad Request error.</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait():Unit"></a>
-      <span class="permalink">
-      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/api/blob/BlobApi.html#wait():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
       <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/api/blob/BlobApi.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
@@ -839,6 +805,28 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/api/blob/BlobApi.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.generated.scaladsl.api.blob.BlobApi#withConfig" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="withConfig(apiConfig:com.here.platform.data.client.base.http.settings.ApiConfiguration):com.here.platform.data.client.base.generated.scaladsl.api.blob.BlobApi"></a><a id="withConfig(ApiConfiguration):BlobApi"></a>
       <span class="permalink">
@@ -861,7 +849,34 @@
 
         
 
-        
+        <div class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/api/blob/BlobApi.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+                <span class="name">@Deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

@@ -454,6 +454,8 @@
               
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
+              
         </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
@@ -487,28 +489,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
-      <span class="permalink">
-      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/transit/RoutingApi.html#finalize():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -526,6 +506,8 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.transit.RoutingApi#getRoutes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -567,7 +549,7 @@
                X-Request-Id -</p><p>  code 504 : ErrorResponse (API response in case of gateway timeout.)
              Headers :
                X-Correlation-Id -
-               X-Request-Id -</p></div><dl class="paramcmts block"><dt class="param">origin</dt><dd class="cmt"><p>Trip origin WGS-84 compliant coordinates.  Format: <code>{lat},{lng}[;placeName={name}]</code>  The optional <code>placeName</code> parameter can be used to customize   the name of the origin place and will affect the generated actions descriptions.</p></dd><dt class="param">destination</dt><dd class="cmt"><p>Trip destination WGS-84 compliant coordinates.  Format: <code>{lat},{lng}[;placeName={name}]</code>  The optional <code>placeName</code> parameter can be used to customize the   name of the destination place and will affect the generated actions descriptions.</p></dd><dt class="param">lang</dt><dd class="cmt"><p>Specifies the list of preferred languages of the response. The first supported language from the list will be used for for the response. The value should comply with the [IETF BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).</p></dd><dt class="param">units</dt><dd class="cmt"><p>Units of measurement used, for example, in guidance instructions. The default is <code>metric</code>.  If <code>imperial</code> units are requested and the requested language is <code>en-US</code>, then  United States customary units (miles and feet) will be used.  If <code>imperial</code> units are requested and a language other than <code>en-US</code> is requested then  imperial (miles and yards) units will be used.</p></dd><dt class="param">departureTime</dt><dd class="cmt"><p>Specifies the time of departure as defined by either <code>date-time</code> or <code>full-date</code> <code>T</code> <code>partial-time</code> in <code>RFC 3339</code>, section 5.6 (for example, <code>2019-06-24T01:23:45</code>). The requested time is converted to the local time at origin. When the optional timezone offset is not specified, time is assumed to be local. If neither <code>departureTime</code> or <code>arrivalTime</code> are specified, current time at departure location will be used. All <code>Time</code> values in the response are returned in the timezone of each location.</p></dd><dt class="param">arrivalTime</dt><dd class="cmt"><p>Specifies the time of arrival as defined by either <code>date-time</code> or <code>full-date</code> <code>T</code> <code>partial-time</code> in <code>RFC 3339</code>, section 5.6 (for example, <code>2019-06-24T01:23:45</code>). The requested time is converted to the local time at destination. When the optional timezone offset is not specified, time is assumed to be local. All <code>Time</code> values in the response are returned in the timezone of each location.  Note : The following features do not support the arrivalTime parameter: * EV Routing * Route Handle * Route Import</p></dd><dt class="param">alternatives</dt><dd class="cmt"><p>Number of alternative routes to return aside from the optimal route. By default, <code>alternatives=0</code> is assumed and only one optimal route is returned. In cases where also a pedestrian route is available it will be also returned. This may lead to two routes being returned in total (one transit route and one pedestrian route) even though only one is expected when <code>alternatives=0</code> is given.</p></dd><dt class="param">changes</dt><dd class="cmt"><p>Maximum number of changes or transfers allowed in a route. Unlimited number of changes is permitted when not set.</p></dd><dt class="param">modes</dt><dd class="cmt"><p>Transit mode filter used to determine which modes of transit to include in the response. By default, all supported transit modes are permitted.  Supported modes: <code>highSpeedTrain</code> <code>intercityTrain</code> <code>interRegionalTrain</code> <code>regionalTrain</code> <code>cityTrain</code> <code>bus</code> <code>ferry</code> <code>subway</code> <code>lightRail</code> <code>privateBus</code> <code>inclined</code> <code>aerial</code> <code>busRapid</code> <code>monorail</code> <code>flight</code> <code>spaceship</code>  This parameter also support an exclusion list: It's sufficient to specify each mode to exclude by prefixing it with <code>-</code>. Mixing of inclusive and exclusive transit modes is not allowed.  examples:   * <code>subway,bus</code>. Returns only subways and busses.   * <code>-subway,-bus</code>. Returns all modes except subways and busses.</p></dd><dt class="param">pedestrianLeft_Square_BracketspeedRight_Square_Bracket</dt><dd class="cmt"><p>Walking speed in meters per second. Influences the duration of walking segments from origin to a station, from a station to destination and in-between the stations (e.g. if transfer is needed).</p></dd><dt class="param">pedestrianLeft_Square_BracketmaxDistanceRight_Square_Bracket</dt><dd class="cmt"><p>Maximum allowed walking distance in meters (e.g. when looking for nearest stations).</p></dd><dt class="param">accessibility</dt><dd class="cmt"><p>Defines accessibility requirements for routes.   * <code>wheelchair</code> - Select only wheelchair accessible vehicles and stations.</p></dd><dt class="param">xRequestID</dt><dd class="cmt"><p>User-provided token that can be used to trace a request or a group of requests sent to the service.</p></dd></dl></div>
+               X-Request-Id -</p></div><dl class="paramcmts block"><dt class="param">origin</dt><dd class="cmt"><p>Trip origin WGS-84 compliant coordinates.  Format: <code>{lat},{lng}[;placeName={name}]</code>  The optional <code>placeName</code> parameter can be used to customize   the name of the origin place and will affect the generated actions descriptions.</p></dd><dt class="param">destination</dt><dd class="cmt"><p>Trip destination WGS-84 compliant coordinates.  Format: <code>{lat},{lng}[;placeName={name}]</code>  The optional <code>placeName</code> parameter can be used to customize the   name of the destination place and will affect the generated actions descriptions.</p></dd><dt class="param">lang</dt><dd class="cmt"><p>Specifies the list of preferred languages of the response. The first supported language from the list will be used for the response. The value should comply with the [IETF BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).</p></dd><dt class="param">units</dt><dd class="cmt"><p>Units of measurement used, for example, in guidance instructions. The default is <code>metric</code>.  If <code>imperial</code> units are requested and the requested language is <code>en-US</code>, then  United States customary units (miles and feet) will be used.  If <code>imperial</code> units are requested and a language other than <code>en-US</code> is requested then  imperial (miles and yards) units will be used.</p></dd><dt class="param">departureTime</dt><dd class="cmt"><p>Specifies the time of departure as defined by either <code>date-time</code> or <code>full-date</code> <code>T</code> <code>partial-time</code> in <code>RFC 3339</code>, section 5.6 (for example, <code>2019-06-24T01:23:45</code>). The requested time is converted to the local time at origin. When the optional timezone offset is not specified, time is assumed to be local. If neither <code>departureTime</code> or <code>arrivalTime</code> are specified, current time at departure location will be used. All <code>Time</code> values in the response are returned in the timezone of each location.</p></dd><dt class="param">arrivalTime</dt><dd class="cmt"><p>Specifies the time of arrival as defined by either <code>date-time</code> or <code>full-date</code> <code>T</code> <code>partial-time</code> in <code>RFC 3339</code>, section 5.6 (for example, <code>2019-06-24T01:23:45</code>). The requested time is converted to the local time at destination. When the optional timezone offset is not specified, time is assumed to be local. All <code>Time</code> values in the response are returned in the timezone of each location.  Note : The following features do not support the arrivalTime parameter: * EV Routing * Route Handle * Route Import</p></dd><dt class="param">alternatives</dt><dd class="cmt"><p>Number of alternative routes to return aside from the optimal route. By default, <code>alternatives=0</code> is assumed and only one optimal route is returned. In cases where also a pedestrian route is available it will be also returned. This may lead to two routes being returned in total (one transit route and one pedestrian route) even though only one is expected when <code>alternatives=0</code> is given.</p></dd><dt class="param">changes</dt><dd class="cmt"><p>Maximum number of changes or transfers allowed in a route. Unlimited number of changes is permitted when not set.</p></dd><dt class="param">modes</dt><dd class="cmt"><p>Transit mode filter used to determine which modes of transit to include in the response. By default, all supported transit modes are permitted.  Supported modes: <code>highSpeedTrain</code> <code>intercityTrain</code> <code>interRegionalTrain</code> <code>regionalTrain</code> <code>cityTrain</code> <code>bus</code> <code>ferry</code> <code>subway</code> <code>lightRail</code> <code>privateBus</code> <code>inclined</code> <code>aerial</code> <code>busRapid</code> <code>monorail</code> <code>flight</code> <code>spaceship</code>  This parameter also support an exclusion list: It's sufficient to specify each mode to exclude by prefixing it with <code>-</code>. Mixing of inclusive and exclusive transit modes is not allowed.  examples:   * <code>subway,bus</code>. Returns only subways and busses.   * <code>-subway,-bus</code>. Returns all modes except subways and busses.</p></dd><dt class="param">pedestrianLeft_Square_BracketspeedRight_Square_Bracket</dt><dd class="cmt"><p>Walking speed in meters per second. Influences the duration of walking segments from origin to a station, from a station to destination and in-between the stations (e.g. if transfer is needed).</p></dd><dt class="param">pedestrianLeft_Square_BracketmaxDistanceRight_Square_Bracket</dt><dd class="cmt"><p>Maximum allowed walking distance in meters (e.g. when looking for nearest stations).</p></dd><dt class="param">accessibility</dt><dd class="cmt"><p>Defines accessibility requirements for routes.   * <code>wheelchair</code> - Select only wheelchair accessible vehicles and stations.</p></dd><dt class="param">xRequestID</dt><dd class="cmt"><p>User-provided token that can be used to trace a request or a group of requests sent to the service.</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -585,6 +567,8 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -637,6 +621,8 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
               
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
+              
         </dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -655,6 +641,8 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@native</span><span class="args">()</span>
+              
+                <span class="name">@IntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -689,28 +677,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait():Unit"></a>
-      <span class="permalink">
-      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/transit/RoutingApi.html#wait():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
@@ -757,6 +723,28 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/transit/RoutingApi.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="com.here.platform.data.client.base.ols.generated.scaladsl.api.transit.RoutingApi#withConfig" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="withConfig(apiConfig:com.here.platform.data.client.base.http.settings.ApiConfiguration):com.here.platform.data.client.base.ols.generated.scaladsl.api.transit.RoutingApi"></a><a id="withConfig(ApiConfiguration):RoutingApi"></a>
       <span class="permalink">
@@ -779,7 +767,34 @@
 
         
 
-        
+        <div class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../../../../../com/here/platform/data/client/base/ols/generated/scaladsl/api/transit/RoutingApi.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+                <span class="name">@Deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
