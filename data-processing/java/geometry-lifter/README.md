@@ -32,6 +32,7 @@ In the commands that follow, replace the variable placeholders with the followin
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by the `olp catalog create` command).
 - `$HRN_PARTITION` is the platform environment you are in. The value should be `here`.
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
+- `$OLP_EMAIL` is a single contact e-mail address for the pipeline.
 - `$REALM` The ID of your organization, also called a realm. Consult your platform
   invitation letter to learn your organization ID.
 - `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf)).
@@ -104,18 +105,34 @@ parameter.
 
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here).
 
+To run your Spark application locally with Java 17, you should provide the following add-opens parameters to the command arguments:
+
+```
+--add-opens=java.base/java.util=ALL-UNNAMED
+--add-opens=java.base/java.lang=ALL-UNNAMED
+--add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+--add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+--add-opens=java.base/java.nio=ALL-UNNAMED
+```
+
 Use all the above settings to run the following command in the [`geometry-lifter`](../geometry-lifter)
 directory to run the Geometry Lifter Compiler.
 
 For the HERE platform environment:
 
 ```bash
-mvn compile exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.java.geometry.lifter.Main \
--Dpipeline-config.file=./config/here/local-pipeline-config.conf \
--Dpipeline-job.file=./config/here/pipeline-job.conf \
--Dconfig.file=./config/here/local-application.conf \
--Dspark.master=local[*]
+mvn compile exec:exec \
+-Dexec.args="--add-opens=java.base/java.util=ALL-UNNAMED \
+             --add-opens=java.base/java.lang=ALL-UNNAMED \
+             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED \
+             --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+             --add-opens=java.base/java.nio=ALL-UNNAMED \
+             -cp %classpath \
+             -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
+             -Dpipeline-job.file=./config/here/pipeline-job.conf \
+             -Dconfig.file=./config/here/local-application.conf \
+             -Dspark.master=local[*] \
+             com.here.platform.data.processing.example.java.geometry.lifter.Main"
 ```
 
 After one run, in the HERE platform environment, you can inspect the local catalog with the OLP CLI:
@@ -255,8 +272,8 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region.
 
 ```bash
-olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.0 $PATH_TO_JAR \
+olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
+olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.java.geometry.lifter.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

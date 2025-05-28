@@ -35,6 +35,7 @@ In the commands that follow, replace the variable placeholders with the followin
   invitation letter to learn your organization ID.
 - `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./compiler/config/here/pipeline-config.conf).
 - `$PROJECT_HRN` is your project's `HRN` (returned by `olp project create` command).
+- `$OLP_EMAIL` is a single contact e-mail address for the pipeline.
 
 ### Run the Compiler Locally
 
@@ -114,18 +115,34 @@ parameter.
 
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](compiler/config/here).
 
+To run your Spark application locally with Java 17, you should provide the following add-opens parameters to the command arguments:
+
+```
+--add-opens=java.base/java.util=ALL-UNNAMED
+--add-opens=java.base/java.lang=ALL-UNNAMED
+--add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+--add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+--add-opens=java.base/java.nio=ALL-UNNAMED
+```
+
 Finally, run the following command line in the [`pedestrian-topologies-extraction-protobuf/compiler`](../pedestrian-topologies-extraction-protobuf/compiler) directory
 to run the Pedestrian Topologies Compiler.
 
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.java.pedestrian.protobuf.Main \
--Dpipeline-config.file=./config/here/local-pipeline-config.conf \
--Dpipeline-job.file=./config/here/pipeline-job.conf \
--Dconfig.file=./config/here/local-application.conf \
--Dspark.master=local[*]
+mvn compile exec:exec \
+-Dexec.args="--add-opens=java.base/java.util=ALL-UNNAMED \
+             --add-opens=java.base/java.lang=ALL-UNNAMED \
+             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED  \
+             --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+             --add-opens=java.base/java.nio=ALL-UNNAMED \
+             -cp %classpath \
+             -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
+             -Dpipeline-job.file=./config/here/pipeline-job.conf \
+             -Dconfig.file=./config/here/local-application.conf \
+             -Dspark.master=local[*] \
+             com.here.platform.data.processing.example.java.pedestrian.protobuf.Main"
 ```
 
 After one run, in the HERE platform environment, you can inspect the local catalog with the OLP CLI:
@@ -264,8 +281,8 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region.
 
 ```bash
-olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.0 $PATH_TO_JAR \
+olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
+olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.java.pedestrian.protobuf.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

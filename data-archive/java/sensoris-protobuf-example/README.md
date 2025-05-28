@@ -147,11 +147,13 @@ After the application has been configured, you can run it locally by running the
 As the `argument`, you must provide the `-Padd-dependencies-for-local-run` parameter that adds all the dependencies
 needed for a local run of the archiving application.
 
+To run your Flink application locally with Java 17, you should provide `--add-opens=java.base/java.util=ALL-UNNAMED` to the command arguments.
+
 Execute the following command in the [`sensoris-protobuf-example`](../sensoris-protobuf-example) directory to run the Sensoris Protobuf Archiving Application:
 
 ```bash
 mvn compile exec:exec \
--Dexec.args="-cp %classpath com.here.platform.data.archive.example.Main" -Padd-dependencies-for-local-run
+-Dexec.args="--add-opens=java.base/java.util=ALL-UNNAMED -cp %classpath com.here.platform.data.archive.example.Main" -Padd-dependencies-for-local-run
 ```
 
 At a certain point after start, the application pauses and waits for you to ingest data you want to archive.
@@ -471,7 +473,7 @@ Use the [`olp pipeline template create`](https://developer.here.com/documentatio
 
 ```bash
 olp pipeline template create sensoris-protobuf-pipeline-template \
-    stream-6.0 \
+    stream-6.1 \
     $PATH_TO_JAR \
     com.here.platform.dal.DALMain \
     --input-catalog-ids=source \
@@ -488,7 +490,7 @@ HERE platform uses pipelines to process data from HERE geospatial resources and 
 Use the [`olp pipeline create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/pipeline-commands.html#pipeline-create) command to create a pipeline:
 
 ```bash
-olp pipeline create sensoris-protobuf-pipeline --scope $PROJECT_HRN
+olp pipeline create sensoris-protobuf-pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
 ```
 
 Save the pipeline ID to the `PIPELINE_ID` variable as you will need it later in this tutorial.

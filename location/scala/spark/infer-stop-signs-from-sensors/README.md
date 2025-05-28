@@ -73,6 +73,7 @@ tutorial.
 In the commands that follow, replace the variable placeholders with the following values:
 
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
+- `$OLP_EMAIL` is a single contact e-mail address for the pipeline.
 - `$COVERAGE` is a two-letter code for country and region (in this case, `DE` for Germany)
 - `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline
   configuration ([HERE environment](./config/here/local-pipeline-config.conf).
@@ -137,6 +138,7 @@ In the command above:
 - `pipeline-job.conf` defines the versions of the input and output catalogs.
 - `local[2]` defines the number of threads Spark will run in parallel to
   process the batch.
+- The [`.jvmopts`](.jvmopts) file is used by default and contains `--add-opens` options required to run Spark applications with Java 17.
 
 After one run, in the HERE platform environment you can inspect the local catalog with the OLP CLI:
 
@@ -268,8 +270,8 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
    pipeline components:
 
 ```bash
-olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.0 $PATH_TO_JAR \
+olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
+olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
                 com.here.platform.example.location.scala.spark.InferStopSignsFromSensorsExample \
                 --input-catalog-ids="$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
                 --scope $PROJECT_HRN

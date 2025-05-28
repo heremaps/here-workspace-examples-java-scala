@@ -178,11 +178,13 @@ For more information about the `application.conf` configuration file, see the [I
 
 The [`pipeline-config.conf`](src/main/resources/pipeline-config.conf) file contains the input and output catalog HRNs.
 
+To run your Spark application locally with Java 17, you should provide `--add-opens=java.base/sun.nio.ch=ALL-UNNAMED` to the command arguments.
+
 Execute the following command in the [parquet-example](../parquet-example) directory to compact partitions in the index layer:
 
 ```bash
-mvn compile -q exec:java \
--Dexec.mainClass=com.here.platform.index.compaction.batch.Main \
+mvn compile -q exec:exec \
+-Dexec.args="-cp %classpath --add-opens=java.base/sun.nio.ch=ALL-UNNAMED com.here.platform.index.compaction.batch.Main" \
 -Padd-dependencies-for-local-run
 ```
 
@@ -425,7 +427,7 @@ Use the [`olp pipeline template create`](https://developer.here.com/documentatio
 
 ```bash
 olp pipeline template create $PIPELINE_TEMPLATE_NAME \
-    batch-4.0  \
+    batch-4.1  \
     $PATH_TO_JAR \
     com.here.platform.index.compaction.batch.Driver \
     --input-catalog-ids=source \
@@ -442,7 +444,7 @@ HERE platform uses pipelines to process data from HERE geospatial resources and 
 Use the [`olp pipeline create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/pipeline-commands.html#pipeline-create) command to create a pipeline:
 
 ```bash
-olp pipeline create $PIPELINE_NAME --scope $PROJECT_HRN
+olp pipeline create $PIPELINE_NAME --email $OLP_EMAIL --scope $PROJECT_HRN
 ```
 
 Save the pipeline ID to the `PIPELINE_ID` variable as you will need it later in this tutorial.

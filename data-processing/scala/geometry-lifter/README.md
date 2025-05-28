@@ -34,6 +34,7 @@ In the commands that follow, replace the variable placeholders with the followin
 - `$REALM` is the ID of your organization, also called a realm. Consult your platform
   invitation letter to learn your organization ID.
 - `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf).
+- `$OLP_EMAIL` is a single contact e-mail address for the pipeline.
 
 > Note:
 > We recommend that you set values to variables, so that you can easily copy and execute the following commands.
@@ -101,6 +102,8 @@ parameter.
 
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here),
 for the HERE platform environment.
+
+The [`.jvmopts`](.jvmopts) file contains `--add-opens` options required to run Spark applications with Java 17.
 
 Use all the above settings to run the following command in the [`geometry-lifter`](../geometry-lifter)
 directory to run the Geometry Lifter Compiler.
@@ -253,8 +256,8 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region.
 
 ```bash
-olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.0 $PATH_TO_JAR \
+olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
+olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.scala.geometry.lifter.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

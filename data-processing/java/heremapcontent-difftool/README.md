@@ -40,6 +40,7 @@ In the commands that follow, replace the variable placeholders with the followin
 
 - `$HRN_PARTITION` is the platform environment you are in. The value should be `here`.
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
+- `$OLP_EMAIL` is a single contact e-mail address for the pipeline.
 - `$REALM` is the ID of your organization, also called a realm. Consult your platform
   invitation letter to learn your organization ID.
 - `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/local-pipeline-config.conf).
@@ -132,6 +133,16 @@ parameter.
 
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here).
 
+To run your Spark application locally with Java 17, you should provide the following add-opens parameters to the command arguments:
+
+```
+--add-opens=java.base/java.util=ALL-UNNAMED
+--add-opens=java.base/java.lang=ALL-UNNAMED
+--add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+--add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+--add-opens=java.base/java.nio=ALL-UNNAMED
+```
+
 The first run of the pipeline will use the job configuration [`pipeline-job-first.conf`](config/here/pipeline-job-first.conf). As
 mentioned before, the first run will compute the differences between the catalog version specified
 in [`pipeline-job-first.conf`](config/here/pipeline-job-first.conf) and an empty catalog. That means that all segments contained in the
@@ -141,12 +152,18 @@ input catalog will be considered as newly added segments. Run the following comm
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.java.difftool.processor.Main \
--Dpipeline-config.file=./config/here/local-pipeline-config.conf \
--Dpipeline-job.file=./config/here/pipeline-job-first.conf \
--Dconfig.file=./config/here/local-application.conf \
--Dspark.master=local[*]
+mvn compile exec:exec \
+-Dexec.args="--add-opens=java.base/java.util=ALL-UNNAMED \
+             --add-opens=java.base/java.lang=ALL-UNNAMED \
+             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED \
+             --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+             --add-opens=java.base/java.nio=ALL-UNNAMED \
+             -cp %classpath \
+             -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
+             -Dpipeline-job.file=./config/here/pipeline-job-first.conf \
+             -Dconfig.file=./config/here/local-application.conf \
+             -Dspark.master=local[*] \
+             com.here.platform.data.processing.example.java.difftool.processor.Main"
 ```
 
 In the second run, we can now compute the differences between the version used in the first run and
@@ -156,12 +173,18 @@ the version specified in [`pipeline-job-second.conf`](config/here/pipeline-job-s
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.java.difftool.processor.Main \
--Dpipeline-config.file=./config/here/local-pipeline-config.conf \
--Dpipeline-job.file=./config/here/pipeline-job-second.conf \
--Dconfig.file=./config/here/local-application.conf \
--Dspark.master=local[*]
+mvn compile exec:exec \
+-Dexec.args="--add-opens=java.base/java.util=ALL-UNNAMED \
+             --add-opens=java.base/java.lang=ALL-UNNAMED \
+             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED \
+             --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+             --add-opens=java.base/java.nio=ALL-UNNAMED \
+             -cp %classpath \
+             -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
+             -Dpipeline-job.file=./config/here/pipeline-job-second.conf \
+             -Dconfig.file=./config/here/local-application.conf \
+             -Dspark.master=local[*] \
+             com.here.platform.data.processing.example.java.difftool.processor.Main"
 ```
 
 After the second run, in the HERE platform environment you can inspect the local catalog with the OLP CLI:
@@ -310,8 +333,8 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region.
 
 ```bash
-olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.0 $PATH_TO_JAR \
+olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
+olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.java.difftool.processor.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

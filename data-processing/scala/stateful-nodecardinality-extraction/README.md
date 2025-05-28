@@ -48,6 +48,7 @@ In the commands that follow, replace the variable placeholders with the followin
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by the `olp catalog create` command).
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
+- `$OLP_EMAIL` is a single contact e-mail address for the pipeline.
 - `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf).
 
 > Note:
@@ -135,6 +136,8 @@ geographical region. In order to use this configuration file, you need to use th
 parameter.
 
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here).
+
+The [`.jvmopts`](.jvmopts) file contains `--add-opens` options required to run Spark applications with Java 17.
 
 Finally, execute the following command in the
 [`stateful-nodecardinality-extraction`](../stateful-nodecardinality-extraction) directory to run The Stateful Processing Compiler.
@@ -297,8 +300,8 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region.
 
 ```bash
-olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.0 $PATH_TO_JAR \
+olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
+olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.scala.feedback.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

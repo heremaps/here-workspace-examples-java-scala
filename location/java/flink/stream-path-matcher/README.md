@@ -50,6 +50,7 @@ tutorial.
 In the commands that follow, replace the variable placeholders with the following values:
 
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
+- `$OLP_EMAIL` is a single contact e-mail address for the pipeline.
 - `$COVERAGE` is a two-letter code for country and region (in this case, `DE` for Germany)
 - `$INPUT_SDII_CATALOG` is the HRN of the public _sdii-catalog_ catalog in your pipeline
   configuration ([HERE environment](./config/here/local-pipeline-config.conf).
@@ -101,9 +102,11 @@ suitable for local development and debugging.
 
 For the HERE platform environment:
 
+To run your Flink application locally with Java 17, you should provide `--add-opens=java.base/java.util=ALL-UNNAMED` to the command arguments.
+
 ```bash
 mvn compile exec:exec \
--Dexec.args="-cp %classpath -Dpipeline-config.file=config/here/local-pipeline-config.conf -Dpipeline-job.file=config/here/pipeline-job.conf com.here.platform.example.location.java.flink.StreamPathMatcherExample"
+-Dexec.args="--add-opens=java.base/java.util=ALL-UNNAMED -cp %classpath -Dpipeline-config.file=config/here/local-pipeline-config.conf -Dpipeline-job.file=config/here/pipeline-job.conf com.here.platform.example.location.java.flink.StreamPathMatcherExample"
 ```
 
 2. Open a different terminal and let a few partitions stream out of the layer. They consist of small, one-line messages.
@@ -252,8 +255,8 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
    pipeline components:
 
 ```bash
-olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template stream-6.0 $PATH_TO_JAR \
+olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
+olp pipeline template create $COMPONENT_NAME_Template stream-6.1 $PATH_TO_JAR \
                 com.here.platform.example.location.java.flink.StreamPathMatcherExample \
                 --input-catalog-ids="$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
                 --scope $PROJECT_HRN

@@ -48,6 +48,7 @@ In the commands that follow, replace the variable placeholders with the followin
 - `$CATALOG_ID` is your output catalog's ID.
 - `$CATALOG_HRN` is your output catalog's `HRN` (returned by the `olp catalog create` command).
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
+- `$OLP_EMAIL` is a single contact e-mail address for the pipeline.
 - `$CATALOG_RIB` is the HRN of the public _HERE Map Content_ catalog in your pipeline configuration ([HERE environment](./config/here/pipeline-config.conf).
 
 > Note:
@@ -136,18 +137,34 @@ parameter.
 
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here).
 
+To run your Spark application locally with Java 17, you should provide the following add-opens parameters to the command arguments:
+
+```
+--add-opens=java.base/java.util=ALL-UNNAMED
+--add-opens=java.base/java.lang=ALL-UNNAMED
+--add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+--add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+--add-opens=java.base/java.nio=ALL-UNNAMED
+```
+
 Finally, execute the following command in the
 [`stateful-nodecardinality-extraction`](../stateful-nodecardinality-extraction) directory to run The Stateful Processing Compiler.
 
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.java.feedback.Main \
--Dpipeline-config.file=./config/here/local-pipeline-config.conf \
--Dpipeline-job.file=./config/here/pipeline-job-first.conf \
--Dconfig.file=./config/here/local-application.conf \
--Dspark.master=local[*]
+mvn compile exec:exec \
+-Dexec.args="--add-opens=java.base/java.util=ALL-UNNAMED \
+             --add-opens=java.base/java.lang=ALL-UNNAMED \
+             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED \
+             --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+             --add-opens=java.base/java.nio=ALL-UNNAMED \
+             -cp %classpath \
+             -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
+             -Dpipeline-job.file=./config/here/pipeline-job-first.conf \
+             -Dconfig.file=./config/here/local-application.conf \
+             -Dspark.master=local[*] \
+             com.here.platform.data.processing.example.java.feedback.Main"
 ```
 
 To observe the behavior of the Stateful Processing Compiler, you have to run compiler again using
@@ -156,12 +173,18 @@ To observe the behavior of the Stateful Processing Compiler, you have to run com
 For the HERE platform environment:
 
 ```bash
-mvn exec:java \
--Dexec.mainClass=com.here.platform.data.processing.example.java.feedback.Main \
--Dpipeline-config.file=./config/here/local-pipeline-config.conf \
--Dpipeline-job.file=./config/here/pipeline-job-second.conf \
--Dconfig.file=./config/here/local-application.conf \
--Dspark.master=local[*]
+mvn compile exec:exec \
+-Dexec.args="--add-opens=java.base/java.util=ALL-UNNAMED \
+             --add-opens=java.base/java.lang=ALL-UNNAMED \
+             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED \
+             --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+             --add-opens=java.base/java.nio=ALL-UNNAMED \
+             -cp %classpath \
+             -Dpipeline-config.file=./config/here/local-pipeline-config.conf \
+             -Dpipeline-job.file=./config/here/pipeline-job-second.conf \
+             -Dconfig.file=./config/here/local-application.conf \
+             -Dspark.master=local[*] \
+             com.here.platform.data.processing.example.java.feedback.Main"
 ```
 
 After the second run, in the HERE platform environment, you can inspect the local catalog with the OLP CLI:
@@ -298,8 +321,8 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region.
 
 ```bash
-olp pipeline create $COMPONENT_NAME_Pipeline --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.0 $PATH_TO_JAR \
+olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
+olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.java.feedback.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN
