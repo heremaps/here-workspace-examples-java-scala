@@ -210,6 +210,10 @@ and +85 degrees.
                         <a href="BoundingBoxOperations.html" title="Type class to access the boundaries of a bounding box.">BoundingBoxOperations</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="trait" href="BoundingBoxSearch.html" title="An interface for querying elements via a bounding box."></a>
+                        <a href="BoundingBoxSearch.html" title="An interface for querying elements via a bounding box.">BoundingBoxSearch</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="object" href="BoundingBoxes$.html" title="Higher-level operations on bounding box types (for which a com.here.platform.location.core.geospatial.BoundingBoxOperations implementation is available)."></a>
                         <a href="BoundingBoxes$.html" title="Higher-level operations on bounding box types (for which a com.here.platform.location.core.geospatial.BoundingBoxOperations implementation is available).">BoundingBoxes</a>
                       </li><li class="current-entities indented6">
@@ -489,6 +493,27 @@ and +85 degrees.
       
       <p class="shortcomment cmt">Type class to access the boundaries of a bounding box.</p><div class="fullcomment"><div class="comment cmt"><p>Type class to access the boundaries of a bounding box.
 </p></div><dl class="paramcmts block"><dt class="tparam">BB</dt><dd class="cmt"><p>The underlying bounding box type</p></dd></dl></div>
+    </li><li name="com.here.platform.location.core.geospatial.BoundingBoxSearch" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="BoundingBoxSearch[E]extendsAnyRef"></a><a id="BoundingBoxSearch[E]:BoundingBoxSearch[E]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/core/geospatial/BoundingBoxSearch.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="An interface for querying elements via a bounding box." href="BoundingBoxSearch.html"><span class="name">BoundingBoxSearch</span></a><span class="tparams">[<span name="E">E</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">An interface for querying elements via a bounding box.</p><div class="fullcomment"><div class="comment cmt"><h5> This is an experimental API. It may be removed or changed from one version to the next. </h5><p>An interface for querying elements via a bounding box.</p><p>This search may return duplicate vertices.</p><p>The provided bounding box can be of any BB type, as long as an implementation of
+<a href="BoundingBoxOperations.html" class="extype" name="com.here.platform.location.core.geospatial.BoundingBoxOperations">BoundingBoxOperations</a> exists for this type.
+</p></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>The type of element to search for</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../annotation/Experimental.html" class="extype" name="com.here.platform.location.core.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="com.here.platform.location.core.geospatial.ClosestResultPerKey" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ClosestResultPerKey[E,K]extendsProximitySearch[E]"></a><a id="ClosestResultPerKey[E,K]:ClosestResultPerKey[E,K]"></a>
       <span class="permalink">

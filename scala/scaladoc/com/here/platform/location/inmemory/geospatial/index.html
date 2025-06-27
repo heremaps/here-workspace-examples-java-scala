@@ -213,8 +213,16 @@ Directed graph: Incidence graph providing edges going out of a given vertex</li>
                         <a href="TileResolver.html" title="Looks up TileIds using various point- or area-based queries.">TileResolver</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
+                        <a class="class" href="TiledBoundingBoxSearch.html" title="An implementation of com.here.platform.location.core.geospatial.BoundingBoxSearch for the indexed segment geometry of the Optimized Map for Location Library, which uses an R-tree to find segments."></a>
+                        <a href="TiledBoundingBoxSearch.html" title="An implementation of com.here.platform.location.core.geospatial.BoundingBoxSearch for the indexed segment geometry of the Optimized Map for Location Library, which uses an R-tree to find segments.">TiledBoundingBoxSearch</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
                         <a class="class" href="TiledProximitySearch.html" title="An implementation of com.here.platform.location.core.geospatial.ProximitySearch for the indexed segment geometry of the Optimized Map for Location Library, which uses an R-tree to find segments."></a>
                         <a href="TiledProximitySearch.html" title="An implementation of com.here.platform.location.core.geospatial.ProximitySearch for the indexed segment geometry of the Optimized Map for Location Library, which uses an R-tree to find segments.">TiledProximitySearch</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="object" href="VertexBoundingBoxSearch$.html" title="Contains factory methods for creating BoundingBoxSearches returning Vertices."></a>
+                        <a href="VertexBoundingBoxSearch$.html" title="Contains factory methods for creating BoundingBoxSearches returning Vertices.">VertexBoundingBoxSearch</a>
                       </li><li class="current-entities indented6">
                         <span class="separator"></span>
                         <a class="object" href="VertexProximitySearch$.html" title="Contains factory methods for creating ProximitySearches returning Vertices."></a>
@@ -496,6 +504,30 @@ cumulative_chunk_length = cumulativeChunkLengths(length_index)</pre><p>The cumul
       
       <p class="shortcomment cmt">Looks up <a href="TileId.html" class="extype" name="com.here.platform.location.inmemory.geospatial.TileId">TileId</a>s using various point- or area-based queries.</p><div class="fullcomment"><div class="comment cmt"><p>Looks up <a href="TileId.html" class="extype" name="com.here.platform.location.inmemory.geospatial.TileId">TileId</a>s using various point- or area-based queries.
 </p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>The output tile level is implementation specific.</p></span></dd></dl></div>
+    </li><li name="com.here.platform.location.inmemory.geospatial.TiledBoundingBoxSearch" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TiledBoundingBoxSearchextendsBoundingBoxSearch[(com.here.platform.location.inmemory.geospatial.TileId,com.here.platform.location.inmemory.graph.SegmentIndex)]"></a><a id="TiledBoundingBoxSearch:TiledBoundingBoxSearch"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/geospatial/TiledBoundingBoxSearch.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="An implementation of com.here.platform.location.core.geospatial.BoundingBoxSearch for the indexed segment geometry of the Optimized Map for Location Library, which uses an R-tree to find segments." href="TiledBoundingBoxSearch.html"><span class="name">TiledBoundingBoxSearch</span></a><span class="result"> extends <a href="../../core/geospatial/BoundingBoxSearch.html" class="extype" name="com.here.platform.location.core.geospatial.BoundingBoxSearch">BoundingBoxSearch</a>[(<a href="TileId.html" class="extype" name="com.here.platform.location.inmemory.geospatial.TileId">TileId</a>, <a href="../graph/SegmentIndex.html" class="extype" name="com.here.platform.location.inmemory.graph.SegmentIndex">SegmentIndex</a>)]</span>
+      </span>
+      
+      <p class="shortcomment cmt">An implementation of <a href="../../core/geospatial/BoundingBoxSearch.html" class="extype" name="com.here.platform.location.core.geospatial.BoundingBoxSearch">com.here.platform.location.core.geospatial.BoundingBoxSearch</a> for the
+indexed segment geometry of the <i>Optimized Map for Location Library</i>, which uses an R-tree
+to find segments.</p><div class="fullcomment"><div class="comment cmt"><h5> This is an experimental API. It may be removed or changed from one version to the next. </h5><p>An implementation of <a href="../../core/geospatial/BoundingBoxSearch.html" class="extype" name="com.here.platform.location.core.geospatial.BoundingBoxSearch">com.here.platform.location.core.geospatial.BoundingBoxSearch</a> for the
+indexed segment geometry of the <i>Optimized Map for Location Library</i>, which uses an R-tree
+to find segments.</p><p><i>See also</i> <a href="GeometryTile.html" class="extype" name="com.here.platform.location.inmemory.geospatial.GeometryTile">GeometryTile</a> for details on the data format used by this class.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../core/annotation/Experimental.html" class="extype" name="com.here.platform.location.core.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="com.here.platform.location.inmemory.geospatial.TiledProximitySearch" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TiledProximitySearchextendsProximitySearch[(com.here.platform.location.inmemory.geospatial.TileId,com.here.platform.location.inmemory.graph.SegmentIndex)]"></a><a id="TiledProximitySearch:TiledProximitySearch"></a>
       <span class="permalink">
@@ -574,6 +606,28 @@ multiple results for a segment.</p><p><i>See also</i> <a href="GeometryTile.html
       </span>
       
       
+    </li><li name="com.here.platform.location.inmemory.geospatial.VertexBoundingBoxSearch" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="VertexBoundingBoxSearch"></a><a id="VertexBoundingBoxSearch:VertexBoundingBoxSearch"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/inmemory/geospatial/VertexBoundingBoxSearch$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Contains factory methods for creating BoundingBoxSearches returning Vertices." href="VertexBoundingBoxSearch$.html"><span class="name">VertexBoundingBoxSearch</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">Contains factory methods for creating <a href="../../core/geospatial/BoundingBoxSearch.html" class="extype" name="com.here.platform.location.core.geospatial.BoundingBoxSearch">BoundingBoxSearches</a>
+returning <a href="../graph/Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertices</a>.</p><div class="fullcomment"><div class="comment cmt"><h5> This is an experimental API. It may be removed or changed from one version to the next. </h5><p>Contains factory methods for creating <a href="../../core/geospatial/BoundingBoxSearch.html" class="extype" name="com.here.platform.location.core.geospatial.BoundingBoxSearch">BoundingBoxSearches</a>
+returning <a href="../graph/Vertex.html" class="extype" name="com.here.platform.location.inmemory.graph.Vertex">Vertices</a>.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@<a href="../../core/annotation/Experimental.html" class="extype" name="com.here.platform.location.core.annotation.Experimental">Experimental</a></span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="com.here.platform.location.inmemory.geospatial.VertexProximitySearch" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="VertexProximitySearch"></a><a id="VertexProximitySearch:VertexProximitySearch"></a>
       <span class="permalink">
