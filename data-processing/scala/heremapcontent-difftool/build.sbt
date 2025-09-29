@@ -1,8 +1,10 @@
 import com.here.bom.Bom
 
 ThisBuild / organization := "com.here.platform.data.processing.example.scala"
-ThisBuild / version := "0.0.970"
+ThisBuild / version := "0.0.974"
 ThisBuild / scalaVersion := "2.12.18"
+ThisBuild / sbtPluginPublishLegacyMavenStyle := false
+
 val organizationSettings: Seq[Setting[_]] = Seq(
   projectInfo := ModuleInfo(
     nameFormal = "heremapcontent-difftool",
@@ -23,7 +25,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.78.2"
+val sdkBomVersion = "2.79.3"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {
