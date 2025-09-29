@@ -310,13 +310,25 @@
                         <a class="trait" href="LocationReferenceCreator.html" title="Creates location references from locations."></a>
                         <a href="LocationReferenceCreator.html" title="Creates location references from locations.">LocationReferenceCreator</a>
                       </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="LocationReferenceCreatorException.html" title="A basic type to represent errors that happened when creating location references."></a>
+                        <a href="LocationReferenceCreatorException.html" title="A basic type to represent errors that happened when creating location references.">LocationReferenceCreatorException</a>
+                      </li><li class="current-entities indented5">
                         <a class="object" href="LocationReferenceCreators$.html" title="Provides LocationReferenceCreators factories to create different location reference types from Location Library data model specific representations."></a>
                         <a class="class" href="LocationReferenceCreators.html" title="Provides LocationReferenceCreators factories to create different location reference types from Location Library data model specific representations."></a>
                         <a href="LocationReferenceCreators.html" title="Provides LocationReferenceCreators factories to create different location reference types from Location Library data model specific representations.">LocationReferenceCreators</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
+                        <a class="trait" href="LocationReferenceException.html" title="A basic type to represent errors that happened when creating or resolving location references."></a>
+                        <a href="LocationReferenceException.html" title="A basic type to represent errors that happened when creating or resolving location references.">LocationReferenceException</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
                         <a class="trait" href="LocationReferenceResolver.html" title="Represents a way of resolving location references into map-specific representations."></a>
                         <a href="LocationReferenceResolver.html" title="Represents a way of resolving location references into map-specific representations.">LocationReferenceResolver</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="LocationReferenceResolverException.html" title="A basic type to represent errors that happened when resolving location references."></a>
+                        <a href="LocationReferenceResolverException.html" title="A basic type to represent errors that happened when resolving location references.">LocationReferenceResolverException</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="LocationReferenceResolvers$.html" title="Provides LocationReferenceResolvers factories to resolve different location reference types into Location Library data model specific representations."></a>
                         <a class="class" href="LocationReferenceResolvers.html" title="Provides LocationReferenceResolvers factories to resolve different location reference types into Location Library data model specific representations."></a>
@@ -625,6 +637,23 @@ North (rows)
       
       <p class="shortcomment cmt">Creates location references from locations.</p><div class="fullcomment"><div class="comment cmt"><p>Creates location references from locations.</p><p>Instances of <code>LocationReferenceCreator</code> can be obtained using the factory object <code>LocationReferenceCreators</code>.
 </p></div><dl class="paramcmts block"><dt class="tparam">L</dt><dd class="cmt"><p>Location type</p></dd><dt class="tparam">LR</dt><dd class="cmt"><p>Location Reference type</p></dd></dl></div>
+    </li><li name="com.here.platform.location.referencing.LocationReferenceCreatorException" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LocationReferenceCreatorExceptionextendsExceptionwithLocationReferenceException"></a><a id="LocationReferenceCreatorException:LocationReferenceCreatorException"></a>
+      <span class="permalink">
+      <a href="../../../../../com/here/platform/location/referencing/LocationReferenceCreatorException.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="A basic type to represent errors that happened when creating location references." href="LocationReferenceCreatorException.html"><span class="name">LocationReferenceCreatorException</span></a><span class="result"> extends <span class="extype" name="scala.Exception">Exception</span> with <a href="LocationReferenceException.html" class="extype" name="com.here.platform.location.referencing.LocationReferenceException">LocationReferenceException</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">A basic type to represent errors that happened when creating location
+references.</p>
     </li><li name="com.here.platform.location.referencing.LocationReferenceCreators" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="LocationReferenceCreatorsextendsAnyRef"></a><a id="LocationReferenceCreators:LocationReferenceCreators"></a>
       <span class="permalink">
@@ -642,6 +671,23 @@ North (rows)
       
       <p class="shortcomment cmt">Provides <a href="LocationReferenceCreator.html" class="extype" name="com.here.platform.location.referencing.LocationReferenceCreator">LocationReferenceCreator</a>s factories to create different location reference types
 from <i>Location Library</i> data model specific representations.</p>
+    </li><li name="com.here.platform.location.referencing.LocationReferenceException" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LocationReferenceExceptionextendsException"></a><a id="LocationReferenceException:LocationReferenceException"></a>
+      <span class="permalink">
+      <a href="../../../../../com/here/platform/location/referencing/LocationReferenceException.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="A basic type to represent errors that happened when creating or resolving location references." href="LocationReferenceException.html"><span class="name">LocationReferenceException</span></a><span class="result"> extends <span class="extype" name="scala.Exception">Exception</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">A basic type to represent errors that happened when creating or resolving
+location references.</p>
     </li><li name="com.here.platform.location.referencing.LocationReferenceResolver" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="LocationReferenceResolver[LR,R]extendsAnyRef"></a><a id="LocationReferenceResolver[LR,R]:LocationReferenceResolver[LR,R]"></a>
       <span class="permalink">
@@ -659,6 +705,23 @@ from <i>Location Library</i> data model specific representations.</p>
       
       <p class="shortcomment cmt">Represents a way of resolving location references into map-specific representations.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a way of resolving location references into map-specific representations.</p><p>Instances of <code>LocationReferenceResolver</code> can be obtained using the factory object <code>LocationReferenceResolvers</code>.
 </p></div><dl class="paramcmts block"><dt class="tparam">LR</dt><dd class="cmt"><p>Location Reference type</p></dd><dt class="tparam">R</dt><dd class="cmt"><p>Resolved type</p></dd></dl></div>
+    </li><li name="com.here.platform.location.referencing.LocationReferenceResolverException" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LocationReferenceResolverExceptionextendsExceptionwithLocationReferenceException"></a><a id="LocationReferenceResolverException:LocationReferenceResolverException"></a>
+      <span class="permalink">
+      <a href="../../../../../com/here/platform/location/referencing/LocationReferenceResolverException.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="A basic type to represent errors that happened when resolving location references." href="LocationReferenceResolverException.html"><span class="name">LocationReferenceResolverException</span></a><span class="result"> extends <span class="extype" name="scala.Exception">Exception</span> with <a href="LocationReferenceException.html" class="extype" name="com.here.platform.location.referencing.LocationReferenceException">LocationReferenceException</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">A basic type to represent errors that happened when resolving location
+references.</p>
     </li><li name="com.here.platform.location.referencing.LocationReferenceResolvers" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="LocationReferenceResolversextendsAnyRef"></a><a id="LocationReferenceResolvers:LocationReferenceResolvers"></a>
       <span class="permalink">

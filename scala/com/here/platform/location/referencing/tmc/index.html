@@ -222,6 +222,10 @@
                         <a class="class" href="TmcCreatorException.html" title="Base exception for TMC creation related errors."></a>
                         <a href="TmcCreatorException.html" title="Base exception for TMC creation related errors.">TmcCreatorException</a>
                       </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="TmcException.html" title="Base exception for TMC creation and resolution related errors."></a>
+                        <a href="TmcException.html" title="Base exception for TMC creation and resolution related errors.">TmcException</a>
+                      </li><li class="current-entities indented6">
                         <a class="object" href="TmcId$.html" title=""></a>
                         <a class="class" href="TmcId.html" title="The ID of a specific TMC location."></a>
                         <a href="TmcId.html" title="The ID of a specific TMC location.">TmcId</a>
@@ -447,7 +451,7 @@ respect to an enclosing linear location.</p>
       <p class="shortcomment cmt">Associates a <a href="../LinearLocation.html" class="extype" name="com.here.platform.location.referencing.LinearLocation">com.here.platform.location.referencing.LinearLocation</a> with the reference it is covered by, if there is one.</p><div class="fullcomment"><div class="comment cmt"><p>Associates a <a href="../LinearLocation.html" class="extype" name="com.here.platform.location.referencing.LinearLocation">com.here.platform.location.referencing.LinearLocation</a> with the reference it is covered by, if there is one.</p></div><dl class="paramcmts block"><dt class="param">location</dt><dd class="cmt"><p>The part of the originally requested linear location.</p></dd><dt class="param">reference</dt><dd class="cmt"><p>A (uni-directional)<a href="../../tpeg2/etl/TMCLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.etl.TMCLocationReference">com.here.platform.location.tpeg2.etl.TMCLocationReference</a> covering the given <code>location</code>. A value of <code>None</code>
                  indicates that this location is not covered by TMC.</p></dd></dl></div>
     </li><li name="com.here.platform.location.referencing.tmc.TmcCreatorException" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="TmcCreatorExceptionextendsException"></a><a id="TmcCreatorException:TmcCreatorException"></a>
+      <a id="TmcCreatorExceptionextendsTmcExceptionwithLocationReferenceCreatorException"></a><a id="TmcCreatorException:TmcCreatorException"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/location/referencing/tmc/TmcCreatorException.html" title="Permalink">
         <i class="material-icons"></i>
@@ -458,10 +462,26 @@ respect to an enclosing linear location.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Base exception for TMC creation related errors." href="TmcCreatorException.html"><span class="name">TmcCreatorException</span></a><span class="result"> extends <span class="extype" name="scala.Exception">Exception</span></span>
+        <a title="Base exception for TMC creation related errors." href="TmcCreatorException.html"><span class="name">TmcCreatorException</span></a><span class="result"> extends <a href="TmcException.html" class="extype" name="com.here.platform.location.referencing.tmc.TmcException">TmcException</a> with <a href="../LocationReferenceCreatorException.html" class="extype" name="com.here.platform.location.referencing.LocationReferenceCreatorException">LocationReferenceCreatorException</a></span>
       </span>
       
       <p class="shortcomment cmt">Base exception for TMC creation related errors.</p>
+    </li><li name="com.here.platform.location.referencing.tmc.TmcException" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TmcExceptionextendsException"></a><a id="TmcException:TmcException"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/referencing/tmc/TmcException.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Base exception for TMC creation and resolution related errors." href="TmcException.html"><span class="name">TmcException</span></a><span class="result"> extends <span class="extype" name="scala.Exception">Exception</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Base exception for TMC creation and resolution related errors.</p>
     </li><li name="com.here.platform.location.referencing.tmc.TmcId" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TmcIdextendsProductwithSerializable"></a><a id="TmcId:TmcId"></a>
       <span class="permalink">
@@ -481,7 +501,7 @@ respect to an enclosing linear location.</p>
 </p></div><dl class="paramcmts block"><dt class="param">tableId</dt><dd class="cmt"><p>Identifies the table that the location is in.</p></dd><dt class="param">locationCode</dt><dd class="cmt"><p>An unsigned 16-bit integer that identifies the location within the table. A number between
                     1 and 65535, it is customarily represented as a decimal number.</p></dd></dl></div>
     </li><li name="com.here.platform.location.referencing.tmc.TmcResolverException" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="TmcResolverExceptionextendsException"></a><a id="TmcResolverException:TmcResolverException"></a>
+      <a id="TmcResolverExceptionextendsTmcExceptionwithLocationReferenceResolverException"></a><a id="TmcResolverException:TmcResolverException"></a>
       <span class="permalink">
       <a href="../../../../../../com/here/platform/location/referencing/tmc/TmcResolverException.html" title="Permalink">
         <i class="material-icons"></i>
@@ -492,7 +512,7 @@ respect to an enclosing linear location.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Base exception for TMC resolution related errors." href="TmcResolverException.html"><span class="name">TmcResolverException</span></a><span class="result"> extends <span class="extype" name="scala.Exception">Exception</span></span>
+        <a title="Base exception for TMC resolution related errors." href="TmcResolverException.html"><span class="name">TmcResolverException</span></a><span class="result"> extends <a href="TmcException.html" class="extype" name="com.here.platform.location.referencing.tmc.TmcException">TmcException</a> with <a href="../LocationReferenceResolverException.html" class="extype" name="com.here.platform.location.referencing.LocationReferenceResolverException">LocationReferenceResolverException</a></span>
       </span>
       
       <p class="shortcomment cmt">Base exception for TMC resolution related errors.</p>

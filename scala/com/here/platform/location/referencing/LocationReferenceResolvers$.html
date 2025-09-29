@@ -214,13 +214,25 @@
                         <a class="trait" href="LocationReferenceCreator.html" title="Creates location references from locations."></a>
                         <a href="LocationReferenceCreator.html" title="Creates location references from locations.">LocationReferenceCreator</a>
                       </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="LocationReferenceCreatorException.html" title="A basic type to represent errors that happened when creating location references."></a>
+                        <a href="LocationReferenceCreatorException.html" title="A basic type to represent errors that happened when creating location references.">LocationReferenceCreatorException</a>
+                      </li><li class="current-entities indented5">
                         <a class="object" href="LocationReferenceCreators$.html" title="Provides LocationReferenceCreators factories to create different location reference types from Location Library data model specific representations."></a>
                         <a class="class" href="LocationReferenceCreators.html" title="Provides LocationReferenceCreators factories to create different location reference types from Location Library data model specific representations."></a>
                         <a href="LocationReferenceCreators.html" title="Provides LocationReferenceCreators factories to create different location reference types from Location Library data model specific representations.">LocationReferenceCreators</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
+                        <a class="trait" href="LocationReferenceException.html" title="A basic type to represent errors that happened when creating or resolving location references."></a>
+                        <a href="LocationReferenceException.html" title="A basic type to represent errors that happened when creating or resolving location references.">LocationReferenceException</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
                         <a class="trait" href="LocationReferenceResolver.html" title="Represents a way of resolving location references into map-specific representations."></a>
                         <a href="LocationReferenceResolver.html" title="Represents a way of resolving location references into map-specific representations.">LocationReferenceResolver</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="LocationReferenceResolverException.html" title="A basic type to represent errors that happened when resolving location references."></a>
+                        <a href="LocationReferenceResolverException.html" title="A basic type to represent errors that happened when resolving location references.">LocationReferenceResolverException</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="" title="Provides LocationReferenceResolvers factories to resolve different location reference types into Location Library data model specific representations."></a>
                         <a class="class" href="LocationReferenceResolvers.html" title="Provides LocationReferenceResolvers factories to resolve different location reference types into Location Library data model specific representations."></a>
@@ -954,7 +966,7 @@ based on the type the OpenLR reference that is being passed in.
       </span>
       
       <p class="shortcomment cmt">Creates a resolver for <a href="../tpeg2/olr/ClosedLinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference">com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver for <a href="../tpeg2/olr/ClosedLinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference">com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference</a>s.</p><p>A <code>ClosedLinearLocationReference</code> refers to a closed path in the road network and thus needs to be resolved
-against a map. If the reference cannot be resolved an <a href="olr/OlrException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrException">com.here.platform.location.referencing.olr.OlrException</a>
+against a map. If the reference cannot be resolved an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a>
 is thrown.
 </p></div><dl class="paramcmts block"><dt class="param">optimizedMap</dt><dd class="cmt"><p>An <i>Optimized Map for Location Library</i> instance.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Deprecated</span>
@@ -978,7 +990,7 @@ is thrown.
       </span>
       
       <p class="shortcomment cmt">Creates a resolver for <a href="../tpeg2/olr/LinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.LinearLocationReference">com.here.platform.location.tpeg2.olr.LinearLocationReference</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver for <a href="../tpeg2/olr/LinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.LinearLocationReference">com.here.platform.location.tpeg2.olr.LinearLocationReference</a>s.</p><p>A <code>LinearLocationReference</code> refers to a path in the road network and thus needs to be resolved
-against a map. If the reference cannot be resolved an <a href="olr/OlrException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrException">com.here.platform.location.referencing.olr.OlrException</a>
+against a map. If the reference cannot be resolved an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a>
 is thrown.
 </p></div><dl class="paramcmts block"><dt class="param">optimizedMap</dt><dd class="cmt"><p>An <i>Optimized Map for Location Library</i> instance.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Deprecated</span>
@@ -1002,7 +1014,7 @@ is thrown.
       </span>
       
       <p class="shortcomment cmt">Creates a resolver for <a href="../tpeg2/olr/POIWithAccessPointLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference">com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver for <a href="../tpeg2/olr/POIWithAccessPointLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference">com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference</a>s.</p><p>A <code>POIWithAccessPointLocationReference</code> refers to an accesspoint point on a road section and thus needs to be
-resolved against a map. If the reference cannot be resolved an <a href="olr/OlrException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrException">com.here.platform.location.referencing.olr.OlrException</a>
+resolved against a map. If the reference cannot be resolved an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a>
 is thrown.
 </p></div><dl class="paramcmts block"><dt class="param">optimizedMap</dt><dd class="cmt"><p>An <i>Optimized Map for Location Library</i> instance.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Deprecated</span>
@@ -1026,7 +1038,7 @@ is thrown.
       </span>
       
       <p class="shortcomment cmt">Creates a resolver for <a href="../tpeg2/olr/PointAlongLineLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference">com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver for <a href="../tpeg2/olr/PointAlongLineLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference">com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference</a>s.</p><p>A <code>PointAlongLineLocationReference</code> refers to a point on a road section and thus needs to be resolved
-against a map. If the reference cannot be resolved an <a href="olr/OlrException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrException">com.here.platform.location.referencing.olr.OlrException</a>
+against a map. If the reference cannot be resolved an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a>
 is thrown.
 </p></div><dl class="paramcmts block"><dt class="param">optimizedMap</dt><dd class="cmt"><p>An <i>Optimized Map for Location Library</i> instance.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Deprecated</span>

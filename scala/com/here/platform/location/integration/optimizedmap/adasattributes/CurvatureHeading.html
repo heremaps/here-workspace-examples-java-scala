@@ -224,7 +224,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">CurvatureHeading</span><span class="params">(<span name="curvature">curvature: <span class="extype" name="scala.Int">Int</span></span>, <span name="heading">heading: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name deprecated" title="Deprecated: (Since version Location Library 1.0.41) split into two separate attributes curvature and heading">CurvatureHeading</span><span class="params">(<span name="curvature">curvature: <span class="extype" name="scala.Int">Int</span></span>, <span name="heading">heading: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
@@ -235,7 +235,12 @@ The curvature in reverse direction can be calculated by multiplication with -1.
 Curvature is stored as numeric value representing the curvature in metres -1 x 10<sup>6). (1/Radius-of-Curvature x 10</sup>6)
 Heading is the direction toward which a road is oriented.
 It is the angle in Decimal Degrees x 10^3, between North and the road direction.
-</p></div><dl class="paramcmts block"><dt class="param">curvature</dt><dd class="cmt"><p>Curvature value in inverse of radius in meters multiplied by 1,000,000. Curvature is an approximation of the road geometry by means of circles at road geometry points and is published with respect to one travel direction. It may be used to warn driver of upcoming curve, adjust headlight aiming, assist with electronic stability control.</p></dd><dt class="param">heading</dt><dd class="cmt"><p>Heading value in decimal degrees, multiplied by 1000.  Relative to true north 0 - 359,999.</p></dd></dl><div class="toggleContainer block">
+</p></div><dl class="paramcmts block"><dt class="param">curvature</dt><dd class="cmt"><p>Curvature value in inverse of radius in meters multiplied by 1,000,000. Curvature is an approximation of the road geometry by means of circles at road geometry points and is published with respect to one travel direction. It may be used to warn driver of upcoming curve, adjust headlight aiming, assist with electronic stability control.</p></dd><dt class="param">heading</dt><dd class="cmt"><p>Heading value in decimal degrees, multiplied by 1000.  Relative to true north 0 - 359,999.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version Location Library 1.0.41)</i> split into two separate attributes <code>curvature</code> and <code>heading</code></p></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -297,10 +302,10 @@ It is the angle in Decimal Degrees x 10^3, between North and the road direction.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">CurvatureHeading</span><span class="params">(<span name="curvature">curvature: <span class="extype" name="scala.Int">Int</span></span>, <span name="heading">heading: <span class="extype" name="scala.Int">Int</span></span>)</span>
+        <span class="name deprecated" title="Deprecated: split into two separate attributes curvature and heading">CurvatureHeading</span><span class="params">(<span name="curvature">curvature: <span class="extype" name="scala.Int">Int</span></span>, <span name="heading">heading: <span class="extype" name="scala.Int">Int</span></span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">curvature</dt><dd class="cmt"><p>Curvature value in inverse of radius in meters multiplied by 1,000,000. Curvature is an approximation of the road geometry by means of circles at road geometry points and is published with respect to one travel direction. It may be used to warn driver of upcoming curve, adjust headlight aiming, assist with electronic stability control.</p></dd><dt class="param">heading</dt><dd class="cmt"><p>Heading value in decimal degrees, multiplied by 1000.  Relative to true north 0 - 359,999.</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">curvature</dt><dd class="cmt"><p>Curvature value in inverse of radius in meters multiplied by 1,000,000. Curvature is an approximation of the road geometry by means of circles at road geometry points and is published with respect to one travel direction. It may be used to warn driver of upcoming curve, adjust headlight aiming, assist with electronic stability control.</p></dd><dt class="param">heading</dt><dd class="cmt"><p>Heading value in decimal degrees, multiplied by 1000.  Relative to true north 0 - 359,999.</p></dd></dl><dl class="attributes block"> <dt>Deprecated</dt><dd class="cmt"><p>split into two separate attributes <code>curvature</code> and <code>heading</code></p></dd></dl></div>
     </li></ol>
             </div>
 

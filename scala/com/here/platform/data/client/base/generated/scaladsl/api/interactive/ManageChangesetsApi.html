@@ -519,31 +519,6 @@
              Headers :
                X-Correlation-ID -
                X-Request-ID -</p></div><dl class="paramcmts block"><dt class="param">hrn</dt><dd class="cmt"><p>The HERE Resource Name (HRN) of the catalog.</p></dd><dt class="param">layerId</dt><dd class="cmt"><p>The unique identifier of the layer.</p></dd><dt class="param">version</dt><dd class="cmt"><p>The version of a Changeset.</p></dd><dt class="param">pageToken</dt><dd class="cmt"><p>The page token where the iteration will continue.</p></dd><dt class="param">limit</dt><dd class="cmt"><p>The maximum number of features in the response. Default is _30000_. Hard limit is _100000_.</p></dd></dl></div>
-    </li><li name="com.here.platform.data.client.base.generated.scaladsl.api.interactive.ManageChangesetsApi#getChangesetStatistics" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getChangesetStatistics(hrn:String,layerId:String):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.generated.scaladsl.model.interactive.ChangesetStatisticsResponse]"></a><a id="getChangesetStatistics(String,String):ApiRequest[ChangesetStatisticsResponse]"></a>
-      <span class="permalink">
-      <a href="../../../../../../../../../../com/here/platform/data/client/base/generated/scaladsl/api/interactive/ManageChangesetsApi.html#getChangesetStatistics(hrn:String,layerId:String):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.generated.scaladsl.model.interactive.ChangesetStatisticsResponse]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getChangesetStatistics</span><span class="params">(<span name="hrn">hrn: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="layerId">layerId: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../ApiRequest.html" class="extype" name="com.here.platform.data.client.base.ApiRequest">ApiRequest</a>[<a href="../../model/interactive/ChangesetStatisticsResponse.html" class="extype" name="com.here.platform.data.client.base.generated.scaladsl.model.interactive.ChangesetStatisticsResponse">ChangesetStatisticsResponse</a>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Returns statistics about changesets.</p><div class="fullcomment"><div class="comment cmt"><p>Returns statistics about changesets.</p><p>Path: /layers/{layerId}/changesets/statistics</p><p>Method: GET</p><p>Expected answers:</p><p>  code 200 : ChangesetStatisticsResponse (Statistical information about a Changesets.)
-             Headers :
-               X-Correlation-ID -
-               X-Request-ID -</p><p>  code 400 : Error (Malformed or Bad Request.)
-             Headers :
-               X-Correlation-ID -
-               X-Request-ID -</p><p>  code 404 : Error (Not found.)
-             Headers :
-               X-Correlation-ID -
-               X-Request-ID -</p></div><dl class="paramcmts block"><dt class="param">hrn</dt><dd class="cmt"><p>The HERE Resource Name (HRN) of the catalog.</p></dd><dt class="param">layerId</dt><dd class="cmt"><p>The unique identifier of the layer.</p></dd></dl></div>
     </li><li name="com.here.platform.data.client.base.generated.scaladsl.api.interactive.ManageChangesetsApi#getChangesets" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getChangesets(hrn:String,layerId:String,startVersion:Option[Int],endVersion:Option[Int],pageToken:Option[String],limit:Option[Int]):com.here.platform.data.client.base.ApiRequest[com.here.platform.data.client.base.generated.scaladsl.model.interactive.ChangesetCollection]"></a><a id="getChangesets(String,String,Option[Int],Option[Int],Option[String],Option[Int]):ApiRequest[ChangesetCollection]"></a>
       <span class="permalink">

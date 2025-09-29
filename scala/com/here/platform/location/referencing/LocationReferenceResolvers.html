@@ -214,13 +214,25 @@
                         <a class="trait" href="LocationReferenceCreator.html" title="Creates location references from locations."></a>
                         <a href="LocationReferenceCreator.html" title="Creates location references from locations.">LocationReferenceCreator</a>
                       </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="LocationReferenceCreatorException.html" title="A basic type to represent errors that happened when creating location references."></a>
+                        <a href="LocationReferenceCreatorException.html" title="A basic type to represent errors that happened when creating location references.">LocationReferenceCreatorException</a>
+                      </li><li class="current-entities indented5">
                         <a class="object" href="LocationReferenceCreators$.html" title="Provides LocationReferenceCreators factories to create different location reference types from Location Library data model specific representations."></a>
                         <a class="class" href="LocationReferenceCreators.html" title="Provides LocationReferenceCreators factories to create different location reference types from Location Library data model specific representations."></a>
                         <a href="LocationReferenceCreators.html" title="Provides LocationReferenceCreators factories to create different location reference types from Location Library data model specific representations.">LocationReferenceCreators</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
+                        <a class="trait" href="LocationReferenceException.html" title="A basic type to represent errors that happened when creating or resolving location references."></a>
+                        <a href="LocationReferenceException.html" title="A basic type to represent errors that happened when creating or resolving location references.">LocationReferenceException</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
                         <a class="trait" href="LocationReferenceResolver.html" title="Represents a way of resolving location references into map-specific representations."></a>
                         <a href="LocationReferenceResolver.html" title="Represents a way of resolving location references into map-specific representations.">LocationReferenceResolver</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="LocationReferenceResolverException.html" title="A basic type to represent errors that happened when resolving location references."></a>
+                        <a href="LocationReferenceResolverException.html" title="A basic type to represent errors that happened when resolving location references.">LocationReferenceResolverException</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="LocationReferenceResolvers$.html" title="Provides LocationReferenceResolvers factories to resolve different location reference types into Location Library data model specific representations."></a>
                         <a class="class" href="" title="Provides LocationReferenceResolvers factories to resolve different location reference types into Location Library data model specific representations."></a>
@@ -639,7 +651,8 @@ at the same time, refer to the positive and negative parts of the location.</p><
       <p class="shortcomment cmt">Creates a resolver that resolves <a href="../tpeg2/olr/OpenLRLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.OpenLRLocationReference">com.here.platform.location.tpeg2.olr.OpenLRLocationReference</a>s
 to <a href="ReferencingLocation.html" class="extype" name="com.here.platform.location.referencing.ReferencingLocation">com.here.platform.location.referencing.ReferencingLocation</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver that resolves <a href="../tpeg2/olr/OpenLRLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.OpenLRLocationReference">com.here.platform.location.tpeg2.olr.OpenLRLocationReference</a>s
 to <a href="ReferencingLocation.html" class="extype" name="com.here.platform.location.referencing.ReferencingLocation">com.here.platform.location.referencing.ReferencingLocation</a>s.</p><p>This resolver chooses the correct type of <a href="ReferencingLocation.html" class="extype" name="com.here.platform.location.referencing.ReferencingLocation">com.here.platform.location.referencing.ReferencingLocation</a>
-based on the type the OpenLR reference that is being passed in.
+based on the type the OpenLR reference that is being passed in. For the following reference types
+an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a> can be thrown if the reference cannot be resolved:</p><ul><li><a href="../tpeg2/olr/LinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.LinearLocationReference">com.here.platform.location.tpeg2.olr.LinearLocationReference</a></li><li><a href="../tpeg2/olr/ClosedLinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference">com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference</a></li><li><a href="../tpeg2/olr/PointAlongLineLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference">com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference</a></li><li><a href="../tpeg2/olr/POIWithAccessPointLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference">com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference</a></li></ul><p> Specific cases where this can happen are described in the documentation of the exception class.
 </p></div></div>
     </li><li name="com.here.platform.location.referencing.LocationReferenceResolvers#olrAbstractReference" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="olrAbstractReference:com.here.platform.location.referencing.LocationReferenceResolver[com.here.platform.location.tpeg2.olr.AbstractLocationReference,com.here.platform.location.referencing.ReferencingLocation]"></a><a id="olrAbstractReference:LocationReferenceResolver[AbstractLocationReference,ReferencingLocation]"></a>
@@ -659,7 +672,8 @@ based on the type the OpenLR reference that is being passed in.
       <p class="shortcomment cmt">Creates a resolver that resolves <a href="../tpeg2/olr/AbstractLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.AbstractLocationReference">com.here.platform.location.tpeg2.olr.AbstractLocationReference</a>s
 to <a href="ReferencingLocation.html" class="extype" name="com.here.platform.location.referencing.ReferencingLocation">com.here.platform.location.referencing.ReferencingLocation</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver that resolves <a href="../tpeg2/olr/AbstractLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.AbstractLocationReference">com.here.platform.location.tpeg2.olr.AbstractLocationReference</a>s
 to <a href="ReferencingLocation.html" class="extype" name="com.here.platform.location.referencing.ReferencingLocation">com.here.platform.location.referencing.ReferencingLocation</a>s.</p><p>This resolver chooses the correct type of <a href="ReferencingLocation.html" class="extype" name="com.here.platform.location.referencing.ReferencingLocation">com.here.platform.location.referencing.ReferencingLocation</a>
-based on the type the OpenLR reference that is being passed in.
+based on the type the OpenLR reference that is being passed in. For the following reference types
+an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a> can be thrown if the reference cannot be resolved:</p><ul><li><a href="../tpeg2/olr/LinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.LinearLocationReference">com.here.platform.location.tpeg2.olr.LinearLocationReference</a></li><li><a href="../tpeg2/olr/ClosedLinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference">com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference</a></li><li><a href="../tpeg2/olr/PointAlongLineLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference">com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference</a></li><li><a href="../tpeg2/olr/POIWithAccessPointLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference">com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference</a></li></ul><p> Specific cases where this can happen are described in the documentation of the exception class.
 </p></div></div>
     </li><li name="com.here.platform.location.referencing.LocationReferenceResolvers#olrClosedLinear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="olrClosedLinear:com.here.platform.location.referencing.LocationReferenceResolver[com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference,com.here.platform.location.referencing.ClosedLinearLocation]"></a><a id="olrClosedLinear:LocationReferenceResolver[ClosedLinearLocationReference,ClosedLinearLocation]"></a>
@@ -677,8 +691,8 @@ based on the type the OpenLR reference that is being passed in.
       </span>
       
       <p class="shortcomment cmt">Creates a resolver for <a href="../tpeg2/olr/ClosedLinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference">com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver for <a href="../tpeg2/olr/ClosedLinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference">com.here.platform.location.tpeg2.olr.ClosedLinearLocationReference</a>s.</p><p>A <code>ClosedLinearLocationReference</code> refers to a closed path in the road network and thus needs to be resolved
-against a map. If the reference cannot be resolved an <a href="olr/OlrException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrException">com.here.platform.location.referencing.olr.OlrException</a>
-is thrown.
+against a map. If the reference cannot be resolved an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a>
+is thrown. Specific cases where this can happen are described in the documentation of the exception class.
 </p></div></div>
     </li><li name="com.here.platform.location.referencing.LocationReferenceResolvers#olrLinear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="olrLinear:com.here.platform.location.referencing.LocationReferenceResolver[com.here.platform.location.tpeg2.olr.LinearLocationReference,com.here.platform.location.referencing.LinearLocation]"></a><a id="olrLinear:LocationReferenceResolver[LinearLocationReference,LinearLocation]"></a>
@@ -696,8 +710,8 @@ is thrown.
       </span>
       
       <p class="shortcomment cmt">Creates a resolver for <a href="../tpeg2/olr/LinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.LinearLocationReference">com.here.platform.location.tpeg2.olr.LinearLocationReference</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver for <a href="../tpeg2/olr/LinearLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.LinearLocationReference">com.here.platform.location.tpeg2.olr.LinearLocationReference</a>s.</p><p>A <code>LinearLocationReference</code> refers to a path in the road network and thus needs to be resolved
-against a map. If the reference cannot be resolved an <a href="olr/OlrException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrException">com.here.platform.location.referencing.olr.OlrException</a>
-is thrown.
+against a map. If the reference cannot be resolved an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a>
+is thrown. Specific cases where this can happen are described in the documentation of the exception class.
 </p></div></div>
     </li><li name="com.here.platform.location.referencing.LocationReferenceResolvers#olrPoiWithAccessPoint" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="olrPoiWithAccessPoint:com.here.platform.location.referencing.LocationReferenceResolver[com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference,com.here.platform.location.referencing.PointOfInterest]"></a><a id="olrPoiWithAccessPoint:LocationReferenceResolver[POIWithAccessPointLocationReference,PointOfInterest]"></a>
@@ -715,8 +729,8 @@ is thrown.
       </span>
       
       <p class="shortcomment cmt">Creates a resolver for <a href="../tpeg2/olr/POIWithAccessPointLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference">com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver for <a href="../tpeg2/olr/POIWithAccessPointLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference">com.here.platform.location.tpeg2.olr.POIWithAccessPointLocationReference</a>s.</p><p>A <code>POIWithAccessPointLocationReference</code> refers to an accesspoint point on a road section and thus needs to be
-resolved against a map. If the reference cannot be resolved an <a href="olr/OlrException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrException">com.here.platform.location.referencing.olr.OlrException</a>
-is thrown.
+resolved against a map. If the reference cannot be resolved an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a>
+is thrown. Specific cases where this can happen are described in the documentation of the exception class.
 </p></div></div>
     </li><li name="com.here.platform.location.referencing.LocationReferenceResolvers#olrPointAlongLine" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="olrPointAlongLine:com.here.platform.location.referencing.LocationReferenceResolver[com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference,com.here.platform.location.referencing.AccessPoint]"></a><a id="olrPointAlongLine:LocationReferenceResolver[PointAlongLineLocationReference,AccessPoint]"></a>
@@ -734,8 +748,8 @@ is thrown.
       </span>
       
       <p class="shortcomment cmt">Creates a resolver for <a href="../tpeg2/olr/PointAlongLineLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference">com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a resolver for <a href="../tpeg2/olr/PointAlongLineLocationReference.html" class="extype" name="com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference">com.here.platform.location.tpeg2.olr.PointAlongLineLocationReference</a>s.</p><p>A <code>PointAlongLineLocationReference</code> refers to a point on a road section and thus needs to be resolved
-against a map. If the reference cannot be resolved an <a href="olr/OlrException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrException">com.here.platform.location.referencing.olr.OlrException</a>
-is thrown.
+against a map. If the reference cannot be resolved an <a href="olr/OlrResolverException.html" class="extype" name="com.here.platform.location.referencing.olr.OlrResolverException">com.here.platform.location.referencing.olr.OlrResolverException</a>
+is thrown. Specific cases where this can happen are described in the documentation of the exception class.
 </p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>

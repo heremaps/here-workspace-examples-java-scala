@@ -430,28 +430,6 @@ about the return type of a <a href="../../../core/mapmatching/PathMatcher.html" 
       
       <p class="shortcomment cmt">Built-Up Area Roads attribution identifies if a road is inside or outside a Built-Up Area
 </p>
-    </li><li name="com.here.platform.location.integration.optimizedmap.adasattributes.CurvatureHeading" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="CurvatureHeadingextendsProductwithSerializable"></a><a id="CurvatureHeading:CurvatureHeading"></a>
-      <span class="permalink">
-      <a href="../../../../../../../com/here/platform/location/integration/optimizedmap/adasattributes/CurvatureHeading.html" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="Curvature is an approximation of the road geometry by means of circles at road geometry points (Nodes or Shape Points)." href="CurvatureHeading.html"><span class="name">CurvatureHeading</span></a><span class="params">(<span name="curvature">curvature: <span class="extype" name="scala.Int">Int</span></span>, <span name="heading">heading: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Curvature is an approximation of the road geometry by means of circles at road geometry points (Nodes or Shape Points).</p><div class="fullcomment"><div class="comment cmt"><p>Curvature is an approximation of the road geometry by means of circles at road geometry points (Nodes or Shape Points).
-Curvature values are only published with respect to one travel direction.
-The curvature in reverse direction can be calculated by multiplication with -1.
-Curvature is stored as numeric value representing the curvature in metres -1 x 10<sup>6). (1/Radius-of-Curvature x 10</sup>6)
-Heading is the direction toward which a road is oriented.
-It is the angle in Decimal Degrees x 10^3, between North and the road direction.
-</p></div><dl class="paramcmts block"><dt class="param">curvature</dt><dd class="cmt"><p>Curvature value in inverse of radius in meters multiplied by 1,000,000. Curvature is an approximation of the road geometry by means of circles at road geometry points and is published with respect to one travel direction. It may be used to warn driver of upcoming curve, adjust headlight aiming, assist with electronic stability control.</p></dd><dt class="param">heading</dt><dd class="cmt"><p>Heading value in decimal degrees, multiplied by 1000.  Relative to true north 0 - 359,999.</p></dd></dl></div>
     </li><li name="com.here.platform.location.integration.optimizedmap.adasattributes.Elevation" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ElevationextendsProductwithSerializable"></a><a id="Elevation:Elevation"></a>
       <span class="permalink">
@@ -509,6 +487,33 @@ if the height from horizontal is 10 meters, it may be within a range of 9.9m to 
       </span>
       
       <p class="shortcomment cmt">Indication of the accuracy of the slope or elevation values.</p>
+    </li><li name="com.here.platform.location.integration.optimizedmap.adasattributes.CurvatureHeading" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CurvatureHeadingextendsProductwithSerializable"></a><a id="CurvatureHeading:CurvatureHeading"></a>
+      <span class="permalink">
+      <a href="../../../../../../../com/here/platform/location/integration/optimizedmap/adasattributes/CurvatureHeading.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Curvature is an approximation of the road geometry by means of circles at road geometry points (Nodes or Shape Points)." href="CurvatureHeading.html"><span class="name deprecated" title="Deprecated: (Since version Location Library 1.0.41) split into two separate attributes curvature and heading">CurvatureHeading</span></a><span class="params">(<span name="curvature">curvature: <span class="extype" name="scala.Int">Int</span></span>, <span name="heading">heading: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Curvature is an approximation of the road geometry by means of circles at road geometry points (Nodes or Shape Points).</p><div class="fullcomment"><div class="comment cmt"><p>Curvature is an approximation of the road geometry by means of circles at road geometry points (Nodes or Shape Points).
+Curvature values are only published with respect to one travel direction.
+The curvature in reverse direction can be calculated by multiplication with -1.
+Curvature is stored as numeric value representing the curvature in metres -1 x 10<sup>6). (1/Radius-of-Curvature x 10</sup>6)
+Heading is the direction toward which a road is oriented.
+It is the angle in Decimal Degrees x 10^3, between North and the road direction.
+</p></div><dl class="paramcmts block"><dt class="param">curvature</dt><dd class="cmt"><p>Curvature value in inverse of radius in meters multiplied by 1,000,000. Curvature is an approximation of the road geometry by means of circles at road geometry points and is published with respect to one travel direction. It may be used to warn driver of upcoming curve, adjust headlight aiming, assist with electronic stability control.</p></dd><dt class="param">heading</dt><dd class="cmt"><p>Heading value in decimal degrees, multiplied by 1000.  Relative to true north 0 - 359,999.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version Location Library 1.0.41)</i> split into two separate attributes <code>curvature</code> and <code>heading</code></p></dd></dl></div>
     </li></ol>
             </div>
 

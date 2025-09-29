@@ -398,6 +398,10 @@ about the return type of a <a href="../../core/mapmatching/PathMatcher.html" cla
                         <span class="separator"></span>
                         <a class="class" href="TmcTableLayer.html" title=""></a>
                         <a href="TmcTableLayer.html" title="">TmcTableLayer</a>
+                      </li><li class="current-entities indented6">
+                        <span class="separator"></span>
+                        <a class="class" href="TopologyAttributesLayer.html" title=""></a>
+                        <a href="TopologyAttributesLayer.html" title="">TopologyAttributesLayer</a>
                       </li>
               </ul>
             </div>
@@ -1036,6 +1040,42 @@ It helps reduce memory consumption and improve performance.</p><p>Note: Accessin
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.here.platform.location.integration.optimizedmap.TileDecoders#topologyAttributes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="topologyAttributes(attributes:Seq[com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescriptionwithcom.here.platform.location.compilation.core.AttributeDescription])(inputStream:java.io.InputStream):com.here.platform.location.inmemory.graph.MultiPropertyTile"></a><a id="topologyAttributes(Seq[TopologyAttributeDescriptionwithAttributeDescription])(InputStream):MultiPropertyTile"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/integration/optimizedmap/TileDecoders$.html#topologyAttributes(attributes:Seq[com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescriptionwithcom.here.platform.location.compilation.core.AttributeDescription])(inputStream:java.io.InputStream):com.here.platform.location.inmemory.graph.MultiPropertyTile" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">topologyAttributes</span><span class="params">(<span name="attributes">attributes: <span class="extype" name="scala.Seq">Seq</span>[<a href="../../compilation/heremapcontent/TopologyAttributeDescription.html" class="extype" name="com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescription">TopologyAttributeDescription</a> with <a href="../../compilation/core/AttributeDescription.html" class="extype" name="com.here.platform.location.compilation.core.AttributeDescription">AttributeDescription</a>]</span>)</span><span class="params">(<span name="inputStream">inputStream: <span class="extype" name="java.io.InputStream">InputStream</span></span>)</span><span class="result">: <a href="../../inmemory/graph/MultiPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.MultiPropertyTile">MultiPropertyTile</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Decoder for the Topology attributes layer that retains only the specified attributes.</p><div class="fullcomment"><div class="comment cmt"><p>Decoder for the Topology attributes layer that retains only the specified attributes.</p><p>This decoder reads the protobuf data from the provided <code>inputStream</code>,
+but keeps only the attributes explicitly specified in the <code>attributes</code> parameter.
+It helps reduce memory consumption and improve performance.</p><p>Note: Accessing an excluded attribute at runtime will result in an <code>IllegalArgumentException</code>.
+</p></div><dl class="paramcmts block"><dt class="param">attributes</dt><dd class="cmt"><p>The list of Topology attributes to retain after decoding.</p></dd><dt class="param">inputStream</dt><dd class="cmt"><p>The input stream containing the protobuf-encoded Topology attributes data.</p></dd></dl></div>
+    </li><li name="com.here.platform.location.integration.optimizedmap.TileDecoders#topologyAttributes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="topologyAttributes(inputStream:java.io.InputStream):com.here.platform.location.inmemory.graph.MultiPropertyTile"></a><a id="topologyAttributes(InputStream):MultiPropertyTile"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/here/platform/location/integration/optimizedmap/TileDecoders$.html#topologyAttributes(inputStream:java.io.InputStream):com.here.platform.location.inmemory.graph.MultiPropertyTile" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">topologyAttributes</span><span class="params">(<span name="inputStream">inputStream: <span class="extype" name="java.io.InputStream">InputStream</span></span>)</span><span class="result">: <a href="../../inmemory/graph/MultiPropertyTile.html" class="extype" name="com.here.platform.location.inmemory.graph.MultiPropertyTile">MultiPropertyTile</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Decoder for the Topology attributes layer that retains all available attributes.</p><div class="fullcomment"><div class="comment cmt"><p>Decoder for the Topology attributes layer that retains all available attributes.</p><p>Recommended when full access to all Topology attributes is required.
+</p></div><dl class="paramcmts block"><dt class="param">inputStream</dt><dd class="cmt"><p>The input stream containing the protobuf-encoded Topology attributes data.</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
