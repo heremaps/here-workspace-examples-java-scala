@@ -25,6 +25,7 @@ import com.here.platform.data.processing.compiler.{
   CompileOut1To1Fn,
   DirectMToNCompiler,
   InKey,
+  InMeta,
   OutKey
 }
 import com.here.platform.data.processing.driver.{Default, DriverContext}
@@ -32,8 +33,8 @@ import com.here.platform.pipeline.logging.ContextLogging
 import com.here.platform.data.processing.spark.partitioner.{NameHashPartitioner, Partitioner}
 import com.here.schema.rib.v2.topology_geometry_partition.TopologyGeometryPartition
 
-import collection.breakOut
 import scala.collection.immutable.SortedMap
+import scala.jdk.CollectionConverters._
 
 /**
   * Shows how to use the output of the previous compilation as feedback input to count the number of times
@@ -75,7 +76,8 @@ class Compiler(ctx: DriverContext)
     * @param parallelism The total number of partitions.
     * @return The input partitioner.
     */
-  override def inPartitioner(parallelism: Int) = Some(NameHashPartitioner(parallelism))
+  override def inPartitioner(parallelism: Int): Option[Partitioner[InKey]] =
+    Some(NameHashPartitioner(parallelism))
 
   /**
     * The output partitioner. Output partition names are equal to the input partition names
@@ -98,8 +100,8 @@ class Compiler(ctx: DriverContext)
     *
     * @return An [[Iterable]] with output partition.
     */
-  override def mappingFn(inKey: Key) =
-    Iterable(Key(Default.OutCatalogId, LayersDefs.nodeCardinality, inKey.partition))
+  override def mappingFn(inKey: InKey): Iterable[OutKey] =
+    Iterable(OutKey(Default.OutCatalogId, LayersDefs.nodeCardinality, inKey.partition))
 
   /**
     * Pass each input tuple to [[compileOutFn(Key, Iterable)]] function.
@@ -111,7 +113,7 @@ class Compiler(ctx: DriverContext)
     * @param in The input partition's [[Key]] and [[Meta]] to process.
     * @return The value of intermediate data for [[compileOutFn(Key, Iterable)]] function.
     */
-  override def compileInFn(in: (Key, Meta)): (Key, Meta) = in
+  override def compileInFn(in: (InKey, InMeta)): (Key, Meta) = (in._1, in._2)
 
   /**
     * The output depends on the input catalog partitions and on the previous compilation results.
@@ -182,7 +184,10 @@ class Compiler(ctx: DriverContext)
       topologyGeometryPartitionBin: Array[Byte]): SortedMap[String, Int] = {
     val topologyGeometryPartition =
       TopologyGeometryPartition.parseFrom(topologyGeometryPartitionBin)
-    topologyGeometryPartition.node
-      .map(n => (n.identifier, n.segmentRef.size))(breakOut)
+
+    val pairs = topologyGeometryPartition.node.iterator
+      .map(n => n.identifier -> n.segmentRef.size)
+
+    SortedMap.from(pairs)
   }
 }

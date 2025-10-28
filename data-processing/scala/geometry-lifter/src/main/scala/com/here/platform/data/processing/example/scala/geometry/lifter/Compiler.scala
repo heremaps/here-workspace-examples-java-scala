@@ -89,10 +89,11 @@ class Compiler(context: DriverContext, compilerConf: CompilerConfig)
     */
   override def compileOutFn(outKey: OutKey,
                             intermediate: Iterable[(Key, Meta)]): Option[Payload] = {
-    val inTopologies: IndexedSeq[TopologyGeometryPartition] = intermediate.map {
-      case (key, meta) =>
-        TopologyGeometryPartition.parseFrom(retriever.getPayload(key, meta).content)
-    }(collection.breakOut)
+    val inTopologies: IndexedSeq[TopologyGeometryPartition] =
+      intermediate.iterator.map {
+        case (key, meta) =>
+          TopologyGeometryPartition.parseFrom(retriever.getPayload(key, meta).content)
+      }.toIndexedSeq
 
     val outTopology =
       LevelLifter.liftTopology(outKey.partition.hereTileId, inTopologies.sortBy(_.partitionName))

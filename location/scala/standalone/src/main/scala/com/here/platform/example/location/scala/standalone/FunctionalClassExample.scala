@@ -39,7 +39,7 @@ import com.here.platform.location.io.scaladsl.geojson.{
   SimpleStyleProperties
 }
 
-/** An example that shows how to compile Road attributes from HERE Map Content on the fly
+/** An example that shows how to compile Topology attributes from HERE Map Content on the fly
   * and use them as properties of vertices from the `Optimized Map for Location Library`.
   */
 object FunctionalClassExample extends App {
@@ -59,7 +59,7 @@ object FunctionalClassExample extends App {
         .from(OptimizedMap.v2.HRN)
         .usingBaseClient(baseClient)
         .newInstance
-        .version(1293L)
+        .version(7521L)
 
     val proximitySearch = ProximitySearches(optimizedMap).vertices
 
@@ -67,7 +67,7 @@ object FunctionalClassExample extends App {
 
     println(s"Number of vertices in range: ${verticesInRange.size}")
 
-    val roadAttributes = PropertyMaps(optimizedMap).roadAttributes
+    val topologyAttributes = PropertyMaps(optimizedMap).topologyAttributes
 
     val Red = Color("#e87676")
     val Green = Color("#58db58")
@@ -85,7 +85,7 @@ object FunctionalClassExample extends App {
 
     val verticesWithProperties: Iterable[VertexWithProperty[(FunctionalClass, Color)]] = for {
       vertex <- verticesInRange
-      rangeBasedProperties = roadAttributes
+      rangeBasedProperties = topologyAttributes
         .functionalClass(vertex)
         .map(
           property =>

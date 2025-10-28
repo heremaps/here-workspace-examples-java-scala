@@ -23,16 +23,13 @@ import com.here.platform.data.client.base.scaladsl.BaseClient
 import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
 import com.here.platform.location.core.geospatial.{GeoCoordinate, LineString, LineStrings}
 import com.here.platform.location.core.graph.DirectedGraph
-import com.here.platform.location.inmemory.graph.{Backward, Edge, Forward, Vertex}
-import com.here.platform.location.integration.heremapcontent.PartitionId
-import com.here.platform.location.integration.optimizedmap.OptimizedMap
-import com.here.platform.location.integration.optimizedmap.adasattributes.CurvatureHeading
+import com.here.platform.location.core.mapmatching.MatchedPath.Transition
+import com.here.platform.location.core.mapmatching.{MatchResult, MatchedPath, OnRoad}
+import com.here.platform.location.inmemory.graph.{Edge, Vertex}
 import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
-import com.here.platform.location.integration.optimizedmap.geospatial.{
-  SegmentId,
-  HereMapContentReference => HMCRef
-}
 import com.here.platform.location.integration.optimizedmap.graph.{Graphs, PropertyMaps}
+import com.here.platform.location.integration.optimizedmap.mapmatching.PathMatchers
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.io.scaladsl.Color
 import com.here.platform.location.io.scaladsl.geojson.{
   Feature,
@@ -43,15 +40,6 @@ import com.here.platform.location.io.scaladsl.geojson.{
 import java.io.FileOutputStream
 
 object AdasCurvatureAttributeExample extends App {
-  val segments = Seq(
-    HMCRef(PartitionId("23598867"), SegmentId("here:cm:segment:154024123"), Forward),
-    HMCRef(PartitionId("23598867"), SegmentId("here:cm:segment:150551733"), Backward),
-    HMCRef(PartitionId("23598867"), SegmentId("here:cm:segment:76960691"), Backward),
-    HMCRef(PartitionId("23598867"), SegmentId("here:cm:segment:150552074"), Forward),
-    HMCRef(PartitionId("23598867"), SegmentId("here:cm:segment:98035021"), Backward),
-    HMCRef(PartitionId("23598867"), SegmentId("here:cm:segment:87560942"), Forward)
-  )
-
   val baseClient = BaseClient()
 
   try {
@@ -59,12 +47,20 @@ object AdasCurvatureAttributeExample extends App {
       .from(OptimizedMap.v2.HRN)
       .usingBaseClient(baseClient)
       .newInstance
-      .version(1126)
+      .version(7647)
+
+    val vertices = verticesFromPath(optimizedMap)(
+      Seq(
+        GeoCoordinate(46.517259, 10.320718),
+        GeoCoordinate(46.515857, 10.317518),
+        GeoCoordinate(46.517532, 10.315887),
+        GeoCoordinate(46.516155, 10.313913),
+        GeoCoordinate(46.515014, 10.315184),
+        GeoCoordinate(46.514859, 10.316852),
+        GeoCoordinate(46.513499, 10.318810)
+      ))
 
     val propertyMaps = PropertyMaps(optimizedMap)
-    val hmcToVertex = propertyMaps.hereMapContentReferenceToVertex
-
-    val vertices = segments.map(hmcToVertex(_))
 
     val adas = propertyMaps.adasAttributes
 
@@ -76,10 +72,10 @@ object AdasCurvatureAttributeExample extends App {
           graph.edgeIterator(source, target)
       }
 
-    def toColor(value: CurvatureHeading): Color = {
+    def toColor(curvature: Int): Color = {
       // Converting curvature value to radius in meters, see:
-      // https://developer.here.com/documentation/here-map-content/dev_guide/topics-attributes/curvature.html
-      val radius = Math.abs(1000000.0 / value.curvature)
+      // https://www.here.com/docs/bundle/map-content-specifications-data-specification/page/topics_schema/curvature-attribute.html
+      val radius = Math.abs(1000000.0 / curvature)
       // Gradient from red to green depending on road curvature radius, considering as green all radius above 150 meters.
       Color.hsb(Math.min(radius, 150.0), 0.9, 0.8)
     }
@@ -92,7 +88,7 @@ object AdasCurvatureAttributeExample extends App {
     }
 
     val curvaturePointsAsFeature = vertices.flatMap { vertex =>
-      Feature.lineStringPoints(geometry(vertex), adas.curvatureHeading(vertex))(
+      Feature.lineStringPoints(geometry(vertex), adas.curvature(vertex))(
         pointBasedProperty =>
           SimpleStyleProperties()
             .markerColor(toColor(pointBasedProperty.value))
@@ -116,7 +112,7 @@ object AdasCurvatureAttributeExample extends App {
           lineStringPart(graph.source(edge), -10.0).points ++ lineStringPart(graph.target(edge),
                                                                              10.0).points),
         SimpleStyleProperties()
-          .stroke(adas.edgeCurvatureHeading(edge).map(toColor).getOrElse(Color.Black))
+          .stroke(adas.edgeCurvature(edge).map(toColor).getOrElse(Color.Black))
           .strokeWidth(6)
       )
     }
@@ -134,5 +130,22 @@ object AdasCurvatureAttributeExample extends App {
     println(s"\nA GeoJson representation of the result is available in $path\n")
   } finally {
     baseClient.shutdown()
+  }
+
+  private def verticesFromPath(optimizedMap: OptimizedMapLayers)(
+      path: Seq[GeoCoordinate]): Seq[Vertex] = {
+    val MatchedPath(results, transitions) = PathMatchers(optimizedMap)
+      .carPathMatcherWithTransitions[GeoCoordinate]
+      .matchPath(path)
+
+    require(results.nonEmpty && results.forall(_.isInstanceOf[OnRoad[_]]))
+    def vertex(result: MatchResult[Vertex]): Option[Vertex] = result match {
+      case OnRoad(ep) => Some(ep.element)
+      case _ => None
+    }
+
+    (vertex(results.head).get +: transitions.flatMap {
+      case Transition(_, to, transition) => transition :+ vertex(results(to)).get
+    }).distinct
   }
 }

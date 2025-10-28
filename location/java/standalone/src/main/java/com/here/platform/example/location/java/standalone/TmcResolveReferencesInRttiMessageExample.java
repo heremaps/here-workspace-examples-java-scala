@@ -23,6 +23,7 @@ import static com.here.traffic.realtime.v2.TmcReference.TmcDirection.*;
 
 import com.here.platform.data.client.base.javadsl.BaseClient;
 import com.here.platform.data.client.base.javadsl.BaseClientJava;
+import com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescription;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
 import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
@@ -50,8 +51,12 @@ public final class TmcResolveReferencesInRttiMessageExample {
       final OptimizedMapLayers optimizedMap =
           OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
               .usingBaseClient(baseClient)
+              // Retain TMC attributes.
+              // See
+              // https://www.here.com/docs/bundle/location-library-developer-guide-java-scala/page/docs/high-level-v2_5.html#retain-only-required-attributes
+              .withTopologyAttributes(TopologyAttributeDescription.TrafficMessageChannelCode())
               .newInstance()
-              .version(1293L);
+              .version(7521L);
 
       final LocationReferenceResolver<ExtendedTMCLocationReference, BidirectionalLinearLocation>
           resolver = new LocationReferenceResolvers(optimizedMap).extendedTmc();

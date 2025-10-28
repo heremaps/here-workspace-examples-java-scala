@@ -21,7 +21,7 @@ package com.here.platform.example.location.java.flink;
 
 import com.here.platform.location.core.geospatial.javadsl.GeoCoordinateAdapter;
 import com.here.sdii.v3.SdiiCommon;
-import scala.Serializable;
+import java.io.Serializable;
 
 class PositionEstimateGeoCoordinateAdapter
     implements GeoCoordinateAdapter<SdiiCommon.PositionEstimate>, Serializable {

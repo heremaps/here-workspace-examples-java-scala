@@ -62,7 +62,7 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
 
       // Load all topologies
       val polyLines: Map[String, Segment] =
-        topologyTile.segment.map(segment => segment.identifier -> segment)(collection.breakOut)
+        topologyTile.segment.iterator.map(segment => segment.identifier -> segment).toMap
 
       // Get pedestrian intermediate data
       segmentAnchors.flatMap(segmentAnchor =>
@@ -128,9 +128,7 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
     require(segment.nonEmpty, "Topology not found for the identifier: " + identifier)
 
     val points = segment
-      .flatMap(
-        _.geometry.map(_.point.map(point => LngLat(point.longitude, point.latitude))(
-          collection.breakOut): List[LngLat]))
+      .flatMap(_.geometry.map(_.point.map(point => LngLat(point.longitude, point.latitude)).toList))
       .getOrElse(throw new NoSuchElementException(
         "Could not find required data in segment for topology with the identifier: " + identifier))
 
@@ -160,5 +158,6 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
                 && !appliesTo.throughTraffic
                 && !appliesTo.trucks))
       .flatMap(pedestrian => pedestrian.segmentAnchorIndex)
-      .map(roadPartition.segmentAnchor)(collection.breakOut)
+      .map(roadPartition.segmentAnchor)
+      .toList
 }

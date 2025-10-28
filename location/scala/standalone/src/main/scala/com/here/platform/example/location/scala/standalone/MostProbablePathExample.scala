@@ -44,8 +44,7 @@ import com.here.platform.location.core.geospatial.Implicits._
 import com.here.platform.location.core.geospatial.{
   GeoCoordinate,
   GeoCoordinates,
-  LineStringOperations,
-  ProximitySearch
+  LineStringOperations
 }
 import com.here.platform.location.core.graph.{
   DirectedGraph,
@@ -162,7 +161,7 @@ object MostProbablePathExample extends App {
         .from(OptimizedMap.v2.HRN)
         .usingBaseClient(baseClient)
         .newInstance
-        .version(1293L)
+        .version(7521L)
     val propertyMaps = PropertyMaps(optimizedMap)
 
     // A mapping from Vertices to LineString of the underlying road geometry
@@ -171,7 +170,7 @@ object MostProbablePathExample extends App {
     // The length of a Vertex (road segment)
     val lengthPropertyMap: PropertyMap[Vertex, Double] = propertyMaps.length
 
-    val roadAttributes = propertyMaps.roadAttributes
+    val topologyAttributes = propertyMaps.topologyAttributes
 
     val accessibleByCarPropertyMap: RangeBasedPropertyMap[Vertex, Boolean] =
       propertyMaps.roadAccess(RoadAccess.Automobile)
@@ -195,7 +194,7 @@ object MostProbablePathExample extends App {
       .element
 
     val probabilityFunction: (IndexedSeq[Vertex], Vertex) => Double =
-      probability(roadAttributes.functionalClass, geometryPropertyMap)
+      probability(topologyAttributes.functionalClass, geometryPropertyMap)
     val maximumMppLengthInMeters = 10000.0
     val mostProbablePathSegments = mostProbablePath(start,
                                                     maximumMppLengthInMeters,

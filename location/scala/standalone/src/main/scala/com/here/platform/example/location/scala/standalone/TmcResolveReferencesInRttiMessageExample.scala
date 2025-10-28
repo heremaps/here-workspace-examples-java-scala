@@ -21,20 +21,20 @@ package com.here.platform.example.location.scala.standalone
 
 import com.here.platform.data.client.base.scaladsl.BaseClient
 import com.here.platform.example.location.scala.standalone.utils.FileNameHelper
-
-import java.io.{File, FileOutputStream}
+import com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescription
 import com.here.platform.location.core.graph.PropertyMap
 import com.here.platform.location.inmemory.geospatial.PackedLineString
 import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
-import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
+import com.here.platform.location.io.scaladsl.Color
+import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, SimpleStyleProperties}
 import com.here.platform.location.referencing.{LinearLocation, LocationReferenceResolvers}
 import com.here.platform.location.tpeg2.etl.{ExtendedTMCLocationReference, TMCLocationReference}
 import com.here.traffic.realtime.v2.TmcReference._
 import com.here.traffic.realtime.v2.Traffic._
-import com.here.platform.location.io.scaladsl.Color
-import com.here.platform.location.io.scaladsl.geojson.{FeatureCollection, SimpleStyleProperties}
+import java.io.{File, FileOutputStream}
 
 /** Convert and resolve TMC references present in RTTI messages.
   */
@@ -44,8 +44,11 @@ object TmcResolveReferencesInRttiMessageExample extends App {
     OptimizedMapCatalog
       .from(OptimizedMap.v2.HRN)
       .usingBaseClient(baseClient)
+      // Retain TMC attributes.
+      // See https://www.here.com/docs/bundle/location-library-developer-guide-java-scala/page/docs/high-level-v2_5.html#retain-only-required-attributes
+      .withTopologyAttributes(TopologyAttributeDescription.TrafficMessageChannelCode)
       .newInstance
-      .version(1293L)
+      .version(7521L)
 
   private val resolver = LocationReferenceResolvers(optimizedMap).extendedTmc
 

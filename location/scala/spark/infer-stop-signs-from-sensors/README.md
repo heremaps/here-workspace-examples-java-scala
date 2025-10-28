@@ -271,7 +271,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-4.3 $PATH_TO_JAR \
                 com.here.platform.example.location.scala.spark.InferStopSignsFromSensorsExample \
                 --input-catalog-ids="$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
                 --scope $PROJECT_HRN

@@ -80,7 +80,7 @@ public final class MostProbablePathExample {
           OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
               .usingBaseClient(baseClient)
               .newInstance()
-              .version(1293L);
+              .version(7521L);
       PropertyMaps propertyMaps = new PropertyMaps(optimizedMap);
 
       // A mapping from Vertices to LineString of the underlying road geometry
@@ -91,7 +91,7 @@ public final class MostProbablePathExample {
       final PropertyMap<Vertex, Double> lengthPropertyMap = propertyMaps.length();
 
       final RangeBasedPropertyMap<Vertex, FunctionalClass> functionalClassPropertyMap =
-          propertyMaps.roadAttributes().functionalClass();
+          propertyMaps.topologyAttributes().functionalClass();
 
       final RangeBasedPropertyMap<Vertex, Boolean> accessibleByCarPropertyMap =
           propertyMaps.roadAccess(RoadAccess.Automobile);

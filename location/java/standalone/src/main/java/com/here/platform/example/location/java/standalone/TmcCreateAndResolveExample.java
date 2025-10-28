@@ -23,6 +23,7 @@ import static java.util.Collections.singletonList;
 
 import com.here.platform.data.client.base.javadsl.BaseClient;
 import com.here.platform.data.client.base.javadsl.BaseClientJava;
+import com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescription;
 import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
@@ -56,8 +57,12 @@ public final class TmcCreateAndResolveExample {
       final OptimizedMapLayers optimizedMap =
           OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
               .usingBaseClient(baseClient)
+              // Retain TMC attributes.
+              // See
+              // https://www.here.com/docs/bundle/location-library-developer-guide-java-scala/page/docs/high-level-v2_5.html#retain-only-required-attributes
+              .withTopologyAttributes(TopologyAttributeDescription.TrafficMessageChannelCode())
               .newInstance()
-              .version(1293L);
+              .version(7521L);
 
       // Define a location that is covered by TMC
       final Vertex vertexInFriedenstrasse =

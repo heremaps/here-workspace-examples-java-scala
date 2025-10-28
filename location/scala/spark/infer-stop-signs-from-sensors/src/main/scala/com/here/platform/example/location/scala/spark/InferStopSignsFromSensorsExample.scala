@@ -214,12 +214,15 @@ object Steps {
       } else {
         val positionAfterEvent = GeoCoordinate(lat(idxAfterEvent), lon(idxAfterEvent))
 
-        val pathAround = (lat, lon, timestamp).zipped
+        val pathAround = lat
+          .lazyZip(lon)
+          .lazyZip(timestamp)
+          .map { (_lat, _lon, _ts) =>
+            (_lat, _lon, _ts)
+          }
           .dropWhile(_._3 < eventTimestamp - tripTimestampOffset)
           .takeWhile(_._3 <= eventTimestamp + tripTimestampOffset)
-          .map {
-            case (_lat, _lon, _) => GeoCoordinate(_lat, _lon)
-          }
+          .map { case (_lat, _lon, _) => GeoCoordinate(_lat, _lon) }
           .toSeq
 
         Some(StopSignEvent(positionAfterEvent, pathAround))
@@ -237,7 +240,6 @@ object Steps {
       .collect {
         case OnRoad(projection) => projection.element
       }
-      .distinct
     val (closestVertex, closestVertexProjection) = verticesOnMatchedPath
       .map(
         vertex =>

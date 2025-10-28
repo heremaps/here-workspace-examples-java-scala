@@ -74,7 +74,7 @@ The local catalog will have the HRN `hrn:local:data:::geometry-lifter-java`.
 olp local catalog layer add hrn:local:data:::geometry-lifter-java lifted-topology-geometry lifted-topology-geometry --versioned --summary "lifted topology-geometry" \
             --description "lifted topology-geometry"  --partitioning heretile:10 \
             --content-type application/x-protobuf \
-            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.schema.rib:topology-geometry_v2:2.12.1
+            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.schema.rib:topology-geometry_v2:2.176.0
 olp local catalog layer add hrn:local:data:::geometry-lifter-java state state --versioned --summary "state" \
             --description "state" --partitioning Generic \
             --content-type application/octet-stream
@@ -188,7 +188,7 @@ olp catalog create $CATALOG_ID $CATALOG_ID --summary "Geometry lifter example ca
 olp catalog layer add $CATALOG_HRN lifted-topology-geometry lifted-topology-geometry --versioned --summary "lifted topology-geometry" \
             --description "lifted topology-geometry"  --partitioning heretile:10 \
             --content-type application/x-protobuf \
-            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.schema.rib:topology-geometry_v2:2.12.1 \
+            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.schema.rib:topology-geometry_v2:2.176.0 \
             --scope $PROJECT_HRN
 olp catalog layer add $CATALOG_HRN state state --versioned --summary "state" \
             --description "state" --partitioning Generic \
@@ -273,7 +273,7 @@ geographical region.
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-4.3 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.java.geometry.lifter.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

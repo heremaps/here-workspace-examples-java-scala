@@ -48,12 +48,12 @@ public final class FunctionalClassExample {
           OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
               .usingBaseClient(baseClient)
               .newInstance()
-              .version(1293L);
+              .version(7521L);
 
-      final PropertyMaps.RoadAttributes roadAttributes =
-          new PropertyMaps(optimizedMap).roadAttributes();
+      final PropertyMaps.TopologyAttributes topologyAttributes =
+          new PropertyMaps(optimizedMap).topologyAttributes();
       final RangeBasedPropertyMap<Vertex, FunctionalClass> functionalClass =
-          roadAttributes.functionalClass();
+          topologyAttributes.functionalClass();
 
       final ProximitySearch<GeoCoordinate, Vertex> search =
           new ProximitySearches(optimizedMap).vertices();

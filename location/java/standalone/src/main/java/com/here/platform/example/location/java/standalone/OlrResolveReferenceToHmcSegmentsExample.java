@@ -21,6 +21,7 @@ package com.here.platform.example.location.java.standalone;
 
 import com.here.platform.data.client.base.javadsl.BaseClient;
 import com.here.platform.data.client.base.javadsl.BaseClientJava;
+import com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescription;
 import com.here.platform.location.core.graph.javadsl.PropertyMap;
 import com.here.platform.location.inmemory.graph.Vertex;
 import com.here.platform.location.inmemory.graph.javadsl.Direction;
@@ -51,8 +52,16 @@ public final class OlrResolveReferenceToHmcSegmentsExample {
     final OptimizedMapLayers optimizedMap =
         OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
             .usingBaseClient(baseClient)
+            // Retain OLR attributes.
+            // See
+            // https://www.here.com/docs/bundle/location-library-developer-guide-java-scala/page/docs/high-level-v2_5.html#retain-only-required-attributes
+            .withTopologyAttributes(
+                TopologyAttributeDescription.RoadUsage(),
+                TopologyAttributeDescription.FunctionalClass(),
+                TopologyAttributeDescription.PhysicalAttribute(),
+                TopologyAttributeDescription.SpecialTrafficAreaCategory())
             .newInstance()
-            .version(769L);
+            .version(7521L);
 
     try {
       final String referenceXml =

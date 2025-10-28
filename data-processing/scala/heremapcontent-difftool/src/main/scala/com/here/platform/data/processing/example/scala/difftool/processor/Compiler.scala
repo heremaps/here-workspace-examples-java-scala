@@ -29,8 +29,6 @@ import com.here.platform.data.processing.example.scala.difftool.processor.Layers
 import com.here.schema.rib.v2.topology_geometry._
 import com.here.schema.rib.v2.topology_geometry_partition._
 
-import scala.collection.breakOut
-
 object Compiler {
   implicit class RichBoolean(val b: Boolean) extends AnyVal {
     final def option[A](a: => A): Option[A] = if (b) Some(a) else None
@@ -123,7 +121,9 @@ class Compiler(context: DriverContext)
     def getSegments(retriever: Retriever)(keyMeta: IntermediateData): Map[String, Segment] = {
       val partition =
         TopologyGeometryPartition.parseFrom(retriever.getPayload(keyMeta.key, keyMeta.meta).content)
-      partition.segment.map(x => (x.identifier, x))(breakOut)
+      partition.segment.iterator
+        .map(x => x.identifier -> x)
+        .toMap
     }
 
     val oldSegments: Map[String, Segment] =

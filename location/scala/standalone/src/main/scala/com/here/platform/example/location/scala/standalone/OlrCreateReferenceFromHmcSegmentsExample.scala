@@ -20,85 +20,88 @@
 package com.here.platform.example.location.scala.standalone
 
 import com.here.platform.data.client.base.scaladsl.BaseClient
-
-import java.io.FileOutputStream
-import com.here.platform.location.inmemory.graph.{Backward, Forward}
-import com.here.platform.location.integration.heremapcontent.PartitionId
+import com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescription
+import com.here.platform.location.core.geospatial.GeoCoordinate
+import com.here.platform.location.core.mapmatching.MatchedPath.Transition
+import com.here.platform.location.core.mapmatching.{MatchResult, MatchedPath, OnRoad}
+import com.here.platform.location.inmemory.graph.Vertex
 import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
+import com.here.platform.location.integration.optimizedmap.mapmatching.PathMatchers
 import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
-import com.here.platform.location.integration.optimizedmap.geospatial.{
-  HereMapContentReference,
-  SegmentId
-}
-import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
 import com.here.platform.location.referencing.olr.OlrPrettyPrinter
 import com.here.platform.location.referencing.{LinearLocation, LocationReferenceCreators}
 import com.here.platform.location.tpeg2.olr.OpenLRLocationReference
 import com.here.platform.location.tpeg2.{BinaryMarshallers, XmlMarshallers}
 
+import java.io.FileOutputStream
+
 /** This example shows how to take a path given as HERE Map Content references
   * and create an OLR reference from it.
   */
 object OlrCreateReferenceFromHmcSegmentsExample extends App {
-  val segmentStrings = Seq(
-    "23618402/192867771+",
-    "23618402/190690930-",
-    "23618402/101695256-",
-    "23618402/87970589-",
-    "23618402/87981292-",
-    "23618402/87981291-",
-    "23618402/779616973-",
-    "23618402/779617453-",
-    "23618402/88153132-",
-    "23618402/78021962-",
-    "23618402/78021961-",
-    "23618402/82451780-",
-    "23618402/86519396-",
-    "23618402/190459526-",
-    "23618359/94455601-",
-    "23618359/94823702-",
-    "23618359/94476820-",
-    "23618359/103954050-",
-    "23618359/95647469-",
-    "23618359/157157401-",
-    "23618359/783973312-",
-    "23618359/783976431-",
-    "23618359/484177650+",
-    "23618359/81626947-",
-    "23618359/182595729-",
-    "23618359/192256710-",
-    "23618359/105169214+",
-    "23618359/102022769-",
-    "23618359/78758076-",
-    "23618359/93979650-",
-    "23618359/192336062-",
-    "23618359/100422521-",
-    "23618359/83634003-",
-    "23618359/80415973-",
-    "23618359/805793032-",
-    "23618359/791530650+",
-    "23618359/203894554-",
-    "23618359/77179756-",
-    "23618359/77833225-",
-    "23618359/195404089-",
-    "23618359/86896561-",
-    "23618359/95356471-",
-    "23618359/87921793-",
-    "23618359/196013524+",
-    "23618359/84734148-",
-    "23618359/208151869-",
-    "23618359/159034659-",
-    "23618359/98034107-",
-    "23618359/91955672+",
-    "23618359/85912316+",
-    "23618359/605536826+",
-    "23618359/788742068+",
-    "23618359/195423613-",
-    "23618359/99880420+",
-    "23618359/88072134+",
-    "23618359/79293249+",
-    "23618359/182750790-",
-    "23618359/203288051-"
+  val path = Seq(
+    GeoCoordinate(52.526323, 13.368411),
+    GeoCoordinate(52.526055, 13.367710),
+    GeoCoordinate(52.525940, 13.367385),
+    GeoCoordinate(52.525815, 13.366990),
+    GeoCoordinate(52.525677, 13.366529),
+    GeoCoordinate(52.525492, 13.365993),
+    GeoCoordinate(52.524971, 13.364546),
+    GeoCoordinate(52.524525, 13.363130),
+    GeoCoordinate(52.524420, 13.362815),
+    GeoCoordinate(52.524237, 13.362253),
+    GeoCoordinate(52.523935, 13.361275),
+    GeoCoordinate(52.523740, 13.360635),
+    GeoCoordinate(52.523589, 13.360122),
+    GeoCoordinate(52.523582, 13.358712),
+    GeoCoordinate(52.523705, 13.357395),
+    GeoCoordinate(52.523735, 13.356985),
+    GeoCoordinate(52.523660, 13.356810),
+    GeoCoordinate(52.523216, 13.356674),
+    GeoCoordinate(52.521860, 13.356260),
+    GeoCoordinate(52.520269, 13.355715),
+    GeoCoordinate(52.519508, 13.355407),
+    GeoCoordinate(52.519186, 13.355312),
+    GeoCoordinate(52.518710, 13.355185),
+    GeoCoordinate(52.518235, 13.355025),
+    GeoCoordinate(52.517683, 13.354852),
+    GeoCoordinate(52.517210, 13.354645),
+    GeoCoordinate(52.516859, 13.354292),
+    GeoCoordinate(52.516293, 13.353042),
+    GeoCoordinate(52.515802, 13.351872),
+    GeoCoordinate(52.515331, 13.351070),
+    GeoCoordinate(52.515166, 13.350226),
+    GeoCoordinate(52.515141, 13.349736),
+    GeoCoordinate(52.514928, 13.349263),
+    GeoCoordinate(52.514695, 13.349055),
+    GeoCoordinate(52.514412, 13.349066),
+    GeoCoordinate(52.514060, 13.349293),
+    GeoCoordinate(52.513897, 13.349654),
+    GeoCoordinate(52.513855, 13.349940),
+    GeoCoordinate(52.512909, 13.350431),
+    GeoCoordinate(52.511146, 13.350882),
+    GeoCoordinate(52.510010, 13.351145),
+    GeoCoordinate(52.509574, 13.350733),
+    GeoCoordinate(52.509402, 13.350056),
+    GeoCoordinate(52.508974, 13.349522),
+    GeoCoordinate(52.507996, 13.348989),
+    GeoCoordinate(52.507321, 13.348056),
+    GeoCoordinate(52.506886, 13.346848),
+    GeoCoordinate(52.506658, 13.345701),
+    GeoCoordinate(52.506535, 13.345075),
+    GeoCoordinate(52.506234, 13.343588),
+    GeoCoordinate(52.505904, 13.341960),
+    GeoCoordinate(52.505485, 13.341235),
+    GeoCoordinate(52.505235, 13.341035),
+    GeoCoordinate(52.505368, 13.340400),
+    GeoCoordinate(52.505356, 13.339351),
+    GeoCoordinate(52.505198, 13.338267),
+    GeoCoordinate(52.505286, 13.335972),
+    GeoCoordinate(52.505549, 13.333957),
+    GeoCoordinate(52.505935, 13.333118),
+    GeoCoordinate(52.506275, 13.332450),
+    GeoCoordinate(52.506569, 13.331741),
+    GeoCoordinate(52.507877, 13.332180)
   )
 
   val baseClient = BaseClient()
@@ -108,14 +111,18 @@ object OlrCreateReferenceFromHmcSegmentsExample extends App {
       OptimizedMapCatalog
         .from(OptimizedMap.v2.HRN)
         .usingBaseClient(baseClient)
+        // Retain OLR attributes.
+        // See https://www.here.com/docs/bundle/location-library-developer-guide-java-scala/page/docs/high-level-v2_5.html#retain-only-required-attributes
+        .withTopologyAttributes(
+          TopologyAttributeDescription.RoadUsage,
+          TopologyAttributeDescription.FunctionalClass,
+          TopologyAttributeDescription.PhysicalAttribute,
+          TopologyAttributeDescription.SpecialTrafficAreaCategory
+        )
         .newInstance
-        .version(769L)
+        .version(7521L)
 
-    val segments = segmentStrings.map(parseHmcRef)
-
-    val hmcToVertex = PropertyMaps(optimizedMap).hereMapContentReferenceToVertex
-
-    val vertices = segments.map(hmcToVertex(_))
+    val vertices = verticesFromPath(optimizedMap)(path)
 
     val location = LinearLocation(vertices)
 
@@ -137,15 +144,20 @@ object OlrCreateReferenceFromHmcSegmentsExample extends App {
     baseClient.shutdown()
   }
 
-  def parseHmcRef(hmcRef: String): HereMapContentReference = {
-    val Array(p, s) = hmcRef.dropRight(1).split("/")
-    HereMapContentReference(
-      partitionId = PartitionId(p),
-      segmentId = SegmentId(s"here:cm:segment:$s"),
-      direction = hmcRef.last match {
-        case '+' => Forward
-        case '-' => Backward
-      }
-    )
+  private def verticesFromPath(optimizedMap: OptimizedMapLayers)(
+      path: Seq[GeoCoordinate]): Seq[Vertex] = {
+    val MatchedPath(results, transitions) = PathMatchers(optimizedMap)
+      .carPathMatcherWithTransitions[GeoCoordinate]
+      .matchPath(path)
+
+    require(results.nonEmpty && results.forall(_.isInstanceOf[OnRoad[_]]))
+    def vertex(result: MatchResult[Vertex]): Option[Vertex] = result match {
+      case OnRoad(ep) => Some(ep.element)
+      case _ => None
+    }
+
+    (vertex(results.head).get +: transitions.flatMap {
+      case Transition(_, to, transition) => transition :+ vertex(results(to)).get
+    }).distinct
   }
 }

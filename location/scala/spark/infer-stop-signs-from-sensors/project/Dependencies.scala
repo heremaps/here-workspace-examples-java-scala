@@ -24,7 +24,7 @@ case class Dependencies(platformBom: Bom) {
   val dependencies: Seq[ModuleID] = Seq(
     "com.here.platform.data.client" %% "local-support" % platformBom excludeAll (
       ExclusionRule(organization = "com.fasterxml.jackson.core"),
-      ExclusionRule(organization = "com.here.platform.data.client", name = "client-core_2.12")
+      ExclusionRule(organization = "com.here.platform.data.client", name = "client-core_2.13")
     ),
     "com.here.hrn" %% "hrn" % platformBom,
     "com.here.platform.data.client" %% "data-client" % platformBom,

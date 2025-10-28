@@ -284,7 +284,7 @@ geographical region.
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.1 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-4.3 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.scala.pedestrian.protobuf.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN
@@ -330,8 +330,8 @@ Different partitions should be present.
 ```
 [INFO] Scala Bindings ..................................... FAILURE
 ...
-[ERROR] Failed to execute goal com.here.platform.schema.maven_plugins:protoc-scala-maven-plugin:0.7.0:scala-protoc-mojo (default) on project model_v2_scala_2.12: Execution default of goal com.here.platform.schema.maven_plugins:protoc-scala-maven-plugin:0.7.0:scala-protoc-mojo failed: Protoc exited with code '1' -> [Help 1]
-org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal com.here.platform.schema.maven_plugins:protoc-scala-maven-plugin:0.7.0:scala-protoc-mojo (default) on project model_v2_scala_2.12: Execution default of goal com.here.platform.schema.maven_plugins:protoc-scala-maven-plugin:0.7.0:scala-protoc-mojo failed: Protoc exited with code '1'
+[ERROR] Failed to execute goal com.here.platform.schema.maven_plugins:protoc-scala-maven-plugin:0.7.0:scala-protoc-mojo (default) on project model_v2_scala_2.13: Execution default of goal com.here.platform.schema.maven_plugins:protoc-scala-maven-plugin:0.7.0:scala-protoc-mojo failed: Protoc exited with code '1' -> [Help 1]
+org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal com.here.platform.schema.maven_plugins:protoc-scala-maven-plugin:0.7.0:scala-protoc-mojo (default) on project model_v2_scala_2.13: Execution default of goal com.here.platform.schema.maven_plugins:protoc-scala-maven-plugin:0.7.0:scala-protoc-mojo failed: Protoc exited with code '1'
 ```
 
 The building of Scala/Java bindings may fail on Windows if a project file's path is longer than 260 characters.

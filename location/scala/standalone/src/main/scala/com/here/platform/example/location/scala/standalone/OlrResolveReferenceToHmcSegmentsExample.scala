@@ -20,15 +20,15 @@
 package com.here.platform.example.location.scala.standalone
 
 import com.here.platform.data.client.base.scaladsl.BaseClient
-
-import java.io.ByteArrayInputStream
+import com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescription
 import com.here.platform.location.inmemory.graph.{Backward, Forward}
 import com.here.platform.location.integration.optimizedmap.dcl2.OptimizedMapCatalog
-import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference
 import com.here.platform.location.integration.optimizedmap.graph.PropertyMaps
+import com.here.platform.location.integration.optimizedmap.{OptimizedMap, OptimizedMapLayers}
 import com.here.platform.location.referencing.{LinearLocation, LocationReferenceResolvers}
 import com.here.platform.location.tpeg2.XmlMarshallers
+import java.io.ByteArrayInputStream
 
 /** This example shows how to take an OLR reference given in XML
   * and to resolve this reference to HERE Map Content references.
@@ -85,8 +85,16 @@ object OlrResolveReferenceToHmcSegmentsExample extends App {
       OptimizedMapCatalog
         .from(OptimizedMap.v2.HRN)
         .usingBaseClient(baseClient)
+        // Retain OLR attributes.
+        // See https://www.here.com/docs/bundle/location-library-developer-guide-java-scala/page/docs/high-level-v2_5.html#retain-only-required-attributes
+        .withTopologyAttributes(
+          TopologyAttributeDescription.RoadUsage,
+          TopologyAttributeDescription.FunctionalClass,
+          TopologyAttributeDescription.PhysicalAttribute,
+          TopologyAttributeDescription.SpecialTrafficAreaCategory
+        )
         .newInstance
-        .version(769L)
+        .version(7521L)
 
     val reference = XmlMarshallers.openLRLocationReference
       .unmarshall(new ByteArrayInputStream(olrReference.getBytes("utf-8")))

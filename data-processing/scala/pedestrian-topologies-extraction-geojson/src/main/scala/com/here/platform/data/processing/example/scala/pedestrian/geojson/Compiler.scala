@@ -35,7 +35,7 @@ import com.here.platform.pipeline.logging.ContextLogging
 import com.here.platform.data.processing.spark.partitioner.{HashPartitioner, Partitioner}
 import com.here.schema.rib.v2.anchor.SegmentAnchor
 import com.here.schema.rib.v2._
-import play.api.libs.json.{JsArray, JsString, Json}
+import play.api.libs.json.{JsString, Json}
 
 import scala.collection.immutable.Seq
 
@@ -85,9 +85,10 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     val orientedSegmentReferences = segmentAnchors.flatMap(_.orientedSegmentRef)
 
     // Get the referred topology partitions
-    val topologyKeys: Set[InKey] = orientedSegmentReferences
-      .map(orientedReference => getTopologyKey(orientedReference.getSegmentRef))(
-        collection.breakOut)
+    val topologyKeys: Set[InKey] =
+      orientedSegmentReferences
+        .map(orientedReference => getTopologyKey(orientedReference.getSegmentRef))
+        .toSet
 
     Map(Refs.TopologyRef -> topologyKeys)
   }
@@ -125,7 +126,8 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
                 && !appliesTo.throughTraffic
                 && !appliesTo.trucks))
       .flatMap(pedestrian => pedestrian.segmentAnchorIndex)
-      .map(roadPartition.segmentAnchor)(collection.breakOut)
+      .map(roadPartition.segmentAnchor)
+      .toSet
 
   /**
     * Gets a map segmentId -> segments for segments fast look-up
@@ -136,14 +138,15 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
   private def getSegmentMap(
       topologyPartitions: Map[InKey, InMeta]): Map[String, topology_geometry.Segment] =
     // Get topologies map
-    topologyPartitions
+    topologyPartitions.iterator
       .flatMap {
         case (key: InKey, meta: InMeta) =>
           topology_geometry_partition.TopologyGeometryPartition
             .parseFrom(retriever.getPayload(key, meta).content)
             .segment
       }
-      .map(segment => segment.identifier -> segment)(collection.breakOut)
+      .map(segment => segment.identifier -> segment)
+      .toMap
 
   /**
     * Given a RoadLayer partition and its references in TopologyLayer returns output key
@@ -197,9 +200,7 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     require(segment.nonEmpty, "Topology not found for the identifier: " + identifier)
 
     val points: Seq[LngLat] = segment
-      .flatMap(
-        _.geometry.map(
-          _.point.map(point => LngLat(point.longitude, point.latitude))(collection.breakOut)))
+      .flatMap(_.geometry.map(_.point.map(point => LngLat(point.longitude, point.latitude)).toSeq))
       .getOrElse(throw new NoSuchElementException(
         "Could not find required data in segment for topology with the identifier: " + identifier))
 
@@ -237,7 +238,7 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     require(intermediate.iterator.hasNext, "Intermediate data cannot be empty in this compiler!")
 
     // Stabilize based on id's and filter partition content
-    val data = intermediate.to[Seq].distinct.sortBy(_.id.get.toString())
+    val data = intermediate.toSeq.distinct.sortBy(_.id.get.toString())
 
     // Build geojson output partition
     val partition = Json.toJson(FeatureCollection[LngLat](data)).toString()

@@ -29,16 +29,18 @@ import com.here.platform.location.core.geospatial.javadsl.LineStringHolder;
 import com.here.platform.location.core.geospatial.javadsl.LineStrings;
 import com.here.platform.location.core.graph.javadsl.DirectedGraph;
 import com.here.platform.location.core.graph.javadsl.PropertyMap;
+import com.here.platform.location.core.mapmatching.MatchResult;
+import com.here.platform.location.core.mapmatching.MatchedPath.Transition;
+import com.here.platform.location.core.mapmatching.OnRoad;
+import com.here.platform.location.core.mapmatching.javadsl.MatchedPath;
 import com.here.platform.location.inmemory.graph.Edge;
 import com.here.platform.location.inmemory.graph.Vertex;
-import com.here.platform.location.inmemory.graph.javadsl.Direction;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
-import com.here.platform.location.integration.optimizedmap.adasattributes.CurvatureHeading;
 import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
-import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.Graphs;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.PropertyMaps;
+import com.here.platform.location.integration.optimizedmap.mapmatching.javadsl.PathMatchers;
 import com.here.platform.location.io.javadsl.Color;
 import com.here.platform.location.io.javadsl.geojson.FeatureCollection;
 import com.here.platform.location.io.javadsl.geojson.SimpleStyleProperties;
@@ -46,25 +48,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import scala.Tuple2;
 
 public final class AdasCurvatureAttributeExample {
 
   public static void main(final String[] args) {
-    List<HereMapContentReference> segments =
-        Arrays.asList(
-            new HereMapContentReference("23598867", "here:cm:segment:154024123", Direction.FORWARD),
-            new HereMapContentReference(
-                "23598867", "here:cm:segment:150551733", Direction.BACKWARD),
-            new HereMapContentReference("23598867", "here:cm:segment:76960691", Direction.BACKWARD),
-            new HereMapContentReference("23598867", "here:cm:segment:150552074", Direction.FORWARD),
-            new HereMapContentReference("23598867", "here:cm:segment:98035021", Direction.BACKWARD),
-            new HereMapContentReference("23598867", "here:cm:segment:87560942", Direction.FORWARD));
-
     final BaseClient baseClient = BaseClientJava.instance();
 
     try {
@@ -72,19 +63,24 @@ public final class AdasCurvatureAttributeExample {
           OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
               .usingBaseClient(baseClient)
               .newInstance()
-              .version(1293L);
+              .version(7647L);
 
       PropertyMaps propertyMaps = new PropertyMaps(optimizedMap);
-      PropertyMap<HereMapContentReference, Vertex> hmcToVertex =
-          propertyMaps.hereMapContentReferenceToVertex();
-
-      List<Vertex> vertices = new ArrayList<>();
-      segments.forEach(segment -> vertices.add(hmcToVertex.get(segment)));
 
       PropertyMaps.AdasAttributes adas = propertyMaps.adasAttributes();
 
       DirectedGraph<Vertex, Edge> graph = new Graphs(optimizedMap).forward();
-
+      List<Vertex> vertices =
+          verticesFromPath(
+              optimizedMap,
+              List.of(
+                  new GeoCoordinate(46.517259, 10.320718),
+                  new GeoCoordinate(46.515857, 10.317518),
+                  new GeoCoordinate(46.517532, 10.315887),
+                  new GeoCoordinate(46.516155, 10.313913),
+                  new GeoCoordinate(46.515014, 10.315184),
+                  new GeoCoordinate(46.514859, 10.316852),
+                  new GeoCoordinate(46.513499, 10.318810)));
       List<Edge> edges = new ArrayList<>();
       for (int n = 0; n < vertices.size() - 1; n++) {
         Vertex source = vertices.get(n);
@@ -106,7 +102,7 @@ public final class AdasCurvatureAttributeExample {
           vertex ->
               featureCollection.lineStringPoints(
                   geometry.get(vertex),
-                  adas.curvatureHeading().get(vertex),
+                  adas.curvature().get(vertex),
                   pointBasedProperty ->
                       new SimpleStyleProperties()
                           .markerColor(toColor(pointBasedProperty.value()))
@@ -126,11 +122,7 @@ public final class AdasCurvatureAttributeExample {
             featureCollection.lineString(
                 new LineString<>(lineString),
                 new SimpleStyleProperties()
-                    .stroke(
-                        adas.edgeCurvatureHeading()
-                            .get(edge)
-                            .map(AdasCurvatureAttributeExample::toColor)
-                            .orElse(Color.BLACK))
+                    .stroke(toColor(adas.edgeCurvature().get(edge)))
                     .strokeWidth(6));
           });
 
@@ -146,13 +138,17 @@ public final class AdasCurvatureAttributeExample {
     }
   }
 
-  private static Color toColor(CurvatureHeading value) {
+  private static Color toColor(int curvature) {
     // Converting curvature value to radius in meters, see:
     // https://developer.here.com/documentation/here-map-content/dev_guide/topics-attributes/curvature.html
-    double radius = abs(1000000.0 / value.getCurvature());
+    double radius = abs(1000000.0 / curvature);
     // Gradient from red to green depending on road curvature radius, considering as green all
     // radius above 150 meters.
     return Color.hsb(min(radius, 150.0), 0.9, 0.8);
+  }
+
+  private static Color toColor(OptionalInt curvature) {
+    return curvature.isEmpty() ? Color.BLACK : toColor(curvature.getAsInt());
   }
 
   private static LineStringHolder<GeoCoordinate> lineStringPart(
@@ -173,5 +169,33 @@ public final class AdasCurvatureAttributeExample {
     File outputDir = new File(System.getProperty("java.io.tmpdir"), "example_output");
     outputDir.mkdir();
     return new File(outputDir, clazz.getCanonicalName() + ".json");
+  }
+
+  public static List<Vertex> verticesFromPath(
+      OptimizedMapLayers optimizedMap, List<GeoCoordinate> path) {
+    MatchedPath<Vertex, List<Vertex>> matchedPath =
+        new PathMatchers(optimizedMap)
+            .<GeoCoordinate>carPathMatcherWithTransitions()
+            .matchPath(path);
+    List<MatchResult<Vertex>> results = matchedPath.results();
+    List<Transition<List<Vertex>>> transitions = matchedPath.transitions();
+
+    if (results.isEmpty() || !results.stream().allMatch(r -> r instanceof OnRoad))
+      throw new IllegalArgumentException();
+
+    Stream<Vertex> firstVertex = Stream.of(vertex(results.get(0)));
+    Stream<Vertex> transitionVertices =
+        transitions
+            .stream()
+            .flatMap(
+                transition ->
+                    Stream.concat(
+                        transition.value().stream(),
+                        Stream.of(vertex(results.get(transition.to())))));
+    return Stream.concat(firstVertex, transitionVertices).distinct().collect(Collectors.toList());
+  }
+
+  private static Vertex vertex(MatchResult<Vertex> result) {
+    return ((OnRoad<Vertex>) result).elementProjection().element();
   }
 }

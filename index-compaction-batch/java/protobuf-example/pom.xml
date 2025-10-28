@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.here.platform.index.compaction.batch</groupId>
     <artifactId>index-compaction-batch-protobuf-example</artifactId>
-    <version>0.0.974</version>
+    <version>0.0.977</version>
     <packaging>jar</packaging>
 
     <name>Index Compaction Batch Protobuf Example</name>
@@ -24,15 +24,15 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.79.3</tag>
+        <tag>2.80.2</tag>
     </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
 
-        <sdk-bom.version>2.79.3</sdk-bom.version>
-        <scala.compat.version>2.12</scala.compat.version>
+        <sdk-bom.version>2.80.2</sdk-bom.version>
+        <scala.compat.version>2.13</scala.compat.version>
         <artifact.wagon.version>2.0.27</artifact.wagon.version>
 
         <junit.version>4.12</junit.version>
@@ -211,22 +211,22 @@
                 </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-network-common_2.12</artifactId>
+                    <artifactId>spark-network-common_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-network-shuffle_2.12</artifactId>
+                    <artifactId>spark-network-shuffle_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-launcher_2.12</artifactId>
+                    <artifactId>spark-launcher_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-kvstore_2.12</artifactId>
+                    <artifactId>spark-kvstore_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
@@ -241,17 +241,17 @@
                 </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-catalyst_2.12</artifactId>
+                    <artifactId>spark-catalyst_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-unsafe_2.12</artifactId>
+                    <artifactId>spark-unsafe_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-tags_2.12</artifactId>
+                    <artifactId>spark-tags_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
@@ -334,7 +334,7 @@
                 </dependency>
                 <dependency>
                     <groupId>com.twitter</groupId>
-                    <artifactId>chill_2.12</artifactId>
+                    <artifactId>chill_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
@@ -399,12 +399,12 @@
                 </dependency>
                 <dependency>
                     <groupId>org.json4s</groupId>
-                    <artifactId>json4s-scalap_2.12</artifactId>
+                    <artifactId>json4s-scalap_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>com.fasterxml.jackson.module</groupId>
-                    <artifactId>jackson-module-scala_2.12</artifactId>
+                    <artifactId>jackson-module-scala_2.13</artifactId>
                     <scope>compile</scope>
                 </dependency>
                 <dependency>

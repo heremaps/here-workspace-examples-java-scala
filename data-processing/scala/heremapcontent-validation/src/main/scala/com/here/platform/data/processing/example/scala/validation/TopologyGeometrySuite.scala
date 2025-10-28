@@ -64,7 +64,7 @@ class TopologyGeometrySuite extends AnyFlatSpec with Bindings[TopologyGeometryDa
   ) {
     private val cache = collection.mutable.Map.empty[String, Map[String, T]]
     private def createLookup(objs: Seq[T]): Map[String, T] =
-      objs.groupBy(extractIdentifier).mapValues(_.head)
+      objs.groupBy(extractIdentifier).view.mapValues(_.head).toMap
 
     def get(partitionName: String, identifier: String): Option[T] =
       cache

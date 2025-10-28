@@ -19,18 +19,21 @@
 
 package com.here.platform.example.location.java.standalone;
 
-import static java.util.Arrays.asList;
-
 import com.here.platform.data.client.base.javadsl.BaseClient;
 import com.here.platform.data.client.base.javadsl.BaseClientJava;
+import com.here.platform.location.compilation.heremapcontent.TopologyAttributeDescription;
+import com.here.platform.location.core.geospatial.GeoCoordinate;
 import com.here.platform.location.core.graph.javadsl.PropertyMap;
+import com.here.platform.location.core.mapmatching.MatchResult;
+import com.here.platform.location.core.mapmatching.OnRoad;
+import com.here.platform.location.core.mapmatching.javadsl.MatchedPath;
 import com.here.platform.location.inmemory.graph.Vertex;
-import com.here.platform.location.inmemory.graph.javadsl.Direction;
 import com.here.platform.location.integration.optimizedmap.OptimizedMap;
 import com.here.platform.location.integration.optimizedmap.OptimizedMapLayers;
 import com.here.platform.location.integration.optimizedmap.dcl2.javadsl.OptimizedMapCatalog;
 import com.here.platform.location.integration.optimizedmap.geospatial.HereMapContentReference;
 import com.here.platform.location.integration.optimizedmap.graph.javadsl.PropertyMaps;
+import com.here.platform.location.integration.optimizedmap.mapmatching.javadsl.PathMatchers;
 import com.here.platform.location.referencing.LinearLocation;
 import com.here.platform.location.referencing.LocationReferenceCreator;
 import com.here.platform.location.referencing.javadsl.LocationReferenceCreators;
@@ -44,6 +47,7 @@ import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * This example shows how to take a path given as HERE Map Content references and create an OLR
@@ -52,86 +56,91 @@ import java.util.stream.Collectors;
 public final class OlrCreateReferenceFromHmcSegmentsExample {
 
   public static void main(final String[] args) throws FileNotFoundException {
+    final List<GeoCoordinate> path =
+        List.of(
+            new GeoCoordinate(52.526323, 13.368411),
+            new GeoCoordinate(52.526055, 13.367710),
+            new GeoCoordinate(52.525940, 13.367385),
+            new GeoCoordinate(52.525815, 13.366990),
+            new GeoCoordinate(52.525677, 13.366529),
+            new GeoCoordinate(52.525492, 13.365993),
+            new GeoCoordinate(52.524971, 13.364546),
+            new GeoCoordinate(52.524525, 13.363130),
+            new GeoCoordinate(52.524420, 13.362815),
+            new GeoCoordinate(52.524237, 13.362253),
+            new GeoCoordinate(52.523935, 13.361275),
+            new GeoCoordinate(52.523740, 13.360635),
+            new GeoCoordinate(52.523589, 13.360122),
+            new GeoCoordinate(52.523582, 13.358712),
+            new GeoCoordinate(52.523705, 13.357395),
+            new GeoCoordinate(52.523735, 13.356985),
+            new GeoCoordinate(52.523660, 13.356810),
+            new GeoCoordinate(52.523216, 13.356674),
+            new GeoCoordinate(52.521860, 13.356260),
+            new GeoCoordinate(52.520269, 13.355715),
+            new GeoCoordinate(52.519508, 13.355407),
+            new GeoCoordinate(52.519186, 13.355312),
+            new GeoCoordinate(52.518710, 13.355185),
+            new GeoCoordinate(52.518235, 13.355025),
+            new GeoCoordinate(52.517683, 13.354852),
+            new GeoCoordinate(52.517210, 13.354645),
+            new GeoCoordinate(52.516859, 13.354292),
+            new GeoCoordinate(52.516293, 13.353042),
+            new GeoCoordinate(52.515802, 13.351872),
+            new GeoCoordinate(52.515331, 13.351070),
+            new GeoCoordinate(52.515166, 13.350226),
+            new GeoCoordinate(52.515141, 13.349736),
+            new GeoCoordinate(52.514928, 13.349263),
+            new GeoCoordinate(52.514695, 13.349055),
+            new GeoCoordinate(52.514412, 13.349066),
+            new GeoCoordinate(52.514060, 13.349293),
+            new GeoCoordinate(52.513897, 13.349654),
+            new GeoCoordinate(52.513855, 13.349940),
+            new GeoCoordinate(52.512909, 13.350431),
+            new GeoCoordinate(52.511146, 13.350882),
+            new GeoCoordinate(52.510010, 13.351145),
+            new GeoCoordinate(52.509574, 13.350733),
+            new GeoCoordinate(52.509402, 13.350056),
+            new GeoCoordinate(52.508974, 13.349522),
+            new GeoCoordinate(52.507996, 13.348989),
+            new GeoCoordinate(52.507321, 13.348056),
+            new GeoCoordinate(52.506886, 13.346848),
+            new GeoCoordinate(52.506658, 13.345701),
+            new GeoCoordinate(52.506535, 13.345075),
+            new GeoCoordinate(52.506234, 13.343588),
+            new GeoCoordinate(52.505904, 13.341960),
+            new GeoCoordinate(52.505485, 13.341235),
+            new GeoCoordinate(52.505235, 13.341035),
+            new GeoCoordinate(52.505368, 13.340400),
+            new GeoCoordinate(52.505356, 13.339351),
+            new GeoCoordinate(52.505198, 13.338267),
+            new GeoCoordinate(52.505286, 13.335972),
+            new GeoCoordinate(52.505549, 13.333957),
+            new GeoCoordinate(52.505935, 13.333118),
+            new GeoCoordinate(52.506275, 13.332450),
+            new GeoCoordinate(52.506569, 13.331741),
+            new GeoCoordinate(52.507877, 13.332180));
+
     final BaseClient baseClient = BaseClientJava.instance();
     final OptimizedMapLayers optimizedMap =
         OptimizedMapCatalog.from(OptimizedMap.v2.HRN)
             .usingBaseClient(baseClient)
+            // Retain OLR attributes.
+            // See
+            // https://www.here.com/docs/bundle/location-library-developer-guide-java-scala/page/docs/high-level-v2_5.html#retain-only-required-attributes
+            .withTopologyAttributes(
+                TopologyAttributeDescription.RoadUsage(),
+                TopologyAttributeDescription.FunctionalClass(),
+                TopologyAttributeDescription.PhysicalAttribute(),
+                TopologyAttributeDescription.SpecialTrafficAreaCategory())
             .newInstance()
-            .version(769L);
+            .version(7521L);
 
     try {
-      final List<String> segmentStrings =
-          asList(
-              "23618402/192867771+",
-              "23618402/190690930-",
-              "23618402/101695256-",
-              "23618402/87970589-",
-              "23618402/87981292-",
-              "23618402/87981291-",
-              "23618402/779616973-",
-              "23618402/779617453-",
-              "23618402/88153132-",
-              "23618402/78021962-",
-              "23618402/78021961-",
-              "23618402/82451780-",
-              "23618402/86519396-",
-              "23618402/190459526-",
-              "23618359/94455601-",
-              "23618359/94823702-",
-              "23618359/94476820-",
-              "23618359/103954050-",
-              "23618359/95647469-",
-              "23618359/157157401-",
-              "23618359/783973312-",
-              "23618359/783976431-",
-              "23618359/484177650+",
-              "23618359/81626947-",
-              "23618359/182595729-",
-              "23618359/192256710-",
-              "23618359/105169214+",
-              "23618359/102022769-",
-              "23618359/78758076-",
-              "23618359/93979650-",
-              "23618359/192336062-",
-              "23618359/100422521-",
-              "23618359/83634003-",
-              "23618359/80415973-",
-              "23618359/805793032-",
-              "23618359/791530650+",
-              "23618359/203894554-",
-              "23618359/77179756-",
-              "23618359/77833225-",
-              "23618359/195404089-",
-              "23618359/86896561-",
-              "23618359/95356471-",
-              "23618359/87921793-",
-              "23618359/196013524+",
-              "23618359/84734148-",
-              "23618359/208151869-",
-              "23618359/159034659-",
-              "23618359/98034107-",
-              "23618359/91955672+",
-              "23618359/85912316+",
-              "23618359/605536826+",
-              "23618359/788742068+",
-              "23618359/195423613-",
-              "23618359/99880420+",
-              "23618359/88072134+",
-              "23618359/79293249+",
-              "23618359/182750790-",
-              "23618359/203288051-");
-
-      final List<HereMapContentReference> segments =
-          segmentStrings
-              .stream()
-              .map(OlrCreateReferenceFromHmcSegmentsExample::parseHmcRef)
-              .collect(Collectors.toList());
-
       final PropertyMap<HereMapContentReference, Vertex> hmcToVertex =
           new PropertyMaps(optimizedMap).hereMapContentReferenceToVertex();
 
-      final List<Vertex> vertices =
-          segments.stream().map(hmcToVertex::get).collect(Collectors.toList());
+      final List<Vertex> vertices = verticesFromPath(optimizedMap, path);
 
       final LinearLocation location = new LinearLocation(vertices, 0, 1);
 
@@ -159,12 +168,32 @@ public final class OlrCreateReferenceFromHmcSegmentsExample {
     }
   }
 
-  private static HereMapContentReference parseHmcRef(final String hmcRef) {
-    final String[] components = hmcRef.substring(0, hmcRef.length() - 1).split("/");
+  public static List<Vertex> verticesFromPath(
+      OptimizedMapLayers optimizedMap, List<GeoCoordinate> path) {
+    MatchedPath<Vertex, List<Vertex>> matchedPath =
+        new PathMatchers(optimizedMap)
+            .<GeoCoordinate>carPathMatcherWithTransitions()
+            .matchPath(path);
+    List<MatchResult<Vertex>> results = matchedPath.results();
+    List<com.here.platform.location.core.mapmatching.MatchedPath.Transition<List<Vertex>>>
+        transitions = matchedPath.transitions();
 
-    return new HereMapContentReference(
-        components[0],
-        "here:cm:segment:" + components[1],
-        hmcRef.endsWith("-") ? Direction.BACKWARD : Direction.FORWARD);
+    if (results.isEmpty() || !results.stream().allMatch(r -> r instanceof OnRoad))
+      throw new IllegalArgumentException();
+
+    Stream<Vertex> firstVertex = Stream.of(vertex(results.get(0)));
+    Stream<Vertex> transitionVertices =
+        transitions
+            .stream()
+            .flatMap(
+                transition ->
+                    Stream.concat(
+                        transition.value().stream(),
+                        Stream.of(vertex(results.get(transition.to())))));
+    return Stream.concat(firstVertex, transitionVertices).distinct().collect(Collectors.toList());
+  }
+
+  private static Vertex vertex(MatchResult<Vertex> result) {
+    return ((OnRoad<Vertex>) result).elementProjection().element();
   }
 }
