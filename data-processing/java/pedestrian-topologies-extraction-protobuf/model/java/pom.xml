@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.here.platform.schema.data.processing.example.java.pedestrian.protobuf</groupId>
     <artifactId>model_v2</artifactId>
-    <version>0.0.977</version>
+    <version>0.0.983</version>
   </parent>
 
   <artifactId>model_v2_java</artifactId>
@@ -28,7 +28,7 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.80.2</tag>
+    <tag>2.81.5</tag>
   </scm>
 
   <dependencies>
@@ -81,30 +81,27 @@
       </plugin>
 
       <plugin>
-        <groupId>com.github.os72</groupId>
-        <artifactId>protoc-jar-maven-plugin</artifactId>
-        <version>3.11.4</version>
+        <groupId>io.github.ascopes</groupId>
+        <artifactId>protobuf-maven-plugin</artifactId>
+        <version>3.6.0</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
             <goals>
-              <goal>run</goal>
+              <goal>generate</goal>
             </goals>
-            <configuration>
-              <protocVersion>${protoc.version}</protocVersion>
-
-              <inputDirectories>
-                <include>${project.build.directory}/proto</include>
-              </inputDirectories>
-
-              <includeDirectories>
-                <include>${project.build.directory}/proto-lib</include>
-              </includeDirectories>
-
-              <includeStdTypes>true</includeStdTypes>
-            </configuration>
           </execution>
         </executions>
+        <configuration>
+          <protocVersion>${protoc.version}</protocVersion>
+          <sourceDirectories>
+            <sourceDirectory>${project.build.directory}/proto</sourceDirectory>
+          </sourceDirectories>
+          <importPaths>
+            <importPath>${project.build.directory}/proto-lib</importPath>
+            <importPath>${project.build.directory}/proto</importPath>
+          </importPaths>
+        </configuration>
       </plugin>
 
       <plugin>

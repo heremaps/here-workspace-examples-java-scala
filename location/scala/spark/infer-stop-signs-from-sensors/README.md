@@ -70,6 +70,9 @@ tutorial.
 
 ## Build and Run the Compiler
 
+To configure your SBT project and ensure all HERE SDK dependencies resolve correctly,
+please follow the official [HERE Workspace Developer Guide – Dependency Management](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/topics/dependency-management.html#bom-files-in-sbt-projects).
+
 In the commands that follow, replace the variable placeholders with the following values:
 
 - `$PROJECT_HRN` is your project's `HRN` (returned by the `olp project create` command).
@@ -271,7 +274,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.3 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-5.0 $PATH_TO_JAR \
                 com.here.platform.example.location.scala.spark.InferStopSignsFromSensorsExample \
                 --input-catalog-ids="$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
                 --scope $PROJECT_HRN

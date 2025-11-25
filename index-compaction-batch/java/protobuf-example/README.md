@@ -180,7 +180,7 @@ Execute the following command in the [protobuf-example](../protobuf-example) dir
 
 ```bash
 mvn compile -q exec:exec \
--Dexec.args="-cp %classpath --add-opens java.base/sun.nio.ch=ALL-UNNAMED com.here.platform.index.compaction.batch.Main" \
+-Dexec.args="-cp %classpath --add-opens=java.base/sun.nio.ch=ALL-UNNAMED com.here.platform.index.compaction.batch.Main" \
 -Padd-dependencies-for-local-run
 ```
 
@@ -423,7 +423,7 @@ Use the [`olp pipeline template create`](https://developer.here.com/documentatio
 
 ```bash
 olp pipeline template create $PIPELINE_TEMPLATE_NAME \
-    batch-4.3  \
+    batch-5.0  \
     $PATH_TO_JAR \
     com.here.platform.index.compaction.batch.Driver \
     --input-catalog-ids=source \

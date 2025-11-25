@@ -18,14 +18,14 @@
  */
 package com.here.platform.index.compaction.batch;
 
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-import javax.activation.UnsupportedDataTypeException;
 
 public class Main {
 
   public static void main(String[] args)
       throws InterruptedException, ExecutionException, ClassNotFoundException,
-          InstantiationException, IllegalAccessException, UnsupportedDataTypeException {
+          InstantiationException, IllegalAccessException, IOException {
     Driver.main(new String[] {"--localSparkMaster"});
   }
 }

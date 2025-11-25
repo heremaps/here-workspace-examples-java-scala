@@ -427,7 +427,7 @@ Use the [`olp pipeline template create`](https://developer.here.com/documentatio
 
 ```bash
 olp pipeline template create $PIPELINE_TEMPLATE_NAME \
-    batch-4.3  \
+    batch-5.0  \
     $PATH_TO_JAR \
     com.here.platform.index.compaction.batch.Driver \
     --input-catalog-ids=source \

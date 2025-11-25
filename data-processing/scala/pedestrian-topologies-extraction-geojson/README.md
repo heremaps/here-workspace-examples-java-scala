@@ -26,6 +26,9 @@ For more details on how to verify that your platform credentials are configured 
 
 ## Build and Run the Compiler
 
+To configure your SBT project and ensure all HERE SDK dependencies resolve correctly,
+please follow the official [HERE Workspace Developer Guide – Dependency Management](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/topics/dependency-management.html#bom-files-in-sbt-projects).
+
 In the commands that follow, replace the variable placeholders with the following values:
 
 - `$CATALOG_ID` is your output catalog's ID.
@@ -265,7 +268,7 @@ geographical region.
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-4.3 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-5.0 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.scala.pedestrian.geojson.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN
