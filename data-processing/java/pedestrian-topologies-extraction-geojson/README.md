@@ -7,7 +7,7 @@ particular input catalog.
 In this example, the incremental [RefTreeCompiler](https://developer.here.com/documentation/data-processing-library/dev_guide/topics/functional-patterns.html#reftreecompiler) functional pattern is used,
 since this pattern covers use cases when some input partitions have references to other input partitions that should be resolved to process the subjects fully.
 
-The implemented compiler takes HERE Map Content input data from the `road-attributes` and `topology-geometry` layer, finds all pedestrian topologies, and produces output
+The implemented compiler takes HERE Map Content input data from the `topology-attributes` and `topology-geometry` layer, finds all pedestrian topologies, and produces output
 tiles in GeoJSON Format. The output of this compiler is the `pedestriansegments` layer GeoJSON
 HEREtile format.
 
@@ -242,7 +242,7 @@ Alternatively, you can use the catalog's HRN from the OLP CLI output from
 
 The `config/here/pipeline-job.conf` file contains the compiler's run configuration.
 
-In this file, modify `version = 1` to reflect the version of the HERE Map Content catalog you want
+In this file, modify `version = 8185` to reflect the version of the HERE Map Content catalog you want
 to process. To find the version of the HERE Map Content catalog, in the
 [HERE platform portal](https://platform.here.com/),
 navigate to the HERE Map Content catalog, and view the current catalog's version in the Catalog info section.

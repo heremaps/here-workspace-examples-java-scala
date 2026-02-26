@@ -56,7 +56,7 @@ class Defs {
   static class In {
 
     static final String RIB_CATALOG = "rib";
-    static final String ROAD_LAYER = "road-attributes";
+    static final String ROAD_LAYER = "topology-attributes";
     static final String TOPOLOGY_LAYER = "topology-geometry";
 
     private In() {}

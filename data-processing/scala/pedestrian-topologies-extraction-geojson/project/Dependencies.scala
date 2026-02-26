@@ -22,7 +22,7 @@ import com.here.bom.Bom
 
 case class Dependencies(platformBom: Bom) {
   val dependencies: Seq[ModuleID] = Seq(
-    "com.here.schema.rib" %% "road-attributes_v2_scala" % platformBom,
+    "com.here.schema.rib" %% "topology-attributes_v2_scala" % platformBom,
     "com.here.schema.rib" %% "topology-geometry_v2_scala" % platformBom,
     "au.id.jazzy" %% "play-geojson" % "1.7.0",
     "com.typesafe.play" %% "play-json" % "2.8.1" excludeAll (ExclusionRule(

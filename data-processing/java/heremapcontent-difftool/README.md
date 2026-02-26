@@ -113,12 +113,12 @@ job-specific versions of the catalogs, to read and write to.
 The example project provides two template job configurations, [`config/here/pipeline-job-first.conf`](config/here/pipeline-job-first.conf) and
 [`config/here/pipeline-job-second.conf`](config/here/pipeline-job-second.conf) for the first and second run of the pipeline, respectively.
 
-[`pipeline-job-first.conf`](config/here/pipeline-job-first.conf) specifies in the line `version = 1` that the version 1 of the input
+[`pipeline-job-first.conf`](config/here/pipeline-job-first.conf) specifies in the line `version = 7900` that the version 7900 of the input
 catalog should be processed in the first run. You can change this version to any number between 0
 and the most recent version of the HERE Map Content catalog. You can find the most recent version by
 opening the [HERE platform portal](https://platform.here.com/) and navigating to the `HERE Map Content` catalog, and viewing the current catalog's version in the `Catalog info` section.
 
-[`pipeline-job-second.conf`](config/here/pipeline-job-second.conf) specifies in the line `version = 2` that version 2 of the input
+[`pipeline-job-second.conf`](config/here/pipeline-job-second.conf) specifies in the line `version = 8185` that version 8185 of the input
 catalog should be processed in the second run. You can change this version to any number that is
 less than or equal to the most recent version of the HERE Map Content catalog and greater than the version
 specified in [`config/here/pipeline-job-first.conf`](config/here/pipeline-job-first.conf).
@@ -293,12 +293,12 @@ compiler on.
 The example project provides two template job configurations, `config/here/pipeline-job-first.conf` and
 `config/here/pipeline-job-second.conf` for the first and second run of the pipeline, respectively.
 
-`pipeline-job-first.conf` specifies in the line `version = 1` that the version 1 of the input
+`pipeline-job-first.conf` specifies in the line `version = 7900` that the version 7900 of the input
 catalog should be processed in the first run. You can change this version to any number between 0
 and the most recent version of the HERE Map Content catalog. You can find the most recent version by
 opening the [HERE platform portal](https://platform.here.com/) and navigating to the HERE Map Content catalog, and viewing the current catalog's version in the Catalog info section.
 
-`pipeline-job-second.conf` specifies in the line `version = 2` that version 2 of the input
+`pipeline-job-second.conf` specifies in the line `version = 8185` that version 8185 of the input
 catalog should be processed in the second run. You can change this version to any number that is
 less or equal the most recent version of the HERE Map Content catalog and greater than the version
 specified in `pipeline-job-first.conf`.

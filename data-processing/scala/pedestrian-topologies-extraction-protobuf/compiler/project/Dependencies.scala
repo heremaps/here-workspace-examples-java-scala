@@ -22,7 +22,7 @@ import com.here.bom.Bom
 
 case class Dependencies(platformBom: Bom) {
   val dependencies: Seq[ModuleID] = Seq(
-    "com.here.schema.rib" %% "road-attributes_v2_scala" % platformBom,
+    "com.here.schema.rib" %% "topology-attributes_v2_scala" % platformBom,
     "com.here.schema.rib" %% "topology-geometry_v2_scala" % platformBom,
     "com.here.platform.data.processing" %% "pipeline-runner" % platformBom,
     "com.here.platform.data.processing" %% "batch-catalog-dataservice" % platformBom,
@@ -31,7 +31,7 @@ case class Dependencies(platformBom: Bom) {
     "commons-io" % "commons-io" % platformBom,
     "org.apache.spark" %% "spark-core" % platformBom,
 //    output data schema
-    "com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf" %% "model_v2_scala" % "0.0.990"
+    "com.here.platform.schema.data.processing.example.scala.pedestrian.protobuf" %% "model_v2_scala" % "0.0.995"
   )
 
   val allDependencies: Seq[ModuleID] = platformBom.bomDependencies

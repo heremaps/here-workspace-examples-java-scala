@@ -28,7 +28,7 @@ import com.here.platform.data.processing.driver.deltasets.Resolver
 import com.here.platform.pipeline.logging.ContextLogging
 import com.here.schema.rib.v2._
 import com.here.schema.rib.v2.anchor.SegmentAnchor
-import com.here.schema.rib.v2.road_attributes_partition.RoadAttributesPartition
+import com.here.schema.rib.v2.topology_attributes_partition.TopologyAttributesPartition
 import com.here.schema.rib.v2.topology_geometry.Segment
 import com.here.schema.rib.v2.topology_geometry_partition.TopologyGeometryPartition
 import play.api.libs.json.{JsObject, JsString, Json}
@@ -51,7 +51,7 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
                                 roadMeta: Meta): List[Feature[LngLat]] = {
     // Read road partition
     val roadTile =
-      RoadAttributesPartition.parseFrom(retriever.getPayload(roadKey, roadMeta).content)
+      TopologyAttributesPartition.parseFrom(retriever.getPayload(roadKey, roadMeta).content)
     val segmentAnchors = getPedestrianSegmentAnchors(roadTile)
 
     if (segmentAnchors.nonEmpty) {
@@ -141,7 +141,8 @@ class Compiler(config: CompilerConfig, retriever: Retriever)
     * @return A stream of pedestrian segment anchors.
     */
   private def getPedestrianSegmentAnchors(
-      roadPartition: road_attributes_partition.RoadAttributesPartition): List[SegmentAnchor] =
+      roadPartition: topology_attributes_partition.TopologyAttributesPartition)
+      : List[SegmentAnchor] =
     roadPartition.accessibleBy
       .filter(
         access =>

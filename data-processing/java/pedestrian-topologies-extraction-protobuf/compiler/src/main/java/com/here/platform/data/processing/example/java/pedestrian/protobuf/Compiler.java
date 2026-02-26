@@ -150,7 +150,7 @@ public class Compiler
    * @return a stream of pedestrian segment anchors
    */
   private Stream<Anchor.SegmentAnchor> getPedestrianSegmentAnchors(
-      RoadAttributesPartitionOuterClass.RoadAttributesPartition roadPartition) {
+      TopologyAttributesPartitionOuterClass.TopologyAttributesPartition roadPartition) {
 
     return roadPartition
         .getAccessibleByList()
@@ -184,8 +184,8 @@ public class Compiler
     try {
 
       // Read subject partition
-      RoadAttributesPartitionOuterClass.RoadAttributesPartition roadPartition =
-          RoadAttributesPartitionOuterClass.RoadAttributesPartition.parseFrom(
+      TopologyAttributesPartitionOuterClass.TopologyAttributesPartition roadPartition =
+          TopologyAttributesPartitionOuterClass.TopologyAttributesPartition.parseFrom(
               retriever.getPayload(src.getKey(), src.getValue()).content());
 
       // Get segment anchors
@@ -287,8 +287,8 @@ public class Compiler
       Map<String, TopologyGeometry.Segment> polyLines = getSegmentMap(refs);
 
       // Read subject partition
-      RoadAttributesPartitionOuterClass.RoadAttributesPartition roadPartition =
-          RoadAttributesPartitionOuterClass.RoadAttributesPartition.parseFrom(
+      TopologyAttributesPartitionOuterClass.TopologyAttributesPartition roadPartition =
+          TopologyAttributesPartitionOuterClass.TopologyAttributesPartition.parseFrom(
               retriever.getPayload(roadMeta.getKey(), roadMeta.getValue()).content());
 
       // Get pedestrian intermediate data

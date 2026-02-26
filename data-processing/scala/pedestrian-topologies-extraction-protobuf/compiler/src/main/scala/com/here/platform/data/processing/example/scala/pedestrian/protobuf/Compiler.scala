@@ -82,7 +82,7 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     // Read subject partition
     val (key, meta) = src
     val roadPartition =
-      road_attributes_partition.RoadAttributesPartition
+      topology_attributes_partition.TopologyAttributesPartition
         .parseFrom(retriever.getPayload(key, meta).content)
 
     // Get segment anchors
@@ -116,7 +116,8 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
     * @return a collection of pedestrian segment anchors
     */
   private def getPedestrianSegmentAnchors(
-      roadPartition: road_attributes_partition.RoadAttributesPartition): Set[SegmentAnchor] =
+      roadPartition: topology_attributes_partition.TopologyAttributesPartition)
+      : Set[SegmentAnchor] =
     roadPartition.accessibleBy
       .filter(
         access =>
@@ -158,7 +159,7 @@ class Compiler(ctx: DriverContext, cfg: CompilerConfig)
       // Read subject partition
       val (key, meta) = roadMeta
       val roadPartition =
-        road_attributes_partition.RoadAttributesPartition
+        topology_attributes_partition.TopologyAttributesPartition
           .parseFrom(retriever.getPayload(key, meta).content)
 
       // Get pedestrian intermediate data

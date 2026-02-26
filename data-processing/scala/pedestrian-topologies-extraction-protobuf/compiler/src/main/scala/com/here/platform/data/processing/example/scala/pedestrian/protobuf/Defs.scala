@@ -42,7 +42,7 @@ object Defs {
     */
   object In {
     val RibCatalog = Catalog.Id("rib")
-    val RoadLayer = Layer.Id("road-attributes")
+    val RoadLayer = Layer.Id("topology-attributes")
     val TopologyLayer = Layer.Id("topology-geometry")
   }
 

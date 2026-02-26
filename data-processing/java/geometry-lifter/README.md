@@ -237,7 +237,7 @@ The HRN is displayed in the upper left corner of the page.
 The `config/here/pipeline-job.conf` file
 contain the compiler's run configuration.
 
-In this file, modify `version = 1` to reflect the version of the HERE Map Content catalog you want
+In this file, modify `version = 8185` to reflect the version of the HERE Map Content catalog you want
 to process. To find the version of the HERE Map Content catalog, in the
 [HERE platform](https://platform.here.com/),
 navigate to the HERE Map Content catalog, and view the current catalog's version in the Catalog info section.
