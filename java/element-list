@@ -155,6 +155,7 @@ com.here.platform.location.integration.optimizedmap.adasattributes
 com.here.platform.location.integration.optimizedmap.adasattributes.javadsl
 com.here.platform.location.integration.optimizedmap.advancednavigationattributes
 com.here.platform.location.integration.optimizedmap.advancednavigationattributes.javadsl
+com.here.platform.location.integration.optimizedmap.capabilities
 com.here.platform.location.integration.optimizedmap.commonattributes
 com.here.platform.location.integration.optimizedmap.commonattributes.javadsl
 com.here.platform.location.integration.optimizedmap.dcl2
