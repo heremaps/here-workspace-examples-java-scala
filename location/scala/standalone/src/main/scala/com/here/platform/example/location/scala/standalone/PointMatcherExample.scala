@@ -89,7 +89,7 @@ object PointMatcherExample extends App {
     val Blue = Color("#76bde8")
 
     def loadTripFromCSVResource(s: String): Seq[Point] =
-      CSVReader.open(new InputStreamReader(getClass.getResourceAsStream(s))).all.map {
+      CSVReader.open(new InputStreamReader(getClass.getResourceAsStream(s))).all().map {
         case List(lat, lon) => new Point(lat.toDouble, lon.toDouble)
         case _ => throw new IllegalArgumentException
       }

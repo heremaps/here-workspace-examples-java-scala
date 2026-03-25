@@ -23,8 +23,8 @@ import com.here.hrn.HRN;
 import com.here.platform.data.client.flink.javadsl.FlinkDataClient;
 import com.here.platform.data.client.javadsl.Partition;
 import com.here.sdii.v3.SdiiMessage.Message;
+import org.apache.flink.api.common.functions.OpenContext;
 import org.apache.flink.api.common.functions.RichMapFunction;
-import org.apache.flink.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +40,7 @@ public class SdiiMessageMapFunction extends RichMapFunction<Partition, Message> 
   }
 
   @Override
-  public void open(final Configuration parameters) {
+  public void open(final OpenContext context) {
     flinkDataClient = new FlinkDataClient();
   }
 

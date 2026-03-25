@@ -33,6 +33,8 @@ import com.here.sdii.v3.SdiiMessage;
 import com.twitter.chill.protobuf.ProtobufSerializer;
 import java.time.Duration;
 import java.util.UUID;
+import org.apache.flink.api.common.eventtime.WatermarkStrategy;
+import org.apache.flink.api.common.serialization.SerializerConfigImpl;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,20 +61,22 @@ public final class StreamPathMatcherExample {
 
       final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-      env.getConfig()
-          .getSerializerConfig()
-          .registerTypeWithKryoSerializer(SdiiMessage.Message.class, ProtobufSerializer.class);
-      env.getConfig()
-          .getSerializerConfig()
-          .registerTypeWithKryoSerializer(None$.class, ScalaNoneSerializer.class);
+      SerializerConfigImpl serializerConfig =
+          (SerializerConfigImpl) env.getConfig().getSerializerConfig();
+
+      serializerConfig.registerTypeWithKryoSerializer(
+          SdiiMessage.Message.class, ProtobufSerializer.class);
+      serializerConfig.registerTypeWithKryoSerializer(None$.class, ScalaNoneSerializer.class);
       env.enableCheckpointing(CHECKPOINT_INTERVAL.toMillis());
 
-      env.addSource(
+      env.fromSource(
               queryApi.subscribe(
                   inputCatalogLayerName,
                   new ConsumerSettings.Builder()
                       .withGroupName("StreamPathMatcherExample-" + UUID.randomUUID())
-                      .build()))
+                      .build()),
+              WatermarkStrategy.noWatermarks(),
+              "read_sdii_message")
           .name("read_sdii_message")
           .map(new SdiiMessageMapFunction(inputCatalogHRN))
           .name("parse_sdii_message")
@@ -92,7 +96,7 @@ public final class StreamPathMatcherExample {
                         .build();
               })
           .name("create_partition_from_mapmatch_result")
-          .addSink(writeEngine.publish());
+          .sinkTo(writeEngine.publish());
 
       env.execute("Map match SDII events");
     } finally {

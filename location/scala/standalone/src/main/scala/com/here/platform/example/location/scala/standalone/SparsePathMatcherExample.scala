@@ -75,7 +75,7 @@ object SparsePathMatcherExample extends App {
     import com.here.platform.location.core.graph.PropertyMap
 
     def loadTripFromCSVResource(s: String): Seq[GeoCoordinate] =
-      CSVReader.open(new InputStreamReader(getClass.getResourceAsStream(s))).all.map {
+      CSVReader.open(new InputStreamReader(getClass.getResourceAsStream(s))).all().map {
         case List(lat, lon) => new GeoCoordinate(lat.toDouble, lon.toDouble)
         case _ => throw new IllegalArgumentException
       }

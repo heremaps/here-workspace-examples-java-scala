@@ -1,7 +1,7 @@
 import com.here.bom.Bom
 
 ThisBuild / organization := "com.here.platform.example.location"
-ThisBuild / version := "0.0.995"
+ThisBuild / version := "0.0.1003"
 ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / sbtPluginPublishLegacyMavenStyle := false
 
@@ -25,11 +25,12 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.84.4"
+val sdkBomVersion = "2.85.8"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {
   case "module-info.class" => MergeStrategy.discard
+  case PathList("META-INF", "versions", _ @_*) => MergeStrategy.discard
   case PathList("META-INF", xs @ _*) =>
     (xs map {
       _.toLowerCase

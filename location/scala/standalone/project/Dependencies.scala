@@ -24,17 +24,12 @@ case class Dependencies(platformBom: Bom) {
   val dependencies: Seq[ModuleID] = Seq(
     "com.here.platform.location" %% "location-compilation-here-map-content" % platformBom,
     "com.here.platform.location" %% "location-core" % platformBom,
-    "com.here.platform.location" %% "location-data-loader-core" % platformBom,
-    "com.here.platform.location" %% "location-data-loader-standalone" % platformBom,
     "com.here.platform.location" %% "location-inmemory" % platformBom,
     "com.here.platform.location" %% "location-integration-optimized-map" % platformBom,
     "com.here.platform.location" %% "location-integration-optimized-map-dcl2" % platformBom,
     "com.here.platform.location" %% "location-tpeg2" % platformBom,
     "com.here.platform.location" %% "location-referencing" % platformBom,
     "com.here.platform.location" %% "location-io" % platformBom,
-    "com.here.schema" %% "geometry_v2_scala" % platformBom excludeAll ("com.here.schema" % "geometry_v2_proto"),
-    "com.here.schema.rib" %% "advanced-navigation-attributes_v2_scala" % platformBom excludeAll ("com.here.schema.rib" % "advanced-navigation-attributes_v2_proto"),
-    "com.here.schema.rib" %% "common_v2_scala" % platformBom excludeAll ("com.here.schema.rib" % "common_v2_proto"),
     "com.here.traffic.realtime" %% "traffic_v2_scala" % platformBom,
     "com.github.tototoshi" %% "scala-csv" % platformBom,
     "stax" % "stax" % "1.2.0"

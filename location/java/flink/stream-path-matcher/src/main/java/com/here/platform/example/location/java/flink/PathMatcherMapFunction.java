@@ -30,8 +30,8 @@ import com.here.platform.location.integration.optimizedmap.mapmatching.javadsl.P
 import com.here.sdii.v3.SdiiCommon.PositionEstimate;
 import com.here.sdii.v3.SdiiMessage.Message;
 import java.util.List;
+import org.apache.flink.api.common.functions.OpenContext;
 import org.apache.flink.api.common.functions.RichMapFunction;
-import org.apache.flink.configuration.Configuration;
 
 public class PathMatcherMapFunction extends RichMapFunction<Message, MatchedTrip> {
   private static final long serialVersionUID = -1L;
@@ -46,8 +46,8 @@ public class PathMatcherMapFunction extends RichMapFunction<Message, MatchedTrip
       new PositionEstimateGeoCoordinateAdapter();
 
   @Override
-  public void open(final Configuration parameters) throws Exception {
-    super.open(parameters);
+  public void open(final OpenContext context) throws Exception {
+    super.open(context);
     final OptimizedMapLayers optimizedMap = optimisedMapLayersAccess.get();
     pathMatcher =
         new PathMatchers(optimizedMap).carPathMatcherWithoutTransitions(positionEstimateAdapter);

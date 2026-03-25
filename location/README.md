@@ -29,7 +29,7 @@ _Location Library_ examples.
 
 The examples require you to create catalogs and layers in these catalogs. For
 instructions on how to create layers, see the related section in the
-[Data User Guide](https://developer.here.com/documentation/data-user-guide/portal/layer-creating.html).
+[Data User Guide](https://www.here.com/docs/bundle/data-api-developer-guide/page/rest/layer-creating.html).
 
 ### Access to Catalogs
 
@@ -37,7 +37,7 @@ The examples require access to catalogs.
 
 If you are running the examples locally, you must first create an app and set up
 a file containing your credentials on your computer. For more information, see the
-[Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
+[Identity & Access Management Developer Guide](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/README.html).
 
 If you are running the examples in a pipeline on the platform, you also have to
 share the catalogs with your group so that the examples can access the data. You
@@ -57,7 +57,7 @@ your app to a group.
 The creation of platform resources (catalogs, pipelines, etc.) is conveniently
 achievable by means of the OLP Command Line Interface,
 see
-[OLP CLI](https://developer.here.com/documentation/open-location-platform-cli/user_guide/index.html).
+[OLP CLI](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/README.html).
 
 Examples documentation only refers to the `olp` command line tool. If you are on
 Windows, always replace `olp` with `olp.bat`.
@@ -75,14 +75,14 @@ including the HERE platform repositories.
 ### I get `Caused by: java.lang.IllegalStateException: Credentials not found`
 
 Make sure that you have followed the instructions on how to
-[Get Your Credentials](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
+[Get Your Credentials](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/README.html).
 
 ### I get `These credentials do not authorize access`
 
 You probably need to share your catalog, for example, with the HERE
 platform group you are part of or app that you have credentials for. For more
 information, see the platform documentation on how to
-[Share a Catalog](https://developer.here.com/documentation/data-user-guide/portal/catalog-sharing.html).
+[Share a Catalog](https://www.here.com/docs/bundle/data-api-developer-guide/page/rest/catalog-sharing.html).
 
 ### I get `com.typesafe.config.ConfigException$Missing: No configuration setting found for key 'here.token'`
 

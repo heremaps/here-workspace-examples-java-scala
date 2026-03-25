@@ -39,10 +39,10 @@ To run this example, you need two sets of credentials:
   environment.
 
 For more details on how to set up your credentials, see
-the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
+the [Identity & Access Management Developer Guide](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/README.html).
 
 For more details on how to verify that your platform credentials are configured correctly, see
-the [Verify Your Credentials](https://developer.here.com/documentation/java-scala-dev/dev_guide/verify-credentials/index.html)
+the [Verify Your Credentials](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/verify-credentials/README.html)
 tutorial.
 
 ## Build and Run the Compiler
@@ -69,11 +69,11 @@ results of the `Stream Path Matcher` example.
 
 To run this compiler locally, use a local output catalog as described
 below. For more information about local catalogs, see
-[the SDK tutorial about local development and testing](https://developer.here.com/documentation/java-scala-dev/dev_guide/local-development-workflow/index.html)
-and [the OLP CLI documentation](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data-workflows.html).
+[the SDK tutorial about local development and testing](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/local-development-workflow/README.html)
+and [the OLP CLI documentation](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data-workflows.html).
 
 1. Use
-   the [`olp local catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/catalog-commands.html#catalog-create)
+   the [`olp local catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-catalog-commands.html#catalog-create)
    command to create a local catalog.
 
 ```bash
@@ -84,7 +84,7 @@ olp local catalog create path-matcher-java path-matcher-java --summary "Output c
 The local catalog will have the HRN `hrn:local:data:::path-matcher-java`.
 
 2. Use
-   the [`olp local catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/local-data/layer-commands.html#catalog-layer-add)
+   the [`olp local catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-layer-commands.html#catalog-layer-add)
    command to add one `stream` layer to your catalog:
 
 ```bash
@@ -140,13 +140,13 @@ Result for id bd69c6c6-4d0b-419d-9ae2-51fb0d7365c7: matched 72 points out of 72
 #### Configure a Project
 
 To follow this example, you will need
-a [project](https://developer.here.com/documentation/identity-access-management/dev_guide/topics/manage-projects.html).
+a [project](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/topics/manage-projects.html).
 A project is a collection of platform resources
 (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
 platform portal.
 
 Alternatively, use the OLP
-CLI [`olp project create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html#create-project)
+CLI [`olp project create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-commands.html#create-project)
 command to create the project:
 
 ```bash
@@ -154,7 +154,7 @@ olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
 The command returns
-the [HERE Resource Name (HRN)](https://developer.here.com/documentation/data-user-guide/user_guide/index.html) of your
+the [HERE Resource Name (HRN)](https://www.here.com/docs/bundle/data-api-developer-guide/page/rest/catalogs.html#here-resource-names-hrn) of your
 new project. Note down this HRN as you will need it later in this tutorial.
 
 > #### Note
@@ -162,10 +162,10 @@ new project. Note down this HRN as you will need it later in this tutorial.
 > You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of
-> the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html).
+> the [Identity & Access Management Developer Guide](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/README.html).
 
 For more information on how to work with projects, see
-the [Organize your work in projects](https://developer.here.com/documentation/java-scala-dev/dev_guide/organize-work-in-projects/index.html)
+the [Organize your work in projects](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/organize-work-in-projects/README.html)
 tutorial.
 
 #### Create an Output Catalog
@@ -173,9 +173,9 @@ tutorial.
 The catalog you need to create is used to store the results of the `Stream Path Matcher` example.
 
 Use the [HERE platform portal](https://platform.here.com/)
-to [create the output catalog](https://developer.here.com/documentation/data-user-guide/user_guide/portal/catalog-creating.html)
+to [create the output catalog](https://www.here.com/docs/bundle/data-api-developer-guide/page/rest/creating-a-catalog.html)
 in your project
-and [add the following layers](https://developer.here.com/documentation/data-user-guide/user_guide/portal/layer-creating.html):
+and [add the following layers](https://www.here.com/docs/bundle/data-api-developer-guide/page/rest/layer-creating.html):
 
 | Layer ID | Layer Type | Content Type           | Content Encoding | Coverage |
 | -------- | ---------- | ---------------------- | ---------------- | -------- |
@@ -184,7 +184,7 @@ and [add the following layers](https://developer.here.com/documentation/data-use
 Alternatively, you can use the OLP CLI to create the catalog and the corresponding layers.
 
 1. Use
-   the [`olp catalog create`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html#catalog-create)
+   the [`olp catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/catalog-commands.html#catalog-create)
    command to create the catalog.
    Make sure to note down the HRN returned by the following command for later use:
 
@@ -195,7 +195,7 @@ olp catalog create $CATALOG_ID $CATALOG_ID --summary "Output catalog for Stream 
 ```
 
 2. Use
-   the [`olp catalog layer add`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html#catalog-layer-add)
+   the [`olp catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/layer-commands.html#catalog-layer-add)
    command to add a stream layer to your catalog:
 
 ```bash
@@ -221,7 +221,7 @@ displayed in the upper
 left corner of the page.
 
 4. Use
-   the [`olp project resource link`](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link)
+   the [`olp project resource link`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-link-commands.html#project-resource-link)
    command to link the _HERE Sample SDII Messages - Berlin_ and _HERE Optimized Map for Location Library_ catalog to
    your project.
 
@@ -231,13 +231,13 @@ olp project resource link $PROJECT_HRN $INPUT_OPTIMIZED_MAP_CATALOG
 ```
 
 - For more details on catalog commands,
-  see [Catalog Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/catalog-commands.html).
+  see [Catalog Commands](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/catalog-commands.html).
 - For more details on layer commands,
-  see [Layer Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/data/layer-commands.html).
+  see [Layer Commands](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/datalayer-commands.html).
 - For more details on project commands,
-  see [Project Commands](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-commands.html).
+  see [Project Commands](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-commands.html).
 - For instructions on how to link a resource to a project,
-  see [Project Resource Link command](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/project/project-link-commands.html#project-resource-link).
+  see [Project Resource Link command](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-link-commands.html#project-resource-link).
 
 #### Generate a Fat JAR file
 
@@ -251,12 +251,12 @@ mvn -Pplatform package
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
-1. [Create](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline-workflows.html)
+1. [Create](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline-workflows.html)
    pipeline components:
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template stream-6.1 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template stream-7.0 $PATH_TO_JAR \
                 com.here.platform.example.location.java.flink.StreamPathMatcherExample \
                 --input-catalog-ids="$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
                 --scope $PROJECT_HRN
@@ -278,7 +278,7 @@ olp pipeline version log level get $PIPELINE_ID $PIPELINE_VERSION_ID \
 --scope $PROJECT_HRN
 ```
 
-2. [Activate](https://developer.here.com/documentation/open-location-platform-cli/user_guide/topics/pipeline/version-commands.html#pipeline-version-activate)
+2. [Activate](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/version-commands.html#pipeline-version-activate)
    the pipeline version:
 
 ```bash
