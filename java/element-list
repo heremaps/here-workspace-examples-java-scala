@@ -135,13 +135,6 @@ com.here.platform.location.core.graph.javadsl
 com.here.platform.location.core.mapmatching
 com.here.platform.location.core.mapmatching.javadsl
 com.here.platform.location.core.shortestpath
-com.here.platform.location.dataloader.core
-com.here.platform.location.dataloader.core.caching
-com.here.platform.location.dataloader.core.caching.javadsl
-com.here.platform.location.dataloader.core.javadsl
-com.here.platform.location.dataloader.flink
-com.here.platform.location.dataloader.spark
-com.here.platform.location.dataloader.standalone
 com.here.platform.location.inmemory.geospatial
 com.here.platform.location.inmemory.graph
 com.here.platform.location.inmemory.graph.javadsl
