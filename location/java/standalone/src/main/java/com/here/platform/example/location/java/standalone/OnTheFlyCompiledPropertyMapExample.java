@@ -24,6 +24,10 @@ import com.here.platform.data.client.v2.api.javadsl.versioned.VersionedHereTileL
 import com.here.platform.data.client.v2.caching.javadsl.versioned.VersionedLayerReaderConfiguration;
 import com.here.platform.data.client.v2.caching.javadsl.versioned.VersionedLayerReadersConfiguration;
 import com.here.platform.data.client.v2.main.javadsl.DataClient;
+import com.here.platform.example.location.java.standalone.OnTheFlyCompiledPropertyMapExample.DirectedSegmentId;
+import com.here.platform.example.location.java.standalone.OnTheFlyCompiledPropertyMapExample.OnTheFlyPartition;
+import com.here.platform.example.location.java.standalone.OnTheFlyCompiledPropertyMapExample.SpeedLimitWithColor;
+import com.here.platform.example.location.java.standalone.OnTheFlyCompiledPropertyMapExample.VertexWithProperty;
 import com.here.platform.location.compilation.heremapcontent.SegmentAttribute;
 import com.here.platform.location.compilation.heremapcontent.javadsl.AttributeAccessor;
 import com.here.platform.location.compilation.heremapcontent.javadsl.AttributeAccessors;
@@ -86,24 +90,30 @@ import java.util.stream.StreamSupport;
                 var anchor = sa.anchor();
                 var orientedSegmentRef = anchor.orientedSegmentRef().apply(0);
 
+                RangeBasedProperty<T> forward =
+                        new com.here.platform.location.core.graph.RangeBasedProperty<>(
+                                anchor.firstSegmentStartOffset().getOrElse(() -> 0.0),
+                                anchor.lastSegmentEndOffset().getOrElse(() -> 1.0),
+                                sa.value());
+
+                RangeBasedProperty<T> backward =
+                        new com.here.platform.location.core.graph.RangeBasedProperty<>(
+                                1.0 - anchor.lastSegmentEndOffset().getOrElse(() -> 1.0),
+                                1.0 - anchor.firstSegmentStartOffset().getOrElse(() -> 0.0),
+                                sa.value());
+
                 return Stream.concat(
                         isForward(anchor.attributeOrientation(), orientedSegmentRef)
                                 ? Stream.of(Map.entry(
                                 toDirectedSegmentId(orientedSegmentRef,
                                         com.here.platform.location.inmemory.graph.javadsl.Direction.FORWARD),
-                                new com.here.platform.location.core.graph.RangeBasedProperty<>(
-                                        anchor.firstSegmentStartOffset().getOrElse(() -> 0.0),
-                                        anchor.lastSegmentEndOffset().getOrElse(() -> 1.0),
-                                        sa.value())))
+                                forward))
                                 : Stream.empty(),
                         isBackward(anchor.attributeOrientation(), orientedSegmentRef)
                                 ? Stream.of(Map.entry(
                                 toDirectedSegmentId(orientedSegmentRef,
                                         com.here.platform.location.inmemory.graph.javadsl.Direction.BACKWARD),
-                                new com.here.platform.location.core.graph.RangeBasedProperty<>(
-                                        1.0 - anchor.lastSegmentEndOffset().getOrElse(() -> 1.0),
-                                        1.0 - anchor.firstSegmentStartOffset().getOrElse(() -> 0.0),
-                                        sa.value())))
+                                backward))
                                 : Stream.empty());
               })
               .collect(Collectors.groupingBy(

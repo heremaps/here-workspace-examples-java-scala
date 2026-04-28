@@ -5,13 +5,13 @@
   <parent>
     <groupId>com.here.platform</groupId>
     <artifactId>sdk-stream-bom_2.13</artifactId>
-    <version>2.85.8</version>
+    <version>2.86.5</version>
     <relativePath/>
   </parent>
 
   <groupId>com.here.platform.example.location</groupId>
   <artifactId>java-flink-stream-path-matcher</artifactId>
-  <version>0.0.1003</version>
+  <version>0.0.1008</version>
   <packaging>jar</packaging>
 
   <name>Location Library Examples - Java - Flink - Stream Path Matcher</name>
@@ -30,7 +30,7 @@
     <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
     <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
     <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-    <tag>2.85.8</tag>
+    <tag>2.86.5</tag>
   </scm>
 
   <properties>
@@ -38,7 +38,7 @@
     <exec.executable>java</exec.executable>
     <exec.cleanupDaemonThreads>false</exec.cleanupDaemonThreads>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <artifact.wagon.version>2.0.35</artifact.wagon.version>
+    <artifact.wagon.version>2.0.37</artifact.wagon.version>
   </properties>
 
   <dependencies>
