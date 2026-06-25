@@ -1,23 +1,19 @@
 # A Stateful Processing Compiler to Process Input and Feedback Data
 
 This Data Processing Library Scala example shows how to build a
-[stateful processing compiler](https://www.here.com/docs/bundle/data-processing-library-developer-guide-scala-java/page/topics/stateful-processing.html)
+[stateful processing compiler](https://docs.here.com/workspace/docs/dpl-topics-stateful-processing)
 that extracts the cardinality of nodes in the "Road Topology & Geometry" layer of HERE Map Content catalog
 and how to use the output of the previous compilation as feedback input to count the number of times
 the node cardinalities changed for each partition.
 
 The node cardinality refers to the number of segment references for every topology node.
-In this example we use the
-[Road Topology and Geometry Layer](https://www.here.com/docs/bundle/map-content-data-specification/page/topics/topology-layer.html)
-that consists of
-[Topology Geometry Partitions](https://www.here.com/docs/bundle/map-content-data-specification/page/topics_schema/topologygeometrypartition.html)
-where each
-[Partition](https://www.here.com/docs/bundle/data-api-developer-guide/page/rest/partitions.html)
-contains a set of
-[Nodes](https://www.here.com/docs/bundle/map-content-data-specification/page/topics_schema/node.html)
+In this example we use the Road Topology and Geometry Layer
+that consists of Topology Geometry Partitions
+where each [Partition](https://docs.here.com/data-api/docs/partitions)
+contains a set of Nodes
 .
 
-In this example, the [`DirectMToNCompiler`](https://www.here.com/docs/bundle/data-processing-library-developer-guide-scala-java/page/topics/functional-patterns.html#direct-1n-and-mn-compilers) functional pattern is used,
+In this example, the [`DirectMToNCompiler`](https://docs.here.com/workspace/docs/dpl-topics-functional-patterns#direct-1n-and-mn-compilers) functional pattern is used,
 since it allows to implement transformation partitions.
 
 The compiler runs twice with different HERE Map Content catalog versions and does the following:
@@ -28,7 +24,7 @@ The compiler runs twice with different HERE Map Content catalog versions and doe
   updates the cardinality and increments the variable that counts the number of times the compiler has
   run
 
-For more information about the `DirectMToNCompiler` functional pattern, see the [`Data Processing Library Developer Guide`](https://www.here.com/docs/bundle/data-processing-library-developer-guide-scala-java/page/topics/functional-patterns.html#direct-1n-and-mn-compilers).
+For more information about the `DirectMToNCompiler` functional pattern, see the [`Data Processing Library Developer Guide`](https://docs.here.com/workspace/docs/dpl-topics-functional-patterns#direct-1n-and-mn-compilers).
 
 ## Get Your Credentials
 
@@ -37,14 +33,14 @@ To run this example, you need two sets of credentials:
 - **Platform credentials:** To get access to the platform data and resources, including HERE Map Content data for your pipeline input.
 - **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
-For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/README.html).
+For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://docs.here.com/identity-and-access-management/docs/readme).
 
-For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/verify-credentials/README.html) tutorial.
+For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://docs.here.com/workspace/docs/tutorials-verify-credentials-readme) tutorial.
 
 ## Build and Run the Compiler
 
 To configure your SBT project and ensure all HERE SDK dependencies resolve correctly,
-please follow the official [HERE Workspace Developer Guide – Dependency Management](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/topics/dependency-management.html#bom-files-in-sbt-projects).
+please follow the official [HERE Workspace Developer Guide – Dependency Management](https://docs.here.com/workspace/docs/tutorials-topics-dependency-management#bom-files-in-sbt-projects).
 
 In the commands that follow, replace the variable placeholders with the following values:
 
@@ -66,10 +62,10 @@ compiler has run.
 
 To run this compiler locally, use a local output catalog as described
 below. For more information about local catalogs, see
-[the SDK tutorial about local development and testing](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/local-development-workflow/README.html)
-and [the OLP CLI documentation](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data-workflows.html).
+[the SDK tutorial about local development and testing](https://docs.here.com/workspace/docs/tutorials-local-development-workflow-readme)
+and [the OLP CLI documentation](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-workflows).
 
-1. Use the [`olp local catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-catalog-commands.html#catalog-create)
+1. Use the [`olp local catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-catalog-commands#catalog-create)
    command to create the local catalog.
 
 ```bash
@@ -79,7 +75,7 @@ olp local catalog create stateful-compiler-scala stateful-compiler-scala --summa
 
 The local catalog will have the HRN `hrn:local:data:::stateful-compiler-scala`.
 
-2. Use the [`olp local catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-layer-commands.html#catalog-layer-add)
+2. Use the [`olp local catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-layer-commands#catalog-layer-add)
    command to add two `versioned` layers to your catalog:
 
 | Layer ID              | Partitioning | Zoom Level | Layer Type | Content Type             | Schema | Content Encoding |
@@ -183,32 +179,32 @@ The field `updatesCount` will be `1` for those partitions that did not change du
 
 #### Configure a Project
 
-To follow this example, you will need a [project](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/topics/manage-projects.html). A project is a collection of platform resources
+To follow this example, you will need a [project](https://docs.here.com/identity-and-access-management/docs/manage-projects). A project is a collection of platform resources
 (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
 [HERE platform portal](https://platform.here.com/).
 
-Alternatively, use the OLP CLI [`olp project create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-commands.html#create-project) command to create the project:
+Alternatively, use the OLP CLI [`olp project create`](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-commands#create-project) command to create the project:
 
 ```bash
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://www.here.com/docs/bundle/data-api-developer-guide/page/rest/catalogs.html#here-resource-names-hrn) of your new project. Note down this HRN as you will need it later in this tutorial.
+The command returns the [HERE Resource Name (HRN)](https://docs.here.com/data-api/docs/catalogs#here-resource-names-hrn) of your new project. Note down this HRN as you will need it later in this tutorial.
 
 > #### Note
 >
 > You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Specify a
-> default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/README.html).
+> default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://docs.here.com/identity-and-access-management/docs/readme).
 
-For more information on how to work with projects, see the [Organize your work in projects](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/organize-work-in-projects/README.html) tutorial.
+For more information on how to work with projects, see the [Organize your work in projects](https://docs.here.com/workspace/docs/tutorials-organize-work-in-projects-readme) tutorial.
 
 #### Create a Stateful Processing Compiler Catalog
 
 As mentioned above, we will use the public HERE Map Content input catalog, however, we need to create our own output catalog
 to store the cardinality of nodes and the number of times the compiler has run.
 
-1. Use the [`olp catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
+1. Use the [`olp catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-data-catalog-commands#catalog-create) command to create the catalog.
    Make sure to note down the HRN returned by the following command for later use:
 
 ```bash
@@ -217,7 +213,7 @@ olp catalog create $CATALOG_ID $CATALOG_ID --summary "Stateful compiler example 
             --scope $PROJECT_HRN
 ```
 
-2. Use the [`olp catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/layer-commands.html#catalog-layer-add) command to add two `versioned` layers to your catalog:
+2. Use the [`olp catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-data-layer-commands#catalog-layer-add) command to add two `versioned` layers to your catalog:
 
 ```bash
 olp catalog layer add $CATALOG_HRN nodecardinality-count nodecardinality-count --versioned --summary "nodecardinality count" \
@@ -232,16 +228,16 @@ olp catalog layer add $CATALOG_HRN state state --versioned --summary "state" --d
 >
 > If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
 
-3. Use the [`olp project resource link`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-link-commands.html#project-resource-link) command to link the _HERE Map Content_ catalog to your project:
+3. Use the [`olp project resource link`](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-link-commands#project-resource-link) command to link the _HERE Map Content_ catalog to your project:
 
 ```bash
 olp project resource link $PROJECT_HRN $CATALOG_RIB
 ```
 
-- For more details on catalog commands, see [Catalog Commands](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/catalog-commands.html).
-- For more details on layer commands, see [Layer Commands](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/datalayer-commands.html).
-- For more details on project commands, see [Project Commands](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-commands.html).
-- For instructions on how to link a resource to a project, see [Project Resource Link command](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-link-commands.html#project-resource-link).
+- For more details on catalog commands, see [Catalog Commands](https://docs.here.com/workspace/docs/olp-cli-topics-data-catalog-commands).
+- For more details on layer commands, see [Layer Commands](https://docs.here.com/workspace/docs/olp-cli-topics-data-layer-commands).
+- For more details on project commands, see [Project Commands](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-commands).
+- For instructions on how to link a resource to a project, see [Project Resource Link command](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-link-commands#project-resource-link).
 
 #### Configure the Compiler
 
@@ -290,11 +286,11 @@ sbt assembly
 
 Once the previous command is finished, your JAR is then available at the `target` directory, and you
 can upload it using the [HERE pipeline UI](https://platform.here.com/pipelines)
-or the [OLP CLI](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/README.html).
+or the [OLP CLI](https://docs.here.com/workspace/docs/olp-cli-readme).
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
-1. [Create](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline-workflows.html) pipeline components:
+1. [Create](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-workflows) pipeline components:
 
 For this example, a bounding box filter is provided by `--runtime-config` parameter to
 limit the number of partitions to be processed. This speeds up the compilation process. In this
@@ -318,7 +314,7 @@ olp pipeline version create $COMPONENT_NAME_version $PIPELINE_ID $PIPELINE_TEMPL
                 --scope $PROJECT_HRN
 ```
 
-2. [Activate](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/version-commands.html#pipeline-version-activate) the pipeline version:
+2. [Activate](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-version-commands#pipeline-version-activate) the pipeline version:
 
 ```bash
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \

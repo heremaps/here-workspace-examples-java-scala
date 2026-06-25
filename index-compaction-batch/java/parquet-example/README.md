@@ -1,14 +1,14 @@
 # Compacting Index Layer Data in Parquet Format
 
-This example shows how to use the [Index Compaction Library](https://www.here.com/docs/bundle/index-compaction-library-developer-guide-java-scala/page/README.html) to quickly develop a compaction application that compacts Parquet-format data in an index layer.
+This example shows how to use the [Index Compaction Library](https://docs.here.com/workspace/docs/icl-readme) to quickly develop a compaction application that compacts Parquet-format data in an index layer.
 
 The [`ParquetCompactionExample`](src/main/java/com/here/platform/index/compaction/batch/ParquetCompactionExample.java) application
 compacts partitions in the index layer with the same index attribute values into one partition.
 It allows users to reduce the index layer storage cost, improves query performance, and also makes subsequent data processing more efficient.
-The application implements the [`CompactionUDF`](https://www.here.com/docs/category/data-sdk-for-java-and-scala-api-reference) interface
+The application implements the [`CompactionUDF`](https://heremaps.github.io/here-workspace-examples-java-scala/java/com/here/platform/index/compaction/core/CompactionUDF.html) interface
 that provides control over how the data is compacted in the index layer.
 
-For details on this interface, see the _API Reference_ section of the [Index Compaction Library Developer Guide](https://www.here.com/docs/category/data-sdk-for-java-and-scala-api-reference).
+For details on this interface, see the _API Reference_ section of the [Index Compaction Library Developer Guide](https://heremaps.github.io/here-workspace-examples-java-scala/java).
 
 ## Get Your Credentials
 
@@ -17,21 +17,21 @@ To run this example, you need two sets of credentials:
 - **Platform credentials:** To get access to the platform data and resources.
 - **Repository credentials:** To download HERE Data SDK for Java and Scala libraries and Maven archetypes to your environment.
 
-For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/README.html).
+For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://docs.here.com/identity-and-access-management/docs/readme).
 
-For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/verify-credentials/README.html) tutorial.
+For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://docs.here.com/workspace/docs/tutorials-verify-credentials-readme) tutorial.
 
 ## Run the Application Locally
 
 To run the compaction application locally, use local catalogs as described
-below. For more information about local catalogs, see [the SDK tutorial about local development and testing](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/local-development-workflow/README.html)
-and [the OLP CLI documentation](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data-workflows.html).
+below. For more information about local catalogs, see [the SDK tutorial about local development and testing](https://docs.here.com/workspace/docs/tutorials-local-development-workflow-readme)
+and [the OLP CLI documentation](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-workflows).
 
 ### Create a Local Input Catalog and Layer
 
 The Index Compaction Library compacts data in the `index` layer, so let's create it.
 
-First, use the [`olp local catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-catalog-commands.html#catalog-create)
+First, use the [`olp local catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-catalog-commands#catalog-create)
 command to create a local output catalog:
 
 ```bash
@@ -54,7 +54,7 @@ The `eventType` attribute should be declared as `string` because we want to comp
 The `tileId` attribute should have type `heretile` and zoom level `8` for compacting data on level `8` of the HERE Tiles.
 The `ingestionTime` attribute should be specified as `timewindow` with the duration of `3600000` milliseconds (10 min). This means that all the messages with an event time in the given time window will have the same index value.
 
-Use the [`olp local catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-layer-commands.html#catalog-layer-add)
+Use the [`olp local catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-layer-commands#catalog-layer-add)
 command to add an `index` layer to your catalog:
 
 ```bash
@@ -75,7 +75,7 @@ Note down the layer ID as you'll need it later in this example.
 > For the `output-catalog` setting, you still need to pass a valid catalog.
 > You can use a catalog with zero layers.
 
-Use the [`olp local catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-catalog-commands.html#catalog-create)
+Use the [`olp local catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-catalog-commands#catalog-create)
 command to create a local output catalog:
 
 ```bash
@@ -130,7 +130,7 @@ pathEvents {
 }
 ```
 
-Partition content looks like a standard [`SDII`](https://www.here.com/docs/bundle/sdii-data-specification/resource/Sensor_Data_Ingestion_Interface_OLP_v3.3.1_Data_Specification.pdf) message.
+Partition content looks like a standard `SDII` message.
 The application takes the `timeStampUTC_ms` field to index messages by the `timewindow` property, while the `longitude_deg` and `latitude_deg` fields are used to index messages by the `tileId` property,
 and the `signRecognition` event is used to index messages by the `eventType` property.
 
@@ -146,7 +146,7 @@ for (SdiiMessage.Message.Builder sdiiMessageBuilder;
 }
 ```
 
-Let's use the [`olp local catalog layer partition put`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/partition-commands.html#catalog-layer-partition-put) command to populate the `index` layer
+Let's use the [`olp local catalog layer partition put`](https://docs.here.com/workspace/docs/olp-cli-topics-data-partition-commands#catalog-layer-partition-put) command to populate the `index` layer
 with such index fields as `ingestionTime:1594236600000`, `tileId:79963` and `eventType:SignRecognition`. Thus, all partitions that were uploaded with common index attributes will be compacted into one partition.
 
 ```bash
@@ -172,9 +172,9 @@ two configuration files: [`application.conf`](src/main/resources/application.con
 The [`application.conf`](src/main/resources/application.conf) configuration file contains all the application-specific settings that differ from the defaults provided by the `reference.conf` file in the Index Compaction Library.
 It contains the `com.here.platform.index.compaction.batch.ParquetCompactionExample` class that implements the `CompactionUDF` interface,
 index layer ID and the `query.constraint` field with `size>0` value to compact all partitions in the index layer.
-If you want to compact a slice of an index layer based on `timewindow`, `heretile`, and so on, update the `constraint` field using [rsql](https://www.here.com/docs/bundle/data-client-library-developer-guide-java-scala/page/README.htmll) query language.
+If you want to compact a slice of an index layer based on `timewindow`, `heretile`, and so on, update the `constraint` field using [rsql](https://docs.here.com/workspace/docs/dcl-client-rsql) query language.
 
-For more information about the `application.conf` configuration file, see the [Index Compaction Library Developer Guide](https://www.here.com/docs/bundle/index-compaction-library-developer-guide-java-scala/page/README.html).
+For more information about the `application.conf` configuration file, see the [Index Compaction Library Developer Guide](https://docs.here.com/workspace/docs/icl-readme).
 
 The [`pipeline-config.conf`](src/main/resources/pipeline-config.conf) file contains the input and output catalog HRNs.
 
@@ -200,7 +200,7 @@ mvn compile -q exec:exec \
 After the application is finished, you can check the result of the compaction.
 
 To verify the compaction example output,
-use the [`olp local catalog layer partition get`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/partition-commands.html#catalog-layer-partition-get) command to query the `index` layer.
+use the [`olp local catalog layer partition get`](https://docs.here.com/workspace/docs/olp-cli-topics-data-partition-commands#catalog-layer-partition-get) command to query the `index` layer.
 
 ```bash
 olp local catalog layer partition list hrn:local:data:::compaction-parquet index \
@@ -320,25 +320,25 @@ To run the application as a HERE platform pipeline, you need to create a project
 
 ### Configure a Project
 
-To follow this example, you will need a [project](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/topics/manage-projects.html). A project is a collection of platform resources
+To follow this example, you will need a [project](https://docs.here.com/identity-and-access-management/docs/manage-projects). A project is a collection of platform resources
 (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
 [HERE platform portal](https://platform.here.com/).
 
-Alternatively, use the OLP CLI [`olp project create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-commands.html#create-project) command to create the project:
+Alternatively, use the OLP CLI [`olp project create`](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-commands#create-project) command to create the project:
 
 ```bash
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://www.here.com/docs/bundle/data-api-developer-guide/page/rest/catalogs.html#here-resource-names-hrn) of your new project. Note down this HRN as you will need it later in this tutorial.
+The command returns the [HERE Resource Name (HRN)](https://docs.here.com/data-api/docs/catalogs#here-resource-names-hrn) of your new project. Note down this HRN as you will need it later in this tutorial.
 
 > #### Note
 >
 > You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Set a default project for an app_
-> chapter of the [Identity & Access Management Developer Guide](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/README.html).
+> chapter of the [Identity & Access Management Developer Guide](https://docs.here.com/identity-and-access-management/docs/readme).
 
-For more information on how to work with projects, see the [Organize your work in projects](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/organize-work-in-projects/README.html) tutorial.
+For more information on how to work with projects, see the [Organize your work in projects](https://docs.here.com/workspace/docs/tutorials-organize-work-in-projects-readme) tutorial.
 
 ### Create Input Catalog and Layer
 
@@ -346,7 +346,7 @@ The Index Compaction Library compacts data in the `index` layer, so let's create
 
 Let's create an input catalog with the same configuration as we used in the [Create a Local Input Catalog and Layer](#create-a-local-input-catalog-and-layer) section:
 
-1. Use the [`olp catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/catalog-commands.html#catalog-create) command to create the catalog.
+1. Use the [`olp catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-data-catalog-commands#catalog-create) command to create the catalog.
    Make sure you record the HRN returned by the following command for later use:
 
 ```bash
@@ -357,7 +357,7 @@ olp catalog create $CATALOG_ID $CATALOG_ID --summary "Input catalog for index co
 
 Save the catalog HRN to the `CATALOG_HRN` variable as you will need it later in this example.
 
-2. Use the [`olp catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/layer-commands.html#catalog-layer-add) command to add an `index` layer to your catalog:
+2. Use the [`olp catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-data-layer-commands#catalog-layer-add) command to add an `index` layer to your catalog:
 
 ```bash
 olp catalog layer add $CATALOG_HRN index index --index --summary "index" \
@@ -380,7 +380,7 @@ olp catalog layer add $CATALOG_HRN index index --index --summary "index" \
 > For the `output-catalog` setting, you still need to pass a valid catalog.
 > You can use a catalog with zero layers.
 
-Use the [`olp catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/catalog-commands.html#catalog-create) command to create a catalog.
+Use the [`olp catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-data-catalog-commands#catalog-create) command to create a catalog.
 
 ```bash
 olp catalog create $CATALOG_ID $CATALOG_NAME --summary CATALOG_SUMMARY \
@@ -393,7 +393,7 @@ After creating an input catalog and layer,
 you should populate the index layer with [sample data](src/test/resources/sampleData) that has common index attribute values,
 so that corresponding records with smaller files can be compacted to bigger files.
 
-1. Use the [`olp catalog layer partition put`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/partition-commands.html#catalog-layer-partition-put) command to populate the `index` layer.
+1. Use the [`olp catalog layer partition put`](https://docs.here.com/workspace/docs/olp-cli-topics-data-partition-commands#catalog-layer-partition-put) command to populate the `index` layer.
 
 ```bash
 olp catalog layer partition put $CATALOG_HRN index \
@@ -423,7 +423,7 @@ HERE platform provides pipeline templates as a way to get started with common da
 Pipeline templates are scalable, configurable processing blocks that you can deploy as part of your own workflow, without needing to write any code.
 Each pipeline template is designed to perform a specific task and can be customized to accommodate your particular use case.
 
-Use the [`olp pipeline template create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/template-commands.html#pipeline-template-create) command to create a pipeline template:
+Use the [`olp pipeline template create`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-template-commands#pipeline-template-create) command to create a pipeline template:
 
 ```bash
 olp pipeline template create $PIPELINE_TEMPLATE_NAME \
@@ -441,7 +441,7 @@ Save the pipeline template ID to the `PIPELINE_TEMPLATE_ID` variable as you will
 Let's move forward and create a data processing pipeline.
 HERE platform uses pipelines to process data from HERE geospatial resources and custom client resources to produce new useful data products.
 
-Use the [`olp pipeline create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/pipeline-commands.html#pipeline-create) command to create a pipeline:
+Use the [`olp pipeline create`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-pipeline-commands#pipeline-create) command to create a pipeline:
 
 ```bash
 olp pipeline create $PIPELINE_NAME --email $OLP_EMAIL --scope $PROJECT_HRN
@@ -471,7 +471,7 @@ and the `YOUR_OUTPUT_CATALOG_HRN` placeholder with the HRN of the [output](#crea
 Once you have created both the pipeline and the pipeline template and updated the pipeline configuration file, you can proceed to creating a pipeline version.
 A pipeline version is an immutable entity representing an executable form of a pipeline within the HERE platform.
 
-Use the [`olp pipeline version create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/version-commands.html#pipeline-version-create) command to create a pipeline version:
+Use the [`olp pipeline version create`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-version-commands#pipeline-version-create) command to create a pipeline version:
 
 ```bash
 olp pipeline version create $PIPELINE_VERSION_NAME $PIPELINE_ID $PIPELINE_TEMPLATE_ID \
@@ -487,7 +487,7 @@ Save the pipeline version ID to the `PIPELINE_VERSION_ID` variable as you will n
 ### Run the Application on the Platform
 
 Now you can run the application as a HERE platform pipeline.
-For that purpose, use the [`olp pipeline version activate`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/version-commands.html#pipeline-version-activate) command:
+For that purpose, use the [`olp pipeline version activate`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-version-commands#pipeline-version-activate) command:
 
 ```bash
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
@@ -499,12 +499,12 @@ Execute the following command to wait until the pipeline reaches the "completed"
 olp pipeline version wait $PIPELINE_ID $PIPELINE_VERSION_ID --job-state=completed --scope $PROJECT_HRN
 ```
 
-To get more information on how to monitor a Spark application, see the [`Run a Spark application on the platform`](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/run-spark-application-platform/README.html)
+To get more information on how to monitor a Spark application, see the [`Run a Spark application on the platform`](https://docs.here.com/workspace/docs/tutorials-run-spark-application-platform-readme)
 
 ## Verify the Output
 
 Once the compaction pipeline has finished, you can query the compacted data using
-the [`olp catalog layer partition list`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/partition-commands.html#catalog-layer-partition-list) command to query the `index` layer.
+the [`olp catalog layer partition list`](https://docs.here.com/workspace/docs/olp-cli-topics-data-partition-commands#catalog-layer-partition-list) command to query the `index` layer.
 
 ```bash
 olp catalog layer partition list $CATALOG_HRN index \

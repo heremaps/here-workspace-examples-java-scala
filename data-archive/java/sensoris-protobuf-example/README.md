@@ -8,7 +8,7 @@ Like any other Data Archiving Library interface implementation, this one reads i
 This specific example processes a stream of `Sensoris DataMessages` by splitting them into separate `DataMessage` payloads and indexes them by several indexing attributes like `eventTime` and `tileId`.
 While indexing, application uses individual indexing attributes values per message.
 
-For details on this and other interfaces, see the [API Reference](https://www.here.com/docs/category/data-sdk-for-java-and-scala-api-reference) section of the Data Archiving Library Developer Guide.
+For details on this and other interfaces, see the [API Reference](https://heremaps.github.io/here-workspace-examples-java-scala/java) section of the Data Archiving Library Developer Guide.
 
 ## Get Your Credentials
 
@@ -17,17 +17,17 @@ To run this example, you need two sets of credentials:
 - **Platform credentials:** To get access to the platform data and resources.
 - **Repository credentials:** To download HERE Data SDK for Java & Scala libraries and Maven archetypes to your environment.
 
-For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/README.html).
+For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://docs.here.com/identity-and-access-management/docs/readme).
 
-For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/verify-credentials/README.html) tutorial.
+For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://docs.here.com/workspace/docs/tutorials-verify-credentials-readme) tutorial.
 
 ## Run the Archiver Locally
 
 The archiver is a Flink application that reads data you want to archive from the `stream` layer and writes the archived data to the `index` layer.
 To run the application locally, both layers should be created in local catalogs as described below.
 
-For more information about local catalogs, see [the SDK tutorial about local development and testing](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/local-development-workflow/README.html)
-and [the OLP CLI documentation](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data-workflows.html).
+For more information about local catalogs, see [the SDK tutorial about local development and testing](https://docs.here.com/workspace/docs/tutorials-local-development-workflow-readme)
+and [the OLP CLI documentation](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-workflows).
 
 > Note
 >
@@ -37,7 +37,7 @@ and [the OLP CLI documentation](https://www.here.com/docs/bundle/command-line-in
 
 As the Data Archiving Library reads data that is to be archived from a `stream` layer, let's create one.
 
-First, use the [`olp local catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-catalog-commands.html#catalog-create)
+First, use the [`olp local catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-catalog-commands#catalog-create)
 command to create a local input catalog:
 
 ```bash
@@ -58,11 +58,11 @@ Next, add a `stream` layer to your catalog:
 The content type of this layer should be defined as `application/octet-stream` as we are going to archive binary-encoded `Protobuf` serialized `Sensoris` messages.
 
 In our case, the `ttl` value for the `stream` layer is defined as `600000` milliseconds (`10` minutes), which is the minimal value for this layer type.
-To prevent data loss, the [recommendation](https://www.here.com/docs/bundle/data-archiving-library-developer-guide-java-scala/page/topics/best-practices.html) is to always set the `ttl`
+To prevent data loss, the [recommendation](https://docs.here.com/workspace/docs/dal-topics-configuration) is to always set the `ttl`
 at least three times higher than `aggregation.window-seconds` defined in the [configuration file](./src/main/resources/application.conf).
 Our value not only totally satisfies this recommendation, but also reduces the run-costs of the application.
 
-Use the [`olp local catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-layer-commands.html#catalog-layer-add)
+Use the [`olp local catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-layer-commands#catalog-layer-add)
 command to add a `stream` layer to your catalog:
 
 ```bash
@@ -81,7 +81,7 @@ Note down the layer ID as you'll need it later in this example.
 
 The Data Archiving Library stores archived data in the `index` layer, so let's create it.
 
-First, use the [`olp local catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-catalog-commands.html#catalog-create)
+First, use the [`olp local catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-catalog-commands#catalog-create)
 command to create a local output catalog:
 
 ```bash
@@ -110,7 +110,7 @@ That leads us to the following indexing attributes - `eventTime` and `tileId`.
 The `eventTime` attribute should be specified as `timewindow` with the duration of `600000` milliseconds. This means that all the messages with an event time in the given time window will have the same index value.
 `tileId` should have type `heretile` and zoom level `8` for saving data on the `8` level of the HERE Tiles.
 
-Use the [`olp local catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-layer-commands.html#catalog-layer-add)
+Use the [`olp local catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-layer-commands#catalog-layer-add)
 command to add an `index` layer to your catalog:
 
 ```bash
@@ -136,7 +136,7 @@ The configuration file itself is not ready to use as-is, you have to complete it
 Before running the application, you have to define HRNs of the local [input](#create-a-local-input-catalog-and-layer) and [output](#create-a-local-output-catalog-and-layer) catalogs,
 as well as the `local` discovery service environment that allows the Data Client Library to work **only** with local catalogs.
 
-For information about all available configuration options, see the [Configure Your Application](https://www.here.com/docs/bundle/data-archiving-library-developer-guide-java-scala/page/topics/configuration.html) section of the Data Archiving Library Developer Guide.
+For information about all available configuration options, see the [Configure Your Application](https://docs.here.com/workspace/docs/dal-topics-configuration) section of the Data Archiving Library Developer Guide.
 
 ### Run the Archiver Locally
 
@@ -208,7 +208,7 @@ messages.getDataMessageList().forEach(System.out::println);
 ```
 
 While the application is running, start a new terminal session and ingest [data](src/test/resources/sampleData) you want to archive into the `stream` layer that was created in the [previous](#create-a-local-input-catalog-and-layer) section.
-For that purpose, use the [`olp local catalog layer stream put`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-stream-commands.html#catalog-layer-stream-put) command:
+For that purpose, use the [`olp local catalog layer stream put`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-stream-commands#catalog-layer-stream-put) command:
 
 ```bash
 olp local catalog layer stream put hrn:local:data:::sensoris-protobuf-input-catalog stream \
@@ -222,7 +222,7 @@ After the data has been uploaded successfully, you can verify the archived messa
 After partitions have been uploaded to the `stream` layer, your data will be archived in the `index` layer that was created [previously](#create-a-local-output-catalog-and-layer).
 Note that the archiving process may take a couple of minutes.
 
-You can query archived messages using the [`olp local catalog layer partition list`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-partition-commands.html#catalog-layer-partition-list)
+You can query archived messages using the [`olp local catalog layer partition list`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-partition-commands#catalog-layer-partition-list)
 command.
 Using the `--filter` parameter with this command allows filtering partitions by their name, size, and other criteria.
 However, a more practical case is filtering partitions by the values of fields that were used to index messages, such as `tileId` and `eventTime`.
@@ -288,7 +288,7 @@ Total size: 65 B
 As you can see, there is only one partition stored in this specific HERE Tile.
 
 Now, let's get this partition and examine it.
-To get archived data from the `index` layer, you can use the [`olp local catalog layer partition get`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/local-data/local-partition-commands.html#catalog-layer-partition-get)
+To get archived data from the `index` layer, you can use the [`olp local catalog layer partition get`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-partition-commands#catalog-layer-partition-get)
 command with the `--filter "tileId==90175"` parameter to get the partition mentioned above:
 
 ```bash
@@ -342,33 +342,33 @@ messages.getDataMessageList().forEach(System.out::println);
 
 ## Build and Run the Archiver as a HERE Platform Pipeline
 
-To run the archiving application in a HERE platform pipeline, you need to have a [project](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/topics/manage-projects.html).
+To run the archiving application in a HERE platform pipeline, you need to have a [project](https://docs.here.com/identity-and-access-management/docs/manage-projects).
 
 ### Configure a Project
 
 A project is a collection of platform resources (catalogs, pipelines, schemas, and so on) with controlled access.
-You can create a project using the OLP CLI [`olp project create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/project/project-commands.html#create-project) command:
+You can create a project using the OLP CLI [`olp project create`](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-commands#create-project) command:
 
 ```bash
 olp project create $PROJECT_ID $PROJECT_NAME
 ```
 
-The command returns the [HERE Resource Name (HRN)](https://www.here.com/docs/bundle/data-api-developer-guide/page/rest/catalogs.html#here-resource-names-hrn) of your new project.
+The command returns the [HERE Resource Name (HRN)](https://docs.here.com/data-api/docs/catalogs#here-resource-names-hrn) of your new project.
 Save the project HRN to the `PROJECT_HRN` variable as you will need it later in this tutorial.
 
 > #### Note
 >
 > You do not have to provide a `--scope` parameter if your app has a default scope.
 > For details on how to set a default project scope for an app, see the _Set a default
-> project for an app_ chapter of the [Identity & Access Management Developer Guide](https://www.here.com/docs/bundle/identity-and-access-management-developer-guide/page/topics/manage-projects.html#set-a-default-project-for-an-app).
+> project for an app_ chapter of the [Identity & Access Management Developer Guide](https://docs.here.com/identity-and-access-management/docs/manage-projects#set-a-default-project-for-an-app).
 
-For more information on how to work with projects, see the [Organize your work in projects](https://www.here.com/docs/bundle/here-workspace-developer-guide-java-scala/page/organize-work-in-projects/README.html) tutorial.
+For more information on how to work with projects, see the [Organize your work in projects](https://docs.here.com/workspace/docs/tutorials-organize-work-in-projects-readme) tutorial.
 
 ### Create an Input Catalog and Layer
 
 As the Data Archiving Library reads data to be archived from a `stream` layer, let's create one.
 
-First, use the [`olp catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/catalog-commands.html#catalog-create)
+First, use the [`olp catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-data-catalog-commands#catalog-create)
 command to create an input catalog.
 
 ```bash
@@ -383,7 +383,7 @@ Save the catalog HRN to the `INPUT_CATALOG_HRN` variable as you will need it lat
 Next, add a `stream` layer to your catalog.
 For the required parameters, see the section on the [local `stream` layer](#create-a-local-input-catalog-and-layer) creation.
 
-Use the [`olp catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/layer-commands.html#catalog-layer-add)
+Use the [`olp catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-data-layer-commands#catalog-layer-add)
 command to add a `stream` layer to your catalog:
 
 ```bash
@@ -405,7 +405,7 @@ olp catalog layer add $INPUT_CATALOG_HRN \
 
 The Data Archiving Library stores archived data in the `index` layer, so let's create it.
 
-First, use the [`olp catalog create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/catalog-commands.html#catalog-create)
+First, use the [`olp catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-data-catalog-commands#catalog-create)
 command to create an output catalog.
 
 ```bash
@@ -420,7 +420,7 @@ Save the catalog HRN to the `OUTPUT_CATALOG_HRN` variable as you will need it la
 Now, add an `index` layer to the catalog.
 For the required parameters, see the section on the [local `index` layer](#create-a-local-output-catalog-and-layer) creation.
 
-Use the [`olp catalog layer add`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/layer-commands.html#catalog-layer-add)
+Use the [`olp catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-data-layer-commands#catalog-layer-add)
 command to add an `index` layer to your catalog:
 
 ```bash
@@ -447,7 +447,7 @@ Let's use the same configurations as for the [local run](#update-the-configurati
 apply the HRNs of the platform [input](#create-an-input-catalog-and-layer) and [output](#create-an-output-catalog-and-layer) catalogs,
 and the `here` discovery service environment.
 
-For information about all available configuration options, see the [Configure Your Application](https://www.here.com/docs/bundle/data-archiving-library-developer-guide-java-scala/page/topics/configuration.html) section of the Data Archiving Library Developer Guide.
+For information about all available configuration options, see the [Configure Your Application](https://docs.here.com/workspace/docs/dal-topics-configuration) section of the Data Archiving Library Developer Guide.
 
 ### Generate a Fat JAR file
 
@@ -469,7 +469,7 @@ HERE platform provides pipeline templates as a way to get started with common da
 Pipeline templates are scalable, configurable processing blocks that you can deploy as part of your own workflow, without needing to write any code.
 Each pipeline template is designed to perform a specific task and can be customized to accommodate your particular use case.
 
-Use the [`olp pipeline template create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/template-commands.html#pipeline-template-create) command to create a pipeline template:
+Use the [`olp pipeline template create`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-template-commands#pipeline-template-create) command to create a pipeline template:
 
 ```bash
 olp pipeline template create sensoris-protobuf-pipeline-template \
@@ -487,7 +487,7 @@ Save the pipeline template ID to the `PIPELINE_TEMPLATE_ID` variable as you will
 Let's move forward and create a data processing pipeline.
 HERE platform uses pipelines to process data from HERE geospatial resources and custom client resources to produce new useful data products.
 
-Use the [`olp pipeline create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/pipeline-commands.html#pipeline-create) command to create a pipeline:
+Use the [`olp pipeline create`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-pipeline-commands#pipeline-create) command to create a pipeline:
 
 ```bash
 olp pipeline create sensoris-protobuf-pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
@@ -517,7 +517,7 @@ and the `YOUR_OUTPUT_CATALOG_HRN` placeholder with the HRN of the [output](#crea
 Once you have created both the pipeline and pipeline template and updated the pipeline configuration file, you can proceed to creating a pipeline version.
 A pipeline version is an immutable entity representing an executable form of a pipeline within the HERE platform.
 
-Use the [`olp pipeline version create`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/version-commands.html#pipeline-version-create) command to create a pipeline version:
+Use the [`olp pipeline version create`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-version-commands#pipeline-version-create) command to create a pipeline version:
 
 ```bash
 olp pipeline version create sensoris-protobuf-pipeline-version \
@@ -531,13 +531,13 @@ Save the pipeline version ID to the `PIPELINE_VERSION_ID` variable as you will n
 ### Run the Archiver on HERE Platform
 
 Now you can run the application as a HERE platform pipeline.
-For that purpose, use the [`olp pipeline version activate`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/version-commands.html#pipeline-version-activate) command:
+For that purpose, use the [`olp pipeline version activate`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-version-commands#pipeline-version-activate) command:
 
 ```bash
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
 ```
 
-Use the [`olp pipeline version show`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/version-commands.html#pipeline-version-show) command
+Use the [`olp pipeline version show`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-version-commands#pipeline-version-show) command
 to inspect the state of the pipeline version:
 
 ```
@@ -545,7 +545,7 @@ olp pipeline version show $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
 ```
 
 Since this is a Flink application, this means that it runs until you stop it.
-In order to stop the application after you have finished working with it, execute the [`olp pipeline version cancel`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/pipeline/version-commands.html#pipeline-version-cancel) command:
+In order to stop the application after you have finished working with it, execute the [`olp pipeline version cancel`](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-version-commands#pipeline-version-cancel) command:
 
 ```
 olp pipeline version cancel $PIPELINE_ID $PIPELINE_VERSION_ID --scope $PROJECT_HRN
@@ -559,7 +559,7 @@ Now we can ingest several partitions to the `stream` layer to archive their data
 In this section, we will use the same partitions as for the [local run](#ingest-data-for-archiving) of the application.
 
 While the application is running, start a new terminal session and ingest [data](src/test/resources/sampleData) you want to archive into the `stream` layer that was created in the [previous](#create-an-input-catalog-and-layer) section.
-To do it, use the [`olp catalog layer stream put`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/datastream-commands.html#catalog-layer-stream-put) command:
+To do it, use the [`olp catalog layer stream put`](https://docs.here.com/workspace/docs/olp-cli-topics-data-stream-commands#catalog-layer-stream-put) command:
 
 ```
 olp catalog layer stream put $INPUT_CATALOG_HRN stream \
@@ -574,7 +574,7 @@ After the data has been uploaded successfully, you can verify the archived messa
 After partitions have been uploaded to the `stream` layer, your data will be archived in the `index` layer that was created [previously](#create-a-local-output-catalog-and-layer).
 Note that the archiving process may take a couple of minutes.
 
-You can query archived messages using the [`olp catalog layer partition list`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/partition-commands.html#catalog-layer-partition-list)
+You can query archived messages using the [`olp catalog layer partition list`](https://docs.here.com/workspace/docs/olp-cli-topics-data-partition-commands#catalog-layer-partition-list)
 command.
 Using the `--filter` parameter with this command allows filtering partitions by their name, size, and other criteria.
 However, a more practical case is filtering partitions by the values of fields that were used to index messages, such as `tileId` and `eventTime`.
@@ -625,7 +625,7 @@ Total size: 65 B
 As you can see, there is only one partition stored in this specific HERE Tile.
 
 Now, let's get this partition and examine it.
-To get archived data from the `index` layer, you can use the [`olp catalog layer partition get`](https://www.here.com/docs/bundle/command-line-interface-user-guide-java-scala/page/topics/data/partition-commands.html#catalog-layer-partition-get)
+To get archived data from the `index` layer, you can use the [`olp catalog layer partition get`](https://docs.here.com/workspace/docs/olp-cli-topics-data-partition-commands#catalog-layer-partition-get)
 command with the `--filter "tileId==90175"` parameter to get the partition mentioned above:
 
 ```

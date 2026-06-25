@@ -73,8 +73,7 @@ object AdasCurvatureAttributeExample extends App {
       }
 
     def toColor(curvature: Int): Color = {
-      // Converting curvature value to radius in meters, see:
-      // https://www.here.com/docs/bundle/map-content-specifications-data-specification/page/topics_schema/curvature-attribute.html
+      // Converting curvature value to radius in meters
       val radius = Math.abs(1000000.0 / curvature)
       // Gradient from red to green depending on road curvature radius, considering as green all radius above 150 meters.
       Color.hsb(Math.min(radius, 150.0), 0.9, 0.8)

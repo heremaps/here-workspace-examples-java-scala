@@ -50,7 +50,7 @@ import java.util.stream.StreamSupport;
  *
  * <p>In this example output keys depend only on input keys, so the compiler most suited for this is
  * one of the <a
- * href="https://www.here.com/docs/bundle/data-processing-library-developer-guide-scala-java/page/topics/functional-patterns.html#direct-1n-and-mn-compilers">Direct
+ * href="https://docs.here.com/workspace/docs/dpl-topics-functional-patterns#direct-1n-and-mn-compilers">Direct
  * compilers</a>. The Direct1ToNCompiler does not fit in this case, because in compileOutFn, we may
  * have two intermediate data instances for partition - one for input data and one for the feedback
  * data (if available). Consequently, we use the {@link DirectMToNCompiler}
@@ -82,8 +82,8 @@ public class Compiler
   /**
    * The input partitioner. Input partitions and feedback partitions (if available), have the same
    * partition name but different catalog ID and layer ID. <a
-   * href="https://www.here.com/docs/bundle/data-processing-library-developer-guide-scala-java/page/topics/partitioners-spark-additions.html">Overview
-   * of available partitioners</a>. A partitioner that uses only the partition name is the {@link
+   * href="https://docs.here.com/workspace/docs/dpl-topics-partitioners-spark-additions">Overview of
+   * available partitioners</a>. A partitioner that uses only the partition name is the {@link
    * NameHashPartitioner}.
    *
    * @param parallelism The total number of partitions.
@@ -148,8 +148,8 @@ public class Compiler
    * partition data. This data is then processed by {@link #compileOutFn(Key, Iterable)}.
    *
    * <p>Refer to `here.platform.data-processing.executors.compilein` part in <a
-   * href="https://www.here.com/docs/bundle/data-processing-library-developer-guide-scala-java/page/topics/configuration.html">configuration
-   * page</a> to check configuration options available for this function
+   * href="https://docs.here.com/workspace/docs/dpl-topics-configuration">configuration page</a> to
+   * check configuration options available for this function
    *
    * @param in The input partition to process.
    * @return The value of intermediate data.
@@ -165,8 +165,8 @@ public class Compiler
    * generated one, if available. If the content has changed, we also increment the run counter.
    *
    * <p>Refer to `here.platform.data-processing.executors.compileout` part in <a
-   * href="https://www.here.com/docs/bundle/data-processing-library-developer-guide-scala-java/page/topics/configuration.html">configuration
-   * page</a> to check configuration options available for this function
+   * href="https://docs.here.com/workspace/docs/dpl-topics-configuration">configuration page</a> to
+   * check configuration options available for this function
    *
    * @param outKey The key of the output partition to generate.
    * @param intermediate Non-empty {@link Iterable} of intermediate data as provided by compileInFn

@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.data.archive</groupId>
     <artifactId>data-archive-avro-example</artifactId>
-    <version>0.0.1012</version>
+    <version>0.0.1019</version>
     <packaging>jar</packaging>
 
     <!-- Meta information section start -->
@@ -23,7 +23,7 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.87.3</tag>
+        <tag>2.88.6</tag>
     </scm>
 
     <!-- Meta information section end -->
@@ -33,7 +33,7 @@
         <exec.classpathScope>compile</exec.classpathScope>
         <exec.executable>java</exec.executable>
 
-        <sdk-bom.version>2.87.3</sdk-bom.version>
+        <sdk-bom.version>2.88.6</sdk-bom.version>
         <scala.compat.version>2.13</scala.compat.version>
         <artifact.wagon.version>2.0.37</artifact.wagon.version>
 
@@ -284,7 +284,7 @@
                 <!-- There is a known issue where data-archive pom's transitive dependencies are not resolved when running in an IDE-->
                 <dependency>
                     <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
+                    <artifactId>slf4j-reload4j</artifactId>
                     <scope>runtime</scope>
                 </dependency>
                 <dependency>

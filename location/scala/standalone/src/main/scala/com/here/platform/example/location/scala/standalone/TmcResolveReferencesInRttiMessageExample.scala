@@ -45,7 +45,7 @@ object TmcResolveReferencesInRttiMessageExample extends App {
       .from(OptimizedMap.v2.HRN)
       .usingBaseClient(baseClient)
       // Retain TMC attributes.
-      // See https://www.here.com/docs/bundle/location-library-developer-guide-java-scala/page/docs/high-level-v2_5.html#retain-only-required-attributes
+      // See https://docs.here.com/workspace/docs/ll-docs-high-level-v2#retain-only-required-attributes
       .withTopologyAttributes(TopologyAttributeDescription.TrafficMessageChannelCode)
       .newInstance
       .version(7521L)
