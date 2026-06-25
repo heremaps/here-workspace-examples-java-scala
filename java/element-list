@@ -124,6 +124,7 @@ com.here.platform.data.client.v2.caching.model.versioned
 com.here.platform.data.client.v2.main
 com.here.platform.data.client.v2.main.javadsl
 com.here.platform.index.compaction.core
+com.here.platform.location
 com.here.platform.location.compilation.core
 com.here.platform.location.compilation.heremapcontent
 com.here.platform.location.compilation.heremapcontent.javadsl
