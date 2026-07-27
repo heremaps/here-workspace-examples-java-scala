@@ -75,7 +75,7 @@ The local catalog will have the HRN `hrn:local:data:::geometry-lifter-scala`.
 olp local catalog layer add hrn:local:data:::geometry-lifter-scala lifted-topology-geometry lifted-topology-geometry --versioned --summary "lifted topology-geometry" \
             --description "lifted topology-geometry"  --partitioning heretile:10 \
             --content-type application/x-protobuf \
-            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.schema.rib:topology-geometry_v2:2.176.0
+            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.schema.rib:topology-geometry_v2:2.201.2
 olp local catalog layer add hrn:local:data:::geometry-lifter-scala state state --versioned --summary "state" \
             --description "state" --partitioning Generic \
             --content-type application/octet-stream
@@ -106,7 +106,7 @@ parameter.
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here),
 for the HERE platform environment.
 
-The [`.jvmopts`](.jvmopts) file contains `--add-opens` options required to run Spark applications with Java 17.
+The [`.jvmopts`](.jvmopts) file contains `--add-opens` options required to run Spark applications with Java 21.
 
 Use all the above settings to run the following command in the [`geometry-lifter`](../geometry-lifter)
 directory to run the Geometry Lifter Compiler.
@@ -174,7 +174,7 @@ olp catalog create $CATALOG_ID $CATALOG_ID --summary "Geometry lifter example ca
 olp catalog layer add $CATALOG_HRN lifted-topology-geometry lifted-topology-geometry --versioned --summary "lifted topology-geometry" \
             --description "lifted topology-geometry"  --partitioning heretile:10 \
             --content-type application/x-protobuf \
-            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.schema.rib:topology-geometry_v2:2.176.0 \
+            --schema hrn:$HRN_PARTITION:schema::$REALM:com.here.schema.rib:topology-geometry_v2:2.201.2 \
             --scope $PROJECT_HRN
 olp catalog layer add $CATALOG_HRN state state --versioned --summary "state" \
             --description "state" --partitioning Generic \
@@ -260,7 +260,7 @@ geographical region.
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-5.0 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-5.2 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.scala.geometry.lifter.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

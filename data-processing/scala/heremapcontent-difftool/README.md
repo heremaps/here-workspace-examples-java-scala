@@ -133,7 +133,7 @@ partition of HERE Map Content. Make sure you update the layer coverage to reflec
 geographical region. In order to use this configuration file, you need to use the `-Dconfig.file`
 parameter.
 
-The [`.jvmopts`](.jvmopts) file contains `--add-opens` options required to run Spark applications with Java 17.
+The [`.jvmopts`](.jvmopts) file contains `--add-opens` options required to run Spark applications with Java 21.
 
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here).
 
@@ -314,7 +314,7 @@ geographical region.
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-5.0 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-5.2 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.scala.difftool.processor.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

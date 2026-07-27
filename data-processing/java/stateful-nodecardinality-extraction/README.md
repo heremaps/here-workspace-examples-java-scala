@@ -135,7 +135,7 @@ parameter.
 
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](config/here).
 
-To run your Spark application locally with Java 17, you should provide the following add-opens parameters to the command arguments:
+To run your Spark application locally with Java 21, you should provide the following add-opens parameters to the command arguments:
 
 ```
 --add-opens=java.base/java.util=ALL-UNNAMED
@@ -320,7 +320,7 @@ geographical region.
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-5.0 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-5.2 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.java.feedback.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

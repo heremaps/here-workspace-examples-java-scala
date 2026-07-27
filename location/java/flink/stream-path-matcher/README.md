@@ -102,7 +102,7 @@ suitable for local development and debugging.
 
 For the HERE platform environment:
 
-To run your Flink application locally with Java 17, you should provide `--add-opens=java.base/java.util=ALL-UNNAMED` to the command arguments.
+To run your Flink application locally with Java 21, you should provide `--add-opens=java.base/java.util=ALL-UNNAMED` to the command arguments.
 
 ```bash
 mvn compile exec:exec \
@@ -256,7 +256,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template stream-7.0 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template stream-7.2 $PATH_TO_JAR \
                 com.here.platform.example.location.java.flink.StreamPathMatcherExample \
                 --input-catalog-ids="$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
                 --scope $PROJECT_HRN

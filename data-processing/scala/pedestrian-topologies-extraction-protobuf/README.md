@@ -135,7 +135,7 @@ parameter.
 
 Set the environment variable `$PATH_TO_CONFIG_FOLDER` to [`./config/here`](compiler/config/here).
 
-The [`.jvmopts`](./compiler/.jvmopts) file contains `--add-opens` options required to run Spark applications with Java 17.
+The [`.jvmopts`](./compiler/.jvmopts) file contains `--add-opens` options required to run Spark applications with Java 1721.
 
 Finally, run the following command line in the [`pedestrian-topologies-extraction-protobuf/compiler`](../pedestrian-topologies-extraction-protobuf/compiler) directory
 to run the Pedestrian Topologies Compiler.
@@ -287,7 +287,7 @@ geographical region.
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-5.0 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-5.2 $PATH_TO_JAR \
                 com.here.platform.data.processing.example.scala.pedestrian.protobuf.Main \
                 --workers=4 --worker-units=3 --supervisor-units=2 --input-catalog-ids=rib \
                 --scope $PROJECT_HRN

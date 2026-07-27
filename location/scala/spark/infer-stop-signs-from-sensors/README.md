@@ -141,7 +141,7 @@ In the command above:
 - `pipeline-job.conf` defines the versions of the input and output catalogs.
 - `local[2]` defines the number of threads Spark will run in parallel to
   process the batch.
-- The [`.jvmopts`](.jvmopts) file is used by default and contains `--add-opens` options required to run Spark applications with Java 17.
+- The [`.jvmopts`](.jvmopts) file is used by default and contains `--add-opens` options required to run Spark applications with Java 21.
 
 After one run, in the HERE platform environment you can inspect the local catalog with the OLP CLI:
 
@@ -274,7 +274,7 @@ You can use the OLP CLI to create pipeline components and activate the pipeline 
 
 ```bash
 olp pipeline create $COMPONENT_NAME_Pipeline --email $OLP_EMAIL --scope $PROJECT_HRN
-olp pipeline template create $COMPONENT_NAME_Template batch-5.0 $PATH_TO_JAR \
+olp pipeline template create $COMPONENT_NAME_Template batch-5.2 $PATH_TO_JAR \
                 com.here.platform.example.location.scala.spark.InferStopSignsFromSensorsExample \
                 --input-catalog-ids="$PATH_TO_CONFIG_FOLDER/pipeline-config.conf" \
                 --scope $PROJECT_HRN

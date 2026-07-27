@@ -4,7 +4,7 @@
 
     <groupId>com.here.platform.index.compaction.batch</groupId>
     <artifactId>index-compaction-batch-protobuf-example</artifactId>
-    <version>0.0.1019</version>
+    <version>0.0.1024</version>
     <packaging>jar</packaging>
 
     <name>Index Compaction Batch Protobuf Example</name>
@@ -24,20 +24,20 @@
         <connection>scm:git:https://github.com/heremaps/here-workspace-examples-java-scala.git</connection>
         <developerConnection>scm:git:git@github.com:heremaps/here-workspace-examples-java-scala.git</developerConnection>
         <url>https://github.com/heremaps/here-workspace-examples-java-scala</url>
-        <tag>2.88.6</tag>
+        <tag>2.89.5</tag>
     </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
 
-        <sdk-bom.version>2.88.6</sdk-bom.version>
+        <sdk-bom.version>2.89.5</sdk-bom.version>
         <scala.compat.version>2.13</scala.compat.version>
         <artifact.wagon.version>2.0.37</artifact.wagon.version>
 
         <junit.version>4.12</junit.version>
 
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
         <exec.cleanupDaemonThreads>false</exec.cleanupDaemonThreads>
         <exec.executable>java</exec.executable>

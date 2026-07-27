@@ -174,7 +174,7 @@ For more information about the `application.conf` configuration file, see the [I
 
 The [`pipeline-config.conf`](src/main/resources/pipeline-config.conf) file contains the input and output catalog HRNs.
 
-To run your Spark application locally with Java 17, you should provide `--add-opens java.base/sun.nio.ch=ALL-UNNAMED` to the command arguments.
+To run your Spark application locally with Java 21, you should provide `--add-opens java.base/sun.nio.ch=ALL-UNNAMED` to the command arguments.
 
 Execute the following command in the [protobuf-example](../protobuf-example) directory to compact partitions in the index layer:
 
@@ -423,7 +423,7 @@ Use the [`olp pipeline template create`](https://docs.here.com/workspace/docs/ol
 
 ```bash
 olp pipeline template create $PIPELINE_TEMPLATE_NAME \
-    batch-5.0  \
+    batch-5.2  \
     $PATH_TO_JAR \
     com.here.platform.index.compaction.batch.Driver \
     --input-catalog-ids=source \

@@ -146,7 +146,7 @@ After the application has been configured, you can run it locally by running the
 As the `argument`, you must provide the `-Padd-dependencies-for-local-run` parameter that adds all the dependencies
 needed for a local run of the archiving application.
 
-To run your Flink application locally with Java 17, you should provide `--add-opens=java.base/java.util=ALL-UNNAMED` to the command arguments.
+To run your Flink application locally with Java 21, you should provide `--add-opens=java.base/java.util=ALL-UNNAMED` to the command arguments.
 
 Execute the following command in the [`avro-example`](../avro-example) directory to run the Avro Archiving Application:
 
@@ -446,7 +446,7 @@ Use the [`olp pipeline template create`](https://docs.here.com/workspace/docs/ol
 
 ```bash
 olp pipeline template create avro-pipeline-template \
-    stream-7.0 \
+    stream-7.2 \
     $PATH_TO_JAR \
     com.here.platform.dal.DALMain \
     --input-catalog-ids=source \

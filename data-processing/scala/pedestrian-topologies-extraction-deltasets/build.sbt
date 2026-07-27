@@ -1,7 +1,8 @@
 import com.here.bom.Bom
+import java.net.URI
 
 ThisBuild / organization := "com.here.platform.data.processing.example.scala"
-ThisBuild / version := "0.0.1019"
+ThisBuild / version := "0.0.1024"
 ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / sbtPluginPublishLegacyMavenStyle := false
 
@@ -12,7 +13,8 @@ val organizationSettings: Seq[Setting[_]] = Seq(
       "Pedestrian topologies extraction compiler example to GeoJson in scala with DeltaSets",
     homepage = Some(url("http://here.com")),
     startYear = Some(2019),
-    licenses = Vector(("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt"))),
+    licenses =
+      Vector(("Apache-2.0", URI.create("https://www.apache.org/licenses/LICENSE-2.0.txt").toURL)),
     organizationName = "HERE Europe B.V",
     organizationHomepage = Some(url("http://here.com")),
     scmInfo = Some(
@@ -26,7 +28,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.88.6"
+val sdkBomVersion = "2.89.5"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {
