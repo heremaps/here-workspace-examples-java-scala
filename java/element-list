@@ -134,8 +134,10 @@ com.here.platform.location.core.geospatial
 com.here.platform.location.core.geospatial.javadsl
 com.here.platform.location.core.graph.javadsl
 com.here.platform.location.core.graph.patch
+com.here.platform.location.core.graph.patch.fractions
 com.here.platform.location.core.mapmatching
 com.here.platform.location.core.mapmatching.javadsl
+com.here.platform.location.core.mapmatching.model
 com.here.platform.location.core.shortestpath
 com.here.platform.location.inmemory.geospatial
 com.here.platform.location.inmemory.graph
