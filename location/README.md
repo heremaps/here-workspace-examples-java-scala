@@ -57,7 +57,7 @@ your app to a group.
 The creation of platform resources (catalogs, pipelines, etc.) is conveniently
 achievable by means of the OLP Command Line Interface,
 see
-[OLP CLI](https://docs.here.com/workspace/docs/olp-cli-readme).
+[OLP CLI](https://docs.here.com/workspace/docs/olp-cli_readme).
 
 Examples documentation only refers to the `olp` command line tool. If you are on
 Windows, always replace `olp` with `olp.bat`.

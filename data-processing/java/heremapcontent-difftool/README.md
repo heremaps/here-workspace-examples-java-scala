@@ -32,7 +32,7 @@ To run this example, you need two sets of credentials:
 
 For more details on how to set up your credentials, see the [Identity & Access Management Developer Guide](https://docs.here.com/identity-and-access-management/docs/readme).
 
-For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://docs.here.com/workspace/docs/tutorials-verify-credentials-readme) tutorial.
+For more details on how to verify that your platform credentials are configured correctly, see the [Verify Your Credentials](https://docs.here.com/workspace/docs/tutorials_verify-credentials_readme) tutorial.
 
 ## Build and Run the Compiler
 
@@ -59,10 +59,10 @@ to store the differences between two versions of the HERE Map Content catalog.
 
 To run this compiler locally, use a local output catalog as described
 below. For more information about local catalogs, see
-[the SDK tutorial about local development and testing](https://docs.here.com/workspace/docs/tutorials-local-development-workflow-readme)
-and [the OLP CLI documentation](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-workflows).
+[the SDK tutorial about local development and testing](https://docs.here.com/workspace/docs/tutorials_local-development-workflow_readme)
+and [the OLP CLI documentation](https://docs.here.com/workspace/docs/olp-cli_topics_local-data-workflows).
 
-1. Use the [`olp local catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-catalog-commands#catalog-create)
+1. Use the [`olp local catalog create`](https://docs.here.com/workspace/docs/olp-cli_topics_local-data_local-catalog-commands#catalog-create)
    command to create a local catalog.
 
 ```bash
@@ -72,7 +72,7 @@ olp local catalog create difftool-java difftool-java --summary "HERE Map Content
 
 The local catalog will have the HRN `hrn:local:data:::difftool-java`.
 
-2. Use the [`olp local catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-local-data-local-layer-commands#catalog-layer-add)
+2. Use the [`olp local catalog layer add`](https://docs.here.com/workspace/docs/olp-cli_topics_local-data_local-layer-commands#catalog-layer-add)
    command to add two `versioned` layers to your catalog:
 
 | Layer ID               | Layer Type | Partitioning | Zoom Level | Content Type             | Content Encoding |
@@ -206,7 +206,7 @@ To follow this example, you will need a [project](https://docs.here.com/identity
 (catalogs, pipelines, and schemas) with controlled access. You can create a project through the
 [HERE platform portal](https://platform.here.com/).
 
-Alternatively, use the OLP CLI [`olp project create`](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-commands#create-project) command to create the project:
+Alternatively, use the OLP CLI [`olp project create`](https://docs.here.com/workspace/docs/olp-cli_topics_project_project-commands#create-project) command to create the project:
 
 ```bash
 olp project create $PROJECT_ID $PROJECT_NAME
@@ -220,14 +220,14 @@ The command returns the [HERE Resource Name (HRN)](https://docs.here.com/data-ap
 > For details on how to set a default project scope for an app, see the _Specify a
 > default Project_ for Apps chapter of the [Identity & Access Management Developer Guide](https://docs.here.com/identity-and-access-management/docs/readme).
 
-For more information on how to work with projects, see the [Organize your work in projects](https://docs.here.com/workspace/docs/tutorials-organize-work-in-projects-readme) tutorial.
+For more information on how to work with projects, see the [Organize your work in projects](https://docs.here.com/workspace/docs/tutorials_organize-work-in-projects_readme) tutorial.
 
 #### Create a HERE Map Content Differences Catalog
 
 The catalog you need to create is used to store the differences between two versions of the HERE Map
 Content catalog.
 
-1. Use the [`olp catalog create`](https://docs.here.com/workspace/docs/olp-cli-topics-data-catalog-commands#catalog-create) command to create the catalog.
+1. Use the [`olp catalog create`](https://docs.here.com/workspace/docs/olp-cli_topics_data_catalog-commands#catalog-create) command to create the catalog.
    Make sure to note down the HRN returned by the following command for later use:
 
 ```bash
@@ -236,7 +236,7 @@ olp catalog create $CATALOG_ID $CATALOG_ID --summary "HERE Map Content diftool e
             --scope $PROJECT_HRN
 ```
 
-2. Use the [`olp catalog layer add`](https://docs.here.com/workspace/docs/olp-cli-topics-data-layer-commands#catalog-layer-add) command to add two `versioned` layers to your catalog:
+2. Use the [`olp catalog layer add`](https://docs.here.com/workspace/docs/olp-cli_topics_data_layer-commands#catalog-layer-add) command to add two `versioned` layers to your catalog:
 
 ```bash
 olp catalog layer add $CATALOG_HRN topology-geometry-diff topology-geometry-diff --versioned \
@@ -251,16 +251,16 @@ olp catalog layer add $CATALOG_HRN state state --versioned --summary "state" --d
 >
 > If a billing tag is required in your realm, use the `--billing-tags: "YOUR_BILLING_TAG"` parameter.
 
-3. Use the [`olp project resource link`](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-link-commands#project-resource-link) command to link the _HERE Map Content_ catalog to your project:
+3. Use the [`olp project resource link`](https://docs.here.com/workspace/docs/olp-cli_topics_project_project-link-commands#project-resource-link) command to link the _HERE Map Content_ catalog to your project:
 
 ```bash
 olp project resource link $PROJECT_HRN $CATALOG_RIB
 ```
 
-- For more details on catalog commands, see [Catalog Commands](https://docs.here.com/workspace/docs/olp-cli-topics-data-catalog-commands).
-- For more details on layer commands, see [Layer Commands](https://docs.here.com/workspace/docs/olp-cli-topics-data-layer-commands).
-- For more details on project commands, see [Project Commands](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-commands).
-- For instructions on how to link a resource to a project, see [Project Resource Link command](https://docs.here.com/workspace/docs/olp-cli-topics-project-project-link-commands#project-resource-link).
+- For more details on catalog commands, see [Catalog Commands](https://docs.here.com/workspace/docs/olp-cli_topics_data_catalog-commands).
+- For more details on layer commands, see [Layer Commands](https://docs.here.com/workspace/docs/olp-cli_topics_data_layer-commands).
+- For more details on project commands, see [Project Commands](https://docs.here.com/workspace/docs/olp-cli_topics_project_project-commands).
+- For instructions on how to link a resource to a project, see [Project Resource Link command](https://docs.here.com/workspace/docs/olp-cli_topics_project_project-link-commands#project-resource-link).
 
 #### Configure the Compiler
 
@@ -320,11 +320,11 @@ mvn -Pplatform package
 
 Once the previous command is finished, your JAR is then available at the `target` directory, and you
 can upload it using the [HERE pipeline UI](https://platform.here.com/pipelines)
-or the [OLP CLI](https://docs.here.com/workspace/docs/olp-cli-readme).
+or the [OLP CLI](https://docs.here.com/workspace/docs/olp-cli_readme).
 
 You can use the OLP CLI to create pipeline components and activate the pipeline version with the following commands:
 
-1. [Create](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-workflows) pipeline components:
+1. [Create](https://docs.here.com/workspace/docs/olp-cli_topics_pipeline-workflows) pipeline components:
 
 For this example, a bounding box filter is provided by `--runtime-config` parameter to
 limit the number of partitions to be processed. This speeds up the compilation process. In this
@@ -348,7 +348,7 @@ olp pipeline version create $COMPONENT_NAME_version $PIPELINE_ID $PIPELINE_TEMPL
                 --scope $PROJECT_HRN
 ```
 
-2. [Activate](https://docs.here.com/workspace/docs/olp-cli-topics-pipeline-version-commands#pipeline-version-activate) the pipeline version:
+2. [Activate](https://docs.here.com/workspace/docs/olp-cli_topics_pipeline_version-commands#pipeline-version-activate) the pipeline version:
 
 ```bash
 olp pipeline version activate $PIPELINE_ID $PIPELINE_VERSION_ID \
