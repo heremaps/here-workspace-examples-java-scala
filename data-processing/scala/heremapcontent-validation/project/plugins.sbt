@@ -5,4 +5,4 @@ resolvers += Resolver.url("MAVEN_CENTRAL", url("https://repo.maven.apache.org/ma
   ))
 addSbtPlugin("com.here.platform" %% "sbt-bom" % "1.0.28")
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.1.5")
-addSbtPlugin("com.here.platform.artifact" %% "sbt-resolver" % "2.0.38")
+addSbtPlugin("com.here.platform.artifact" %% "sbt-resolver" % "2.0.40")

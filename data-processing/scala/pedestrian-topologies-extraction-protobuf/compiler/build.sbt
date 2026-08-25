@@ -2,7 +2,7 @@ import com.here.bom.Bom
 import java.net.URI
 
 ThisBuild / organization := "com.here.platform.data.processing.example.scala.pedestrian.protobuf"
-ThisBuild / version := "0.0.1024"
+ThisBuild / version := "0.0.1032"
 ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / sbtPluginPublishLegacyMavenStyle := false
 
@@ -27,7 +27,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.89.5"
+val sdkBomVersion = "2.90.6"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {
