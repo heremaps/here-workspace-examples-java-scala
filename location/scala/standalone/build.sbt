@@ -2,7 +2,7 @@ import com.here.bom.Bom
 import java.net.URI
 
 ThisBuild / organization := "com.here.platform.example.location"
-ThisBuild / version := "0.0.1038"
+ThisBuild / version := "0.0.1046"
 ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / sbtPluginPublishLegacyMavenStyle := false
 
@@ -27,7 +27,7 @@ val organizationSettings: Seq[Setting[_]] = Seq(
   )
 )
 
-val sdkBomVersion = "2.91.5"
+val sdkBomVersion = "2.92.8"
 
 assembly / assemblyJarName := f"${name.value}-${version.value}-platform.jar"
 assembly / assemblyMergeStrategy := {
