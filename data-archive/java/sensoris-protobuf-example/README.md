@@ -199,7 +199,7 @@ Partition content looks like a standard [`Sensoris`](https://sensoris.org/presen
 Our application takes the `envelope.timestamp` field to index messages by the `eventTime` property, and the
 `position_and_accuracy.longitude_deg` and `position_and_accuracy.latitude_deg` fields are used to index messages by the `tileId` property.
 
-To serialize the `Protobuf` data, you can use the [`_java` bindings](https://platform.here.com/data/schemas/hrn:here:schema::olp-here:org.sensoris:sensoris-specification_v1_2_2:1.1.8/overview) as follows:
+To serialize the `Protobuf` data, you can use the [`_java` bindings](https://platform.here.com/data/schemas/hrn:here:schema::olp-here:org.sensoris:sensoris-specification_v1_6_0:1.6.1/overview) as follows:
 
 ```
 byte[] proto = Files.readAllBytes(Paths.get("path/to/sensoris_proto_message.pb"));
